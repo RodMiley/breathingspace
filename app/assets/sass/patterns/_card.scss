@@ -1,0 +1,14 @@
+.card {
+    padding:20px;
+    background:govuk-colour("light-grey");
+    margin-bottom:30px;
+
+    .govuk-button--secondary{
+        margin-bottom:0px;
+        background: #fff;
+        color: #10813e;
+        border: 2px solid #10813e;
+        box-shadow:none;
+
+    }
+}

@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Breathing space
+        <span class="govuk-caption-xl">Prototypes</span>
+      </h1>{{releaseVersion | log }}
+
+      <h2 class="govuk-heading-m">Debt adviser</h2>
+      <div class="card">
+      <h2 class="govuk-heading-m">Create breathing space account</h2>
+        <p class="govuk-body">What are we testing:</p>
+      <a href="/advisor/index" class="govuk-button govuk-button--secondary">Start scenario</a>
+      </div>
+
+      <h2 class="govuk-heading-m">Creditor</h2>
+            <div class="card">
+      <h2 class="govuk-heading-m">Scenario name 2</h2>
+        <p class="govuk-body">What are we testing:</p>
+      <a href="" class="govuk-button govuk-button--secondary">Start scenario</a>
+      </div>
+
+    </div>
+</div>
+
+{% endblock %}
