@@ -12,12 +12,105 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
            <span class="govuk-caption-xl">Breathing space account for</span>
-       {{ fullname }}
+       {{ fullname }} 
+
+       <span class="dayindicator">Day 2 <span>of 60</span></span>
       </h1>
+<style>
 
-<h2 class="govuk-heading-m">Personal details</h2>
+    .govuk-heading-xl
+    {
+      position:relative;
+    }
+   .dayindicator {
+     text-align:center;
+     position:absolute;
+     right:0px;
+     padding:15px 20px;
+     font-size:25px;
+     background:#1d70b8;
+     color:#fff;
+     top:0px;
+   }
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      .dayindicator span {
+     font-size:20px;
+     display:block;
+     padding:10px 0 0 0;
+
+
+   }
+</style>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Problem dept
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+    <h2 class="govuk-heading-l">Problem debt</h2>
+   {% if data['creditor']%}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebt}}
+             <p>Verified and accepted</p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditor}}<br>Amount: £{{ amount }}<br> Reference: {{ reference }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+    {% if data['creditortwo']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebttwo }}
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditortwo}}<br>Amount: £{{ amounttwo }}<br> Reference: {{ referencetwo }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    {% endif %}  
+        </dl>
+    {% endif %}  
+     
+{% if data['debt']%}
+ <a href="debt2" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a problem debt
+</a>
+{% else %}
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a problem debt
+</a>
+{% endif %}
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Name
@@ -86,57 +179,14 @@
         </dl>
 
 
- <h2 class="govuk-heading-m">Problem debts</h2>
+  </section>
 
-{% if data['creditor']%}
-        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ typeOfDebt}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: {{creditor}}<br>Amount: £{{ amount }}<br> Reference: {{ reference }}
 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-
-    {% if data['creditortwo']%}
-             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ typeOfDebttwo }}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: {{creditortwo}}<br>Amount: £{{ amounttwo }}<br> Reference: {{ referencetwo }}
-
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt2">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-    {% endif %}  
-        </dl>
-    {% endif %}  
-
-{% if data['debt']%}
- <a href="debt2" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a problem debt
-</a>
-{% else %}
- <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a problem debt
-</a>
-{% endif %}
+</div>
 
 
 
-<hr class="govuk-section-break govuk-section-break--m  govuk-section-break--visible">
+
 
 
 
