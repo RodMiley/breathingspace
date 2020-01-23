@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-full">
+ 
+ <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+ <h1 class="govuk-heading-xl">Search for an account</h1>
+<div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-three-quarters">
+ 
+<form class="form" action="address" method="post">
+<div class="gem-c-search gem-c-search--on-white" data-module="gem-toggle-input-class-on-focus">
+  <label for="finder-keyword-search" class="gem-c-search__label">
+    Search for a Breathing Space record
+  </label>
+  <div class="gem-c-search__item-wrapper">
+    <input type="search" value="{{ fullname }}" id="finder-keyword-search" name="fullname" title="Search" aria-controls="" class="gem-c-search__item gem-c-search__input js-class-toggle focus">
+    <div class="gem-c-search__item gem-c-search__submit-wrapper">
+      <button type="submit" class="gem-c-search__submit">Search</button>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+</div>
+
+        <p class="govuk-body">3 results</p>
+<table class="govuk-table">
+  <!--<caption class="govuk-table__caption visually-hidden">Name date of births and first line of addresses</caption>-->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Breathing Space Reference</th>
+      <th scope="col" class="govuk-table__header">Date of birth</th>
+      <th scope="col" class="govuk-table__header">First line of address</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href='debt-list-tabs-search'>{{fullname}}</a></th>
+      <td class="govuk-table__cell">HDJ2123F</td>
+      <td class="govuk-table__cell">20 February 1989</td>
+      <td class="govuk-table__cell">37 Brier Lane</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href='debt-list-tabs-search'>{{fullname}}</a></th>
+       <td class="govuk-table__cell">GHK19873G</td>
+      <td class="govuk-table__cell">10 July 1969</td>
+      <td class="govuk-table__cell">1 Cross keys Road</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href='debt-list-tabs-search'>{{fullname}}</a></th>
+       <td class="govuk-table__cell">FTH36743H</td>
+      <td class="govuk-table__cell">14 October 1969</td>
+      <td class="govuk-table__cell">10 Exeter Close</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</div>
+
+{% endblock %}

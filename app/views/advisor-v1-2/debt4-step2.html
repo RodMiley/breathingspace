@@ -1,0 +1,72 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 2 of 2</span>
+       Add a debt
+      </h1>
+      <h2 class="govuk-heading-l">{{ creditortwo }}</h2>
+
+      <h3 class="govuk-heading-m">Credit card</h3>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amounttwo">
+   Debt amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="referencetwo">
+    reference
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debttwo" type="radio" value="debttwo" checked>
+        <label class="govuk-label govuk-radios__label" for="debttwo">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

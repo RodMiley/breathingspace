@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 2 of 2</span>
+       Add a debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body">{{ creditortwo }} <a href="debt2">Change</a></p>
+       <h2 class="govuk-heading-s">Type of debt</h2>
+      <p class="govuk-body">Credit card</p>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="amounttwo">
+   Debt amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="referencetwo">
+    Reference
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt2" type="radio" value="debt2" checked>
+        <label class="govuk-label govuk-radios__label" for="debt2">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
