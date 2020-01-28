@@ -15,28 +15,62 @@
       <span class="govuk-caption-xl">Step 2 of 2</span>
        Add a debt
       </h1>
-      <h2 class="govuk-heading-l">{{ creditortwo }}</h2>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body">{{ creditorsix }} <a href="debt6">Change</a></p>
 
-      <h3 class="govuk-heading-m">Credit card</h3>
+{% if data['creditor']=='Barclays Bank Plc' or data['creditor']=='Halifax'%}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of dept
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt-6" type="radio" value="Gas"  {{checked('typeOfDebt-6', 'Gas') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Gas
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt-6" type="radio" value="Electric"  {{checked('typeOfDebt-6', 'Electric') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Electric
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt-6" type="radio" value="Duel fuel"  {{checked('typeOfDebt-6', 'Duel fuel') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+           Dual fuel
+        </label>
+      </div>
+  </fieldset>
+</div>
+{% endif %}
+
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="amounttwo">
+  <label class="govuk-label" for="amountsix">
    Debt amount
   </label>
-  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+  <input class="govuk-input govuk-input--width-10" id="amountsix" name="amountsix" type="text" spellcheck="false" value="{{ amountsix }}">
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="referencetwo">
-    reference
+  <label class="govuk-label" for="referencesix">
+    Reference
   </label>
-  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+  <input class="govuk-input govuk-input--width-10" id="referencesix" name="referencesix" type="text" spellcheck="false" value="{{ referencesix }}">
 </div>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="debttwo" type="radio" value="debttwo" checked>
-        <label class="govuk-label govuk-radios__label" for="debttwo">
+        <input class="govuk-radios__input" id="" name="debt6" type="radio" value="debt6" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
          hidden radio
         </label>
       </div>
@@ -52,21 +86,5 @@
     </form>
 </div>
 
-
-   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
-   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
-
-        <script type="text/javascript">
-      var element = document.querySelector('#tt-default')
-      var id = 'creditor'
-      var name ='creditor'
-      accessibleAutocomplete({
-        element: element,
-        id: id,
-        name: name,
-        source: creditors
-      })
-
-    </script>
 
 {% endblock %}

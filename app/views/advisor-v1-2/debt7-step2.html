@@ -15,28 +15,62 @@
       <span class="govuk-caption-xl">Step 2 of 2</span>
        Add a debt
       </h1>
-      <h2 class="govuk-heading-l">{{ creditortwo }}</h2>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body">{{ creditorseven }} <a href="debt7">Change</a></p>
 
-      <h3 class="govuk-heading-m">Credit card</h3>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of dept
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt-7" type="radio" value="Council tax"  {{checked('typeOfDebt-7', 'Council tax') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Council tax
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt-7" type="radio" value="Electric"  {{checked('typeOfDebt-7', 'Rent') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Rent 
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt-7" type="radio" value="Duel fuel"  {{checked('typeOfDebt-7', 'Parking fines') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+           Parking fines
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="amounttwo">
+  <label class="govuk-label" for="amountseven">
    Debt amount
   </label>
-  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+  <input class="govuk-input govuk-input--width-10" id="amountseven" name="amountseven" type="text" spellcheck="false" value="{{ amountseven }}">
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="referencetwo">
-    reference
+  <label class="govuk-label" for="referenceseven">
+    Reference
   </label>
-  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+  <input class="govuk-input govuk-input--width-10" id="referenceseven" name="referenceseven" type="text" spellcheck="false" value="{{ referenceseven }}">
 </div>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="debttwo" type="radio" value="debttwo" checked>
-        <label class="govuk-label govuk-radios__label" for="debttwo">
+        <input class="govuk-radios__input" id="" name="debt7" type="radio" value="debt7" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
          hidden radio
         </label>
       </div>
@@ -52,21 +86,5 @@
     </form>
 </div>
 
-
-   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
-   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
-
-        <script type="text/javascript">
-      var element = document.querySelector('#tt-default')
-      var id = 'creditor'
-      var name ='creditor'
-      accessibleAutocomplete({
-        element: element,
-        id: id,
-        name: name,
-        source: creditors
-      })
-
-    </script>
 
 {% endblock %}

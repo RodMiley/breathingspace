@@ -117,12 +117,114 @@
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt2-step2">
+              <a class="govuk-link" href="debt3-step2">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
     {% endif %}  
+        {% if data['creditorfour']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Water 
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorfour}}<br>Amount: £{{ amountfour }}<br> Reference: {{ referencefour}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    {% endif %} 
+            {% if data['creditorfive']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Gas
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorfive}}<br>Amount: £{{ amountfive }}<br> Reference: {{ referencefive}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt5-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+         {% endif %} 
+            {% if data['creditorsix']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Electric
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorsix}}<br>Amount: £{{ amountsix }}<br> Reference: {{ referencesix}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt6-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+         {% endif %} 
+          {% if data['creditorseven']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Council tax
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorseven}}<br>Amount: £{{ amountseven }}<br> Reference: {{ referenceseven}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt7-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+         {% endif %} 
+          {% if data['creditoreight']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Store card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditoreight}}<br>Amount: £{{ amounteight }}<br> Reference: {{ referenceeight}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt8-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+         {% endif %} 
+         {% if data['creditornine']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            
+             Debt
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditornine}}<br>Amount: £{{ amountnine }}<br> Reference: {{ referencenine}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt9-confirm">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+         {% endif %} 
         </dl>
     {% endif %}  
 

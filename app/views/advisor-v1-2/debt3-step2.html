@@ -15,28 +15,29 @@
       <span class="govuk-caption-xl">Step 2 of 2</span>
        Add a debt
       </h1>
-      <h2 class="govuk-heading-l">{{ creditortwo }}</h2>
-
-      <h3 class="govuk-heading-m">Credit card</h3>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body">{{ creditorthree }} <a href="debt3">Change</a></p>
+       <h2 class="govuk-heading-s">Type of debt</h2>
+      <p class="govuk-body">Credit card</p>
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="amounttwo">
+  <label class="govuk-label govuk-!-font-weight-bold" for="amountthree">
    Debt amount
   </label>
-  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+  <input class="govuk-input govuk-input--width-10" id="amountthree" name="amountthree" type="text" spellcheck="false" value="{{ amountthree }}">
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="referencetwo">
-    reference
+  <label class="govuk-label govuk-!-font-weight-bold" for="referencethree">
+    Reference
   </label>
-  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+  <input class="govuk-input govuk-input--width-10" id="referencethree" name="referencethree" type="text" spellcheck="false" value="{{ referencethree }}">
 </div>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="debttwo" type="radio" value="debttwo" checked>
-        <label class="govuk-label govuk-radios__label" for="debttwo">
+        <input class="govuk-radios__input" id="" name="debt3" type="radio" value="debt3" checked>
+        <label class="govuk-label govuk-radios__label" for="debt3">
          hidden radio
         </label>
       </div>
@@ -51,22 +52,5 @@
     </div>
     </form>
 </div>
-
-
-   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
-   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
-
-        <script type="text/javascript">
-      var element = document.querySelector('#tt-default')
-      var id = 'creditor'
-      var name ='creditor'
-      accessibleAutocomplete({
-        element: element,
-        id: id,
-        name: name,
-        source: creditors
-      })
-
-    </script>
 
 {% endblock %}
