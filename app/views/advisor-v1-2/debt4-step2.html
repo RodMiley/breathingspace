@@ -8,32 +8,25 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs" method="post">
+  <form class="form" action="debt4-step2-1" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">Step 2 of 2</span>
-       Add a debt
+      <span class="govuk-caption-xl"> Add a debt: Step 2 of 4</span>
+       Add creditor address
       </h1>
       <h2 class="govuk-heading-s">Creditor</h2>
       <p class="govuk-body">{{ creditorfour }} <a href="debt4">Change</a></p>
-       <h2 class="govuk-heading-s">Type of debt</h2>
-      <p class="govuk-body">Water</p>
+
+
 
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-!-font-weight-bold" for="amountfour">
-   Debt amount
-  </label>
-  <input class="govuk-input govuk-input--width-10" id="amountfour" name="amountfour" type="text" spellcheck="false" value="{{ amountfour }}">
-</div>
 
- <div class="govuk-form-group">
-  <label class="govuk-label govuk-!-font-weight-bold" for="referencefour">
-    Reference
-  </label>
-  <input class="govuk-input govuk-input--width-10" id="referencefour" name="referencefour" type="text" spellcheck="false" value="{{ referencefour }}">
-</div>
-
+    <label class="govuk-label govuk-!-font-weight-bold" for="creditorpostcode">
+     Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="creditorpostcode" name="creditorpostcode" type="text"  value="{{ creditorpostcode }}">
+  </div>
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="debt4" type="radio" value="debt4" checked>
@@ -47,8 +40,10 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+   Find address
 </button>
+<p class="govuk-body">Or</p>
+<p class="govuk-body"><a href="debt4-step2-2">Enter address manually</a></p>
     </div>
     </form>
 </div>
