@@ -1,7 +1,7 @@
 .card {
-    padding:20px;
-    background:govuk-colour("light-grey");
+
     margin-bottom:30px;
+    border:1px solid $govuk-border-colour;
 
     .govuk-button--secondary{
         margin-bottom:0px;
@@ -10,5 +10,15 @@
         border: 2px solid #10813e;
         box-shadow:none;
 
+    }
+
+    .inner{
+        padding:1.2em;
+    }
+
+    h2{
+        background:govuk-colour("light-grey");
+        padding:1em;
+        margin-bottom:0;
     }
 }

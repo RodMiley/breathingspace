@@ -39,4 +39,21 @@ router.get('/clearSession', function (req, res, next) {
     next()
   })
 
+
+
+  router.post('/creditor-v1/choice',function (req, res) {
+      
+    var scenariopicker = req.session.data['accept']
+
+
+    if(scenariopicker   == "yes"){
+      res.redirect('/creditor-v1/confirmation')
+    }
+ 
+    else {
+      res.redirect('/creditor-v1/not-accepted')
+    }
+  
+  }) 
+
 module.exports = router

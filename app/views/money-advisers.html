@@ -1,0 +1,86 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+        Debt money adviser
+        <span class="govuk-caption-xl">Prototypes</span>
+      </h1>{{releaseVersion | log }}
+
+    <div class="card">
+      <h2 class="govuk-heading-m">
+      <span class="govuk-caption-l">Version:1.2</span>
+      Create breathing space account and submit an application</h2>
+       <div class="inner">
+      <p class="govuk-body"><a href="">Scenarios to test</a></p>
+      
+        <p class="govuk-body">What are we testing:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>
+        Adding personal details for a client.
+        </li>
+        <li>
+        Adding multiple debts to breathing space.
+        </li>
+         </li>
+        <li>
+        Submit Breathing Space application
+        </li>
+        </ul>
+      <a href="/advisor-v1-2/index" class="govuk-button govuk-button--secondary">Start scenario</a>
+      </div>
+      </div>
+
+      <div class="card">
+      <h2 class="govuk-heading-m">
+      <span class="govuk-caption-l">Version:1.1</span>
+      Create breathing space account and submit an application</h2>
+       <div class="inner">
+      <p class="govuk-body"><a href="">Scenarios to test</a></p>
+        <p class="govuk-body">What are we testing:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>
+        Adding personal details for a client.
+        </li>
+        <li>
+        Adding multiple debts to breathing space.
+        </li>
+         </li>
+        <li>
+        Submit Breathing Space application
+        </li>
+        </ul>
+      <a href="/advisor-v1-1/index" class="govuk-button govuk-button--secondary">Start scenario</a>
+      </div>
+      </div>
+      <div class="card">
+      <h2 class="govuk-heading-m">
+       <span class="govuk-caption-l">Version:1</span>
+      Create breathing space account and submit an application</h2>
+      <div class="inner">
+        <p class="govuk-body">What are we testing:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>
+        Adding personal details for a client
+        </li>
+        <li>
+        Adding a problem debt
+        </li>
+
+        </ul>
+      <a href="/advisor-v1/index" class="govuk-button govuk-button--secondary">Start scenario</a>
+      </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

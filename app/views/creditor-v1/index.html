@@ -1,0 +1,145 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <form class="form" action="debt" method="post">
+      <section class="key_details">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+           <h1 class="govuk-heading-l">
+           <span class="govuk-caption-l">Client account for</span>
+Roberto Henderson
+      </h1>
+      </div>
+      <div class="govuk-grid-column-one-third">
+          <p class="header_highlight_info"><span>Day 2</span> of 60</p>
+      </div>
+      <div class="govuk-grid-column-full">
+      <ul>
+        <li>
+        <p>Date of birth: <span>28 February 1987</span></p>
+        </li>
+        <li>
+        <p>Address: <span>2 Epsom drive, Melling, Liverpool, L36 1KJ </span></p>
+        </li>
+      </ul>
+      </div>
+      </div>
+</section>
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+
+
+{% if data['query']%}
+<h2 class="govuk-heading-m govuk-!-margin-bottom-1">You have asked the money adviser</h2>
+<div class="govuk-inset-text govuk-!-margin-top-0">
+{% if  checked('query', 'debt') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To review debt eligibility</h3>
+<p>{{ moreDetail }}</p>
+{% endif %}
+
+{% if  checked('query', 'client') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To review client eligibility</h3>
+<p>{{ moreDetail2 }}</p>
+{% endif %}
+
+{% if  checked('query', 'change') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">A query or to make changes to client or case details</h3>
+<p>{{ moreDetail3 }}</p>
+{% endif %}
+</div>
+
+{% endif%}
+<p class="govuk-body ">A Stepchange money adviser has added the following debt to Breathing Space</p>
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Money adviser details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+   
+    <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Organisation
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Stepchange
+            </dd>
+          </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Advisor
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Paul Smith
+            </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+            078345 677 889
+            </dd>
+        </div>
+
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Email
+            </dt>
+            <dd class="govuk-summary-list__value">
+           paulsmith3@stepchange.org.uk
+            </dd>
+        </div>
+  
+      
+
+
+   
+    </dl>
+  </div>
+</details>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-1">Debt</h2>
+
+<ul class="styled_list  govuk-!-margin-bottom-5">
+<li>
+    <ul>
+        <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>Loan</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Amount: <span>£4556</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Reference: <span>BAR342007564</span></p></li>
+    </ul>
+</li>
+</ul>
+
+
+<a href="debt2" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add another debt to the list
+</a>
+<a href="query" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Ask the money adviser to review or change something
+</a>
+
+<p class="govuk-body">
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

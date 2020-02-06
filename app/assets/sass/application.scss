@@ -22,5 +22,125 @@ $govuk-assets-path: '/govuk/assets/';
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 
+.status {
+    margin-bottom: 0px;
+    border-left: 2px solid rgb(29, 112, 184);
+    padding: 0.4em 0.6em;
+    background: rgba(29, 112, 184, 0.05);
+    font-size:18px;
+
+    &.rejected{
+        background:rgba(#d4351c, 0.1);
+        border-color:#d4351c;
+    }
+
+    &.accepted{
+        background:rgba(#00703c, 0.1);
+        border-color:#00703c;
+    }
+
+}
+
+
+// helper classes
+
+.status span {
+
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.pull_right{
+    float:right;
+}
+
+.block{
+  display:block;
+  font-size:18px;
+  font-weight:normal;
+}
+
+
+.key_details
+{
+    
+    margin-bottom:30px;
+
+    .header_highlight_info
+    {
+        text-align:right;
+        span {
+            font-size: 30px;
+            font-weight:bold;
+            display:block;
+        }
+    }
+
+
+    h1{
+        margin-bottom:15px;
+    }
+
+    p{
+        margin-bottom:0px;
+    }
+
+
+    ul 
+    {
+    border-top:1px solid $govuk-border-colour;      
+    border-bottom:2px solid govuk-colour("black");    
+    list-style: none;
+    margin:0;
+    padding:5px 0 10px 0;
+    li {
+        display:inline-block;
+        margin:0px 20px 0px 0;
+        padding:5px 0 0px 0;
+
+        &:first-of-type{
+
+            border:none;
+        }
+
+            span{
+                font-weight:bold;
+                display:block;
+            }
+    }
+}
+}
+
+ul.styled_list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    border-top:1px solid  $govuk-border-colour;
+    ul{
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+
+    li{
+        border-bottom:1px solid  $govuk-border-colour;
+        padding:10px 0;
+
+        li {
+            display: inline-block;
+            width:33%;
+            padding:0;
+            border:none;
+        }
+    }
+
+    p span{
+        display:block;
+        font-weight:bold;
+    }
+}
+
+
+
 
 
