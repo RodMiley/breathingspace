@@ -15,20 +15,18 @@
   <fieldset class="govuk-fieldset" aria-describedby="query-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
       <h1 class="govuk-fieldset__heading">
-        What would you like the money advisor to change or review?
+        What do you want the money adviser to review?
       </h1>
     </legend>
-    <span id="query-hint" class="govuk-hint">
-      Select all options that are relevant to you.
-    </span>
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="query" name="query" type="checkbox" value="debt" data-aria-controls="conditional-query" {{ checked('query', 'debt')}} >
-        <label class="govuk-label govuk-checkboxes__label" for="query">
-          Review debt eligibility
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="query" name="query" type="radio" value="debt" data-aria-controls="conditional-query" {{ checked('query', 'debt')}} >
+        <label class="govuk-label govuk-radios__label" for="query">
+          Debt eligibility
         </label>
       </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-query">
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-query">
          <div class="govuk-form-group">
             <label class="govuk-label" for="moreDetail">
               Can you provide more detail?
@@ -37,33 +35,18 @@
           </div>
 
       </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="query-2" name="query" type="checkbox" value="client" data-aria-controls="conditional-query-2" {{ checked('query', 'client') }}>
-        <label class="govuk-label govuk-checkboxes__label" for="query-2">
-           Review client eligibility
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="query-2" name="query" type="radio" value="client" data-aria-controls="conditional-query-2" {{ checked('query', 'client') }}>
+        <label class="govuk-label govuk-radios__label" for="query-2">
+           Client eligibility
         </label>
       </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-query-2">
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-query-2">
        <div class="govuk-form-group">
             <label class="govuk-label" for="moreDetail2">
               Can you provide more detail?
             </label>
             <textarea class="govuk-textarea" id="moreDetail2" name="moreDetail2" rows="3" >{{ moreDetail2 }}</textarea>
-          </div>
-
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="query-3" name="query" type="checkbox" value="change" data-aria-controls="conditional-query-3" {{ checked('query', 'change') }}>
-        <label class="govuk-label govuk-checkboxes__label" for="query-3">
-          Query or request changes to client or case details
-        </label>
-      </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-query-3">
-     <div class="govuk-form-group">
-            <label class="govuk-label" for="moreDetail3">
-              Can you provide more detail?
-            </label>
-            <textarea class="govuk-textarea" id="moreDetail3" name="moreDetail3" rows="3">{{ moreDetail3 }}</textarea>
           </div>
 
       </div>
