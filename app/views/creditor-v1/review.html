@@ -1,0 +1,120 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="review-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        What do you want the money adviser to review?
+      </h1>
+    </legend>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review" name="review" type="radio" value="debt" data-aria-controls="conditional-review" {{ checked('review', 'debt')}} >
+        <label class="govuk-label govuk-radios__label" for="review">
+          Debt eligibility
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-review">
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+       Why is the debt not eligible?
+      </h1>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview" name="debtReview" type="radio" value="It is a fraudulent debt">
+        <label class="govuk-label govuk-radios__label" for="debtReview">
+          It is a fraudulent debt
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview-2" name="debtReview" type="radio" value="It is not a qualifying debt">
+        <label class="govuk-label govuk-radios__label" for="debtReview-2">
+         It is not a qualifying debt
+        </label>
+         <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+          For example it is a non eligible business debt
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review-2" name="review" type="radio" value="client" data-aria-controls="conditional-review-2" {{ checked('review', 'client') }}>
+        <label class="govuk-label govuk-radios__label" for="review-2">
+           Client eligibility
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-review-2">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-fieldset__heading">
+        Why is the client not eligible?
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="They are not resident in England or Wales">
+        <label class="govuk-label govuk-radios__label" for="clientReview">
+          They are not resident in England or Wales
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-2" name="clientReview" type="radio" value="They have had Breathing Space in the last 12 months">
+        <label class="govuk-label govuk-radios__label" for="clientReview-2">
+          They have had Breathing Space in the last 12 months
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-3" name="clientReview" type="radio" value=" They are subject to another Breathing Space">
+        <label class="govuk-label govuk-radios__label" for="clientReview-3">
+         They are subject to another Breathing Space
+        </label>
+      </div>
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-4" name="clientReview" type="radio" value="They are currently bankrupt">
+        <label class="govuk-label govuk-radios__label" for="clientReview-4">
+         They are currently bankrupt
+        </label>
+      </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-5" name="clientReview" type="radio" value="They are subject to an IVA">
+        <label class="govuk-label govuk-radios__label" for="clientReview-5">
+         They are subject to an IVA
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

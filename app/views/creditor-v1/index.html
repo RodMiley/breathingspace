@@ -37,22 +37,28 @@ Roberto Henderson
 <div class="govuk-grid-column-full">
 
 
-{% if data['query']%}
-<h2 class="govuk-heading-m govuk-!-margin-bottom-1">You have asked the money adviser</h2>
-<div class="govuk-inset-text govuk-!-margin-top-0">
-{% if  checked('query', 'debt') %}
-<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To review debt eligibility</h3>
-<p>{{ moreDetail }}</p>
+{% if data['review'] or data['adddebt'] or data['identify']%}
+<h2 class="govuk-heading-m govuk-!-margin-bottom-1"><!--You have asked -->Inform the money adviser</h2>
+<div class="govuk-details__text govuk-!-margin-bottom-5">
+{% if  checked('review', 'debt') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We have requested a review of debt eligibility</h3>
+<p>{{ debtReview }}</p>
 {% endif %}
 
-{% if  checked('query', 'client') %}
-<h3 class="govuk-heading-s govuk-!-margin-bottom-1">To review client eligibility</h3>
-<p>{{ moreDetail2 }}</p>
+{% if  checked('review', 'client') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We have requested a review of client eligibility</h3>
+<p>{{ clientReview }}</p>
+{% endif %}
+{% if  checked('identify', 'debt') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the debt</h3>
 {% endif %}
 
-{% if  checked('query', 'change') %}
-<h3 class="govuk-heading-s govuk-!-margin-bottom-1">A query or to make changes to client or case details</h3>
-<p>{{ moreDetail3 }}</p>
+{% if  checked('identify', 'client') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the client</h3>
+{% endif %}
+
+{% if data['adddebt'] %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We have identified 1 new debt to add to Breathing Space</h3>
 {% endif %}
 </div>
 
@@ -78,7 +84,7 @@ Roberto Henderson
 
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Advisor
+            Adviser
             </dt>
             <dd class="govuk-summary-list__value">
             Paul Smith
@@ -116,6 +122,16 @@ Roberto Henderson
 <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Debt</h2>
 
 <ul class="styled_list  govuk-!-margin-bottom-5">
+{% if data['addDebt']%}
+<li>
+    <ul>
+        <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>{{ addDebt }}</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Amount:<span> £{{ addamount }}</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Reference: <span>{{ addreference }}</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0 pull_right"><a href='add-debt'>Change</a></p></li>
+    </ul>
+</li>
+{% endif %}
 <li>
     <ul>
         <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>Loan</span></p></li>
@@ -126,15 +142,15 @@ Roberto Henderson
 </ul>
 
 
-<a href="debt2" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+<a href="add-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   Add another debt to the list
 </a>
-<a href="query" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
-  Request eligibiliy review
+<a href="review" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Request eligibility review
 </a>
-<a href="query" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  I cant identify the client or the debt
-</a>
+<!-- <a href="identify" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  I can't identify the client or the debt
+</a> -->
 
 <p class="govuk-body">
 <button class="govuk-button" data-module="govuk-button">

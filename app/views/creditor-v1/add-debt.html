@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Add a debt
+      </h1>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of debt
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-1" name="addDebt" type="radio" value="Loan"  {{checked('addDebt', 'Loan') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-1">
+            Personal Loan
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-2" name="addDebt" type="radio" value="Mortgage"  {{checked('addDebt', 'Mortgage') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-2">
+            Mortgage
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-3" name="addDebt" type="radio" value="Overdraft"  {{checked('addDebt', 'Overdraft') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-3">
+        Overdraft
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addamount">
+   Amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addamount" name="addamount" type="text" spellcheck="false" value="{{ addamount }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addreference">
+    Reference
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addreference" name="addreference" type="text" spellcheck="false" value="{{ addreference }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="adddebt" checked>
+        <label class="govuk-label govuk-radios__label" for="adddebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
