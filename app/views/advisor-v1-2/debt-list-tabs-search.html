@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="confirmation" method="post">
+  <form class="form" action="index" method="post">
       <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
            <span class="govuk-caption-l">Breathing space account for</span>
@@ -47,14 +47,15 @@
 
         {% if checked('debt-eligibility','no') %}
           <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-1">We will inform MBNA that you haven't removed the debt from Breathing Space</h2>
-<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
-<p><strong>Why</strong><br>{{ eligibilityNo }}</p>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform MBNA Europe Bank Ltd that you haven't removed the debt from Breathing Space</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Credit card</h3><p>Amount: £2500<br> Reference: RBC23455003</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3><p>{{ eligibilityNo }}</p>
+<p>25 February 2020</p>
 </div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
     
     {% endif %}
     <h2 class="govuk-heading-l">Debts</h2>
-
     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -85,7 +86,7 @@
           </div>
           {% if checked('debt-eligibility','yes') %}
           {% else %}
-                      <div class="govuk-summary-list__row">
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Credit card
              <p>Status: <a href="eligibility-review">
@@ -181,14 +182,31 @@
 
     {% if checked('debt-eligibility','yes') %}
      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
-      <div class="govuk-details__text govuk-!-margin-bottom-0">
-<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
 
-<p>Reason:<br>It is a fraudulent debt</p>
-<p>More Detail:<br>xcvbnm,</p>
+
+
+      <div class="govuk-details__text govuk-!-margin-bottom-5">
+     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason was the debt removed</h3>
+<p>It's a non-eligible business debt</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<p>The credit card is secured against the client's business</p>
 
 </div>
-    
+   
     {% endif %}
 
   </section>
@@ -256,7 +274,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Update Breathing Space
+  Finnish
 </button>
     </div>
     </form>

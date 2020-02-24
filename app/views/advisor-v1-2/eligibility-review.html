@@ -9,26 +9,48 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="debt-list-tabs-search" method="post">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
        Eligibility review
       </h1>
 
+
       <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA have requested a eligibility review of the following debt</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has requested an eligibility review of the debt</h2>
 
-<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
-
-<p>Because:<br>It is a fraudulent debt</p>
-<p>More Detail:<br>xcvbnm,</p>
-
+<p>Because it's a non-eligible business debt</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<p>The credit card is secured against the client's business</p>
+<p class="govuk-body govuk-!-font-size-16">24 February 2020</p>
 </div>
+
+        {% if checked('debt-eligibility','no') %}
           <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-1">MBNA have been informed that you haven't removed the debt from Breathing Space</h2>
-<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
-<p><strong>Why</strong><br>{{ eligibilityNo }}</p>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has been informed that you haven't removed the debt from Breathing Space</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<p>{{ eligibilityNo }}</p>
+<p class="govuk-body govuk-!-font-size-16">25 February 2020</p>
 </div>
+{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">Debt</h2>
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl>
+
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
