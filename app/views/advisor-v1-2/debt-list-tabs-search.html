@@ -9,38 +9,16 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="confirmation" method="post">
-    <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-xl">
-           <span class="govuk-caption-xl">Breathing space account for</span>
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+           <span class="govuk-caption-l">Breathing space account for</span>
      {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
-       <span class="dayindicator">Day 2 <span>of 60</span></span>
-    
       </h1>
-<style>
-
-    .govuk-heading-xl
-    {
-      position:relative;
-    }
-   .dayindicator {
-     text-align:center;
-     position:absolute;
-     right:0px;
-     padding:15px 20px;
-     font-size:25px;
-     background:#1d70b8;
-     color:#fff;
-     top:0px;
-   }
-
-      .dayindicator span {
-     font-size:20px;
-     display:block;
-     padding:10px 0 0 0;
-
-
-   }
-</style>
+      </div>
+            <div class="govuk-grid-column-one-third">
+          <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>End date 27 March 2020</p>
+      </div>
+    <div class="govuk-grid-column-full">
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents
@@ -60,14 +38,27 @@
   </ul>
   <section class="govuk-tabs__panel" id="problem-debt">
 
+    {% if checked('debt-eligibility','yes') %}
+          <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-s govuk-!-margin-bottom-1">You have removed the debt from Breathing Space</h2>
+</div>
+    
+    {% endif %}
 
+        {% if checked('debt-eligibility','no') %}
+          <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-s govuk-!-margin-bottom-1">We will inform MBNA that you haven't removed the debt from Breathing Space</h2>
+<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
+<p><strong>Why</strong><br>{{ eligibilityNo }}</p>
+</div>
+    
+    {% endif %}
     <h2 class="govuk-heading-l">Debts</h2>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Loan
-             <p>Status: Accepted</p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: Barclays Bank Plc <br>Amount: £5400<br> Reference: 8945 4321 5678 
@@ -81,7 +72,7 @@
                 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Credit card
-             <p>Status: Recieved</p>
+
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: Halifax (credit cards only) <br>Amount: £3700<br> Reference: 3567 6732 1278
@@ -92,10 +83,13 @@
               </a>
             </dd>
           </div>
+          {% if checked('debt-eligibility','yes') %}
+          {% else %}
                       <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Credit card
-             <p>Status: Recieved</p>
+             <p>Status: <a href="eligibility-review">
+        {% if checked('debt-eligibility','no') %}Reviewed{% else %} Review requested{% endif %}</a></p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
@@ -106,10 +100,10 @@
               </a>
             </dd>
           </div>
+          {% endif %}
                               <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Water
-             <p>Status: Accepted</p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: Yorkshire Water Services Ltd<br>Amount: £102<br> Reference: 4949 9494 9449
@@ -124,7 +118,6 @@
                                         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Gas
-             <p>Status: Accepted</p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor:EDF Energy Ltd<br>Amount: £189<br> Reference: CRT8536544
@@ -139,7 +132,6 @@
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Electric
-             <p>Status: Recieved</p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor:Southern Electric<br>Amount: £125<br> Reference: SE3456792234
@@ -170,7 +162,6 @@
                     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Store card
-             <p>Status: Accepted</p>
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor:Next Retail and Next Directory<br>Amount: £1256<br> Reference: ND6544322
@@ -187,6 +178,18 @@
  <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   Add a debt
 </a>
+
+    {% if checked('debt-eligibility','yes') %}
+     <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+      <div class="govuk-details__text govuk-!-margin-bottom-0">
+<p><strong>Credit card</strong><br>Amount: £2500<br> Reference: RBC23455003</p>
+
+<p>Reason:<br>It is a fraudulent debt</p>
+<p>More Detail:<br>xcvbnm,</p>
+
+</div>
+    
+    {% endif %}
 
   </section>
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
@@ -232,32 +235,7 @@
             </dd>
           </div>
 
-          <!--<div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Phone number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{phone}}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="contact-preferences#phone">
-                Change<span class="govuk-visually-hidden"> Phone number</span>
-              </a>
-            </dd>
-          </div>
-                <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{email}}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="contact-preferences#email">
-                Change<span class="govuk-visually-hidden"> Email address</span>
-              </a>
-            </dd>
-          </div> -->
+
         </dl>
 
 

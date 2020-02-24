@@ -61,23 +61,26 @@ $govuk-assets-path: '/govuk/assets/';
 }
 
 
+.header_highlight_info
+{
+    text-align:right;
+    span {
+        font-size: 1.5rem;
+        display:block;
+        span{
+            font-weight:bold;
+            display:inline-block;
+        }
+    }
+}
+
+
 .key_details
 {
     
     margin-bottom:30px;
 
-    .header_highlight_info
-    {
-        text-align:right;
-        span {
-            font-size: 1.5rem;
-            display:block;
-            span{
-                font-weight:bold;
-                display:inline-block;
-            }
-        }
-    }
+
 
 
     h1{

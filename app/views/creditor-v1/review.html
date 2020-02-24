@@ -53,7 +53,12 @@
     </div>
   </fieldset>
 </div>
-
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetail">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="moreDetail" name="moreDetail" rows="4" aria-describedby="moreDetail-hint"></textarea>
+</div>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="review-2" name="review" type="radio" value="client" data-aria-controls="conditional-review-2" {{ checked('review', 'client') }}>
@@ -102,6 +107,12 @@
       </div>
     </div>
   </fieldset>
+</div>
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetailClient">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="moreDetailClient" name="moreDetailClient" rows="4" aria-describedby="moreDetailClientHint"></textarea>
 </div>
 
       </div>
