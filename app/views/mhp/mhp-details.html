@@ -1,0 +1,59 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="check-details" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Refer a patient for breathing space : Step 4 of 4</span>
+       Your details
+      </h1>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="mhpname">
+  Full name
+  </label>
+  <input class="govuk-input" id="mhpname" name="mhpname" type="text" autocomplete="mhpname" spellcheck="false" value="{{ mhpname }}">
+</div>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="mhporg">
+   Organisation
+  </label>
+  <input class="govuk-input" id="mhporg" name="mhporg" type="text" autocomplete="mhporg" spellcheck="false" value="{{ mhporg }}">
+</div>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="mhpposition">
+   Position
+  </label>
+  <input class="govuk-input" id="mhpposition" name="mhpposition" type="text" autocomplete="mhpposition" spellcheck="false" value="{{ mhpposition }}">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="mhpphone">
+    UK phone number
+  </label>
+
+  <input class="govuk-input govuk-input--width-10" id="mhpphone" name="mhpphone" type="mhpphone" autocomplete="mhpphone" spellcheck="false"  value="{{ mhpphone }}">
+</div>      
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="mhpemail">
+    Email address
+  </label>
+  <input class="govuk-input" id="mhpemail" name="mhpemail" type="mhpemail" aria-describedby="mhpemail-hint" autocomplete="mhpemail" spellcheck="false"  value="{{ mhpemail }}">
+</div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

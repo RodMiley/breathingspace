@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="address-choice" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+ <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+    <h1 class="govuk-heading-xl">
+       <span class="govuk-caption-xl">Refer a patient for breathing space : Step 2 of 4</span>
+       Add patient address
+    </h1>
+  </legend>
+ <div class="govuk-form-group">
+
+    <label class="govuk-label govuk-!-font-weight-bold" for="postcode">
+     Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text"  value="{{ postcode }}">
+  </div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+   Find address
+</button>
+<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
+    </div>
+
+
+
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}
