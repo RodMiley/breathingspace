@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
   <form class="form" action="index" method="post">
       <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
            <span class="govuk-caption-l">Breathing space account for</span>
      {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
       </h1>
@@ -19,6 +19,11 @@
           <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>End date 27 March 2020</p>
       </div>
     <div class="govuk-grid-column-full">
+     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  End Breathing Space
+</a>
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents
@@ -176,8 +181,12 @@
     </dl>
 
   
- <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+ <a href="debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   Add a debt
+</a>
+
+ <a href="remove-a-debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Remove a debt 
 </a>
 
     {% if checked('debt-eligibility','yes') %}
@@ -218,7 +227,7 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-            {{fullname}}
+            {{fullname}} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="details#fullname">
@@ -261,21 +270,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
- 
-
-
-
-<button class="govuk-button" data-module="govuk-button">
-  Finish
-</button>
     </div>
     </form>
 </div>
