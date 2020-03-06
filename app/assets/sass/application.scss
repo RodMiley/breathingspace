@@ -146,7 +146,21 @@ ul.styled_list{
     }
 }
 
+.search-container{
+    background: $govuk-brand-colour;
+    padding:15px 15px 0 15px;
+    margin-bottom:30px;
+     
+    h1{
+        color:#fff;
+    }
 
+
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #000;
+ 
+}
+}
 
 
 
