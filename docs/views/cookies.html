@@ -26,16 +26,23 @@ About - GOV.UK Prototype Kit
       <p>The GOV.UK Prototype Kit puts small files (known as ‘cookies’) on to your computer.</p>
 
       <p>We use cookies to:</p>
+<<<<<<< HEAD
 
       <ul class="govuk-list govuk-list--bullet">
         <li>record the notifications you&#39;ve seen so we don&#39;t show them again</li>
         <li>measure how you use the website so it can be updated and improved based on your activity</li>
+=======
+			<ul class="govuk-list govuk-list--bullet">
+        <li>record the notifications you&#39;ve seen so we don&#39;t show them again</li>
+        <li>make prototypes work as well as possible</li>
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
       </ul>
 
       <p>These cookies aren’t used to identify you personally.</p>
 
       <p>You’ll see a message on the site before we store a cookie on your computer.</p>
 
+<<<<<<< HEAD
       <p><a href="https://ico.org.uk/for-the-public/online/cookies/">Find out how to manage cookies.</a></p>
 
       <h2 class="govuk-heading-l">Our cookie message</h2>
@@ -45,6 +52,17 @@ About - GOV.UK Prototype Kit
 			{{ govukTable({
 				classes: "app-table--fixed",
 			  caption: "Dates and amounts",
+=======
+      <p><a href="https://ico.org.uk/for-the-public/online/cookies/">Find out how to manage cookies</a>.</p>
+
+      <h2 class="govuk-heading-l">Our cookie message</h2>
+
+      <p>You'll see a message about cookies when you first visit the GOV.UK Prototype Kit. We’ll store a cookie so that your computer knows you’ve seen it and knows not to show it again.</p>
+
+			{{ govukTable({
+				classes: "app-table--fixed",
+			  caption: "Cookies relating to our cookies message",
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 			  captionClasses: "govuk-visually-hidden",
 			  head: [
           { text: "Name" },
@@ -54,12 +72,17 @@ About - GOV.UK Prototype Kit
 			  rows: [
 			    [
             { text: "seen_cookie_message" },
+<<<<<<< HEAD
             { text: "Saves a message to let us know that you have seen our cookie message" },
+=======
+            { text: "Saves a message to let us know that you've seen our cookie message" },
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
             { text: "28 days" }
 			    ]
 			  ]
 			}) }}
 
+<<<<<<< HEAD
       <h2 class="govuk-heading-l">Measuring website usage with Google Analytics</h2>
 
       <p>We use Google Analytics software to collect information about how you use the GOV.UK Prototype Kit. We do this to help make sure the site is meeting the needs of its users and to help us make improvements.</p>
@@ -82,6 +105,15 @@ About - GOV.UK Prototype Kit
 			{{ govukTable({
 				classes: "app-table--fixed",
 			  caption: "Dates and amounts",
+=======
+			<h2 class="govuk-heading-l">Storing users' answers within prototypes</h2>
+
+      <p>To help prototypes work as well as possible, each prototype stores a cookie to remember what users select on question pages. This allows prototypes to have branching pages and show users' answers on pages like the 'Check your answers' summary page.</p>
+
+			{{ govukTable({
+				classes: "app-table--fixed",
+			  caption: "Cookies relating to storing users' answers within prototypes",
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 			  captionClasses: "govuk-visually-hidden",
 			  head: [
           { text: "Name" },
@@ -90,6 +122,7 @@ About - GOV.UK Prototype Kit
 			  ],
 			  rows: [
 					[
+<<<<<<< HEAD
 						{ text: "_ga" },
 						{ text: "This helps us count how many people visit the GOV.UK Prototype Kit site by tracking if you’ve visited before" },
 						{ text: "2 years" }
@@ -106,6 +139,15 @@ About - GOV.UK Prototype Kit
 					]
 			  ]
 			}) }}
+=======
+						{ text: "govuk-prototype-kit-\<UNIQUE-ID\>" },
+						{ text: "Storing users' answers from question pages" },
+						{ text: "4 hours" }
+					]
+			  ]
+			}) }}
+
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
     </div>
   </div>
 

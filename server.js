@@ -48,9 +48,9 @@ if (useV6) {
 // Set cookies for use in cookie banner.
 app.use(cookieParser())
 documentationApp.use(cookieParser())
-const handleCookies = utils.handleCookies(app)
-app.use(handleCookies)
-documentationApp.use(handleCookies)
+
+app.use(utils.handleCookies(app))
+documentationApp.use(utils.handleCookies(documentationApp))
 
 // Set up configuration variables
 var releaseVersion = packageJson.version
@@ -58,7 +58,6 @@ var env = (process.env.NODE_ENV || 'development').toLowerCase()
 var useAutoStoreData = process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
 var useCookieSessionStore = process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 var useHttps = process.env.USE_HTTPS || config.useHttps
-var gtmId = process.env.GOOGLE_TAG_MANAGER_TRACKING_ID
 
 useHttps = useHttps.toLowerCase()
 
@@ -168,8 +167,7 @@ app.use(function (req, res, next) {
   next()
 })
 
-// Add variables that are available in all views
-app.locals.gtmId = gtmId
+
 app.locals.asset_path = '/public/'
 app.locals.useAutoStoreData = (useAutoStoreData === 'true')
 app.locals.useCookieSessionStore = (useCookieSessionStore === 'true')

@@ -14,7 +14,11 @@ GDS staff can install the software themselves with Managed Software Centre (MSC)
 
 You'll need:
 
+<<<<<<< HEAD
 * Node.js 10.x.x
+=======
+* Node.js 12.x.x
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 * Atom (text editor)
 * Git bash (Windows)
 
@@ -47,9 +51,15 @@ command to be typed in to terminal
 Once you’ve typed the command, press enter to send it.
 
 
+<<<<<<< HEAD
 ## Node.js version 10 LTS
 
 The kit is designed to work with Node.js version 10 LTS. The kit works with any 10.x.x version.
+=======
+## Node.js version 12 LTS
+
+The kit is designed to work with Node.js version 12 LTS. The kit works with any 12.x.x version.
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 
 ### Check if you have Node.js
 
@@ -59,22 +69,36 @@ node --version
 ```
 If it says `command not found` or `Error 0x2 starting node.exe --version` you don’t have node and will need to download and install it.
 
+<<<<<<< HEAD
 If the version number starts with 10 you have the correct version installed.
 
 If it says another number such as `0.12` or `5.x.x`, you need to download and install version 10.
+=======
+If the version number starts with 12 you have the correct version installed.
+
+If it says another number such as `0.12` or `5.x.x`, you need to download and install version 12.
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 
 ### Download and install Node.js
 
 #### Mac / Windows users
 
+<<<<<<< HEAD
 Download version 10 from [nodejs.org](https://nodejs.org/en/).
+=======
+Download version 12 from [nodejs.org](https://nodejs.org/en/).
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 
 Run the installer with all default options.
 
 #### Linux users
 
 Follow the instructions on the [Node.js](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+<<<<<<< HEAD
 ) site. Make sure you get version 10.
+=======
+) site. Make sure you get version 12.
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 
 ### Once Node is installed
 
@@ -85,7 +109,11 @@ To check it is installed correctly you can again run:
 node --version
 ```
 
+<<<<<<< HEAD
 If it’s installed correctly it should show a number starting with 10.
+=======
+If it’s installed correctly it should show a number starting with 12.
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 
 ## Atom (text editor)
 

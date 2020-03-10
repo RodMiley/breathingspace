@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
@@ -14,11 +15,29 @@
 
 {% block head %}
   <link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css">
+=======
+{% extends "layout.html" %}
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ asset_path }}images/unbranded.ico?0.18.3" type="image/x-icon" />
+{% endblock %}
+
+{% block head %}
+  <!--[if lte IE 8]><link href="/public/stylesheets/unbranded-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/unbranded.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+
+  {% for stylesheetUrl in extensionConfig.stylesheets %}
+    <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
+  {% endfor %}
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 {% endblock %}
 
 {% block header %}{% endblock %}
 {% block footer %}{% endblock %}
+<<<<<<< HEAD
 
 {% block bodyEnd %}
   {% include "includes/scripts.html" %}
 {% endblock %}
+=======
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a

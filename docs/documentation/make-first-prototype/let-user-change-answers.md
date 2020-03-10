@@ -22,7 +22,11 @@ Open the `juggling-balls.html` file in your `app/views` folder, and add:
 For example your first input tag should now be:
 
 ```html
+<<<<<<< HEAD
 <input id="radio-1" type="radio" name="juggling-balls" value="3 or more” {{ checked("juggling-balls", "3 or more") }} >
+=======
+<input class="govuk-radios__input" id="how-many-balls" name="how-many-balls" type="radio" value="3 or more" {{ checked("how-many-balls", "3 or more") }} >
+>>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a
 ```
 
 Make sure the spelling is exactly the same as the 3 `value` attributes you added when you [created your question pages](create-pages).

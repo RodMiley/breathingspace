@@ -3,6 +3,7 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+
 /*
   Clears session (triggered by little link at bottom of pages)
 */
@@ -55,5 +56,6 @@ router.get('/clearSession', function (req, res, next) {
     }
   
   }) 
+
 
 module.exports = router
