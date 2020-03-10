@@ -12,41 +12,12 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">
            <span class="govuk-caption-l">Breathing space account for</span>
-       {% if data['debt']%}
-       {% else %}
-       Shirley Mack
-       {% endif %}
        {{ fullname }} 
-{% if data['debt']%}
-{% else %}
+
        <span class="dayindicator">Day 2 <span>of 60</span></span>
-{% endif %}      
+   
       </h1>
-<style>
 
-    .govuk-heading-xl
-    {
-      position:relative;
-    }
-   .dayindicator {
-     text-align:center;
-     position:absolute;
-     right:0px;
-     padding:15px 20px;
-     font-size:25px;
-     background:#1d70b8;
-     color:#fff;
-     top:0px;
-   }
-
-      .dayindicator span {
-     font-size:20px;
-     display:block;
-     padding:10px 0 0 0;
-
-
-   }
-</style>
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents

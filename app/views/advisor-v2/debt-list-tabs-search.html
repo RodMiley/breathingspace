@@ -7,11 +7,27 @@
 
 {% block content %}
 
+<style>
+.black
+{
+  border-color:#000;
+  border-bottom:2px solid;
+}
+</style>
+
   <div class="govuk-grid-row">
   <form class="form" action="index" method="post">
       <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
-           <span class="govuk-caption-l">Breathing space account for</span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+           <span class="govuk-caption-l"><strong class="govuk-tag">
+      active
+    </strong>
+            <strong class="govuk-tag govuk-tag--grey">
+  Inactive
+</strong>
+    
+    
+    Breathing space account for</span>
      {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
       </h1>
       </div>
@@ -19,21 +35,36 @@
           <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>End date 27 March 2020</p>
       </div>
     <div class="govuk-grid-column-full">
-     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+     <hr class="govuk-section-break govuk-section-break--visible black">
   
- <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-top-4" data-module="govuk-button">
   End Breathing Space
 </a>
+
+    {% if checked('debt-eligibility','yes') %}
+          <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-s govuk-!-margin-bottom-1">You have removed the debt from Breathing Space</h2>
+</div>
+    
+    {% endif %}
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
       <a class="govuk-tabs__tab" href="#problem-debt">
        Debts
       </a>
     </li>
+   {% if checked('debt-eligibility','yes') %}
+       <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed debts
+      </a>
+    </li>
+    {% endif %} 
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#personal-details">
         Personal details
@@ -43,12 +74,7 @@
   </ul>
   <section class="govuk-tabs__panel" id="problem-debt">
 
-    {% if checked('debt-eligibility','yes') %}
-          <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-1">You have removed the debt from Breathing Space</h2>
-</div>
-    
-    {% endif %}
+
 
         {% if checked('debt-eligibility','no') %}
           <div class="govuk-details__text govuk-!-margin-bottom-5">
@@ -67,7 +93,7 @@
              Loan
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: Barclays Bank Plc <br>Amount: £5400<br> Reference: 8945 4321 5678 
+              Creditor: Barclays Bank Plc <br>Amount: £5400<br> Reference: 8945 4321 5678 <br><br>Date added: 27 february 2020
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt-step2">
@@ -189,12 +215,13 @@
   Remove a debt 
 </a>
 
-    {% if checked('debt-eligibility','yes') %}
-     <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+  </section>
+ {% if checked('debt-eligibility','yes') %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
 
 
 
-      <div class="govuk-details__text govuk-!-margin-bottom-5">
      <dl class="govuk-summary-list govuk-!-margin-bottom-5">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -202,23 +229,28 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+              <br ><br>
+ 
+      Reason the debt was removed:<br>
+  
+
+
+  It's a non-eligible business debt<br><br>
+More detail: <br>
+The credit card is secured against the client's business
+
             </dd>
             <dd class="govuk-summary-list__actions">
+          Date added:<br> 23 February 2020<br>
+          Date removed:<br> 7 March 2020
        
             </dd>
           </div>
   </dl>
 
-  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason was the debt removed</h3>
-<p>It's a non-eligible business debt</p>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
-<p>The credit card is secured against the client's business</p>
+   </section>
+  {% endif %}
 
-</div>
-   
-    {% endif %}
-
-  </section>
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
     <h2 class="govuk-heading-l">Personal details</h2>
         <dl class="govuk-summary-list">

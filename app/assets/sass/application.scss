@@ -162,5 +162,17 @@ ul.styled_list{
 }
 }
 
+.govuk-details__text{
 
+&.govuk-tag--green {
+    color: #005a30;
+    background: #cce2d8;
+    border-color:#005a30;
+}
+&.govuk-tag--blue {
+    color: #144e81;
+    background: #d2e2f1;
+    border-color:#144e81;
+}
+}
 
