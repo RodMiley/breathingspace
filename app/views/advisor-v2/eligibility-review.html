@@ -16,27 +16,30 @@
       </h1>
 
 
-      <div class="govuk-details__text govuk-!-margin-bottom-5">
+      <div class="govuk-details__text  govuk-tag--blue govuk-!-margin-bottom-5">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has requested an eligibility review of the debt</h2>
-
-<p>Because it's a non-eligible business debt</p>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
-<p>The credit card is secured against the client's business</p>
-<p class="govuk-body govuk-!-font-size-16">24 February 2020</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body govuk-!-font-weight-bold" >Because it's a non-eligible business debt</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">More detail:</h3>
+<p class="govuk-body govuk-!-font-weight-bold" >The credit card is secured against the client's business</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">Date requested:</h3>
+<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
 </div>
 
         {% if checked('debt-eligibility','no') %}
-          <div class="govuk-details__text govuk-!-margin-bottom-5">
+          <div class="govuk-details__text govuk-tag--blue govuk-!-margin-bottom-5">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has been informed that you haven't removed the debt from Breathing Space</h2>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
-<p>{{ eligibilityNo }}</p>
-<p class="govuk-body govuk-!-font-size-16">25 February 2020</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">More detail</h3>
+<p class="govuk-body govuk-!-font-weight-bold">{{ eligibilityNo }}</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">Date reviewed:</h3>
+<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
 </div>
 {% endif %}
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-3">Debt</h2>
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
 <dl class="govuk-summary-list govuk-!-margin-bottom-5">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -51,7 +54,8 @@
           </div>
   </dl>
 
-
+ {% if data['bsEndReason'] %} 
+             {% else %}
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -93,6 +97,7 @@
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
+{% endif %}
     </div>
     </form>
 </div>

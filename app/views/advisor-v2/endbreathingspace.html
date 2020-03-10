@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs" method="post">
+  <form class="form" action="debt-list-tabs-search" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
 
@@ -22,28 +22,28 @@
     <div class="govuk-radios" data-module="govuk-radios">
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="Loan"  {{checked('bsEndReason', 'Loan') }}>
+        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="The client is not engaging with money advice after 30 days"  {{checked('bsEndReason', 'The client is not engaging with money advice after 30 days') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-1">
             The client is not engaging with money advice after 30 days
         </label>
       </div>
 
         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-2" name="bsEndReason" type="radio" value="Mortgage"  {{checked('bsEndReason', 'Mortgage') }}>
+        <input class="govuk-radios__input" id="bsEndReason-2" name="bsEndReason" type="radio" value="The client has requested to be removed"  {{checked('bsEndReason', 'The client has requested to be removed') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-2">
             The client has requested to be removed
         </label>
       </div>
     
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="Overdraft"  {{checked('bsEndReason', 'Overdraft') }}>
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has entered into a debt management solution"  {{checked('bsEndReason', 'The client has entered into a debt management solution') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
         The client has entered into a debt management solution
         </label>
       </div>
 
                  <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="crisistreatment"  {{checked('bsEndReason', 'Overdraft') }}>
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has entered mental health crisis treatment"  {{checked('bsEndReason', 'The client has entered mental health crisis treatment') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-4">
         The client has entered mental health crisis treatment
         </label>

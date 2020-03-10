@@ -1,3 +1,8 @@
+
+
+var moment = require('moment')
+var _ = require('lodash')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -6,6 +11,24 @@ module.exports = function (env) {
    * @type {Object}
    */
   var filters = {}
+
+
+
+
+  filters.baseDate = function(format,num) {
+    var num = Math.ceil(num);
+    var d = moment().subtract(num,"days").format(format)
+    if (d !== 'Invalid date') return d
+    else return ''
+}
+
+  filters.baseDateAdd = function(format,num) {
+    var num = Math.ceil(num);
+    var d = moment().add(num,"days").format(format)
+    if (d !== 'Invalid date') return d
+    else return ''
+}
+
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -43,3 +66,4 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
   return filters
 }
+
