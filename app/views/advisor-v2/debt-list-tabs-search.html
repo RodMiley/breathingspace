@@ -17,7 +17,7 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="index" method="post">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-one-half">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
      
            <span class="govuk-caption-l">
@@ -38,9 +38,9 @@
      {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
       </h1>
       </div>
-            <div class="govuk-grid-column-one-third">
+            <div class="govuk-grid-column-one-half">
             
-          <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>End date {{ 'Do MMMM YYYY' | baseDateAdd(50) }}</p>
+          <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>Breathing space ends: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(50) }} </strong></p>
       </div>
     <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible black">
