@@ -188,3 +188,36 @@ ul.styled_list {
 }
 }
 
+.card2{
+    border:1px solid #b1b4b6;
+    padding:20px 20px 0px 20px;
+    margin-bottom:30px;
+  }
+  
+  .dashboard-link{
+      font-size:19px;
+      float:left;
+      text-decoration:none;
+      text-align:center;
+      border:1px solid #b1b4b6;
+      padding:15px;
+      margin:0 15px 0  0;
+      span{
+          display:block;
+          font-size:40px;
+          font-weight:bold;
+      }
+  }
+
+ 
+.keydetails hr
+{
+  border-color:#000;
+  border-bottom:2px solid;
+  margin-bottom:30px;
+}
+
+.govuk-main-wrapper{
+    padding-top:30px;
+}
+

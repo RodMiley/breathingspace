@@ -1,0 +1,107 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 2 of 2</span>
+       Add a debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body">{{ creditorfive }} <a href="debt5">Change</a></p>
+
+{% if data['creditor']=='Barclays Bank Plc' or data['creditor']=='Halifax'%}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of debt
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt-5" type="radio" value="Gas"  {{checked('typeOfDebt-5', 'Gas') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Gas
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt-5" type="radio" value="Electric"  {{checked('typeOfDebt-5', 'Electric') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Electric
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt-5" type="radio" value="Duel fuel"  {{checked('typeOfDebt-5', 'Duel fuel') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+           Dual fuel
+        </label>
+      </div>
+               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-conditional" name="typeOfDebt-5" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('addDebt', 'other') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-conditional">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-addDebt-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="otherdebt">
+            Type of Debt
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="otherdebt" name="otherdebt" value="{{otherdebt}}">
+        </div>
+</div>
+  </fieldset>
+</div>
+{% endif %}
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amountfive">
+   Debt amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amountfive" name="amountfive" type="text" spellcheck="false" value="{{ amountfive }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="referencefive">
+    Reference
+  </label>
+    <span id="changed-name-hint" class="govuk-hint">
+      This is your personal reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="referencefive" name="referencefive" type="text" spellcheck="false" value="{{ referencefive }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt5" type="radio" value="debt5" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

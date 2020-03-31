@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+  
+ <div class="govuk-grid-column-full">
+ <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+ <span class="govuk-caption-xl">Stepchange</span>
+ Breathing space</h1>
+
+       <p class="govuk-body">Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Enter a client with problem debt into a Breathing Space</li>
+          <li>Update the details of a client if they're already in Breathing Space</li>
+        </ul>
+
+<form class="form" action="search-results-page" method="post">
+
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-one-half">
+ <div class="card2">
+<h2 class="govuk-heading-m">Search for a breathing space account<h2>
+<div class="gem-c-search gem-c-search--on-white" data-module="gem-toggle-input-class-on-focus">
+  <div class="gem-c-search__item-wrapper">
+    <input type="search" value="" id="finder-keyword-search" name="fullname" title="Search" aria-controls="" class="gem-c-search__item gem-c-search__input js-class-toggle focus">
+    <div class="gem-c-search__item gem-c-search__submit-wrapper">
+      <button type="submit" class="gem-c-search__submit">Search</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+ <div class="govuk-grid-column-one-half">
+  <div class="card2">
+<h2 class="govuk-heading-m">Create a new breathing space account</h2>
+        <a href="details" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Create a new account
+        </a>
+    </div>
+    </div>
+</div>
+</form>
+<div class="govuk-grid-row">
+ <div class="govuk-grid-column-one-half">
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-3">1567<span class="govuk-caption-xl">Active standard breathing spaces</span></h2>
+
+<a href="" class="dashboard-link"><span>123</span> Eligibility reviews to do</a>
+<a href="" class="dashboard-link"><span>230</span> Midway reviews due</a>
+</div>
+ <div class="govuk-grid-column-one-half">
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-3">67<span class="govuk-caption-xl">Active mental health breathing spaces</span></h2>
+
+<a href="" class="dashboard-link"><span>3</span> Eligibility reviews to do</a>
+<a href="" class="dashboard-link"><span>15</span> Monthly reviews due</a>
+</div>
+</div>
+
+
+{% endblock %}

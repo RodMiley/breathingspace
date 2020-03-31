@@ -44,7 +44,7 @@ Roberto Henderson
 <div class="govuk-grid-column-full">
 
 
-{% if data['review'] or data['adddebt'] or data['identify']%}
+{% if data['review'] or data['identify']%}
 
 <div class="govuk-details__text govuk-tag--blue govuk-!-margin-bottom-5">
 
@@ -65,10 +65,6 @@ Roberto Henderson
 
 {% if  checked('identify', 'client') %}
 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the client</h3>
-{% endif %}
-
-{% if data['adddebt'] %}
-<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We have identified 1 new debt to add to Breathing Space</h3>
 {% endif %}
 </div>
 
@@ -133,6 +129,12 @@ Roberto Henderson
 <span class="govuk-caption-m">Debt added to breathing space for</span>
 Southwark council</h2>
 
+{% if data['adddebt'] %}
+<div class="govuk-details__text govuk-tag--blue govuk-!-margin-bottom-5">
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We have identified 1 new debt to add to Breathing Space</h3>
+</div>
+{% endif %}
+
 <hr class="govuk-section-break govuk-section-break--visible">
     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
 
@@ -146,12 +148,15 @@ Southwark council</h2>
             {% endif%}
             </dt>
             <dd class="govuk-summary-list__value">
-              Amount: £{{ addamount }}<br> Reference:{{ addreference }}
+              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
             </dd>
 
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="add-debt">
-                Change<span class="govuk-visually-hidden"> name</span>
+                Change<span class="govuk-visually-hidden"> Debt</span>
+              </a> or 
+               <a class="govuk-link" href="add-debt">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
               </a>
             </dd>
 
