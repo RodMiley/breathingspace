@@ -36,7 +36,7 @@
 
 
     <h2 class="govuk-heading-m">Debts to be added to breathing space</h2>
-    {% if data['debt']%}
+  
     
    {% if data['creditor']%}
         <dl class="govuk-summary-list govuk-!-margin-bottom-5">
@@ -196,27 +196,7 @@
         </dl>
     {% endif %}  
 
-    {% else %}
 
-                 <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ typeOfDebttwo }}
-
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: Barclaycard<br>Amount: £2700<br> Reference: {{ referencetwo }}
-              
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt2">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-     </dl>
-
-
-    {% endif %}
 
 
 {% if data['debt9']%}
