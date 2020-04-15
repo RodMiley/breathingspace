@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-removedebt" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Removed debt
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">   
+  
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl>
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-5"><span class="govuk-body govuk-!-margin-bottom-0">Reason the debt was removed:</span> <br>MBNA Europe Bank Ltd requested an eligibility review of the debt</h2>
+
+<h3 class="govuk-body govuk-!-margin-bottom-0">Reason they requested a review:</h3>
+<p class="govuk-body govuk-!-font-weight-bold" >Because it's a non-eligible business debt</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">More detail:</h3>
+<p class="govuk-body govuk-!-font-weight-bold" >The credit card is secured against the client's business</p>
+<h3 class="govuk-body govuk-!-margin-bottom-0">Date requested:</h3>
+<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>   
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

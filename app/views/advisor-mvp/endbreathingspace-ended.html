@@ -1,0 +1,147 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="not-testing" method="post">
+    <div class="govuk-grid-column-full">
+      {% include path+"advisor-v3/_keydetails.html" %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">   
+
+                 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing space in the last 12 months</h2>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<p>Breathing space started: <br><strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong></p>
+</div>
+<div class="govuk-grid-column-one-third">
+<p>Breathing space ended: <br><strong>{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong></p>
+</div>
+<div class="govuk-grid-column-full">
+<p>A person can only have one standard Breathing Space in any 12 month period, If a person is recieving mental health crisis treatment they are entitled to be entered into a mental health breathing space</p>
+</div>
+</div>
+</div>  
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Previous Breathing Spaces
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+  <table class="govuk-table">
+  <caption class="govuk-table__caption">Previous Breathing Spaces</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+     <th scope="col" class="govuk-table__header">Type</th>
+      <th scope="col" class="govuk-table__header">Start date</th>
+      <th scope="col" class="govuk-table__header">End date</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Standard</th>
+      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</td>
+      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</td>
+      <td class="govuk-table__cell"><a href="endbreathingspace-previous">View more details</a></td>
+    </tr>
+  </tbody>
+</table>
+
+  </section>
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['Debt']%} {{ dobday }} {{ dobmonth}} {{ dobyear }} {% else %} 17 09 1978 {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
+
+  </section>
+
+
+</div>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    This person is not eligible for a standard Breathing Space
+  </strong>
+</div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Start a new Breathing Space
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

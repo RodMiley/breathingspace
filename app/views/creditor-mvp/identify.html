@@ -1,0 +1,53 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="identify-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        What cant you identify?
+      </h1>
+    </legend>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="identify" name="identify" type="radio" value="debt" data-aria-controls="conditional-identify" {{ checked('identify', 'debt')}} >
+        <label class="govuk-label govuk-radios__label" for="identify">
+          Debt
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="identify-2" name="identify" type="radio" value="client" data-aria-controls="conditional-identify-2" {{ checked('identify', 'client') }}>
+        <label class="govuk-label govuk-radios__label" for="identify-2">
+           Client
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+    <div class="govuk-form-group">
+            <label class="govuk-label" for="moreDetailIdentify">
+              Can you provide more detail?
+            </label>
+            <textarea class="govuk-textarea" id="moreDetailIdentify" name="moreDetailIdentify" rows="3" >{{ moreDetailIdentify }}</textarea>
+          </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

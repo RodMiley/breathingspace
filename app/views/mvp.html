@@ -1,0 +1,81 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+        MVP
+        <span class="govuk-caption-xl">Prototypes</span>
+      </h1>{{releaseVersion | log }}
+
+
+          <div class="card">
+      <h2 class="govuk-heading-m">
+      <span class="govuk-caption-l">Mvp</span>
+     Money adviser</h2>
+       <div class="inner">
+                    <p><strong class="govuk-tag govuk-tag--orange">
+  Not tested
+</strong></p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <p class="govuk-body">Scenarios:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+        Create an account, add debts and submit to breathing space
+        </li>
+        <li>
+        Add a new debt
+        </li>
+         <li>
+        Remove a debt
+        </li>
+           <li>
+        Change a debt
+        </li>
+        <li>
+        Perform an eligibility review
+        </li>
+        <li>
+        End breathing space
+        </li>
+        </ul>
+      <a href="/advisor-mvp/index" class="govuk-button govuk-button--secondary">Start scenarios</a>
+      </div>
+      </div>
+
+            <div class="card">
+      <h2 class="govuk-heading-m">
+      <span class="govuk-caption-l">MVP</span>
+      Creditor</h2>
+       <div class="inner">
+  <p><strong class="govuk-tag govuk-tag--orange">
+  Not Tested
+</strong></p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+   <p class="govuk-body">Scenarios were testing:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+        Understanding of the information presented.
+        </li>
+        <li>
+        Requesting an eligibilty review.
+        </li>
+        </ul>
+      <a href="/creditor-mvp/index" class="govuk-button govuk-button--secondary">Start scenarios</a>
+      </div>
+      </div>
+
+      
+    </div>
+</div>
+
+{% endblock %}

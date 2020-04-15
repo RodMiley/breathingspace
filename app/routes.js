@@ -57,5 +57,8 @@ router.get('/clearSession', function (req, res, next) {
   
   }) 
 
+const radioButtonRedirect = require('radio-button-redirect')
+router.use(radioButtonRedirect)
+
 
 module.exports = router

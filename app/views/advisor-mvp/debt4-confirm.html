@@ -1,0 +1,100 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Add a debt
+      </h1>
+
+<h2 class="govuk-heading-m">Creditor and debt details</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ creditorfour }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step2-1">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{phone}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step3#phone">
+                Change<span class="govuk-visually-hidden"> Phone number</span>
+              </a>
+            </dd>
+          </div>
+        
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{email}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step3#email">
+                Change<span class="govuk-visually-hidden"> Email address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{ typefour }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+                Amount: £{{ amountfour }}<br> Reference: {{ referencefour}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step4">
+                Change<span class="govuk-visually-hidden">Amount or reference</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
