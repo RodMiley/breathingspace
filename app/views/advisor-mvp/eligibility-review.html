@@ -21,21 +21,21 @@
     <div class="govuk-grid-column-full">     
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has requested an eligibility review of the debt</h2>
-<h3 class="govuk-body govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body govuk-!-font-weight-bold" >Because it's a non-eligible business debt</p>
-<h3 class="govuk-body govuk-!-margin-bottom-0">More detail:</h3>
-<p class="govuk-body govuk-!-font-weight-bold" >The credit card is secured against the client's business</p>
-<h3 class="govuk-body govuk-!-margin-bottom-0">Date requested:</h3>
-<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body" >Because it's a non-eligible business debt</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+<p class="govuk-body" >The credit card is secured against the client's business</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date requested:</h3>
+<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
 
 
         {% if checked('debt-eligibility','no') %}
           <div class="govuk-details__text govuk-!-margin-bottom-5">
 <h2 class="govuk-heading-s govuk-!-margin-bottom-3">We have informed MBNA Europe Bank Ltd that you haven't removed the debt from Breathing Space</h2>
-<h3 class="govuk-body govuk-!-margin-bottom-0">More detail</h3>
-<p class="govuk-body govuk-!-font-weight-bold">{{ eligibilityNo }}</p>
-<h3 class="govuk-body govuk-!-margin-bottom-0">Date reviewed:</h3>
-<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<p class="govuk-body">{{ eligibilityNo }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date reviewed:</h3>
+<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
 </div>
 {% endif %}
 
@@ -57,7 +57,7 @@
           </div>
   </dl>
 
- {% if data['bsEndReason'] or checked('debt-eligibility','yes') %} 
+ {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') %} 
              {% else %}
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">

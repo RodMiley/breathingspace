@@ -116,7 +116,7 @@
             <dt class="govuk-summary-list__key">
              Credit card
              <p>
-        {% if checked('debt-eligibility','no') %}<a href="eligibility-review">Reviewed</a><br> <strong class="govuk-tag govuk-tag--blue">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% else %}<a href="eligibility-review"> Review requested</a>{% endif %}</a></p>
+        {% if checked('debt-eligibility','no') %}<a href="eligibility-review">Reviewed {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</a>{% else %}<a href="eligibility-review"> Review requested</a>{% endif %}</a></p>
             </dt>
             <dd class="govuk-summary-list__value">
               <p>Creditor: <strong>MBNA Europe Bank Ltd</strong><br>Amount:<strong> £2500</strong><br> Reference: <strong>RBC23455003</strong></p>
@@ -125,8 +125,12 @@
             <dd class="govuk-summary-list__actions">
              {% if data['bsEndReason'] %} 
              {% else %}
-              <a class="govuk-link" href="debt-step2">
+              <a class="govuk-link" href="not-testing">
                 Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+                                  or
+             <a class="govuk-link" href="not-testing">
+                Remove<span class="govuk-visually-hidden"> Debt</span>
               </a>
               {% endif %}
             </dd>

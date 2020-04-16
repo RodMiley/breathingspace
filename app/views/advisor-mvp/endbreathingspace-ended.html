@@ -10,24 +10,21 @@
   <div class="govuk-grid-row">
   <form class="form" action="not-testing" method="post">
     <div class="govuk-grid-column-full">
-      {% include path+"advisor-v3/_keydetails.html" %} 
+      {% include path+"advisor-mvp/_keydetails.html" %} 
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">   
 
                  <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
-<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing space in the last 12 months</h2>
-<div class="govuk-grid-row">
-<div class="govuk-grid-column-one-third">
-<p>Breathing space started: <br><strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong></p>
-</div>
-<div class="govuk-grid-column-one-third">
-<p>Breathing space ended: <br><strong>{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong></p>
-</div>
-<div class="govuk-grid-column-full">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing Space in the last 12 months</h2>
+<h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
+<p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
+Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>
+</p>
+
+
+
 <p>A person can only have one standard Breathing Space in any 12 month period, If a person is recieving mental health crisis treatment they are entitled to be entered into a mental health breathing space</p>
-</div>
-</div>
 </div>  
 
 <div class="govuk-tabs" data-module="govuk-tabs">
