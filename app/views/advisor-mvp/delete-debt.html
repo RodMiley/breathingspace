@@ -20,17 +20,17 @@
        <li>Type: <strong>   {% if data['typeOfDebt']=='other'%}
              {{otherdebt}}
             {% else %}
-             {{ typeOfDebt}}
+             {{ typeOfDebt | default("Loan")}}
              {% endif %}
              </strong></li>
-       <li> Creditor: <strong>{{creditor}}</strong></li>
-       <li>Amount: <strong>£{{ amount }}</strong></li>
-       <li>Reference: <strong>{{ reference }}</strong></li>
+       <li> Creditor: <strong>{{creditor | default("Barclays Bank")}}</strong></li>
+       <li>Amount: <strong>£{{ amount | default("5467") }}</strong></li>
+       <li>Reference: <strong>{{ reference | default("BAR234897HC") }}</strong></li>
       </ul>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="deletedebt-1" type="radio" value="deletedebt-1" checked>
+        <input class="govuk-radios__input" id="" name="deletedebt-1" type="radio" value="yes" checked>
         <label class="govuk-label govuk-radios__label" for="deletedebt-1">
          hidden radio
         </label>

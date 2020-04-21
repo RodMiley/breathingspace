@@ -46,8 +46,18 @@
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"><a href='debt-list-tabs-search'>{{fullname}}</a></th>
-      <td class="govuk-table__cell">HDJ2123F</td>
+      <th scope="row" class="govuk-table__header">
+      {% if checked('MAScenaioChoice','breathing space ended')%}
+      <a href='endbreathingspace-ended'>{{fullname}}</a>
+      {% elif checked('MAScenaioChoice','alternate view')%}
+      <a href='account-landingpage'>{{fullname}}</a>
+       {% elif checked('MAScenaioChoice','return to inactive account')%}
+      <a href='debt-list-tabs'>{{fullname}}</a>
+      {% else %}
+      <a href='debt-list-tabs-search'>{{fullname}}</a>
+      {% endif %}
+      </th>
+      <td class="govuk-table__cell"> {% if checked('MAScenaioChoice','return to inactive account')%} {% else %}HDJ2123F{% endif %}</td>
       <td class="govuk-table__cell">17 September 1978</td>
       <td class="govuk-table__cell">4 Monmouth Drive</td>
     </tr>

@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs-search" method="post">
+  <form class="form" action="{% include path+"advisor-mvp/_landingpagepath.html" %}" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -57,7 +57,7 @@
           </div>
   </dl>
 
- {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') %} 
+ {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') or checked('MAScenaioChoice','breathing space ended') %} 
              {% else %}
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">

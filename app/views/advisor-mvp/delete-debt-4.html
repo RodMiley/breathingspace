@@ -17,10 +17,10 @@
       </h1>
 
       <ul class="govuk-list">
-       <li>Type: <strong>Credit card</strong></li>
-       <li> Creditor: <strong>{{creditorfour}}</strong></li>
-       <li>Amount: <strong>£{{ amountfour }}</strong></li>
-       <li>Reference: <strong>{{ referencefour }}</strong></li>
+       <li>Type: <strong> {{ typefour | default("Car repair")}}</strong></li>
+       <li> Creditor: <strong>{{creditorfour | default("Beech Garage")}}</strong></li>
+       <li>Amount: <strong>£{{ amountfour | default("775")}}</strong></li>
+       <li>Reference: <strong>{{ referencefour | default("New clutch") }}</strong></li>
       </ul>
 
      <div class="govuk-radios" style="display:none">

@@ -24,7 +24,7 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ creditorfour }}
+             {{ creditorfour | default("Beech Garage") }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt4">
@@ -37,7 +37,7 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-               {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+               {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Hanworth Road<br>London<br>{{postcode}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt4-step2-1">
@@ -50,7 +50,7 @@
               Phone number
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{phone}}</p>
+              <p class="govuk-body">{{phone | default("07841234567")}}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt4-step3#phone">

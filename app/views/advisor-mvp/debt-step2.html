@@ -16,9 +16,9 @@
        Add a debt
       </h1>
       <h2 class="govuk-heading-s">Creditor</h2>
-       <p class="govuk-body">{{ creditor }} <a href="debt">Change</a></p>
+       <p class="govuk-body">{{ creditor | default("Barclays Bank") }} <a href="debt">Change</a></p>
 
-{% if data['creditor']=='Barclays Bank Plc' or data['creditor']=='Halifax'%}
+
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -29,7 +29,7 @@
     <div class="govuk-radios" data-module="govuk-radios">
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Loan"  {{checked('typeOfDebt', 'Loan') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Loan"  {{checked('typeOfDebt', 'Loan') }} >
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
             Personal Loan
         </label>
@@ -65,14 +65,14 @@
 </div>
   </fieldset>
 </div>
-{% endif %}
+
 
 
  <div class="govuk-form-group">
   <label class="govuk-label" for="amount">
    Debt amount
   </label>
-  <input class="govuk-input govuk-input--width-10" id="amount" name="amount" type="text" spellcheck="false" value="{{ amount }}">
+  <input class="govuk-input govuk-input--width-10" id="amount" name="amount" type="text" spellcheck="false" value="{{ amount | default("5467")}}">
 </div>
 
  <div class="govuk-form-group">
@@ -81,12 +81,12 @@
   </label>
   <span id="changed-name-hint" class="govuk-hint">
       This is your personal reference for the debt</span>
-  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference }}">
+  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference | default("BAR234897HC") }}">
 </div>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="debt" type="radio" value="debt" checked>
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes" checked>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt">
          hidden radio
         </label>

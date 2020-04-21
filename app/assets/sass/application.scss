@@ -265,3 +265,13 @@ ul.styled_list {
     padding-top:30px;
 }
 
+.govuk-accordion {
+.last {
+    .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions
+    {
+        border-bottom:none;
+    }
+
+}
+}
+

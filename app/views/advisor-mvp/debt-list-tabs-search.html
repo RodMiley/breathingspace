@@ -6,13 +6,25 @@
 {% endblock %}
 
 {% block content %}
-
+{% if checked('MAScenaioChoice','return to active account v3')%}
+{% include path+"advisor-mvp/_keydetails_active_v2.html" %}
+{% elif checked('MAScenaioChoice','return to active account v2')%}
+{% include path+"advisor-mvp/_keydetails_active_v3.html" %}
+{% else %}
 {% include path+"advisor-mvp/_keydetails_active.html" %}
-<!--{% include path+"advisor-mvp/_keydetails_active_v2.html" %}-->
- <!--{% include path+"advisor-mvp/_keydetails_active_v3.html" %} --> 
+{% endif %}
+
+
 
   <form class="form" action="index" method="post">
 
+  <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Creditor requests</h2>
+<ul  class="govuk-list">
+<li><a href="eligibility-review">Eligibility review requested by MBNA</a> {% if checked('debt-eligibility','no') %}- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
+</ul>
+</div>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   End Breathing Space
 </a>
@@ -154,7 +166,7 @@
 </div>
 
 <button class="govuk-button" data-module="govuk-button">
-  Finish
+  Finish and close
 </button>
     </div>
     </form>

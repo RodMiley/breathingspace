@@ -1,0 +1,129 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Private Beta - MVP</span>
+       Money adviser choose scenario
+      </h1>
+
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "Money adviser",
+  name: "MAScenaioChoice",
+  fieldset: {
+    legend: {
+      text: "Pre Breathing Space submission (Inactive)",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "create new account",
+      text: "Create an account, add debts and submit to Breathing space"
+    },
+    {
+      value: "return to inactive account",
+      text: "Search for a saved inactive account and submit to Space"
+    }
+  ]
+}) }}
+
+
+{{ govukRadios({
+  idPrefix: "Money adviser",
+  name: "MAScenaioChoice",
+  fieldset: {
+    legend: {
+      text: "Post Breathing Space submission (Active)",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+    hint: {
+        text: "Within the following scenarios you can change, add or remove a debt, perform an eligibilty review or end Breathing Space early"
+      },
+  items: [
+    {
+      value: "return to active account v1",
+      text: "Search for and update an active standard Breathing Space account (Key information test v1)"
+    },
+    {
+      value: "return to active account v2",
+      text: "Search for and update an active standard Breathing Space account (Key information test v2)"
+      
+    },
+      {
+      value: "return to active account v3",
+      text: "Search for and update an active standard Breathing Space account (Key information test v3)"
+    },
+        {
+      value: "alternate view",
+      text: "Search for and update an active standard Breathing Space account (Alternate design)"
+    }
+
+  ]
+}) }}
+
+
+{{ govukRadios({
+  idPrefix: "Money adviser",
+  name: "MAScenaioChoice",
+  fieldset: {
+    legend: {
+      text: "Breathing Space ended (Inactive)",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "breathing space ended",
+      text: "Search for an standard Breathing Space account",
+      hint: {
+        text: "This scenario shows what a breathing space account looks like once it has ended"
+      }
+    }
+    
+
+  ]
+}) }}
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Start scenario
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditorfour'
+      var name ='creditorfour'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}
