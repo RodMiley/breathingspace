@@ -245,5 +245,11 @@ $govuk-assets-path: '/govuk/assets/';
     }
 
 }
+
+@media (max-width: 40.0525em){
+.govuk-summary-list__row {
+    border-bottom: none;
+}
+}
 }
 
