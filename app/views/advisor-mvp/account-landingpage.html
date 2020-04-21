@@ -38,9 +38,7 @@
         </span>
       </h2>
       <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-          {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %} <strong class="govuk-tag govuk-tag--green">
-  2 Reviewed
-</strong>{% else %} <strong class="govuk-tag govuk-tag--red">
+          {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %}{% else %} <strong class="govuk-tag govuk-tag--red">
   1 to do
 </strong> {% endif %}
       </div>

@@ -1,57 +1,61 @@
    
    {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
+        <tr>
+            <td>
              {{type}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor: <strong>{{creditor}}</strong><br>Amount:  <strong> {{amount}}</strong><br> Reference: <strong>{{reference}}</strong></p>
-              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             {% if data['testing'] %} 
-             {% else %}
-              <a class="govuk-link" href="{{changelink}}">
+            </td>
+            <td>
+            {{creditor}}
+            </td>
+            <td>
+             {{amount}}
+            </td>
+             <td>
+             {{reference}}
+            </td>
+             <td>
+              {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}
+            </td>
+             <td>
+                <a class="govuk-link" href="{{changelink}}">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
                                  or
              <a class="govuk-link" href="{{removelink}}">
                 Remove<span class="govuk-visually-hidden"> Debt</span>
               </a>
-              {% endif %}
-            </dd>
-          </div>
-{% endmacro %}
-
-   {% macro debtrowupdated(typeOfDebt, creditor, amount, reference, changelink, removelink ) %}
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{typeOfDebt}}<br>
-            {% if data['changedebt'] %}  <strong class="govuk-tag govuk-tag--blue">Updated</strong>  {% endif %}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor: <strong>{{creditor}}</strong><br>Amount:  <strong> {{amount}}</strong><br> Reference: <strong>{{reference}}</strong></p>
-              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             {% if data['testing'] %} 
-             {% else %}
-              <a class="govuk-link" href="{{changelink}}">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-                                 or
-             <a class="govuk-link" href="{{removelink}}">
-                Remove<span class="govuk-visually-hidden"> Debt</span>
-              </a>
-              {% endif %}
-            </dd>
-          </div>
+            </td>
+          </tr>
 {% endmacro %}
 
 
          
-       {% if checked('MAScenaioChoice','alternate view')%} {% else %} <h2 class="govuk-heading-m">Debts added to standard Breathing Space</h2> {% endif %}
-   <dl class="govuk-summary-list govuk-!-margin-bottom-3">
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption"> {% if checked('MAScenaioChoice','alternate view')%} {% else %} <h2 class="govuk-heading-m">Debts added to standard Breathing Space</h2> {% endif %}</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">First 6 weeks</th>
+      <td class="govuk-table__cell">£109.80 per week</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Next 33 weeks</th>
+      <td class="govuk-table__cell">£109.80 per week</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Total estimated pay</th>
+      <td class="govuk-table__cell">£4,282.20</td>
+    </tr>
+  </tbody>
+</table>
 
         {% if checked('addDebt','addDebt') %}
   
