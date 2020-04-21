@@ -6,15 +6,7 @@
 {% endblock %}
 
 {% block content %}
-{% if checked('MAScenaioChoice','return to active account v3')%}
-{% include path+"advisor-mvp/_keydetails_active_v2.html" %}
-{% elif checked('MAScenaioChoice','return to active account v2')%}
-{% include path+"advisor-mvp/_keydetails_active_v3.html" %}
-{% else %}
 {% include path+"advisor-mvp/_keydetails_active.html" %}
-{% endif %}
-
-
 
   <form class="form" action="index" method="post">
 
@@ -37,16 +29,16 @@
           Creditor reviews and requests
         </span>
       </h2>
+       {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %}{% else %}
       <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-          {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %}{% else %} <strong class="govuk-tag govuk-tag--red">
-  1 to do
-</strong> {% endif %}
-      </div>
+   <strong class="govuk-tag govuk-tag--red">1 to do
+</strong> 
+      </div>{% endif %}
     </div>
     <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
    <ul  class="govuk-list">
-<li><a href="eligibility-review">Eligibility review requested by MBNA</a> {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %}- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
-<li><a href="not-testing">Eligibility review requested by Barclays</a>- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(-2) }}</strong></li>
+<li><a href="eligibility-review">Eligibility review requested by MBNA</a> {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no')  %}- Reviewed: <strong> {{ 'DD MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
+<li><a href="not-testing">Eligibility review requested by Barclays</a>- Reviewed: <strong> {{ 'DD MMMM YYYY' | baseDateAdd(-2) }}</strong></li>
 </ul>
     </div>
   </div>
@@ -57,6 +49,9 @@
  Debts
         </span>
       </h2>
+         <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Change or remove debts added to standard Breathing Space
+      </div>
        {% if checked('addDebt','addDebt') or  data['changedebt'] %}
              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
 <strong class="govuk-tag govuk-tag--blue">
@@ -74,15 +69,18 @@
     <div class="govuk-accordion__section-header">
       <h2 class="govuk-accordion__section-heading">
         <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-2">
-        Removed debts from standard Breathing Space 
+        Removed debts 
         </span>
       </h2>
+             <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+       View debts removed from standard Breathing Space
+      </div>
             <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
           {% if checked('debt-eligibility','yes') and checked('removedebt', 'yes') %} <strong class="govuk-tag govuk-tag--blue">
   2 pending
 </strong>{% else %} <strong class="govuk-tag govuk-tag--blue">
   1 pending
-</strong> {% endif %}
+</strong> {% endif %} 
       </div>
 
     </div>
@@ -97,7 +95,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p>Creditor:<strong> MBNA Europe Bank Ltd</strong><br>Amount:<strong> £2500</strong><br>Reference:<strong> RBC23455003</strong></p>
-              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+              <p class="govuk-body-s">Date added: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}</p>
               
                <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
             </dd>
@@ -113,7 +111,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p>Creditor:<strong> Halifax</strong><br>Amount:<strong> £3700</strong><br>Reference:<strong> 3567 6732 1278</strong></p>
-              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+              <p class="govuk-body-s">Date added: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}</p>
               
                <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
             </dd>
@@ -133,6 +131,9 @@
           Personal details
         </span>
       </h2>
+               <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Change or update personal details
+      </div>
     </div>
     <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-3">
         <dl class="govuk-summary-list">

@@ -1,22 +1,22 @@
    
    {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
-        <tr>
-            <td>
+        <tr class="govuk-table__row">
+         <th scope="row" class="govuk-table__header">
              {{type}}
-            </td>
-            <td>
+            </th>
+            <td class="govuk-table__cell">
             {{creditor}}
             </td>
-            <td>
+            <td class="govuk-table__cell">
              {{amount}}
             </td>
-             <td>
+             <td class="govuk-table__cell">
              {{reference}}
             </td>
-             <td>
-              {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}
+             <td class="govuk-table__cell">
+              {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}
             </td>
-             <td>
+             <td class="govuk-table__cell">
                 <a class="govuk-link" href="{{changelink}}">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
@@ -29,77 +29,70 @@
 {% endmacro %}
 
 
-         
-
-
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption"> {% if checked('MAScenaioChoice','alternate view')%} {% else %} <h2 class="govuk-heading-m">Debts added to standard Breathing Space</h2> {% endif %}</caption>
+  <caption class="govuk-table__caption" style="display:none">Debts added to standard Breathing Space</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Date</th>
-      <th scope="col" class="govuk-table__header">Amount</th>
+      <th scope="col" class="govuk-table__header">Type</th>
+      <th scope="col" class="govuk-table__header">Creditor</th>
+        <th scope="col" class="govuk-table__header">Amount</th>
+          <th scope="col" class="govuk-table__header">Reference</th>
+            <th scope="col" class="govuk-table__header">Date added</th>
+              <th scope="col" class="govuk-table__header"></th>
+
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">First 6 weeks</th>
-      <td class="govuk-table__cell">£109.80 per week</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Next 33 weeks</th>
-      <td class="govuk-table__cell">£109.80 per week</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Total estimated pay</th>
-      <td class="govuk-table__cell">£4,282.20</td>
-    </tr>
-  </tbody>
-</table>
-
         {% if checked('addDebt','addDebt') %}
   
-       
-
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ debttype }} <br>
-          
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor: <strong>{{ newcreditor }}</strong><br>Amount: <strong>{{adddebtamount}}</strong><br> Reference: <strong>{{adddebtreference}}</strong></p>
-               
-                <p class="govuk-body-s" >Date added: <strong class="govuk-tag govuk-tag--blue">Pending</strong></p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-   
-              <a class="govuk-link" href="add-new-debt-step2">
+            <tr class="govuk-table__row">
+           <th scope="row" class="govuk-table__header">
+              {{ debttype }}
+            </th>
+            <td class="govuk-table__cell">
+            {{ newcreditor }}
+            </td>
+            <td class="govuk-table__cell">
+             {{adddebtamount}}
+            </td>
+             <td class="govuk-table__cell">
+             {{adddebtreference}}
+            </td>
+             <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">Pending</strong>
+            </td>
+             <td class="govuk-table__cell">
+               <a class="govuk-link" href="add-new-debt-step2">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
                                   or
              <a class="govuk-link" href="{{removelink}}">
                 Remove<span class="govuk-visually-hidden"> Debt</span>
               </a>
-              
-            </dd>
-          </div>
+            </td>
+          </tr>
          {% endif %}
 
  {% if data['changedebt'] %}  
-       
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ debttype }} <br>
-          <!--<p><a href="">Creditor change</a></p> -->
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor: <strong>{{ changedebtcreditor }}</strong><br>Amount: <strong>£5400</strong><br> Reference: <strong>8945 4321 5678</strong></p>
-               
-                <p class="govuk-body-s" >Date added: <strong class="govuk-tag govuk-tag--blue">Pending</strong></p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-   
+
+      <tr class="govuk-table__row">
+           <th scope="row" class="govuk-table__header">
+              {{ debttype }}
+            </th>
+            <td class="govuk-table__cell">
+           {{ changedebtcreditor }}
+            </td>
+            <td class="govuk-table__cell">
+             {{changedebtdebtamount}}
+            </td>
+             <td class="govuk-table__cell">
+             {{changedebtdebtreference}}
+            </td>
+             <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">Pending</strong>
+            </td>
+             <td class="govuk-table__cell">
               <a class="govuk-link" href="change-debt1">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
@@ -108,26 +101,36 @@
                 Remove<span class="govuk-visually-hidden"> Debt</span>
               </a>
               
-            </dd>
-          </div>
+            </td>
+          </tr>
   {% else %} 
           {{ debtrow("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "change-debt1", "not-testing") }}
   {% endif %}        
           {{ debtrow("Credit card", "Halifax (credit cards only)", "£3700", "3567 6732 1278", "not-testing", "remove-debt") }}
           {% if checked('debt-eligibility','yes') %}
           {% else %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
+
+
+      <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
              Credit card
-             <p>
+                     <p>
         {% if checked('debt-eligibility','no') %}<a href="eligibility-review">Reviewed {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</a>{% else %}<a href="eligibility-review"> Review requested</a>{% endif %}</a></p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor: <strong>MBNA Europe Bank Ltd</strong><br>Amount:<strong> £2500</strong><br> Reference: <strong>RBC23455003</strong></p>
-               <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             {% if data['bsEndReason'] %} 
+            </th>
+            <td class="govuk-table__cell">
+           MBNA Europe Bank Ltd
+            </td>
+            <td class="govuk-table__cell">
+            £2500
+            </td>
+             <td class="govuk-table__cell">
+            RBC23455003
+            </td>
+             <td class="govuk-table__cell">
+              {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}
+            </td>
+             <td class="govuk-table__cell">
+               {% if data['bsEndReason'] %} 
              {% else %}
               <a class="govuk-link" href="not-testing">
                 Change<span class="govuk-visually-hidden"> name</span>
@@ -138,12 +141,15 @@
               </a>
               {% endif %}
               {% endif %}
-            </dd>
-          </div>
+              
+            </td>
+          </tr>
           {% endif %}
           {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
           {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
           {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
           {{ debtrow("Council tax", "Leeds City Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
           {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
-    </dl>
+   
+  </tbody>
+</table>

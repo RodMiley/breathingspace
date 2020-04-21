@@ -6,13 +6,8 @@
 {% endblock %}
 
 {% block content %}
-{% if checked('MAScenaioChoice','return to active account v3')%}
-{% include path+"advisor-mvp/_keydetails_active_v2.html" %}
-{% elif checked('MAScenaioChoice','return to active account v2')%}
-{% include path+"advisor-mvp/_keydetails_active_v3.html" %}
-{% else %}
 {% include path+"advisor-mvp/_keydetails_active.html" %}
-{% endif %}
+
 
 
 

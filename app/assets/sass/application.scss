@@ -162,34 +162,6 @@ $govuk-assets-path: '/govuk/assets/';
 }
 }
 
-ul.styled_list {
-    margin:0;
-    padding:0;
-    list-style:none;
-    border-top:1px solid  $govuk-border-colour;
-    ul{
-        margin:0;
-        padding:0;
-        list-style:none;
-    }
-
-    li{
-        border-bottom:1px solid  $govuk-border-colour;
-        padding:10px 0;
-
-        li {
-            display: inline-block;
-            width:22%;
-            padding:0;
-            border:none;
-        }
-    }
-
-    p span{
-        display:block;
-        font-weight:bold;
-    }
-}
 
 .search-container{
     background: $govuk-brand-colour;

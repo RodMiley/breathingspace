@@ -40,40 +40,72 @@
 }) }}
 
 
+
+
 {{ govukRadios({
-  idPrefix: "Money adviser",
+  idPrefix: "Post Breathing Space submission (Active)",
   name: "MAScenaioChoice",
   fieldset: {
     legend: {
       text: "Post Breathing Space submission (Active)",
-      isPageHeading: false,
+      isPageHeading: true,
       classes: "govuk-fieldset__legend--m"
     }
   },
-    hint: {
-        text: "Within the following scenarios you can change, add or remove a debt, perform an eligibilty review or end Breathing Space early"
-      },
+  hint: {
+    text: "Within the following scenarios you can change, add or remove a debt, perform an eligibilty review or end Breathing Space early"
+  },
   items: [
     {
-      value: "return to active account v1",
-      text: "Search for and update an active standard Breathing Space account (Key information test v1)"
+      value: "tabs",
+      text: "Tabbed version : Search for and update an active standard Breathing Space account",
+      conditional: {
+        html: tabsHtml
+      }
     },
     {
+      value: "accordion",
+      text: "Accordion version : Search for and update an active standard Breathing Space account",
+      conditional: {
+        html: accordionHtml
+      }
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "Money adviser subchoice",
+  name: "MAScenaioSubChoice",
+  fieldset: {
+    legend: {
+      text: "Add key information to test",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+    hint: {
+        text: "Version 1 is default"
+      },
+  items: [
+ 
+    {
+      value: "return to active account v1",
+      text: "Key information test v1"
+      
+    },
+      {
       value: "return to active account v2",
-      text: "Search for and update an active standard Breathing Space account (Key information test v2)"
+      text: "Key information test v2"
       
     },
       {
       value: "return to active account v3",
-      text: "Search for and update an active standard Breathing Space account (Key information test v3)"
-    },
-        {
-      value: "alternate view",
-      text: "Search for and update an active standard Breathing Space account (Alternate design)"
+      text: "Key information test v3"
     }
-
   ]
 }) }}
+
+
 
 
 {{ govukRadios({
