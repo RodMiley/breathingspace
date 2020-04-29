@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+{% include path+"advisor-mvp/_keydetails_active.html" %}
+
+
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+       <div class="govuk-grid-column-one-quarter"> 
+
+
+<nav class="app-subnav"> 
+          <ul class="app-subnav__section">
+          
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="account-request-subnav">Creditor reviews and requests</a>
+              
+            </li>
+          
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="account-debts-subnav">Debts</a>
+              
+            </li>
+         
+            {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes') %}
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="account-removed-subnav">Removed debts</a>
+            </li>
+            {% endif %}
+          
+            <li class="app-subnav__section-item  app-subnav__section-item--current">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="account-personal-subnav">Personal details</a>
+              
+            </li>
+          
+            <li class="app-subnav__section-item hr">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="endbreathingspace">End Breathing Space</a>
+              
+            </li>
+          
+            <li class="app-subnav__section-item">
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="index">Close record</a>
+              
+            </li>       
+          </ul>
+</nav>
+
+</div>
+<div class="govuk-grid-column-three-quarters"> 
+<h2 class="govuk-heading-l">Personal details</h2>
+  {% include path+"advisor-mvp/_personaldetails.html" %} 
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}

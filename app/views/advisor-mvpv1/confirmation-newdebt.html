@@ -16,23 +16,16 @@
             Confirmation
           </h1>
           <div class="govuk-panel__body">
-          {% if checked('debt-eligibility','no')%}
-          You have not removed the debt from your clients Breathing Space
-          {% else %}
-              You have removed the debt from your clients Breathing Space
-          {% endif %}    
+     
+              You have added a new debt  to your clients Breathing Space
+             
           </div>
         </div>
 
   <h2 class="govuk-heading-m">What happens next</h2>
            <p class="govuk-body">
-               {% if checked('debt-eligibility','no')%}
-         We will notify the creditor with the reason why you haven't removed the debt from Breathing Space
-          {% else %}
-          The debt will be removed from breathing space within 24 hours or the next working day, once the debt is removed we will notify the creditor that the 
-          debt has been removed.
-          {% endif %} 
-      
+          The debt will be added to breathing space within 24 hours or the next working day, once the debt is added we will notify the creditor that the 
+          debt has been added.
         </p>
         <ul class="govuk-list">
           <li><a href="{% include path+"advisor-mvp/_landingpagepath.html" %}">Return to client landing page</a></li>

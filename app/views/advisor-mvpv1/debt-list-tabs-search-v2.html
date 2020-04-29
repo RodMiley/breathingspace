@@ -7,22 +7,12 @@
 
 {% block content %}
 
-{% include path+"advisor-mvp/_keydetails_active.html" %}
-
-
-
+  <!-- {% include path+"advisor-mvp/_keydetails_active.html" %} --> 
+{% include path+"advisor-mvp/_keydetails_active_v2.html" %}
+ <!-- {% include path+"advisor-mvp/_keydetails_active_v3.html" %} -->
 
   <form class="form" action="index" method="post">
 
-  <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Creditor reviews and requests</h2>
-    {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no') %}{% else %}<p><strong class="govuk-tag govuk-tag--red">1 to do
-</strong></p> {% endif %}
-<ul  class="govuk-list">
-<li><a href="eligibility-review">Eligibility review requested by MBNA</a> {% if checked('debt-eligibility','yes') or  checked('debt-eligibility','no') %}- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
-</ul>
-</div>
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   End Breathing Space
 </a>
@@ -113,15 +103,58 @@
 
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
     <h2 class="govuk-heading-l">Personal details</h2>
-     {% include path+"advisor-mvp/_personaldetails.html" %} 
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{fullname}} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['Debt']%} {{ dobday }} {{ dobmonth}} {{ dobyear }} {% else %} 17 09 1978 {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
 
   </section>
 
 
 </div>
 
-<button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Close record
+<button class="govuk-button" data-module="govuk-button">
+  Finish
 </button>
     </div>
     </form>

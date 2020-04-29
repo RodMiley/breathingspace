@@ -1,0 +1,36 @@
+    <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+
+ {% if checked('debt-eligibility','yes') %}
+    
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card <br> <p><a href="remove-reviewed-debt-detail">Reviewed and removed detail</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor:<strong> MBNA Europe Bank Ltd</strong><br>Amount:<strong> £2500</strong><br>Reference:<strong> RBC23455003</strong></p>
+              <p class="govuk-body-s">Date added: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}</p>
+              
+               <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if checked('removedebt', 'yes') %}
+                <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+             Credit card <br> <p><a href="remove-debt-detail">Removed detail</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor:<strong> Halifax</strong><br>Amount:<strong> £3700</strong><br>Reference:<strong> 3567 6732 1278</strong></p>
+              <p class="govuk-body-s">Date added: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }}</p>
+              
+               <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+          {% endif%}
+  </dl>
+    
