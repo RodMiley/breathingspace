@@ -19,12 +19,12 @@
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing Space in the last 12 months</h2>
 <h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
 <p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
-Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>
+Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong>
 </p>
 
 
 
-<p>A person can only have one standard Breathing Space in any 12 month period, If a person is recieving mental health crisis treatment they are entitled to be entered into a mental health breathing space</p>
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
 </div>  
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -60,7 +60,7 @@ Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Standard</th>
       <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</td>
-      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</td>
+      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</td>
       <td class="govuk-table__cell"><a href="endbreathingspace-previous">View more details</a></td>
     </tr>
   </tbody>

@@ -27,7 +27,7 @@
              Credit card
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+              Creditor: Halifax (Credit cards only)<br>Amount: £2500<br> Reference: RBC23455003
             </dd>
             <dd class="govuk-summary-list__actions">
        
@@ -35,13 +35,13 @@
           </div>
   </dl>
   <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Reason the debt was removed</h2>
-  <p class="govuk-body" >MBNA Europe Bank Ltd requested an eligibility review of the debt</p>
+  <p class="govuk-body" >Halifax (Credit cards only) requested an eligibility review of the debt</p>
   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason they requested a review</h3>
-  <p class="govuk-body" >Because it's a non-eligible business debt</p>
+  <p class="govuk-body" >The debt does not qualify for Breathing Space</p>
   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h3>
-  <p class="govuk-body" >The credit card is secured against the client's business</p>
+  <p class="govuk-body" >{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Date requested</h3>
-  <p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>   
+  <p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>   
 
 </div>
     </div>

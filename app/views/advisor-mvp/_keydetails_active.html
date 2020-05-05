@@ -23,7 +23,7 @@
 {% else %}
 <p class="header_highlight_info">
 {% endif %}
-<span class=" govuk-!-margin-bottom-1"><strong>Breathing Space day 10 of 60 </strong></span><span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }} <br>Ends: {{ 'DD MMMM YYYY' | baseDateAdd(50) }} </span> </p>
+<span class=" govuk-!-margin-bottom-1"><strong>Breathing Space day {% if checked('time-machine-mid-review','yes')%} 30 {% else %}2{% endif %} of 60 </strong></span><span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-10) }} <br>Ends: {{ 'DD MMMM YYYY' | baseDateAdd(50) }} </span> </p>
       </div>
           <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible black">

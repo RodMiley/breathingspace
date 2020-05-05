@@ -68,6 +68,34 @@
           </div>
           {% endif%}
 
+
+    {% if data['creditorthree'] and data['deletedebt-3']%}
+     {% elif data['creditorthree']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Credit card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorthree | default("Beech Garage")}}<br>Amount: £{{ amountthree | default("775") }}<br> Reference: {{ referencethree | default("New clutch") }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> debt</span>
+              </a>
+                       or
+             <a class="govuk-link" href="not-testing">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+            </dd>
+          </div>
+ 
+         
+    {% endif %} 
+
+
+
       {% if data['creditorfour'] and data['deletedebt-4']%}
      {% elif data['creditorfour']%}
              <div class="govuk-summary-list__row">
@@ -93,7 +121,7 @@
          
     {% endif %} 
 
-    {% if checked('MAScenaioChoice','return to inactive account') %}
+    {% if checked('MAScenaioChoice','return to inactive account') or checked('time-machine-debts','yes') %}
 
                   
    {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
@@ -122,19 +150,24 @@
         {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
           {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
           {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
-          {{ debtrow("Council tax", "Leeds City Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
+          {{ debtrow("Council tax", "Southwick Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
           {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
     {% endif %}
    {% else %}
   {% endif %}
  </dl>
+{% if data['debt4'] or checked('MAScenaioChoice','return to inactive account')%}
+ <a href="time-machine-debts" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
 
-
-
-   
-     
-{% if data['debt'] or checked('MAScenaioChoice','return to inactive account')%}
+{% elif data['debt3'] or checked('MAScenaioChoice','return to inactive account')%}
  <a href="debt4" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+       
+{% elif data['debt']%}
+ <a href="debt3" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   Add a debt 
 </a>
 {% else %}
@@ -151,7 +184,7 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-              {{fullname}}
+              {{fullname | default("Joe Black") }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="details#fullname">
@@ -177,9 +210,9 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-                {% if data['sort']=='two'%} 2  Monmouth drive<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Monmouth drive<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Monmouth drive<br>London<br> {{postcode}} 
+                {% if data['sort']=='two'%} 2   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4  Bourough road <br>Elephant and castle<br>London<br> {{postcode}} 
               {% else %}  
-              {{addressline1 | default("4 Monmouth drive") }}<br>
+              {{addressline1 | default("4 Bourough road") }}<br>
               {{addresstown | default("London")}}<br>
               {{addresspostcode | default("NW10 2JU")}}
               {% endif %}

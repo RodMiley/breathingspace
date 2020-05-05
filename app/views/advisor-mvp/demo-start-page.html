@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+ <span class="govuk-caption-xl">Breathing Space</span>
+ End to end mvp demo
+ </h1>
+
+ <p>Our demo covers the the following scenarios</p>
+
+       <h2 class="govuk-heading-m">Money adviser</h2>
+
+        <ul class="govuk-list">
+          <li>1. Create a account and add client details</li>
+          <li>2. Add multiple debts</li>
+          <li>3. Submit to Breathing Space</li>
+        </ul>
+       <h2 class="govuk-heading-m">Creditor</h2>
+         <ul class="govuk-list">
+          <li>4. Requests an eligiblity review</li>
+        </ul>
+
+
+       <h2 class="govuk-heading-m">Money adviser</h2>
+        <ul class="govuk-list">
+          <li>5. Performs an eligibility review</li>
+          <li>6. Ends Breathing Space early</li>
+        </ul>
+
+         <h2 class="govuk-heading-m">Money adviser <span class="govuk-caption-m">Client has engaged with another money advice organisation</span></h2>
+         <ul  class="govuk-list">
+         <li>7. Money Adviser checks for previous Breathing Space as part of their eligibility process</li>
+         </ul>
+
+<!--<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+        <a href="index" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+          Start scenarios
+        </a>
+   </div>
+
+
+  
+
+
+    </div>
+</div>
+
+{% endblock %}

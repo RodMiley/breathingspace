@@ -72,7 +72,7 @@
   <label class="govuk-label" for="amount">
    Debt amount
   </label>
-  <input class="govuk-input govuk-input--width-10" id="amount" name="amount" type="text" spellcheck="false" value="{{ amount | default("5467")}}">
+  <input class="govuk-input govuk-input--width-10" id="amount" name="amount" type="text" spellcheck="false" value="{{ amount }}">
 </div>
 
  <div class="govuk-form-group">
@@ -81,7 +81,7 @@
   </label>
   <span id="changed-name-hint" class="govuk-hint">
       This is your personal reference for the debt</span>
-  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference | default("BAR234897HC") }}">
+  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference }}">
 </div>
 
      <div class="govuk-radios" style="display:none">

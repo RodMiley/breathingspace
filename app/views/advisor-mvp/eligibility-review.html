@@ -20,18 +20,18 @@
 
     <div class="govuk-grid-column-full">     
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-3">MBNA Europe Bank Ltd has requested an eligibility review of the debt</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">{% include path+"advisor-mvp/_review_creditor.html" %} has requested an eligibility review of the debt</h2>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body" >Because it's a non-eligible business debt</p>
+<p class="govuk-body" >The debt does not qualify for Breathing Space</p>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
-<p class="govuk-body" >The credit card is secured against the client's business</p>
+<p class="govuk-body" >{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date requested:</h3>
-<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
+<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
 
 
         {% if checked('debt-eligibility','no') %}
           <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-3">We have informed MBNA Europe Bank Ltd that you haven't removed the debt from Breathing Space</h2>
+<h2 class="govuk-heading-s govuk-!-margin-bottom-3">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that you haven't removed the debt from Breathing Space</h2>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
 <p class="govuk-body">{{ eligibilityNo }}</p>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date reviewed:</h3>
@@ -49,7 +49,7 @@
              Credit card
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+              Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount: £2500<br> Reference: RBC23455003
             </dd>
             <dd class="govuk-summary-list__actions">
        

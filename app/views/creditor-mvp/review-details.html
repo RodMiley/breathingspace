@@ -22,19 +22,19 @@
 
 
 {% if  checked('review', 'debt') %}
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Stepchange to review debt eligibility</h2>
-<h3 class="govuk-body govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body govuk-!-font-weight-bold">{{ debtReview }}</p>
-<h3 class="govuk-body govuk-!-margin-bottom-0">More detail:</h3>
-<p class="govuk-body govuk-!-font-weight-bold">{{ moreDetail }}</p>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review debt eligibility</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body">{{ debtReview }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+<p class="govuk-body">{{ moreDetail }}</p>
 {% endif %}
 
 {% if  checked('review', 'client') %}
-<h3 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Stepchange to review client eligibility</h3>
-<h3 class="govuk-body govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body govuk-!-font-weight-bold">{{ clientReview }}</p>
-<h3 class="govuk-body govuk-!-margin-bottom-0">More Detail:</h3>
-<p class="govuk-body govuk-!-font-weight-bold">{{ moreDetailClient }}</p>
+<h3 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review client eligibility</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body">{{ clientReview }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+<p class="govuk-body">{{ moreDetailClient }}</p>
 {% endif %}
 {% if  checked('identify', 'debt') %}
 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the debt</h3>
@@ -43,8 +43,8 @@
 {% if  checked('identify', 'client') %}
 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the client</h3>
 {% endif %}
-<h3 class="govuk-body govuk-!-margin-bottom-0">Date requested:</h3>
-<p class="govuk-body govuk-!-font-weight-bold"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date requested:</h3>
+<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
 
 {% endif%}
 

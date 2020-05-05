@@ -49,12 +49,11 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['sort']=='two'%} 2  Monmouth drive<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Monmouth drive<br>London<br>{{postcode}}{% elif data['sort']=='four' %}  4 Monmouth drive<br>London<br>{{postcode}}
+              {% if data['sort']=='two'%} 2   Bourough road<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Bourough road<br>London<br>{{postcode}}{% elif data['sort']=='four' %}  4 Bourough road<br>London<br>{{postcode}}
               {% else %}  
-              {{addressline1}}<br>
-               {{addresstown}}<br>
-               {{addresscounty}}<br>
-              {{addresspostcode}}<br>
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">

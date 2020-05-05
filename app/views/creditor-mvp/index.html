@@ -18,11 +18,9 @@
            <h1 class="govuk-heading-l">
            <span class="govuk-caption-l"><strong class="govuk-tag govuk-phase-banner__content__tag">
       active
-    </strong>
-
-    
+    </strong> 
     Breathing space account for</span>
-Roberto Henderson
+      {{ fullname | default("Joe Black") }}
       </h1>
       </div>
       <div class="govuk-grid-column-one-third">
@@ -34,7 +32,7 @@ Roberto Henderson
         <p>Date of birth: <span>28 February 1987</span></p>
         </li>
         <li>
-        <p>Address: <span>2 Bourough road, Elephant and castle, London, SE1 0AA </span></p>
+        <p>Address: <span>4 Bourough road, Elephant and castle, London, {{ postcode | default("NW1 8GH") }} </span></p>
         </li>
       </ul>
       </div>
@@ -54,7 +52,7 @@ Roberto Henderson
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 {% endif%}
 
-<p class="govuk-body-l govuk-!-margin-bottom-1">A <strong>Stepchange</strong> money adviser has added the following debt to Breathing Space</p>
+<p class="govuk-body-l govuk-!-margin-bottom-1">An <strong>Advice uk</strong> money adviser has added the following debt to Breathing Space</p>
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -69,7 +67,7 @@ Roberto Henderson
              Organisation
             </dt>
             <dd class="govuk-summary-list__value">
-            Stepchange
+            Advice uk
             </dd>
           </div>
 
@@ -97,7 +95,7 @@ Roberto Henderson
             Email
             </dt>
             <dd class="govuk-summary-list__value">
-           paulsmith3@stepchange.org.uk
+           paulsmith3@adviceuk.org.uk
             </dd>
         </div>
   
@@ -110,17 +108,17 @@ Roberto Henderson
 </details>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-<span class="govuk-caption-m">Debt added to breathing space for</span>
-Southwark council</h2>
+<span class="govuk-caption-m">Debt added to Breathing Space for</span>
+Halifax (credit cards only)</h2>
 
 <hr class="govuk-section-break govuk-section-break--visible">
     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Overpaid housing benefit
+            Credit card
             </dt>
             <dd class="govuk-summary-list__value">
-              Amount: <strong>£678</strong><br> Reference: <strong>MN1234HJJKLL</strong>
+              Amount: <strong>£2500</strong><br> Reference: <strong> RBC23455003</strong>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>

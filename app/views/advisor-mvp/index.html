@@ -12,7 +12,7 @@
    <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
  <span class="govuk-caption-xl">Breathing Space portal for</span>
- Advice uk</h1>
+ {% if checked('MAScenaioChoice','breathing space ended')%} Stepchange {% else %}Advice uk{% endif %}</h1>
 
        <p class="govuk-body">Use this service to:</p>
 
