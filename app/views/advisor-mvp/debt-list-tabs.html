@@ -8,9 +8,14 @@
 {% block content %}
 
   <div class="govuk-grid-row">
+    {% if data['debt']%}
   <form class="form" action="bs-save-submit" method="post">
+{% else %}
+  <form class="form" action="index" method="post">
+  {% endif %}
     <div class="govuk-grid-column-full">
   {% include path+"advisor-mvp/_keydetails.html" %} 
+
 
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
@@ -178,53 +183,7 @@
   </section>
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
     <h2 class="govuk-heading-l">Personal details</h2>
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{fullname | default("Joe Black") }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="details#fullname">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ dobday | default("09") }} {{ dobmonth | default("10")}} {{ dobyear | default("1989") }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="details#dobday">
-                Change<span class="govuk-visually-hidden"> date of birth</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Address
-            </dt>
-            <dd class="govuk-summary-list__value">
-                {% if data['sort']=='two'%} 2   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4  Bourough road <br>Elephant and castle<br>London<br> {{postcode}} 
-              {% else %}  
-              {{addressline1 | default("4 Bourough road") }}<br>
-              {{addresstown | default("London")}}<br>
-              {{addresspostcode | default("NW10 2JU")}}
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address#postcode">
-                Change<span class="govuk-visually-hidden"> Address</span>
-              </a>
-            </dd>
-          </div>
-        </dl>
-
+          {% include path+"advisor-mvp/_personaldetails.html" %} 
 
   </section>
 
@@ -234,7 +193,11 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+  {% if data['debt']%}
+  Save and continue 
+{% else %}
+  Save and close record
+  {% endif %}
 </button>
 
     </div>

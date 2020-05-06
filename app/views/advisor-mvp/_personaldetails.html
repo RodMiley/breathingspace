@@ -23,7 +23,8 @@
               Date of birth
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['changedetails']%} {{data['dob-day']}} {{data['dob-month'] | toMonth }} {{ data['dob-year']}} {% else %} 10 July 1969 {% endif %}
+         
+                   {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="detailschange#dobday">
@@ -36,7 +37,12 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-             	1 Cross keys Road<br>London<br>NW10 8DW
+             	            {% if data['sort']=='two'%} 2  Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4  Bourough road <br>Elephant and castle<br>London<br> {{postcode}} 
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="not-testing">

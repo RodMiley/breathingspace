@@ -13,16 +13,18 @@
 
 
   <form class="form" action="index" method="post">
-
+    {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no') %}{% else %}
   <div class="govuk-details__text govuk-!-margin-bottom-5">
 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Creditor reviews and requests</h2>
-    {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no') %}{% else %}<p><strong class="govuk-tag govuk-tag--red">1 to do
-</strong></p> {% endif %}
+<p><strong class="govuk-tag govuk-tag--red">1 to do
+</strong></p>
 <ul  class="govuk-list">
 <li><a href="eligibility-review">Eligibility review requested by {% include path+"advisor-mvp/_review_creditor.html" %}</a> {% if checked('debt-eligibility','yes') or  checked('debt-eligibility','no') %}- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
 </ul>
 </div>
+
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+ {% endif %}
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   End Breathing Space
 </a>
