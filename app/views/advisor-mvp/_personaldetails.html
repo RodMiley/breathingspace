@@ -37,7 +37,7 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-             	            {% if data['sort']=='two'%} 2  Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3   Bourough road <br>Elephant and castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4  Bourough road <br>Elephant and castle<br>London<br> {{postcode}} 
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
               {% else %}  
               {{addressline1 | default("4 Bourough road") }}<br>
               {{addresstown | default("London")}}<br>
