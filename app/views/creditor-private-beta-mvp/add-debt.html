@@ -8,14 +8,12 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="add-debt-confirm" method="post">
+  <form class="form" action="index" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
        Add a debt
       </h1>
-
-
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -23,31 +21,31 @@
         Type of debt
       </h2>
     </legend>
-    <div class="govuk-radios" data-module="govuk-radios">
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Loan"  {{checked('typeOfDebt', 'Loan') }} >
-        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
-            Personal Loan
+        <input class="govuk-radios__input" id="addDebt-1" name="addDebt" type="radio" value="Council Tax"  {{checked('addDebt', 'Council tax') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-1">
+           Council tax
         </label>
       </div>
 
         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Mortgage"  {{checked('typeOfDebt', 'Mortgage') }}>
-        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
-            Mortgage
+        <input class="govuk-radios__input" id="addDebt-2" name="addDebt" type="radio" value="Rent arrears"  {{checked('addDebt', 'Rent arrears') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-2">
+            Rent arrears
         </label>
       </div>
     
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Overdraft"  {{checked('typeOfDebt', 'Overdraft') }}>
-        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
-        Overdraft
+        <input class="govuk-radios__input" id="addDebt-3" name="addDebt" type="radio" value="Housing benefit overpayment"  {{checked('addDebt', 'Housing benefit overpayment') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-3">
+        Housing benefit overpayment
         </label>
       </div>
-         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="addDebt-conditional" name="typeOfDebt" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('typeOfDebt', 'other') }}>
+        <input class="govuk-radios__input" id="addDebt-conditional" name="addDebt" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('addDebt', 'other') }}>
         <label class="govuk-label govuk-radios__label" for="addDebt-conditional">
           Other
         </label>
@@ -59,9 +57,10 @@
           </label>
           <input class="govuk-input govuk-!-width-two-thirds" id="otherdebt" name="otherdebt" value="{{otherdebt}}">
         </div>
+
 </div>
   </fieldset>
-</div>
+
 
  <div class="govuk-form-group">
   <label class="govuk-label" for="addamount">
@@ -72,14 +71,14 @@
 
  <div class="govuk-form-group">
   <label class="govuk-label" for="addreference">
-    Reference (Optional)
+    Reference
   </label>
   <input class="govuk-input govuk-input--width-10" id="addreference" name="addreference" type="text" spellcheck="false" value="{{ addreference }}">
 </div>
 
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="adddebt" checked>
         <label class="govuk-label govuk-radios__label" for="adddebt">
          hidden radio
         </label>
@@ -87,11 +86,7 @@
       </div>
 
 
-<p>
-<a href="add-debt-2" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add another debt
-</a>
-</p>
+
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue

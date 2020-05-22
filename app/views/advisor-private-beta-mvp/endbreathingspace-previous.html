@@ -1,0 +1,103 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-confirm" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="endbreathingspace-ended" class="govuk-back-link">Back</a>   
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+      Previous Breathing Space
+      </h1>
+
+                       <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">Breathing Space ran for 30 days</h2>
+<p>It ended early because the client disengaged with money advice</p>
+<h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
+<p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
+Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong></p>
+</div>  
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+       Removed debts
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+   {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{type}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor: <strong>{{creditor}}</strong><br>Amount:  <strong> {{amount}}</strong><br> Reference: <strong>{{reference}}</strong></p>
+              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-30) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+{% endmacro %}
+
+     <h2 class="govuk-heading-m">Debts added to breathing space</h2>
+   <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+      {{ debtrow("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "change-debt1", "not-testing") }}   
+      {{ debtrow("Car repair", "Beech Garage", "£445", "Service and Mot", "not-testing", "not-testing") }}
+      {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
+      {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
+      {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
+      {{ debtrow("Council tax", "Leeds City Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
+      {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
+    </dl>
+  </section>
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+     <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+
+
+
+     <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card <br> <p><a href="eligibility-review">Reviewed and removed</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor:<strong> Halifax (credit cards only)</strong><br>Amount:<strong> £2500</strong><br>Reference:<strong> RBC23455003</strong></p>
+              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}<br>
+                                      Date removed:{{ 'Do MMMM YYYY' | baseDateAdd(-5) }}
+              </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+  </dl>
+
+  </section>
+
+
+</div>
+
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

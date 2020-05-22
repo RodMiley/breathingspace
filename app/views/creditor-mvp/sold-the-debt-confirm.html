@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-sold" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm who you have sold the debt to
+      </h1>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are informing {% include path+"creditor-mvp/_advise-org-name.html" %} that you have sold the debt on to</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Creditor:</h3>
+<p class="govuk-body">{{ creditorSold }}</p>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit to Breathing space
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

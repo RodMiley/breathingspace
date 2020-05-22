@@ -1,0 +1,158 @@
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+Debts owed to   {% include path+"creditor-mvp/_creditorname.html" %}  added to Breathing Space</h2>
+<p>
+The debt type, amount and reference are for your matching purposes, so you can apply the Breathing Space protections,  the accuracy doesn’t effect the debt eligibility.
+</p>
+
+
+   
+   <hr class="govuk-section-break govuk-section-break--visible">
+   <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+
+           {% if checked('adddebt','yes') %}
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+   
+             {{ typeOfDebt }}
+
+                   {% if data['adddebt']%}
+            <p class="govuk-!-margin-bottom-1"><a href="add-debt-details"> Action requested</a><br>
+                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
+              {% endif %}   
+      
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
+            </dd>
+
+            <dd class="govuk-summary-list__actions">
+            
+            </dd>
+          </div>
+          
+          
+          
+          {% elif checked('adddebt2','yes') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebt }}
+
+                   {% if data['adddebt']%}
+            <p class="govuk-!-margin-bottom-1"><a href="add-debt-details"> Action requested</a><br>
+                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
+              {% endif %}   
+      
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
+            </dd>
+
+            <dd class="govuk-summary-list__actions">
+    {% if data['adddebt']%} 
+            We have identified a new debt that should be included in Breathing space
+            {% endif %}
+            </dd>
+          </div>
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+   
+             {{ typeOfDebt2 }}
+
+                {% if data['adddebt']%}
+            <p class="govuk-!-margin-bottom-1"><a href="add-debt-details"> Action requested</a><br>
+                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
+              {% endif %}   
+      
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Amount: £<strong>{{ addamount2 }}</strong><br> Reference: <strong>{{ addreference2 }}</strong>
+            </dd>
+
+            <dd class="govuk-summary-list__actions">
+            {% if data['adddebt']%} 
+            We have identified a new debt that should be included in Breathing space
+            {% endif %}
+            </dd>
+          </div>
+          {% endif %}
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Loan
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£9350</strong><br> Reference: <strong>BCC1239564</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="review-debt">The debts not eligible request a review</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="sold-the-debt">We don’t own this debt anymore</a>
+                </li>
+              </ul>
+            </dd>
+            </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Loan
+            {% if data['debtReview']%}
+            <p class="govuk-!-margin-bottom-1" ><a href="review-debt-details"> Review requested</a>
+                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
+              {% endif %}    
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£3580</strong><br> Reference: <strong>MN1234HJJKLL</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            {% if data['debtReview']%}
+            We have requested Advice uk to review debt eligibility
+              {% else %}
+               <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="review-debt">The debts not eligible request a review</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="sold-the-debt">We don’t own this debt anymore</a>
+                </li>
+              </ul>
+              {% endif %}  
+            </dd>
+            </div>
+
+                   <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+            Home insurance
+              {% if data['creditorSold']%}
+            <p class="govuk-!-margin-bottom-1"><a href="sold-the-debt-details"> Action requested</a><br>
+                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
+              {% endif %}     
+            </p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£160</strong><br> Reference: <strong>HI34567234</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if data['creditorSold']%}
+              <p>We have informed the money adviser that we have sold the debt on</p>
+              {% else %}
+               <ul class="govuk-list">
+                <li>
+                  <a class="govuk-link" href="review-debt">The debts not eligible request a review</a>
+                </li>
+                <li>
+                  <a class="govuk-link" href="sold-the-debt">We don’t own this debt anymore</a>
+                </li>
+              </ul>
+              {% endif %}  
+            </dd>
+            </div>
+
+     </dl>   

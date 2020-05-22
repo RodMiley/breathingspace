@@ -1,0 +1,80 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="" method="post">
+
+    <div class="govuk-grid-column-full">
+  {% include path+"creditor-mvp/_keydetails_active.html" %} 
+
+
+<p class="govuk-body">Your client has been entered into Breathing Space by a <strong>{% include path+"creditor-mvp/_advise-org-name.html" %}</strong> money adviser</p>
+<a href="add-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add more debts that should be included
+</a>
+<a href="review-client" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+ Ask the money adviser to review client eligibilty
+</a>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
+   <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#ma-requests">
+       Actions and requests
+      </a>
+    </li>
+    {% endif %}
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+        <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#ma-details">
+        Money Adviser details
+      </a>
+    </li>
+    </ul>
+
+  {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
+     <section class="govuk-tabs__panel" id="ma-requests">
+           <h2 class="govuk-heading-l">
+         Actions and requests </h2>
+        <p class="">We have requested {% include path+"creditor-mvp/_advise-org-name.html" %} to action the following things: </p>
+      {% include path+"creditor-mvp/_requests_content.html" %} 
+  </section>
+  {% endif %}
+  <section class="govuk-tabs__panel" id="problem-debt">
+       {% include path+"creditor-mvp/_debts_content.html" %} 
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+          {% include path+"creditor-mvp/_personaldetails.html" %} 
+  </section>
+    <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ma-details">
+    <h2 class="govuk-heading-l">Money advice organisation details</h2>
+          {% include path+"creditor-mvp/_adviser_content.html" %} 
+  </section>
+
+
+</div>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

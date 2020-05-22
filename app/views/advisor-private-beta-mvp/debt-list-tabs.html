@@ -1,0 +1,207 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    {% if data['debt']%}
+  <form class="form" action="bs-save-submit" method="post">
+{% else %}
+  <form class="form" action="index" method="post">
+  {% endif %}
+    <div class="govuk-grid-column-full">
+  {% include path+"advisor-mvp/_keydetails.html" %} 
+
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+
+   {% if checked('debt','yes') or  checked('MAScenaioChoice','return to inactive account')%}
+    <h2 class="govuk-heading-m">Debts to be added to Breathing Space</h2>
+    {% else %}
+    <h2 class="govuk-heading-m">Add debts to Breathing Space</h2>
+   {% endif %}
+    
+       
+   
+
+   {% if checked('debt','yes') or checked('MAScenaioChoice','return to inactive account')%}
+       <dl class="govuk-summary-list govuk-!-margin-bottom-3">
+    {% if data['debt'] and data['deletedebt-1'] or data['deletedebt-1']%}
+    {% else %}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            {% if data['typeOfDebt']=='other'%}
+             {{otherdebt}}
+            {% else %}
+             {{ typeOfDebt | default("Loan")}}
+             {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditor | default("Barclays") }}<br>Amount: £{{ amount | default("5467") }}<br> Reference: {{ reference | default("BAR234897HC")}}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+              or
+             <a class="govuk-link" href="delete-debt">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+            </dd>
+          </div>
+          {% endif%}
+
+
+    {% if data['creditorthree'] and data['deletedebt-3']%}
+     {% elif data['creditorthree']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Credit card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorthree | default("Beech Garage")}}<br>Amount: £{{ amountthree | default("775") }}<br> Reference: {{ referencethree | default("New clutch") }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> debt</span>
+              </a>
+                       or
+             <a class="govuk-link" href="not-testing">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+            </dd>
+          </div>
+ 
+         
+    {% endif %} 
+
+
+
+      {% if data['creditorfour'] and data['deletedebt-4']%}
+     {% elif data['creditorfour']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typefour | default("Car Repair") }}
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorfour | default("Beech Garage")}}<br>Amount: £{{ amountfour | default("775") }}<br> Reference: {{ referencefour | default("New clutch") }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> debt</span>
+              </a>
+                       or
+             <a class="govuk-link" href="not-testing">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+            </dd>
+          </div>
+ 
+         
+    {% endif %} 
+
+    {% if checked('MAScenaioChoice','return to inactive account') or checked('time-machine-debts','yes') %}
+
+                  
+   {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{type}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor: {{creditor}}<br>Amount: {{amount}}<br> Reference: {{reference}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if data['testing'] %} 
+             {% else %}
+              <a class="govuk-link" href="{{changelink}}">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+                                 or
+             <a class="govuk-link" href="{{removelink}}">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
+{% endmacro %}
+
+        {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
+          {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
+          {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
+          {{ debtrow("Council tax", "Southwark Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
+          {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
+    {% endif %}
+   {% else %}
+  {% endif %}
+ </dl>
+{% if data['debt4'] or checked('MAScenaioChoice','return to inactive account')%}
+ <a href="time-machine-debts" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+
+{% elif data['debt3'] or checked('MAScenaioChoice','return to inactive account')%}
+ <a href="debt4" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+       
+{% elif data['debt']%}
+ <a href="debt3" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+{% else %}
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>
+{% endif %}
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+          {% include path+"advisor-mvp/_personaldetails.html" %} 
+
+  </section>
+
+
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  {% if data['debt']%}
+  Save and continue 
+{% else %}
+  Save and close record
+  {% endif %}
+</button>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

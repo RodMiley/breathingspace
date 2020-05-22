@@ -10,131 +10,41 @@
 
 
   <form class="form" action="confirmation" method="post">
-      <section class="key_details">
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-  
-           <h1 class="govuk-heading-l">
-           <span class="govuk-caption-l"><strong class="govuk-tag govuk-phase-banner__content__tag">
-      active
-    </strong> 
-    Breathing space account for</span>
-      {{ fullname | default("Joe Black") }}
-      </h1>
-      </div>
-      <div class="govuk-grid-column-one-third">
-           <p class="header_highlight_info"><span class=" govuk-!-margin-bottom-1"><strong>Breathing Space day 1 of 60 </strong></span><span class="govuk-body-s">Started: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} <br>Ends: {{ 'Do MMMM YYYY' | baseDateAdd(59) }} </span> 
-      </div>
-      <div class="govuk-grid-column-full">
-      <ul>
-        <li>
-        <p>Date of birth: <span>28 February 1987</span></p>
-        </li>
-        <li>
-        <p>Address: <span>4 Bourough road, Elephant and castle, London, {{ postcode | default("NW1 8GH") }} </span></p>
-        </li>
-      </ul>
-      </div>
-      </div>
-</section>
+    {% include path+"creditor-mvp/_keydetails_active_personaldetails.html" %} 
  <div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
-
-
-{% if data['review'] or data['identify']%}
-<p>
-<strong class="govuk-tag govuk-tag--blue">
-  Review requested
-</strong>
-  on {{ 'Do MMMM YYYY' | baseDateAdd(0) }},
-<a href="review-details">view review details</a></p>
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-{% endif%}
-
-<p class="govuk-body-l govuk-!-margin-bottom-1">An <strong>Advice uk</strong> money adviser has added the following debt to Breathing Space</p>
-<details class="govuk-details" data-module="govuk-details">
+<p class="govuk-body">Your client has been entered into Breathing Space by a <strong>{% include path+"creditor-mvp/_advise-org-name.html" %} </strong> money adviser</p>
+<details class="govuk-details govuk-!-margin-bottom-1" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
       Money adviser details
     </span>
   </summary>
   <div class="govuk-details__text">
-   
-    <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Organisation
-            </dt>
-            <dd class="govuk-summary-list__value">
-            Advice uk
-            </dd>
-          </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Adviser
-            </dt>
-            <dd class="govuk-summary-list__value">
-            Paul Smith
-            </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Telephone number
-            </dt>
-            <dd class="govuk-summary-list__value">
-            078345 677 889
-            </dd>
-        </div>
-
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Email
-            </dt>
-            <dd class="govuk-summary-list__value">
-           paulsmith3@adviceuk.org.uk
-            </dd>
-        </div>
-  
-      
-
-
-   
-    </dl>
+    {% include path+"creditor-mvp/_adviser_content.html" %} 
   </div>
 </details>
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-<span class="govuk-caption-m">Debt added to Breathing Space for</span>
-Halifax (credit cards only)</h2>
 
-<hr class="govuk-section-break govuk-section-break--visible">
-    <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Credit card
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: <strong>£2500</strong><br> Reference: <strong> RBC23455003</strong>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-            </dd>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-     </dl>   
+{% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
+<div class="govuk-details__text govuk-fullborder--blue govuk-!-margin-bottom-5">
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Money Adviser action requests</h3>
+<p>We have informed the Money adviser of the following things: </p>
+    {% include path+"creditor-mvp/_requests_content.html" %} 
+</div> 
+{% endif %}
 
 
-<!-- <a href="add-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
-  Add another debt to the list
-</a> -->
-<a href="review" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
-  Request a review
+<a href="add-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add more debts that should be included
 </a>
-<!-- <a href="identify" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  I can't identify the client or the debt
-</a> -->
+<a href="review-client" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+ Ask the money adviser to review client eligibilty
+</a>
+
+  {% include path+"creditor-mvp/_debts_content.html" %} 
 
     </div>
     </form>

@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+    
+        <div class="govuk-panel govuk-panel--confirmation">
+      
+          <h1 class="govuk-panel__title">
+          Confirmation
+          </h1>
+        
+          <div class="govuk-panel__body">
+           You have requested a review of client eligibility
+   
+          </div>
+    
+        </div>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">
+          The money adviser will be notified that you have requested a review of client eligibility
+        
+        </p>
+        <p class="govuk-body">
+              <a href="
+        {% if checked('creditorViewChioce','tabs')%}
+        account-landing-tabs
+        {% elif checked('creditorViewChioce','accordion')%}
+        account-landing-accordion
+        {% else%}index
+        {% endif %}
+        ">Return to client landing page</a>
+        </p>
+      </div>
+  
+</div>
+
+{% endblock %}
