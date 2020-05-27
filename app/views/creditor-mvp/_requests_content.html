@@ -1,60 +1,43 @@
-
+   {% if data['debtReview']%} 
         <ul class="govuk-list">
               
-                
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Recieved actions and requests</h3>
                 {% if data['debtReview']%}
                 <li>
                   <a class="govuk-link" href="review-debt-details">We have requested an eligibility review of a debt</a>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 ">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
                 </li>
                 {% endif %}
-                
-                {% if data['creditorSold']%}
-                      <li>
-                  <a class="govuk-link" href="sold-the-debt-details">Advice Uk have been informed that we have sold the debt on </a>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.37am</p>
-                </li>
-                {% endif %}
+              </ul>
+      {% endif %}
+
+   {% if data['creditorSold'] or  data['clientReview'] or data['adddebt'] %}            
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Pending actions and requests</h3>
+           <ul class="govuk-list">
 
                 {% if data['clientReview']%}
                       <li>
                   <a class="govuk-link" href="review-client-details">We have requested an eligibility review of the client</a>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.41am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.45am</p>
                 </li>
                 {% endif %}
 
                 {% if data['adddebt']%}
                  <li>
                   <a class="govuk-link" href="add-debt-details">We have identified debts that should be included in Breathing Space</a>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.45am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.41am</p>
                 </li>
                 {% endif %}
 
-    
-
-              </ul>
-     <!--         <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Completed actions and requests</h3>
-    <ul class="govuk-list timeline">              
-                  <li><a class="govuk-link" href="#">We have informed the money adviser we dont own the debt anymore</a>
-                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p> 
-                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Money Adviser</h3>               
-                  <p class="govuk-!-margin-bottom-1">
-                  The new creditor has been added to the debt 
-                  </p>
-                  <p class="govuk-body-s">{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 1.15pm</p>
+                {% if data['creditorSold']%}
+                      <li>
+                  <a class="govuk-link" href="sold-the-debt-details">Advice Uk have been informed that we have sold the debt on </a>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.37am</p>
                 </li>
-                <li>
-                  <a class="govuk-link" href="#">We have identified 1 new debt to be added to Breathing Space</a>
-                  <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.45am</p> 
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Money Adviser</h3>               
-                  <p class="govuk-!-margin-bottom-1">
-                  The debt has been added to Breathing Space
-                  </p>
-                  <p class="govuk-body-s">{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 1.15pm</p>
-                </li>
-              </ul> -->
+                {% endif %}
 
-
+{% endif %}
 
 
 

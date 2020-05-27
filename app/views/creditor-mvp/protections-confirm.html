@@ -8,36 +8,55 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="confirmation-sold" method="post">
+  <form class="form" action=" {% if checked('creditorViewChioce','tabs')%}
+        account-landing-tabs
+        {% elif checked('creditorViewChioce','accordion')%}
+        account-landing-accordion
+        {% else%}index
+        {% endif %}
+  
+  " method="post">
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm who you have sold the debt to
+ Confirm protections are applied
       </h1>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are confirming that you have applied the Breathing Space protections to the following debt</h2>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
    <dl class="govuk-summary-list">
+
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Home insurance
+             Loan
             </dt>
             <dd class="govuk-summary-list__value">
-              <p>Amount: <strong>£160</strong><br> Reference: <strong>HI34567234</strong></p>
+              <p>Amount: <strong>£9350</strong><br> Reference: <strong>BCC1239564</strong></p>
                <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
             </div>
              </dl>
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are informing {% include path+"creditor-mvp/_advise-org-name.html" %} that you have sold the debt on to</h2>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Creditor:</h3>
-<p class="govuk-body">{{ creditorSold }}</p>
 
+
+                <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
 
 <button class="govuk-button" data-module="govuk-button">
-  Confirm and submit to Breathing space
+  Confirm and submit
 </button>
     </div>
     </form>

@@ -326,6 +326,14 @@ $govuk-assets-path: '/govuk/assets/';
     }
     }
 
+    .govuk-summary-list__actions .govuk-list{
+        margin-bottom:0px;
+
+        a{
+            font-size:16px;
+        }
+    }
+
 
     .govuk-list.timeline {
        border-left:3px solid govuk-colour("blue");
@@ -348,13 +356,6 @@ $govuk-assets-path: '/govuk/assets/';
            }
        }
 
-    //   &.completed
-    //   {
-    //       border-color:govuk-colour("green");
-    //       li:before{
-    //        background:govuk-colour("green");
-    //       } 
-    //    }
     }
 
 

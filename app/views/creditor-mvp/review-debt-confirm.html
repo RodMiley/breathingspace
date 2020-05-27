@@ -15,9 +15,26 @@
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
  Confirm review details
       </h1>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
+   <hr class="govuk-section-break govuk-section-break--visible">
+   <dl class="govuk-summary-list">
 
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Loan
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£3580</strong><br> Reference: <strong> MN1234HJJKLL</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+            </div>
+             </dl>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are requesting that   {% include path+"creditor-mvp/_advise-org-name.html" %}  review debt eligibility</h2>
+
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
 <p class="govuk-body">{{ debtReview }}</p>
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
@@ -25,7 +42,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Confirm and submit to Breathing space
+  Confirm and submit to Breathing Space
 </button>
     </div>
     </form>

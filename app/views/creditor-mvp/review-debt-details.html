@@ -15,16 +15,15 @@
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
  Debt eligibility review details
       </h1>
-
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
 <hr class="govuk-section-break govuk-section-break--visible">
 <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Overpaid housing benefit
+             Loan
             </dt>
             <dd class="govuk-summary-list__value">
-              <p>Amount: <strong>£678</strong><br> Reference: <strong>MN1234HJJKLL</strong></p>
+              <p>Amount: <strong>£3580</strong><br> Reference: <strong> MN1234HJJKLL</strong></p>
                <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}
              <!--  <br>
                Date removed: {{ 'Do MMMM YYYY' | baseDateAdd(0) }} -->
@@ -38,25 +37,24 @@
   </dl>     
 
     <ul class="govuk-list timeline">
-             <!--   <li class='first'>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have removed the debt</h2>
+             <li class='first'>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have not removed the debt from Breathing Space</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-                    <p class="govuk-body">{{ debtReview }}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
-                    <p class="govuk-body">{{ moreDetail }}</p>
-                  
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
-                </li> -->
+                    <p class="govuk-body">
+                    The client is a sold trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
+                    </p>           
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+                </li> 
 
 
                 <li>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review debt eligibility</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We requested Advice uk to review debt eligibility</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
                     <p class="govuk-body">{{ debtReview }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
                     <p class="govuk-body">{{ moreDetail }}</p>
                   
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
                 </li>
               </ul>   
 
