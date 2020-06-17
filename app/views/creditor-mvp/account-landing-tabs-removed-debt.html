@@ -26,16 +26,20 @@
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#ma-requests">
        Actions and requests
       </a>
     </li>
-    {% endif %}
+ 
     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#problem-debt">
        Debts
+      </a>
+    </li>
+      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed Debts
       </a>
     </li>
     <!-- <li class="govuk-tabs__list-item">
@@ -50,22 +54,53 @@
     </li>
     </ul>
 
-  {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
+
      <section class="govuk-tabs__panel" id="ma-requests">
            <h2 class="govuk-heading-l">
          Actions and requests </h2>
-         <p>{% include path+"creditor-mvp/_recieved_pending.html" %}</p>
+     
+           <p><strong class="govuk-tag govuk-tag--green">1 Response Recieved</strong></p>
         <p class="">We have requested {% include path+"creditor-mvp/_advise-org-name.html" %} to action the following things: </p>
-      {% include path+"creditor-mvp/_requests_content.html" %} 
+              <ul class="govuk-list">
+              
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Recieved actions and requests</h3>
+   
+              
+                <li>
+                  <a class="govuk-link" href="review-debt-details">We have requested an eligibility review of a debt</a>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"creditor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 ">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>
+                </li>
+              </ul>
   </section>
-  {% endif %}
+ 
   <section class="govuk-tabs__panel" id="problem-debt">
        {% include path+"creditor-mvp/_debts_content.html" %} 
   </section>
-  <!--<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
-    <h2 class="govuk-heading-l">Personal details</h2>
-          {% include path+"creditor-mvp/_personaldetails.html" %} 
-  </section> -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="removed-debt">
+    <h2 class="govuk-heading-l">Removed debts</h2>
+           
+           <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+             Loan
+             <p><a href="review-debt-details">Reviewed</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£3580</strong><br> Reference: <strong> MN1234HJJKLL</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}<br>
+           
+               Date removed: {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
+               </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+            </div>
+
+     </dl> 
+
+           </dl>
+  </section>
     <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ma-details">
     <h2 class="govuk-heading-l">Money advice organisation details</h2>
           {% include path+"creditor-mvp/_adviser_content.html" %} 

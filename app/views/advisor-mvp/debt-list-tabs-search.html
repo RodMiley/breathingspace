@@ -18,18 +18,6 @@
   Personal details saved and updated
 </div>
  {% endif %}
-    {% if checked('debt-eligibility','yes') or checked('debt-eligibility','no') %}{% else %}
-  <div class="govuk-details__text govuk-!-margin-bottom-5">
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Creditor reviews and requests</h2>
-<p><strong class="govuk-tag govuk-tag--red">1 to do
-</strong></p>
-<ul  class="govuk-list">
-<li><a href="eligibility-review">Eligibility review requested by {% include path+"advisor-mvp/_review_creditor.html" %}</a> {% if checked('debt-eligibility','yes') or  checked('debt-eligibility','no') %}- Reviewed: <strong> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</strong>{% endif %}</li>
-</ul>
-</div>
-
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
- {% endif %}
    {% if data['bsEndReason'] %}  
   {% else %} 
  <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
@@ -56,7 +44,7 @@
       <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
 
       <a class="govuk-tabs__tab" href="#actions">
-      Actions and requests
+      To do
       </a>
     </li>
     <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -79,7 +67,7 @@
 
   </ul>
     <section class="govuk-tabs__panel" id="actions">
-     <h2 class="govuk-heading-l">Actions and requests</h2>
+     <h2 class="govuk-heading-l">To do</h2>
       {% include path+"advisor-mvp/_requests_content.html" %} 
     </section>
   <section class="govuk-tabs__panel" id="problem-debt">

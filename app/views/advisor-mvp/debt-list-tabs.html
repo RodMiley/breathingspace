@@ -15,8 +15,38 @@
   {% endif %}
     <div class="govuk-grid-column-full">
   {% include path+"advisor-mvp/_keydetails.html" %} 
+{% if data['deletedebt-1'] %}
+   <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <p class="govuk-body">You have deleted the debt</p>
+</div>
+{% endif %}
+
+{% if data['firstname'] %}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  Account created
+</div>
+{% endif %}
 
 
+{% if data['debt4'] or checked('MAScenaioChoice','return to inactive account')%}
+ <a href="time-machine-debts" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+
+{% elif data['debt3'] or checked('MAScenaioChoice','return to inactive account')%}
+ <a href="debt4" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+       
+{% elif data['debt']%}
+ <a href="debt3" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt 
+</a>
+{% else %}
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>
+{% endif %}
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents
@@ -161,25 +191,7 @@
    {% else %}
   {% endif %}
  </dl>
-{% if data['debt4'] or checked('MAScenaioChoice','return to inactive account')%}
- <a href="time-machine-debts" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a debt 
-</a>
 
-{% elif data['debt3'] or checked('MAScenaioChoice','return to inactive account')%}
- <a href="debt4" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a debt 
-</a>
-       
-{% elif data['debt']%}
- <a href="debt3" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a debt 
-</a>
-{% else %}
- <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Add a debt
-</a>
-{% endif %}
   </section>
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
     <h2 class="govuk-heading-l">Personal details</h2>
@@ -193,7 +205,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  {% if data['debt']%}
+  {% if data['debt'] or checked('MAScenaioChoice','return to inactive account')%}
   Save and continue 
 {% else %}
   Save and close record

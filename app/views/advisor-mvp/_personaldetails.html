@@ -6,7 +6,7 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-            {{ fullname | default("Joe Black") }} 
+            {{ firstname | default("Joe") }}  {{ middlename | default("John") }} {{ lastname | default("Black") }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="not-testing">

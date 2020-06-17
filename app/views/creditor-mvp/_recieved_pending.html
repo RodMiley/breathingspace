@@ -1,9 +1,9 @@
    {% if data['debtReview']%}   
-   <strong class="govuk-tag govuk-tag--green">1 Responce Recieved</strong>
+   <strong class="govuk-tag govuk-tag--green">1 Response Recieved</strong>
    {% endif %}
      
       {% if data['creditorSold'] and data['clientReview'] and data['adddebt']%}
-   <strong class="govuk-tag govuk-tag--blue">3 Responces Pending</strong>
+   <strong class="govuk-tag govuk-tag--blue">3 Responses Pending</strong>
      
      {% elif data['creditorSold'] and data['clientReview'] 
      or  data['creditorSold'] and data['adddebt']

@@ -59,7 +59,8 @@
     overflow-x: hidden;
     padding: 0;
     width: 100%;
-    width: calc(100% - 4px)
+    width: calc(100% - 4px);
+    font-family: "GDS Transport", Arial, sans-serif;
 }
 
 .autocomplete__menu--visible {

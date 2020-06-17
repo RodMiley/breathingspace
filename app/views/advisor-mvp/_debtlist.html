@@ -120,7 +120,7 @@
             <dt class="govuk-summary-list__key">
              Credit card
              <p>
-        {% if checked('debt-eligibility','no') %}<a href="eligibility-review">Reviewed {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</a>{% else %}<a href="eligibility-review"> Review requested</a>{% endif %}</a></p>
+        {% if checked('debt-eligibility','no') %}<a href="eligibility-review">Reviewed </a>{% else %}<a href="eligibility-review"> Review requested</a>{% endif %}</a></p>
             </dt>
             <dd class="govuk-summary-list__value">
               <p>Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount:£2500<br> Reference: RBC23455003</p>

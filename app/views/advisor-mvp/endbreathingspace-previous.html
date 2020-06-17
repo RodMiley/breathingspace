@@ -18,7 +18,7 @@
 
                        <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-fullborder--blue">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Breathing Space ran for 30 days</h2>
-<p>It ended early because the client disengaged with money advice</p>
+<p>It ended early because the client was not taking money advice.</p>
 <h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
 <p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
 Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong></p>
@@ -50,7 +50,7 @@ Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong></p>
             </dt>
             <dd class="govuk-summary-list__value">
               <p>Creditor: <strong>{{creditor}}</strong><br>Amount:  <strong> {{amount}}</strong><br> Reference: <strong>{{reference}}</strong></p>
-              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-30) }}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
