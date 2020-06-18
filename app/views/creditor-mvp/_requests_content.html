@@ -1,7 +1,7 @@
    {% if data['debtReview']%} 
         <ul class="govuk-list">
               
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Recieved actions and requests</h3>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Completed Money Adviser actions</h3>
                 {% if data['debtReview']%}
                 <li>
                   <a class="govuk-link" href="review-debt-details">We have requested a debt eligibility review</a>
@@ -13,7 +13,7 @@
       {% endif %}
 
    {% if data['creditorSold'] or  data['clientReview'] or data['adddebt'] %}            
- <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Pending actions and requests</h3>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Pending actions</h3>
            <ul class="govuk-list">
 
                 {% if data['clientReview']%}
