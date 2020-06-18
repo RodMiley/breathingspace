@@ -20,12 +20,16 @@
   <p class="govuk-body">You have deleted the debt</p>
 </div>
 {% endif %}
-
-{% if data['firstname'] %}
+{% if data['debt']%}
+{% else %}
 <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   Account created
 </div>
 {% endif %}
+
+
+
+
 
 
 {% if data['debt4'] or checked('MAScenaioChoice','return to inactive account')%}

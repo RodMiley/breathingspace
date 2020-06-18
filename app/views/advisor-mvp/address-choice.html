@@ -18,7 +18,7 @@
       </h1>
 
       <h2 class="govuk-heading-m">Postcode</h2>
-      <p class="govuk-body">{{ postcode }} <a href="address">Change</a></p>
+      <p class="govuk-body">{{ postcode | default("NW1 1JU") }} <a href="address">Change</a></p>
 
 <div class="govuk-form-group">
   <label class="govuk-label" for="sort">
@@ -36,6 +36,7 @@
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
+<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
     </div>
     </form>
 </div>
