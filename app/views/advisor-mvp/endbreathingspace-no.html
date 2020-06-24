@@ -8,11 +8,11 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="confirmation-end" method="post">
+  <form class="form" action="confirmation-client-review-no" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
-       Confirm you are ending your client's Breathing Space
+       Confirm you not are ending your client's Breathing Space 
       </h1>
 
  
@@ -21,11 +21,9 @@
   <ul class="govuk-list timeline govuk-!-margin-bottom-6">
 
    <li>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform Barclays Bank Plc that the client's Breathing Space has ended</h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-                    <p class="govuk-body">The Client is not eligible for Breathing Space</p>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform Barclays Bank Plc that the client's Breathing Space has not ended</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
+                                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
                 </li>
         
@@ -41,21 +39,10 @@
                 </li>
               </ul>  
 
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-    By ending Breathing Space, all creditor protections will be removed.
-  </strong>
-</div>
-
-
-
 
 
 <button class="govuk-button" data-module="govuk-button">
- Confirm and end Breathing Space
+ Confirm and continue
 </button>
 
 </div>

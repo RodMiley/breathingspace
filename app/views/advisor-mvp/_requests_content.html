@@ -1,41 +1,60 @@
 
 
- {% if checked('debt-eligibility','yes') or  checked('debt-eligibility','no') %}
+ {% if data['debt-eligibility'] and  data['client-eligibility'] %}
+ {% else %}
 
-<p><strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-0 govuk-!-margin-top-0">1 Pending 
-</strong></p>
-
-
- <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Pending</h2>
-<ul  class="govuk-list">
-<li class="govuk-!-margin-bottom-4"><a href="eligibility-review-client"> Barclays Bank Plc have requested a client eligibility review</a>
- <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested: Kiran Callaghan, Barclays Bank Plc, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 10.32am</p>
-</li>
-</ul>
-
- <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Completed</h2>
-<ul  class="govuk-list">
-<li><a href="eligibility-review"> {% include path+"advisor-mvp/_review_creditor.html" %} have requested a debt eligibility review</a>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
-                    <p class="govuk-body-s govuk-!-margin-top-1 ">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
-</li>
-</ul>
+<p><strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-0 govuk-!-margin-top-0">
+{% if data['debt-eligibility'] or  data['client-eligibility'] %}
+1 Pending 
 {% else %}
-
-<p><strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-0 govuk-!-margin-top-0">2 Pending 
+2 Pending
+{% endif %}
 </strong></p>
+{% endif %}
 
 
+
+
+{% if data['debt-eligibility'] and  data['client-eligibility'] %}
+{% else %}
  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Pending</h2>
-<ul  class="govuk-list">
-<li class="govuk-!-margin-bottom-4"><a href="eligibility-review-client"> Barclays Bank Plc have requested a client eligibility review</a>
- <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested: Kiran Callaghan, Barclays Bank Plc, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 10.32am</p>
-</li>
-
+<ul  class="govuk-list action-list">
+ {% if data['debt-eligibility'] %}
+ {% else %}
 <li><a href="eligibility-review"> {% include path+"advisor-mvp/_review_creditor.html" %} have requested an eligibility review of a debt</a>
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
 </li>
+
+{% endif %}
+
+ {% if data['client-eligibility'] %}
+ {% else %}
+<li class="govuk-!-margin-bottom-4"><a href="eligibility-review-client"> Barclays Bank Plc have requested a client eligibility review</a>
+ <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested: Kiran Callaghan, Barclays Bank Plc, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 10.32am</p>
+</li>
+{% endif %}
+
 </ul>
 {% endif %}
  
+
+
+{% if data['debt-eligibility'] or  data['client-eligibility'] %}
+ <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Completed</h2>
+<ul  class="govuk-list">
+ {% if data['debt-eligibility'] %}
+<li><a href="eligibility-review"> {% include path+"advisor-mvp/_review_creditor.html" %} have requested an eligibility review of a debt</a>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 ">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+</li>
+{% endif %}
+ {% if data['client-eligibility'] %}
+<li class="govuk-!-margin-bottom-4"><a href="eligibility-review-client"> Barclays Bank Plc have requested a client eligibility review</a>
+ <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-0">Requested: Kiran Callaghan, Barclays Bank Plc, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 10.32am</p>
+      <p class="govuk-body-s govuk-!-margin-top-1 ">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.47am</p>
+</li>
+{% endif %}
+
+</ul>
+{% endif %}
  

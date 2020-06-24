@@ -83,14 +83,23 @@
          {% endif %}
 
  {% if data['changedebt'] %}  
+ <style>
+ .test{
+   border-left:3px solid gray;
+   margin:5px 0;
+   padding:7px;
+   display:inline-block;
+   background:#efefef;
+ }
+ </style>
        
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              {{ debttype }} <br>
-          <!--<p><a href="">Creditor change</a></p> -->
+          <p><a href="">Creditor change</a></p>
             </dt>
             <dd class="govuk-summary-list__value">
-              <p>Creditor:{{ changedebtcreditor }}<br>Amount:£5400<br> Reference:8945 4321 5678</p>
+              <p>Creditor:{{ changedebtcreditor }}<br> <span  class="test"> Previously Barclays Bank Plc</span> <br>Amount:£5400<br> Reference:8945 4321 5678</p>
                
                 <p class="govuk-body-s" >Date added:{% if checked('time-machine-mid-review','yes')%} {{ 'Do MMMM YYYY' | baseDateAdd(0) }}{% else %}<strong class="govuk-tag govuk-tag--blue">Pending</strong>{% endif %}</p>
             </dd>

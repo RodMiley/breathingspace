@@ -18,18 +18,29 @@
 
                        <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-fullborder--blue">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Breathing Space ran for 30 days</h2>
+{% if checked('client-eligibility', 'yes')%}
+<p>It ended early because the client was not eligible</p>
+{% else %}
 <p>It ended early because the client was not taking money advice.</p>
+{% endif %}
 <h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
 <p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
 Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong></p>
 </div>  
+
 
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#actions">
+      Actions
+      </a>
+    </li>
+    <li  class="govuk-tabs__list-item">
 
       <a class="govuk-tabs__tab" href="#problem-debt">
        Debts
@@ -42,6 +53,10 @@ Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong></p>
     </li>
 
   </ul>
+     <section class="govuk-tabs__panel" id="actions">
+     <h2 class="govuk-heading-l">Actions to do</h2>
+      {% include path+"advisor-mvp/_requests_content.html" %} 
+    </section>
   <section class="govuk-tabs__panel" id="problem-debt">
    {% macro debtrow(type, creditor, amount, reference, changelink, removelink ) %}
         <div class="govuk-summary-list__row">

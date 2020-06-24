@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="endbreathingspace-confirm" method="post">
+  <form class="form" action="endbreathingspace-no" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -35,27 +35,29 @@
 
 
   <ul class="govuk-list timeline govuk-!-margin-bottom-6">
-{% if checked('debt-eligibility','yes') %}
+{% if checked('client-eligibility','yes') %}
 
     <li>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt has been removed from Breathing Space</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the clients Breathing Space has ended</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">The Client is not eligible for Breathing Space</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{ eligibilityNo | default("We agree that this debt is a business debt and it isn't eligible for Breathing Space") }}</p>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
                 </li>
 
-{% elif checked('debt-eligibility','no') %}
+{% elif checked('client-eligibility','no') %}
 
              <li>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt hasn't been removed from Breathing Space</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the client hasn't been removed from Breathing Space</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
                 </li>
 
 {% endif %}
 
-                <li>
+            
                        <li>
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Barclays Bank Plc have requested a client eligibility review 
                 </h2>
@@ -66,14 +68,14 @@
                   
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested: Kiran Callaghan, Barclays Bank Plc,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
                 </li>
-                </li>
+               
               </ul>      
 
 
- {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') or checked('MAScenaioChoice','breathing space ended') %} 
+ {% if data['bsEndReason'] or checked('client-eligibility','yes') or checked('client-eligibility','no') or checked('MAScenaioChoice','breathing space ended') %} 
              {% else %}
 <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
+  <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h2 class="govuk-fieldset__heading">
           Do you want to end your client's Breathing Space?
@@ -81,14 +83,14 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debt-eligibility-conditional" name="debt-eligibility" type="radio" value="yes~endbreathingspace-confirm">
-        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
           Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debt-eligibility-conditional-2" name="debt-eligibility" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional-2">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
           No
         </label>
       </div>
@@ -97,10 +99,10 @@
   </fieldset>
 </div>
 <div class="govuk-form-group">
-  <label class="govuk-label" for="eligibilityNo">
-    Can you provide more detail for the creditor?
+  <label class="govuk-label" for="clientEligibilityDetail">
+    Can you provide more detail?
   </label>
-  <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
+  <textarea class="govuk-textarea" id="clientEligibilityDetail" name="clientEligibilityDetail" rows="4" aria-describedby="clientEligibilityDetail-hint"></textarea>
   </div>
 
 
