@@ -53,7 +53,7 @@
   {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
      <section class="govuk-tabs__panel" id="ma-requests">
            <h2 class="govuk-heading-l">
-         Actions and requests </h2>
+         Actions</h2>
          <p>{% include path+"creditor-mvp/_recieved_pending.html" %}</p>
         <p class="">We have requested {% include path+"creditor-mvp/_advise-org-name.html" %} to action the following things: </p>
       {% include path+"creditor-mvp/_requests_content.html" %} 
@@ -67,7 +67,7 @@
           {% include path+"creditor-mvp/_personaldetails.html" %} 
   </section> -->
     <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ma-details">
-    <h2 class="govuk-heading-l">Money advice organisation details</h2>
+    <h2 class="govuk-heading-m">Money advice organisation details</h2>
           {% include path+"creditor-mvp/_adviser_content.html" %} 
   </section>
 
