@@ -1,0 +1,84 @@
+
+ 
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ firstname | default("Joe") }}  {{ middlename | default("John") }} {{ lastname | default("Black") }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+         
+                   {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="detailschange#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+           {% include "./_address-previous.html" %} 
+
+            <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+             Add another previous address
+            </dt>
+            <dd class="govuk-summary-list__value">
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-history">
+                Add previous address
+              </a>
+            </dd>
+          </div>
+
+              <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+              Does your client have a person at risk of violence (PARV) order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% if checked('parv','no')%}
+              <p>No</p>
+    
+             {% else%}
+              <p>Yes</p>
+             <p>We will not include your client's address on any Breathing Space notfications to creditors  </p>
+             {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="parv">
+                Change<span class="govuk-visually-hidden">client's parv status</span>
+              </a>
+            </dd>
+          </div>
+
+        </dl>

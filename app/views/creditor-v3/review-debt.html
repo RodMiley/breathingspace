@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="review-debt-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="review-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+       Why is the debt not eligible?
+      </h1>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview" name="debtReview" type="radio" value="It is a fraudulent debt" {{ checked('debtReview', 'It is a fraudulent debt')}}>
+        <label class="govuk-label govuk-radios__label" for="debtReview">
+          It’s a fraudulent debt
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview-2" name="debtReview" type="radio" value="The debt does not qualify for Breathing Space" {{ checked('debtReview', 'The debt does not qualify for Breathing Space')}}>
+        <label class="govuk-label govuk-radios__label" for="debtReview-2">
+        The debt does not qualify for Breathing Space
+        </label>
+         <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+         For example, it’s a business debt or a court fine
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetail">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="moreDetail" name="moreDetail" rows="4" aria-describedby="moreDetail-hint" >{{moreDetail}}</textarea>
+</div>
+    
+              <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="no" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -57,8 +57,58 @@ router.get('/clearSession', function (req, res, next) {
   
   }) 
 
+
+  var creditordebts = require('./data/creditordebtlist.js')
+
+
+router.get('/creditor-v3/homepage', function (req, res, next) {
+res.locals.debts = creditordebts
+next()
+ })
+
+
+ router.get('/creditor-v3/account-landing-tabs', function (req, res, next) {
+  let findCustomer = {}
+
+  for (let i = 0; i < creditordebts.length; i++ ) {
+  if(creditordebts[i].reference === req.query.reference){
+    findCustomer = creditordebts[i];
+   }
+  }
+ 
+  res.locals.debt = findCustomer
+  next()
+   })
+
+   router.get('/creditor-v3/protections-confirm', function (req, res, next) {
+    let findCustomer = {}
+  
+    for (let i = 0; i < creditordebts.length; i++ ) {
+    if(creditordebts[i].reference === req.query.reference){
+      findCustomer = creditordebts[i];
+     }
+    }
+   
+    res.locals.debt = findCustomer
+    next()
+     })
+  
+
+
+router.post('/creditor-v3/account-landing-tabs', function (req, res, next) {
+
+console.log('parma', req.body);
+
+const path = 'account-landing-tabs?reference=' + req.body.reference
+    
+ res.redirect(301, `account-landing-tabs?reference=${req.body.reference}`)
+ });
+
+
+
 const radioButtonRedirect = require('radio-button-redirect')
 router.use(radioButtonRedirect)
+
 
 
 

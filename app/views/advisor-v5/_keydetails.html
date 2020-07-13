@@ -1,0 +1,25 @@
+  <div class="govuk-grid-row keydetails">
+      <div class="govuk-grid-column-one-half">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+     
+           <span class="govuk-caption-l">
+
+                     <strong class="govuk-tag govuk-tag--grey">
+  Inactive
+</strong>  
+
+    
+    
+    Breathing Space account for</span>
+     {% if data['fullname']%} {{fullname}} {% else %} Joe Black {% endif %}
+      </h1>
+      </div>
+            <div class="govuk-grid-column-one-half">
+          {% if data['test'] %}  
+          <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>Breathing Space ends: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(50) }} </strong></p>
+          {% endif %}
+      </div>
+          <div class="govuk-grid-column-full">
+     <hr class="govuk-section-break govuk-section-break--visible black">
+     </div>
+     </div>

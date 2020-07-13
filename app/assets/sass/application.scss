@@ -20,6 +20,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/subnavigation";
 
 
 // Components that aren't in Frontend
@@ -358,7 +359,3 @@ $govuk-assets-path: '/govuk/assets/';
 
     }
 
-
-.action-list li{ 
-    margin-bottom:10px;
-}

@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="parv" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+         <span class="govuk-caption-xl">Create a Breathing Space account : Step 5 of 5</span>
+       Add client business details
+      </h1>
+{% if data['test'] %}
+       <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+              {% else %}  
+              <span class="govuk-!-display-block">{{addressline1 | default("4 Bourough road") }}</span>
+              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
+              <span class="govuk-!-display-block">{{addresspostcode | default("NW10 2JU")}} </span>   
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+
+        </dl>
+        {% endif %}
+
+      <h2 class="govuk-heading-m">Add details of your client's business or businesses</h2>
+<p>If your client has thier own business and it's not a ltd company or the businesses turnover is above the thereshold for VAT, some of there business bebts may be eligible for Breathing space.</p>
+
+ <p><a href="address-previous" class="govuk-button govuk-button--secondary">Add business details</a></p>
+
+<p>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</p>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}
