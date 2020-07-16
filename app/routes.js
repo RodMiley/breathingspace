@@ -58,6 +58,19 @@ router.get('/clearSession', function (req, res, next) {
   }) 
 
 
+
+  var searchClient = require('./data/search.json')
+  router.get('/advisor-v5/search-results-page', function (req, res, next) {
+  res.locals.clients = searchClient
+  next()
+   })
+
+   router.get('/advisor-v5/search-results-pagev2', function (req, res, next) {
+    res.locals.clients = searchClient
+    next()
+     })
+
+
   var creditordebts = require('./data/creditordebtlist.js')
 
 
@@ -103,6 +116,7 @@ const path = 'account-landing-tabs?reference=' + req.body.reference
     
  res.redirect(301, `account-landing-tabs?reference=${req.body.reference}`)
  });
+
 
 
 
