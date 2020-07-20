@@ -1,5 +1,7 @@
-
- 
+       <h2 class="govuk-heading-l">
+     Client details
+      </h2>
+ <h3 class="govuk-heading-m">Personal details</h3>
  <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -28,6 +30,30 @@
               </a>
             </dd>
           </div>
+      </dl> 
+
+       <h2 class="govuk-heading-m">Addresses</h2>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-2">  
+                     <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+             Have you agreed with your client to withhold their current address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% if checked('parv','no')%}
+              <p>No</p>
+    
+             {% elif  checked('parv','yes') %}
+              <p>Yes</p>
+             <p>We havent collected your client's address so it wont be shared with their creditors</p>
+             {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="parv">
+                Change<span class="govuk-visually-hidden">client's address status</span>
+              </a>
+            </dd>
+          </div> 
+         {%if checked('parv','no') %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Address
@@ -46,39 +72,13 @@
               </a>
             </dd>
           </div>
+          {% endif %}
            {% include "./_address-previous.html" %} 
-
-            <div class="govuk-summary-list__row last">
-            <dt class="govuk-summary-list__key">
-             Add another previous address
-            </dt>
-            <dd class="govuk-summary-list__value">
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="address-history">
-                Add previous address
-              </a>
-            </dd>
-          </div>
-
-              <div class="govuk-summary-list__row last">
-            <dt class="govuk-summary-list__key">
-              Does your client have a person at risk of violence (PARV) order?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {% if checked('parv','no')%}
-              <p>No</p>
-    
-             {% else%}
-              <p>Yes</p>
-             <p>We will not include your client's address on any Breathing Space notfications to creditors  </p>
-             {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="parv">
-                Change<span class="govuk-visually-hidden">client's parv status</span>
-              </a>
-            </dd>
-          </div>
-
         </dl>
+        <p><a class="govuk-link" href="address-history">Add previous address</a></p>
+
+<h2 class="govuk-heading-m">Client business details</h2>
+      
+        {% include "./_business-details.html" %} 
+
+  <p><a class="govuk-link" href="add-business-history">Add client business</a></p>       

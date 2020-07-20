@@ -8,48 +8,73 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="parv" method="post">
-    <div class="govuk-grid-column-full">
-     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+  <form class="form" action="add-business-history" method="post">
+    <div class="govuk-grid-column-two-thirds">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-         <span class="govuk-caption-xl">Create a Breathing Space account : Step 5 of 5</span>
-       Add client business details
+        <span class="govuk-caption-xl">Add client details: Step 3 of 3</span>
+       Add a business
       </h1>
-{% if data['test'] %}
-       <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Address
-            </dt>
-            <dd class="govuk-summary-list__value">
-             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+
+  <div class="govuk-form-group">
+      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="businessName">Enter the client's business name
+</label>
+    <input class="govuk-input" id="businessName" name="businessName" type="text" value="{{ businessName }}">
+  </div>
+
+
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Where is your clients business address registered?
+      </label>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress" name="businessAddress" type="radio" value="currentAddress">
+        <label class="govuk-label govuk-radios__label" for="businessAddress">
+            	{% if data['sort']=='two'%} 2  Borough Road Elephant and Castle London {{postcode | default('NW10 8LL')}}{% elif data['sort']=='three' %} 3 Borough Road, Elephant and Castle, London, {{postcode | default('NW10 8LL')}} {% elif data['sort']=='four' %} 4 Borough Road ,Elephant and Castle ,London, {{postcode | default('NW10 8LL')}} 
               {% else %}  
-              <span class="govuk-!-display-block">{{addressline1 | default("4 Bourough road") }}</span>
-              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
-              <span class="govuk-!-display-block">{{addresspostcode | default("NW10 2JU")}} </span>   
+              {{addressline1 | default("4 Bourough road") }},
+              {{addresstown | default("London")}},
+              {{addresspostcode | default("NW10 2JU")}}
               {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="not-testing">
-                Change<span class="govuk-visually-hidden"> Address</span>
-              </a>
-            </dd>
-          </div>
+        </label>
+      </div>
+     {% if checked('prevAddress', 'pclookup') or checked('prevAddress', 'manual') %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress-2" name="businessAddress" type="radio" value="previousAddress">
+        <label class="govuk-label govuk-radios__label" for="businessAddress-2">
+             {% if checked('prevAddress', 'manual')%}
+             <span class="">{{prevaddressline1}}, </span>
+             <span class="">{{prevaddressline2}}, </span>
+              <span class="">{{prevaddresstown}}, </span>
+              <span class="">{{prevaddresscounty}}, </span>
+              <span class="">{{prevaddresspostcode}}, </span>  
+                {% elif checked('prevAddress', 'pclookup')%} 
+                {% if data['sortPrev']=='two'%} 2  Treasant close, Elephant and Castle, London, {{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close, Elephant and Castle, London, {{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close, Elephant and Castle, London, {{postcodePrevious}} {% endif %}
+                {% endif %}
+        </label>
+      </div>
+      {% endif %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress-3" name="businessAddress" type="radio" value="otherBusinessAddress~add-business-address">
+        <label class="govuk-label govuk-radios__label" for="businessAddress-3">
+          Another address
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
-        </dl>
-        {% endif %}
 
-      <h2 class="govuk-heading-m">Add details of your client's business or businesses</h2>
-<p>If your client has thier own business and it's not a ltd company or the businesses turnover is above the thereshold for VAT, some of there business bebts may be eligible for Breathing space.</p>
 
- <p><a href="address-previous" class="govuk-button govuk-button--secondary">Add business details</a></p>
 
-<p>
+
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
-</p>
-
     </div>
     </form>
 </div>

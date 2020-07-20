@@ -8,19 +8,19 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="parv" method="post">
+  <form class="form" action="confirm-details" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
-         <span class="govuk-caption-xl">Create a Breathing Space account : Step 5 of 5</span>
-       Add client business details
+     <span class="govuk-caption-xl">Add client details: Step 3 of 3</span>
+       Businesses
       </h1>
-
+        {% include "./_business-details.html" %} 
 
       <h2 class="govuk-heading-m">Add details of your client's business or businesses</h2>
-<p>If your client has thier own business and it's not a ltd company or the businesses turnover is above the thereshold for VAT, some of there business bebts may be eligible for Breathing space.</p>
+<p>If your client has thier own business and it's has debts that should be covered in Breathing Space, please add the business details</p>
 
- <p><a href="address-previous" class="govuk-button govuk-button--secondary">Add business details</a></p>
+ <p><a href="add-business" class="govuk-button govuk-button--secondary">Add business details</a></p>
 
 <p>
 <button class="govuk-button" data-module="govuk-button">
