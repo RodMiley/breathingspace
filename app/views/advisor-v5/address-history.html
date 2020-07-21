@@ -8,7 +8,13 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="add-business-guard" method="post">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+    <form class="form" action="add-business-guard" method="post">
+{% endif%}
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -44,7 +50,7 @@
         </dl>
 
       <h2 class="govuk-heading-m">Add clients previous addresses in the last 3 years</h2>
-<p>If you can provide previous addresses it will help your clients creditors match there debts and apply the Breathing Space protections.</p>
+<p>If you can provide previous addresses it will help your clients creditors match their debts and apply the Breathing Space protections.</p>
 
  <p><a href="address-previous" class="govuk-button govuk-button--secondary">Add previous address</a></p>
 

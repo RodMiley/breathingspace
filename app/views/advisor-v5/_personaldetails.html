@@ -11,7 +11,7 @@
             {{ firstname | default("Joe") }}  {{ middlename | default("John") }} {{ lastname | default("Black") }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="not-testing">
+              <a class="govuk-link" href="details#firstname">
                 Change<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
@@ -25,7 +25,7 @@
                    {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="detailschange#dobday">
+              <a class="govuk-link" href="details#dobday">
                 Change<span class="govuk-visually-hidden"> date of birth</span>
               </a>
             </dd>
@@ -44,7 +44,7 @@
     
              {% elif  checked('parv','yes') %}
               <p>Yes</p>
-             <p>We havent collected your client's address so it wont be shared with their creditors</p>
+             <p>We haven't collected your client's address</p>
              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -77,8 +77,7 @@
         </dl>
         <p><a class="govuk-link" href="address-history">Add previous address</a></p>
 
-<h2 class="govuk-heading-m">Client business details</h2>
+<h2 class="govuk-heading-m">Business</h2>
       
         {% include "./_business-details.html" %} 
 
-  <p><a class="govuk-link" href="add-business-history">Add client business</a></p>       

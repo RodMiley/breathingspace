@@ -1,27 +1,3 @@
- 
-
- <dl class="govuk-summary-list govuk-!-margin-bottom-2">
-  {% if checked('add-business', 'yes')%}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-           Does your client have a business with debts that are eligible for Breathing Space?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             Yes
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-!-font-size-19" href="add-business-guard">
-                Change<span class="govuk-visually-hidden"> clients business status</span></a>
-            </dd>
-          </div>
-
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            {{ businessName }}
-            </dt>
-            <dd class="govuk-summary-list__value">
               {% if checked('businessAddress','currentAddress')%}
              	{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode | default("NW10 8LL")}} 
               {% else %}  
@@ -52,34 +28,3 @@
               <span class="govuk-!-display-block">{{businessaddresspostcode | default("NW10 2JU")}} </span>   
               {% endif %}
             {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-                 <ul class="govuk-list">
-              <li> <a class="govuk-link govuk-!-font-size-19" href="add-business">
-                Change<span class="govuk-visually-hidden"> Business name and address</span>
-              </a></li>
-              <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
-                Delete<span class="govuk-visually-hidden">Business name and Address</span>
-              </a></li>
-              </ul>
-            
-            </dd>
-          </div>
-        </dl>
-          <p><a class="govuk-link" href="add-business-history">Add client business</a></p>       
-       {% else %}
-             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-           Does your client have a business with debts that are eligible for Breathing Space?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             No
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-!-font-size-19" href="add-business-guard">
-                Change<span class="govuk-visually-hidden"> clients business status</span>
-            </dd>
-          </div>
-
-        </dl>
-        {% endif %}

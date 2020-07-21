@@ -6,6 +6,13 @@
 {% endblock %}
 
 {% block content %}
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+  <form class="form" action="parv" method="post">
+{% endif%}
 
   <div class="govuk-grid-row">
   <form class="form" action="parv" method="post">
@@ -75,14 +82,6 @@
   </fieldset>
 </div>
 
-     <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="createaccount" type="radio" value="yes" checked>
-        <label class="govuk-label govuk-radios__label" for="createaccount">
-         hidden radio
-        </label>
-      </div>
-      </div>
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
