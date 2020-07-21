@@ -8,36 +8,57 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-{% if checked('clientDetails','complete')%}
-  <form class="form" action="confirm-details" method="post">
-{% elif checked('clientDetails','confirmed')%}
- <form class="form" action="debt-list-tabs#personal-details" method="post">
-{%else %}
- <form class="form" action="address-history" method="post">
-{% endif%}
- 
- 
+  <form class="form" action="address-history" method="post">
     <div class="govuk-grid-column-two-thirds">
-           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
       <span class="govuk-caption-xl">Add client details: Step 2 of 3</span>
-       What is your client's previous address?
+       Add client's previous address
       </h1>
+ <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+    <h2 class="govuk-label govuk-!-font-weight-bold">
+     Client previous address
+    </h2>
+  </legend>
 
-      <h2 class="govuk-heading-s">Postcode</h2>
-      <p class="govuk-body">{{ postcodePrevious | default("NW1 1JU") }} <a href="address-previous">Change</a></p>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="prevaddressline1">
+      Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+    </label>
+    <input class="govuk-input" id="prevaddressline1" name="prevaddressline1" type="text" autocomplete="prevaddress-line1" value="{{prevaddressline1}}">
+  </div>
 
-<div class="govuk-form-group">
-  <label class="govuk-label govuk-label--s" for="sortPrev">
-    Choose address
-  </label>
-  <select class="govuk-select" id="sortPrev" name="sortPrev">
-    <option value="published">3 addresses found</option>
-    <option value="two">2 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
-    <option value="three">3 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
-    <option value="four">4 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
-  </select>
-</div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="prevaddressline2">
+      <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+    </label>
+    <input class="govuk-input" id="prevaddressline2" name="prevaddressline2" type="text" autocomplete="prevaddress-line2" value="{{prevaddressline2}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="prevaddresstown">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="prevaddresstown" name="prevaddresstown" type="text" autocomplete="prevaddress-level2" value="{{prevaddresstown}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="prevaddresscounty">
+      County
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="prevaddresscounty" name="prevaddresscounty" type="text" value="{{prevaddresscounty}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="prevaddresspostcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="prevaddresspostcode" name="prevaddresspostcode" type="text" autocomplete="postal-code" value="{{prevaddresspostcode}}">
+  </div>
+
+</fieldset>
+
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="prevmovedInhint">
@@ -101,9 +122,11 @@
   </fieldset>
 </div>
 
-   <div class="govuk-radios" style="display:none">
+
+
+     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="prevAddress" name="prevAddress" type="radio" value="pclookup" checked>
+        <input class="govuk-radios__input" id="" name="prevAddress" type="radio" value="manual" checked>
         <label class="govuk-label govuk-radios__label" for="prevAddress">
          hidden radio
         </label>
@@ -111,10 +134,11 @@
       </div>
 
 
+
+
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+   Save and continue
 </button>
-<p class="govuk-body"><a href="address-previous-manual">Enter address manually</a></p>
     </div>
     </form>
 </div>

@@ -1,24 +1,7 @@
+ 
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  Breathing space
-{% endblock %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-  <form class="form" action="confirm-details" method="post">
-    <div class="govuk-grid-column-full">
-     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-xl">
-     <span class="govuk-caption-xl">Add client details: Step 3 of 3</span>
-       Business
-      </h1>
-
-      
-
- <dl class="govuk-summary-list">
+ <dl class="govuk-summary-list govuk-!-margin-bottom-2">
+  {% if checked('addBusiness', 'yes')%}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             {{ businessName }}
@@ -68,20 +51,7 @@
             </dd>
           </div>
         </dl>
-
-      <h2 class="govuk-heading-m">Add details of your client's business or businesses</h2>
-<p>If your client has thier own business and it has debts that should be covered in Breathing Space, please add the business details</p>
-
- <p><a href="add-business" class="govuk-button govuk-button--secondary">Add business details</a></p>
-
-<p>
-<button class="govuk-button" data-module="govuk-button">
-  Save and continue
-</button>
-</p>
-
-    </div>
-    </form>
-</div>
-
-{% endblock %}
+    
+       {% else %}
+        {% endif %}
+              <p><a class="govuk-link" href="add-business-history">Add client business</a></p>       

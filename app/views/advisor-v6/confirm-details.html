@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+           <span class="govuk-caption-xl">Breathing Space account for</span>
+       {{ firstname | default("Joe") }}  {{ middlename }} {{ lastname | default("Black") }}
+      </h1>
+
+  {% include "./_personaldetails.html" %} 
+
+       <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientDetails" type="radio" value="confirmed" checked>
+        <label class="govuk-label govuk-radios__label" for="clientDetails">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

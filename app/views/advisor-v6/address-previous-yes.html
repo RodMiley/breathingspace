@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="#" method="post">
+    <div class="govuk-grid-column-three-quarters">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+           <span class="govuk-caption-xl">Step 4 of 4</span>
+       Add previous addresses
+      </h1>
+    <div class="govuk-form-group">
+    <label class="govuk-label" for="address1line1">
+      Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+    </label>
+    <input class="govuk-input" id="address1line1" name="address1line1" type="text" autocomplete="address1-line1" value="{{address1line1}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address1line2">
+      <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+    </label>
+    <input class="govuk-input" id="address1line2" name="address1line2" type="text" autocomplete="address1-line2" value="{{address1line2}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address1town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address1town" name="address1town" type="text" autocomplete="address1-level2" value="{{address1town}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address1county">
+      County
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address1county" name="address1county" type="text" value="{{address1county}}">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address1postcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="address1postcode" name="address1postcode" type="text" autocomplete="postal-code" value="{{ address1postcode }}">
+  </div>
+</div>
+</div>
+
+<a href="#" class="facet govuk-button govuk-button--secondary">Add another address</a>
+<a href="confirm-details" class="facet govuk-button">Save and continue</a>
+{{address1county}}
+<button>
+  Save and continue
+</button>
+<button onclick="location.href = 'www.yoursite.com'">
+  Save and continue test
+</button>
+</form>
+</p>
+    </div>
+    
+</div>
+
+
+{% endblock %}
