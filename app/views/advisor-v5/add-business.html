@@ -31,6 +31,7 @@
       </label>
     </legend>
     <div class="govuk-radios">
+    {% if checked('parv', 'no')%}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="businessAddress" name="businessAddress" type="radio" value="currentAddress">
         <label class="govuk-label govuk-radios__label" for="businessAddress">
@@ -42,6 +43,7 @@
               {% endif %}
         </label>
       </div>
+      {% endif %}
      {% if checked('prevAddress', 'pclookup') or checked('prevAddress', 'manual') %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="businessAddress-2" name="businessAddress" type="radio" value="previousAddress">
