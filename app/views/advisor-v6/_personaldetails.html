@@ -39,6 +39,44 @@
         </dl>
         <p><a class="govuk-link" href="address-history">Add previous address</a></p>
 
+           <h2 class="govuk-heading-m">Notification preference</h2>
+       <dl class="govuk-summary-list">  
+                 <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+       How would your client prefer to recieve notifications?
+            </dt>
+            <dd class="govuk-summary-list__value">
+      {{howcontacted}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+         
+              <a class="govuk-link govuk-!-font-size-19" href="pref-contact">
+                Change<span class="govuk-visually-hidden"> notifcation preference</span>
+              </a>
+             
+            
+            </dd>
+          </div>
+          {% if checked('howcontacted','Email')%}
+                       <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+       Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+     {{ contactByEmail }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+         
+              <a class="govuk-link govuk-!-font-size-19" href="pref-contact">
+                Change<span class="govuk-visually-hidden"> notifcation preference</span>
+              </a>
+             
+            
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+
 <h2 class="govuk-heading-m">Business</h2>
       
         {% include "./_business-details.html" %} 

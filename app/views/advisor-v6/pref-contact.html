@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+  <form class="form" action="add-business-guard" method="post">
+{% endif%}
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+   
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="howcontacted-conditional-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        <span class="govuk-caption-xl">Add client details: Step 3 of 4</span>
+        How would your client prefer to recieve notifications?
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="howcontacted-conditional" name="howcontacted" type="radio" value="Email" data-aria-controls="email">
+        <label class="govuk-label govuk-radios__label" for="howcontacted-conditional">
+          Email
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="email">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contactByEmail">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmail" name="contactByEmail" type="email" spellcheck="false">
+        </div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="post" name="howcontacted" type="radio" value="post" data-aria-controls="Post">
+        <label class="govuk-label govuk-radios__label" for="post">
+          Post
+        </label>
+    </div>
+     
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="no-notification" name="howcontacted" type="radio" value="Client does not want to recieve notifications" data-aria-controls="no-notification">
+        <label class="govuk-label govuk-radios__label" for="no-notification">
+          My client does not want to recieve notifications
+        </label>
+   
+      </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
