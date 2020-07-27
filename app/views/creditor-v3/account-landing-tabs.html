@@ -11,7 +11,7 @@
   <form class="form" action="" method="post">
 
     <div class="govuk-grid-column-full">
-{% include path+"./_keydetails_active_personaldetails.html" %} 
+{% include path+"./_keydetails_active.html" %} 
 {% include path+"./_protections-confirm.html" %}
 
 
@@ -40,11 +40,11 @@
        Debts
       </a>
     </li>
-    <!-- <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#personal-details">
-        Personal details
+ <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#client-details">
+        Client details
       </a>
-    </li>-->
+    </li>
         <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#ma-details">
         Money Adviser details
@@ -58,16 +58,16 @@
          Actions</h2>
          <p>{% include path+"./_recieved_pending.html" %}</p>
         <p class="">We have requested {% include path+"./_advise-org-name.html" %} to action the following things: </p>
-      {% include path+"./_requests_content.html" %} 
+        {% include path+"./_requests_content.html" %} 
   </section>
   {% endif %}
   <section class="govuk-tabs__panel" id="problem-debt">
        {% include path+"./_debts_content.html" %} 
   </section>
-  <!--<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
-    <h2 class="govuk-heading-l">Personal details</h2>
-          {% include path+"./_personaldetails.html" %} 
-  </section> -->
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="client-details">
+    <h2 class="govuk-heading-l">Client details</h2>
+          {% include path+"./_clientdetails.html" %} 
+  </section>
     <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="ma-details">
     <h2 class="govuk-heading-m">Money advice organisation details</h2>
           {% include path+"./_adviser_content.html" %} 
