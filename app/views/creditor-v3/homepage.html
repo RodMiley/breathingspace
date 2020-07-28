@@ -5,9 +5,13 @@
   Breathing space
 {% endblock %}
 
+
+
+
+
 {% block content %}
 
-
+ {% include path+"./_global-nav.html" %} 
 
 <!-- BASE VALUES -->
 {% set totNum = 0 %}
@@ -15,11 +19,13 @@
 {% set CTNum = 0 %}
 {% set PFNum = 0 %}
 {% set RANum = 0 %}
-{% set otherNum = 0 %}
-{% set toDo = 0 %}
+{% set OtherNum = 0 %}
+{% set todo = 0 %}
+{% set new = 0 %}
 {% set applied = 0 %}
 {% set review = 0 %}
-{% set reviewed = 0 %}
+{% set accepted = 0 %}
+{% set rejected = 0 %}
 
 <!-- todo VALUES -->
 {% set HBtoDO = 0 %}
@@ -27,6 +33,13 @@
 {% set PFtoDO = 0 %}
 {% set RAtoDO = 0 %}
 {% set OthertoDO = 0 %}
+{% set NewtoDo = 0 %}
+{% set AppliedtoDo = 0 %}
+{% set ReviewtoDo = 0 %}
+{% set AcceptedtoDo = 0 %}
+{% set RejectedtoDo = 0 %}
+<!-- Status type and todo VALUES -->
+{% set NewHBtoDO = 0 %}
 
   
 
@@ -34,7 +47,8 @@
 
 <!-- BASE VALUES -->
 	 {% set totNum = totNum + 1 %}
-   	{% if item.type === "Housing Benefit" %}
+
+  {% if item.type === "Housing benefit" %}
    {% set HBNum = HBNum + 1 %}
    {% endif %}
   {% if item.type === "Council tax" %}
@@ -47,168 +61,251 @@
    {% set RANum = RANum + 1 %}
     {% endif %}
    {% if item.type === "Other" %}
-   {% set otherNum = otherNum + 1 %}
+   {% set OtherNum = OtherNum + 1 %}
     {% endif %}
 
- {% if item.status === "To do" %}
-  {% set toDo = toDo + 1 %}
- {% endif %}
+   <!-- status -->
+  {% if item.status === "new" %}
+   {% set new = new + 1 %}
+  {% endif %}
 
   {% if item.status === "applied" %}
-  {% set applied = applied + 1 %}
- {% endif %}
-
-   {% if item.status === "review" %}
-  {% set review = review + 1 %}
- {% endif %}
-
-   {% if item.status === "reviewed" %}
-  {% set reviewed = reviewed + 1 %}
- {% endif %}
+   {% set applied = applied + 1 %}
+  {% endif %}
 
 
+  {% if item.status === "review" %}
+   {% set review = review + 1 %}
+  {% endif %}
+
+    {% if item.status === "review-accepted" %}
+   {% set accepted = accepted + 1 %}
+  {% endif %}
+
+    {% if item.status === "review-rejected" %}
+   {% set rejected = rejected + 1 %}
+  {% endif %}
 
 
-<!-- TO DO VALUES -->
-    	{% if item.type === "Housing Benefit" and item.status === "To do" %}
+  
+   {% if item.todo === "Yes" %}   
+   {% set todo = todo + 1 %}
+   {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    	{% if item.type === "Housing benefit" and item.todo === "Yes" %}
      {% set HBtoDO = HBtoDO + 1 %}
       {% endif %}
 
-      {% if item.type === "Council tax" and item.status === "To do" %}
+      {% if item.type === "Council tax" and  item.todo === "Yes" %}
      {% set CTtoDO = CTtoDO + 1 %}
       {% endif %}	
 
-      {% if item.type === "Parking fines" and item.status === "To do" %}
+      {% if item.type === "Parking fines" and  item.todo === "Yes" %}
      {% set PFtoDO = PFtoDO + 1 %}
       {% endif %}	
 
-      {% if item.type === "Rent arrears" and item.status === "To do" %}
+      {% if item.type === "Rent arrears" and  item.todo === "Yes" %}
      {% set RAtoDO = RAtoDO + 1 %}
       {% endif %}
 
 
-      {% if item.type === "Other" and item.status === "To do" %}
+      {% if item.type === "Other" and  item.todo === "Yes" %}
      {% set OthertoDO = OthertoDO + 1 %}
       {% endif %}
 
+  <!-- TO DO VALUES Status -->
+  {% if item.status === "new" and item.todo === "Yes" %}
+   {% set NewtoDo =  NewtoDo + 1 %} 
+   {% endif %}
+
+     {% if item.status === "applied" and item.todo === "Yes" %}
+   {% set AppliedtoDo =  AppliedtoDo + 1 %} 
+   {% endif %}
+
+     {% if item.status === "review" and item.todo === "Yes"  %}
+   {% set ReviewtoDo =  ReviewtoDo + 1 %} 
+   {% endif %}
+   
+     {% if item.status === "review-rejected" and item.todo === "Yes"  %}
+   {% set AcceptedtoDo =  AcceptedtoDo + 1 %} 
+   {% endif %}
+
+     {% if item.status === "review-rejected" and item.todo === "Yes"  %}
+   {% set RejectedtoDo =  RejectedtoDo + 1 %} 
+   {% endif %}
+
+   <!-- Status type and TO DO VALUES Status -->
+
+    {% if item.type === "Housing benefit" and item.status === "new" and item.todo === "Yes" %}
+   {% set NewHBtoDO =  NewHBtoDO + 1 %} 
+   {% endif %}
+
 {% endfor %}
+
+
 
 
 
   <div class="govuk-grid-row">
   
    <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
  <span class="govuk-caption-xl">Breathing Space portal for</span>
   {% include path+"./_creditorname.html" %}
   </h1>
-
-
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
    </div>
- <div class="govuk-grid-column-full">
- <h2 class="govuk-heading-l govuk-!-margin-bottom-5">Search for a Breathing Space debt</h2>
-
-
-<form class="form" action="search-results-page" method="post">
-
-<div class="gem-c-search gem-c-search--on-white" data-module="gem-toggle-input-class-on-focus">
-  <label for="finder-keyword-search" class="gem-c-search__label">
-    Search for a Breathing Space account
-  </label>
-  <div class="gem-c-search__item-wrapper">
-    <input type="search" value="" id="finder-keyword-search" name="fullname" title="Search" aria-controls="" class="gem-c-search__item gem-c-search__input js-class-toggle focus">
-    <div class="gem-c-search__item gem-c-search__submit-wrapper">
-      <button type="submit" class="gem-c-search__submit">Search</button>
-    </div>
-  </div>
-</div>
-</form>
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-</div>
 </div>
  <div class="govuk-grid-row">
-<div class="govuk-grid-column-one-quarter">
+<div class="govuk-grid-column-one-third">
 <form class="form" action="#" method="post">
 <h2 class="govuk-heading-m">Filter by:</h2>
-
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-{{ govukRadios({
-  idPrefix: "actions",
-  name: "actions",
-  classes: "govuk-radios--small",
-  fieldset: {
-    legend: {
-      text: "Actions",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--s"
-    }
-  },
-  items: [
-
-    {
-      value: "TD",
-      text: "To do",
-      checked: checked("actions", "TD")
-    },
-    {
-      value: "PA",
-      text: "Protections applied",
-      checked: checked("actions", "PA")
-    },
-    {
-      value: "RO",
-      text: "Reviews oustanding",
-      checked: checked("actions", "RO")
-    },
-    {
-      value: "RC",
-      text: "Reviews completed",
-      checked: checked("actions", "RC")
-
-    }
-    
-  ]
-}) }}
 
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--S">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Actions
+      </label >
+    </legend>
+
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="todo" name="todo" type="checkbox" value="yes"  {{ checked('todo', 'yes') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="todo">
+          To do ({{todo}})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Status
+      </label >
+    </legend>
+
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="new"  {{ checked('status', 'new') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          New ({% if checked('todo','yes') %}
+{{NewtoDo}}
+{% else %}
+{{new}}
+{% endif %})
+        </label>
+      </div>
+ <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="PA"  {{ checked('status', 'PA') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Protections applied  ({% if checked('todo','yes') %}
+{{AppliedtoDo}}
+{% else %}
+{{applied}}
+{% endif %})
+        </label>
+      </div>
+               <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="R"  {{ checked('status', 'R') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews requested ({% if checked('todo','yes') %}
+{{ReviewtoDo}}
+{% else %}
+{{review}}
+{% endif %})
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RA"  {{ checked('status', 'RA') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews accepted ({% if checked('todo','yes') %}
+{{AcceptedtoDo}}
+{% else %}
+{{accepted}}
+{% endif %})
+        </label>
+      </div>
+         <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RR"  {{ checked('status', 'RR') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews rejected ({% if checked('todo','yes') %}
+{{RejectedtoDo}}
+{% else %}
+{{rejected}}
+{% endif %})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <h2 class="govuk-fieldset__heading">
         Debt type
       </h2>
     </legend>
-    <div class="govuk-radios govuk-radios--small">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debttype" name="debttype" type="radio" value="Housing benefit" {{checked('debttype', 'Housing benefit') }}>
-        <label class="govuk-label govuk-radios__label" for="debttype">
-          Housing benefit
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype" name="debttype" type="checkbox" value="Housing benefit" {{checked('debttype', 'Housing benefit') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype">
+          Housing benefit ({% if checked('todo','yes') and checked('status','new') %}
+          {{NewHBtoDO}}
+            {% elif checked('todo','yes') %}
+{{HBtoDO}}
+{% else %}
+{{HBNum}}
+{% endif %})
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debttype-2" name="debttype" type="radio" value="Council tax" {{checked('debttype', 'Council tax') }}>
-        <label class="govuk-label govuk-radios__label" for="debttype-2">
-          Council Tax
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-2" name="debttype" type="checkbox" value="Council tax" {{checked('debttype', 'Council tax') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-2">
+          Council Tax ({% if checked('todo','yes') %}
+{{CTtoDO}}
+{% else %}
+{{CTNum}}
+{% endif %})
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debttype-3" name="debttype" type="radio" value="Parking fines" {{checked('debttype', 'Parking fines') }}>
-        <label class="govuk-label govuk-radios__label" for="debttype-3">
-          Parking fines 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-3" name="debttype" type="checkbox" value="Parking fines" {{checked('debttype', 'Parking fines') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-3">
+          Parking fines ({% if checked('todo','yes') %}
+{{PFtoDO}}
+{% else %}
+{{PFNum}}
+{% endif %})
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debttype-4" name="debttype" type="radio" value="Rent arrears" {{checked('debttype', 'Rent arrears') }}>
-        <label class="govuk-label govuk-radios__label" for="debttype-4">
-         Rent arrears
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-4" name="debttype" type="checkbox" value="Rent arrears" {{checked('debttype', 'Rent arrears') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-4">
+         Rent arrears ({% if checked('todo','yes') %}
+{{RAtoDO}}
+{% else %}
+{{RANum}}
+{% endif %})
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debttype-5" name="debttype" type="radio" value="Other" {{checked('debttype', 'Other') }}>
-        <label class="govuk-label govuk-radios__label" for="debttype-5">
-         Other 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-5" name="debttype" type="checkbox" value="Other" {{checked('debttype', 'Other') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-5">
+         Other ({% if checked('todo','yes') %}
+{{OthertoDO}}
+{% else %}
+{{OtherNum}}
+{% endif %})
         </label>
       </div>
     </div>
@@ -221,61 +318,67 @@ Apply filter
 </button>
 </form>
 </div>
-<div class="govuk-grid-column-three-quarters">
+<div class="govuk-grid-column-two-thirds">
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
 
-{% if checked('debttype','Other') and checked('actions','TD')  %}
-Other to do ({{ OthertoDO }})
+{% if checked('debttype','Other') and checked('status','New')  %}
+Other New ({{ OthertoDO }})
 
 {% elif checked('debttype','Other') %}
 Other  ({{ otherNum }})
 
-{% elif checked('debttype','Rent arrears') and checked('actions','TD')  %}
-Rent arrears to do ({{ RAtoDO }})
+{% elif checked('debttype','Rent arrears') and checked('status','New')  %}
+Rent arrears New ({{ RAtoDO }})
 
 {% elif checked('debttype','Rent arrears') %}
 Rent arrears ({{ RANum }})
 
-{% elif checked('debttype','Parking fines') and checked('actions','TD')  %}
- Parking fines to do ({{ PFtoDO }})
+{% elif checked('debttype','Parking fines') and checked('status','New')  %}
+ Parking fines New ({{ PFtoDO }})
 
 {% elif checked('debttype','Parking fines') %}
 Parking fines ({{ PFNum }})
 
-{% elif checked('debttype','Council tax') and checked('actions','TD')  %}
- Council tax to do ({{ CTtoDO }})
+{% elif checked('debttype','Council tax') and checked('status','New')  %}
+ Council tax New ({{ CTtoDO }})
 
 {% elif checked('debttype','Council tax') %}
 Council tax ({{ CTNum }})
 
-{% elif checked('debttype','Housing benefit') and checked('actions','TD')  %}
+{% elif checked('debttype','Housing benefit') and checked('todo','yes')  %}
  Housing benefits to do ({{ HBtoDO }})
 
 {% elif checked('debttype','Housing benefit')%}
 Housing benefit ({{ HBNum }})
 
-{% elif checked('actions','RO') %}
+{% elif checked('status','RO') %}
 Reviews outsanding ({{ review }})
 
-{% elif checked('actions','RC') %}
+{% elif checked('status','RC') %}
 Reviews completed ({{ reviewed }})
 
 
-{% elif checked('actions','PA') %}
+{% elif checked('status','PA') %}
 Protections applied ({{ applied }})
 
-{% elif checked('actions','TD') %}
-To do ({{ toDo }})
+{% elif checked('status','new') and checked('todo','yes') %}
+New to do ({{NewtoDo}})
+{% elif checked('status','new') %}
+New ({{ new }})
+
+{% elif checked('todo','yes') %}
+To do ({{ todo }})
 {% else %}
-All debts ({{totNum}})
+All debts ({{totNum}}) 
 {% endif %}
+
 </h2>
 
 
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Active Breathing Space debts for Liverpool City Council</caption>
+  <caption class="govuk-table__caption">Active Breathing Space debts for {% include path+"./_creditorname.html" %} </caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Debt type</th>
@@ -300,9 +403,9 @@ All debts ({{totNum}})
   {% endif %}
 {% endfor %}
 
-{% elif checked('debttype','Parking fines') and checked('actions','TD')  %}
+{% elif checked('debttype','Parking fines') and checked('status','New')  %}
 {% for debt in debts %}
-{% if debt.type == 'Parking fines' and debt.status == 'To do'%}
+{% if debt.type == 'Parking fines' and debt.status == 'New'%}
   {% include path+"./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %} 
@@ -315,9 +418,9 @@ All debts ({{totNum}})
 {% endfor %}
 
 
-{% elif checked('debttype','Council tax') and checked('actions','TD')  %}
+{% elif checked('debttype','Council tax') and checked('status','New')  %}
 {% for debt in debts %}
-{% if debt.type == 'Council tax' and debt.status == 'To do'%}
+{% if debt.type == 'Council tax' and debt.status == 'New'%}
   {% include path+"./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %} 
@@ -329,16 +432,32 @@ All debts ({{totNum}})
   {% endif %}
 {% endfor %}
 
-{% elif checked('debttype','Housing benefit') and checked('actions','TD')  %}
+{% elif checked('debttype','Housing benefit') and checked('todo','yes')  %}
 {% for debt in debts %}
-{% if debt.type == 'Housing Benefit' and debt.status == 'To do'%}
+{% if debt.todo == 'Yes' and debt.type == 'Housing benefit'%}
   {% include path+"./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Housing benefit') %}
 {% for debt in debts %}
-{% if debt.type == 'Housing Benefit'%}
+{% if debt.type == 'Housing benefit'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('todo','yes') and checked('status','new')  %}
+{% for debt in debts %}
+{% if debt.todo == 'Yes' and debt.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('todo','yes') %}
+{% for debt in debts %}
+{% if debt.todo == 'Yes'%}
   {% include path+"./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
