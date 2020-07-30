@@ -7,6 +7,7 @@
             {{ businessName }}
             </dt>
             <dd class="govuk-summary-list__value">
+                {% include "./_address-hidden.html" %} 
               {% if checked('businessAddress','currentAddress')%}
              	{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode | default("NW10 8LL")}} 
               {% else %}  

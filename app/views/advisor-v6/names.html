@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+    <form class="form" action="address" method="post">
+{% endif%}
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Add client details: Step 1 of 3</span>
+       Names
+      </h1>
+
+       <dl class="govuk-summary-list">
+ 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
+           
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <ul class="govuk-list">
+            <li><a class="govuk-link govuk-!-font-size-19" href="details#firstname">
+                Change<span class="govuk-visually-hidden"> Name</span>
+              </a></li> 
+            <ul>
+            </dd>
+          </div>
+    
+{%if checked('previousname','yes') %}
+  {% include "./_names-previous.html" %} 
+{% endif %}
+        </dl>
+
+      <h2 class="govuk-heading-m">Add clients previous names</h2>
+      <p>If your client has been known by any other names for example a maiden name</p>
+<p>If you can provide previous names it will help your client's creditors match their debts and apply the Breathing Space protections.</p>
+
+ <p><a href="name-previous" class="govuk-button govuk-button--secondary">Add previous names</a></p>
+
+<p>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</p>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

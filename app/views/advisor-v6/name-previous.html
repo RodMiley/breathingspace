@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="names" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Add client details: Step 1 of 3</span>
+       Add previous name
+      </h1>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="firstnameprev">
+  First name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="firstnameprev" name="firstnameprev" type="text" autocomplete="firstnameprev" spellcheck="false" value="{{ firstnameprev }}">
+</div>
+
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="middlenameprev">
+   Middle name (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="middlenameprev" name="middlenameprev" type="text" autocomplete="middlenameprev" spellcheck="false" value="{{ middlenameprev }}">
+</div>
+
+    <div class="govuk-form-group">
+  <label class="govuk-label" for="lastnameprev">
+   Last name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="lastnameprev" name="lastnameprev" type="text" autocomplete="lastnameprev" spellcheck="false" value="{{ lastnameprev }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="previousname" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

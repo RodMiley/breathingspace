@@ -4,13 +4,7 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-             {% if checked('parv','yes')%}
-                      <p> <strong class="govuk-tag govuk-tag--blue">
-  Address withheld
-</strong></p>
-   <p class="govuk-body govuk-!-font-weight-bold">This address will not be shared with any of your clients creditors</p>
-   {% else %}
-   {% endif %}
+     {% include "./_address-hidden.html" %} 
              	<p>{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
               {% else %}  
               <span class="govuk-!-display-block">{{addressline1 | default("4 Bourough road") }}</span>
@@ -27,8 +21,8 @@
             <li>
               <a class="govuk-link govuk-!-font-size-19" href="parv">
         {% if checked('parv','yes')%}
-        Update address withheld
-       {% else %} Withhold address  {% endif %}<span class="govuk-visually-hidden"> from creditors</span>
+        Update address hidden
+       {% else %} Hide address  {% endif %}<span class="govuk-visually-hidden"> from creditors</span>
       
               </a>
             </li>  

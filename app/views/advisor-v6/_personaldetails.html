@@ -2,7 +2,7 @@
      Client details
       </h2>
  <h3 class="govuk-heading-m">Personal details</h3>
- <dl class="govuk-summary-list">
+ <dl class="govuk-summary-list govuk-!-margin-bottom-2">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Name
@@ -30,7 +30,9 @@
               </a>
             </dd>
           </div>
+          {% include "./_names-previous.html" %} 
       </dl> 
+      <p><a class="govuk-link" href="names">Add previous name</a></p>
 
        <h2 class="govuk-heading-m">Addresses</h2>
        <dl class="govuk-summary-list govuk-!-margin-bottom-2">  
@@ -43,7 +45,7 @@
        <dl class="govuk-summary-list">  
                  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-       How would your client prefer to recieve notifications?
+       Method
             </dt>
             <dd class="govuk-summary-list__value">
       {{howcontacted}}

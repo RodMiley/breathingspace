@@ -31,8 +31,8 @@
             <dd class="govuk-summary-list__value">
              {% if checked('parv','yes')%}
                       <p> <strong class="govuk-tag govuk-tag--blue">
-  Address withheld
-</strong></p>
+  Address Hidden
+</strong></p> 
    <p class="govuk-body govuk-!-font-weight-bold">This address will not be shared with any of your clients creditors</p>
    {% else %}
    {% endif %}
@@ -52,8 +52,8 @@
             <li>
               <a class="govuk-link govuk-!-font-size-19" href="parv">
         {% if checked('parv','yes')%}
-        Update address withheld
-       {% else %} Withhold address  {% endif %}<span class="govuk-visually-hidden"> from creditors</span>
+        Update address hidden
+       {% else %} Hide address{% endif %}<span class="govuk-visually-hidden"> from creditors</span>
       
               </a>
             </li>  

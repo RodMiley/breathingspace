@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ We have sold the debt on details
+      </h1>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Home insurance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Amount: <strong>£160</strong><br> Reference: <strong>HI34567234</strong></p>
+               <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}
+             <!--  <br>
+               Date removed: {{ 'Do MMMM YYYY' | baseDateAdd(0) }} -->
+               </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+            </div>
+
+     </dl>   
+  </dl>     
+
+    <ul class="govuk-list timeline">
+             <!--   <li class='first'>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have removed the debt</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">{{ debtReview }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+                    <p class="govuk-body">{{ moreDetail }}</p>
+                  
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                </li> -->
+
+
+                <li>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed Advice Uk that you have sold the debt on to</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Creditor:</h3>
+                    <p class="govuk-body">{{ creditorSold }}</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                </li>
+              </ul>   
+
+      
+
+
+
+
+
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}
