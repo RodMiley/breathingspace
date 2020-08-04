@@ -28,14 +28,13 @@
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#ma-requests">
-       Actions
+       Tasks
       </a>
     </li>
-    {% endif %}
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+   
+    <li class="govuk-tabs__list-item ">
       <a class="govuk-tabs__tab" href="#problem-debt">
        Debts
       </a>
@@ -52,15 +51,14 @@
     </li>
     </ul>
 
-  {% if  data['debtReview'] or data['creditorSold'] or data['adddebt'] or data['clientReview'] %}
+
      <section class="govuk-tabs__panel" id="ma-requests">
            <h2 class="govuk-heading-l">
-         Actions</h2>
-         <p>{% include path+"./_recieved_pending.html" %}</p>
-        <p class="">We have requested {% include path+"./_advise-org-name.html" %} to action the following things: </p>
+        Tasks</h2>
         {% include path+"./_requests_content.html" %} 
+        {% include path+"./_tasklist.html" %} 
   </section>
-  {% endif %}
+
   <section class="govuk-tabs__panel" id="problem-debt">
        {% include path+"./_debts_content.html" %} 
   </section>

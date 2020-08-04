@@ -1,4 +1,4 @@
-  <div class="govuk-summary-list__row">
+ {% if checked('previousname','yes') %} <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Previous name
             </dt>
@@ -17,4 +17,5 @@
             <ul>
             </dd>
           </div>
+          {% endif %}
     

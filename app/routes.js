@@ -79,6 +79,53 @@ res.locals.debts = creditordebts
 next()
  })
 
+ 
+
+
+   router.get('/creditor-v4/homepage', function (req, res, next) {
+    res.locals.creditorNumbers = {
+      total: creditordebts.length,
+
+      //status
+      new: creditordebts.filter(customer => customer.status === 'new').length,
+      applied: creditordebts.filter(customer => customer.status === 'applied').length,
+      review: creditordebts.filter(customer => customer.status === 'review').length,
+      reviewaccepted: creditordebts.filter(customer => customer.status === 'review-accepted').length,
+      reviewrejected: creditordebts.filter(customer => customer.status === 'review-rejected').length,
+
+      // debttype
+      HB: creditordebts.filter(customer => customer.type === 'Housing benefit').length,
+    }
+    next()
+  }) 
+
+  router.get('/creditor-v4/homepage', function (req, res, next) {
+    
+    res.locals.customers = creditordebts
+
+    res.locals.customersNew = creditordebts
+    .filter(customer => customer.status === 'new')
+
+    res.locals.customersApplied = creditordebts
+    .filter(customer => customer.status === 'applied')
+
+    res.locals.customersReview = creditordebts
+    .filter(customer => customer.status === 'review')
+
+    res.locals.customersAccepted = creditordebts
+    .filter(customer => customer.status === 'review-accepted')
+
+    res.locals.customersRejected = creditordebts
+    .filter(customer => customer.status === 'review-rejected')
+
+    res.locals.customersHb = creditordebts
+    .filter(customer => customer.type === 'Housing benefit')
+
+    res.locals.customersHBandNew = creditordebts
+    .filter(customer => customer.status === 'new' & customer.type === 'Housing benefit' & customer.todo ==='Yes')
+  next()
+  })
+
 
  router.get('/creditor-v3/account-landing-tabs', function (req, res, next) {
   let findCustomer = {}

@@ -59,113 +59,113 @@
 
   
 
-	{% for customer in debts %}
+	{% for item in debts %}
 
 <!-- BASE VALUES -->
 	 {% set totNum = totNum + 1 %}
 
-  {% if customer.type === "Housing benefit" %}
+  {% if item.type === "Housing benefit" %}
    {% set HBNum = HBNum + 1 %}
    {% endif %}
-  {% if customer.type === "Council tax" %}
+  {% if item.type === "Council tax" %}
    {% set CTNum = CTNum + 1 %}
    {% endif %}
-   {% if customer.type === "Parking fines" %}
+   {% if item.type === "Parking fines" %}
    {% set PFNum = PFNum + 1 %}
     {% endif %}
-   {% if customer.type === "Rent arrears" %}
+   {% if item.type === "Rent arrears" %}
    {% set RANum = RANum + 1 %}
     {% endif %}
-   {% if customer.type === "Other" %}
+   {% if item.type === "Other" %}
    {% set OtherNum = OtherNum + 1 %}
     {% endif %}
 
    <!-- status -->
-  {% if customer.status === "new" %}
+  {% if item.status === "new" %}
    {% set new = new + 1 %}
   {% endif %}
 
-  {% if customer.status === "applied" %}
+  {% if item.status === "applied" %}
    {% set applied = applied + 1 %}
   {% endif %}
 
 
-  {% if customer.status === "review" %}
+  {% if item.status === "review" %}
    {% set review = review + 1 %}
   {% endif %}
 
-    {% if customer.status === "review-accepted" %}
+    {% if item.status === "review-accepted" %}
    {% set accepted = accepted + 1 %}
   {% endif %}
 
-    {% if customer.status === "review-rejected" %}
+    {% if item.status === "review-rejected" %}
    {% set rejected = rejected + 1 %}
   {% endif %}
 
 
   
-   {% if customer.todo === "Yes" %}   
+   {% if item.todo === "Yes" %}   
    {% set todo = todo + 1 %}
    {% endif %}
 
    <!-- TO DO VALUES Type -->
-    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
+    {% if item.type === "Housing benefit" and item.todo === "Yes" %}
      {% set HBtoDO = HBtoDO + 1 %}
     {% endif %}
 
-    {% if customer.type === "Council tax" and  customer.todo === "Yes" %}
+    {% if item.type === "Council tax" and  item.todo === "Yes" %}
      {% set CTtoDO = CTtoDO + 1 %}
     {% endif %}	
 
-    {% if customer.type === "Parking fines" and  customer.todo === "Yes" %}
+    {% if item.type === "Parking fines" and  item.todo === "Yes" %}
      {% set PFtoDO = PFtoDO + 1 %}
      {% endif %}	
 
-      {% if customer.type === "Rent arrears" and  customer.todo === "Yes" %}
+      {% if item.type === "Rent arrears" and  item.todo === "Yes" %}
      {% set RAtoDO = RAtoDO + 1 %}
       {% endif %}
 
-      {% if customer.type === "Other" and  customer.todo === "Yes" %}
+      {% if item.type === "Other" and  item.todo === "Yes" %}
      {% set OthertoDO = OthertoDO + 1 %}
       {% endif %}
 
   <!-- TO DO VALUES Status -->
-  {% if customer.status === "new" and customer.todo === "Yes" %}
+  {% if item.status === "new" and item.todo === "Yes" %}
    {% set NewtoDo =  NewtoDo + 1 %} 
    {% endif %}
 
-     {% if customer.status === "applied" and customer.todo === "Yes" %}
+     {% if item.status === "applied" and item.todo === "Yes" %}
    {% set AppliedtoDo =  AppliedtoDo + 1 %} 
    {% endif %}
 
-     {% if customer.status === "review" and customer.todo === "Yes"  %}
+     {% if item.status === "review" and item.todo === "Yes"  %}
    {% set ReviewtoDo =  ReviewtoDo + 1 %} 
    {% endif %}
    
-     {% if customer.status === "review-rejected" and customer.todo === "Yes"  %}
+     {% if item.status === "review-rejected" and item.todo === "Yes"  %}
    {% set AcceptedtoDo =  AcceptedtoDo + 1 %} 
    {% endif %}
 
-     {% if customer.status === "review-rejected" and customer.todo === "Yes"  %}
+     {% if item.status === "review-rejected" and item.todo === "Yes"  %}
    {% set RejectedtoDo =  RejectedtoDo + 1 %} 
    {% endif %}
 
    <!-- Status type and TO DO VALUES Status -->
 
-    {% if customer.type === "Housing benefit" and customer.status === "new" and customer.todo === "Yes" %}
+    {% if item.type === "Housing benefit" and item.status === "new" and item.todo === "Yes" %}
    {% set NewHBtoDO =  NewHBtoDO + 1 %} 
    {% endif %}
 
-     {% if customer.type === "Housing benefit" and customer.status === "applied" and customer.todo === "Yes" %}
+     {% if item.type === "Housing benefit" and item.status === "applied" and item.todo === "Yes" %}
    {% set AppliedHBtoDO =  AppliedHBtoDO + 1 %} 
    {% endif %}
-     {% if customer.type === "Housing benefit" and customer.status === "review" and customer.todo === "Yes" %}
+     {% if item.type === "Housing benefit" and item.status === "review" and item.todo === "Yes" %}
    {% set ReviewHBtoDO =  ReviewHBtoDO + 1 %} 
    {% endif %}
-     {% if customer.type === "Housing benefit" and customer.status === "review-accepted" and customer.todo === "Yes" %}
+     {% if item.type === "Housing benefit" and item.status === "review-accepted" and item.todo === "Yes" %}
    {% set AcceptedHBtoDO =  AcceptedHBtoDO + 1 %} 
    {% endif %}
-     {% if customer.type === "Housing benefit" and customer.status === "review-rejected" and customer.todo === "Yes" %}
+     {% if item.type === "Housing benefit" and item.status === "review-rejected" and item.todo === "Yes" %}
    {% set RejectedHBtoDO =  RejectedHBtoDO + 1 %} 
    {% endif %}
 
@@ -173,19 +173,19 @@
 
 
 
-    {% if customer.type === "Council tax" and customer.status === "new" and customer.todo === "Yes" %}
+    {% if item.type === "Council tax" and item.status === "new" and item.todo === "Yes" %}
    {% set NewCTtoDO =  NewCTtoDO + 1 %} 
    {% endif %}
 
-  {% if customer.type === "Parking fines" and customer.status === "new" and customer.todo === "Yes" %}
+  {% if item.type === "Parking fines" and item.status === "new" and item.todo === "Yes" %}
    {% set NewPFtoDO =  NewPFtoDO + 1 %} 
    {% endif %}
 
-  {% if customer.type === "Rent arrears" and customer.status === "new" and customer.todo === "Yes" %}
+  {% if item.type === "Rent arrears" and item.status === "new" and item.todo === "Yes" %}
    {% set NewRAtoDO =  NewRAtoDO + 1 %} 
   {% endif %}
 
-  {% if customer.type === "Other" and customer.status === "new" and customer.todo === "Yes" %}
+  {% if item.type === "Other" and item.status === "new" and item.todo === "Yes" %}
    {% set NewOthertoDO =  NewOthertoDO + 1 %} 
   {% endif %}
 
@@ -202,19 +202,6 @@
  <span class="govuk-caption-xl">Breathing Space portal for</span>
   {% include path+"./_creditorname.html" %}
   </h1>
-  All {{customers.length}},
-  New {{customersNew.length}},
-  Applied {{customersApplied.length}},
-  Review requested {{customersReview.length}},
-  Rejected {{customersAccepted.length}},
-  Accepted {{customersRejected.length}}
-
-  <br><br>
- Hb {{customersHb.length}},
-<br><br>{{customersHBandNew.length}}
-
-
-
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
    </div>
 </div>

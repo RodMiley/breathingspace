@@ -14,18 +14,21 @@
   <form class="form" action="index" method="post">
   {% endif %}
     <div class="govuk-grid-column-full">
+
+{% if data['debt']%}
+{% else %}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-4 govuk-!-margin-top-0">
+  Account created
+</div>
+{% endif %}
+
   {% include "./_keydetails.html" %} 
 {% if data['deletedebt-1'] %}
    <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <p class="govuk-body">You have deleted the debt</p>
 </div>
 {% endif %}
-{% if data['debt']%}
-{% else %}
-<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
-  Account created
-</div>
-{% endif %}
+
 
 
 
