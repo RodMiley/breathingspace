@@ -317,15 +317,6 @@ $govuk-assets-path: '/govuk/assets/';
   }
 
 
-  @media (min-width: 40.0625em){
-    .govuk-summary-list__value {
-        width: 40%;
-    }
-
-   .govuk-summary-list__actions {
-        width: 40%;
-    }
-    }
 
     .govuk-summary-list__actions .govuk-list{
         margin-bottom:0px;
@@ -403,6 +394,12 @@ $govuk-assets-path: '/govuk/assets/';
 
       .govuk-table.fixcol td, .govuk-table.fixcol th {
         width:25%;
+      }
+
+
+      .styledlist li{
+          border-bottom: 1px solid $govuk-border-colour;
+          padding:10px 0;
       }
     
 

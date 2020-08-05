@@ -1,0 +1,33 @@
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    {{ customer.type}}
+      <p class="govuk-body-s">
+       {% if customer.status == 'new'%}
+      New debt added
+        {% elif customer.status == 'applied'%}
+      Protections applied
+    {% elif customer.status == 'review'%}
+      Review requested
+    {% elif customer.status == 'review-rejected'%}
+      Review rejected
+    {% elif customer.status == 'review-accepted'%}
+      Review accepted
+      {% endif%}
+      </p>
+      {% if customer.todo == 'Yes'%}
+    <strong class="govuk-tag govuk-tag--grey">To do</strong>
+{% endif %}
+    </dt>
+    <dd class="govuk-summary-list__value">
+     <p class="govuk-body">
+Name: <strong>{{ customer.name}}</strong><br>Reference: <strong>{{customer.reference}}</strong></p>
+<p class="govuk-body-s">Started: 12 June 2020<br>
+Ends: 12 August 2020
+</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    <a class="govuk-link" href="#">
+        View account <span class="govuk-visually-hidden"> contact information</span>
+      </a>
+</dd>
+  </div>
