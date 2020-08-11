@@ -4,45 +4,43 @@
           <h3 class="app-task-list__section">
            To do
           </h4>
-          <ul class="app-task-list__items">
-
-         <li class="app-task-list__item">
-            <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Housing benefit - Review requested</h4>
-            <p>We have requested Advice uk to review the debt eligibility for Breathing Space</p>
-              <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
-                Housing benefit review details
-                </a>
-              </span>
-              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="eligibility-status">With Money Adviser</strong>
-            </li>
-
-            <li class="app-task-list__item">
-            <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Housing Benefit debt added</h4>
-              <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
-                Housing benefit, apply protections and update status
-                </a>
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="eligibility-status">to do</strong>
-            </li>
-            <li class="app-task-list__item">
-            <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Rent Arrears - New debt added</h4>
-              <span class="app-task-list__task-name">
-                <a href="protections-apply" aria-describedby="read-declaration-status">
-                  Rent arrears debt added, apply protections and update status
-                </a>
-              </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">to do</strong>
-              </li>
+          <ul class="app-task-list__items govuk-!-margin-bottom-1">
               <li class="app-task-list__item">
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">New debt added</h4>
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+ {% include path+"./_status-playback.html" %} 
+   </h4>
+
+        {% if customer.status == 'review'%}
+      
+        {% endif %}
+             
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="read-declaration-status">
-                  Parking fine debt added, apply protections and update status
-                </a>
+                {% if customer.status == 'review'%}
+                <span class="block govuk-!-margin-bottom-1">We have requested Advice uk to review debt eligibility</span>
+                {% endif %}
+                 {{ customer.type}} - 
+                 {% if customer.status == 'review' or  customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
+                    <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                        view review details
+                  </a>
+                  {% elif checked('debtStatus','applied') or customer.status == 'applied'%} 
+                    <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                        update status
+                    </a>
+                  {% else %}
+                    <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                       apply protections and update status
+                    </a>
+                 {% endif %}
+                 
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+             {% if customer.status == 'review' %}
+             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money adviser review</strong>
+            {% elif checked('debtStatus','applied') or customer.status == 'applied' %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
               </li>
           </ul>
         </li>

@@ -1,4 +1,4 @@
-  <div class="govuk-grid-row keydetails">
+  <div class="govuk-grid-row govuk-!-margin-top-5">
       <div class="govuk-grid-column-one-half">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
      
@@ -10,13 +10,13 @@
 
     
     
-    Breathing space account for</span>
-    {{debt.name | default("Joe Black") }}
+    Breathing Space account for</span>
+    {{customer.name | default("Joe Black") }}
       </div>
             <div class="govuk-grid-column-one-half">
           <p class="header_highlight_info"><span><span>Day 1</span> of <span>60</span></span>Breathing space started: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} </strong><br>Breathing space ends: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(59) }} </strong></p>
       </div>
       <div class="govuk-grid-column-full">
-     <hr class="govuk-section-break govuk-section-break--visible black">
+     <hr class="govuk-section-break govuk-section-break--visible keydetails">
      </div>
      </div>

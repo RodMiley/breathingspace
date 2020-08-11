@@ -227,7 +227,7 @@ $govuk-assets-path: '/govuk/assets/';
   }
 
  
-.keydetails hr
+hr.keydetails 
 {
   border-color:#000;
   border-bottom:2px solid;
@@ -396,12 +396,21 @@ $govuk-assets-path: '/govuk/assets/';
         width:25%;
       }
 
+button.govuk-link{
+    border:none;
+    background:transparent;
+    text-decoration:underline;
+    color: $govuk-link-colour;
+    margin-bottom:0px;
 
-      .styledlist li{
-          border-bottom: 1px solid $govuk-border-colour;
-          padding:10px 0;
-      }
-    
+    &:visited{
+        color:$govuk-link-visited-colour;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
 
 
   

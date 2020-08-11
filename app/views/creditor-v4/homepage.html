@@ -48,9 +48,8 @@
         <input class="govuk-checkboxes__input" id="debttype-2" name="debttype" type="checkbox" value="Council tax" {{checked('debttype', 'Council tax') }}>
         <label class="govuk-label govuk-checkboxes__label" for="debttype-2">
           Council Tax (
-            {% if data['debttype'] %}
-             {{cusCT.length}}
-            {% elif checked('status','new') %}
+          
+            {% if checked('status','new') %}
             {{cusCTnew.length}}
             {% elif checked('status','PA') %}
             {{cusCTApplied.length}}
@@ -72,9 +71,8 @@
         <label class="govuk-label govuk-checkboxes__label" for="debttype">
           Housing benefit (
             
-             {% if data['debttype'] %}
-             {{cusHB.length}}
-            {% elif checked('todo','yes') and checked('status','new') %}
+            
+            {% if checked('todo','yes') and checked('status','new') %}
             {{newHBtoDO}}
              {% elif checked('status','new') %}
             {{cusHBnew.length}}
@@ -97,9 +95,8 @@
         <input class="govuk-checkboxes__input" id="debttype-3" name="debttype" type="checkbox" value="Parking fines" {{checked('debttype', 'Parking fines') }}>
         <label class="govuk-label govuk-checkboxes__label" for="debttype-3">
           Parking fines (
-             {% if data['debttype'] %}
-             {{cusPF.length}}
-            {% elif checked('todo','yes') and checked('status','new') %}
+       
+            {% if checked('todo','yes') and checked('status','new') %}
             {{newPFtoDO}}
             {% elif checked('status','new') %}
             {{cusPFnew.length}}
@@ -122,9 +119,8 @@
         <input class="govuk-checkboxes__input" id="debttype-4" name="debttype" type="checkbox" value="Rent arrears" {{checked('debttype', 'Rent arrears') }}>
         <label class="govuk-label govuk-checkboxes__label" for="debttype-4">
          Rent arrears (
-            {% if data['debttype'] %}
-             {{cusRA.length}}
-           {% elif checked('todo','yes') and checked('status','new') %}
+         
+           {% if checked('todo','yes') and checked('status','new') %}
           {{newRAtoDO}}
            {% elif checked('todo','yes') %}
           {{cusRAToDo.length}}
@@ -147,9 +143,8 @@
         <input class="govuk-checkboxes__input" id="debttype-5" name="debttype" type="checkbox" value="Other" {{checked('debttype', 'Other') }}>
         <label class="govuk-label govuk-checkboxes__label" for="debttype-5">
          Other (
-            {% if data['debttype'] %}
-             {{cusOther.length}}
-           {% elif checked('todo','yes') and checked('status','new') %}
+        
+           {% if checked('todo','yes') and checked('status','new') %}
           {{newOthertoDO}}
              {% elif checked('status','new') %}
             {{cusOthernew.length}}
@@ -253,7 +248,7 @@
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RA"  {{ checked('status', 'RA') }}>
         <label class="govuk-label govuk-checkboxes__label" for="status">
-          Reviews accepted ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+          Reviews completed - debt removed ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
          {{cusHBAcceptedToDo.length}}
              {% elif checked('todo','yes')%}
           {{cusAcceptedToDo.length}}
@@ -275,7 +270,7 @@
          <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RR"  {{ checked('status', 'RR') }}>
         <label class="govuk-label govuk-checkboxes__label" for="status">
-          Reviews rejected ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+          Reviews completed - debt remains ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
           {{ cusHBRejectedToDo.length }}
               {% elif checked('todo','yes')%}
           {{cusRejectedToDo.length}}
@@ -316,15 +311,15 @@
           {% if checked('debttype','Council tax') %} 
            {{cusCTToDo.length}} 
            {% elif checked('debttype','Housing benefit') %} 
-           {{cusPFToDo.length}}
-            {% elif checked('debttype','Parking fines') %} 
-           {{cusRAToDo.length}}
-           {% elif checked('debttype','Rent arrears') %} 
-           {{cusOtherToDo.length}}
-             {% elif checked('debttype','Other') %} 
            {{cusHBToDo.length}}
+            {% elif checked('debttype','Parking fines') %} 
+           {{cusPFToDo.length}}
+           {% elif checked('debttype','Rent arrears') %} 
+           {{cusRAToDo.length}}
+             {% elif checked('debttype','Other') %} 
+           {{cusOtherToDo.length}}
              {% elif checked('status','new') %} 
-           {{cusnewToDo.length}}
+           {{cusNewToDo.length}}
               {% elif checked('status','PA') %} 
            {{cusAppliedToDo.length}}
           {% elif checked('status','R') %} 
@@ -403,10 +398,10 @@ Housing benefit, new to do ({{newHBtoDO}})
 Housing benefit ({{cusHB.length}})
 
 {% elif checked('status','RR') %}
-Reviews accepted ({{ rejected }})
+Reviews completed - debt remains ({{ rejected }})
 
 {% elif checked('status','RA') %}
-Reviews accepted ({{ accepted }})
+Reviews completed - debt removed ({{ accepted }})
 
 {% elif checked('status','R') %}
 Reviews requested ({{ review }})
@@ -435,9 +430,9 @@ new to do ({{newtoDo}})
 new ({{ new }})
 
 {% elif checked('todo','yes') %}
-To do ({{ todo }})
+To do ({{cusToDo.length}})
 {% else %}
-All debts ({{totNum}}) 
+All debts ({{customers.length}}) 
 {% endif %}
 
 </h2>

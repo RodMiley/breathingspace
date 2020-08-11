@@ -1,0 +1,23 @@
+               <p>Amount: <strong>
+                   {% if customer.status == 'applied'%}
+      £450
+    {% elif customer.status == 'new'%}
+      £850
+    {% elif customer.status == 'review'%}
+      £770
+    {% elif customer.status == 'review-rejected'%}
+     £545
+    {% elif customer.status == 'review-accepted'%}
+     £345
+    {% endif%}
+               
+               
+               </strong><br> Reference: <strong>{{customer.reference}}</strong></p>
+               <p class="govuk-body-s" >
+               <span class="block">Date started: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</span>
+                 {% if customer.status == 'review-accepted'%}
+               <span class="block">Date ended: {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</span>
+               {% else %}
+                 <span class="block">Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</span>
+               {% endif%}
+             </p>

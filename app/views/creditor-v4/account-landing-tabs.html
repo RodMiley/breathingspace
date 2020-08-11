@@ -6,11 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
+ {% include path+"./_global-nav-account.html" %}
   <div class="govuk-grid-row">
   <form class="form" action="" method="post">
 
     <div class="govuk-grid-column-full">
+      <a href="housing-benefit" class="govuk-back-link">Back to Housing Benefit</a>  
 {% include path+"./_keydetails_active.html" %} 
 {% include path+"./_protections-confirm.html" %}
 
@@ -36,7 +37,11 @@
    
     <li class="govuk-tabs__list-item ">
       <a class="govuk-tabs__tab" href="#problem-debt">
+      {% if customer.status =='review-accepted'%}
+      Removed debts
+      {% else %}
        Debts
+      {% endif %} 
       </a>
     </li>
  <li class="govuk-tabs__list-item">

@@ -1,0 +1,270 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include path+"./_global-nav-account.html" %}
+
+ <!-- BASE VALUES -->
+
+{% set HBNum = 0 %}
+{% set HBNNum = 0 %}
+{% set HBANum = 0 %}
+{% set HBRNum = 0 %}
+{% set HBRANum = 0 %}
+{% set HBRRNum = 0 %}
+
+
+
+<!-- todo VALUES -->
+{% set HBtoDO = 0 %}
+
+
+
+	{% for customer in customers %}
+
+<!-- BASE VALUES -->
+
+
+  {% if customer.type === "Housing benefit" %}
+   {% set HBNum = HBNum + 1 %}
+   {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
+     {% set HBtoDO = HBtoDO + 1 %}
+    {% endif %}
+
+
+     {% if customer.type === "Housing benefit" and customer.status === "new" %}
+     {% set HBNNum = HBNNum + 1 %}
+    {% endif %}
+
+      {% if customer.type === "Housing benefit" and customer.status === "applied" %}
+     {% set HBANum = HBANum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "Housing benefit" and customer.status === "review" %}
+     {% set HBRNum = HBRNum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "Housing benefit" and customer.status === "review-accepted" %}
+     {% set HBRANum = HBRANum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "Housing benefit" and customer.status === "review-rejected" %}
+     {% set HBRRNum = HBRRNum + 1 %}
+    {% endif %}
+
+
+{% endfor %}
+
+
+
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<form class="form" action="#" method="post">
+<h2 class="govuk-heading-m govuk-!-margin-top-5">Filter by:</h2>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Status
+      </label>
+    </legend>
+
+    <div class="govuk-radios  govuk-radios--small">
+
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="all"  {{ checked('status', 'all') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          All debts ({{HBNum}})
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="new"  {{ checked('status', 'new') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          New  debts added ({{HBNNum}})
+        </label>
+      </div>
+ <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Protections applied  ({{HBANum}})
+        </label>
+      </div>
+               <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Reviews requested ({{HBRNum}})
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Reviews completed - debt removed ({{HBRANum}})
+        </label>
+      </div>
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Reviews completed - debt remains ({{HBRRNum}})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Tasks
+      </label >
+    </legend>
+
+    <div class="govuk-radios  govuk-radios--small">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  {{ checked('status', 'todo') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          To do 
+            ({{HBtoDO}})
+            
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+</div>
+<div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ Housing benefit
+  </h1>
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+{% if checked('status','new')%}
+New debts added ({{HBNNum}}) 
+{% elif checked('status','PA')%}
+Protections applied ({{HBANum}}) 
+{% elif checked('status','R')%}
+Reviews requested ({{HBRNum}}) 
+{% elif checked('status','RA')%}
+Reviews completed - debt removed ({{HBRANum}}) 
+{% elif checked('status','RR')%}
+Reviews completed - debt remains ({{HBRRNum}}) 
+{% elif checked('status','todo')%}
+To do ({{HBtoDO}}) 
+{% elif checked('status','all')%}
+All debts ({{HBNum}}) 
+{% else %}
+All debts ({{HBNum}}) 
+{% endif %}
+
+
+</h2>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Sort by
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published" selected>Started soonest</option>
+    <option value="updated">Ending soonest</option>
+  </select>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+<dl class="govuk-summary-list listitems" id="xnum">
+
+{% if checked('status','new')%}
+{% for customer in customers %}
+{% if customer.status == 'new' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %} 
+
+{% elif checked('status','PA')%}
+{% for customer in customers %}
+{% if customer.status == 'applied' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','R')%}
+{% for customer in customers %}
+{% if customer.status == 'review' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','RA')%}
+{% for customer in customers %}
+{% if customer.status == 'review-accepted' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+
+{% elif checked('status','RR')%}
+{% for customer in customers %}
+{% if customer.status == 'review-rejected' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','todo')%}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Housing benefit' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+
+{% elif checked('status','all')%}
+{% for customer in customers %}
+{% if customer.type == 'Housing benefit'%}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %}  
+{% endfor %}
+
+
+{% else %}
+{% for customer in customers %}
+{% if customer.type == 'Housing benefit'%}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %}  
+{% endfor %}
+
+{% endif %}
+</dl>
+    </div>
+</div>
+
+<stript>
+$(function() {
+  $(".listitems div").sort(sort_li).appendTo('.listitems');
+  function sort_li(a, b) {
+    return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+  }
+});
+</script>
+
+{% endblock %}

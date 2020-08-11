@@ -1,0 +1,168 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include path+"./_global-nav.html" %}
+
+{% set todo = 0 %}
+
+ {% include path+"./_numbers.html" %}
+
+
+ <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set CTNum = 0 %}
+{% set HBNum = 0 %}
+{% set PFNum = 0 %}
+{% set RANum = 0 %}
+{% set OtherNum = 0 %}
+
+
+<!-- todo VALUES -->
+{% set HBtoDO = 0 %}
+{% set CTtoDO = 0 %}
+{% set PFtoDO = 0 %}
+{% set RAtoDO = 0 %}
+{% set OthertoDO = 0 %}
+{% set NewtoDo = 0 %}
+
+
+	{% for customer in customers %}
+
+<!-- BASE VALUES -->
+	 {% set totNum = totNum + 1 %}
+
+  {% if customer.type === "Housing benefit" %}
+   {% set HBNum = HBNum + 1 %}
+   {% endif %}
+  {% if customer.type === "Council tax" %}
+   {% set CTNum = CTNum + 1 %}
+   {% endif %}
+   {% if customer.type === "Parking fines" %}
+   {% set PFNum = PFNum + 1 %}
+    {% endif %}
+   {% if customer.type === "Rent arrears" %}
+   {% set RANum = RANum + 1 %}
+    {% endif %}
+   {% if customer.type === "Other" %}
+   {% set OtherNum = OtherNum + 1 %}
+    {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
+     {% set HBtoDO = HBtoDO + 1 %}
+    {% endif %}
+
+    {% if customer.type === "Council tax" and  customer.todo === "Yes" %}
+     {% set CTtoDO = CTtoDO + 1 %}
+    {% endif %}	
+
+    {% if customer.type === "Parking fines" and  customer.todo === "Yes" %}
+     {% set PFtoDO = PFtoDO + 1 %}
+     {% endif %}	
+
+      {% if customer.type === "Rent arrears" and  customer.todo === "Yes" %}
+     {% set RAtoDO = RAtoDO + 1 %}
+      {% endif %}
+
+      {% if customer.type === "Other" and  customer.todo === "Yes" %}
+     {% set OthertoDO = OthertoDO + 1 %}
+      {% endif %}
+
+{% endfor %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+  {% include path+"./_creditorname.html" %}
+  </h1>
+
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">{{totNum}} active debts</h2>
+
+  <div class="card-container">
+         
+
+                 <div class="card">
+                 <h2 class="govuk-heading-s"><a href="">
+                Council tax ({{CTNum}})
+                 </a></h2> 
+              <div class="inner">
+                 <a href="" class="govuk-body"> Tasks to do ({{CTtoDO}})</a>
+                 </div>
+              </div>
+
+                 <div class="card">
+                 <h2 class="govuk-heading-s">
+                  <form class="form" action="housing-benefit" method="post">
+                 <button class="govuk-link">
+                Housing benefit ({{HBNum}})
+                 </button>
+                    <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="all"  checked >
+        <label class="govuk-label govuk-radios__label" for="status">
+          To do 
+        </label>
+      </div>
+                 </form>
+                 </h2> 
+              <div class="inner">
+              <form class="form" action="housing-benefit" method="post">
+                 <button class="govuk-body govuk-link"> Tasks to do ({{HBtoDO}})</button>
+
+         <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  checked >
+        <label class="govuk-label govuk-radios__label" for="status">
+          To do 
+        </label>
+      </div>
+              </form>   
+                 </div>
+              </div>
+
+                 <div class="card">
+                 <h2 class="govuk-heading-s"><a href="times">
+                Parking fines ({{PFNum}})
+                 </a></h2> 
+              <div class="inner">
+                 <a href="" class="govuk-body"> Tasks to do ({{PFtoDO}})</a>
+                 </div>
+              </div>
+
+
+                 <div class="card">
+                 <h2 class="govuk-heading-s"><a href="times">
+                Rent arrears ({{RANum}})
+                 </a></h2> 
+              <div class="inner">
+                 <a href="" class="govuk-body"> Tasks to do ({{RAtoDO}})</a>
+                 </div>
+              </div>
+
+
+                 <div class="card">
+                 <h2 class="govuk-heading-s"><a href="times">
+                Other ({{OtherNum}})
+                 </a></h2> 
+              <div class="inner">
+                 <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
+                 </div>
+              </div>
+
+            </div>
+
+
+</div>
+</div>
+
+{% endblock %}
