@@ -1,0 +1,5 @@
+     {%if checked('creditortype','financial')%} 
+               {% include path+"./_creditornamefinancial.html" %} 
+                {% else %}
+                {% include path+"./_creditorname.html" %} 
+                {% endif %}

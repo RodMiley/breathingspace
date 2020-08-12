@@ -2,13 +2,17 @@
  <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            {{customer.type}}
-             <p>{% include path+"./_status-playback.html" %} </p>
+                {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% include path+"./_status-playback.html" %} </p>
             </dt>
             <dd class="govuk-summary-list__value">
                {% include path+"./_debt-amount-ref.html" %}
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
-            </div>
+      </div>
   </dl>          

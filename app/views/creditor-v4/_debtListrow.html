@@ -1,7 +1,11 @@
   <div class="govuk-summary-list__row" data-position="{{ customer.startdate }}">
     <dt class="govuk-summary-list__key">
-    {{ customer.type}}
-      <p class="govuk-body-s">
+      {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+      <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>
      {% if customer.status == 'applied' %}
       Protections applied
     {% elif customer.status == 'new'%}
@@ -13,6 +17,7 @@
     {% elif customer.status == 'review-accepted'%}
       Review completed - debt removed
     {% endif%}
+
       </p>
       {% if customer.todo == 'Yes'%}
     <strong class="govuk-tag govuk-tag--grey">To do</strong>

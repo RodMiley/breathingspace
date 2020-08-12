@@ -15,17 +15,17 @@
 
  <!-- BASE VALUES -->
 
-{% set HBNum = 0 %}
-{% set HBNNum = 0 %}
-{% set HBANum = 0 %}
-{% set HBRNum = 0 %}
-{% set HBRANum = 0 %}
-{% set HBRRNum = 0 %}
+{% set type2Num = 0 %}
+{% set type2NNum = 0 %}
+{% set type2ANum = 0 %}
+{% set type2RNum = 0 %}
+{% set type2RANum = 0 %}
+{% set type2RRNum = 0 %}
 
 
 
 <!-- todo VALUES -->
-{% set HBtoDO = 0 %}
+{% set type2toDO = 0 %}
 
 
 
@@ -34,34 +34,34 @@
 <!-- BASE VALUES -->
 
 
-  {% if customer.type === "Housing benefit" %}
-   {% set HBNum = HBNum + 1 %}
+  {% if customer.type === "type2" %}
+   {% set type2Num = type2Num + 1 %}
    {% endif %}
 
    <!-- TO DO VALUES Type -->
-    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
-     {% set HBtoDO = HBtoDO + 1 %}
+    {% if customer.type === "type2" and customer.todo === "Yes" %}
+     {% set type2toDO = type2toDO + 1 %}
     {% endif %}
 
 
-     {% if customer.type === "Housing benefit" and customer.status === "new" %}
-     {% set HBNNum = HBNNum + 1 %}
+     {% if customer.type === "type2" and customer.status === "new" %}
+     {% set type2NNum = type2NNum + 1 %}
     {% endif %}
 
-      {% if customer.type === "Housing benefit" and customer.status === "applied" %}
-     {% set HBANum = HBANum + 1 %}
+      {% if customer.type === "type2" and customer.status === "applied" %}
+     {% set type2ANum = type2ANum + 1 %}
     {% endif %}
 
-  {% if customer.type === "Housing benefit" and customer.status === "review" %}
-     {% set HBRNum = HBRNum + 1 %}
+  {% if customer.type === "type2" and customer.status === "review" %}
+     {% set type2RNum = type2RNum + 1 %}
     {% endif %}
 
-  {% if customer.type === "Housing benefit" and customer.status === "review-accepted" %}
-     {% set HBRANum = HBRANum + 1 %}
+  {% if customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RANum = type2RANum + 1 %}
     {% endif %}
 
-  {% if customer.type === "Housing benefit" and customer.status === "review-rejected" %}
-     {% set HBRRNum = HBRRNum + 1 %}
+  {% if customer.type === "type2" and customer.status === "review-rejected" %}
+     {% set type2RRNum = type2RRNum + 1 %}
     {% endif %}
 
 
@@ -87,37 +87,37 @@
           <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="all"  {{ checked('status', 'all') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          All debts ({{HBNum}})
+          All debts ({{type2Num}})
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="new"  {{ checked('status', 'new') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          New  debts added ({{HBNNum}})
+          New  debts added ({{type2NNum}})
         </label>
       </div>
  <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          Protections applied  ({{HBANum}})
+          Protections applied  ({{type2ANum}})
         </label>
       </div>
                <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          Reviews requested ({{HBRNum}})
+          Reviews requested ({{type2RNum}})
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          Reviews completed - debt removed ({{HBRANum}})
+          Reviews completed - debt removed ({{type2RANum}})
         </label>
       </div>
          <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          Reviews completed - debt remains ({{HBRRNum}})
+          Reviews completed - debt remains ({{type2RRNum}})
         </label>
       </div>
     </div>
@@ -138,7 +138,7 @@
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  {{ checked('status', 'todo') }}>
         <label class="govuk-label govuk-radios__label" for="status">
           To do 
-            ({{HBtoDO}})
+            ({{type2toDO}})
             
         </label>
       </div>
@@ -155,26 +155,30 @@ Apply filter
 <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
- Housing benefit
+   {%if checked('creditortype','financial')%} 
+                 Loans
+                {% else %}
+                Housing benefit 
+                {% endif %}
   </h1>
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
 {% if checked('status','new')%}
-New debts added ({{HBNNum}}) 
+New debts added ({{type2NNum}}) 
 {% elif checked('status','PA')%}
-Protections applied ({{HBANum}}) 
+Protections applied ({{type2ANum}}) 
 {% elif checked('status','R')%}
-Reviews requested ({{HBRNum}}) 
+Reviews requested ({{type2RNum}}) 
 {% elif checked('status','RA')%}
-Reviews completed - debt removed ({{HBRANum}}) 
+Reviews completed - debt removed ({{type2RANum}}) 
 {% elif checked('status','RR')%}
-Reviews completed - debt remains ({{HBRRNum}}) 
+Reviews completed - debt remains ({{type2RRNum}}) 
 {% elif checked('status','todo')%}
-To do ({{HBtoDO}}) 
+To do ({{type2toDO}}) 
 {% elif checked('status','all')%}
-All debts ({{HBNum}}) 
+All debts ({{type2Num}}) 
 {% else %}
-All debts ({{HBNum}}) 
+All debts ({{type2Num}}) 
 {% endif %}
 
 
@@ -196,28 +200,28 @@ All debts ({{HBNum}})
 
 {% if checked('status','new')%}
 {% for customer in customers %}
-{% if customer.status == 'new' and customer.type == 'Housing benefit' %}
+{% if customer.status == 'new' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %} 
 
 {% elif checked('status','PA')%}
 {% for customer in customers %}
-{% if customer.status == 'applied' and customer.type == 'Housing benefit' %}
+{% if customer.status == 'applied' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
 
 {% elif checked('status','R')%}
 {% for customer in customers %}
-{% if customer.status == 'review' and customer.type == 'Housing benefit' %}
+{% if customer.status == 'review' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
 
 {% elif checked('status','RA')%}
 {% for customer in customers %}
-{% if customer.status == 'review-accepted' and customer.type == 'Housing benefit' %}
+{% if customer.status == 'review-accepted' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
@@ -225,14 +229,14 @@ All debts ({{HBNum}})
 
 {% elif checked('status','RR')%}
 {% for customer in customers %}
-{% if customer.status == 'review-rejected' and customer.type == 'Housing benefit' %}
+{% if customer.status == 'review-rejected' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
 
 {% elif checked('status','todo')%}
 {% for customer in customers %}
-{% if customer.todo == 'Yes' and customer.type == 'Housing benefit' %}
+{% if customer.todo == 'Yes' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
@@ -240,7 +244,7 @@ All debts ({{HBNum}})
 
 {% elif checked('status','all')%}
 {% for customer in customers %}
-{% if customer.type == 'Housing benefit'%}
+{% if customer.type == 'type2'%}
   {% include path+"./_debtListrow.html" %} 
 {% endif %}  
 {% endfor %}
@@ -248,7 +252,7 @@ All debts ({{HBNum}})
 
 {% else %}
 {% for customer in customers %}
-{% if customer.type == 'Housing benefit'%}
+{% if customer.type == 'type2'%}
   {% include path+"./_debtListrow.html" %} 
 {% endif %}  
 {% endfor %}
@@ -258,13 +262,6 @@ All debts ({{HBNum}})
     </div>
 </div>
 
-<stript>
-$(function() {
-  $(".listitems div").sort(sort_li).appendTo('.listitems');
-  function sort_li(a, b) {
-    return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
-  }
-});
-</script>
+
 
 {% endblock %}

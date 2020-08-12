@@ -20,20 +20,20 @@
 
  <!-- BASE VALUES -->
 {% set totNum = 0 %}
-{% set CTNum = 0 %}
-{% set HBNum = 0 %}
-{% set PFNum = 0 %}
-{% set RANum = 0 %}
+{% set type1Num = 0 %}
+{% set type2Num = 0 %}
+{% set type3Num = 0 %}
+{% set type4Num = 0 %}
 {% set OtherNum = 0 %}
 
 
 <!-- todo VALUES -->
-{% set HBtoDO = 0 %}
-{% set CTtoDO = 0 %}
-{% set PFtoDO = 0 %}
-{% set RAtoDO = 0 %}
+{% set type1toDO = 0 %}
+{% set type2toDO = 0 %}
+{% set type3toDO = 0 %}
+{% set type4toDO = 0 %}
 {% set OthertoDO = 0 %}
-{% set NewtoDo = 0 %}
+
 
 
 	{% for customer in customers %}
@@ -41,37 +41,37 @@
 <!-- BASE VALUES -->
 	 {% set totNum = totNum + 1 %}
 
-  {% if customer.type === "Housing benefit" %}
-   {% set HBNum = HBNum + 1 %}
+  {% if customer.type === "type2" %}
+   {% set type2Num = type2Num + 1 %}
    {% endif %}
-  {% if customer.type === "Council tax" %}
-   {% set CTNum = CTNum + 1 %}
+  {% if customer.type === "type1" %}
+   {% set type1Num = type1Num + 1 %}
    {% endif %}
-   {% if customer.type === "Parking fines" %}
-   {% set PFNum = PFNum + 1 %}
+   {% if customer.type === "type3" %}
+   {% set type3Num = type3Num + 1 %}
     {% endif %}
-   {% if customer.type === "Rent arrears" %}
-   {% set RANum = RANum + 1 %}
+   {% if customer.type === "type4" %}
+   {% set type4Num = type4Num + 1 %}
     {% endif %}
    {% if customer.type === "Other" %}
    {% set OtherNum = OtherNum + 1 %}
     {% endif %}
 
    <!-- TO DO VALUES Type -->
-    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
-     {% set HBtoDO = HBtoDO + 1 %}
+    {% if customer.type === "type2" and customer.todo === "Yes" %}
+     {% set type2toDO = type2toDO + 1 %}
     {% endif %}
 
-    {% if customer.type === "Council tax" and  customer.todo === "Yes" %}
-     {% set CTtoDO = CTtoDO + 1 %}
+    {% if customer.type === "type1" and  customer.todo === "Yes" %}
+     {% set type1toDO = type1toDO + 1 %}
     {% endif %}	
 
-    {% if customer.type === "Parking fines" and  customer.todo === "Yes" %}
-     {% set PFtoDO = PFtoDO + 1 %}
+    {% if customer.type === "type3" and  customer.todo === "Yes" %}
+     {% set type3toDO = type3toDO + 1 %}
      {% endif %}	
 
-      {% if customer.type === "Rent arrears" and  customer.todo === "Yes" %}
-     {% set RAtoDO = RAtoDO + 1 %}
+      {% if customer.type === "type4" and  customer.todo === "Yes" %}
+     {% set type4toDO = type4toDO + 1 %}
       {% endif %}
 
       {% if customer.type === "Other" and  customer.todo === "Yes" %}
@@ -85,28 +85,36 @@
    <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
  <span class="govuk-caption-xl">Breathing Space portal for</span>
-  {% include path+"./_creditorname.html" %}
+  {% include path+"./_creditor.html" %}
   </h1>
 
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">{{totNum}} active debts</h2>
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">{{totNum}} active Breathing Space debts</h2>
 
   <div class="card-container">
          
 
                  <div class="card">
                  <h2 class="govuk-heading-s"><a href="">
-                Council tax ({{CTNum}})
+                {%if checked('creditortype','financial')%} 
+                Mortgages
+                {% else %}
+                Council tax 
+                {% endif %}({{type1Num}})
                  </a></h2> 
               <div class="inner">
-                 <a href="" class="govuk-body"> Tasks to do ({{CTtoDO}})</a>
+                 <a href="" class="govuk-body"> Tasks to do ({{type1toDO}})</a>
                  </div>
               </div>
 
                  <div class="card">
                  <h2 class="govuk-heading-s">
-                  <form class="form" action="housing-benefit" method="post">
+                  <form class="form" action="debttype-landing-page" method="post">
                  <button class="govuk-link">
-                Housing benefit ({{HBNum}})
+                  {%if checked('creditortype','financial')%} 
+                 Loans
+                {% else %}
+                Housing benefit 
+                {% endif %} ({{type2Num}})
                  </button>
                     <div class="govuk-radios__item govuk-visually-hidden">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="all"  checked >
@@ -117,8 +125,8 @@
                  </form>
                  </h2> 
               <div class="inner">
-              <form class="form" action="housing-benefit" method="post">
-                 <button class="govuk-body govuk-link"> Tasks to do ({{HBtoDO}})</button>
+              <form class="form" action="debttype-landing-page" method="post">
+                 <button class="govuk-body govuk-link"> Tasks to do ({{type2toDO}})</button>
 
          <div class="govuk-radios__item govuk-visually-hidden">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  checked >
@@ -132,20 +140,28 @@
 
                  <div class="card">
                  <h2 class="govuk-heading-s"><a href="times">
-                Parking fines ({{PFNum}})
+                  {%if checked('creditortype','financial')%} 
+                  Overdraft
+                {% else %}
+                Parking fines
+                {% endif %}  ({{type3Num}})
                  </a></h2> 
               <div class="inner">
-                 <a href="" class="govuk-body"> Tasks to do ({{PFtoDO}})</a>
+                 <a href="" class="govuk-body"> Tasks to do ({{type3toDO}})</a>
                  </div>
               </div>
 
 
                  <div class="card">
                  <h2 class="govuk-heading-s"><a href="times">
-                Rent arrears ({{RANum}})
+                  {%if checked('creditortype','financial')%} 
+                  Insurance
+                {% else %}
+                Rent arrears 
+                {% endif %} ({{type4Num}})
                  </a></h2> 
               <div class="inner">
-                 <a href="" class="govuk-body"> Tasks to do ({{RAtoDO}})</a>
+                 <a href="" class="govuk-body"> Tasks to do ({{type4toDO}})</a>
                  </div>
               </div>
 

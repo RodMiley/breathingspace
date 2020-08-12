@@ -11,7 +11,15 @@
   <form class="form" action="" method="post">
 
     <div class="govuk-grid-column-full">
-      <a href="housing-benefit" class="govuk-back-link">Back to Housing Benefit</a>  
+      <a href="debttype-landing-page" class="govuk-back-link">
+      {%if checked('creditortype','financial')%} 
+             
+                Back to Loans
+                {% else %}
+                 Back to Housing Benefit
+                {% endif %}
+     
+      </a>  
 {% include path+"./_keydetails_active.html" %} 
 {% include path+"./_protections-confirm.html" %}
 
@@ -60,7 +68,6 @@
      <section class="govuk-tabs__panel" id="ma-requests">
            <h2 class="govuk-heading-l">
         Tasks</h2>
-        {% include path+"./_requests_content.html" %} 
         {% include path+"./_tasklist.html" %} 
   </section>
 

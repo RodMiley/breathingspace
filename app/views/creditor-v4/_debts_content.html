@@ -6,7 +6,7 @@ The following debts have been removed from Breathing Space and the protections c
 </p>
 {% else %}
 <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
-Debts owed to   {% include "./_creditorname.html" %}  added to Breathing Space</h2>
+Debts owed to   {% include "./_creditor.html" %}  added to Breathing Space</h2>
 <p>
 The debt type, amount and reference are for your matching purposes, so you can apply the Breathing Space protections,  the accuracy doesn’t effect the debt eligibility.
 </p>
@@ -42,8 +42,12 @@ The debt type, amount and reference are for your matching purposes, so you can a
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             {{customer.type}}
-                <p>{% include path+"./_status-playback.html" %} </p>
+                  {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+                <p class="govuk-body-s govuk-!-margin-top-1">Status:<br> {% include path+"./_status-playback.html" %} </p>
             </dt>
             <dd class="govuk-summary-list__value">
              {% include path+"./_debt-amount-ref.html" %}

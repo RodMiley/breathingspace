@@ -19,14 +19,14 @@
 
           <ul class="govuk-list govuk-list--bullet">
           <li>you've explained the regulations to your client</li>
-          <li>you've been instructed by <strong>{{fullname | default("Joe Black") }}</strong> to enter them into Breathing Space</li>
-          <li><strong>{{fullname | default("Joe Black") }}</strong> has agreed for you to share their information with their creditors</li>
-          <li><strong>{{fullname | default("Joe Black") }}</strong> has agreed for their information to be held on a private register for 15 months plus the length of time of their breathing space</li>
+          <li>you've been instructed by <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> to enter them into Breathing Space</li>
+          <li><strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> has agreed for you to share their information with their creditors</li>
+          <li><strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> has agreed for their information to be held on a private register for 15 months plus the length of time of their breathing space</li>
           <li>the information you've provided is complete and correct
 </li>
         </ul>
 
-       <p class="govuk-body">You also agree that <strong>{{fullname | default("Joe Black") }}</strong> has agreed they will:</p>
+       <p class="govuk-body">You also agree that <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> has agreed they will:</p>
          <ul class="govuk-list govuk-list--bullet">
          <li>engage with a debt adviser</li>
           <li>have a midway progress review with their debt adviser</li> 

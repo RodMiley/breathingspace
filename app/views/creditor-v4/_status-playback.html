@@ -1,4 +1,4 @@
-    {% if customer.status == 'applied' or checked('debtStatus','applied')%}
+    {% if customer.status == 'applied' %}
       Protections applied
     {% elif customer.status == 'new'%}
       New debt added

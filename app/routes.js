@@ -84,8 +84,9 @@ next()
   next()
   })
 
-  router.get('/creditor-v4/housing-benefit', function (req, res, next) {
+  router.get('/creditor-v4/debttype-landing-page', function (req, res, next) {
     res.locals.customers = creditordebts
+
     next()
     })
 
@@ -299,6 +300,8 @@ next()
     findCustomer = creditordebts[i];
    }
   }
+
+  
  
   res.locals.customer = findCustomer
   next()
@@ -313,11 +316,33 @@ next()
       findCustomer = creditordebts[i];
      }
     }
-   
+
+
+
     res.locals.customer = findCustomer
     next()
      })
 
+
+   router.get('/creditor-v4/protections-confirm', function (req, res, next)
+   {
+   let findCustomer = {}
+ 
+   for (let i = 0; i < creditordebts.length; i++ ) {
+   if(creditordebts[i].reference === req.query.reference){
+     findCustomer = creditordebts[i];
+    }
+   }
+
+   let status = req.session.data['debtStatus']
+   if(status === 'applied'){
+     findCustomer.status ='applied' 
+     findCustomer.todo='No'}
+
+   res.locals.customer = findCustomer
+   next()
+    })
+ 
 
    router.get('/creditor-v4/review-debt-details', function (req, res, next)
    {
@@ -332,6 +357,42 @@ next()
    res.locals.customer = findCustomer
    next()
     })
+
+    router.get('/creditor-v4/review-debt', function (req, res, next)
+    {
+    let findCustomer = {}
+  
+    for (let i = 0; i < creditordebts.length; i++ ) {
+    if(creditordebts[i].reference === req.query.reference){
+      findCustomer = creditordebts[i];
+     }
+    }
+   
+    res.locals.customer = findCustomer
+    next()
+     })
+
+     router.get('/creditor-v4/review-debt-confirm', function (req, res, next)
+     {
+     let findCustomer = {}
+   
+     for (let i = 0; i < creditordebts.length; i++ ) {
+     if(creditordebts[i].reference === req.query.reference){
+       findCustomer = creditordebts[i];
+      }
+     }
+
+     let status = req.session.data['debtStatus']
+       if(status === 'review'){
+         findCustomer.status ='review' 
+         findCustomer.todo='No'}  
+    
+     res.locals.customer = findCustomer
+     next()
+      })
+
+
+  
 
    router.get('/creditor-v4/protections-confirm', function (req, res, next) {
     let findCustomer = {}

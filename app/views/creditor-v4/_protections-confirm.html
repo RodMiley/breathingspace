@@ -1,6 +1,13 @@
- {% if checked('protection','yes') %}
+
+   {% if checked('status','PA') or checked('status','R') or customer.status == 'new' %}
+  {% elif checked('protection','yes')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
   <p class="govuk-body">You have applied the protections to the debt</p>
+</div>
+{% elif checked('protection','no')%}
+ <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  <p class="govuk-body">You have applied the protections and requested a review of debt eligibility</p>
 </div>
 {% endif %}
