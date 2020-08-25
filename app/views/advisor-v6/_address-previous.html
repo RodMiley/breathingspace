@@ -15,8 +15,9 @@
                 {% elif checked('prevAddress', 'pclookup')%} 
                 {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
                 {% endif %}
-               <p>Moved in {{ movedInMonth | default("10") | toMonth }} {{ movedInYear | default("2017") }} <br>
-                Moved out  {{ movedOutMonth | default("01") | toMonth }} {{ movedOutYear | default("2020") }} </p>
+
+               <p>{% if data['movedInMonth']%}Moved in {{ movedInMonth | default("10") | toMonth }} {{ movedInYear | default("2017") }} <br>{% endif %}
+                {% if data['movedOutMonth']%} Moved out  {{ movedOutMonth | default("01") | toMonth }} {{ movedOutYear | default("2020") }} </p>{% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <ul class="govuk-list">

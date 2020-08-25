@@ -1,11 +1,13 @@
     {% if customer.status == 'applied' %}
       Protections applied
-    {% elif customer.status == 'new'%}
+      {% elif customer.status == 'dont-own' %}
+      We dont own the debt anymore
+    {% elif customer.status == 'new' %}
       New debt added
     {% elif customer.status == 'review'%}
       Review requested
     {% elif customer.status == 'review-rejected'%}
-      Review completed - debt remains
+      Review completed - debt eligible
     {% elif customer.status == 'review-accepted'%}
-      Review completed - debt removed
+      Review completed - debt ineligible
     {% endif%}

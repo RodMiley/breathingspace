@@ -1,4 +1,4 @@
-  <div class="govuk-summary-list__row" data-position="{{ customer.startdate }}">
+  <div class="govuk-summary-list__row sort-item" data-event-date="{{ customer.startdate }}">
     <dt class="govuk-summary-list__key">
       {%if checked('creditortype','financial')%} 
                  Loan
@@ -6,17 +6,7 @@
                 Housing benefit 
                 {% endif %}
       <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>
-     {% if customer.status == 'applied' %}
-      Protections applied
-    {% elif customer.status == 'new'%}
-      New debt added
-    {% elif customer.status == 'review'%}
-      Review requested
-    {% elif customer.status == 'review-rejected'%}
-      Review completed - debt remains
-    {% elif customer.status == 'review-accepted'%}
-      Review completed - debt removed
-    {% endif%}
+      {% include path+"./_status-playback.html" %}
 
       </p>
       {% if customer.todo == 'Yes'%}

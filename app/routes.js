@@ -74,6 +74,7 @@ router.get('/clearSession', function (req, res, next) {
   var creditordebts = require('./data/creditordebtlist.js')
 
 
+
 router.get('/creditor-v3/homepage', function (req, res, next) {
 res.locals.debts = creditordebts
 next()
@@ -86,6 +87,21 @@ next()
 
   router.get('/creditor-v4/debttype-landing-page', function (req, res, next) {
     res.locals.customers = creditordebts
+
+   // function GetSortOrder(prop) {    
+   //   return function(a, b) {    
+    //      if (a[prop], a[prop] > b[prop]) {    
+     //         return 1;    
+     //     } else if (a[prop] < b[prop]) {    
+     //         return -1;    
+     //     }    
+    //      return 0;    
+    //  }    
+  //}   
+  
+  //creditordebts.sort(GetSortOrder("startdate")); //Pass the attribute to be sorted on    
+ 
+  
 
     next()
     })
@@ -406,6 +422,54 @@ next()
     res.locals.customer = findCustomer
     next()
      })
+
+
+     router.get('/creditor-v4/sold-the-debt', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+
+     router.get('/creditor-v4/sold-the-debt-details', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+      
+
+       router.get('/creditor-v4/sold-the-debt-confirm', function (req, res, next) {
+        let findCustomer = {}
+      
+        for (let i = 0; i < creditordebts.length; i++ ) {
+        if(creditordebts[i].reference === req.query.reference){
+          findCustomer = creditordebts[i];
+         }
+        }
+
+        let status = req.session.data['debtStatus']
+        if(status === 'dontOwn'){
+          findCustomer.status ='dont-own' 
+          findCustomer.todo='No'}   
+       
+        res.locals.customer = findCustomer
+        next()
+         })
   
 
 

@@ -21,7 +21,8 @@
 {% set type2RNum = 0 %}
 {% set type2RANum = 0 %}
 {% set type2RRNum = 0 %}
-
+{% set dontOwnNum = 0 %}
+{% set type2RCNum = 0 %}
 
 
 <!-- todo VALUES -->
@@ -65,6 +66,17 @@
     {% endif %}
 
 
+    {% if customer.type === "type2" and customer.status === "review-rejected" or customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RCNum = type2RCNum + 1 %}
+    {% endif %}
+
+
+
+      {% if customer.type === "type2" and customer.status === "dont-own" %}
+     {% set dontOwnNum = dontOwnNum + 1 %}
+    {% endif %}
+
+
 {% endfor %}
 
 
@@ -102,13 +114,23 @@
           Protections applied  ({{type2ANum}})
         </label>
       </div>
-               <div class="govuk-radios__item">
+
+
+     <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
         <label class="govuk-label govuk-radios__label" for="status">
           Reviews requested ({{type2RNum}})
         </label>
       </div>
+
       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="RC"  {{ checked('status', 'RC') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Reviews completed ({{type2RCNum}})
+        </label>
+      </div>
+
+     <!-- <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }}>
         <label class="govuk-label govuk-radios__label" for="status">
           Reviews completed - debt removed ({{type2RANum}})
@@ -118,6 +140,12 @@
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
         <label class="govuk-label govuk-radios__label" for="status">
           Reviews completed - debt remains ({{type2RRNum}})
+        </label>
+      </div> -->
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="DO"  {{ checked('status', 'dont-own') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          We dont own these debts anymore ({{dontOwnNum}})
         </label>
       </div>
     </div>
@@ -173,6 +201,10 @@ Reviews requested ({{type2RNum}})
 Reviews completed - debt removed ({{type2RANum}}) 
 {% elif checked('status','RR')%}
 Reviews completed - debt remains ({{type2RRNum}}) 
+{% elif checked('status','DO')%}
+We dont own these debts anymore ({{dontOwnNum}}) 
+{% elif checked('status','RC')%}
+Eligibility reviews completed ({{type2RCNum}}) 
 {% elif checked('status','todo')%}
 To do ({{type2toDO}}) 
 {% elif checked('status','all')%}
@@ -188,15 +220,15 @@ All debts ({{type2Num}})
     Sort by
   </label>
   <select class="govuk-select" id="sort" name="sort">
-    <option value="published" selected>Started soonest</option>
-    <option value="updated">Ending soonest</option>
+    <option value="started" >Started soonest</option>
+    <option value="ending">Ending soonest</option>
   </select>
 </div>
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
-<dl class="govuk-summary-list listitems" id="xnum">
+<dl class="govuk-summary-list sort-list" id="xnum">
 
 {% if checked('status','new')%}
 {% for customer in customers %}
@@ -219,6 +251,13 @@ All debts ({{type2Num}})
 {% endif %} 
 {% endfor %}
 
+{% elif checked('status','RC')%}
+{% for customer in customers %}
+  {% if customer.type === "type2" and customer.status === "review-rejected" or customer.type === "type2" and customer.status === "review-accepted" %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
 {% elif checked('status','RA')%}
 {% for customer in customers %}
 {% if customer.status == 'review-accepted' and customer.type == 'type2' %}
@@ -230,6 +269,13 @@ All debts ({{type2Num}})
 {% elif checked('status','RR')%}
 {% for customer in customers %}
 {% if customer.status == 'review-rejected' and customer.type == 'type2' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','DO')%}
+{% for customer in customers %}
+{% if customer.status == 'dont-own' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
@@ -264,4 +310,44 @@ All debts ({{type2Num}})
 
 
 
+
+
 {% endblock %}
+
+
+ {% block pageScripts %}
+
+ <script>
+(function($){
+    var container = $(".sort-list");
+    var items = $(".sort-item");
+    
+    items.each(function() {
+       // Convert the string in 'data-event-date' attribute to a more
+       // standardized date format
+       var BCDate = $(this).attr("data-event-date").split("-");
+       var standardDate = BCDate[1]+" "+BCDate[0]+" "+BCDate[2];
+       standardDate = new Date(standardDate).getTime();
+       $(this).attr("data-event-date", standardDate);
+ 
+    });
+    
+
+    items.sort(function(a,b){
+        a = parseFloat($(a).attr("data-event-date"));
+        b = parseFloat($(b).attr("data-event-date"));
+        return a<b ? -1 : a>b ? 1 : 0;
+
+    }).each(function(){
+        container.prepend(this);
+    });
+
+})
+
+(jQuery);
+
+
+
+</script>
+ 
+ {% endblock %}

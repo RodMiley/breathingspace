@@ -1,7 +1,7 @@
                <p>Amount: <strong>
-                   {% if customer.status == 'applied'%}
-      £450
-    {% elif customer.status == 'new'%}
+      {% if customer.status == 'applied'%}
+      £1850
+    {% elif customer.status == 'new' or customer.status == 'dontown' %}
       £1850
     {% elif customer.status == 'review'%}
       £770

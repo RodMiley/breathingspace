@@ -23,24 +23,33 @@
               <span class="app-task-list__task-name">
               
                 Status:
-                 {% if customer.status == 'review' or  customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
+                 {% if customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
+                    <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                         {% include path+"./_status-playback.html" %} - view review details and update
+                  </a>
+                  {% elif customer.status == 'review'%}
                     <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
                          {% include path+"./_status-playback.html" %} - view review details
                   </a>
                   {% elif customer.status == 'applied' %} 
                     <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                         {% include path+"./_status-playback.html" %} - update status
+                         {% include path+"./_status-playback.html" %} - update
+                    </a>
+
+                     {% elif customer.status == 'dont-own' %} 
+                    <a href="sold-the-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                         {% include path+"./_status-playback.html" %} - view details
                     </a>
                   {% else %}
                     <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                        {% include path+"./_status-playback.html" %} - apply protections and update status
+                        {% include path+"./_status-playback.html" %} - apply protections and update
                     </a>
                  {% endif %}
                  
               </span>
              {% if customer.status == 'review' %}
              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money adviser review</strong>
-            {% elif customer.status == 'applied' %}
+            {% elif customer.status == 'applied' or customer.status == 'dont-own' %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
