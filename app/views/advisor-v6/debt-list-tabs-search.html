@@ -44,7 +44,7 @@
       <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
 
       <a class="govuk-tabs__tab" href="#actions">
-      Actions
+      Tasks
       </a>
     </li>
     <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -61,13 +61,13 @@
     {% endif %} 
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#personal-details">
-        Personal details
+        Client details
       </a>
     </li>
 
   </ul>
     <section class="govuk-tabs__panel" id="actions">
-     <h2 class="govuk-heading-l">Actions to do</h2>
+     <h2 class="govuk-heading-l">Tasks</h2>
       {% include "./_requests_content.html" %} 
     </section>
   <section class="govuk-tabs__panel" id="problem-debt">
@@ -84,7 +84,6 @@
   {% endif %}
 
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
-    <h2 class="govuk-heading-l">Personal details</h2>
      {% include "./_personaldetails.html" %} 
 
   </section>

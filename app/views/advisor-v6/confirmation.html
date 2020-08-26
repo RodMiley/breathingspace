@@ -14,16 +14,24 @@
             Breathing Space submitted
           </h1>
           <div class="govuk-panel__body">
-            Your client's reference number<br><strong>HDJ2123F</strong>
+            Your client's reference number<br><strong>BSJ2123F</strong>
           </div>
         </div>
           <h2 class="govuk-heading-m">What happens next</h2>
-           <p class="govuk-body">Your client has been submitted into Breathing Space. We will notify your client’s creditors that their Breathing Space has started.</p>
+           <p class="govuk-body">Your client has been submitted into Breathing Space. </p>
 
-
-          <p><a href="index">Return to service homepage</a></p>
-
- <p><a href="time-machine-creditor" class="timemachine-link">On to next scenario</a></p>
+{% if checked('poc','yes')%}  
+<p class="govuk-body">We will notify your client’s creditors and point of contact that their Breathing Space has started.</p>
+{% else%}         
+<p class="govuk-body">We will notify your client and there creditors that their Breathing Space has started.</p>
+{% endif %}
+      <ul class="govuk-list">
+          <li><a href="debt-list-tabs-search">Return to client page</a></li>
+          <li><a href="index">Return to service homepage</a></li>
+        </p>
+        <ul> 
+<!--
+ <p><a href="time-machine-creditor" class="timemachine-link">On to next scenario</a></p> -->
       </div>
   
 </div>

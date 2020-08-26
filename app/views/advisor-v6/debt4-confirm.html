@@ -16,9 +16,9 @@
  Add a debt
       </h1>
 
-<h2 class="govuk-heading-m">Creditor and debt details</h2>
+<h2 class="govuk-heading-m">Creditor details</h2>
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Name
@@ -45,33 +45,42 @@
               </a>
             </dd>
           </div>
-        <!--  <div class="govuk-summary-list__row">
+          </dl>
+
+<h2 class="govuk-heading-m">Notification preference</h2>
+   <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Phone number
+              Method
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{phone | default("07841234567")}}</p>
+              <p class="govuk-body">{{howcontactedCreditor}}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt4-step3#phone">
-                Change<span class="govuk-visually-hidden"> Phone number</span>
+              <a class="govuk-link" href="debt4-pref-contact#howcontactedCreditor">
+                Change<span class="govuk-visually-hidden"> Notification preference</span>
               </a>
             </dd>
-          </div> 
-        
-                <div class="govuk-summary-list__row">
+          </div>
+  
+        {% if checked('howcontactedCreditor','Email')%}
+            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Email address
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{email}}</p>
+              <p class="govuk-body">{{creditorContactByEmail}}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="debt4-step3#email">
+              <a class="govuk-link" href="debt4-pref-contact#creditorContactByEmail">
                 Change<span class="govuk-visually-hidden"> Email address</span>
               </a>
             </dd>
-          </div> -->
+          </div>
+          {% endif %}
+          </dl>
+          <h2 class="govuk-heading-m">Debt details</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {{ typefour }}

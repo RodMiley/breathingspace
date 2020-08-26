@@ -29,7 +29,7 @@
 </div>
      <div class="govuk-form-group">
   <label class="govuk-label" for="pocorg">
-   Organisation (optional)
+   Department (optional)
   </label>
   <input class="govuk-input" id="pocorg" name="pocorg" type="text" autocomplete="pocorg" spellcheck="false" value="{{ pocorg }}">
 </div>
@@ -43,7 +43,7 @@
     </legend>
     <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="mhHowContacted-conditional" name="mhHowContacted" type="radio" value="Email" data-aria-controls="conditional-mhHowContacted-conditional">
+        <input class="govuk-radios__input" id="mhHowContacted-conditional" name="mhHowContacted" type="radio" value="Email" data-aria-controls="conditional-mhHowContacted-conditional" {{ checked('mhHowContacted','Email')}}>
         <label class="govuk-label govuk-radios__label" for="mhHowContacted-conditional">
           Email
         </label>
@@ -53,12 +53,12 @@
           <label class="govuk-label" for="mhEmail">
             Email address
           </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="mhEmail" name="mhEmail" type="email" spellcheck="false">
+          <input class="govuk-input govuk-!-width-two-thirds" id="mhEmail" name="mhEmail" type="email" spellcheck="false" value="{{mhEmail}}">
         </div>
 
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="mhHowContacted-conditional-2" name="mhHowContacted" type="radio" value="Post~mh-poc-address" data-aria-controls="conditional-mhHowContacted-conditional-2">
+        <input class="govuk-radios__input" id="mhHowContacted-conditional-2" name="mhHowContacted" type="radio" value="Post~mh-poc-address" data-aria-controls="conditional-mhHowContacted-conditional-2" {{ checked('mhHowContacted','Post')}}>
         <label class="govuk-label govuk-radios__label" for="mhHowContacted-conditional-2">
           Post
         </label>
@@ -67,46 +67,6 @@
     </div>
   </fieldset>
 </div>
-  
-
-<!-- <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-      <h2 class="govuk-label">
-       When did the treatment start?
-      </h2>
-    </legend>
-    <span id="dob-hint" class="govuk-hint">
-      For example, 31 3 2020
-    </span>
-    <div class="govuk-date-input" id="dob">
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="day">
-            Day
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="day" name="day" type="number" autocomplete="bdayday" pattern="[0-9]*" value="{{ day }}">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="month">
-            Month
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="month" name="month" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="{{ month }}">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="year">
-            Year
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="year" name="year" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="{{ year }}">
-        </div>
-      </div>
-    </div>
-  </fieldset>
-</div> -->
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>

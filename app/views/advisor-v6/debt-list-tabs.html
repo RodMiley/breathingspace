@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    {% if data['debt']%}
+    {% if data['debt'] or checked('debt4','debt4')%}
   <form class="form" action="bs-save-submit" method="post">
 {% else %}
   <form class="form" action="index" method="post">
@@ -73,7 +73,7 @@
   </ul>
   <section class="govuk-tabs__panel" id="problem-debt">
 
-   {% if checked('debt','yes') or  checked('MAScenaioChoice','return to inactive account')%}
+   {% if checked('debt','yes') or  checked('MAScenaioChoice','return to inactive account') or checked('debt4','debt4')%}
     <h2 class="govuk-heading-m">Debts to be added to Breathing Space</h2>
     {% else %}
     <h2 class="govuk-heading-m">Add debts to Breathing Space</h2>
@@ -82,7 +82,7 @@
        
    
 
-   {% if checked('debt','yes') or checked('MAScenaioChoice','return to inactive account')%}
+   {% if checked('debt','yes') or checked('MAScenaioChoice','return to inactive account') or checked('debt4','debt4')%}
        <dl class="govuk-summary-list govuk-!-margin-bottom-3">
     {% if data['debt'] and data['deletedebt-1'] or data['deletedebt-1']%}
     {% else %}
@@ -150,7 +150,7 @@
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="not-testing">
+              <a class="govuk-link" href="mh-summary">
                 Change<span class="govuk-visually-hidden"> debt</span>
               </a>
                        or
@@ -211,7 +211,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  {% if data['debt'] or checked('MAScenaioChoice','return to inactive account')%}
+  {% if data['debt'] or checked('MAScenaioChoice','return to inactive account') or checked('debt4','debt4')%}
   Save and continue 
 {% else %}
   Save and close record

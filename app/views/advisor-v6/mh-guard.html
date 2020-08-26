@@ -8,26 +8,52 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="mh-point-of-contact" method="post">
+  <form class="form" action="mh-poc-guard" method="post">
     <div class="govuk-grid-column-two-thirds">
        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="evidence-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-       Do you have signed confirmation and evidence from an approved mental health professional that your client is recieving mental health crisis treatment?
+       Have you seen evidence from an approved mental health practitioner that your client is in receipt of mental health crisis treatment?
       </h1>
     </legend>
     <div class="govuk-radios govuk-radios--inline">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changed-name">
+        <input class="govuk-radios__input" id="evidence" name="evidence" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="evidence">
           Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no~bs-type-choice">
-        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+        <input class="govuk-radios__input" id="evidence-2" name="evidence" type="radio" value="no~bs-type-choice">
+        <label class="govuk-label govuk-radios__label" for="evidence-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+     <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="evidence-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+      Have you have carried out a credit check on your client?
+      </h1>
+    </legend>
+    <div id="check-hint" class="govuk-hint">
+      You must do this to establish what debts your client has
+    </div>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="check" name="check" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="check">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="check-2" name="check" type="radio" value="no~bs-type-choice">
+        <label class="govuk-label govuk-radios__label" for="check-2">
           No
         </label>
       </div>

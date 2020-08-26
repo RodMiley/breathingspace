@@ -65,6 +65,11 @@ router.get('/clearSession', function (req, res, next) {
   next()
    })
 
+   router.get('/advisor-v6/search-results-page', function (req, res, next) {
+    res.locals.clients = searchClient
+    next()
+     })
+
    router.get('/advisor-v5/search-results-pagev2', function (req, res, next) {
     res.locals.clients = searchClient
     next()
