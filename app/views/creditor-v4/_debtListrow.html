@@ -16,8 +16,8 @@
     <dd class="govuk-summary-list__value">
      <p class="govuk-body">
 Name: <strong>{{ customer.name}}</strong><br>Reference: <strong>{{customer.reference}}</strong></p>
-<p class="govuk-body-s">Started: {{ customer.startdate }}<br>
-Ends: {{ customer.enddate }}
+<p class="govuk-body-s">Started: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}<br>
+Ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}
 </p>
     </dd>
     <dd class="govuk-summary-list__actions">

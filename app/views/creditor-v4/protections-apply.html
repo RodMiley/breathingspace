@@ -21,6 +21,31 @@
 
 {% include path+"./_debt-info.html" %}
 
+{% if customer.status == 'dispute'%}
+<div class="govuk-form-group govuk-!-margin-top-7">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Update the debt status
+      </h1>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./account-landing-tabs?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+          We agree protections will remain in place
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute" {% if customer.status == 'dispute' %}checked {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+          Protections will remain but we dispute the eligibilty 
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+{% else %}
       
 
 <div class="govuk-form-group">
@@ -52,7 +77,7 @@
     </div>
   </fieldset>
 </div>
-
+{% endif %}
 <button class="govuk-button" data-module="govuk-button">
   Confirm and submit
 </button>

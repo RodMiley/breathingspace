@@ -10,4 +10,7 @@
       Review completed - debt eligible
     {% elif customer.status == 'review-accepted'%}
       Review completed - debt ineligible
+      {% elif customer.status == 'dispute'%}
+      We dispute eligibility
+
     {% endif%}

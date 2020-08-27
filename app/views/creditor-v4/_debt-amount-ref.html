@@ -18,6 +18,6 @@
                  {% if customer.status == 'review-accepted'%}
                <span class="block">Date ended: {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</span>
                {% else %}
-                 <span class="block">Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</span>
+                 <span class="block">Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(59) }}</span>
                {% endif%}
              </p>

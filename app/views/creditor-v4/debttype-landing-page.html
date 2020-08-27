@@ -23,6 +23,8 @@
 {% set type2RRNum = 0 %}
 {% set dontOwnNum = 0 %}
 {% set type2RCNum = 0 %}
+{% set disputeNum = 0 %}
+{% set propDebtNum = 0 %}
 
 
 <!-- todo VALUES -->
@@ -74,6 +76,10 @@
 
       {% if customer.type === "type2" and customer.status === "dont-own" %}
      {% set dontOwnNum = dontOwnNum + 1 %}
+    {% endif %}
+
+        {% if customer.type === "type2" and customer.status === "dispute" %}
+     {% set disputeNum = disputeNum + 1 %}
     {% endif %}
 
 
@@ -130,22 +136,24 @@
         </label>
       </div>
 
-     <!-- <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="status" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }}>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="dispute"  {{ checked('status', 'dispute') }}>
         <label class="govuk-label govuk-radios__label" for="status">
-          Reviews completed - debt removed ({{type2RANum}})
+          Eligibility disputes ({{disputeNum}})
         </label>
       </div>
-         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="status" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
-        <label class="govuk-label govuk-radios__label" for="status">
-          Reviews completed - debt remains ({{type2RRNum}})
-        </label>
-      </div> -->
+
        <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="DO"  {{ checked('status', 'dont-own') }}>
         <label class="govuk-label govuk-radios__label" for="status">
           We dont own these debts anymore ({{dontOwnNum}})
+        </label>
+      </div>
+
+               <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="propDebt"  {{ checked('status', 'propDebt') }}>
+        <label class="govuk-label govuk-radios__label" for="status">
+          Proposed debts ({{propDebtNum}})
         </label>
       </div>
     </div>
@@ -207,6 +215,8 @@ We dont own these debts anymore ({{dontOwnNum}})
 Eligibility reviews completed ({{type2RCNum}}) 
 {% elif checked('status','todo')%}
 To do ({{type2toDO}}) 
+{% elif checked('status','dispute')%}
+Eligibility disputes ({{disputeNum}}) 
 {% elif checked('status','all')%}
 All debts ({{type2Num}}) 
 {% else %}
@@ -276,6 +286,13 @@ All debts ({{type2Num}})
 {% elif checked('status','DO')%}
 {% for customer in customers %}
 {% if customer.status == 'dont-own' and customer.type == 'type2' %}
+  {% include path+"./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','dispute')%}
+{% for customer in customers %}
+{% if customer.status == 'dispute' and customer.type == 'type2' %}
   {% include path+"./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}

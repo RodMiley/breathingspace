@@ -24,7 +24,7 @@ Review completed
 {% include path+"./_debt-info.html" %} 
 
    
-    {% if customer.status == 'review-rejected' %}
+    {% if customer.status == 'review-rejected'  or customer.status == 'dispute' %}
               <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have not removed the debt from Breathing Space</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
@@ -58,7 +58,7 @@ Review completed
                     <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"./_creditor-advisor.html" %}, {% include path+"./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
               
 
-     {% if customer.status == 'review-rejected' %}    
+     {% if customer.status == 'review-rejected'%}    
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -89,8 +89,8 @@ Review completed
 {% endif %}
 
 
-
-     {% if customer.status == 'review-accepted' %}    
+{% if customer.status == 'review-accepted' and customer.todo == 'No' %}
+{% elif customer.status == 'review-accepted' %}    
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
