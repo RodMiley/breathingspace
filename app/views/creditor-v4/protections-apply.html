@@ -19,9 +19,9 @@
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
 
-{% include path+"./_debt-info.html" %}
+{% include "./_debt-info.html" %}
 
-{% if customer.status == 'dispute'%}
+{% if customer.status == 'dispute' or customer.status == 'review-rejected' and customer.todo == 'No' %}
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -31,13 +31,13 @@
     </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./account-landing-tabs?reference={{customer.reference}}">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./account-landing-tabs?reference={{customer.reference}}" {% if customer.status == 'review-rejected' %}checked {% endif %}>
         <label class="govuk-label govuk-radios__label" for="debtStatus">
           We agree protections will remain in place
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute" {% if customer.status == 'dispute' %}checked {% endif %}>
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute~./review-completed-rejected-confirm?reference={{customer.reference}}" {% if customer.status == 'dispute' %}checked {% endif %}>
         <label class="govuk-label govuk-radios__label" for="debtStatus-2">
           Protections will remain but we dispute the eligibilty 
         </label>

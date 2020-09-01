@@ -12,9 +12,13 @@
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-  <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm review details
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm 
       </h1>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are confirming that you have completed the tasks needed because the debt has been removed</h2>
+
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
  <dl class="govuk-summary-list">
@@ -25,7 +29,7 @@
                 {% else %}
                 Housing benefit 
                 {% endif %}
-              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>New debt added</p>
+              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% if customer.status == "review-accepted" %} Review completed - debt ineligible {% else %}New debt added{% endif %}</p>
             </dt>
             <dd class="govuk-summary-list__value">
                {% include "./_debt-amount-ref.html" %}
@@ -33,28 +37,21 @@
             <dd class="govuk-summary-list__actions">
             </dd>
       </div>
-  </dl>          
+  </dl> 
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are requesting that   {% include "creditor-mvp/_advise-org-name.html" %}  review debt eligibility</h2>
 
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body">{{ debtReview }}</p>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
-<p class="govuk-body">{{ moreDetail }}</p>
 
- 
-              <div class="govuk-radios" style="display:none">
+                <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="protection" type="radio" value="no~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="complete~./account-landing-tabs?reference={{customer.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="protection">
          hidden radio
         </label>
       </div>
       </div>
 
-
 <button class="govuk-button" data-module="govuk-button">
-  Confirm and submit to Breathing Space
+  Confirm and submit
 </button>
     </div>
     </form>

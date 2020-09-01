@@ -9,5 +9,12 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
 
+$(document).ready(function () {
+  $('#facetFilterBtn').hide()
+  $('.facet').on('change', e => {
+    $('#facetFilterBtn').click();
+  })
+})
+
 
 

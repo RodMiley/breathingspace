@@ -21,13 +21,13 @@
         {% endif %}
              
               <span class="app-task-list__task-name">
-                  {% if customer.status == 'review' or customer.status == 'review-accepted' and customer.todo == 'No' %}
+                  {% if customer.status == 'review' or customer.status == 'review-accepted' and customer.todo == 'No' or customer.status == 'review-rejected' and customer.todo == 'No'  %}
                     <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                         {% include path+"./_status-playback.html" %} - view review details
+                         {% include "./_status-playback.html" %} - view review details
                   </a>
                  {% elif customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
                     <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                         {% include path+"./_status-playback.html" %} - view review details and update
+                         {% include "./_status-playback.html" %} - view review details and update
                   </a>
                     {% elif customer.status == 'dispute' %}
                     <a href="review-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
@@ -35,16 +35,16 @@
                   </a>
                   {% elif customer.status == 'applied' %} 
                     <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                         {% include path+"./_status-playback.html" %} - update
+                         {% include "./_status-playback.html" %} - update
                     </a>
 
                      {% elif customer.status == 'dont-own' %} 
                     <a href="sold-the-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                         {% include path+"./_status-playback.html" %} - view details
+                         {% include "./_status-playback.html" %} - view details
                     </a>
                   {% else %}
                     <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                        {% include path+"./_status-playback.html" %} - apply protections and update
+                        {% include "./_status-playback.html" %} - apply protections and update
                     </a>
                  {% endif %}
                  

@@ -11,7 +11,7 @@
 
 {% block content %}
 
- {% include path+"./_global-nav.html" %} 
+ {% include "./_global-nav.html" %} 
 
 <!-- BASE VALUES -->
 {% set totNum = 0 %}
@@ -200,7 +200,7 @@
    <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
  <span class="govuk-caption-xl">Breathing Space portal for</span>
-  {% include path+"./_creditorname.html" %}
+  {% include "./_creditorname.html" %}
   </h1>
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
    </div>
@@ -474,7 +474,7 @@ All debts ({{totNum}})
 
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption">Active Breathing Space debts for {% include path+"./_creditorname.html" %} </caption>
+  <caption class="govuk-table__caption">Active Breathing Space debts for {% include "./_creditorname.html" %} </caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Debt type</th>
@@ -487,49 +487,49 @@ All debts ({{totNum}})
 {% if checked('debttype','Other') and checked('todo','yes')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Other'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
   {% elif checked('debttype','Other') %}
 {% for debt in debts %}
 {% if debt.type == 'Other'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Rent arrears') and checked('todo','yes')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Rent arrears'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Rent arrears') %}
 {% for debt in debts %}
 {% if debt.type == 'Rent arrears'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Parking fines') and checked('status','New')  %}
 {% for debt in debts %}
 {% if debt.type == 'Parking fines' and debt.status == 'New'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %} 
 
 {% elif checked('debttype','Parking fines') and checked('todo','yes')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Parking fines'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Parking fines') %}
 {% for debt in debts %}
 {% if debt.type == 'Parking fines'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
@@ -537,21 +537,21 @@ All debts ({{totNum}})
 {% elif checked('debttype','Council tax') and checked('status','New')  %}
 {% for debt in debts %}
 {% if debt.type == 'Council tax' and debt.status == 'New'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %} 
 
 {% elif checked('debttype','Council tax') and checked('todo','yes')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Council tax'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Council tax') %}
 {% for debt in debts %}
 {% if debt.type == 'Council tax'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
@@ -559,42 +559,42 @@ All debts ({{totNum}})
 
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Housing benefit' and debt.status == 'new'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Housing benefit') and checked('todo','yes')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.type == 'Housing benefit'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('debttype','Housing benefit') %}
 {% for debt in debts %}
 {% if debt.type == 'Housing benefit'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('todo','yes') and checked('status','RR')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.status == 'review-rejected'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('todo','yes') and checked('status','RA')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.status == 'review-accepted'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('status','RA')  %}
 {% for debt in debts %}
 {% if debt.status == 'review-accepted'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
@@ -602,35 +602,35 @@ All debts ({{totNum}})
 {% elif checked('status','RA')  %}
 {% for debt in debts %}
 {% if debt.status == 'review-accepted'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('todo','yes') and checked('status','R')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.status == 'review'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('status','R')  %}
 {% for debt in debts %}
 {% if debt.status == 'review'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('todo','yes') and checked('status','PA')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.status == 'applied'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('status','PA')  %}
 {% for debt in debts %}
 {% if debt.status == 'applied'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
@@ -638,14 +638,14 @@ All debts ({{totNum}})
 {% elif checked('todo','yes') and checked('status','new')  %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes' and debt.status == 'new'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% elif checked('status','new')  %}
 {% for debt in debts %}
 {% if debt.status == 'new'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
@@ -653,13 +653,13 @@ All debts ({{totNum}})
 {% elif checked('todo','yes') %}
 {% for debt in debts %}
 {% if debt.todo == 'Yes'%}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
   {% endif %}
 {% endfor %}
 
 {% else %}
 {% for debt in debts %}
-  {% include path+"./_debtTableRow.html" %} 
+  {% include "./_debtTableRow.html" %} 
 {% endfor %}
 
 {% endif %}

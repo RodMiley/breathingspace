@@ -5,7 +5,7 @@
       £1850
     {% elif customer.status == 'review'%}
       £770
-    {% elif customer.status == 'review-rejected'%}
+    {% elif customer.status == 'review-rejected' or customer.status == 'dispute'%}
      £545
     {% elif customer.status == 'review-accepted'%}
      £345

@@ -21,7 +21,7 @@ Review completed
       </h1>
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
 <hr class="govuk-section-break govuk-section-break--visible">
-{% include path+"./_debt-info.html" %} 
+{% include "./_debt-info.html" %} 
 
    
     {% if customer.status == 'review-rejected'  or customer.status == 'dispute' %}
@@ -31,7 +31,7 @@ Review completed
                     <p class="govuk-body">
                     The client is a sold trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
                     </p>           
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"./_ma-advisor.html" %}, {% include path+"./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
               </div>
 
     {% endif %}      
@@ -44,7 +44,7 @@ Review completed
                     <p class="govuk-body">
                     The client has agreed that this was a debt accociated with their business
                     </p>           
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"./_ma-advisor.html" %}, {% include path+"./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
             </div>
 
     {% endif %}        
@@ -55,10 +55,11 @@ Review completed
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
                     <p class="govuk-body">{{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}</p>
                   
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"./_creditor-advisor.html" %}, {% include path+"./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
               
+{% if customer.status == 'review-rejected' and customer.todo == 'No'%}
 
-     {% if customer.status == 'review-rejected'%}    
+     {% elif customer.status == 'review-rejected'%}    
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -68,13 +69,13 @@ Review completed
     </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./account-landing-tabs?reference={{customer.reference}}">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./review-completed-rejected-confirm?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus">
           We agree protections will remain in place
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute~./review-completed-rejected-confirm?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-2">
           Protections will remain but we dispute the eligibilty 
         </label>
@@ -100,13 +101,13 @@ Review completed
     </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="completed~./account-landing-tabs?reference={{customer.reference}}">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="completed~./review-completed-confirm?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus">
          Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="completedcompleted~./account-landing-tabs?reference={{customer.reference}}">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="completedno~./account-landing-tabs?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-2">
         No
         </label>
