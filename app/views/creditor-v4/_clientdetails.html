@@ -41,12 +41,7 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
-              {% else %}  
-              {{addressline1 | default("4 Bourough road") }}<br>
-              {{addresstown | default("London")}}<br>
-              {{addresspostcode | default("NW10 2JU")}}
-              {% endif %}
+             	          45  Borough Road <br>Elephant and Castle<br>London<br>NW13 2GH
             </dd>
             <dd class="govuk-summary-list__actions">
        
@@ -59,15 +54,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
             <p>
-            {% if checked('prevAddress', 'manual')%}
-             <span class="govuk-!-display-block">{{prevaddressline1}}</span>
-             <span class="govuk-!-display-block">{{prevaddressline2}}</span>
-              <span class="govuk-!-display-block">{{prevaddresstown}}</span>
-              <span class="govuk-!-display-block">{{prevaddresscounty}}</span>
-              <span class="govuk-!-display-block">{{prevaddresspostcode}}</span>  
-                {% elif checked('prevAddress', 'pclookup')%} 
-                {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
-                {% endif %}
+                2  Treasant close <br>Elephant and Castle<br>London<br>NW11 4GH
+                
                <p>Moved in {{ movedInMonth | default("10") | toMonth }} {{ movedInYear | default("2017") }} <br>
                 Moved out  {{ movedOutMonth | default("01") | toMonth }} {{ movedOutYear | default("2020") }} </p>
             </dd>
@@ -80,49 +68,16 @@
 
          <h2 class="govuk-heading-m">Businesses</h2>
                    <dl class="govuk-summary-list">
-        {% if checked('addBusiness', 'yes')%}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            {{ businessName }}
+            Elsada tech
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if checked('businessAddress','currentAddress')%}
-             	{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode | default("NW10 8LL")}} 
-              {% else %}  
-              {{addressline1 | default("4 Bourough road") }}<br>
-              {{addresstown | default("London")}}<br>
-              {{addresspostcode | default("NW10 2JU")}}
-              {% endif %}
-               
-               {% elif checked('businessAddress','previousAddress')%}
-                 {% if checked('prevAddress', 'manual')%}
-             <span class="govuk-!-display-block">{{prevaddressline1}}</span>
-             <span class="govuk-!-display-block">{{prevaddressline2}}</span>
-              <span class="govuk-!-display-block">{{prevaddresstown}}</span>
-              <span class="govuk-!-display-block">{{prevaddresscounty}}</span>
-              <span class="govuk-!-display-block">{{prevaddresspostcode}}</span>  
-                {% elif checked('prevAddress', 'pclookup')%} 
-                {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
-                {% endif %}
-
-               {% else %}
-
-             	{% if data['businesssort']=='two'%} 27 Turner Grove <br>Elephant and Castle<br>London<br>{{postcodeBusiness}}{% elif data['businesssort']=='three' %}29 Turner Grove <br>Elephant and Castle<br>London<br>{{postcodeBusiness}}{% elif data['businesssort']=='four' %} 31 Turner Grove <br>Elephant and Castle<br>London<br> {{postcodeBusiness}} 
-              {% else %}  
-              <span class="govuk-!-display-block">{{businessaddressline1 | default("4 Bourough road") }}</span>
-              <span class="govuk-!-display-block">{{businessaddressline2 | default("4 Bourough road") }}</span>
-              <span class="govuk-!-display-block">{{businessaddresstown | default("London")}}</span>
-              <span class="govuk-!-display-block">{{businessaddresscounty | default("London")}}</span>
-              <span class="govuk-!-display-block">{{businessaddresspostcode | default("NW10 2JU")}} </span>   
-              {% endif %}
-            {% endif %}
+             	27 Turner Grove <br>Elephant and Castle<br>London<br>NW11 4FD
             </dd>
             <dd class="govuk-summary-list__actions">
       
             </dd>
           </div>
         </dl>
-    
-       {% else %}
-        {% endif %}
         </dl>

@@ -47,7 +47,7 @@
    or customer.name == 'Gunilla Siberry'
 %}
 <li>
-{{ customer.name }}, {{ customer.Reset }} ,{{ customer.todo }}
+{{ customer.name }}, Status:{{ customer.status }} ,To do:{{ customer.todo }} 
 </li>
  {% endif %}
 {% endfor %}
@@ -55,8 +55,8 @@
 
 
     
-  {% if checked('debtReset','reset')%}
-  <a href="/creditor-v4/homepage-card">Home</a>
+ {% if checked('debtReset','yes')%}
+  <a class="govuk-body" href="/prototype-admin/clear-data">Go to reset data now</a>
   {% else %}
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
@@ -67,7 +67,7 @@
     </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtReset" name="debtReset" type="radio" value="reset" {{ checked('debtReset','reset')}}>
+        <input class="govuk-radios__input" id="debtReset" name="debtReset" type="radio" value="yes" {{ checked('debtReset','yes')}}>
         <label class="govuk-label govuk-radios__label" for="debtReset">
          Yes
         </label>
@@ -81,12 +81,13 @@
     </div>
   </fieldset>
 </div>
-
   <button class="govuk-button" data-module="govuk-button">
   Reset client the dataf
 </button>
 
-  {% endif %}
+{% endif %}
+
+
 
 
     </div>

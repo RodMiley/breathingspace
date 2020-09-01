@@ -296,24 +296,64 @@ var creditordebts = require('./creditordebtlist.js')
 
    // -------------------------------- Reset client data
 
-    router.get('/resetClientData', function (req, res, next) {
+
+   router.get('/resetClientData', function (req, res, next) {
     res.locals.customers = creditordebts
-    next()
-    })
 
-
-    router.get('/resetClientData', function (req, res, next) {
-      let creditordebts = 0
- 
-
-      let status = req.session.data['debtReset']
-      if(status === 'reset'){
-        creditordebts.todo='No'
-      }   
+    let findCustomer = {}
+    let findCustomer2 = {}
+    let findCustomer3 = {}
+    let findCustomer4 = {}
+    let findCustomer5 = {}
+    let findCustomer6 = {}
      
-      res.locals.customer = creditordebts
-      next()
-       })
+    for (let i = 0; i < creditordebts.length; i++ ) {
+
+    if(creditordebts[i].reference === '507-50-0242'){
+      findCustomer = creditordebts[i];
+     }
+
+    if(creditordebts[i].reference === '703-12-2970'){
+      findCustomer2 = creditordebts[i];
+     }
+    
+     if(creditordebts[i].reference === '700-64-2930'){
+      findCustomer3 = creditordebts[i];
+     }
+     
+     if(creditordebts[i].reference === '257-55-2879'){
+      findCustomer4 = creditordebts[i];
+     } 
+
+     if(creditordebts[i].reference === '654-01-3217'){
+      findCustomer5 = creditordebts[i];
+     } 
+
+     if(creditordebts[i].reference === '839-75-1188'){
+      findCustomer6 = creditordebts[i];
+     } 
+
+    }
+
+    let status = req.session.data['debtReset']
+      if(status === 'yes'){
+        findCustomer.status ='new' 
+        findCustomer.todo='Yes'
+        findCustomer2.status ='new' 
+        findCustomer2.todo='Yes'
+        findCustomer3.status ='new' 
+        findCustomer3.todo='Yes' 
+        findCustomer4.status ='new' 
+        findCustomer4.todo='Yes' 
+        findCustomer5.status ='review-rejected' 
+        findCustomer5.todo='Yes' 
+        findCustomer6.status ='review-accepted' 
+        findCustomer6.todo='Yes' 
+      }  
+    
+    next()
+     })
+
   
   
 
