@@ -55,7 +55,7 @@
      {% set type2ANum = type2ANum + 1 %}
     {% endif %}
 
-  {% if customer.type === "type2" and customer.status === "review" %}
+  {% if customer.type === "type2" and customer.status === "review" or customer.clientReview === "yes" %}
      {% set type2RNum = type2RNum + 1 %}
     {% endif %}
 
@@ -82,7 +82,7 @@
      {% set disputeNum = disputeNum + 1  %}
     {% endif %}
 
-    {% if customer.type === "type2" and checked('proposed','yes') %}
+    {% if customer.type === "type2" and customer.substatus === "proposedDebt" %}
      {% set  propDebtNum =  propDebtNum + 1  %}
     {% endif %}
 
@@ -264,8 +264,8 @@ All debts ({{type2Num}})
 
 {% elif checked('status','R')%}
 {% for customer in customers %}
-{% if customer.status == 'review' and customer.type == 'type2' %}
-  {% include "./_debtListrow.html" %} 
+{% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes' %}
+  {% include "./_debtListrowReview.html" %} 
 {% endif %} 
 {% endfor %}
 
@@ -314,8 +314,8 @@ All debts ({{type2Num}})
 
 {% elif checked('status','propDebt')%}
 {% for customer in customers %}
-{% if customer.type === "type2" and checked('proposed','yes') %}
-  {% include "./_debtListrow.html" %} 
+{% if customer.type === "type2" and customer.substatus === "proposedDebt" %}
+  {% include "./_debtListrowPropdebt.html" %} 
 {% endif %} 
 {% endfor %}
 

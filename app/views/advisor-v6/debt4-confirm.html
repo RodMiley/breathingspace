@@ -80,13 +80,19 @@
           {% endif %}
           </dl>
           <h2 class="govuk-heading-m">Debt details</h2>
+          {% if data['typefour'] or data['amountfour'] or data['referencefour'] %}
           <dl class="govuk-summary-list govuk-!-margin-bottom-5">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+            {% if data ['typefour']%}
               {{ typefour }}
+              {% else %}
+              Debt
+              {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-                Amount: £{{ amountfour }}<br> Reference: {{ referencefour}}
+               {% if data['amountfour']%} Amount: £{{ amountfour }}{% endif %}
+               {% if data['referencefour']%} <br> Reference: {{ referencefour}} {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt4-step4">
@@ -95,6 +101,9 @@
             </dd>
           </div>
         </dl>
+        {% else %}
+        <p><a href="debt4-step4">Add debt details</a></p>
+        {% endif %}
 
 
 

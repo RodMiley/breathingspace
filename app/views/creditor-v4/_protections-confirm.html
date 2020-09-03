@@ -1,10 +1,11 @@
 
 {% if checked('status','PA') 
 or checked('status','R') 
-or customer.status == 'new' 
+or customer.status == 'new' and data['clientReviewConfirm'] !=='yes'
 or checked('status','DO')
 or checked('status','dont-own')
 or checked('status','dispute')
+or checked('status','propDebt')
 or customer.status == 'review-accepted' and data['protection'] !=='complete'
 or checked('status','RC') and checked('protection','complete')
 or customer.status == 'review-rejected' and data['protection'] !=='rejected-complete'
@@ -14,6 +15,20 @@ or customer.status == 'review-rejected' and data['protection'] !=='rejected-comp
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
   <p class="govuk-body">You have applied the protections to the debt</p>
 </div>
+
+  {% elif checked('addDebtStep2','yes') or checked('addDebtStep2','yes') and checked('protection','yes') %}
+ <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  <p class="govuk-body">We have informed Advice uk that you have proposed a debt that should be included in Breathing Space
+  </p>
+  </div>
+
+    {% elif checked('clientReviewConfirm','yes') %}
+ <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  <p class="govuk-body">You requested a review of client eligibility
+  </p>
+  </div> 
 {% elif checked('protection','no') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
@@ -41,6 +56,5 @@ that the protections will remain but you dispute the eligibilty
 {% else %}
 that the protections will remain in place
 {% endif %}
-  </p>
-  </div>
+</div>
 {% endif %}

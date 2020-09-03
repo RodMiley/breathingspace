@@ -280,6 +280,90 @@ var creditordebts = require('./creditordebtlist.js')
       next()
        })
 
+
+           
+      // ---------------------------------------------------------
+
+
+     router.get('/add-debt', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+
+           // ---------------------------------------------------------
+
+
+     router.get('/add-debt-confirm', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+
+
+      let status = req.session.data['adddebt']
+      if(status === 'yes'){
+        findCustomer.substatus ='proposedDebt' 
+        }   
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+
+
+           // ---------------------------------------------------------
+
+
+     router.get('/review-client', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+
+           // ---------------------------------------------------------
+
+
+     router.get('/review-client-confirm', function (req, res, next) {
+      let findCustomer = {}
+    
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+       }
+      }
+
+
+      let status = req.session.data['debtStatus']
+      if(status === 'clientReview'){
+        findCustomer.clientReview ='yes' 
+        }   
+     
+      res.locals.customer = findCustomer
+      next()
+       })
+
+
          // ---------------------------------------------------------
   
   
@@ -339,16 +423,28 @@ var creditordebts = require('./creditordebtlist.js')
       if(status === 'yes'){
         findCustomer.status ='new' 
         findCustomer.todo='Yes'
+        findCustomer.substatus=''
+        findCustomer.clientReview=''
         findCustomer2.status ='new' 
         findCustomer2.todo='Yes'
+        findCustomer2.substatus=''
+        findCustomer2.clientReview=''
         findCustomer3.status ='new' 
-        findCustomer3.todo='Yes' 
+        findCustomer3.todo='Yes'
+        findCustomer3.substatus=''
+        findCustomer3.clientReview=''
         findCustomer4.status ='new' 
         findCustomer4.todo='Yes' 
+        findCustomer4.substatus=''
+        findCustomer4.clientReview=''
         findCustomer5.status ='review-rejected' 
-        findCustomer5.todo='Yes' 
+        findCustomer5.todo='Yes'
+        findCustomer5.substatus=''
+        findCustomer5.clientReview=''
         findCustomer6.status ='review-accepted' 
-        findCustomer6.todo='Yes' 
+        findCustomer6.todo='Yes'
+        findCustomer6.substatus='' 
+        findCustomer6.clientReview=''
       }  
     
     next()

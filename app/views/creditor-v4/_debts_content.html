@@ -15,31 +15,6 @@ The debt type, amount and reference are for your matching purposes, so you can a
    
    <hr class="govuk-section-break govuk-section-break--visible">
    <dl class="govuk-summary-list govuk-!-margin-bottom-0">
-
-           {% if checked('adddebt','yes') %}
-              <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-   
-             {{ typeOfDebt }}
-
-                   {% if data['adddebt']%}
-            <p class="govuk-!-margin-bottom-1"><a href="add-debt-details"> Action requested</a><br>
-                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">Pending</strong>
-              {% endif %}   
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-            
-            </dd>
-          </div>
-
-          {% endif %}
-
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                   {%if checked('creditortype','financial')%} 

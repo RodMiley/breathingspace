@@ -8,25 +8,27 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="confirmation-add-debt" method="post">
+  <form class="form" action="account-landing-tabs" method="post">
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm new debt
+      Confirm new debt
       </h1>
 
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are imforming {% include path+"creditor-mvp/_advise-org-name.html" %}  that you have identified new debts that should be included in Breathing Space</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are informing {% include path+"creditor-mvp/_advise-org-name.html" %}  that you have identified another debt that should be included in Breathing Space</h2>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
    <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-         {% if checked('adddebt','yes') %}
               <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-   
-             {{ typeOfDebt }}
+             {% if checked('typeOfDebt','other')%}
+             {{ otherdebt }}
+             {% else %}
+             {{typeOfDebt}}
+             {% endif %}
       
             </dt>
             <dd class="govuk-summary-list__value">
@@ -41,46 +43,21 @@
           </div>
           
           
-          
-          {% elif checked('adddebt2','yes') %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ typeOfDebt }}
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
-            </dd>
 
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="add-debt-2">
-                Change<span class="govuk-visually-hidden"> Debt</span>
-              </a>
-            </dd>
-          </div>
-          
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-   
-             {{ typeOfDebt2 }}
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount2 }}</strong><br> Reference: <strong>{{ addreference2 }}</strong>
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="add-debt-2">
-                Change<span class="govuk-visually-hidden"> Debt</span>
-              </a>
-            </dd>
-          </div>
-          {% endif %}
 </dl>
 
 
+<div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="addDebtStep2" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="adddebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
 <button class="govuk-button" data-module="govuk-button">
-  Confirm and submit to Breathing Space
+    Confirm and submit
 </button>
     </div>
     </form>

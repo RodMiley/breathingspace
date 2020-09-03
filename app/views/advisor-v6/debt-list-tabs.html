@@ -91,12 +91,17 @@
             {% if data['typeOfDebt']=='other'%}
              {{otherdebt}}
             {% else %}
-             {{ typeOfDebt | default("Loan")}}
+             {{ typeOfDebt | default("Debt")}}
              {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: {{creditor | default("Barclays") }}<br>Amount: £{{ amount | default("5467") }}<br> Reference: {{ reference | default("BAR234897HC")}}
-
+              Creditor: {{creditor | default("Barclays") }}
+              {% if data['amount']%}
+              <br>Amount: £{{ amount | default("5467") }}
+              {% endif %}
+              {% if data['amount']%}
+              <br> Reference: {{ reference | default("BAR234897HC")}}
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="debt-step2">
@@ -119,8 +124,13 @@
 
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: {{creditorthree | default("Beech Garage")}}<br>Amount: £{{ amountthree | default("775") }}<br> Reference: {{ referencethree | default("New clutch") }}
-
+              Creditor: {{creditorthree | default("Beech Garage")}}
+              {% if data['amountThree']%}
+              <br>Amount: £{{ amountthree | default("775") }}
+              {% endif %}
+              {% if data['referencethree']%}
+              <br> Reference: {{ referencethree | default("New clutch") }}
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="not-testing">
@@ -142,15 +152,25 @@
      {% elif data['creditorfour']%}
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             {{ typefour | default("Car Repair") }}
+            {% if data['tyefour']%}
+             {{ typefour }}
+             {% else %}
+             Debt
+             {% endif %}
 
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: {{creditorfour | default("Beech Garage")}}<br>Amount: £{{ amountfour | default("775") }}<br> Reference: {{ referencefour | default("New clutch") }}
+              Creditor: {{creditorfour | default("Beech Garage")}}
+              {% if data['amountfour']%}
+              <br>Amount: £{{ amountfour | default("775") }}
+              {% endif %}
+               {% if data['referencefour']%}
+              <br> Reference: {{ referencefour | default("New clutch") }}
+              {% endif %}
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="mh-summary">
+              <a class="govuk-link" href="debt4-confirm">
                 Change<span class="govuk-visually-hidden"> debt</span>
               </a>
                        or

@@ -47,7 +47,7 @@
    or customer.name == 'Gunilla Siberry'
 %}
 <li>
-{{ customer.name }}, Status:{{ customer.status }} ,To do:{{ customer.todo }} 
+{{ customer.name }}, Status:{{ customer.status }} ,To do:{{ customer.todo }}, {{customer.substatus}}  {{customer.clientReview}}
 </li>
  {% endif %}
 {% endfor %}

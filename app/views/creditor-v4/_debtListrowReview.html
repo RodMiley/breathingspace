@@ -1,15 +1,20 @@
   <div class="govuk-summary-list__row sort-item" data-event-date="{{ customer.startdate }}">
     <dt class="govuk-summary-list__key">
       {%if checked('creditortype','financial')%} 
-                 Loan           
+                 Loan    
+                {% elif customer.clientReview == 'yes' %}    
+                Client eligibility review    
                 {% else %}
                 Housing benefit 
-     
+    
 
                 {% endif %}
       <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>
+      {% if customer.clientReview == 'yes' %}    
+                Review requested
+                {% else %}
       {% include "./_status-playback.html" %}
-
+     {% endif %}
       </p>
       {% if customer.todo == 'Yes'%}
     <strong class="govuk-tag govuk-tag--grey">To do</strong>
@@ -17,7 +22,10 @@
     </dt>
     <dd class="govuk-summary-list__value">
      <p class="govuk-body">
-Name: <strong>{{ customer.name}}</strong><br>Reference: <strong>{{customer.reference}}</strong></p>
+Name: <strong>{{ customer.name}}</strong><br>{% if customer.clientReview == 'yes' %} 
+                {% else %}
+                  Reference: <strong>{{customer.reference}}</strong></p>
+                {% endif %}
 <p class="govuk-body-s">Started: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}<br>
 Ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}
 </p>

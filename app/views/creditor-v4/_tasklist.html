@@ -57,6 +57,32 @@
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
               </li>
+              {% if customer.substatus == 'proposedDebt' %}
+              <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              {% if checked('typeOfDebt','other')%}
+             {{ otherdebt }}
+             {% else %}
+             {{typeOfDebt}}
+             {% endif %}
+              </h4>
+                <span class="app-task-list__task-name">
+                <a href='add-debt-details?reference={{customer.reference}}'>Proposed debt view details</a>
+                </span>
+               <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money Adviser Confirmation</strong>
+              </li>
+              {% endif %}
+                         {% if customer.clientReview == 'yes' %}
+              <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+           Client eligibility review
+              </h4>
+                <span class="app-task-list__task-name">
+                <a href='review-client-details?reference={{customer.reference}}'>Review requested - view details</a>
+                </span>
+               <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money adviser review</strong>
+              </li>
+              {% endif %}
           </ul>
         </li>
       </ol>

@@ -23,18 +23,9 @@ Review completed
 <hr class="govuk-section-break govuk-section-break--visible">
 {% include "./_debt-info.html" %} 
 
-   
-    {% if customer.status == 'review-rejected'  or customer.status == 'dispute' %}
-              <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have not removed the debt from Breathing Space</h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-                    <p class="govuk-body">
-                    The client is a sole trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
-                    </p>           
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
-              </div>
+  
 
-    {% endif %}      
+
 
         {% if customer.status == 'review-accepted' %}
            <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
@@ -49,17 +40,27 @@ Review completed
 
     {% endif %}        
                 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We requested Advice uk to review debt eligibility</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We requested a review of the debts eligibility</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
                     <p class="govuk-body">{{ debtReview | default ("The debt does not qualify for Breathing Space")}}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
                     <p class="govuk-body">{{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}</p>
                   
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested By:{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-5 govuk-fullborder--blue">
+                           <p><strong class="govuk-tag govuk-tag--blue">
+  Responce
+</strong></p>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have not removed the debt from Breathing Space</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">
+                    The client is a sole trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
+                    </p>           
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+              </div>
               
-{% if customer.status == 'review-rejected' and customer.todo == 'No'%}
-
-     {% elif customer.status == 'review-rejected'%}    
+ 
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -87,7 +88,6 @@ Review completed
   Save and continue
 </button>
 
-{% endif %}
 
 
 {% if customer.status == 'review-accepted' and customer.todo == 'No' %}
