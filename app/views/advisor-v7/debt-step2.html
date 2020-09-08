@@ -1,0 +1,132 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 2 of 2</span>
+       Add a debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body">{{ creditor | default("Barclays Bank") }} <a href="debt">Change</a></p>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of debt (optional)
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Loan"  {{checked('typeOfDebt', 'Loan') }} >
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Personal Loan
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Mortgage"  {{checked('typeOfDebt', 'Mortgage') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Mortgage
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Overdraft"  {{checked('typeOfDebt', 'Overdraft') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+        Overdraft
+        </label>
+      </div>
+
+
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Insurance"  {{checked('typeOfDebt', 'Insurance') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+        Insurance
+        </label>
+      </div>
+
+         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-conditional" name="typeOfDebt" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('typeOfDebt', 'other') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-conditional">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-addDebt-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="otherdebt">
+            Type of Debt
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="otherdebt" name="otherdebt" value="{{otherdebt}}">
+        </div>
+</div>
+  </fieldset>
+</div>
+
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amount">
+   Debt amount (optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amount" name="amount" type="text" spellcheck="false" value="{{ amount }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="reference">
+    Reference (optional)
+  </label>
+  <span id="changed-name-hint" class="govuk-hint">
+      This is your personal reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Confirmation
+          </h1>
+          <div class="govuk-panel__body">
+     
+              You have changed a debt and added it your clients Breathing Space
+             
+          </div>
+        </div>
+
+  <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">
+          The debt will be added to breathing space within 24 hours or the next working day, once the debt is added we will notify the creditor that the 
+          debt has been added.
+        </p>
+        <ul class="govuk-list">
+          <li><a href="{% include "./_landingpagepath.html" %}">Return to client page</a></li>
+          <li><a href="index">Return to service homepage</a></li>
+        </p>
+        <ul>     
+      </div>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="mh-summary" method="post">
+    <div class="govuk-grid-column-two-thirds">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+      Add nominated point of contact
+      </h1>
+      <p class="govuk-body">For example, a mental health professional, carer, family member or friend</p>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="pocname">
+  Full name
+  </label>
+  <input class="govuk-input" id="pocname" name="pocname" type="text" autocomplete="pocname" spellcheck="false" value="{{ pocname }}">
+</div>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="pocrel">
+   Relationship to client (optional)
+  </label>
+  <input class="govuk-input" id="pocrel" name="pocrel" type="text" autocomplete="pocrel" spellcheck="false" value="{{ pocrel }}">
+</div>
+    <!-- <div class="govuk-form-group">
+  <label class="govuk-label" for="pocorg">
+   Department (optional)
+  </label>
+  <input class="govuk-input" id="pocorg" name="pocorg" type="text" autocomplete="pocorg" spellcheck="false" value="{{ pocorg }}">
+</div> -->
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="mhHowContacted-conditional-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+        How would the point of contact like to recieve confirmation the Breathing Space has started and ended?
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="mhHowContacted-conditional" name="mhHowContacted" type="radio" value="Email" data-aria-controls="conditional-mhHowContacted-conditional" {{ checked('mhHowContacted','Email')}}>
+        <label class="govuk-label govuk-radios__label" for="mhHowContacted-conditional">
+          Email
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-mhHowContacted-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="mhEmail">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="mhEmail" name="mhEmail" type="email" spellcheck="false" value="{{mhEmail}}">
+        </div>
+
+           <div class="govuk-form-group">
+          <label class="govuk-label" for="mhEmail">
+            Confirm email address
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="mhEmail" name="mhEmail" type="email" spellcheck="false" value="{{mhEmail}}">
+        </div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="mhHowContacted-conditional-2" name="mhHowContacted" type="radio" value="Post~mh-poc-address" data-aria-controls="conditional-mhHowContacted-conditional-2" {{ checked('mhHowContacted','Post')}}>
+        <label class="govuk-label govuk-radios__label" for="mhHowContacted-conditional-2">
+          Post
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

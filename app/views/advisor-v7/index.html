@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+ {% if checked('MAScenaioChoice','breathing space ended')%} Stepchange {% else %}Advice uk{% endif %}</h1>
+
+       <p class="govuk-body">Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Enter a client with problem debt into a Breathing Space</li>
+          <li>Update the details of a client if they're already in Breathing Space</li>
+        </ul>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+   </div>
+ <div class="govuk-grid-column-two-thirds">
+
+ <h2 class="govuk-heading-l">Search an existing Breathing Space account<h2>
+  <!-- {% include "./_search_instructions.html" %} 
+{% include "./_search_form.html" %} -->
+
+
+        <a href="search-results-page" role="button" draggable="false" class="govuk-button  govuk-button--secondary">
+          Search for an account
+        </a>
+</div>
+<div class="govuk-grid-column-full">
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">Create a new Breathing space account<h2>
+  
+
+        <a href="details" role="button" draggable="false" class="govuk-button  govuk-button--secondary">
+          Create a new account
+        </a>
+    </div>
+</div>
+
+{% endblock %}

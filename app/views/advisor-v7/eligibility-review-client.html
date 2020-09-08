@@ -1,0 +1,107 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-no" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Client eligibility review
+      </h1>
+      </div>
+   <div class="govuk-grid-column-three-quarters">
+            
+                    <h2 class="govuk-heading-m">Details</h2>
+                    <p class="govuk-body-l">Barclays Bank Plc have requested a client eligibility review 
+                    </p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Request reason</h3>
+                    <p class="govuk-body">They have had Breathing Space in the last 12 months</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
+                    <p class="govuk-body">Our records indicate that our client has had a Breathing Space in the last 12 months so they’re not eligible.</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
+                    <p class="govuk-body">Kiran Callaghan,  Yorkshire Water Services Ltd,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+            
+  
+{% if checked('client-eligibility','yes') %}
+
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--red">Client ineligible</strong> </h2>
+                    <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the clients Breathing Space has ended</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
+                    <p class="govuk-body">The client is not eligible for Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
+                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+</div>             
+
+{% elif checked('client-eligibility','no') %}
+
+                    <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--green">Client eligible</strong> </h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the client hasn't been removed from Breathing Space</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+           
+
+{% endif %}
+             
+          
+
+
+ {% if data['bsEndReason'] or checked('clientreview','yes') or checked('clientreview','no') or checked('MAScenaioChoice','breathing space ended') %} 
+             {% else %}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+          Do you want to end your client's Breathing Space?
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
+          No
+        </label>
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="clientEligibilityDetail">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="clientEligibilityDetail" name="clientEligibilityDetail" rows="4" aria-describedby="clientEligibilityDetail-hint"></textarea>
+  </div>
+
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+{% endif %}
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

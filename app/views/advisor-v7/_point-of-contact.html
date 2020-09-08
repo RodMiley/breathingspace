@@ -1,0 +1,124 @@
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{pocname}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#pocname">
+                Change<span class="govuk-visually-hidden">Point of contact name</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+          </div>
+          {% if data['pocrel']%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Relationship
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{pocrel}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#pocrel">
+                Change<span class="govuk-visually-hidden">Point of contact relationship</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['pocorg']%}
+                 <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Department
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{pocorg}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#pocorg">
+                Change<span class="govuk-visually-hidden">Point of contact organisation</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+          </div>
+          {% endif %}
+         
+                     <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Notification preference
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{mhHowContacted}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#mhHowContacted-conditional">
+                Change<span class="govuk-visually-hidden">Point of notification preference</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+            </div>
+          {% if checked('mhHowContacted','Email') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{mhEmail}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#mhEmail">
+                Change<span class="govuk-visually-hidden">Point of email address</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+          </div>
+          {% else %}
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+                 {% if checked('pocAddress', 'manual')%}
+             <span class="govuk-!-display-block">{{addressMhline1}}</span>
+             <span class="govuk-!-display-block">{{addressMhline2}}</span>
+              <span class="govuk-!-display-block">{{addressMhtown}}</span>
+              <span class="govuk-!-display-block">{{addressMhcounty}}</span>
+              <span class="govuk-!-display-block">{{addressMhpostcode}}</span>  
+                {% elif data['mhSort']%} 
+                {% if data['mhSort']=='two'%} 2 Melling Road <br>Elephant and Castle<br>London<br>{{postcodeMh }}{% elif data['mhSort']=='three' %} 3 Melling Road  <br>Elephant and Castle<br>London<br>{{postcodeMh}}{% elif data['mhSort']=='four' %} 4 Melling Road  <br>Elephant and Castle<br>London<br> {{postcodeMh}} </p>{% endif %}
+                {% endif %}
+           
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li>  {% if checked('pocAddress', 'manual')%}<a class="govuk-link govuk-!-font-size-19" href="mh-poc-address-manual">
+                Change<span class="govuk-visually-hidden">Point of contact address</span>
+              </a>
+              {% else %}
+
+              <a class="govuk-link govuk-!-font-size-19" href="mh-poc-address-choice">
+                Change<span class="govuk-visually-hidden">Point of contact address</span>
+              </a>
+
+              {% endif %}
+              
+              </li>
+              </ul>
+            
+            </dd>
+          </div>
+          {% endif %}
+        </dl>

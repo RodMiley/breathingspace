@@ -1,0 +1,72 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Confirm don't own
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+  <ul class="govuk-list timeline govuk-!-margin-bottom-6">
+
+   <li>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform Barclays Bank Plc that the client's Breathing Space has not ended</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+                </li>
+        
+                       <li>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Barclays Bank Plc have requested a client eligibility review 
+                </h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">They have had Breathing Space in the last 12 months</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                    <p class="govuk-body">Our records indicate that our client has had a Breathing Space in the last 12 months so they’re not eligible.</p>
+                  
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested: Kiran Callaghan, Barclays Bank Plc,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                </li>
+              </ul>  
+
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="dontown" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="dontown" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>            
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

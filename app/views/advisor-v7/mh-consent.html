@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-three-quarters">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+        Declaration
+      </h1>
+
+       <p class="govuk-body">By submitting this application, you agree that:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+          <li>you've seen evidence from a mental health practitioner that <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> should be put into a Breathing Space</li>
+          <li>you've carried out a credit check on <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong></li>
+          <li>the information you've provided is complete and correct
+          </li>
+        </ul>
+
+       <p class="govuk-body"><strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> must:</p>
+         <ul class="govuk-list govuk-list--bullet">
+         <li>engage with a debt adviser</li>
+          <li>have a midway progress review with their debt adviser</li> 
+          <li>inform their debt adviser of any change in circumstances</li>
+          <li>not apply for any credit over £500 at once, during the Breathing Space. This includes credit obtained with other people.</li>
+          </ul>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Agree and submit to Breathing Space.
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

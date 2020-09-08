@@ -1,0 +1,130 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="eligibility-review-no" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Debt eligibility review
+      </h1>
+
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl> 
+
+    </div>
+   <div class="govuk-grid-column-three-quarters">
+
+
+
+                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Details</h2>
+
+                    <p class="govuk-body-l">{% include path+"advisor-mvp/_review_creditor.html" %} have requested a debt eligibility review </p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Request reason</h3>
+                    <p class="govuk-body">The debt does not qualify for Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+                    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
+                    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                 
+
+{% if checked('debt-eligibility','yes') %}
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--red">debt ineligible</strong> </h2>
+                    <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>inelgible</strong> and has been removed from Breathing Space</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                    <p class="govuk-body">{{ eligibilityNo | default("We agree that this debt is a business debt and it isn't eligible for Breathing Space") }}</p>
+                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+</div>         
+
+{% elif checked('debt-eligibility','no') %}
+
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--green">debt eligible</strong> </h2>
+                    <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>eligible</strong> and has not been removed from Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                    <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
+                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+  </div>          
+
+{% endif %}
+
+
+ {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') or checked('MAScenaioChoice','breathing space ended') %} 
+             {% else %}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+          Do you want to remove this debt from Breathing Space?
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debt-eligibility-conditional" name="debt-eligibility" type="radio" value="yes~eligibility-review-yes">
+        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debt-eligibility-conditional-2" name="debt-eligibility" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional-2">
+          No
+        </label>
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="eligibilityNo">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
+  </div>
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="no" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+{% endif %}
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}
