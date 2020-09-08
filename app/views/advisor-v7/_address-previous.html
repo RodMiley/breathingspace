@@ -12,6 +12,7 @@
               <span class="govuk-!-display-block">{{prevaddresstown}}</span>
               <span class="govuk-!-display-block">{{prevaddresscounty}}</span>
               <span class="govuk-!-display-block">{{prevaddresspostcode}}</span>  
+              <span class="govuk-!-display-block">{{country}}</span> 
                 {% elif checked('prevAddress', 'pclookup')%} 
                 {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
                 {% endif %}
