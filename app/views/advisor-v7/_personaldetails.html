@@ -1,7 +1,7 @@
        <h2 class="govuk-heading-l">
      Client details
       </h2>
- {% if checked('poc','yes') %}
+ {% if checked('bs-choose','mentalhealth') %}
       <h3 class="govuk-heading-m">Point of contact</h3>
       {% include "./_point-of-contact.html" %} 
 {% endif %}
@@ -54,7 +54,7 @@
        Method
             </dt>
             <dd class="govuk-summary-list__value">
-      {{howcontacted}}
+      {{howcontacted | default('Post')}}
             </dd>
             <dd class="govuk-summary-list__actions">
          
