@@ -17,18 +17,19 @@
      <p class="govuk-body">By submitting this application, you agree that:</p>
 
           <ul class="govuk-list govuk-list--bullet">
-          <li>you've explained the regulations to your client</li>
-          <li>you've been instructed by <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> to enter them into Breathing Space</li>
-          <li>the information you've provided is complete and correct
+          <li>you've explained the breathing space moratorium to your client</li>
+          <li><strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> has told you to put them into Breathing Space</li>
+          <li>the information you've provided is complete and correct to the best of your knowledge
           </li>
+          <li>your client meets the required conditions and eligibility criteria</li>
         </ul>
 
        <p class="govuk-body">You also agree that <strong>{{firstname | default("Joe") }} {{lastname | default("Black") }}</strong> has agreed they will:</p>
          <ul class="govuk-list govuk-list--bullet">
-         <li>engage with a debt adviser</li>
-          <li>have a midway progress review with their debt adviser</li> 
+         <li>continue to engage with a debt adviser</li>
+          <li>participate in a midway review with their debt adviser</li> 
           <li>inform their debt adviser of any change in circumstances</li>
-          <li>not apply for any credit over £500 at once, during the Breathing Space. This includes credit obtained with other people.</li>
+          <li>not apply for any credit over £500 at any one time during the Breathing Space. This includes credit obtained with other people.</li>
           </ul>
 
 <button class="govuk-button" data-module="govuk-button">
@@ -39,20 +40,5 @@
 </div>
 
 
-   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
-   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
-
-        <script type="text/javascript">
-      var element = document.querySelector('#tt-default')
-      var id = 'creditor'
-      var name ='creditor'
-      accessibleAutocomplete({
-        element: element,
-        id: id,
-        name: name,
-        source: creditors
-      })
-
-    </script>
 
 {% endblock %}

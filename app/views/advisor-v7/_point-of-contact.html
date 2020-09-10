@@ -15,42 +15,52 @@
             
             </dd>
           </div>
-          {% if data['pocrel']%}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-           Relationship
+           Role
             </dt>
             <dd class="govuk-summary-list__value">
-            {{pocrel}}
+            {{role}}
             </dd>
             <dd class="govuk-summary-list__actions">
                  <ul class="govuk-list">
-              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#pocrel">
-                Change<span class="govuk-visually-hidden">Point of contact relationship</span>
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#whatrole">
+                Change<span class="govuk-visually-hidden">Point of contact role</span>
               </a></li>
               </ul>
             
             </dd>
           </div>
-          {% endif %}
-          {% if data['pocorg']%}
-                 <div class="govuk-summary-list__row">
+
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-           Department
+           Telephone number
             </dt>
             <dd class="govuk-summary-list__value">
-            {{pocorg}}
+            {{ telephonenumber }}
             </dd>
             <dd class="govuk-summary-list__actions">
+            {% if data['telephonenumber']%}
                  <ul class="govuk-list">
-              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#pocorg">
-                Change<span class="govuk-visually-hidden">Point of contact organisation</span>
-              </a></li>
+              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#telephonenumber">
+                Change<span class="govuk-visually-hidden">Point of contact telephone number</span>
+              </a>
+              {% else %}
+              <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#telephonenumber">
+                Add<span class="govuk-visually-hidden">Point of contact telephone number</span>
+              </a>
+              {% endif %}
+              </li>
               </ul>
             
             </dd>
           </div>
-          {% endif %}
+          
+       
+
+          
+       
          
                      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -68,7 +78,7 @@
             
             </dd>
             </div>
-          {% if checked('mhHowContacted','Email') %}
+         
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
            Email address
@@ -78,14 +88,22 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                  <ul class="govuk-list">
-              <li> <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#mhEmail">
+              <li> 
+              {% if data['mhEmail']%}
+              <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#mhEmail">
                 Change<span class="govuk-visually-hidden">Point of email address</span>
-              </a></li>
+              </a>
+              {% else %}
+              <a class="govuk-link govuk-!-font-size-19" href="mh-point-of-contact#mhEmail">
+                Add<span class="govuk-visually-hidden">Point of email address</span>
+              </a>
+              {% endif %}
+              </li>
               </ul>
             
             </dd>
           </div>
-          {% else %}
+          {% if checked('mhHowContacted','Post') %}
                 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
            Address
