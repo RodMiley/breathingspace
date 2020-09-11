@@ -132,12 +132,11 @@
 
    <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
    
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="all" {{ checked('task', 'all') }}>
-        <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="status_9">
-          All 
-            ({{type2toDO}})
-            
+    
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_1" name="status" type="radio" value="all"  {{ checked('status', 'all') }}>
+        <label class="govuk-label govuk-radios__label" for="status_1">
+          All debts ({{type2Num}})
         </label>
       </div>
    </div>
@@ -181,9 +180,9 @@
 
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
+        <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="RR"  {{ checked('status', 'PA') }}>
         <label class="govuk-label govuk-radios__label" for="status_3">
-          Reviewed - debt eligible ({{type2ANum}})
+          Reviewed - debt eligible ({{ type2RRNum}})
         </label>
       </div>
 
