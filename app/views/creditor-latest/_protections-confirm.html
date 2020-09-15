@@ -6,15 +6,21 @@ or checked('status','DO')
 or checked('status','dont-own')
 or checked('status','dispute')
 or checked('status','propDebt')
-or customer.status == 'review-accepted' and data['protection'] !=='complete'
+or customer.status == 'review-accepted' and data['protection'] !=='completed'
 or checked('status','RC') and checked('protection','complete')
-or customer.status == 'review-rejected' and data['protection'] !=='rejected-complete'
+or customer.status == 'review-rejected' and data['protection'] !=='rejectedcompleted'
 %}
   {% elif checked('protection','yes')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">You have applied the protections to the debt</p>
+  <p class="govuk-body">You've stopped all action against the debt</p>
 </div>
+
+{% elif checked('protection','rejectedcompleted') or checked('protection','completed') %}
+ <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  <p class="govuk-body">You've confirmed you don't need to do anything else with this debt</p>
+  </div>
 
   {% elif checked('addDebtStep2','yes') or checked('addDebtStep2','yes') and checked('protection','yes') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
@@ -32,20 +38,15 @@ or customer.status == 'review-rejected' and data['protection'] !=='rejected-comp
 {% elif checked('protection','no') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">You have applied the protections and requested a review of debt eligibility</p>
+  <p class="govuk-body">You've stopped all action against the debt and asked the money adviser for a review</p>
 </div>
 
 {% elif checked('protection','dontOwn')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">We have informed Advice uk that we don't own this debt anymore</p>
+  <p class="govuk-body">We have informed Advice uk that we you have sold the debt</p>
 </div>
 
-{% elif checked('protection','complete') %}
- <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">You completed the tasks needed because the debt has been removed</p>
-  </div>
 
   {% elif checked('protection','rejected-complete')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">

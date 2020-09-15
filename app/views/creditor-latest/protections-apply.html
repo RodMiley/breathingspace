@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
- Confirm you've stopped all action against this debt
+ Stop action
       </h1>
       </div>
        <div class="govuk-grid-column-full">
@@ -21,30 +21,11 @@
 
 {% include "./_debt-info.html" %}
 
-{% if customer.status == 'dispute' or customer.status == 'review-rejected' and customer.todo == 'No' %}
-<div class="govuk-form-group govuk-!-margin-top-7">
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-        Update the debt status
-      </h1>
-    </legend>
-    <div class="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./account-landing-tabs?reference={{customer.reference}}" {% if customer.status == 'review-rejected' %}checked {% endif %}>
-        <label class="govuk-label govuk-radios__label" for="debtStatus">
-          We agree protections will remain in place
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute~./review-completed-rejected-confirm?reference={{customer.reference}}" {% if customer.status == 'dispute' %}checked {% endif %}>
-        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
-          Protections will remain but we dispute the eligibilty 
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
+
+{% if customer.status == 'applied'%}
+<p class="govuk-body-l">You have stopped all action against this debt</p>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Task completed by</h3>
+                    <p class="govuk-body">{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
 {% else %}
       
 
@@ -52,7 +33,7 @@
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        Update the debt status
+        Have you stopped all action against this debt?
       </h1>
     </legend>
     <div class="govuk-radios">
@@ -71,16 +52,17 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="debtStatus-3" name="debtStatus" type="radio" value="dontOwn~./sold-the-debt?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-3">
-          We do not own this debt anymore
+          We've sold this debt
         </label>
       </div>
     </div>
   </fieldset>
 </div>
-{% endif %}
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
+{% endif %}
+
     </div>
     </form>
 </div>

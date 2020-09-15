@@ -17,7 +17,7 @@
       </h1>
 
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are confirming that you have completed the tasks needed because the debt has been removed</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You're confirming you've done everything you need to show the debt has been removed</h2>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
@@ -29,7 +29,7 @@
                 {% else %}
                 Housing benefit 
                 {% endif %}
-              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% if customer.status == "review-accepted" %} Review completed - debt ineligible {% else %}New debt added{% endif %}</p>
+              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% if customer.status == "review-accepted" %} Debt reviewed: reason accepted {% else %}New debt added{% endif %}</p>
             </dt>
             <dd class="govuk-summary-list__value">
                {% include "./_debt-amount-ref.html" %}

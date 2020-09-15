@@ -166,9 +166,12 @@
          <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
-        <label class="govuk-label govuk-radios__label" for="status_3">
+        <label class="govuk-label govuk-radios__label withHint" for="status_3">
            Done  ({{type2ANum}})
         </label>
+         <div id="" class="govuk-hint govuk-radios__hint">
+          Stopped all action
+        </div>
       </div>
    <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
          <div class="govuk-radios__item">
@@ -181,17 +184,7 @@
         </div>
       </div>
 
-   <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
-        <label class="govuk-label govuk-radios__label withHint" for="status_5">
-          Debt reviewed: reason rejected ({{ type2RRNum}})
-        </label>
-          <div id="" class="govuk-hint govuk-radios__hint">
-          Debt remains after eligibility review
-        </div>
-      </div>
-           <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
+                <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
           <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }} aria-describedby="">
         <label class="govuk-label govuk-radios__label withHint" for="status_6">
@@ -201,6 +194,17 @@
           Debt removed after eligibility review
         </div>
  
+      </div>
+
+   <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
+        <label class="govuk-label govuk-radios__label withHint" for="status_5">
+          Debt reviewed: reason rejected ({{ type2RRNum}})
+        </label>
+          <div id="" class="govuk-hint govuk-radios__hint">
+          Debt remains after eligibility review
+        </div>
       </div>
    <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
         <div class="govuk-radios__item">
@@ -218,10 +222,10 @@
           <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_8" name="status" type="radio" value="propDebt"  {{ checked('status', 'propDebt') }}>
         <label class="govuk-label govuk-radios__label withHint" for="status_8">
-          Proposed debt with money advisor ({{propDebtNum}})
+          Proposed debt ({{propDebtNum}})
         </label>
            <div id="" class="govuk-hint govuk-radios__hint">
-          Waiting for review
+          Waiting for money advisor review
         </div
       </div>
     </div>
@@ -251,15 +255,15 @@ Apply filter
 {% if checked('status','new')%}
 New debts added ({{type2NNum}}) 
 {% elif checked('status','PA')%}
-Protections applied ({{type2ANum}}) 
+Done ({{type2ANum}}) 
 {% elif checked('status','R')%}
-Reviews requested ({{type2RNum}}) 
+Asked for a review ({{type2RNum}}) 
 {% elif checked('status','RA')%}
-Removed debts ({{type2RANum}}) 
+Debt reviewed: reason accepted ({{type2RANum}}) 
 {% elif checked('status','RR')%}
-Reviewed - rejected  ({{type2RRNum}}) 
+Debt reviewed: reason rejected  ({{type2RRNum}}) 
 {% elif checked('status','DO')%}
-We dont own these debts anymore ({{dontOwnNum}}) 
+Debts sold on ({{dontOwnNum}}) 
 {% elif checked('status','RC')%}
 Eligibility reviews completed ({{type2RCNum}}) 
 {% elif checked('status','todo')%}

@@ -52,6 +52,18 @@ var creditordebts = require('./creditordebtlist.js')
       findCustomer = creditordebts[i];
      }
     }
+
+    let status = req.session.data['protections']
+    if(findCustomer.status === 'review-rejected'){
+      findCustomer.todo='No'
+      findCustomer.substatus='Yes'
+     }
+
+     if(findCustomer.status === 'review-accepted'){
+      findCustomer.todo='No'
+      findCustomer.substatus='Yes'
+     }
+
    
     res.locals.customer = findCustomer
     next()
