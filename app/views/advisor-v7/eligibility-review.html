@@ -50,7 +50,7 @@
 {% if checked('debt-eligibility','yes') %}
 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--red">debt ineligible</strong> </h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed  <br><strong class="govuk-tag govuk-tag--red">debt ineligible</strong> </h2>
                     <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>inelgible</strong> and has been removed from Breathing Space</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
                     <p class="govuk-body">{{ eligibilityNo | default("We agree that this debt is a business debt and it isn't eligible for Breathing Space") }}</p>
@@ -62,7 +62,7 @@
 
 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review completed <br><strong class="govuk-tag govuk-tag--green">debt eligible</strong> </h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed<br><strong class="govuk-tag govuk-tag--green">debt eligible</strong> </h2>
                     <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>eligible</strong> and has not been removed from Breathing Space</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
                     <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>

@@ -109,8 +109,8 @@
  <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
    
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="todo" {{ checked('task', 'todo') }}>
-        <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="status_9">
+        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="todo" {{ checked('status', 'todo') }}>
+        <label class="govuk-label govuk-radios__label" for="status_9">
           To do 
             ({{type2toDO}})
             
@@ -147,69 +147,80 @@
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-0">
       <label class="govuk-fieldset__heading">
-        Status
+        Debt status
       </label>
     </legend>
    
     <div class="govuk-radios  govuk-radios--small">
     <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
-    <h3 class="govuk-heading-s">Active</h3>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="new"  {{ checked('status', 'new') }}>
-        <label class="govuk-label govuk-radios__label" for="status_2">
-          New  debts added ({{type2NNum}})
+        <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="new"  {{ checked('status', 'new') }} >
+        <label class="govuk-label govuk-radios__label withHint" for="status_2">
+          New ({{type2NNum}})
         </label>
+           <div id="" class="govuk-hint govuk-radios__hint">
+          Debts added by money advisers
+        </div>
       </div>
+         <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
-        <label class="govuk-label govuk-radios__label" for="status_3">
-          Protections applied  ({{type2ANum}})
+        <label class="govuk-label govuk-radios__label withHint" for="status_3">
+           Protections applied  ({{type2ANum}})
         </label>
+           <div id="" class="govuk-hint govuk-radios__hint">
+         Task completed
+        </div>
       </div>
-
+   <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
          <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_4" name="status" type="radio" value="R"  {{ checked('status', 'R') }} aria-describedby="">
-        <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold withHint" for="status_4">
+        <label class="govuk-label govuk-radios__label withHint" for="status_4">
           Reviews requested ({{type2RNum}})
         </label>
          <div id="" class="govuk-hint govuk-radios__hint">
-          Pending money advisor review
+          Pending money adviser eligibility review
         </div>
       </div>
 
-
+   <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="RR"  {{ checked('status', 'PA') }}>
-        <label class="govuk-label govuk-radios__label" for="status_3">
+        <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="RR"  {{ checked('status', 'RR') }}>
+        <label class="govuk-label govuk-radios__label withHint" for="status_5">
           Reviewed - debt eligible ({{ type2RRNum}})
         </label>
+          <div id="" class="govuk-hint govuk-radios__hint">
+          After eligibility review
+        </div>
       </div>
-
-        <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_7" name="status" type="radio" value="dont-own"  {{ checked('status', 'dont-own') }}>
-        <label class="govuk-label govuk-radios__label" for="status_7">
-          We dont own these debts anymore ({{dontOwnNum}})
-        </label>
-      </div>
-     
-     <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
+           <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
           <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="dispute"  {{ checked('status', 'dispute') }} aria-describedby="">
-        <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold withHint" for="status_6">
-          Removed debts ({{disputeNum}})
+        <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="RA"  {{ checked('status', 'RA') }} aria-describedby="">
+        <label class="govuk-label govuk-radios__label withHint" for="status_6">
+          Reviewed - debt ineligible ({{type2RANum}})
         </label>
           <div id="" class="govuk-hint govuk-radios__hint">
-          Reviewed: debt ineligle
+          Debts removed after eligibility review
         </div>
  
       </div>
+   <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_7" name="status" type="radio" value="dont-own"  {{ checked('status', 'dont-own') }}>
+        <label class="govuk-label govuk-radios__label withHint" for="status_7">
+          We dont own these debts ({{dontOwnNum}})
+        </label>
+         <div id="" class="govuk-hint govuk-radios__hint">
+          Pending money adviser task
+        </div>
+      </div>
+     
+
     <hr class="govuk-section-break govuk-section-break--visible filterSeperator">
-
-
           <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_8" name="status" type="radio" value="propDebt"  {{ checked('status', 'propDebt') }}>
-        <label class="govuk-label govuk-radios__label govuk-!-font-weight-bold" for="status_8">
+        <label class="govuk-label govuk-radios__label withHint" for="status_8">
           Proposed debts ({{propDebtNum}})
         </label>
            <div id="" class="govuk-hint govuk-radios__hint">
@@ -247,9 +258,9 @@ Protections applied ({{type2ANum}})
 {% elif checked('status','R')%}
 Reviews requested ({{type2RNum}}) 
 {% elif checked('status','RA')%}
-Reviews completed - debt removed ({{type2RANum}}) 
+Removed debts ({{type2RANum}}) 
 {% elif checked('status','RR')%}
-Reviews completed - debt remains ({{type2RRNum}}) 
+Reviewed - rejected  ({{type2RRNum}}) 
 {% elif checked('status','DO')%}
 We dont own these debts anymore ({{dontOwnNum}}) 
 {% elif checked('status','RC')%}
@@ -302,7 +313,7 @@ All debts ({{type2Num}})
 {% elif checked('status','R')%}
 {% for customer in customers %}
 {% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes' %}
-  {% include "./_debtListrowReview.html" %} 
+  {% include "./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}
 
