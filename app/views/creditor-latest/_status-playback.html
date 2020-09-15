@@ -1,15 +1,15 @@
     {% if customer.status == 'applied' %}
-      Protections applied
+      Done
       {% elif customer.status == 'dont-own' %}
-      We dont own the debt anymore
+      Debts sold on
     {% elif customer.status == 'new' %}
-      New debt added
+      New
     {% elif customer.status == 'review'%}
-      Review requested
+      Asked for a review
     {% elif customer.status == 'review-rejected'%}
-      Reviewed - debt eligible
+     Debt reviewed: reason rejected
     {% elif customer.status == 'review-accepted'%}
-      Reviewed - debt ineligible 
+     Debt reviewed: reason accepted
       {% elif customer.status == 'dispute'%}
       We dispute eligibility
 

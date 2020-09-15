@@ -13,14 +13,14 @@
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
-Debt eligibility review
+Review details
       </h1>
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
 <hr class="govuk-section-break govuk-section-break--visible">
 {% include "./_debt-info.html" %} 
        
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Review details</h2>
-                    <p class="govuk-body-l">We requested the money adviser to review debt eligibility</h2>
+                    <p class="govuk-body-l">We've asked the money adviser to review the debt</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Request reason</h3>
                     <p class="govuk-body">{{ debtReview | default ("The debt does not qualify for Breathing Space")}}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>

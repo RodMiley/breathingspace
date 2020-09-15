@@ -44,13 +44,13 @@
                     </a>
                   {% else %}
                     <a href="protections-apply?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                        {% include "./_status-playback.html" %} - apply protections and update
+                        {% include "./_status-playback.html" %} - stop action against this debt
                     </a>
                  {% endif %}
                  
               </span>
              {% if customer.status == 'review' %}
-             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money adviser eligibility review</strong>
+             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Waiting for money adviser review</strong>
                 {% elif customer.status == 'dont-own' %}
              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Pending Money adviser task</strong>
             {% elif customer.status == 'applied' or customer.status == 'dont-own' or customer.todo == 'No' %}

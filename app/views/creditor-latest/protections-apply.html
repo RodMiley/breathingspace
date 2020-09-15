@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
- Confirm protections are applied and update
+ Confirm you've stopped all action against this debt
       </h1>
       </div>
        <div class="govuk-grid-column-full">
@@ -59,19 +59,19 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus">
-          Protections applied
+          Yes
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="review~./review-debt?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-2">
-          Protections applied but the debts not eligible request a review
+          Yes, but we're requesting a review
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="debtStatus-3" name="debtStatus" type="radio" value="dontOwn~./sold-the-debt?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-3">
-          We don't own this debt anymore
+          We do not own this debt anymore
         </label>
       </div>
     </div>
