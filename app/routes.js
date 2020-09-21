@@ -50,6 +50,7 @@ router.use('/advisor-v5', require('./views/advisor-v5/_routes'));
 router.use('/advisor-v6', require('./views/advisor-v6/_routes'));
 router.use('/creditor-v3', require('./views/creditor-v3/_routes'));
 router.use('/creditor-v4', require('./views/creditor-v4/_routes'));
+router.use('/creditor-v5', require('./views/creditor-v5/_routes'));
 router.use('/creditor-latest', require('./views/creditor-latest/_routes'));
 
 module.exports = router

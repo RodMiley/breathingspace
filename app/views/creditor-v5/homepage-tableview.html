@@ -1,0 +1,666 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include path+"./_global-nav.html" %}
+
+
+
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+  {% include path+"./_creditorname.html" %}
+  </h1>
+  All {{customers.length}},
+  new {{cusnew.length}},
+  Applied {{cusApplied.length}},
+  Review requested {{cusReview.length}},
+  Rejected {{cusAccepted.length}},
+  Accepted {{cusRejected.length}}
+
+  <br><br>
+ Hb {{cusHB.length}},  CT {{cusCT.length}},  PF {{cusPF.length}},  RA {{cusRA.length}},  Other {{cusOther.length}},
+<br><br>HB + new {{cusHBnew.length}}
+
+<br><br> To do {{cusToDo.length}}
+
+
+
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+   </div>
+</div>
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<form class="form" action="#" method="post">
+<h2 class="govuk-heading-m">Filter by:</h2>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-fieldset__heading">
+        Debt type
+      </h2>
+    </legend>
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+          <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-2" name="debttype" type="checkbox" value="Council tax" {{checked('debttype', 'Council tax') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-2">
+          Council Tax (
+            {% if data['debttype'] %}
+             {{cusCT.length}}
+            {% elif checked('status','new') %}
+            {{cusCTnew.length}}
+            {% elif checked('status','PA') %}
+            {{cusCTApplied.length}}
+            {% elif checked('status','R') %}
+            {{cusCTReview.length}}
+            {% elif checked('status','RA') %}
+            {{cusCTAccepted.length}}
+            {% elif checked('status','RR') %}
+            {{cusCTRejected.length}}
+            {% elif checked('todo','yes') %}
+            {{cusCTToDo.length}}
+            {% else %}
+            {{cusCT.length}}
+            {% endif %})
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype" name="debttype" type="checkbox" value="Housing benefit" {{checked('debttype', 'Housing benefit') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype">
+          Housing benefit (
+            
+             {% if data['debttype'] %}
+             {{cusHB.length}}
+            {% elif checked('todo','yes') and checked('status','new') %}
+            {{newHBtoDO}}
+             {% elif checked('status','new') %}
+            {{cusHBnew.length}}
+            {% elif checked('status','PA') %}
+            {{cusHBApplied.length}}
+            {% elif checked('status','R') %}
+            {{cusHBReview.length}}
+            {% elif checked('status','RA') %}
+            {{cusHBAccepted.length}}
+            {% elif checked('status','RR') %}
+            {{cusHBRejected.length}}
+            {% elif checked('todo','yes') %}
+            {{cusHBToDo.length}}
+            {% else %}
+            {{cusHB.length}}
+            {% endif %})
+                    </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-3" name="debttype" type="checkbox" value="Parking fines" {{checked('debttype', 'Parking fines') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-3">
+          Parking fines (
+             {% if data['debttype'] %}
+             {{cusPF.length}}
+            {% elif checked('todo','yes') and checked('status','new') %}
+            {{newPFtoDO}}
+            {% elif checked('status','new') %}
+            {{cusPFnew.length}}
+            {% elif checked('status','PA') %}
+            {{cusPFApplied.length}}
+            {% elif checked('status','R') %}
+            {{cusPFReview.length}}
+            {% elif checked('status','RA') %}
+            {{cusPFAccepted.length}}
+            {% elif checked('status','RR') %}
+            {{cusPFRejected.length}}
+            {% elif checked('todo','yes') %}
+            {{cusPFToDo.length}}
+            {% else %}
+            {{cusPF.length}}
+            {% endif %})
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-4" name="debttype" type="checkbox" value="Rent arrears" {{checked('debttype', 'Rent arrears') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-4">
+         Rent arrears (
+            {% if data['debttype'] %}
+             {{cusRA.length}}
+           {% elif checked('todo','yes') and checked('status','new') %}
+          {{newRAtoDO}}
+           {% elif checked('todo','yes') %}
+          {{cusRAToDo.length}}
+            {% elif checked('status','new') %}
+            {{cusRAnew.length}}
+            {% elif checked('status','PA') %}
+            {{cusRAApplied.length}}
+            {% elif checked('status','R') %}
+            {{cusRAReview.length}}
+            {% elif checked('status','RA') %}
+            {{cusRAAccepted.length}}
+            {% elif checked('status','RR') %}
+            {{cusRARejected.length}}
+          {% else %}
+          {{cusRA.length}}
+          {% endif %})
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="debttype-5" name="debttype" type="checkbox" value="Other" {{checked('debttype', 'Other') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="debttype-5">
+         Other (
+            {% if data['debttype'] %}
+             {{cusOther.length}}
+           {% elif checked('todo','yes') and checked('status','new') %}
+          {{newOthertoDO}}
+             {% elif checked('status','new') %}
+            {{cusOthernew.length}}
+            {% elif checked('status','PA') %}
+            {{cusOtherApplied.length}}
+            {% elif checked('status','R') %}
+            {{cusOtherReview.length}}
+            {% elif checked('status','RA') %}
+            {{cusOtherAccepted.length}}
+            {% elif checked('status','RR') %}
+            {{cusOtherRejected.length}}
+          {% elif checked('todo','yes') %}
+          {{cusOtherToDo.length}}
+          {% else %}
+          {{cusOther.length}}
+          {% endif %})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Status
+      </label >
+    </legend>
+
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="new"  {{ checked('status', 'new') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          New  debts added ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+         {{cusHBNewToDo.length}}
+          {% elif checked('todo','yes')%}
+          {{cusNewToDo.length}}
+          {% elif checked('debttype','Council tax') %}
+          {{cusCTNew.length}}
+          {% elif checked('debttype','Housing benefit') %}
+          {{cusHBNew.length}}
+           {% elif checked('debttype','Parking fines') %}
+          {{cusPFNew.length}}
+           {% elif checked('debttype','Rent arrears') %}
+          {{cusRANew.length}}
+           {% elif checked('debttype','Other') %}
+          {{cusOtherNew.length}}
+          {% else %}
+          {{cusNew.length}}
+          {% endif %})
+        </label>
+      </div>
+ <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="PA"  {{ checked('status', 'PA') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Protections applied  ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+          {{AppliedHBtoDO}}
+            {% elif checked('todo','yes')%}
+          {{cusAppliedToDo.length}}
+          {% elif checked('debttype','Council tax') %}
+          {{cusCTApplied.length}}
+            {% elif checked('debttype','Council tax') %}
+                {{cusCTApplied.length}}
+                 {% elif checked('debttype','Housing benefit') %}
+                {{cusHBApplied.length}}   
+               {% elif checked('debttype','Parking fines') %}
+                {{cusPFApplied.length}} 
+                 {% elif checked('debttype','Rent arrears') %}
+                {{cusRAApplied.length}}  
+                 {% elif checked('debttype','Other') %}
+                {{cusOtherApplied.length}}  
+                {% else %}
+                {{cusApplied.length}}
+                {% endif %})
+        </label>
+      </div>
+               <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="R"  {{ checked('status', 'R') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews requested ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+          {{ReviewHBtoDO}}
+              {% elif checked('todo','yes')%}
+          {{cusReviewToDo.length}}
+          {% elif checked('debttype','Council tax') %}
+          {{cusCTReview.length}}
+          {% elif checked('debttype','Housing benefit') %}
+            {{cusHBReview.length}}
+          {% elif checked('debttype','Parking fines') %}
+            {{cusPFReview.length}}
+            {% elif checked('debttype','Rent arrears') %}
+            {{cusRAReview.length}}
+            {% elif checked('debttype','Other') %}
+            {{cusOtherReview.length}}
+            {% else %}
+            {{cusReview.length}}
+            {% endif %})
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RA"  {{ checked('status', 'RA') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews accepted ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+         {{cusHBAcceptedToDo.length}}
+             {% elif checked('todo','yes')%}
+          {{cusAcceptedToDo.length}}
+          {% elif checked('debttype','Council tax') %}
+          {{cusCTAccepted.length}}
+         {% elif checked('debttype','Housing benefit') %}
+          {{cusHBAccepted.length}}
+          {% elif checked('debttype','Parking fines') %}
+          {{cusPFAccepted.length}}
+          {% elif checked('debttype','Rent arrears') %}
+          {{cusRAAccepted.length}}
+           {% elif checked('debttype','Other') %}
+          {{cusOtherAccepted.length}}
+          {% else %}
+          {{cusAccepted.length}}
+          {% endif %})
+        </label>
+      </div>
+         <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="RR"  {{ checked('status', 'RR') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="status">
+          Reviews rejected ({% if checked('todo','yes') and checked('debttype','Housing benefit') %}
+          {{ cusHBRejectedToDo.length }}
+              {% elif checked('todo','yes')%}
+          {{cusRejectedToDo.length}}
+          {% elif checked('debttype','Council tax') %}
+          {{cusCTRejected.length}}
+          {% elif checked('debttype','Housing benefit') %}
+          {{cusHBRejected.length}}
+           {% elif checked('debttype','Parking fines') %}
+          {{cusPFRejected.length}}
+              {% elif checked('debttype','Rent arrears') %}
+          {{cusRARejected.length}}
+              {% elif checked('debttype','Other') %}
+          {{cusOtherRejected.length}}
+
+          {% else %}
+          {{cusRejected.length}}
+          {% endif %})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Tasks
+      </label >
+    </legend>
+
+    <div class="govuk-checkboxes  govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="todo" name="todo" type="checkbox" value="yes"  {{ checked('todo', 'yes') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="todo">
+          To do (
+          {% if checked('debttype','Council tax') %} 
+           {{cusCTToDo.length}} 
+           {% elif checked('debttype','Housing benefit') %} 
+           {{cusPFToDo.length}}
+            {% elif checked('debttype','Parking fines') %} 
+           {{cusRAToDo.length}}
+           {% elif checked('debttype','Rent arrears') %} 
+           {{cusOtherToDo.length}}
+             {% elif checked('debttype','Other') %} 
+           {{cusHBToDo.length}}
+             {% elif checked('status','new') %} 
+           {{cusnewToDo.length}}
+              {% elif checked('status','PA') %} 
+           {{cusAppliedToDo.length}}
+          {% elif checked('status','R') %} 
+           {{cusReviewToDo.length}}
+           {% elif checked('status','RA') %} 
+           {{cusAcceptedToDo.length}}
+           {% elif checked('status','RR') %} 
+           {{cusRejectedToDo.length}}
+           {% else %}
+            {{cusToDo.length}}
+            {% endif %}
+            )
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+</div>
+<div class="govuk-grid-column-two-thirds">
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+
+{% if checked('debttype','Other') and checked('todo','yes')  %}
+Other, to do ({{ OthertoDO }})
+
+{% elif checked('debttype','Other') %}
+Other  ({{ otherNum }})
+
+{% elif checked('debttype','Rent arrears') and checked('todo','yes')  %}
+ Rent arrears, to do ({{ RAtoDO }}) 
+
+{% elif checked('debttype','Rent arrears') and checked('status','new')  %}
+Rent arrears, new ({{ RAtoDO }})
+
+{% elif checked('debttype','Rent arrears') %}
+Rent arrears ({{ RANum }})
+
+
+{% elif checked('debttype','Parking fines') and checked('status','new')  %}
+ Parking fines new ({{ PFtoDO }})
+
+{% elif checked('debttype','Parking fines') and checked('todo','yes')  %}
+ Parking fines, to do ({{ PFtoDO }}) 
+
+{% elif checked('debttype','Parking fines') %}
+Parking fines ({{ PFNum }})
+
+
+{% elif checked('debttype','Council tax') and checked('todo','yes')  %}
+ Council tax, to do ({{ CTtoDO }})
+
+ {% elif checked('debttype','Council tax') and checked('status','new')  %}
+ Council tax, new debts added ({{ cusCTnew.length }})
+
+{% elif checked('debttype','Council tax') %}
+Council tax ({{cusCT.length}})
+
+{% elif checked('debttype','Housing benefit') and checked('status','new') and checked('todo','yes') %}
+Housing benefit, new to do ({{newHBtoDO}})
+
+{% elif checked('debttype','Housing benefit') and checked('todo','yes')  %}
+ Housing benefits to do ({{ HBtoDO }})
+
+ {% elif checked('debttype','Housing benefit') and checked('status','new')  %}
+ Housing benefits, new ({{cusHBNew.length}})
+
+{% elif checked('debttype','Housing benefit')%}
+Housing benefit ({{cusHB.length}})
+
+{% elif checked('status','RR') %}
+Reviews accepted ({{ rejected }})
+
+{% elif checked('status','RA') %}
+Reviews accepted ({{ accepted }})
+
+{% elif checked('status','R') %}
+Reviews requested ({{ review }})
+
+
+{% elif checked('status','RR') and checked('todo','yes') %}
+Reviews rejected, to do ({{ RejectedtoDo }})
+
+{% elif checked('status','RA') and checked('todo','yes') %}
+Reviews accepted, to do ({{ AcceptedtoDo }})
+
+{% elif checked('status','R') and checked('todo','yes') %}
+Reviews requested, to do ({{ ReviewtoDo }})
+
+{% elif checked('status','PA') and checked('todo','yes') %}
+Protections applied, to do ({{ AppliedtoDo }})
+
+
+{% elif checked('status','PA') %}
+Protections applied ({{ applied }})
+
+
+{% elif checked('status','new') and checked('todo','yes') %}
+new to do ({{newtoDo}})
+{% elif checked('status','new') %}
+new ({{ new }})
+
+{% elif checked('todo','yes') %}
+To do ({{ todo }})
+{% else %}
+All debts ({{totNum}}) 
+{% endif %}
+
+</h2>
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption" style="display:none">Active Breathing Space debts for {% include path+"./_creditorname.html" %} </caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Client</th>
+      <th scope="col" class="govuk-table__header">Debt type</th>
+       <th scope="col" class="govuk-table__header">Reference</th>
+         <th scope="col" class="govuk-table__header">Status</th>
+        <th scope="col" class="govuk-table__header">Start date</th>
+         <th scope="col" class="govuk-table__header">End date</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+{% if checked('debttype','Other') and checked('todo','yes')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Other'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+  {% elif checked('debttype','Other') %}
+{% for customer in customers %}
+{% if customer.type == 'Other'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Rent arrears') and checked('todo','yes')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Rent arrears'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Rent arrears') %}
+{% for customer in customers %}
+{% if customer.type == 'Rent arrears'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Parking fines') and checked('status','new')  %}
+{% for customer in customers %}
+{% if customer.type == 'Parking fines' and customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %} 
+
+{% elif checked('debttype','Parking fines') and checked('todo','yes')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Parking fines'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Parking fines') %}
+{% for customer in customers %}
+{% if customer.type == 'Parking fines'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('debttype','Council tax') and checked('status','new')  %}
+{% for customer in customers %}
+{% if customer.type == 'Council tax' and customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %} 
+
+{% elif checked('debttype','Council tax') and checked('todo','yes')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Council tax'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Council tax') %}
+{% for customer in customers %}
+{% if customer.type == 'Council tax'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Housing benefit') and checked('status','new') and checked('todo','yes') %}
+
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Housing benefit' and customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Housing benefit') and checked('status','new')%}
+
+{% for customer in customers %}
+{% if customer.type == 'Housing benefit' and customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Housing benefit') and checked('todo','yes')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'Housing benefit'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('debttype','Housing benefit') %}
+{% for customer in customers %}
+{% if customer.type == 'Housing benefit'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('todo','yes') and checked('status','RR')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.status == 'review-rejected'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('todo','yes') and checked('status','RA')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.status == 'review-accepted'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('status','RA')  %}
+{% for customer in customers %}
+{% if customer.status == 'review-accepted'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('status','RA')  %}
+{% for customer in customers %}
+{% if customer.status == 'review-accepted'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('todo','yes') and checked('status','R')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.status == 'review'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('status','R')  %}
+{% for customer in customers %}
+{% if customer.status == 'review'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('todo','yes') and checked('status','PA')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.status == 'applied'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('status','PA')  %}
+{% for customer in customers %}
+{% if customer.status == 'applied'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('todo','yes') and checked('status','new')  %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% elif checked('status','new')  %}
+{% for customer in customers %}
+{% if customer.status == 'new'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+
+{% elif checked('todo','yes') %}
+{% for customer in customers %}
+{% if customer.todo == 'Yes'%}
+  {% include path+"./_debtTableRow.html" %} 
+  {% endif %}
+{% endfor %}
+
+{% else %}
+{% for customer in customers %}
+  {% include path+"./_debtTableRow.html" %} 
+{% endfor %}
+
+{% endif %}
+
+
+
+
+  </tbody>
+</table>
+		
+    </div>
+</div>
+
+{% endblock %}

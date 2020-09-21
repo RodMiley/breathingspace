@@ -1,0 +1,32 @@
+  <div class="govuk-grid-row key_details">
+      <div class="govuk-grid-column-one-half">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+     
+           <span class="govuk-caption-l">
+
+                     <strong class="govuk-tag">
+  Active
+</strong>  
+
+    
+    
+    Breathing space account for</span>
+       {{debt.name | default("Joe Black") }}
+      </div>
+            <div class="govuk-grid-column-one-half">
+          <p class="header_highlight_info"><span><span>Day 1</span> of <span>60</span></span>Breathing space started: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} </strong><br>Breathing space ends: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(59) }} </strong></p>
+      </div>
+   
+      <div class="govuk-grid-column-full">
+      <ul>
+        <li>
+        <p>Date of birth: <span>28 February 1987</span></p>
+        </li>
+        <li>
+        <p>Address: <span>2 Borough Road, Elephant and Castle, London, SE1 0AA </span></p>
+        </li>
+      </ul>
+      </div>
+     <hr class="govuk-section-break govuk-section-break--visible black">
+     </div>
+     

@@ -16,7 +16,18 @@
  <!-- BASE VALUES -->
 
 {% set type2Num = 0 %}
+{% set type2NNum = 0 %}
+{% set type2ANum = 0 %}
 {% set type2RNum = 0 %}
+{% set type2RANum = 0 %}
+{% set type2RRNum = 0 %}
+{% set dontOwnNum = 0 %}
+{% set type2RCNum = 0 %}
+{% set disputeNum = 0 %}
+{% set propDebtNum = 0 %}
+
+
+<!-- todo VALUES -->
 {% set type2toDO = 0 %}
 
 
@@ -35,9 +46,46 @@
      {% set type2toDO = type2toDO + 1 %}
     {% endif %}
 
+
+     {% if customer.type === "type2" and customer.status === "new" %}
+     {% set type2NNum = type2NNum + 1 %}
+    {% endif %}
+
+      {% if customer.type === "type2" and customer.status === "applied" %}
+     {% set type2ANum = type2ANum + 1 %}
+    {% endif %}
+
   {% if customer.type === "type2" and customer.status === "review" or customer.clientReview === "yes" %}
      {% set type2RNum = type2RNum + 1 %}
     {% endif %}
+
+  {% if customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RANum = type2RANum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "type2" and customer.status === "review-rejected" %}
+     {% set type2RRNum = type2RRNum + 1 %}
+    {% endif %}
+
+
+    {% if customer.type === "type2" and customer.status === "review-rejected" or customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RCNum = type2RCNum + 1 %}
+    {% endif %}
+
+
+
+      {% if customer.type === "type2" and customer.status === "dont-own" %}
+     {% set dontOwnNum = dontOwnNum + 1 %}
+    {% endif %}
+
+        {% if customer.type === "type2" and customer.status === "dispute" %}
+     {% set disputeNum = disputeNum + 1  %}
+    {% endif %}
+
+    {% if customer.type === "type2" and customer.substatus === "proposedDebt" %}
+     {% set  propDebtNum =  propDebtNum + 1  %}
+    {% endif %}
+
 
 {% endfor %}
 
@@ -50,40 +98,93 @@
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-0">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <label class="govuk-fieldset__heading">
-        Debts
-      </label >
+        Status
+      </label>
     </legend>
 
-      <div class="govuk-radios govuk-radios--conditional govuk-radios--small" >
-       <div class="govuk-radios__item">
+    <div class="govuk-radios  govuk-radios--small">
+
+          <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_1" name="status" type="radio" value="all"  {{ checked('status', 'all') }}>
         <label class="govuk-label govuk-radios__label" for="status_1">
-          All ({{type2Num}})
+          All debts ({{type2Num}})
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="new"  {{ checked('status', 'new') }}>
+        <label class="govuk-label govuk-radios__label" for="status_2">
+          New  debts added ({{type2NNum}})
+        </label>
+      </div>
+ <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
+        <label class="govuk-label govuk-radios__label" for="status_3">
+          Protections applied  ({{type2ANum}})
+        </label>
+      </div>
+
+
+     <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_4" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
+        <label class="govuk-label govuk-radios__label" for="status_4">
+          Reviews requested ({{type2RNum}})
         </label>
       </div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="todo" {{ checked('status', 'todo') }}>
-        <label class="govuk-label govuk-radios__label" for="status_9">
-          Tasks  ({{type2toDO}}) <strong class="govuk-tag govuk-tag--grey">To do</strong>
+        <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="RC"  {{ checked('status', 'RC') }}>
+        <label class="govuk-label govuk-radios__label" for="status_5">
+          Reviews completed ({{type2RCNum}})
         </label>
       </div>
+
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input facet" id="status_4" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
-        <label class="govuk-label govuk-radios__label withHint" for="status_4">
-          Sent to money adviser ({{type2RNum}})
+        <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="dispute"  {{ checked('status', 'dispute') }}>
+        <label class="govuk-label govuk-radios__label" for="status_6">
+          Eligibility disputes ({{disputeNum}})
         </label>
       </div>
-   </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_7" name="status" type="radio" value="dont-own"  {{ checked('status', 'dont-own') }}>
+        <label class="govuk-label govuk-radios__label" for="status_7">
+          We dont own these debts anymore ({{dontOwnNum}})
+        </label>
+      </div>
+
+               <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_8" name="status" type="radio" value="propDebt"  {{ checked('status', 'propDebt') }}>
+        <label class="govuk-label govuk-radios__label" for="status_8">
+          Proposed debts ({{propDebtNum}})
+        </label>
+      </div>
+    </div>
   </fieldset>
 </div>
 
 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Tasks
+      </label >
+    </legend>
 
-
-
+    <div class="govuk-radios  govuk-radios--small">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="todo" {{ checked('status', 'todo') }}>
+        <label class="govuk-label govuk-radios__label" for="status_9">
+          To do 
+            ({{type2toDO}})
+            
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
 
 
 <button class="govuk-button"  id="facetFilterBtn" data-module="govuk-button">
@@ -102,12 +203,28 @@ Apply filter
   </h1>
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
-
-{% if checked('status','R')%}
-Asked for a review ({{type2RNum}}) 
+{% if checked('status','new')%}
+New debts added ({{type2NNum}}) 
+{% elif checked('status','PA')%}
+Protections applied ({{type2ANum}}) 
+{% elif checked('status','R')%}
+Reviews requested ({{type2RNum}}) 
 {% elif checked('status','RA')%}
+Reviews completed - debt removed ({{type2RANum}}) 
+{% elif checked('status','RR')%}
+Reviews completed - debt remains ({{type2RRNum}}) 
+{% elif checked('status','DO')%}
+We dont own these debts anymore ({{dontOwnNum}}) 
+{% elif checked('status','RC')%}
+Eligibility reviews completed ({{type2RCNum}}) 
 {% elif checked('status','todo')%}
 To do ({{type2toDO}}) 
+{% elif checked('status','dispute')%}
+Eligibility disputes ({{disputeNum}}) 
+{% elif checked('status','dont-own')%}
+We dont own these debts anymore ({{disputeNum}}) 
+{% elif checked('status','propDebt')%}
+Proposed debts ({{propDebtNum}}) 
 {% elif checked('status','all')%}
 All debts ({{type2Num}}) 
 {% else %}
@@ -148,7 +265,7 @@ All debts ({{type2Num}})
 {% elif checked('status','R')%}
 {% for customer in customers %}
 {% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes' %}
-  {% include "./_debtListrow.html" %} 
+  {% include "./_debtListrowReview.html" %} 
 {% endif %} 
 {% endfor %}
 

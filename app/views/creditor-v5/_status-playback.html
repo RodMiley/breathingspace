@@ -1,0 +1,16 @@
+    {% if customer.status == 'applied' %}
+      Done
+      {% elif customer.status == 'dont-own' %}
+      Debt sold on
+    {% elif customer.status == 'new' %}
+      New
+    {% elif customer.status == 'review'%}
+      Asked for a review
+    {% elif customer.status == 'review-rejected'%}
+     Debt reviewed: reason rejected
+    {% elif customer.status == 'review-accepted'%}
+     Debt reviewed: reason accepted
+      {% elif customer.status == 'dispute'%}
+      We dispute eligibility
+
+    {% endif%}

@@ -13,8 +13,11 @@
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm you've stopped all action against this debt
+ Confirm 
       </h1>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You're confirming you've done everything you need to show the debt has been removed</h2>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
@@ -26,7 +29,7 @@
                 {% else %}
                 Housing benefit 
                 {% endif %}
-              <p class="govuk-body govuk-!-margin-top-1">Status:<br> <strong>Active</strong> - new debt</p>
+              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% if customer.status == "review-accepted" %} Debt reviewed: reason accepted {% else %}New debt added{% endif %}</p>
             </dt>
             <dd class="govuk-summary-list__value">
                {% include "./_debt-amount-ref.html" %}
@@ -40,7 +43,7 @@
 
                 <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="protection" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="complete~./account-landing-tabs?reference={{customer.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="protection">
          hidden radio
         </label>
