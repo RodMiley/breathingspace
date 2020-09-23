@@ -1,0 +1,88 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-heading-xl">
+      Why do you want to end Breathing Space?
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="The client is not working with money advice after 30 days"  {{checked('bsEndReason', 'The client is not working with money advice after 30 days') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-1">
+           The client is not working with money advice after 30 days
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-2" name="bsEndReason" type="radio" value="The client has asked to be removed"  {{checked('bsEndReason', 'The client has asked to be removed') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-2">
+            The client has asked to be removed
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
+        The client is now using a debt management solution
+        </label>
+      </div>
+
+              <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-4" name="bsEndReason" type="radio" value=" The client is not eligible after creditor asked us to review"  {{checked('bsEndReason', ' The client is not eligible after creditor asked us to review') }} data-aria-controls="conditional-how-contacted-conditional-2">
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
+        The client is not eligible after creditor asked us to review
+        </label>
+      </div>
+
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Which creditor asked for the review
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+  <option value="published">Please select</option>
+    <option value="published">Barclays Bank Plc</option>
+    <option value="updated">Yorkshire Water Services Ltd</option>
+    <option value="views">Southern Electric</option>
+    <option value="comments">Southwark Council</option>
+    <option value="comments">Next Retail and Next Directory</option>
+    <option value="comments">Beech Garage</option>
+  </select>
+</div>
+
+      </div>
+
+     <!--            <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has entered mental health crisis treatment"  {{checked('bsEndReason', 'The client has entered mental health crisis treatment') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-4">
+        The client has entered mental health crisis treatment
+        </label>
+      </div> -->
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

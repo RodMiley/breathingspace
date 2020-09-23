@@ -1,0 +1,115 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-5">
+  
+    <div class="govuk-grid-column-full">
+ 
+ <a href="index" class="govuk-back-link">Back</a>   
+ <h1 class="govuk-heading-xl">Search for an account</h1>
+ {% include "./_search_instructions.html" %} 
+ </div>
+</div>
+<div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-one-quarter">
+ 
+<form class="form" action="search-results-page" method="post">
+{% include "./_search_form.html" %} 
+</form>
+</div>
+    <div class="govuk-grid-column-three-quarters">
+
+{% if data['searched']%}
+  {% if data['fullname']=='Black' and data['dob']=='28 July 2000' %}
+  <p class="govuk-body">Showing: <span class="govuk-!-font-weight-bold">4</span> results</p> 
+   {% include "./_searchrow.html" %} 
+   {% elif data['reference'] or data['dob'] %}
+ <p class="govuk-body">Showing:  <span class="govuk-!-font-weight-bold">1</span> result</p> 
+  {% include "./_searchrow.html" %} 
+    {% elif data['fullname']=='Black' %}
+<!--LastName -->
+ <p class="govuk-body">Showing: <span class="govuk-!-font-weight-bold">1 - 20</span> of <span class="govuk-!-font-weight-bold">100</span> results</p> 
+ {% include "./_searchrow.html" %} 
+    {% elif data['fullname']=='Joe Black'  %}
+<!--LastName -->
+ <p class="govuk-body">Showing: <span class="govuk-!-font-weight-bold">10</span> results</p> 
+ {% include "./_searchrow.html" %} 
+  {% elif data['fullname']!=='Joe Black' or data['fullname']!=='Black'  %}
+  <p class="govuk-body">Showing: <span class="govuk-!-font-weight-bold">0</span> results</p> 
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <p class="govuk-body-l">No results found for "{{ dob }}{{ fullname }}{{ reference }}"</p>
+  <p class="govuk-body">Please try searching again using different search criteria.</p>
+  {% else %}
+  {% endif %}
+
+
+   {% if data['fullname']=='Black' and data['dob'] =='' %}
+<!--LastName --> 
+ <nav role="navigation" aria-label="Pagination" class="govuk-body">
+  <ul class="pagination" id="pagination-demo" >
+    <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Previous page"><span aria-hidden="true" role="presentation">&laquo;</span> Previous</a></li>
+    <li class="pagination__item"><a class="pagination__link current" href="#1" aria-label="Page 1, current page">1</a></li>
+    <li class="pagination__item"><a class="pagination__link" href="#2" aria-label="Page 2">2</a></li>
+    <li class="pagination__item"><a class="pagination__link" href="#3" aria-current="true" aria-label="Page 3">3</a></li>
+    <li class="pagination__item"><a class="pagination__link" href="#4" aria-label="Page 4">4</a></li>
+    <li class="pagination__item"><a class="pagination__link" href="#5" aria-label="Page 5">5</a></li>
+    <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Next page">Next <span aria-hidden="true" role="presentation">&raquo;</span></a></li>
+  </ul>
+</nav>
+  {% endif %}
+
+{% else %}
+{% endif %}
+
+<!-- <ul class="govuk-list">
+{% for client in clients %}
+  {% if client.Lastname == 'Black' and client.first_name == 'Joe' and data['fullname']=='Joe Black'%}
+    <li>
+    
+    <p>Name: <span class="govuk-!-font-weight-bold"><a href="">{{client.first_name}} {{client.middlename}} {{client.Lastname}}</a></span><br/>
+    {{client.reference}} ,
+      {{client.Dob}},
+      {{client.address}}</p>
+    </li>
+  {% endif %}
+
+  {% endfor %}
+
+</ul> -->
+    </div>
+
+  
+   
+
+</div>
+
+<!-- <style>
+.searchdata {
+  position:absolute;
+  top:0px;
+  right:0px;
+  background:#efefef;
+  padding:15px;
+  width:195px
+}
+</style>
+<div class="searchdata">
+<h2 class="govuk-heading-m">Search Data</h2>
+<ul class="govuk-list">
+<li>Reference:<br> <b>14-6125153</b></li>
+<li>Name:<br> <b>Joe Black</b></li>
+<li>Dob: <br><b>28 July 2000</b></li>
+<li>Address: <br><b>843 Glacier Hill Street</b></li>
+<li><hr>No results:<br><b>Smith</b></li>
+</ul>
+
+</div> -->
+
+{% endblock %}

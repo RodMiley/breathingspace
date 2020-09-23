@@ -23,7 +23,7 @@ Review details
             {% endif %}     -->
 
                     {% if customer.status == 'review-accepted' %}
-           <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-fullborder--blue">
+           <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
@@ -39,7 +39,7 @@ Review details
     {% endif %} 
 
       {% if customer.status == 'review-rejected'  or customer.status == 'dispute' %}
-              <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-fullborder--blue">
+              <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
                     <p class="govuk-body">Debt not removed from Breathing Space</p>

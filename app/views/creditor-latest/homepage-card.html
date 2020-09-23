@@ -91,7 +91,7 @@
 
   <div class="card-container">
             <div class="card">
-                 <h2 class="govuk-heading-s"><a href="">
+                 <h2 class="withlink"><a href="">
                 All debts
                ({{totNum}})
                  </a></h2> 
@@ -104,7 +104,7 @@
               </div>
 
                  <div class="card">
-                 <h2 class="govuk-heading-s"><a href="">
+                 <h2 class="withlink"><a href="">
                 {%if checked('creditortype','financial')%} 
                 Mortgages
                 {% else %}
@@ -120,7 +120,7 @@
               </div>
 
                  <div class="card">
-                 <h2 class="govuk-heading-s">
+                 <h2 class="withlink">
                   <form class="form" action="debttype-landing-page" method="post">
                  <button class="govuk-link">
                   {%if checked('creditortype','financial')%} 
@@ -155,7 +155,7 @@
               </div>
 
                  <div class="card">
-                 <h2 class="govuk-heading-s"><a href="times">
+                 <h2 class="withlink"><a href="times">
                   {%if checked('creditortype','financial')%} 
                   Overdraft
                 {% else %}
@@ -169,7 +169,7 @@
 
 
                  <div class="card">
-                 <h2 class="govuk-heading-s"><a href="times">
+                 <h2 class="withlink"><a href="times">
                   {%if checked('creditortype','financial')%} 
                   Insurance
                 {% else %}
@@ -183,7 +183,7 @@
 
 
                  <div class="card">
-                 <h2 class="govuk-heading-s"><a href="times">
+                 <h2 class="withlink"><a href="times">
                 Other ({{OtherNum}})
                  </a></h2> 
               <div class="inner">

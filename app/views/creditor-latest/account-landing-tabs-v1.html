@@ -33,44 +33,39 @@
 <a href="review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
  Request a client eligibilty review
 </a>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+   <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#ma-requests">
+       Tasks
+      </a>
+    </li>
+   
+    <li class="govuk-tabs__list-item ">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+      {% if customer.status =='review-accepted'%}
+      Removed debts
+      {% else %}
+       Debts
+      {% endif %} 
+      </a>
+    </li>
+ <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#client-details">
+        Client details
+      </a>
+    </li>
+        <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#ma-details">
+        Money Adviser details
+      </a>
+    </li>
+    </ul>
 
-  
-  <div class="card-container">
-         
 
-                 <div class="card">
-                 <h2 class="govuk-heading-s">
-                 Client details
-               </h2> 
-     
-              <ul class="govuk-list">
-              <li>Client: Joe Black</li>
-              <li>Date of birth: 1 January 1973</li>
-              <li>Address: 105 Tonbridge Road, Cooper, TN19 0YY</li>
-              <li>Trading name: Initech Space Limited</li>
-              <li>Trading address: 89 Cambridge Road, North Brentor, PL19 9YN</li>
-
-              </ul>
-
-              </div>
-              <div class="card">
-                 <h2 class="govuk-heading-s">
-                 Debts
-               </h2> 
-              <div class="inner">
-                        {% include "./_debts_content.html" %} 
-                 </div>
-              </div>
-
-              <div class="card">
-                 <h2 class="govuk-heading-s">
-                Money adviser details
-               </h2> 
-              <div class="inner">
-                 {% include "./_adviser_content.html" %} 
-                 </div>
-              </div>
-</div>
      <section class="govuk-tabs__panel" id="ma-requests">
            <h2 class="govuk-heading-l">
         Tasks</h2>
@@ -93,6 +88,7 @@
   </section>
 
 
+</div>
 
     </div>
     </form>

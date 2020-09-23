@@ -1,0 +1,21 @@
+ {% if checked('previousname','yes') %} <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous name
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{firstnameprev}} {{middlenameprev}} {{lastnameprev}}
+           
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <ul class="govuk-list">
+            <li><a class="govuk-link govuk-!-font-size-19" href="name-previous">
+                Change<span class="govuk-visually-hidden">Previous name</span>
+              </a></li> 
+               <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Delete<span class="govuk-visually-hidden">Previous name</span>
+              </a></li> 
+            <ul>
+            </dd>
+          </div>
+          {% endif %}
+    

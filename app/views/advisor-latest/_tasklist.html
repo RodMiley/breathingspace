@@ -1,0 +1,114 @@
+
+      <ol class="app-task-list">
+        <li>
+          <h3 class="app-task-list__section">
+           To do
+          </h4>
+          <ul class="app-task-list__items govuk-!-margin-bottom-1">
+              <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Credit card - review requested by Halifax (Credit cards only)
+              </h4>
+              <span class="app-task-list__task-name">
+                    <a href="eligibility-review?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+         {% if checked('debt-eligibility','yes') %}
+             Review complete: debt ineligible - view details  
+          {% elif  checked('debt-eligibility','no')%} 
+             Review complete: debt eligible - view details   
+          {% else %}  
+             Review debt eligibility
+          {% endif %}        
+                    </a>
+              </span>
+      
+            {% if checked('debtreview','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+
+                            <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Overdraft - proposed debt by Barclays Bank Plc
+              </h4>
+              <span class="app-task-list__task-name">
+              <a href="proposed-debt?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                   {% if checked('proposed-debt','yes') and checked('proposed','yes') %}
+                   Proposed debt accepted and added to Breathing Space - view details
+                   {% elif checked('proposed-debt','no') and checked('proposed','yes') %}
+                   Proposed debt rejected - view details
+                   {% else %}
+                   Accept or reject proposed debt
+                   {% endif %}
+              </a>
+              </span>
+      
+            {% if checked('proposed','yes')%}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              </li>
+
+             <!-- <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Change of creditor ownership
+              </h4>
+              <span class="app-task-list__task-name">
+              <a href="dont-own?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                    Barclays Bank Plc have informed us they don't own the debt anymore
+              </a>
+              </span>
+      
+            {% if checked('dontown','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              </li> -->
+
+              <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+               Client review requested by Yorkshire Water Services Ltd
+              </h4>
+              <span class="app-task-list__task-name">
+              <a href="eligibility-review-client?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
+                {% if checked('client-eligibility','yes') %}
+                  Review complete: client ineligible - view details  
+                {% elif  checked('client-eligibility','no')%} 
+                  Review complete: client eligible - view details   
+                {% else %}  
+                  Review client eligibility
+                {% endif %}   
+              </a>
+              </span>
+      
+            {% if checked('clientreview','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              </li>
+
+<!--
+                                         <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Money advice organisation transfer request
+              </h4>
+              <span class="app-task-list__task-name">
+              <a href="transfer-request?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                    Stepchange have requested ownership of this case
+              </a>
+              </span>
+      
+            {% if checked('transfer','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              </li>
+
+-->
+          </ul>
+        </li>
+      </ol>
