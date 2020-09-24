@@ -13,9 +13,9 @@
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
    <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="review-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-       Why are you asking for a review?
+       Why are you asking the money adviser to review the debt?
       </h1>
     </legend>
     <div class="govuk-radios">
@@ -39,7 +39,7 @@
 </div>
  <div class="govuk-form-group">
   <label class="govuk-label govuk-!-font-weight-bold" for="moreDetail">
-    Can you provide more detail?
+    Please provide more detail?
   </label>
   <textarea class="govuk-textarea" id="moreDetail" name="moreDetail" rows="4" aria-describedby="moreDetail-hint" >{{moreDetail}}</textarea>
 </div>
@@ -51,6 +51,14 @@
          hidden radio
         </label>
       </div>
+      </div>
+
+
+        <div class="govuk-radios__item" style="display:none">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="review" checked>
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+          Yes, but we want the money adviser to review the debt
+        </label>
       </div>
 
 

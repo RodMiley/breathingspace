@@ -1,0 +1,26 @@
+      <ul class="govuk-list"> 
+      <li>Debt type: Housing Benefit </li>  
+      <li>Amount: 
+      {% if customer.status == 'applied'%}
+      £1850
+    {% elif customer.status == 'new' or customer.status == 'dontown' %}
+      £1850
+    {% elif customer.status == 'review'%}
+      £770
+    {% elif customer.status == 'review-rejected' or customer.status == 'dispute'%}
+     £545
+    {% elif customer.status == 'review-accepted'%}
+     £345
+     {% else %}
+     £567
+    {% endif%}
+    </li>     
+     <li> Reference: {{customer.reference  | default("RD56tggg") }}</li>
+    <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+      <li>           {% if customer.status == 'review-accepted'%}
+              Breathing space ended {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
+               {% else %}
+               Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(59) }}
+               {% endif%}
+     </li>          
+             </ul>

@@ -1,0 +1,30 @@
+  <div class="govuk-summary-list__row sort-item" data-event-date="{{ customer.startdate }}">
+    <dt class="govuk-summary-list__key">
+          {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+              <p class="govuk-body govuk-!-margin-top-1">Status:<br>{% include "./_status-playback.html" %}</p>
+      {% if customer.todo == 'Yes'%}
+    <strong class="govuk-tag govuk-tag--grey">To do</strong>
+{% endif %}
+    </dt>
+    <dd class="govuk-summary-list__value">
+     <p class="govuk-body">
+Name: <strong>{{ customer.name}}</strong>
+<br>Reference: <strong>{{customer.reference}}</strong>
+</p>
+<p>
+
+</p>
+<p class="govuk-body-s">Started: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}<br>
+Ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}
+</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    <a class="govuk-link" href="account-landing-tabs?reference={{customer.reference}}">
+        View account <span class="govuk-visually-hidden">information</span>
+    </a>
+</dd>
+  </div>

@@ -43,25 +43,25 @@
       </div>
 
               <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-4" name="bsEndReason" type="radio" value=" The client is not eligible after creditor asked us to review"  {{checked('bsEndReason', ' The client is not eligible after creditor asked us to review') }} data-aria-controls="conditional-how-contacted-conditional-2">
-        <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
+        <input class="govuk-radios__input" id="bsEndReason-4" name="bsEndReason" type="radio" value="The client is not eligible after creditor asked us to review"  {{checked('bsEndReason', 'The client is not eligible after creditor asked us to review') }} data-aria-controls="creditorChoice">
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-4">
         The client is not eligible after creditor asked us to review
         </label>
       </div>
 
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional-2">
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="creditorChoice">
         <div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
+  <label class="govuk-label" for="endBSCreditorChoice">
     Which creditor asked for the review
   </label>
-  <select class="govuk-select" id="sort" name="sort">
-  <option value="published">Please select</option>
-    <option value="published">Barclays Bank Plc</option>
-    <option value="updated">Yorkshire Water Services Ltd</option>
-    <option value="views">Southern Electric</option>
-    <option value="comments">Southwark Council</option>
-    <option value="comments">Next Retail and Next Directory</option>
-    <option value="comments">Beech Garage</option>
+  <select class="govuk-select" id="sort" name="endBSCreditorChoice">
+  <option value="">Please select</option>
+    <option value="Barclays Bank Plc">Barclays Bank Plc</option>
+    <option value="Yorkshire Water Services Ltd">Yorkshire Water Services Ltd</option>
+    <option value="Southern Electric">Southern Electric</option>
+    <option value="Southwark Council">Southwark Council</option>
+    <option value="Next Retail and Next Directory">Next Retail and Next Directory</option>
+    <option value="Beech Garage">Beech Garage</option>
   </select>
 </div>
 

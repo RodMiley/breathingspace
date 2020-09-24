@@ -1,4 +1,4 @@
-
+ 
 {% extends "layout.html" %}
 
 {% block pageTitle %}
@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="confirmation-removedebt" method="post">
+  <form class="form" action="remove-debt-confirm" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -20,20 +20,12 @@
     <div class="govuk-grid-column-full">     
 
 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<hr class="govuk-section-break govuk-section-break--visible">
-<dl class="govuk-summary-list govuk-!-margin-bottom-5">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Car repair
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: Beech Garage<br>Amount: £445<br> Reference: Service and Mot
-            </dd>
-            <dd class="govuk-summary-list__actions">
-       
-            </dd>
-          </div>
-  </dl>
+<ul class="govuk-list"> 
+      <li>Creditor: Beach Garage</li>
+      <li>Debt type: Car repair</li>  
+      <li>Amount: £445</li>
+      <li>Reference: Service and Mot</li>
+</ul>      
 
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
@@ -44,20 +36,20 @@
     </legend>
     <div class="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+        <input class="govuk-radios__input" id="removeDebtReason" name="removeDebtReason" type="radio" value="Client asked us to">
+        <label class="govuk-label govuk-radios__label" for="removeDebtReason">
           Client asked us to
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+        <input class="govuk-radios__input" id="removeDebtReason-2" name="removeDebtReason" type="radio" value="The debt is not eligible after creditor asked us to review">
+        <label class="govuk-label govuk-radios__label" for="removeDebtReason-2">
           The debt is not eligible after creditor asked us to review
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+        <input class="govuk-radios__input" id="removeDebtReason-3" name="removeDebtReason" type="radio" value="The debt was added in error">
+        <label class="govuk-label govuk-radios__label" for="removeDebtReason-3">
          The debt was added in error
         </label>
       </div>
@@ -65,34 +57,15 @@
 </div>
 
   <div class="govuk-form-group">
-  <label class="govuk-label" for="removedebtreason">
-    Can you provide more detail?
+  <label class="govuk-label" for="removeDebtDetail">
+    Please you provide more detail?
   </label>
-  <textarea class="govuk-textarea govuk-!-width-two-thirds" id="removedebtreason" name="removedebtreason" rows="5"></textarea>
+  <textarea class="govuk-textarea govuk-!-width-two-thirds" id="removeDebtDetail" name="removeDebtDetail" rows="5"></textarea>
 </div>
-
-
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-    By removing this debt from Breathing Space, creditor protections will be removed.
-  </strong>
-</div>
-
-
-    <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="removedebt" type="radio" value="yes" checked>
-        <label class="govuk-label govuk-radios__label" for="removedebt">
-         hidden radio
-        </label>
-      </div>
-      </div>
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Remove debt
+ Save and continue
 </button>
 
 </div>
@@ -102,3 +75,4 @@
 
 
 {% endblock %}
+

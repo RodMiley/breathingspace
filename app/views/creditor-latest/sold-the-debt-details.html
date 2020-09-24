@@ -15,12 +15,13 @@
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
  We have sold the debt details
       </h1>
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<hr class="govuk-section-break govuk-section-break--visible">
-{% include path+"./_debt-info.html" %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+{% include "./_debt-amount-ref-v2.html" %}
 
                     <p class="govuk-body-l govuk-!-margin-bottom-2">We have informed Advice Uk that we have sold the debt to <strong>{{ creditorSold }}</strong></p>
-                    <p class="govuk-body-s"> {% include path+"./_creditor.html" %}, Jo Clarkson, {{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                    
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Actioned by</h3>
+                    <p class="govuk-body"> Jo Clarkson, {% include path+"./_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
 
     </div>
     </form>

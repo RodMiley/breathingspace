@@ -1,0 +1,73 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="test" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+Record you have stopped all action
+      </h1>
+      </div>
+       <div class="govuk-grid-column-full">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
+   <hr class="govuk-section-break govuk-section-break--visible">
+
+{% include "./_debt-info.html" %}
+
+
+{% if customer.status == 'applied'%}
+<p class="govuk-body-l">You have stopped all action against this debt</p>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Task completed by</h3>
+ <p class="govuk-body">{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+{% else %}
+      
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Have you stopped all action against this debt?
+      </h1>
+    </legend>
+         <div id="completed-hint" class="govuk-hint">
+      You would record this once you have updated your own systems or completed any other process required outside this service.
+    </div>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="review~./review-debt?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+          Yes, but we want the money adviser to review the debt
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-3" name="debtStatus" type="radio" value="dontOwn~./sold-the-debt?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus-3">
+          No, we've sold this debt
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+{% endif %}
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

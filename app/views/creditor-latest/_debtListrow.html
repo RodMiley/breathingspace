@@ -3,7 +3,7 @@
           {%if checked('creditortype','financial')%} 
                  Loan
                 {% else %}
-                Housing benefit 
+                Self assessment
                 {% endif %}
               <p class="govuk-body govuk-!-margin-top-1">Status:<br>{% include "./_status-playback.html" %}</p>
       {% if customer.todo == 'Yes'%}

@@ -1,0 +1,41 @@
+{%if customer.status =='review-accepted'%}
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+Removed debts</h2>
+<p>
+The following debts have been removed from Breathing Space and the protections can be removed
+</p>
+{% else %}
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+Breathing Space debts owed to you:</h2>
+<p>
+These details might not be accurate. They are just to help you find your client or debt on your system.
+</p>
+{% endif %}
+
+   
+   <hr class="govuk-section-break govuk-section-break--visible">
+   <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                  {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+                <p class="govuk-body-s govuk-!-margin-top-1">Status:<br> {% include "./_status-playback.html" %} </p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% include "./_debt-amount-ref.html" %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if customer.status == 'review'%}
+                 <a class="govuk-link" href="review-debt-details?reference={{customer.reference}}">View review details</a>
+              <p>We have requested Advice uk to review debt eligibility</p>
+             {% elif customer.status == 'review-accepted'%}
+                 <a class="govuk-link" href="review-debt-details?reference={{customer.reference}}">View review details</a>
+             {% else%}
+                  <a class="govuk-link" href="protections-apply?reference={{customer.reference}}">Update status</a>
+             {% endif %}     
+            </dd>
+            </div>
+     </dl>   

@@ -13,28 +13,18 @@
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm you've stopped all action against this debt
+ Confirm you've stopped all recovery action against this debt
       </h1>
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
-   <hr class="govuk-section-break govuk-section-break--visible">
- <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                {%if checked('creditortype','financial')%} 
-                 Loan
-                {% else %}
-                Housing benefit 
-                {% endif %}
-              <p class="govuk-body govuk-!-margin-top-1">Status:<br> <strong>Active</strong> - new debt</p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-               {% include "./_debt-amount-ref.html" %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-            </dd>
-      </div>
-  </dl> 
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "You would confirm this once you have stopped recovery action on your own systems or completed any other process required outside this service."
+}) }}
+
+
+<h2 class="govuk-heading-m ">Debt</h3>
+  {% include "./_debt-amount-ref-v2.html" %}
 
 
 
@@ -45,6 +35,13 @@
          hidden radio
         </label>
       </div>
+      </div>
+
+       <div class="govuk-radios__item" style="display:none">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied" checked>
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+          Yes
+        </label>
       </div>
 
 <button class="govuk-button" data-module="govuk-button">

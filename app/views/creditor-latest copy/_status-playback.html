@@ -1,0 +1,15 @@
+
+    {% if customer.status == 'applied' %}
+      <strong class=""> Active </strong>
+      {% elif customer.status == 'dont-own' %}
+       <strong class="">Active </strong> - debt sold on
+    {% elif customer.status == 'new' %}
+       <strong class="">Active </strong> - new debt
+    {% elif customer.status == 'review'%}
+       <strong class="">Active </strong> - asked for a review
+    {% elif customer.status == 'review-rejected'%}
+       <strong class="">Active </strong> - after money adviser review
+    {% elif customer.status == 'review-accepted'%}
+       <strong class="">Removed </strong> - after money adviser review
+    {% endif%}
+    </strong>

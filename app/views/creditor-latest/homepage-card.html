@@ -108,7 +108,7 @@
                 {%if checked('creditortype','financial')%} 
                 Mortgages
                 {% else %}
-                Council tax 
+               Pay as you earn
                 {% endif %}({{type1Num}})
                  </a></h2> 
               <div class="inner">
@@ -126,7 +126,7 @@
                   {%if checked('creditortype','financial')%} 
                  Loans
                 {% else %}
-                Housing benefit 
+               Self assessment
                 {% endif %} ({{type2Num}})
                  </button>
                     <div class="govuk-radios__item govuk-visually-hidden">
@@ -159,7 +159,7 @@
                   {%if checked('creditortype','financial')%} 
                   Overdraft
                 {% else %}
-                Parking fines
+               National insurance
                 {% endif %}  ({{type3Num}})
                  </a></h2> 
               <div class="inner">
@@ -173,13 +173,25 @@
                   {%if checked('creditortype','financial')%} 
                   Insurance
                 {% else %}
-                Rent arrears 
+                Tax credits
                 {% endif %} ({{type4Num}})
                  </a></h2> 
               <div class="inner">
                  <a href="" class="govuk-body"> Tasks to do ({{type4toDO}})</a>
                  </div>
               </div>
+
+
+            <div class="card">
+                 <h2 class="withlink"><a href="times">
+                Child benefit (45)
+                 </a></h2> 
+              <div class="inner">
+                 <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
+                 </div>
+              </div>
+
+            </div>
 
 
                  <div class="card">

@@ -64,6 +64,13 @@ var creditordebts = require('./creditordebtlist.js')
       findCustomer.substatus='Yes'
      }
 
+     if(status === 'applied'){
+      findCustomer.status ='applied' 
+      findCustomer.todo='No'
+      findCustomer.substatus='Yes'
+     
+     }
+
    
     res.locals.customer = findCustomer
     next()

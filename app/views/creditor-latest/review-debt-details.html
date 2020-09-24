@@ -12,17 +12,11 @@
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-Review details
+       Review details
       </h1>
 
-         <h2 class="govuk-heading-l">Outcome of review</h2>
-         <!--     {% if customer.status == 'review-accepted' %}
-            <h2 class="govuk-body-l">Outcome of review: debt removed from Breathing Space</p>
-            {% elif customer.status == 'review-rejected'%}
-            <p class="govuk-body-l">Outcome of review: debt not removed from Breathing Space</p>
-            {% endif %}     -->
-
                     {% if customer.status == 'review-accepted' %}
+                    <h2 class="govuk-heading-l">Outcome of review</h2>
            <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     
@@ -39,6 +33,7 @@ Review details
     {% endif %} 
 
       {% if customer.status == 'review-rejected'  or customer.status == 'dispute' %}
+      <h2 class="govuk-heading-l">Outcome of review</h2>
               <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
@@ -52,15 +47,13 @@ Review details
 
     {% endif %}       
              
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<hr class="govuk-section-break govuk-section-break--visible">
-{% include "./_debt-info.html" %} 
        
               <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
-                
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Request reason</h3>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+               {% include "./_debt-amount-ref-v2.html" %}           
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Request reason</h3>
                     <p class="govuk-body">{{ debtReview | default ("The debt does not qualify for Breathing Space")}}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">More detail</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h3>
   
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
@@ -69,7 +62,7 @@ Review details
                               {{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}
                               {% endif %}
                     </p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
                     <p class="govuk-body">{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
             
 
