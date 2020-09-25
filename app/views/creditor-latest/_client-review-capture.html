@@ -1,19 +1,55 @@
 
-    <div class="govuk-radios">
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="The client does not meet the relevant eligibility review criteria"  {{ checked('clientReview', 'The client does not meet the relevant eligibility review criteria') }} aria-describedby="clientReview-hint">
+        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="The client does not meet the relevant eligibility review criteria"  {{ checked('clientReview', 'The client does not meet the relevant eligibility review criteria') }} data-aria-controls="conditional-how-contacted-conditional">
         <label class="govuk-label govuk-radios__label" for="clientReview">
          The client does not meet the relevant eligibility review criteria
         </label>
-          <div id="clientReview-hint" class="govuk-hint govuk-radios__hint">
-          For example the client: 
-          <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-3">
-          <li>is not domiciled or ordinarily resident in England and Wales</li> 
-          <li>is subject to a DRO</li>
-          <li>is subject to an interim order or IVA</li>
-          <li>is an undischarged bankrupt</li>
-          <li>is or has been subject to another Breathing Space in the last 12 months</li>
-        </div>
+      </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional">
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-fieldset__heading">
+        Why is does the client not meet the relevant eligibility review criteria?
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason" name="clientReviewReason" type="radio" value=", the client is not domiciled or ordinarily resident in England and Wales">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason">
+          The client is not domiciled or ordinarily resident in England and Wales
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-2" name="clientReviewReason" type="radio" value=", the client is subject to a DRO">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-2">
+         The client is subject to a DRO
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-3" name="clientReviewReason" type="radio" value=", the client is subject to an interim order or IVA">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-3">
+          The client is subject to an interim order or IVA
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-4" name="clientReviewReason" type="radio" value=", the client is an undischarged bankrupt">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-4">
+          The client is an undischarged bankrupt
+        </label>
+      </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-5" name="clientReviewReason" type="radio" value=", the client is or has been subject to another Breathing Space in the last 12 months">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-5">
+          The client is or has been subject to another Breathing Space in the last 12 months
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="clientReview-2" name="clientReview" type="radio" value="They have had Breathing Space in the last 12 months"  {{ checked('clientReview', 'The Client has sufficient funds to discharge their debt') }}>

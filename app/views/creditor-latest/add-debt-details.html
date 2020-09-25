@@ -17,64 +17,21 @@
       </h1>
 
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">We have imformed {% include path+"creditor-mvp/_advise-org-name.html" %}  that we have proposed a new debt to be included in Breathing space</h2>
+<h2 class="govuk-heading-m">We have imformed {% include path+"creditor-mvp/_advise-org-name.html" %}  that we have proposed a new debt to be included in Breathing space</h2>
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
-   <hr class="govuk-section-break govuk-section-break--visible">
-   <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-         {% if checked('adddebt','yes') %}
-              <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {% if checked('typeOfDebt','other')%}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+ <ul class="govuk-list">
+ <li>Debt type: {% if checked('typeOfDebt','other')%}
              {{ otherdebt }}
              {% else %}
              {{typeOfDebt}}
-             {% endif %}
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-            
-            </dd>
-          </div>
-          
-          
-          
-          {% elif checked('adddebt2','yes') %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             {{ typeOfDebt }}
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount }}</strong><br> Reference: <strong>{{ addreference }}</strong>
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-
-            </dd>
-          </div>
-          
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-   
-             {{ typeOfDebt2 }}
-      
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Amount: £<strong>{{ addamount2 }}</strong><br> Reference: <strong>{{ addreference2 }}</strong>
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-             
-            </dd>
-          </div>
-          {% endif %}
-</dl>
- <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested:{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+             {% endif %}     
+</li>
+<li>Amount: £{{ addamount }}</li>
+<li>Reference:{{ addreference }}</li>
+ </ul>  
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+ <p class="govuk-body">{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
     </div>
     </form>
 </div>

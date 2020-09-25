@@ -54,10 +54,13 @@ All action against this debt has been stopped
                   </a>
         
                   {% elif customer.status == 'applied' %} 
-                   
+ 
+
+
                        <a href="review-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
                         The debts not eligible ask for a review
                       </a>
+                    
 
                        <a href="sold-the-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
                         We've sold this debt
@@ -68,16 +71,22 @@ All action against this debt has been stopped
                          View details
                     </a>
                   {% else %}
-                   <ul class="govuk-list">
-                    </ul>
+                                       <form class="form" action="" method="post">        
+                         <div class="govuk-radios__item" style="display:none">
+                            <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}" checked>
+                            <label class="govuk-label govuk-radios__label" for="debtStatus">
+                              Yes
+                            </label>
+                          </div>
 
-                     <a href="protections-confirm?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
-                        <!-- Record you have stopped all action against this debt -->
+                     <button class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
                          We've stopped all recovery action
-                    </a>
+                    </button>
+
+                    </form>
 
                        <a href="review-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
-                        The debt doesn't qualify ask for a review
+                        This is a none eligible debt ask for a review
                       </a>
 
                        <a href="sold-the-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">

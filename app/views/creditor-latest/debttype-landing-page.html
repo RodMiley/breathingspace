@@ -35,7 +35,7 @@
      {% set type2toDO = type2toDO + 1 %}
     {% endif %}
 
-  {% if customer.type === "type2" and customer.status === "review" or customer.clientReview === "yes" %}
+  {% if customer.type === "type2" and customer.status === "review" or customer.clientReview === "yes" or customer.status == 'dont-own' and customer.type == 'type2' %}
      {% set type2RNum = type2RNum + 1 %}
     {% endif %}
 
@@ -104,7 +104,7 @@ Apply filter
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
 
 {% if checked('status','R')%}
-Asked for a review ({{type2RNum}}) 
+Sent to money adviser ({{type2RNum}}) 
 {% elif checked('status','RA')%}
 {% elif checked('status','todo')%}
 To do ({{type2toDO}}) 
@@ -147,7 +147,7 @@ All debts ({{type2Num}})
 
 {% elif checked('status','R')%}
 {% for customer in customers %}
-{% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes' %}
+{% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes'  or customer.status == 'dont-own' and customer.type == 'type2' %}
   {% include "./_debtListrow.html" %} 
 {% endif %} 
 {% endfor %}

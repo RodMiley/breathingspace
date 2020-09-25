@@ -26,30 +26,37 @@
     <div class="govuk-radios" data-module="govuk-radios">
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Housing benefit"  {{checked('typeOfDebt', 'Housing benefit') }} >
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Pay as you earn"  {{checked('typeOfDebt', 'Pay as you earn') }} >
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
-            Housing benefit
+            Pay as you earn
         </label>
       </div>
 
         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Council tax"  {{checked('typeOfDebt', 'Council tax') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Self assessment"  {{checked('typeOfDebt', 'Self assessment') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
-            Council tax
+            Self assessment
         </label>
       </div>
     
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Rent arrears"  {{checked('typeOfDebt', 'Rent arrears') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="National insurance"  {{checked('typeOfDebt', 'National insurance') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
-        Rent arrears
+       National insurance
         </label>
       </div>
 
        <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Parking fines"  {{checked('typeOfDebt', 'Parking fines') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-34" name="typeOfDebt" type="radio" value="Tax credits"  {{checked('typeOfDebt', 'Tax credits') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-4">
-        Parking fines
+       Tax credits
+        </label>
+      </div>
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-5" name="typeOfDebt" type="radio" value="Child benefit"  {{checked('typeOfDebt', 'Child benefit') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-5">
+       Child benefit
         </label>
       </div>
 
@@ -80,7 +87,7 @@
 
  <div class="govuk-form-group">
   <label class="govuk-label" for="addreference">
-    Reference (Optional)
+    Reference
   </label>
   <input class="govuk-input govuk-input--width-10" id="addreference" name="addreference" type="text" spellcheck="false" value="{{ addreference }}">
 </div>
