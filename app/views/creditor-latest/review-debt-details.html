@@ -51,9 +51,8 @@
               <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
                {% include "./_debt-amount-ref-v2.html" %}           
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Request reason</h3>
-                    <p class="govuk-body">{{ debtReview | default ("The debt does not qualify for Breathing Space")}}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h3>
+ 
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Detail why this is not a qualifying debt</h3>
   
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}

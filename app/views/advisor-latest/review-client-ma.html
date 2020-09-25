@@ -1,0 +1,69 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="eligibility-review-client" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+    <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Add the why the creditor thinks your client doesn't qualify
+      </h1>
+    </legend>
+    <div class="govuk-form-group">
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="The client does not meet the relevant eligibility review criteria"  {{ checked('clientReview', 'The client does not meet the relevant eligibility review criteria') }} aria-describedby="clientReview-hint">
+        <label class="govuk-label govuk-radios__label" for="clientReview">
+         The client does not meet the relevant eligibility review criteria
+        </label>
+          <div id="clientReview-hint" class="govuk-hint govuk-radios__hint">
+          For example the client: 
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-3">
+          <li>is not domiciled or ordinarily resident in England and Wales</li> 
+          <li>is subject to a DRO</li>
+          <li>is subject to an interim order or IVA</li>
+          <li>is an undischarged bankrupt</li>
+          <li>is or has been subject to another Breathing Space in the last 12 months</li>
+        </div>
+      </div>
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-2" name="clientReview" type="radio" value="They have had Breathing Space in the last 12 months"  {{ checked('clientReview', 'The Client has sufficient funds to discharge their debt') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-2">
+          The client has sufficient funds to discharge their debt
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-3" name="clientReview" type="radio" value="They already have a Breathing Space"  {{ checked('clientReview', ' The Breathing Space unfairly prejudices the interests of the creditor') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-3">
+        The Breathing Space unfairly prejudices the interests of the creditor
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetailClient">
+    Please provide more detail
+  </label>
+  <textarea class="govuk-textarea" id="moreDetailClient" name="moreDetailClient" rows="4" aria-describedby="moreDetailClientHint" >{{ moreDetailClient }}</textarea>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

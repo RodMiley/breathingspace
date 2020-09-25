@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="review-client-ma" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="review-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        What type of review has the creditor asked for?
+      </h1>
+    </legend>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review" name="review" type="radio" value="debt~./review-debt-ma" data-aria-controls="conditional-review" {{ checked('review', 'debt')}} >
+        <label class="govuk-label govuk-radios__label" for="review">
+          Debt eligibility review
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review-2" name="review" type="radio" value="client" data-aria-controls="conditional-review-2" {{ checked('review', 'client') }}>
+        <label class="govuk-label govuk-radios__label" for="review-2">
+           Client eligibility review
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

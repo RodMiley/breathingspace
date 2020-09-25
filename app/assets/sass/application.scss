@@ -255,6 +255,12 @@ hr.keydetails
 }
 
 
+.govuk-summary-list__actions {
+      width: 30%;
+    }
+  
+
+
 
 
 // Design system nav //
@@ -419,7 +425,7 @@ ul.searchresults{
 
 }
 
-
+// Creditor v5 styling ---------//
 .filterSeperator{
     display:block;
     border-bottom:1px solid black;
@@ -431,6 +437,15 @@ ul.searchresults{
 .govuk-radios__label.withHint{
     padding-bottom:2px;
 }
+
+
+// End Creditor v5 styling ---------//
+
+
+.govuk-hint .govuk-list{
+    color: $govuk-secondary-text-colour;
+}
+
 
 
   

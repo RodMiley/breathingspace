@@ -17,12 +17,12 @@
       </h1>
 
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review client eligibility</h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
                     <p class="govuk-body">{{ clientReview }}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
                     <p class="govuk-body">{{ moreDetailClient }}</p>
-                  
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested: Jo Clarkson, Barclays Bank Plc,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
+                  <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-2">Jo Clarkson,{% include "./_creditor.html" %},{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
 
 
     </div>

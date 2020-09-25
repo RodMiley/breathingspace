@@ -12,36 +12,20 @@
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
-       Debt eligibility review
+       Review details
       </h1>
 
+ <h2 class="govuk-heading-m">{% include path+"advisor-mvp/_review_creditor.html" %} asked for a review</h2>
+
 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<hr class="govuk-section-break govuk-section-break--visible">
-<dl class="govuk-summary-list govuk-!-margin-bottom-5">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Credit card
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount: £2500<br> Reference: RBC23455003
-            </dd>
-            <dd class="govuk-summary-list__actions">
-       
-            </dd>
-          </div>
-  </dl> 
+<ul class="govuk-list">
+<li>Debt type: Credit card</li>
+<li>Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}</li>
+<li>Amount: £2500</li>
+<li>Reference: RBC23455003</li>
+</ul>
 
-    </div>
-   <div class="govuk-grid-column-three-quarters">
-
-
-
-                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Details</h2>
-
-                    <p class="govuk-body-l">{% include path+"advisor-mvp/_review_creditor.html" %} have requested a debt eligibility review </p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Request reason</h3>
-                    <p class="govuk-body">The debt does not qualify for Breathing Space</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this is not a qualifying debt</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
                     <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
@@ -101,8 +85,7 @@
 </div>
 <div class="govuk-form-group">
   <label class="govuk-label" for="eligibilityNo">
-    Can you provide more detail?
-  </label>
+    Please provide detail
   <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
   </div>
 
