@@ -13,8 +13,8 @@
     <div class="govuk-grid-column-one-half">
     <ul class="govuk-list">
     <li> Status: {% include "./_status-playback.html" %}</li>
-    <li>Date entered {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}</li>
-    <li>Date due to ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}</li>
+    <li>Date entered {{ customer.startdate }}</li>
+    <li>Date ends {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
     <ul>
   </div>
     <div class="govuk-grid-column-one-half">
