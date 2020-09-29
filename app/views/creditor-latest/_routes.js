@@ -412,28 +412,43 @@ var creditordebts = require('./creditordebtlist.js')
      
     for (let i = 0; i < creditordebts.length; i++ ) {
 
-    if(creditordebts[i].reference === '507-50-0242'){
+    if(creditordebts[i].reference === 'VFDgzk9NKIu6O'){
       findCustomer = creditordebts[i];
      }
 
-    if(creditordebts[i].reference === '703-12-2970'){
+    if(creditordebts[i].reference === 'WXOmP5LuJwiU2'){
       findCustomer2 = creditordebts[i];
      }
     
-     if(creditordebts[i].reference === '700-64-2930'){
+     if(creditordebts[i].reference === 'JMFYIFw1KB3fg'){
       findCustomer3 = creditordebts[i];
      }
      
-     if(creditordebts[i].reference === '257-55-2879'){
+     if(creditordebts[i].reference === 'SKFnFFE3LcJbs'){
       findCustomer4 = creditordebts[i];
      } 
 
-     if(creditordebts[i].reference === '654-01-3217'){
+     if(creditordebts[i].reference === 'HCQ4xqX3xBfRd'){
       findCustomer5 = creditordebts[i];
      } 
 
-     if(creditordebts[i].reference === '839-75-1188'){
+     if(creditordebts[i].reference === 'LMDUypbrz9oS1'){
       findCustomer6 = creditordebts[i];
+     } 
+
+        
+     if(creditordebts[i].reference === 'EFNUupyThEwv1'){
+      findCustomer7 = creditordebts[i];
+     } 
+
+           
+     if(creditordebts[i].reference === 'FXWvIvRill0O7'){
+      findCustomer8 = creditordebts[i];
+     } 
+
+           
+     if(creditordebts[i].reference === 'WSWV041GW4bJB'){
+      findCustomer9 = creditordebts[i];
      } 
 
     }
@@ -464,6 +479,15 @@ var creditordebts = require('./creditordebtlist.js')
         findCustomer6.todo='Yes'
         findCustomer6.substatus='' 
         findCustomer6.clientReview=''
+        findCustomer7.status ='new' 
+        findCustomer7.todo='Yes'
+        findCustomer7.substatus=''
+        findCustomer8.status ='new' 
+        findCustomer8.todo='Yes'
+        findCustomer8.substatus=''
+        findCustomer9.status ='new' 
+        findCustomer9.todo='Yes'
+        findCustomer9.substatus=''
       }  
     
     next()
