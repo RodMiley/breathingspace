@@ -9,7 +9,24 @@
 
 
   <div class="govuk-grid-row">
-  <form class="form" action="test" method="post">
+  {% if checked('debtStatus','applied')%}
+  <form class="form" action="" method="post">
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+      <button class="md-trigger" id="modal" data-modal="modal"></button>
+
+  {% else %}
+    <form class="form" action="" method="post">
+  {% endif %}
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
@@ -27,16 +44,12 @@
 <h2 class="govuk-heading-m ">Debt</h3>
   {% include "./_debt-amount-ref-v2.html" %}
 
-
-
-    <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="protection" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
-        <label class="govuk-label govuk-radios__label" for="protection">
-         hidden radio
-        </label>
-      </div>
-      </div>
+  <div class="govuk-radios__item" style="display:none">
+                            <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}" checked>
+                            <label class="govuk-label govuk-radios__label" for="debtStatus">
+                              Yes
+                            </label>
+                          </div>
 
 <button class="govuk-button" data-module="govuk-button">
   Confirm and submit

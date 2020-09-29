@@ -53,25 +53,6 @@ var creditordebts = require('./creditordebtlist.js')
      }
     }
 
-    let status = req.session.data['protections']
-    if(findCustomer.status === 'review-rejected'){
-      findCustomer.todo='No'
-      findCustomer.substatus='Yes'
-     }
-
-     if(findCustomer.status === 'review-accepted'){
-      findCustomer.todo='No'
-      findCustomer.substatus='Yes'
-     }
-
-     if(status === 'applied'){
-      findCustomer.status ='applied' 
-      findCustomer.todo='No'
-      findCustomer.substatus='Yes'
-     
-     }
-
-   
     res.locals.customer = findCustomer
     next()
      })
@@ -125,12 +106,44 @@ var creditordebts = require('./creditordebtlist.js')
         findCustomer = creditordebts[i];
        }
       }
+
+      let status = req.session.data['protection']
+      if(status === 'completed'){
+        findCustomer.todo='No'
+        findCustomer.substatus='Yes'
+       }
+  
      
       res.locals.customer = findCustomer
       next()
        })
 
     // ---------------------------------------------------------
+
+
+     
+    router.get('/review-debt-details-rejected', function (req, res, next)
+    {
+    let findCustomer = {}
+  
+    for (let i = 0; i < creditordebts.length; i++ ) {
+    if(creditordebts[i].reference === req.query.reference){
+      findCustomer = creditordebts[i];
+     }
+    }
+
+    let status = req.session.data['protection']
+    if(status === 'rejectedcompleted'){
+      findCustomer.todo='No'
+      findCustomer.substatus='Yes'
+     }
+
+   
+    res.locals.customer = findCustomer
+    next()
+     })
+
+  // ---------------------------------------------------------
 
      router.get('/review-completed-confirm', function (req, res, next)
      {

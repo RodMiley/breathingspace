@@ -1,4 +1,4 @@
-      <ul class="govuk-list"> 
+      <ul class="govuk-list">
       <li>Debt type: Self assessment </li> 
       <!-- <li>Status: {% include "./_status-playback.html" %}</li> -->
       <li>Amount: 
@@ -19,7 +19,7 @@
      <li> Reference: {{customer.reference  | default("RD56tggg") }}</li>
     <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
       <li>           {% if customer.status == 'review-accepted'%}
-              Debt removed no {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
+              Debt removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
                {% else %}
                Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(59) }}
                {% endif%}

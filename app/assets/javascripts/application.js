@@ -14,7 +14,13 @@ $(document).ready(function () {
   $('.facet').on('change', e => {
     $('#facetFilterBtn').click();
   })
+  
 })
+
+
+$(document).ready(function(){
+  $('#modal').click();
+});
 
 
 

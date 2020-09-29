@@ -29,13 +29,17 @@ All recovery action against this debt has been stopped
  {% endif %}
    </h4>
 
-       {% include "./_debt-amount-ref-v2.html" %}
-
-            {% if customer.status == 'review-accepted' %}
+              {% if customer.status == 'review-accepted' %}
+            <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
             <p><strong>Outcome of review: </strong>debt removed from Breathing Space</p>
+            </div>
             {% elif customer.status == 'review-rejected'%}
+            <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
             <p><strong>Outcome of review:</strong> debt not removed from Breathing Space</p>
+            </div>
             {% endif %}  
+
+       {% include "./_debt-amount-ref-v2.html" %}
             {% if customer.status == 'new' or customer.status == 'applied' %} 
                           <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Choose an option</h2>   
             {% endif %}                
@@ -45,14 +49,26 @@ All recovery action against this debt has been stopped
                          View review details
                   </a>
                  
-                  {% elif customer.status == 'review-accepted' and checked('protection','completed') or customer.status == 'review-rejected' and checked('protection','rejectedcompleted')   %}
+                  {% elif customer.status == 'review-accepted' and checked('protection','completed')  %}
                     <a href="review-debt-details?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
                         View  review details
                   </a>
 
-                 {% elif customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
+                   
+                  {% elif customer.status == 'review-rejected' and checked('protection','rejectedcompleted')   %}
+                    <a href="review-debt-details-rejected?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
+                        View  review details
+                  </a>
+
+                 {% elif customer.status == 'review-accepted' %}
                  
                     <a href="review-debt-details?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
+                       View review details and confirm you have completed your to do 
+                  </a>
+
+                   {% elif customer.status == 'review-rejected' %}
+                 
+                    <a href="review-debt-details-rejected?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
                        View review details and confirm you have completed your to do 
                   </a>
         
@@ -72,19 +88,14 @@ All recovery action against this debt has been stopped
                          View details
                     </a>
                   {% else %}
-                                       <form class="form" action="" method="post">        
-                         <div class="govuk-radios__item" style="display:none">
-                            <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}" checked>
-                            <label class="govuk-label govuk-radios__label" for="debtStatus">
-                              Yes
-                            </label>
-                          </div>
+                       
+  
 
-                     <button class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                     <a href="protections-confirm?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
                          We've stopped all recovery action
-                    </button>
+                    </a>
 
-                    </form>
+                  
 
                        <a href="review-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
                         This is a none eligible debt ask for a review

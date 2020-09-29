@@ -8,15 +8,15 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  {% if checked('reset','yes')%}
+  {% if checked('reset2','yes')%}
   <form class="form" action="" method="post">
-  {% elif checked('protection','completed') %}
+  {% elif checked('protection','rejectedcompleted') %}
   <form class="form" action="" method="post">
 
     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="reset" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
-        <label class="govuk-label govuk-radios__label" for="reset">
+        <input class="govuk-radios__input" id="" name="reset2" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="reset2">
          hidden radio
         </label>
       </div>
@@ -27,27 +27,29 @@
   {% else %}
     <form class="form" action="" method="post">
   {% endif %}
-
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
        Review details
       </h1>
 
-                    <h2 class="govuk-heading-l">Outcome of review</h2>
-           <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
-                    
+
+
+      <h2 class="govuk-heading-l">Outcome of review</h2>
+              <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
+               <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
-                    <p class="govuk-body">Debt removed from Breathing Space</p>
+                    <p class="govuk-body">Debt not removed from Breathing Space</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
                     <p class="govuk-body">
-                    The client has agreed that this was a debt associated with their business
-                    </p> 
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
-                    <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
-            </div>
-    
+                    The client is a sole trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
+                    </p>           
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+              </div>
+
+     
+             
+       
               <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
                {% include "./_debt-amount-ref-v2.html" %}           
@@ -65,44 +67,41 @@
                     <p class="govuk-body">{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
             
 
-{% if customer.status == 'review-accepted' and checked('protection','completed') %}
-{% elif customer.status == 'review-accepted' %}   
- 
+{% if customer.status == 'review-rejected' and checked('protection','rejectedcompleted') %}
+{% elif customer.status == 'review-rejected' %}
 <div class="govuk-form-group govuk-!-margin-top-7">
-  <fieldset class="govuk-fieldset" aria-describedby="completed-hint">
+  <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h2 class="govuk-fieldset__heading">
+      <h1 class="govuk-fieldset__heading">
         Would you like to remove this task from your to do list?
-      </h2>
+      </h1>
     </legend>
      <div id="completed-hint" class="govuk-hint">
-      You would do this once you have updated your own systems or completed any other process required outside this service.
+       You would do this once you have updated your own systems or completed any other process required outside this service.
     </div>
     <div class="govuk-radios">
-          <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus-2" name="protection" type="radio" value="completed~./review-debt-details?reference={{customer.reference}}">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="debtStatus-2" name="protection" type="radio" value="rejectedcompleted~./review-debt-details-rejected?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus-2">
-        Yes, we've done everything we need to
+          Yes, we've done everything we need to
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtStatus" name="protection" type="radio" value="todo~./account-landing-tabs?reference={{customer.reference}}">
+
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="protection" type="radio" value="rejectedtodo~./account-landing-tabs?reference={{customer.reference}}">
         <label class="govuk-label govuk-radios__label" for="debtStatus">
-         No, we still have things to do
+          No, we still have things to do
         </label>
       </div>
       </div>
   </fieldset>
 </div>
-
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
 
+
 {% endif %}
-
-
-
     </div>
     </form>
 </div>
