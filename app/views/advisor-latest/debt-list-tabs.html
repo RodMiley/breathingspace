@@ -125,7 +125,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               Creditor: {{creditorthree | default("Beech Garage")}}
-              {% if data['amountThree']%}
+              {% if data['amountthree']%}
               <br>Amount: £{{ amountthree | default("775") }}
               {% endif %}
               {% if data['referencethree']%}
@@ -209,7 +209,27 @@
           </div>
 {% endmacro %}
 
-        {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
+      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Self assessment
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: HMRC
+              <br>Amount: £1763
+              <br> Reference: GB12345
+              <br>NI number: HU 23 45 56 K
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> debt</span>
+              </a>
+                       or
+             <a class="govuk-link" href="not-testing">
+                Delete<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+            </dd>
+          </div>
           {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
           {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
           {{ debtrow("Council tax", "Southwark Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
@@ -228,7 +248,7 @@
 
 </div>
 
-
+ <p><a href="time-machine-debts" class="timemachine-link">On to next scenario</a></p>
 
 <button class="govuk-button" data-module="govuk-button">
   {% if data['debt'] or checked('MAScenaioChoice','return to inactive account') or checked('debt4','debt4')%}

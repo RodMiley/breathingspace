@@ -16,7 +16,7 @@
              
                 Back to Loans
                 {% else %}
-                 Back to Housing Benefit
+                 Back
                 {% endif %}
      
       </a>  
@@ -51,6 +51,7 @@
             <ul class="govuk-list">
               <li>Client:  {{ customer.name | default("Joe Black") }} </li>
               <li>Date of birth:    {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+              <li> National insurance number: {{customer.nino  | default("GH 23 45 56 G") }}</li>
               <li>Address: 45  Borough Road, Elephant and Castle, London, NW13 2GH</li>
               <li>Business name: Elsada tech</li>
               <li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>

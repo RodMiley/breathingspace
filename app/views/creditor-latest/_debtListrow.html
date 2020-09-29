@@ -1,30 +1,28 @@
-  <div class="govuk-summary-list__row sort-item" data-event-date="{{ customer.startdate }}">
-    <dt class="govuk-summary-list__key">
-          {%if checked('creditortype','financial')%} 
-                 Loan
-                {% else %}
-                Self assessment
-                {% endif %}
-              <p class="govuk-body govuk-!-margin-top-1">Status:<br>{% include "./_status-playback.html" %}</p>
-      {% if customer.todo == 'Yes'%}
-    <strong class="govuk-tag govuk-tag--grey">To do</strong>
+<li>
+ <div class="govuk-grid-row">
+ <div class="govuk-grid-column-full">
+ <a class="govuk-link govuk-!-font-weight-bold" href="account-landing-tabs?reference={{customer.reference}}">{{ customer.name}}</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+{% if customer.todo == 'Yes'%}
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">To do</strong>
+  {% elif customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes'  or customer.status == 'dont-own' and customer.type == 'type2' %}  
+   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-3">Sent to money advisor</strong>
 {% endif %}
-    </dt>
-    <dd class="govuk-summary-list__value">
-     <p class="govuk-body">
-Name: <strong>{{ customer.name}}</strong>
-<br>Reference: <strong>{{customer.reference}}</strong>
-</p>
-<p>
-
-</p>
-<p class="govuk-body-s">Started: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}<br>
-Ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}
-</p>
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    <a class="govuk-link" href="account-landing-tabs?reference={{customer.reference}}">
-        View account <span class="govuk-visually-hidden">information</span>
-    </a>
-</dd>
+ </div>
+    <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list">
+    <li> Status: {% include "./_status-playback.html" %}</li>
+    <li>Date entered {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }}{% else %}{{ customer.startdate }}{% endif %}</li>
+    <li>Date due to ends: {% if customer.status =='new'%}{{ 'Do MMMM YYYY' | baseDateAdd(59) }}{% else %}{{ customer.enddate }}{% endif %}</li>
+    <ul>
   </div>
+    <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list">
+    <li>Debt type: Self assessment</li>
+    <li>Reference: {{customer.reference}}</li>
+    <li>NI number: {{customer.nino}}</li>
+    </ul>
+  </div>
+</div>
+</li>
