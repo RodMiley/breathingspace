@@ -16,7 +16,7 @@
              
                 Back to Loans
                 {% else %}
-                 Back
+                 Back to Self assessment
                 {% endif %}
      
       </a>  
@@ -38,20 +38,27 @@
   <p class="govuk-body-l">
 <strong>{% include "./_advise-org-name.html" %}</strong> has entered your client into Breathing Space
 </p> 
-        <a href="add-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  
+               {% include "./_tasklist-v2.html" %}
+
+     <h2 class="govuk-heading-m">
+                Other actions
+      </h2>            
+
+    <a href="add-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
           Add debts that should be included
         </a>
         <a href="review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
-        Request a client eligibilty review
+        The client is not eligible ask for a review
         </a>
-               {% include "./_tasklist-v2.html" %}
+
+
               <h2 class="govuk-heading-m">
                  Client details
                </h2> 
             <ul class="govuk-list">
               <li>Client:  {{ customer.name | default("Joe Black") }} </li>
               <li>Date of birth:    {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
-              <li> National insurance number: {{customer.nino  | default("GH 23 45 56 G") }}</li>
               <li>Address: 45  Borough Road, Elephant and Castle, London, NW13 2GH</li>
               <li>Business name: Elsada tech</li>
               <li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>

@@ -15,7 +15,8 @@
      {% else %}
      £567
     {% endif%}
-    </li>     
+    </li> 
+     <li>NI number: {{customer.nino }}</li>    
      <li> Reference: {{customer.reference  | default("RD56tggg") }}</li>
     <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
       <li>           {% if customer.status == 'review-accepted'%}
