@@ -33,8 +33,6 @@
       <h1 class="govuk-heading-xl">
        Review details
       </h1>
-
-                    <h2 class="govuk-heading-l">Outcome of review</h2>
            <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     
@@ -52,7 +50,7 @@
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
                {% include "./_debt-amount-ref-v2.html" %}           
  
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this is a non eligible debt</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this debt is not eligible</h3>
   
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
@@ -67,7 +65,7 @@
 
 {% if customer.status == 'review-accepted' and checked('protection','completed') %}
 {% elif customer.status == 'review-accepted' %}   
- 
+ <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset" aria-describedby="completed-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">

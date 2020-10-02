@@ -54,7 +54,7 @@
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
                {% include "./_debt-amount-ref-v2.html" %}           
  
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this is a non eligible debt</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this debt is not eligible</h3>
   
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
@@ -69,6 +69,7 @@
 
 {% if customer.status == 'review-rejected' and checked('protection','rejectedcompleted') %}
 {% elif customer.status == 'review-rejected' %}
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 <div class="govuk-form-group govuk-!-margin-top-7">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">

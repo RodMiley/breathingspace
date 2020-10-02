@@ -87,44 +87,37 @@
   {% include "./_creditor.html" %}
   </h1>
 
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">
+  <h2 class="govuk-heading-l">
   Active Breathing Spaces: 
   total debts ({{totNum}})</h2>
 
   <div class="card-container">
             <div class="card">
-                 <h2 class="withlink"><a href="">
+                 <a href=""><h3 class="govuk-heading-s">
                 All debts
                ({{totNum}})
-                 </a></h2> 
-              <div class="inner">
-             <!--  <p class="govuk-body">
-              You have new debts and review outcomes from the money advisors
-              </p> -->
+                 </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body"> Tasks to do (36)</a>
-                 </div>
+               
               </div>
 
                  <div class="card">
-                 <h2 class="withlink"><a href="">
+                  <a href=""><h3 class="govuk-heading-s">
                 {%if checked('creditortype','financial')%} 
                 Mortgages
                 {% else %}
                Pay as you earn
                 {% endif %}({{type1Num}})
-                 </a></h2> 
-              <div class="inner">
-             <!--  <p class="govuk-body">
-              You have new debts and review outcomes from the money advisors
-              </p> -->
+                </h23> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body"> Tasks to do ({{type1toDO}})</a>
-                 </div>
               </div>
 
                  <div class="card">
-                 <h2 class="withlink">
-                  <form class="form" action="debttype-landing-page" method="post">
-                 <button class="govuk-link">
+                <a href=""><h3 class="govuk-heading-s">
+                  <form class="" action="debttype-landing-page" method="post">
+                 <button class="govuk-link  govuk-!-font-size-19 govuk-!-font-weight-bold">
                   {%if checked('creditortype','financial')%} 
                  Loans
                 {% else %}
@@ -138,14 +131,12 @@
         </label>
       </div>
                  </form>
-                 </h2> 
-              <div class="inner">
-              <form class="form" action="debttype-landing-page" method="post">
-              <!-- <p class="govuk-body">
-              Includes new debts added and completed reviews by money advisors
-              </p> -->
+                 
+               </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <form class="" action="debttype-landing-page" method="post">
                  <button class="govuk-body govuk-link"> Tasks to do ({{type2toDO}})</button>
-
+      
          <div class="govuk-radios__item govuk-visually-hidden">
         <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  checked >
         <label class="govuk-label govuk-radios__label" for="status">
@@ -153,58 +144,53 @@
         </label>
       </div>
               </form>   
-                 </div>
               </div>
 
                  <div class="card">
-                 <h2 class="withlink"><a href="times">
+                 <a href=""><h3 class="govuk-heading-s">
                   {%if checked('creditortype','financial')%} 
                   Overdraft
                 {% else %}
                National insurance
                 {% endif %}  ({{type3Num}})
-                 </a></h2> 
-              <div class="inner">
+               </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body"> Tasks to do ({{type3toDO}})</a>
-                 </div>
               </div>
 
 
                  <div class="card">
-                 <h2 class="withlink"><a href="times">
+                <a href=""><h3 class="govuk-heading-s">
                   {%if checked('creditortype','financial')%} 
                   Insurance
                 {% else %}
                 Tax credits
                 {% endif %} ({{type4Num}})
-                 </a></h2> 
-              <div class="inner">
+              </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body"> Tasks to do ({{type4toDO}})</a>
-                 </div>
               </div>
 
 
             <div class="card">
-                 <h2 class="withlink"><a href="times">
+                <a href=""><h3 class="govuk-heading-s">
                 Child benefit (45)
-                 </a></h2> 
-              <div class="inner">
+                 </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
                  </div>
-              </div>
+             
 
        
 
 
                  <div class="card">
-                 <h2 class="withlink"><a href="times">
+               <a href=""><h3 class="govuk-heading-s">
                 Other ({{OtherNum}})
-                 </a></h2> 
-              <div class="inner">
+                </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
                  </div>
-              </div>
-
             </div>
 
 
