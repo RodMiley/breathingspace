@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs-search" method="post">
+  <form class="form" action="account-page-active" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -18,19 +18,9 @@
  
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">     
+     {% include "./_debtDetails.html" %} 
 
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<ul class="govuk-list"> 
-      <li>Creditor: Beach Garage</li>
-      <li>Debt type: Car repair</li>  
-      <li>Amount: £445</li>
-      <li>Reference: Service and Mot</li>
-</ul> 
-
-  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reason</h2>
-<p class="govuk-body" >{{removeDebtReason}}</p>  
-
-  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h2>
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reason your removing the debt</h2>
 <p class="govuk-body" >{{removeDebtDetail}}</p>  
 
 <div class="govuk-warning-text">
@@ -44,13 +34,14 @@
 
     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="removedebt" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="removedebt" type="radio" value="{{debttype}}" checked>
         <label class="govuk-label govuk-radios__label" for="removedebt">
          hidden radio
         </label>
       </div>
       </div>
 
+   {% include "./_confirmShowHiddenRadio.html" %} 
 
 <button class="govuk-button" data-module="govuk-button">
   Remove debt

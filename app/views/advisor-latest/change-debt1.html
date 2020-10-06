@@ -15,6 +15,15 @@
       <span class="govuk-caption-xl">Step 2 of 2</span>
        Change a debt
       </h1>
+
+      {{customer.reference }}
+{{customer.name}}
+
+{% if checked('debttype','debt1') %}
+Loan
+{% elif checked('debttype','debt2')  %}
+Credit card
+{% endif %}
       <h2 class="govuk-heading-s">Creditor</h2>
        <p class="govuk-body"> {{ changedebtcreditor | default("Barclays Bank Plc") }} <a href="change-debt">Change</a></p>
 

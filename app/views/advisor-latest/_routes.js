@@ -10,12 +10,23 @@ var maClient = require('./data/maClients.js')
       next()
        })
 
-       router.get('/account-page-active', function (req, res, next) {
-          res.locals.customers = maClient
+       router.get('/*', function (req, res, next) {
+         let findCustomer = {}
+    
+         for (let i = 0; i < maClient.length; i++ ) {
+         if(maClient[i].reference === req.query.reference){
+           findCustomer = maClient[i];
+         }
+     
+         }
+
+         res.locals.customer = findCustomer
           next()
            })
-         
-   
+
+
+
+     
 
 
 

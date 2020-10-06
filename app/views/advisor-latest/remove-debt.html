@@ -8,57 +8,22 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="remove-debt-confirm" method="post">
+   <form class="form" action="remove-debt-confirm" method="post">
     <div class="govuk-grid-column-full">
-     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+     <a href="account-page-active" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
        Remove debt
       </h1>
-
+{{confirmation}}
  
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">     
-
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<ul class="govuk-list"> 
-      <li>Creditor: Beach Garage</li>
-      <li>Debt type: Car repair</li>  
-      <li>Amount: £445</li>
-      <li>Reference: Service and Mot</li>
-</ul>      
-
-  <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-      <h1 class="govuk-fieldset__heading">
-         Why are you removing the debt?
-      </h1>
-    </legend>
-    <div class="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="removeDebtReason" name="removeDebtReason" type="radio" value="Client asked us to">
-        <label class="govuk-label govuk-radios__label" for="removeDebtReason">
-          Client asked us to
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="removeDebtReason-2" name="removeDebtReason" type="radio" value="The debt is not eligible after creditor asked us to review">
-        <label class="govuk-label govuk-radios__label" for="removeDebtReason-2">
-          The debt is not eligible after creditor asked us to review
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="removeDebtReason-3" name="removeDebtReason" type="radio" value="The debt was added in error">
-        <label class="govuk-label govuk-radios__label" for="removeDebtReason-3">
-         The debt was added in error
-        </label>
-      </div>
-  </fieldset>
-</div>
+   
+     {% include "./_debtDetails.html" %} 
 
   <div class="govuk-form-group">
   <label class="govuk-label" for="removeDebtDetail">
-    Please you provide more detail?
+   Why are you removing the debt?
   </label>
   <textarea class="govuk-textarea govuk-!-width-two-thirds" id="removeDebtDetail" name="removeDebtDetail" rows="5"></textarea>
 </div>

@@ -1,35 +1,36 @@
 
       <ol class="app-task-list">
         <li>
-          <h3 class="app-task-list__section">
-           To do
-          </h4>
           <ul class="app-task-list__items govuk-!-margin-bottom-1">
               <li class="app-task-list__item">
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-              Credit card - review requested by Halifax (Credit cards only)
-              </h4>
-              <span class="app-task-list__task-name">
-                    <a href="eligibility-review?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-         {% if checked('debt-eligibility','yes') %}
-             Review complete: debt ineligible - view details  
-          {% elif  checked('debt-eligibility','no')%} 
-             Review complete: debt eligible - view details   
-          {% else %}  
-             Review debt eligibility
-          {% endif %}        
-                    </a>
-              </span>
-      
-            {% if checked('debtreview','yes') %}
+               {% if data['debtreview'] %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Credit card - Halifax (Credit cards only) have asked for a review
+              </h4>
+              <span class="app-task-list__task-name">
+                    <a href="eligibility-review?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+         {% if checked('debtreview','debtremoved') or checked('debtreview','debtremains') %}
+             View review details  
+          {% else %}  
+             Review the debt
+          {% endif %}        
+                    </a>
+              </span>
+      
+           
 
                             <li class="app-task-list__item">
+                                   {% if checked('proposed','yes')%}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
               <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-              Overdraft - proposed debt by Barclays Bank Plc
+              Overdraft - Barclays Bank Plc have proposed a new debt
               </h4>
               <span class="app-task-list__task-name">
               <a href="proposed-debt?reference={{customer.reference}}" aria-describedby="read-declaration-status">
@@ -43,11 +44,7 @@
               </a>
               </span>
       
-            {% if checked('proposed','yes')%}
-             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-            {% else %}
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-            {% endif %}  
+     
               </li>
 
              <!-- <li class="app-task-list__item">
@@ -68,6 +65,12 @@
               </li> -->
 
               <li class="app-task-list__item">
+                    
+            {% if checked('clientreview','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
               <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
                Client review requested by Yorkshire Water Services Ltd
               </h4>
@@ -82,12 +85,7 @@
                 {% endif %}   
               </a>
               </span>
-      
-            {% if checked('clientreview','yes') %}
-             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-            {% else %}
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-            {% endif %}  
+
               </li>
 
 <!--

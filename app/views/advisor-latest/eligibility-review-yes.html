@@ -8,11 +8,11 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs-search" method="post">
-    <div class="govuk-grid-column-full">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-xl">
-       Confirm you are removing the debt from Breathing Space
+      <h1 class="govuk-heading-l">
+       Confirm you are removing this debt
       </h1>
 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
 <ul class="govuk-list">
@@ -23,7 +23,7 @@
 </ul>
 
 
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this is not a qualifying debt</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
                     <p class="govuk-body">{{ eligibilityNo | default("The clients business has a turn over above the VAT threshold therefore this debt is not eligible for Breathing Space") }}</p>
                     
         
@@ -39,24 +39,17 @@
 </div>
 
 
-     <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="debtreview" checked>
-        <label class="govuk-label govuk-radios__label" for="confirmation">
-         hidden radio
-        </label>
-      </div>
-      </div>
 
     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="debtreview" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="debtreview" type="radio" value="debtremoved" checked>
         <label class="govuk-label govuk-radios__label" for="debtreview">
          hidden radio
         </label>
       </div>
       </div>
 
+{% include "./_confirmShowHiddenRadio.html" %}
 
 <button class="govuk-button" data-module="govuk-button">
   Confirm and remove

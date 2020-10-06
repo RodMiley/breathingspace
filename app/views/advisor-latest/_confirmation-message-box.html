@@ -1,58 +1,13 @@
- 
- {% if data['confirmation'] %}
+
+
+
+  {%if checked('confirmation', 'show')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  {% if checked('confirmation','debtreview')%}
-   
-      {% if checked('debt-eligibility','no')%}
-         <p class="govuk-body govuk-!-margin-bottom-2"> You have not removed the debt from your client's Breathing Space</a>
-          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">What happens next</h3>
-          <p class="govuk-body">We’ll notify the creditor with the reason why you have not removed the debt from Breathing Space</p>
-          {% else %}
-          <p class="govuk-body govuk-!-margin-bottom-2">  You have removed the debt from your client's Breathing Space</a></p>
-           <h3 class="govuk-heading-s govuk-!-margin-bottom-2">What happens next</h3>
-          <p class="govuk-body">The debt will be removed from Breathing Space by the next working day. We’ll tell the creditor when the debt has been removed.</p>
-          {% endif %}  
-
-     {% elif checked('confirmation','clientreview')%}
-       
-
-
-{% if checked('client-eligibility','yes')%}
-          <p class="govuk-body govuk-!-margin-bottom-2">  You have ended your client's Breathing Space</p>
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">What happens next</h2>
-          <p class="govuk-body govuk-!-margin-bottom-2">  Your clients Breathing Space will end by the next working day. We’ll tell all the creditors when the
-            Breathing Space has ended.</p>
-   {% else %}
-     <p class="govuk-body govuk-!-margin-bottom-2">  You have not ended your client's Breathing Space</p>
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">What happens next</h2>
-          <p class="govuk-body govuk-!-margin-bottom-2"> We’ll tell the creditor that you have completed the review and you have not ended the client's Breathing Space.</p>
-    {% endif %} 
-
-
-
-
-     {% elif checked('confirmation','proposed')%}
-
-       <p class="govuk-body govuk-!-margin-bottom-2"> 
-       {% if checked('proposed-debt','no')%}
-        You have rejected the proposed debt.
-        {% else%}
-         You have accepted the proposed debt and it will be added to your client's Breathing Space
-       {% endif %}</p>
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">What happens next</h2>
-           {% if checked('proposed-debt','no')%}
-                 <p class="govuk-body govuk-!-margin-bottom-2">  We’ll tell the creditor that the debt has been rejected.
-       {% else %}
-                 <p class="govuk-body govuk-!-margin-bottom-2">  We’ll tell the creditor when the debt has been added to Breathing Space.
-       {% endif %}
-
-           </p>
-     {% elif checked('confirmation','dontown')%}
-       dont own
-     {% elif checked('confirmation','transfer')%}
-       transfer
-  {% endif %}
+  <p class="govuk-body">You've have removed the debt</p>
 </div>
-{% else %}
-{% endif%}
+
+
+{% elif checked('confirmation','remove') %}
+
+{% endif %}

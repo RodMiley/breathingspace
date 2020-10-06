@@ -22,5 +22,9 @@ $(document).ready(function(){
   $('#modal').click();
 });
 
+$(document).ready(function(){
+  $('#reloadpage').click();
+});
+
 
 

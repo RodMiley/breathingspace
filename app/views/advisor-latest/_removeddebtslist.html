@@ -1,38 +1,44 @@
-<dl class="govuk-summary-list govuk-!-margin-bottom-0">
 
 
 
- {% if checked('debt-eligibility','yes') %}
 
-    
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Credit card <br> <p><a href="eligibility-review">Reviewed</a></p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor:<strong> Halifax(Credit cards only)</strong><br>Amount:<strong> £2500</strong><br>Reference:<strong> RBC23455003</strong></p>
-              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
-              
-               <p class="govuk-body-s">Date removed: {% if checked('time-machine-mid-review','yes')%} {{ 'Do MMMM YYYY' | baseDateAdd(1) }}{% else %}<strong class="govuk-tag govuk-tag--blue">Pending</strong>{% endif %} </p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-            </dd>
-          </div>
+ {% if checked('debtreview','debtremoved') %}
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed</strong>
+      <li><h2 class="govuk-heading-s">Debt: Credit Card</h2></li> 
+      <li>Creditor:  Halifax (Credit cards only)</li> 
+      <li>Amount: £2500<li>
+      <li> Reference: RBC23455003</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third">
+     <a class="govuk-body"href="eligibility-review">View review details</a>
+     </div>
+     </div>
           {% endif %}
 
-          {% if checked('removedebt', 'yes') %}
-                <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Credit card <br> <p><a href="remove-debt-detail">Removed detail</a></p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p>Creditor:<strong> Beech Garage</strong><br>Amount:<strong> £445</strong><br>Reference:<strong> Service and Mot</strong></p>
-              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
-              
-               <p class="govuk-body-s">Date removed: {% if checked('time-machine-mid-review','yes')%} {{ 'Do MMMM YYYY' | baseDateAdd(1) }}{% else %}<strong class="govuk-tag govuk-tag--blue">Pending</strong>{% endif %} </p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-            </dd>
-          </div>
+          {% if checked('removedebt', 'debt1') 
+              or checked('removedebt', 'debt2')  
+              or checked('removedebt', 'debt3')
+              or checked('removedebt', 'debt4')
+              or checked('removedebt', 'debt5')
+              or checked('removedebt', 'debt6')
+              or checked('removedebt', 'debt7') %}
+           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+           <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">       
+     {% include "./_debtDetails.html" %} 
+ </div>
+       <div class="govuk-grid-column-one-third">
+     <a class="govuk-body"href="remove-debt-detail">View removed debt details</a>
+     </div>
+     </div>
+
           {% endif%}
-  </dl>
+ 

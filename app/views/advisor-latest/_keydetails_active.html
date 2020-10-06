@@ -1,4 +1,4 @@
-  <div class="govuk-grid-row keydetails">
+  <div class="govuk-grid-row keydetails  govuk-!-margin-top-5">
       <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
      
@@ -11,7 +11,7 @@
     
     
     Breathing Space account for</span>
-     {% if data['fullname']%} {{fullname}} {% else %} Joe Black {% endif %}
+     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
       </h1>
       </div>
             <div class="govuk-grid-column-one-third">

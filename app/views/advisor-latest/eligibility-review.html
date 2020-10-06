@@ -15,8 +15,34 @@
        Review details
       </h1>
 
- <h2 class="govuk-heading-m">{% include path+"advisor-mvp/_review_creditor.html" %} asked for a review</h2>
+{% if checked('debtreview','debtremoved') %}
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by Advice UK</h2>
+                    
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
+                    <p class="govuk-body">Debt removed - after money adviser review</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
+                      <p class="govuk-body">{{ eligibilityNo | default(" The client has agreed that this was a debt associated with their business") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
+                    <p class="govuk-body">Paul Smith, Advice UK, 06 October 2020 at 11.42am</p>
+</div>
+{% elif checked('debtreview','debtremains')%}
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by Advice UK</h2>
+                    
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
+                    <p class="govuk-body">Debt remains active - after money advisor review</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is eligible</h3>
+                      <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
+                    <p class="govuk-body">Paul Smith, Advice UK, 06 October 2020 at 11.42am</p>
+</div>
+{% endif %}
 
+
+ <h2 class="govuk-heading-m">{% include path+"advisor-mvp/_review_creditor.html" %} asked for a review of this debt</h2>
+
+ 
 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
 <ul class="govuk-list">
 <li>Debt type: Credit card</li>
@@ -24,46 +50,22 @@
 <li>Amount: £2500</li>
 <li>Reference: RBC23455003</li>
 </ul>
-
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this is not a qualifying debt</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
-                    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
-                 
-
-{% if checked('debt-eligibility','yes') %}
-<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
-
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed  <br><strong class="govuk-tag govuk-tag--red">debt ineligible</strong> </h2>
-                    <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>inelgible</strong> and has been removed from Breathing Space</h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{ eligibilityNo | default("We agree that this debt is a business debt and it isn't eligible for Breathing Space") }}</p>
-                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
-                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
-</div>         
-
-{% elif checked('debt-eligibility','no') %}
-
-<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
-
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed<br><strong class="govuk-tag govuk-tag--green">debt eligible</strong> </h2>
-                    <p class="govuk-body-l">We have informed {% include path+"advisor-mvp/_review_creditor.html" %} that the debt is <strong>eligible</strong> and has not been removed from Breathing Space</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
-                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
-                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
-  </div>          
-
-{% endif %}
+                    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
 
 
- {% if data['bsEndReason'] or checked('debt-eligibility','yes') or checked('debt-eligibility','no') or checked('MAScenaioChoice','breathing space ended') %} 
-             {% else %}
+
+
+{% if checked('debtreview','debtremoved') or checked('debtreview','debtremains') %}
+{% else %}
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">             
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h2 class="govuk-fieldset__heading">
-          Do you want to remove this debt from Breathing Space?
+          Do you want to remove this debt?
       </h2>
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
@@ -89,23 +91,11 @@
   <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
   </div>
 
-
-     <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="no" checked>
-        <label class="govuk-label govuk-radios__label" for="confirmation">
-         hidden radio
-        </label>
-      </div>
-      </div>
-
-
-
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
-{% endif %}
     </div>
+{% endif %}
     </form>
 </div>
 
