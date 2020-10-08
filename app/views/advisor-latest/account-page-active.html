@@ -41,7 +41,7 @@
   Add a debt
 </a>
  <a href="review-client-ma" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
-  Add client review request
+  Add client eligibility review task
 </a>
 
 {% endif %}
@@ -136,14 +136,14 @@
               </li>
               <li>
                 <form class="form" action="review-debt-ma" method="post">
-                  <button class="govuk-body govuk-link">Add debt review request</button>
+                  <button class="govuk-body govuk-link">Add debt eligibility review task</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
               <li>
               <form class="form" action="" method="post">
-                  <button class="govuk-body govuk-link">Report compliance</button>
+                  <button class="govuk-body govuk-link">Report non compliance</button>
                 {% include "./_debtypeHiddenRadio.html" %} 
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
