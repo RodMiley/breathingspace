@@ -16,25 +16,23 @@
       </h1>
       </div>
    <div class="govuk-grid-column-three-quarters">
-
+             
             
-           
 
-                    <h2 class="govuk-heading-m">Yorkshire Water Services Ltd asked for a review</h2>
+
+                    <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
-                    <p class="govuk-body">They have had Breathing Space in the last 12 months</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h3>
-                    <p class="govuk-body">Our records indicate that our client has had a Breathing Space in the last 12 months so they’re not eligible.</p>
+                    <p class="govuk-body">{{ clientReview }}{{ clientReviewReason }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+                    <p class="govuk-body">{{ moreDetailClient }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
-                    <p class="govuk-body">Kiran Callaghan,  Yorkshire Water Services Ltd,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+                    <p class="govuk-body">{{ adhoccreditorchoice }},{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
             
   
           
 
 
- {% if data['bsEndReason'] or checked('clientreview','yes') or checked('clientreview','no') or checked('MAScenaioChoice','breathing space ended') %} 
-             {% else %}
  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">            
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
@@ -45,13 +43,13 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility-adhoc" type="radio" value="yes~endbreathingspace-confirm">
         <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
           Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility-adhoc" type="radio" value="no">
         <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
           No
         </label>
@@ -61,10 +59,10 @@
   </fieldset>
 </div>
 <div class="govuk-form-group">
-  <label class="govuk-label" for="clientEligibilityDetail">
-    Please provide more detail?
+  <label class="govuk-label govuk-!-font-weight-bold" for="clientEligibilityDetailAdhoc">
+    Please provide a reason for your decision
   </label>
-  <textarea class="govuk-textarea" id="clientEligibilityDetail" name="clientEligibilityDetail" rows="4" aria-describedby="clientEligibilityDetail-hint"></textarea>
+  <textarea class="govuk-textarea" id="clientEligibilityDetailAdhoc" name="clientEligibilityDetailAdhoc" rows="4"></textarea>
   </div>
 
 
@@ -75,7 +73,7 @@
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
-{% endif %}
+
     </div>
     </form>
 </div>

@@ -40,6 +40,10 @@
  <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   Add a debt
 </a>
+ <a href="review-client-ma" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add client review request
+</a>
+
 {% endif %}
 
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
@@ -125,14 +129,73 @@
               </li>
                <li>
                   <form class="form" action="change-debt" method="post">
-                  <button class="govuk-body govuk-link">Creditor has sold the debt</button>
+                  <button class="govuk-body govuk-link">Creditor has sold this debt</button>
                   {% include "./_debtypeHiddenRadio.html" %} 
                    {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
               <li>
-                <form class="form" action="creditor-adhock-review" method="post">
-                  <button class="govuk-body govuk-link">Creditor asked for review</button>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Add debt review request</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+              <form class="form" action="" method="post">
+                  <button class="govuk-body govuk-link">Report compliance</button>
+                {% include "./_debtypeHiddenRadio.html" %} 
+                 {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              </ul>
+              </div>
+          
+ </div>
+
+ {% endmacro %}
+
+
+
+
+   {% macro debtrowproposed(type, creditor, amount, reference, debttype) %}
+   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><h2 class="govuk-heading-s">Debt: {{type}}</h2></li> 
+      <li>Creditor: {{creditor}}</li> 
+      <li>Amount: {{amount}}<li>
+      <li> Reference: {{reference}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third"> 
+          <ul class="govuk-list govuk-!-font-size-16" >
+             <li>
+             <form class="form" action="change-debt1" method="post">
+                 <button class="govuk-body govuk-link">Update debt details</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+             </li>
+             <li>                
+    <form class="form" action="remove-debt" method="post">
+                 <button class="govuk-body govuk-link">Remove this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+              </li>
+               <li>
+                  <form class="form" action="change-debt" method="post">
+                  <button class="govuk-body govuk-link">Creditor has sold this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
@@ -197,7 +260,7 @@
      <div class="govuk-grid-column-one-third"> 
              <ul class="govuk-list govuk-!-font-size-16" >
               <li class="govuk-!-margin-bottom-4">
-                <form class="form" action="eligibility-review" method="post">
+                <form class="form" action="eligibility-review-details" method="post">
                   <button class="govuk-body govuk-link">View review details</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
@@ -239,24 +302,124 @@
  {% endmacro %}
 
 
+   {% macro debtrowreviewcompletedadhoc(type, creditor, amount, reference, debttype) %}
+   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
+      <li>Creditor: {{creditor}}</li> 
+      <li>Amount: {{amount}}<li>
+      <li> Reference: {{reference}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third"> 
+             <ul class="govuk-list govuk-!-font-size-16" >
+              <li class="govuk-!-margin-bottom-4">
+                <form class="form" action="eligibility-review-adhoc-details" method="post">
+                  <button class="govuk-body govuk-link">View review details</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+             <li>
+             <form class="form" action="change-debt1" method="post">
+                 <button class="govuk-body govuk-link">Update debt details</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+             </li>
+             <li>                
+    <form class="form" action="remove-debt" method="post">
+                 <button class="govuk-body govuk-link">Remove this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+              </li>
+               <li>
+                  <form class="form" action="change-debt" method="post">
+                  <button class="govuk-body govuk-link">Creditor has sold the debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+              <form class="form" action="" method="post">
+                  <button class="govuk-body govuk-link">Report compliance</button>
+                {% include "./_debtypeHiddenRadio.html" %} 
+                 {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              </ul>
+              </div>
+          
+ </div>
+
+ {% endmacro %}
+{% if checked('removedebt','proposed') or checked('debttype','proposed') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','proposed') and checked('debtreviewadhoc','debtremains')%}
+{{ debtrowreviewcompletedadhoc("Overdraft", "Barclays Bank Plc", "£800", "BAR3456789", "proposed") }}
+{% elif checked('proposed-debt','yes') %}
+{{ debtrowproposed("Overdraft", "Barclays Bank Plc", "£800", "BAR3456789", "proposed") }}
+{% endif %}
 
 
-
-{% if checked('removedebt','debt1')%}
+{% if checked('removedebt','debt1') or checked('debttype','debt1') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt1') and checked('debtreviewadhoc','debtremains')%}
+ {{ debtrowreviewcompletedadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 {% else %}
     {{ debtrow("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 {% endif %}  
+
+
 {% if checked('debtreview','debtremains')%}
  {{ debtrowreviewcompleted("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt2") }}
  {% elif checked('debtreview','debtremoved')%}
 {% else %} 
     {{ debtrowreview("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt2") }}
-{% endif %}    
-    {{ debtrow("Rent arrears", "M Jones(landloard)", "£1250", "dddd", "debt3") }}
-    {{ debtrow("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt4") }}
-    {{ debtrow("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt5") }}
-    {{ debtrow("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt6") }}
-    {{ debtrow("Credit card", "Halifax credit cards only", "£5400", "dddd", "debt7") }}
+{% endif %}   
+
+
+{% if checked('removedebt','debt3') or checked('debttype','debt3') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt3') and checked('debtreviewadhoc','debtremains')%}
+    {{ debtrowreviewcompletedadhoc("Rent arrears", "M Jones(landloard)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
+{% else %}
+      {{ debtrow("Rent arrears", "M Jones(landloard)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
+{% endif %}
+
+{% if checked('removedebt','debt4') or checked('debttype','debt4') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt4') and checked('debtreviewadhoc','debtremains')%}
+    {{ debtrowreviewcompletedadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
+{% else %}
+     {{ debtrow("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
+{% endif %}
+
+
+{% if checked('removedebt','debt5') or checked('debttype','debt5') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt5') and checked('debtreviewadhoc','debtremains')%}
+    {{ debtrowreviewcompletedadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
+{% else %}
+     {{ debtrow("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
+{% endif %}
+
+
+
+{% if checked('removedebt','debt6') or checked('debttype','debt6') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt6') and checked('debtreviewadhoc','debtremains')%}
+    {{ debtrowreviewcompletedadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
+{% else %}
+     {{ debtrow ("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
+{% endif %}
+
+{% if checked('removedebt','debt7') or checked('debttype','debt7') and checked('debtreviewadhoc','debtremoved')%}
+{% elif  checked('debttype','debt7') and checked('debtreviewadhoc','debtremains')%}
+    {{ debtrowreviewcompletedadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
+{% else %}
+     {{ debtrow("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
+{% endif %}
+
+
 
   </section>
  {% if checked('debt-eligibility','yes')

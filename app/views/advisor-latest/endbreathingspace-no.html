@@ -9,44 +9,62 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="account-page-active" method="post">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-l">
        Confirm you not are ending your client's Breathing Space 
       </h1>
-
- 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">     
 
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Details</h2>
-                    <p class="govuk-body-l">We will inform Barclays Bank Plc that the client's Breathing Space has not ended</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
-                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is eligilble</h3>
+                    <p class="govuk-body">
+                    
+                  
+                                         {% if checked('client-eligibility-adhoc','no')%}
+                                          {{ clientEligibilityDetailAdhoc | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}
+                                          {% elif checked('client-eligibility','no')%}
+                                                {{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}
+                                          {% endif %}
+                    </p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
                     <p class="govuk-body govuk-!-margin-top-1">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
                
 
 
 
-
-    <div class="govuk-radios" style="display:none">
+  <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="clientreview" checked>
-        <label class="govuk-label govuk-radios__label" for="confirmation">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="clientremains" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>
       </div>
       </div>
 
-            <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="yes" checked>
-        <label class="govuk-label govuk-radios__label" for="confirmation">
-         hidden radio
-        </label>
+       {% if checked('client-eligibility-adhoc','no')%}
+           <div class="govuk-radios" style="display:none">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="" name="adHocClientReviewed" type="radio" value="yes" checked>
+              <label class="govuk-label govuk-radios__label" for="confirmation">
+              hidden radio
+              </label>
+            </div>
       </div>
+           {% endif %}
+   
+  
+       <div class="govuk-radios" style="display:none">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="yes" checked>
+              <label class="govuk-label govuk-radios__label" for="confirmation">
+              hidden radio
+              </label>
+            </div>
       </div>
+                                     
+
+     
 
    {% include "./_confirmShowHiddenRadio.html" %} 
 

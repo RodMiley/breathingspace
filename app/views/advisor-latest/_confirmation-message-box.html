@@ -4,9 +4,26 @@
   {%if checked('confirmation', 'show')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  {% if checked('confirmationmessage','debtremoved')%}
   <p class="govuk-body">You've have removed the debt</p>
-</div>
+    {% elif checked('confirmationmessage','debtremains')%}
+  <p class="govuk-body">Review completed, you have not removed the debt</p>
+    {% elif checked('confirmationmessage','proposedaccepted')%}
+  <p class="govuk-body">Proposed debt accepted, the debt has been added </p>
+      {% elif checked('confirmationmessage','proposedrejected')%}
+  <p class="govuk-body">Proposed debt rejected, you have not added the debt</p>
 
+        {% elif checked('confirmationmessage','clientremains')%}
+  <p class="govuk-body">Review completed, you have not removed the client</p>
+
+          {% elif checked('confirmationmessage','adhocClientReviewrequested')%}
+  <p class="govuk-body">You have recorded that the creditor has asked us to review the client a review, we have added a new task to do</p>
+
+           {% elif checked('confirmationmessage','adhocReviewrequested')%}
+  <p class="govuk-body">You have recorded that the creditor has asked us to review the debt, we have added a new task to do</p>
+ 
+  {% endif %}
+</div>
 
 {% elif checked('confirmation','remove') %}
 

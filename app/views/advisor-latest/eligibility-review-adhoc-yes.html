@@ -9,19 +9,20 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="account-page-active" method="post">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
        Confirm you are removing this debt
       </h1>
+      </h1>
+  {% include "./_debtDetails.html" %} 
 
- 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">     
-     {% include "./_debtDetails.html" %} 
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
+                    <p class="govuk-body">{{ adhocreviewdetails | default("The clients business has a turn over above the VAT threshold therefore this debt is not eligible for Breathing Space") }}</p>
+                    
+        
+          
 
-  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reason your removing the debt</h2>
-<p class="govuk-body" >{{removeDebtDetail}}</p>  
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -32,16 +33,18 @@
 </div>
 
 
+
     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="removedebt" type="radio" value="{{debttype}}" checked>
-        <label class="govuk-label govuk-radios__label" for="removedebt">
+        <input class="govuk-radios__input" id="" name="debtreviewadhoc" type="radio" value="debtremoved" checked>
+        <label class="govuk-label govuk-radios__label" for="debtreview">
          hidden radio
         </label>
       </div>
       </div>
 
-         <div class="govuk-radios" style="display:none">
+
+           <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="debtremoved" checked>
         <label class="govuk-label govuk-radios__label" for="review">
@@ -51,11 +54,12 @@
       </div>
 
 
+      
 
-   {% include "./_confirmShowHiddenRadio.html" %} 
+{% include "./_confirmShowHiddenRadio.html" %}
 
 <button class="govuk-button" data-module="govuk-button">
-  Remove debt
+  Confirm and remove
 </button>
 
 </div>
@@ -65,4 +69,3 @@
 
 
 {% endblock %}
-

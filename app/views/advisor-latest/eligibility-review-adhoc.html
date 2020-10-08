@@ -8,33 +8,26 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="eligibility-review-no" method="post">
+  <form class="form" action="eligibility-review-adhoc-no" method="post">
     <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
        Review details
       </h1>
 
- <h2 class="govuk-heading-m">{% include path+"advisor-mvp/_review_creditor.html" %} asked for a review of this debt</h2>
 
- 
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<ul class="govuk-list">
-<li>Debt type: Credit card</li>
-<li>Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}</li>
-<li>Amount: £2500</li>
-<li>Reference: RBC23455003</li>
-</ul>
+ <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review of this debt</h2>
+
+  {% include "./_debtDetails.html" %} 
 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
-                    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
+                    <p class="govuk-body govuk-!-margin-bottom-7">{% include "./_creditornames.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
 
 
 
 
-{% if checked('debtreview','debtremoved') or checked('debtreview','debtremains') %}
-{% else %}
+
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">             
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
@@ -45,7 +38,7 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debt-eligibility-conditional" name="debt-eligibility" type="radio" value="yes~eligibility-review-yes">
+        <input class="govuk-radios__input" id="debt-eligibility-conditional" name="debt-eligibility" type="radio" value="yes~eligibility-review-adhoc-yes">
         <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional">
           Yes
         </label>
@@ -61,16 +54,15 @@
   </fieldset>
 </div>
 <div class="govuk-form-group">
-  <label class="govuk-label" for="eligibilityNo">
-    Please provide detail
-  <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
+  <label class="govuk-label govuk-!-font-weight-bold" for="adhocreviewdetails">
+     Please provide a reason for your decision
+  <textarea class="govuk-textarea" id="adhocreviewdetails" name="adhocreviewdetails" rows="4" aria-describedby="adhocreviewdetails-hint"></textarea>
   </div>
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
     </div>
-{% endif %}
     </form>
 </div>
 

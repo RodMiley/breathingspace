@@ -8,19 +8,61 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="eligibility-review-client" method="post">
+  <form class="form" action="account-page-active" method="post">
     <div class="govuk-grid-column-two-thirds">
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+    <h1 class="govuk-heading-l">
+       A creditor has asked us to review the client's eligibility
+      </h1>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="sort">
+    Choose the creditor who asked for the review
+  </label>
+  <select class="govuk-select" id="" name="adhoccreditorchoice">
+    <option value="Barclays Bank Plc">Barclays Bank Plc</option>
+    <option value="EDF Energy Ltd">EDF Energy Ltd</option>
+     <option value="Halifax credit cards only">Halifax credit cards only</option>
+    <option value="HMRC">HMRC</option>  
+    <option value="M Jones(landloard)">M Jones(landloard)</option>
+    <option value="Southwark Council">Southwark Council</option>
+    <option value="Yorkshire Water Services Ltd">Yorkshire Water Services Ltd</option>
+  </select>
+</div>
+
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-label govuk-!-font-weight-bold">
         Why does the creditor think their client is not eligible?
-      </h1>
+      </label>
     </legend>
 
 
 {% include "creditor-latest/_client-review-capture.html" %}
+
+
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adHocClientReview" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+  </div>
+
+
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="adhocClientReviewrequested" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+         {% include "./_confirmShowHiddenRadio.html" %} 
 
 
 <button class="govuk-button" data-module="govuk-button">

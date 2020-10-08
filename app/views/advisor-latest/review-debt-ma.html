@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="eligibility-review" method="post">
+  <form class="form" action="account-page-active" method="post">
     <div class="govuk-grid-column-two-thirds">
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
 
@@ -17,6 +17,30 @@
       </h1>
 {% include "./_debtDetails.html" %}      
 {% include "creditor-latest/_debt-review-capture.html" %}
+
+
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adHocReview" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+  </div>
+
+
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="adhocReviewrequested" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+         {% include "./_confirmShowHiddenRadio.html" %} 
+
   
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
