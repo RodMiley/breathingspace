@@ -26,6 +26,8 @@
 
     </div> <div class="govuk-grid-column-three-quarters">
 {% if data['proposed']%}  
+
+
 {% if checked('proposed-debt','no')%}             
 <h2 class="govuk-heading-s  govuk-!-margin-bottom-0">Why we rejected it</h2>
 <p class="govuk-body">
@@ -36,6 +38,8 @@
 
     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{% if checked('proposed-debt','no') %} Rejected {% else %} Accepted{% endif %} by</h3>
   <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+
+ {% elif checked('clientreview','bsended') %}
 {% else %}  
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 <div class="govuk-form-group">

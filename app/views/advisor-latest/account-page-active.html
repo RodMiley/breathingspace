@@ -113,6 +113,8 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
+       {% if checked('clientreview','bsended') %}
+       {% else %}
           <ul class="govuk-list govuk-!-font-size-16" >
              <li>
              <form class="form" action="change-debt1" method="post">
@@ -150,6 +152,7 @@
               </form>
               </li>
               </ul>
+              {% endif %}
               </div>
           
  </div>
@@ -172,6 +175,8 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
+       {% if checked('clientreview','bsended') %}
+       {% else %}
           <ul class="govuk-list govuk-!-font-size-16" >
              <li>
              <form class="form" action="change-debt1" method="post">
@@ -209,6 +214,7 @@
               </form>
               </li>
               </ul>
+              {% endif %}
               </div>
           
  </div>
@@ -231,11 +237,25 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-                <form class="form" action="eligibility-review" method="post">
-                  <button class="govuk-body govuk-link">Review the debt</button>
+               {% if checked('clientreview','bsended') %}
+                   <form class="form" action="eligibility-review-details" method="post">
+                  <button class="govuk-body govuk-link">
+                   View review details
+                  </button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
+               
+               {%else %}
+
+                <form class="form" action="eligibility-review" method="post">
+                  <button class="govuk-body govuk-link">
+                   Review the debt
+                  </button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+             {% endif %}
               </li>
               </ul>
               </div>

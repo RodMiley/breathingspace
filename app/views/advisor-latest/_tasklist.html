@@ -21,6 +21,7 @@
               {% elif checked('client-eligibility-adhoc','no') and checked('clientreview','bsended') %} 
                  <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
                   Client eligible after review, view details   
+             {% elif checked('clientreview','bsended') %}    
              {% else %}  
                            <a href="eligibility-review-client-adhoc?reference={{customer.reference}}">
              Review client eligibility  
@@ -52,6 +53,8 @@
                 {% elif checked('debtreviewadhoc','debtremoved') %}
                 <a href="eligibility-review-adhoc-details?reference={{customer.reference}}" >
               View review details
+                 {% elif checked('clientreview','bsended') %}    
+
              {% else %}  
                            <a href="eligibility-review-adhoc?reference={{customer.reference}}">
              Review the debt
@@ -69,6 +72,7 @@
               <li class="app-task-list__item">
                {% if data['debtreview'] %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+                {% elif checked('clientreview','bsended') %}    
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -77,9 +81,11 @@
               </h4>
                <p class="govuk-!-margin-bottom-1"> Debt: Credit card </p>
               <span class="app-task-list__task-name">
-               {% if checked('debtreview','debtremoved') or checked('debtreview','debtremains') %}
+               {% if checked('debtreview','debtremoved') or checked('debtreview','debtremains')  or checked('clientreview','bsended') %}
                     <a href="eligibility-review-details?reference={{customer.reference}}">
              View review details  
+           
+
           {% else %}  
             <a href="eligibility-review?reference={{customer.reference}}">
              Review the debt
@@ -92,6 +98,7 @@
                             <li class="app-task-list__item">
                                    {% if checked('proposed','yes')%}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+                 {% elif checked('clientreview','bsended') %}
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -105,6 +112,8 @@
                    Proposed debt accepted, view details
                    {% elif checked('proposed-debt','no') and checked('proposed','yes') %}
                    Proposed debt rejected, view details
+                   {% elif checked('clientreview','bsended') %}
+                   View proposed debt
                    {% else %}
                    Accept or reject proposed debt
                    {% endif %}
@@ -133,6 +142,7 @@
                     
             {% if  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('clientreview','bsended')  %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% elif checked('clientreview','bsended') %}
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -146,7 +156,10 @@
                  Client not eligible after review - view details  
                 {% elif checked('client-eligibility','no') and checked('clientreview','bsended') %} 
                  <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
-                  Client eligible after review, view details   
+                  Client eligible after review, view details  
+                   {% elif checked('clientreview','bsended') %}
+                     <a href="eligibility-review-client?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
+                  View review details
                 {% else %}  
                  <a href="eligibility-review-client?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
                   Review client eligibility
