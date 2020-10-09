@@ -19,9 +19,12 @@
                     <h2 class="govuk-heading-m">We will inform all creditors when the client's Breathing Space has ended</h2>
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
-                    <p class="govuk-body">{{bsEndReason}} {% if data['clientReviewReason'] %}, because {{ clientReviewReason }}{% endif %}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
-                    <p class="govuk-body">{{ endSupportDetails | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
+                    <p class="govuk-body">
+                    {{bsEndReason}}{% if checked('bsEndReason','The client is no longer eligible') and data['clientReviewReason'] %}, because {{ clientReviewReason }}{% endif %}
+                    {% if checked('bsEndReason','The client has failed to comply with the agreed requirements') and checked('midwayreview','yes')
+                    or checked('bsEndReason','We have been unable contact the client') and checked('midwayreview','yes')
+                    or checked('bsEndReason','The client is now using a debt management solution') and checked('midwayreview','yes')%}. This decision was made as part of a midway review{% endif %}
+                    </p>
             
            
      
