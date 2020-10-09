@@ -19,7 +19,10 @@
  <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review of this debt</h2>
 
   {% include "./_debtDetails.html" %} 
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+  <p class="govuk-body">{{ debtReview }}</p>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
                     <p class="govuk-body govuk-!-margin-bottom-7">{% include "./_creditornames.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
@@ -55,7 +58,7 @@
 </div>
 <div class="govuk-form-group">
   <label class="govuk-label govuk-!-font-weight-bold" for="adhocreviewdetails">
-     Please provide a reason for your decision
+    Please provide details to support your decision
   <textarea class="govuk-textarea" id="adhocreviewdetails" name="adhocreviewdetails" rows="4" aria-describedby="adhocreviewdetails-hint"></textarea>
   </div>
 

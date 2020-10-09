@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt-list-tabs-search" method="post">
+  <form class="form" action="account-page-active" method="post">
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -19,16 +19,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">     
 
-                    <h2 class="govuk-heading-m">Details</h2>
-                    <p class="govuk-body-l">We will inform all creditors that the client's Breathing Space has ended</h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
-                    <p class="govuk-body">{{ bsEndReason | default('The client is not eligible after creditor asked us to review') }}</p>
+                    <h2 class="govuk-heading-m">We will inform all creditors that the client's Breathing Space has ended</h2>
 
-                    {% if checked('bsEndReason','The client is not eligible after creditor asked us to review') %}
-                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Review raised by</h3>
-                      <p class="govuk-body">{{endBSCreditorChoice}}</p>
-                    {% endif %}
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
                     <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-2">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
@@ -44,23 +37,29 @@
   </strong>
 </div>
 
-<div class="govuk-radios" style="display:none">
+
+      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="clientreview" checked>
+        <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="bsended" checked>
         <label class="govuk-label govuk-radios__label" for="confirmation">
          hidden radio
         </label>
       </div>
       </div>
 
-      <div class="govuk-radios" style="display:none">
+    <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="yes" checked>
-        <label class="govuk-label govuk-radios__label" for="confirmation">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="bsended" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>
       </div>
       </div>
+
+
+      
+
+{% include "./_confirmShowHiddenRadio.html" %}
 
 
 

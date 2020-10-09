@@ -23,8 +23,8 @@
                     <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
-                    <p class="govuk-body">{{ clientReview }}{{ clientReviewReason }}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+                    <p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
                     <p class="govuk-body">{{ moreDetailClient }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
                     <p class="govuk-body">{{ adhoccreditorchoice }},{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
@@ -60,7 +60,7 @@
 </div>
 <div class="govuk-form-group">
   <label class="govuk-label govuk-!-font-weight-bold" for="clientEligibilityDetailAdhoc">
-    Please provide a reason for your decision
+    Please provide details to support the decision
   </label>
   <textarea class="govuk-textarea" id="clientEligibilityDetailAdhoc" name="clientEligibilityDetailAdhoc" rows="4"></textarea>
   </div>

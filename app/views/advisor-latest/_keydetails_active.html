@@ -3,10 +3,15 @@
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
      
            <span class="govuk-caption-l">
-
+{% if checked('clientreview','bsended') %}
+                     <strong class="govuk-tag govuk-tag--grey">
+  Inactive
+</strong>  
+  {% else %} 
                      <strong class="govuk-tag">
   Active
 </strong>  
+{% endif%}
 
     
     
@@ -23,7 +28,22 @@
 {% else %}
 <p class="header_highlight_info">
 {% endif %}
-<span class=" govuk-!-margin-bottom-1"><strong>Breathing Space day {% if checked('time-machine-mid-review','yes')%} 30 {% else %}2{% endif %} of 60 </strong></span><span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} <br>Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} </span> </p>
+
+<span class=" govuk-!-margin-bottom-1">
+<strong>Breathing Space 
+{% if checked('clientreview','bsended') %}
+{% else %}
+day 2 of 60 
+{% endif %}
+</strong>
+</span>
+<span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} <br>
+{% if checked('clientreview','bsended') %}
+Ended: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} 
+{% else %}
+Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 
+{% endif %}
+</span> </p>
       </div>
           <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible keydetails">

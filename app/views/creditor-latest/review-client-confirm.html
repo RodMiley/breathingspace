@@ -21,9 +21,10 @@
 
 
 <h3 class="govuk-heading-m govuk-!-margin-bottom-5">You are requesting that Advice uk review client eligibility</h3>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-<p class="govuk-body">{{ clientReview }}{{ clientReviewReason }}</p>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is not eligible</h3>
+<p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
 <p class="govuk-body">{{ moreDetailClient }}</p>
 
 

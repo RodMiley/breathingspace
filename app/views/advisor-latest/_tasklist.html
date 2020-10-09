@@ -6,7 +6,7 @@
 
                {% if checked('adHocClientReview','yes')%}
         <li class="app-task-list__item">
-              {% if checked('adHocClientReviewed','yes')%}
+              {% if checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') %}
                <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>  
               {% else %}
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
@@ -15,9 +15,12 @@
               {{ adhoccreditorchoice }}  have asked us to review the client's eligibility
               </h4>
               <span class="app-task-list__task-name">
-               {% if checked('adHocClientReviewed','yes')%}
+               {% if  checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') %}
                     <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" >
-             Client eligible after review, view details  
+             Client not eligible after review, view details  
+              {% elif checked('client-eligibility-adhoc','no') and checked('clientreview','bsended') %} 
+                 <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
+                  Client eligible after review, view details   
              {% else %}  
                            <a href="eligibility-review-client-adhoc?reference={{customer.reference}}">
              Review client eligibility  
@@ -128,7 +131,7 @@
 
               <li class="app-task-list__item">
                     
-            {% if  checked('client-eligibility','yes') and checked('clientreview','yes') or checked('client-eligibility','no') and checked('clientreview','yes')  %}
+            {% if  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('clientreview','bsended')  %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
@@ -138,10 +141,10 @@
               </h4>
               <span class="app-task-list__task-name">
              
-                {% if checked('client-eligibility','yes') and checked('clientreview','yes') %}
+                {% if checked('client-eligibility','yes') and checked('clientreview','bsended') %}
                  <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
                  Client not eligible after review - view details  
-                {% elif checked('client-eligibility','no') and checked('clientreview','yes') %} 
+                {% elif checked('client-eligibility','no') and checked('clientreview','bsended') %} 
                  <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
                   Client eligible after review, view details   
                 {% else %}  

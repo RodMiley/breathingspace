@@ -23,7 +23,7 @@
 <h2 class="govuk-heading-m">Review completed</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome of review</h3>
                     <p class="govuk-body">Client is not eligible after review</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the decision</h3>
                     <p class="govuk-body">{{ clientEligibilityDetailAdhoc | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
                      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reviewed by</h3>
                     <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
@@ -35,7 +35,7 @@
                     <h2 class="govuk-heading-m">Review completed</h2>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome of review</h3>
                     <p class="govuk-body">Client eligible after review</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is eligible</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the decision</h3>
                     <p class="govuk-body">{{ clientEligibilityDetailAdhoc | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reviewed by</h3>
                     <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
@@ -48,7 +48,7 @@
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
                     <p class="govuk-body">{{ clientReview }}{{ clientReviewReason }}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
                     <p class="govuk-body">{{ moreDetailClient }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
                     <p class="govuk-body">{{ adhoccreditorchoice }},{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>       

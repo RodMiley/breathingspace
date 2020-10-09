@@ -35,7 +35,7 @@
   Personal details saved and updated
 </div>
  {% endif %}
-   {% if data['bsEndReason'] %}  
+  {% if checked('clientreview','bsended') %}
   {% else %} 
  <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   Add a debt
@@ -44,11 +44,12 @@
   Add client eligibility review task
 </a>
 
-{% endif %}
-
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   End Breathing Space
 </a>
+
+{% endif %}
+
 
 
 

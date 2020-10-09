@@ -16,22 +16,22 @@
 
 {% if checked('debtreviewadhoc','debtremoved') %}
 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by Advice UK</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed completed</h2>
                     
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
                     <p class="govuk-body">Debt removed after money adviser review</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
                       <p class="govuk-body">{{ adhocreviewdetails | default(" The client has agreed that this was a debt associated with their business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
                     <p class="govuk-body">Paul Smith, Advice UK, 06 October 2020 at 11.42am</p>
 </div>
 {% elif checked('debtreviewadhoc','debtremains')%}
 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by Advice UK</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed completed</h2>
                     
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
                     <p class="govuk-body">Debt remains active after money advisor review</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is eligible</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
                       <p class="govuk-body">{{ adhocreviewdetails | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
                     <p class="govuk-body">Paul Smith, Advice UK, 06 October 2020 at 11.42am</p>
@@ -42,7 +42,10 @@
  <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review of this debt</h2>
 
   {% include "./_debtDetails.html" %} 
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+  <p class="govuk-body">{{ debtReview }}</p>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
                     <p class="govuk-body govuk-!-margin-bottom-7">{% include "./_creditornames.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               

@@ -16,17 +16,21 @@
       </h1>
       </div>
    <div class="govuk-grid-column-three-quarters">
-                    <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
 
-                   <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is not eligible</h3>
-<p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+ <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review of this debt</h2>
 
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
-                    <p class="govuk-body">{{ moreDetailClient }}</p>
+  {% include "./_debtDetails.html" %} 
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+  <p class="govuk-body">{{ debtReview }}</p>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
+                    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
+
      
+
  <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="adHocClientReview" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="adHocReview" type="radio" value="yes" checked>
         <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>
@@ -36,7 +40,7 @@
 
    <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="adhocClientReviewrequested" checked>
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="adhocReviewrequested" checked>
         <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>

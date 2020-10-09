@@ -38,7 +38,7 @@
                     
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
                     <p class="govuk-body">Debt removed from Breathing Space</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
                     <p class="govuk-body">
                     The client has agreed that this was a debt associated with their business
                     </p> 
@@ -48,10 +48,12 @@
     
               <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
-               {% include "./_debt-amount-ref-v2.html" %}           
- 
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this debt is not eligible</h3>
-  
+               {% include "./_debt-amount-ref-v2.html" %}  
+
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+                  <p class="govuk-body">{{ debtReview | default('The debt is not eligible') }}</p>
+
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
                               We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.

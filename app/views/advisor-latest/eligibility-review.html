@@ -25,10 +25,13 @@
 <li>Amount: £2500</li>
 <li>Reference: RBC23455003</li>
 </ul>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Why this debt is not eligible</h3>
-                    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
-                    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+  <p class="govuk-body">The debt is not eligible</p>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
+    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Requested by</h3>
+    <p class="govuk-body govuk-!-margin-bottom-7">{% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>               
 
 
 
@@ -61,8 +64,8 @@
   </fieldset>
 </div>
 <div class="govuk-form-group">
-  <label class="govuk-label" for="eligibilityNo">
-    Please provide detail
+  <label class="govuk-label govuk-!-font-weight-bold" for="eligibilityNo">
+   Please provide details to support your decision
   <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
   </div>
 

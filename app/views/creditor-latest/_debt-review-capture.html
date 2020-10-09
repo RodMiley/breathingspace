@@ -1,6 +1,37 @@
+ 
+    <div class="govuk-form-group">
+   <fieldset class="govuk-fieldset" >
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+       Why does the debt need reviewing?
+      <label>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview-2" name="debtReview" type="radio" value="The debt does not qualify for Breathing Space" {{ checked('debtReview', 'The debt does not qualify for Breathing Space')}}>
+        <label class="govuk-label govuk-radios__label" for="debtReview-2">
+        The debt is not eligible
+        </label>
+         <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+         For example, It’s a fraudulent debt
+        </span>
+      </div>
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReview" name="debtReview" type="radio" value="The Breathing Space unfairly prejudices the interests of the creditor" {{ checked('debtReview', 'The Breathing Space unfairly prejudices the interests of the creditor')}}>
+        <label class="govuk-label govuk-radios__label" for="debtReview">
+           The Breathing Space unfairly prejudices the interests of the creditor
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ 
+ 
+ 
+ 
  <div class="govuk-form-group">
   <label class="govuk-label govuk-!-font-weight-bold" for="moreDetail">
-    Please provide detail why this debt is not eligible
+    Please provide details to support the review
   </label>
   <textarea class="govuk-textarea" id="moreDetail" name="moreDetail" rows="4" aria-describedby="moreDetail-hint" >{{moreDetail}}</textarea>
 </div>

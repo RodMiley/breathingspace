@@ -4,7 +4,9 @@
   {%if checked('confirmation', 'show')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  {% if checked('confirmationmessage','debtremoved')%}
+    {% if checked('confirmationmessage','bsended')%}
+  <p class="govuk-body">You've completed your review and ended your client's Breathing Space</p>
+  {% elif checked('confirmationmessage','debtremoved')%}
   <p class="govuk-body">You've have removed the debt</p>
     {% elif checked('confirmationmessage','debtremains')%}
   <p class="govuk-body">Review completed, you have not removed the debt</p>
@@ -17,7 +19,7 @@
   <p class="govuk-body">Review completed, you have not removed the client</p>
 
           {% elif checked('confirmationmessage','adhocClientReviewrequested')%}
-  <p class="govuk-body">You have recorded that the creditor has asked us to review the client a review, we have added a new task to do</p>
+  <p class="govuk-body">You have recorded that the creditor has asked us to review the client, we have added a new task to do</p>
 
            {% elif checked('confirmationmessage','adhocReviewrequested')%}
   <p class="govuk-body">You have recorded that the creditor has asked us to review the debt, we have added a new task to do</p>
