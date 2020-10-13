@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="endbreathingspace-confirm" method="post">
+  <form class="form" action="endbreathingspace-confirm-adhoc" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
 
@@ -16,14 +16,14 @@
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-      MH _ Why are you ending your client's Breathing Space?
+      Why are you ending your client's Breathing Space?
       </h1>
     </legend>
     <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
 
     <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }} data-aria-controls="failedRequirements">
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has stopped receiving mental health crisis treatment"  {{checked('bsEndReason', 'The client has stopped receiving mental health crisis treatment') }} data-aria-controls="failedRequirements">
         <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
        The client has stopped receiving mental health crisis treatment
         </label>
@@ -32,7 +32,7 @@
   
 
         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-7" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }} data-aria-controls="consultClient">
+        <input class="govuk-radios__input" id="bsEndReason-7" name="bsEndReason" type="radio" value="We've been unable to contact the point of contact to confirm mental health crisis treatment is ongoing"  {{checked('bsEndReason', "We've been unable to contact the point of contact to confirm mental health crisis treatment is ongoing") }} data-aria-controls="consultClient">
         <label class="govuk-label govuk-radios__label" for="bsEndReason-7">
        We've been unable to contact the point of contact to confirm mental health crisis treatment is ongoing
         </label>
@@ -40,12 +40,12 @@
 
          <!-- reveal  conditional -->
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="consultClient">
-      {% include "./_midwayreviewradios.html" %}
+      {% include "./_midwayreviewradiosmh.html" %}
       </div>
     <!-- -->
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="The client is not working with money advice after 30 days"  {{checked('bsEndReason', 'The client is not working with money advice after 30 days') }} data-aria-controls="conditional-how-noteligble">
+        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="The client is no longer eligible"  {{checked('bsEndReason', 'The client is no longer eligible') }} data-aria-controls="conditional-how-noteligble">
         <label class="govuk-label govuk-radios__label" for="bsEndReason-1">
            The client is no longer eligible
         </label>
@@ -109,13 +109,13 @@
 
       <!-- reveal  conditional -->
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="debtSolution">
-      {% include "./_midwayreviewradios.html" %}
+      {% include "./_midwayreviewradiosmh.html" %}
       </div>
     <!-- -->
 
 
          <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-5" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }}>
+        <input class="govuk-radios__input" id="bsEndReason-5" name="bsEndReason" type="radio" value="The client is now able to pay their debts"  {{checked('bsEndReason', 'The client is now able to pay their debts') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-5">
             The client is now able to pay their debts
         </label>
@@ -123,7 +123,7 @@
 
 
          <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-6" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }}>
+        <input class="govuk-radios__input" id="bsEndReason-6" name="bsEndReason" type="radio" value="The client has asked us to cancel"  {{checked('bsEndReason', 'The client has asked us to cancel') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-6">
         The client has asked us to cancel
         </label>
@@ -132,9 +132,9 @@
  
 
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-8" name="bsEndReason" type="radio" value="The client is now using a debt management solution"  {{checked('bsEndReason', 'The client is now using a debt management solution') }}>
+        <input class="govuk-radios__input" id="bsEndReason-8" name="bsEndReason" type="radio" value="The client is deceased"  {{checked('bsEndReason', 'The client is deceased') }}>
         <label class="govuk-label govuk-radios__label" for="bsEndReason-8">
-        The client has died
+        The client is deceased
         </label>
       </div>
 
@@ -149,15 +149,6 @@
       </div> -->
   </fieldset>
 </div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label govuk-label--s" for="endSupportDetails">
-      Please provide details to support your decision
-    </label>
-  <textarea class="govuk-textarea" id="endSupportDetails" name="endSupportDetails" rows="5" aria-describedby="endSupportDetails-hint"></textarea>
-</div>
-
-
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue

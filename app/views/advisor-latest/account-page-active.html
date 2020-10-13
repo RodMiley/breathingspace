@@ -404,9 +404,9 @@
 
 {% if checked('removedebt','debt3') or checked('debttype','debt3') and checked('debtreviewadhoc','debtremoved')%}
 {% elif  checked('debttype','debt3') and checked('debtreviewadhoc','debtremains')%}
-    {{ debtrowreviewcompletedadhoc("Rent arrears", "M Jones(landloard)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
+    {{ debtrowreviewcompletedadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 {% else %}
-      {{ debtrow("Rent arrears", "M Jones(landloard)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
+      {{ debtrow("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 {% endif %}
 
 {% if checked('removedebt','debt4') or checked('debttype','debt4') and checked('debtreviewadhoc','debtremoved')%}

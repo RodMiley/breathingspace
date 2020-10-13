@@ -24,7 +24,12 @@
                     {% if checked('bsEndReason','The client has failed to comply with the agreed requirements') and checked('midwayreview','yes')
                     or checked('bsEndReason','We have been unable contact the client') and checked('midwayreview','yes')
                     or checked('bsEndReason','The client is now using a debt management solution') and checked('midwayreview','yes')%}. This decision was made as part of a midway review{% endif %}
-                    </p>
+                    
+                    {% if checked('bsEndReason',"We've been unable to contact the point of contact to confirm mental health crisis treatment is ongoing") and checked('midwayreviewmh','yes') 
+                       or checked('bsEndReason','The client is now using a debt management solution') and checked('midwayreviewmh','yes')%}
+                    . This decision was made as part of a 30 day review
+                    {% endif %}
+                </p>
             
            
      
