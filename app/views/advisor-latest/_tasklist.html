@@ -123,23 +123,6 @@
               </span>
               </li>
 
-             <!-- <li class="app-task-list__item">
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-              Change of creditor ownership
-              </h4>
-              <span class="app-task-list__task-name">
-              <a href="dont-own?reference={{customer.reference}}" aria-describedby="read-declaration-status">
-                    Barclays Bank Plc have informed us they don't own the debt anymore
-              </a>
-              </span>
-      
-            {% if checked('dontown','yes') %}
-             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-            {% else %}
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-            {% endif %}  
-              </li> -->
-
               <li class="app-task-list__item">
                     
             {% if  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('client-eligibility','no') and checked('adHocClientReviewed','yes')  %}
@@ -170,6 +153,23 @@
               </span>
             
               </li>
+
+        <!--    <li class="app-task-list__item">
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+              Barclays Bank Plc have sold the debt
+              </h4>
+              <span class="app-task-list__task-name">
+              <a href="dont-own?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                   Confirm new creditor
+              </a>
+              </span>
+      
+            {% if checked('dontown','yes') %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              </li> -->
 
 <!--
                                          <li class="app-task-list__item">
