@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you are removing this debt
+      </h1>
+      </h1>
+  {% include "./_debtDetails.html" %} 
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the decision</h3>
+                    <p class="govuk-body">{{ adhocreviewdetails | default("The clients business has a turn over above the VAT threshold therefore this debt is not eligible for Breathing Space") }}</p>
+                    
+        
+          
+
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    By removing this debt from Breathing Space, creditor protections will be removed.
+  </strong>
+</div>
+
+
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debtreviewadhoc" type="radio" value="debtremoved" checked>
+        <label class="govuk-label govuk-radios__label" for="debtreview">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+           <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="debtremoved" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+      
+
+{% include "./_confirmShowHiddenRadio.html" %}
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and remove
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

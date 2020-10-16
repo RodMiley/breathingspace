@@ -12,7 +12,7 @@
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
              {% endif %}
               <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-              {{ adhoccreditorchoice }}  have asked us to review the client's eligibility
+              {% include "./_creditornames.html" %}  have asked us to review the client's eligibility
               </h4>
               <span class="app-task-list__task-name">
                {% if  checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') %}
@@ -154,7 +154,7 @@
             
               </li>
 
-        <!--    <li class="app-task-list__item">
+       <li class="app-task-list__item">
               <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
               Barclays Bank Plc have sold the debt
               </h4>
@@ -169,7 +169,7 @@
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
-              </li> -->
+              </li>
 
 <!--
                                          <li class="app-task-list__item">

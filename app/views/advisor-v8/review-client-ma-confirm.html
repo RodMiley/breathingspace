@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm and add client eligibility review task
+      </h1>
+      </div>
+   <div class="govuk-grid-column-three-quarters">
+                    <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
+
+                   <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is not eligible</h3>
+<p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
+                    <p class="govuk-body">{{ moreDetailClient }}</p>
+     
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adHocClientReview" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+  </div>
+
+
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="adhocClientReviewrequested" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+         {% include "./_confirmShowHiddenRadio.html" %} 
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

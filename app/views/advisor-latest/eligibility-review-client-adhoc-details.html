@@ -44,14 +44,14 @@
 {% endif %}
 
 
-                    <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
+                    <h2 class="govuk-heading-m">{% include "./_creditornames.html" %}   asked for a review</h2>
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
                     <p class="govuk-body">{{ clientReview }}{{ clientReviewReason }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
                     <p class="govuk-body">{{ moreDetailClient }}</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
-                    <p class="govuk-body">{{ adhoccreditorchoice }},{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>       
+                    <p class="govuk-body">{% include "./_creditornames.html" %}  ,{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>       
 
     </div>
     </form>

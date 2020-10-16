@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-5">
+  
+    <div class="govuk-grid-column-full">
+ 
+ <a href="index" class="govuk-back-link">Back</a>   
+ <h1 class="govuk-heading-xl">Search for an account</h1>
+ {% include "./_search_instructions.html" %} 
+ </div>
+</div>
+<div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-one-quarter">
+ 
+<form class="form" action="search-results-page" method="post">
+{% include "./_search_form.html" %} 
+</form>
+</div>
+    <div class="govuk-grid-column-three-quarters">
+
+
+  <p class="govuk-body">Showing: <span class="govuk-!-font-weight-bold">3</span> results</p> 
+
+<ul class="govuk-list searchresults">
+<!--<li>
+<span><strong>Name:</strong> <a href=''>Joe Paul Black</a></span>
+<span><strong>Reference:</strong> BRS123456789012</span>
+<span><strong>Date of Birth:</strong> 23 September 1978</span>
+<span><strong>First line of address:</strong> 1078 Sutton-Under-Whitestonecliffe</span>
+</li> -->
+<li>
+<span>Name: <strong><a href=''>Adolph Blaine Charles David Earl Frederick Gerald Hubert Irvin John Kenneth Lloyd Martin Nero Oliver Paul Quincy Randolph Sherman Thomas Uncas Victor William Xerxes Yancy Zeus Wolfeschlegel­steinhausen­bergerdorff­welche­vor­altern­waren­gewissenhaft­schafers­wessen­schafe­waren­wohl­gepflege­und­sorgfaltigkeit­beschutzen­vor­angreifen­durch­ihr­raubgierig­feinde­welche­vor­altern­zwolfhundert­tausend­jahres­voran­die­erscheinen­von­der­erste­erdemensch­der­raumschiff­genacht­mit­tungstein­und­sieben­iridium­elektrisch­motors­gebrauch­licht­als­sein­ursprung­von­kraft­gestart­sein­lange­fahrt­hinzwischen­sternartig­raum­auf­der­suchen­nachbarschaft­der­stern­welche­gehabt­bewohnbar­planeten­kreise­drehen­sich­und­wohin­der­neue­rasse­von­verstandig­menschlichkeit­konnte­fortpflanzen­und­sich­erfreuen­an­lebenslanglich­freude­und­ruhe­mit­nicht­ein­furcht­vor­angreifen­vor­anderer­intelligent­geschopfs­von­hinzwischen­sternartig­raum Sr</a></strong></span>
+<span>Reference: <strong>BRS123456789012</strong></span>
+<span>Date of Birth: <strong>23 September 1978</strong></span>
+<span>First line of address: <strong>1078 Sutton-Under-Whitestonecliffe</strong></span>
+</li>
+<li>
+<span>Name: <strong><a href=''>Joe Paul Wolfeschlegel­steinhausen­bergerdorff­welche­vor­altern­waren­gewissenhaft­schafers­wessen­schafe­waren­wohl­gepflege­und­sorgfaltigkeit­beschutzen­vor­angreifen­durch­ihr­raubgierig­feinde­welche­vor­altern­zwolfhundert­tausend­jahres­voran­die­erscheinen­von­der­erste­erdemensch­der­raumschiff­genacht­mit­tungstein­und­sieben­iridium­elektrisch­motors­gebrauch­licht­als­sein­ursprung­von­kraft­gestart­sein­lange­fahrt­hinzwischen­sternartig­raum­auf­der­suchen­nachbarschaft­der­stern­welche­gehabt­bewohnbar­planeten­kreise­drehen­sich­und­wohin­der­neue­rasse­von­verstandig­menschlichkeit­konnte­fortpflanzen­und­sich­erfreuen­an­lebenslanglich­freude­und­ruhe­mit­nicht­ein­furcht­vor­angreifen­vor­anderer­intelligent­geschopfs­von­hinzwischen­sternartig­raum Sr.</a></strong></span>
+<span>Reference: <strong>BRS87965432498</strong></span>
+<span>Date of Birth: <strong>09 February 2001</strong></span>
+<span>First line of address: <strong>13a Melling Road</strong></span>
+</li>
+<li>
+<span>Name: <strong><a href=''>Joe Paul Hudson</a></strong></span>
+<span>Reference: <strong>BRS87965432498</strong></span>
+<span>Date of Birth: <strong>09 February 2001</strong></span>
+<span>First line of address: <strong>13a Melling Road</strong></span>
+</li>
+
+</ul>
+
+    </div>
+
+  
+   
+
+</div>
+
+<!-- <style>
+.searchdata {
+  position:absolute;
+  top:0px;
+  right:0px;
+  background:#efefef;
+  padding:15px;
+  width:195px
+}
+</style>
+<div class="searchdata">
+<h2 class="govuk-heading-m">Search Data</h2>
+<ul class="govuk-list">
+<li>Reference:<br> <b>14-6125153</b></li>
+<li>Name:<br> <b>Joe Black</b></li>
+<li>Dob: <br><b>28 July 2000</b></li>
+<li>Address: <br><b>843 Glacier Hill Street</b></li>
+<li><hr>No results:<br><b>Smith</b></li>
+</ul>
+
+</div> -->
+
+{% endblock %}

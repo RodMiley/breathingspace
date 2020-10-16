@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Confirmation
+          </h1>
+          <div class="govuk-panel__body">
+          {% if checked('debt-eligibility','no')%}
+          You have not removed the debt from your client's Breathing Space
+          {% else %}
+              You have removed the debt from your client's Breathing Space
+          {% endif %}    
+          </div>
+        </div>
+
+  <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">
+               {% if checked('debt-eligibility','no')%}
+         We’ll notify the creditor with the reason why you have not removed the debt from Breathing Space
+          {% else %}
+          The debt will be removed from Breathing Space by the next working day. We’ll tell the creditor when the debt has been removed.
+          {% endif %} 
+      
+        </p>
+        <ul class="govuk-list">
+          <li><a href="{% include "./_landingpagepath.html" %}">Return to client landing page</a></li>
+          <li><a href="index">Return to service homepage</a></li>
+        </p>
+        <ul>     
+      </div>
+
+ <p><a href="time-machine-endBS" class="timemachine-link">On to next scenario</a></p>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirm-details" method="post">
+    <div class="govuk-grid-column-two-thirds">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Add client details: Step 4 of 4</span>
+       Business
+      </h1> 
+
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="add-business-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <labelclass="govuk-fieldset__heading">
+       Does your client have any businesses with debts that are eligible for Breathing Space?
+      </label>
+    </legend>
+    <!-- <span id="add-business-hint" class="govuk-hint">
+      You’ll need an account to prove your identity and complete your Self Assessment.
+    </span> -->
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="add-business" name="add-business" type="radio" value="yes~add-business" aria-describedby="add-business-item-hint" {{checked('add-business', 'yes') }}>
+        <label class="govuk-label govuk-radios__label govuk-label--s" for="add-business">
+         Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="add-business-2" name="add-business" type="radio" value="no" aria-describedby="add-business-2-item-hint" {{checked('add-business', 'no') }}>
+        <label class="govuk-label govuk-radios__label govuk-label--s" for="add-business-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientDetails" type="radio" value="complete" checked>
+        <label class="govuk-label govuk-radios__label" for="clientDetails">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

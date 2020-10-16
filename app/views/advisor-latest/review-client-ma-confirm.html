@@ -16,7 +16,7 @@
       </h1>
       </div>
    <div class="govuk-grid-column-three-quarters">
-                    <h2 class="govuk-heading-m">{{ adhoccreditorchoice }} asked for a review</h2>
+                    <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review</h2>
 
                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is not eligible</h3>
 <p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
