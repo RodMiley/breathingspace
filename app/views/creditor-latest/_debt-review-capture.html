@@ -14,10 +14,13 @@
         </label>
       </div>
     <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debtReview" name="debtReview" type="radio" value="The Breathing Space unfairly prejudices the interests of the creditor" {{ checked('debtReview', 'The Breathing Space unfairly prejudices the interests of the creditor')}}>
+        <input class="govuk-radios__input" id="debtReview" name="debtReview" type="radio" value="The Breathing Space unfairly prejudices the interests of the creditor" {{ checked('debtReview', 'The Breathing Space unfairly prejudices the interests of the creditor')}} aria-describedby="debt-review-2-item-hint">
         <label class="govuk-label govuk-radios__label" for="debtReview">
            The Breathing Space unfairly prejudices the interests of the creditor
         </label>
+          <div id="debt-review-2-item-hint" class="govuk-hint govuk-radios__hint">
+          For example, where you consider that there has been differential or discriminatory treatment in respect of you or your debt
+        </div>
       </div>
     </div>
   </fieldset>

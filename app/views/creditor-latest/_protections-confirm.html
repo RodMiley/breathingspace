@@ -22,6 +22,13 @@ or customer.status == 'review-rejected' and data['protection'] !=='rejectedcompl
   <p class="govuk-body">You've confirmed you don't need to do anything else with this debt</p>
   </div>
 
+{% elif checked('clientReviewConfirm','yes') %}
+ <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
+  <p class="govuk-body">You have asked the money advisor to review the clients eligibility
+  </p>
+  </div> 
+
   {% elif checked('addDebtStep2','yes') or checked('addDebtStep2','yes') and checked('protection','yes') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
@@ -29,12 +36,6 @@ or customer.status == 'review-rejected' and data['protection'] !=='rejectedcompl
   </p>
   </div>
 
-    {% elif checked('clientReviewConfirm','yes') %}
- <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">You requested a review of client eligibility
-  </p>
-  </div> 
 {% elif checked('protection','no') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>

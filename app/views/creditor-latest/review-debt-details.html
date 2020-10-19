@@ -33,6 +33,7 @@
       <h1 class="govuk-heading-l">
        Review details
       </h1>
+           {% if customer.status == 'review-accepted' %} 
            <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
                     <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
                     
@@ -45,6 +46,7 @@
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
                     <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
             </div>
+            {% endif %}
     
               <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>

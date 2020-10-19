@@ -40,7 +40,8 @@
 </p> 
   
                {% include "./_tasklist-v2.html" %}
-
+{% if checked('clientReviewConfirm','yes') %}
+{% else %}
      <h2 class="govuk-heading-m">
                 Other actions
       </h2>            
@@ -51,7 +52,7 @@
         <a href="review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
         The client's not eligible, ask for a review
         </a>
-
+{% endif %}
 
               <h2 class="govuk-heading-m">
                  Client details
