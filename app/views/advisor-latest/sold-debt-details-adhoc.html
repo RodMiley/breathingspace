@@ -1,0 +1,27 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="sold-debt-confirm" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+      Reassigned debt details
+      </h1>
+  {% include "./_debtDetailsSolddebt.html" %} 
+
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reassigned by</h2>          
+<p class="govuk-body">Paul Smith, Advice UK, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>
+
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

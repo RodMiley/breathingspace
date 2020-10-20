@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="sold-debt-confirm" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+      Reassigned debt details
+      </h1>
+<h2 class="govuk-heading-s">Debt: Gas</h2>
+<ul class="govuk-list">
+<li>Creditor: Akinika Debt Recovery Limited (Reassigned: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li>
+<li>Old Creditor: EDF Energy Ltd</li>
+<li>Amount: £489</li>
+<li>Reference: CRT8536544</li>
+<li>Debt was entered on {{ 'DD MMMM YYYY' | baseDateAdd(-1) }}</li>
+</ul>
+
+
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reassigned by</h2>          
+<p class="govuk-body">Paul Smith, Advice UK, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>
+
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}
