@@ -4,9 +4,9 @@
           <ul class="app-task-list__items govuk-!-margin-bottom-1">
 
 
-               {% if checked('adHocClientReview','yes')%}
+               {% if checked('adhocAction','clientReview') or  checked('adhocAction','clientRemains')%}
         <li class="app-task-list__item">
-              {% if checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') or checked('client-eligibility-adhoc','no') and checked('adHocClientReviewed','yes')  %}
+              {% if checked('adhocAction','clientRemains') or checked('clientreview','bsended') %}
                <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>  
               {% else %}
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
@@ -18,8 +18,8 @@
                {% if  checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') %}
                     <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" >
              Client not eligible after review, view details  
-              {% elif checked('client-eligibility-adhoc','no') and checked('adHocClientReviewed','yes') %} 
-                 <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
+              {% elif checked('adhocAction','clientRemains') %} 
+            <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
                   Client eligible after review, view details   
              {% elif checked('clientreview','bsended') %}    
              {% else %}  
@@ -35,9 +35,9 @@
 
 
 
-               {% if checked('adHocReview','yes') %}
+               {% if checked('adhocAction','debtReview') or checked('adhocAction','debtRemains') or checked('adhocAction','debtRemoved')%}
         <li class="app-task-list__item">
-              {% if checked('debtreviewadhoc','debtremains') or checked('debtreviewadhoc','debtremoved') %}
+              {% if checked('adhocAction','debtRemains') or checked('adhocAction','debtRemoved') %}
                <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>  
               {% else %}
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
@@ -47,10 +47,10 @@
               </h4>
               <p class="govuk-!-margin-bottom-1"> Debt: {% include "./_debttypes.html" %} </p>
               <span class="app-task-list__task-name">
-               {% if checked('debtreviewadhoc','debtremains') %}
+               {% if checked('adhocAction','debtRemains') %}
                 <a href="eligibility-review-adhoc-details?reference={{customer.reference}}" >
               View review details 
-                {% elif checked('debtreviewadhoc','debtremoved') %}
+                {% elif checked('adhocAction','debtRemoved') %}
                 <a href="eligibility-review-adhoc-details?reference={{customer.reference}}" >
               View review details
                  {% elif checked('clientreview','bsended') %}    

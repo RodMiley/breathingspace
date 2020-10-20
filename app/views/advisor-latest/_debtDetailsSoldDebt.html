@@ -1,4 +1,4 @@
-          {% if checked('debttype','debt1') %}
+          {% if checked('debtType','debt1') %}
  <h2 class="govuk-heading-s">Debt: Loan</h2>         
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -10,7 +10,7 @@
       <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
       {% endif %}
     </ul>
-{% elif checked('debttype','debt2')  %}
+{% elif checked('debtType','debt2')  %}
 <h2 class="govuk-heading-s">Debt: Credit Card</h2>
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -23,7 +23,7 @@
       {% endif %}
 
     </ul>
-{% elif checked('debttype','debt3')  %}
+{% elif checked('debtType','debt3')  %}
 <h2 class="govuk-heading-s">Debt: Rent arrears</h2>
  <ul class="govuk-list">
       <li>Creditor: {{changedebtcreditor}}</li> 
@@ -36,7 +36,7 @@
       {% endif %}
     </ul>
 
-    {% elif checked('debttype','debt4')  %}
+    {% elif checked('debtType','debt4')  %}
  <ul class="govuk-list">
  <h2 class="govuk-heading-s">Debt: Water</h2>
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -49,7 +49,7 @@
       {% endif %}
     </ul>
 
-    {% elif checked('debttype','debt5')  %}
+    {% elif checked('debtType','debt5')  %}
  <h2 class="govuk-heading-s">Debt: Gas</h2>   
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -62,7 +62,7 @@
       {% endif %}
     </ul>
 
-    {% elif checked('debttype','debt6')  %}
+    {% elif checked('debtType','debt6')  %}
  <h2 class="govuk-heading-s">Debt: Council tax</h2>   
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -75,7 +75,7 @@
       {% endif %}
     </ul>
 
-    {% elif checked('debttype','debt7')  %}
+    {% elif checked('debtType','debt7')  %}
     <h2 class="govuk-heading-s">Debt: Self assessment</h2>
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 
@@ -89,7 +89,7 @@
       {% endif %}
     </ul>
 
-        {% elif checked('debttype','proposed')  %}
+        {% elif checked('debtType','proposed')  %}
     <h2 class="govuk-heading-s">Debt: Overdraft</h2>
  <ul class="govuk-list">
     <li>Creditor: {{changedebtcreditor}}</li> 

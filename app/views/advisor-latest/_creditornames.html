@@ -1,18 +1,18 @@
-{% if checked('debttype','debt1') or checked('debttype','proposed') %}
+{% if checked('debtType','debt1') or checked('debtType','proposed') %}
 Barclays Bank Plc
-{% elif checked('debttype','debt2')  %}
+{% elif checked('debtType','debt2')  %}
 Halifax (Credit cards only)
-{% elif checked('debttype','debt3')  %}
+{% elif checked('debtType','debt3')  %}
 M Jones(landloard)
-{% elif checked('debttype','debt4')  %}
+{% elif checked('debtType','debt4')  %}
 Yorkshire Water Services Ltd
-{% elif checked('debttype','debt5') and  checked('dontown','yes')%}
+{% elif checked('debtType','debt5') and  checked('dontown','yes')%}
 Akinika Debt Recovery Limited
-{% elif checked('debttype','debt5')  %}
+{% elif checked('debtType','debt5')  %}
 EDF Energy Ltd
-{% elif checked('debttype','debt6')  %}
+{% elif checked('debtType','debt6')  %}
 Southwark Council
-{% elif checked('debttype','debt7')  %}
+{% elif checked('debtType','debt7')  %}
 HMRC
 {% endif %}
    

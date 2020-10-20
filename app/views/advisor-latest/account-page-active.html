@@ -846,9 +846,9 @@
 
 
 <!-- debt row start --> 
-{% if checked('removedebt','proposed') or checked('debtType','proposed') and checked('debtreviewadhoc','debtremoved')%}
+{% if checked('removedebt','proposed') or checked('debtType','proposed') and checked('adhocAction','debtremoved')%}
 
-{% elif  checked('debtType','proposed') and checked('debtreviewadhoc','debtremains')%}
+{% elif  checked('debtType','proposed') and checked('adhocAction','debtremains')%}
 {{ debtrowreviewcompletedadhoc("Overdraft", "Barclays Bank Plc", "£800", "BAR3456789", "proposed") }}
 
 {% elif checked('proposed-debt','yes') %}
@@ -858,23 +858,23 @@
 
 <!-- debt row start --> 
 
-{% if checked('removedebt','debt1') or checked('debtType','debt1') and checked('debtreviewadhoc','debtremoved')%}
+{% if checked('removedebt','debt1') or checked('debtType','debt1') and checked('adhocAction','debtRemoved')%}
 
-{% elif  checked('debtType','debt1') and checked('debtreviewadhoc','debtremains')%}
+{% elif  checked('debtType','debt1') and checked('adhocAction','debtRemains')%}
  {{ debtrowreviewcompletedadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 
- {% elif  checked('debtType','debt1') and checked('adHocClientReviewed','yes')%}
-    {{ debtrow_review_client_completed_adhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}  
-
-{% elif checked('debtType','debt1') and checked('adHocClientReview','yes')%}
-{{ debtrowreviewclientadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
-
-{% elif  checked('debtType','debt1') and checked('adHocReview','yes')%}
+{% elif  checked('debtType','debt1') and checked('adhocAction','debtReview')%}
 {{ debtrowreviewadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 
-{% elif  checked('debtType','debt1') and checked('solddebtadhoc','yes')%}    
-{{ debtrowsoldadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 
+ {% elif  checked('debtType','debt1') and checked('adhocAction','clientRemains')%}
+    {{ debtrow_review_client_completed_adhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}  
+
+{% elif checked('debtType','debt1') and checked('adhocAction','clientReview')%}
+{{ debtrowreviewclientadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
+
+{% elif  checked('debtType','debt1') and checked('adhocAction','debtSold')%}    
+{{ debtrowsoldadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 
 {% else %}
     {{ debtrow("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
@@ -897,21 +897,22 @@
 <!-- debt row start --> 
 
 
-{% if checked('removedebt','debt3') or checked('debtType','debt3') and checked('debtreviewadhoc','debtremoved')%}
+{% if checked('removedebt','debt3') or checked('debtType','debt3') and checked('adhocAction','debtRemoved')%}
 
-{% elif  checked('debtType','debt3') and checked('debtreviewadhoc','debtremains')%}
+{% elif  checked('debtType','debt3') and checked('adhocAction','debtRemains')%}
     {{ debtrowreviewcompletedadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 
- {% elif  checked('debtType','debt3') and checked('adHocClientReviewed','yes')%}
-    {{ debtrow_review_client_completed_adhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}  
-
-{% elif checked('debtType','debt3') and checked('adHocClientReview','yes')%}
-{{ debtrowreviewclientadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
-
-{% elif  checked('debtType','debt3') and checked('adHocReview','yes')%}    
+{% elif  checked('debtType','debt3') and checked('adhocAction','debtReview')%}    
 {{ debtrowreviewadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 
-{% elif  checked('debtType','debt3') and checked('solddebtadhoc','yes')%}    
+ {% elif  checked('debtType','debt3') and checked('adhocAction','clientRemains')%}
+    {{ debtrow_review_client_completed_adhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}  
+
+{% elif checked('debtType','debt3') and checked('adhocAction','clientReview')%}
+{{ debtrowreviewclientadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
+
+
+{% elif  checked('debtType','debt3') and checked('adhocAction','debtSold')%}    
 {{ debtrowsoldadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 
 {% else %}
@@ -922,26 +923,25 @@
 
 <!-- debt row start --> 
 
-{% if checked('removedebt','debt4') or checked('debtType','debt4') and checked('debtreviewadhoc','debtremoved')%}
-{% elif  checked('debtType','debt4') and checked('debtreviewadhoc','debtremains')%}
+{% if checked('removedebt','debt4') or checked('debtType','debt4') and checked('adhocAction','debtRemoved')%}
+
+{% elif  checked('debtType','debt4') and checked('adhocAction','debtRemains')%}
     {{ debtrowreviewcompletedadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
 
- {% elif  checked('debtType','debt4') and checked('adHocClientReviewed','yes')%}
+{% elif  checked('debtType','debt4') and checked('adhocAction','debtReview')%}    
+ {{ debtrowreviewadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}    
+
+ {% elif  checked('debtType','debt4') and checked('adhocAction','clientRemains')%}
     {{ debtrow_review_client_completed_adhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}   
 
-  {% elif  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('adHocClientReviewed','yes')  %}
-    {{ debtrow_review_client_completed("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}      
+  {% elif  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('adhocAction','clientReview')  %}
+  {{ debtrow_review_client_completed("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}      
+ 
 
-
-{% elif checked('debtType','debt4') and checked('adHocClientReview','yes')%}
+{% elif checked('debtType','debt4') and checked('adhocAction','clientReview') %}
 {{ debtrowreviewclientadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
 
-
-   
-{% elif  checked('debtType','debt4') and checked('adHocReview','yes')%}    
- {{ debtrowreviewadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
-
- {% elif  checked('debtType','debt4') and checked('solddebtadhoc','yes')%}    
+ {% elif  checked('debtType','debt4') and checked('adhocAction','debtSold')%}    
 {{ debtrowsoldadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}
 
 {% else %}
@@ -953,26 +953,25 @@
 <!-- debt row start --> 
 
 
-{% if checked('removedebt','debt5') or checked('debtType','debt5') and checked('debtreviewadhoc','debtremoved')%}
-{% elif  checked('debtType','debt5') and checked('debtreviewadhoc','debtremains')%}
+{% if checked('removedebt','debt5') or checked('debtType','debt5') and checked('adhocAction','debtRemoved')%}
+
+{% elif  checked('debtType','debt5') and checked('adhocAction','debtRemains')%}
     {{ debtrowreviewcompletedadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
-   
 
+{% elif  checked('debtType','debt5') and checked('adhocAction','debtReview')%}    
+    {{ debtrowreviewadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}    
 
-{% elif  checked('debtType','debt5') and checked('adHocClientReviewed','yes')%}
+{% elif  checked('debtType','debt5') and checked('adhocAction','clientRemains')%}
     {{ debtrow_review_client_completed_adhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
 
-
-{% elif checked('debtType','debt5') and checked('adHocClientReview','yes')%}
+{% elif checked('debtType','debt5') and checked('adhocAction','clientReview')%}
 {{ debtrowreviewclientadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
 
-{% elif  checked('debtType','debt5') and checked('adHocReview','yes')%}    
-    {{ debtrowreviewadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
 
 {% elif  checked('dontown','yes')%}    
     {{ debtrowsoldcompleted("Gas", "Akinika Debt Recovery Limited", "£489", "CRT8536544", "debt5") }}    
 
- {% elif checked('debtType','debt5') and checked('solddebtadhoc','yes')%}    
+ {% elif checked('debtType','debt5') and checked('adhocAction','debtSold')%}    
 {{ debtrowsoldadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}    
 
 {% else %}
@@ -984,21 +983,22 @@
 <!-- debt row start --> 
 
 
-{% if checked('removedebt','debt6') or checked('debtType','debt6') and checked('debtreviewadhoc','debtremoved')%}
-{% elif  checked('debtType','debt6') and checked('debtreviewadhoc','debtremains')%}
+{% if checked('removedebt','debt6') or checked('debtType','debt6') and checked('adhocAction','debtRemoved')%}
+
+
+{% elif  checked('debtType','debt6') and checked('adhocAction','debtRemains')%}
     {{ debtrowreviewcompletedadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
 
-{% elif  checked('debtType','debt6') and checked('adHocClientReviewed','yes')%}
-    {{ debtrow_review_client_completed_adhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
-
-{% elif checked('debtType','debt6') and checked('adHocClientReview','yes')%}
-{{ debtrowreviewclientadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
-
-{% elif  checked('debtType','debt6') and checked('adHocReview','yes')%}    
+{% elif  checked('debtType','debt6') and checked('adhocAction','debtReview')%}    
      {{ debtrowreviewadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
 
+{% elif  checked('debtType','debt6') and checked('adhocAction','clientRemains')%}
+    {{ debtrow_review_client_completed_adhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
 
- {% elif checked('debtType','debt6') and checked('solddebtadhoc','yes')%}    
+{% elif checked('debtType','debt6') and checked('adhocAction','clientReview')%}
+{{ debtrowreviewclientadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
+
+ {% elif checked('debtType','debt6') and checked('adhocAction','debtSold')%}    
 {{ debtrowsoldadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}         
 
 {% else %}
@@ -1009,24 +1009,23 @@
 
 <!-- debt row start --> 
 
-{% if checked('removedebt','debt7') or checked('debtType','debt7') and checked('debtreviewadhoc','debtremoved')%}
+{% if checked('removedebt','debt7') or checked('debtType','debt7') and checked('adhocAction','debtRemoved')%}
 
-{% elif  checked('debtType','debt7') and checked('adHocClientReviewed','yes')%}
-    {{ debtrow_review_client_completed_adhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
 
-{% elif checked('debtType','debt7') and checked('adHocClientReview','yes')%}
-{{ debtrowreviewclientadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}    
- 
-
-{% elif  checked('debtType','debt7') and checked('debtreviewadhoc','debtremains')%}
+{% elif  checked('debtType','debt7') and checked('adhocAction','debtRemains')%}
     {{ debtrowreviewcompletedadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
 
-{% elif  checked('debtType','debt7') and checked('adHocReview','yes')%}    
-       {{ debtrowreviewadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
+{% elif  checked('debtType','debt7') and checked('adhocAction','debtReview')%}    
+       {{ debtrowreviewadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}    
+
+{% elif  checked('debtType','debt7') and checked('adhocAction','clientRemains')%}
+    {{ debtrow_review_client_completed_adhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
 
 
+{% elif checked('debtType','debt7') and checked('adhocAction','clientReview')%}
+{{ debtrowreviewclientadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}    
 
- {% elif checked('debtType','debt7') and checked('solddebtadhoc','yes')%}    
+ {% elif checked('debtType','debt7') and checked('adhocAction','debtSold')%}    
 {{ debtrowsoldadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}                
 
 {% else %}
