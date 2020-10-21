@@ -220,9 +220,9 @@
                {% if data['client-eligibility'] %}   
             <h4 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">Outcome</h4>
               {% if checked('client-eligibility','yes') %} 
-            <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space ended after review</p>
+            <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space has ended after client review</p>
               {% elif checked('client-eligibility','no') %} 
-                <p class="govuk-body govuk-!-margin-bottom-2">Client eligible after review</p>
+                <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space remains active after client review</p>
               {% endif %}
               {% endif %}
               <span class="app-task-list__task-name">
