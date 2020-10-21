@@ -200,15 +200,16 @@
               </form>
               </li>
                 <li>
-              <form class="form" action="review-client-ma" method="post">
-              <button class="govuk-body govuk-link">Add client eligibility review task</button>
+                   <li>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Add debt eligibility review task</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
               <li>
-                <form class="form" action="review-debt-ma" method="post">
-                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
+              <form class="form" action="review-client-ma" method="post">
+              <button class="govuk-body govuk-link">Add client eligibility review task</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
@@ -587,11 +588,10 @@
 
     {% macro debtrowsoldcompleted(type, creditor, amount, reference, debtType) %}
    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-   <div class="tags"><strong class="govuk-tag govuk-!-margin-bottom-2">Debt reasigned</strong></div>
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 
       <ul class="govuk-list">
-      <li><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reassigned the debt</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
       <li>Creditor: {{creditor}} (Reassigned: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li> 
       <li>Old Creditor: EDF Energy Ltd</li> 
       <li>Amount: {{amount}}<li>
@@ -603,6 +603,13 @@
        {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
      {% else %}
              <ul class="govuk-list govuk-!-font-size-16" >
+               <li class="govuk-!-margin-bottom-4">
+                <form class="form" action="sold-debt-details" method="post">
+                  <button class="govuk-body govuk-link">View reassigned debt details</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
              <li>
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>

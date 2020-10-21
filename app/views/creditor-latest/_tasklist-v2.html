@@ -31,11 +31,11 @@ All recovery action against this debt has been stopped
 
               {% if customer.status == 'review-accepted' %}
             <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
-            <p><strong>Outcome of review: </strong>debt removed from Breathing Space</p>
+            <p><strong>Outcome of review: </strong>debt removed after review</p>
             </div>
             {% elif customer.status == 'review-rejected'%}
             <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
-            <p><strong>Outcome of review:</strong> debt not removed from Breathing Space</p>
+            <p><strong>Outcome of review:</strong> debt not removed after review</p>
             </div>
             {% endif %}  
 
