@@ -105,7 +105,7 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
-       {% if checked('clientreview','bsended') %}
+       {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
        {% else %}
           <ul class="govuk-list govuk-!-font-size-16" >
              <li>
@@ -175,7 +175,7 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
-       {% if checked('clientreview','bsended') %}
+       {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
        {% else %}
           <ul class="govuk-list govuk-!-font-size-16" >
              <li>
@@ -244,7 +244,7 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-               {% if checked('clientreview','bsended') %}
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                    <form class="form" action="eligibility-review-details" method="post">
                   <button class="govuk-body govuk-link">
                    View review details
@@ -286,7 +286,7 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-               {% if checked('clientreview','bsended') %}
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                    <form class="form" action="eligibility-review-details" method="post">
                   <button class="govuk-body govuk-link">
                    View review details
@@ -328,7 +328,7 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-               {% if checked('clientreview','bsended') %}
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                    <form class="form" action="eligibility-review-details-adhoc" method="post">
                   <button class="govuk-body govuk-link">
                    View review details
@@ -371,7 +371,7 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-               {% if checked('clientreview','bsended') %}
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                    <form class="form" action="eligibility-review-details-adhoc" method="post">
                   <button class="govuk-body govuk-link">
                    View review details
@@ -415,7 +415,7 @@
      <div class="govuk-grid-column-one-third"> 
           <ul class="govuk-list govuk-!-font-size-16" >
               <li>
-               {% if checked('clientreview','bsended') %}
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                    <form class="form" action="eligibility-review-details" method="post">
                   <button class="govuk-body govuk-link">
                    View review details
@@ -472,6 +472,8 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
+     {% if checked('clientreview','bsended') or checked('adhocAction','bsended')%}
+     {% else %}
              <ul class="govuk-list govuk-!-font-size-16" >
              <li>
              <form class="form" action="change-debt1" method="post">
@@ -509,6 +511,7 @@
               </form>
               </li>
               </ul>
+              {% endif %}
               </div>
           
  </div>
@@ -537,6 +540,8 @@
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+                {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+     {% else %}
              <li>
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>
@@ -573,6 +578,7 @@
               </form>
               </li>
               </ul>
+              {% endif %}
               </div>
           
  </div>
@@ -594,6 +600,8 @@
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
+       {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+     {% else %}
              <ul class="govuk-list govuk-!-font-size-16" >
              <li>
              <form class="form" action="change-debt1" method="post">
@@ -638,6 +646,7 @@
               </form>
               </li>
               </ul>
+              {% endif %}
               </div>
           
  </div>
@@ -667,6 +676,8 @@
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+                {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+     {% else %}
              <li>
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>
@@ -709,6 +720,7 @@
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+              {% endif %}
               </ul>
               </div>
           
@@ -738,6 +750,8 @@
               </form>
               </li>
              <li>
+               {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+     {% else %}
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>
                   {% include "./_debtypeHiddenRadio.html" %} 
@@ -772,6 +786,7 @@
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+              {% endif %}
               </ul>
               </div>
           
@@ -802,6 +817,8 @@
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+                {% if checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+     {% else %}
              <li>
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>
@@ -837,6 +854,7 @@
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+              {% endif %}
               </ul>
               </div>
           
@@ -867,7 +885,7 @@
 {{ debtrowreviewadhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}
 
 
- {% elif  checked('debtType','debt1') and checked('adhocAction','clientRemains')%}
+ {% elif  checked('debtType','debt1') and checked('adhocAction','clientRemains') or checked('debtType','debt1') and checked('clientreview','bsended') or checked('debtType','debt1') and checked('adhocAction','bsended')%}
     {{ debtrow_review_client_completed_adhoc("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "debt1") }}  
 
 {% elif checked('debtType','debt1') and checked('adhocAction','clientReview')%}
@@ -905,7 +923,7 @@
 {% elif  checked('debtType','debt3') and checked('adhocAction','debtReview')%}    
 {{ debtrowreviewadhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}
 
- {% elif  checked('debtType','debt3') and checked('adhocAction','clientRemains')%}
+ {% elif  checked('debtType','debt3') and checked('adhocAction','clientRemains') or checked('debtType','debt3') and checked('clientreview','bsended') or checked('debtType','debt3') and checked('adhocAction','bsended')%}
     {{ debtrow_review_client_completed_adhoc("Rent arrears", "M Jones(landlord)", "£1250", "Flat 4 Monmouth Rd", "debt3") }}  
 
 {% elif checked('debtType','debt3') and checked('adhocAction','clientReview')%}
@@ -931,10 +949,10 @@
 {% elif  checked('debtType','debt4') and checked('adhocAction','debtReview')%}    
  {{ debtrowreviewadhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}    
 
- {% elif  checked('debtType','debt4') and checked('adhocAction','clientRemains')%}
+ {% elif  checked('debtType','debt4') and checked('adhocAction','clientRemains') or checked('debtType','debt4') and checked('clientreview','bsended') or checked('debtType','debt4') and checked('adhocAction','bsended')%}
     {{ debtrow_review_client_completed_adhoc("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}   
 
-  {% elif  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('adhocAction','clientReview')  %}
+  {% elif  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('cmpClientReview','clientRemains')  %}
   {{ debtrow_review_client_completed("Water", "Yorkshire Water Services Ltd", "102", "4949 9494 9449", "debt4") }}      
  
 
@@ -961,7 +979,7 @@
 {% elif  checked('debtType','debt5') and checked('adhocAction','debtReview')%}    
     {{ debtrowreviewadhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}    
 
-{% elif  checked('debtType','debt5') and checked('adhocAction','clientRemains')%}
+{% elif  checked('debtType','debt5') and checked('adhocAction','clientRemains') or checked('debtType','debt5') and checked('clientreview','bsended') or checked('debtType','debt5') and checked('adhocAction','bsended')%}
     {{ debtrow_review_client_completed_adhoc("Gas", "EDF Energy Ltd", "£489", "CRT8536544", "debt5") }}
 
 {% elif checked('debtType','debt5') and checked('adhocAction','clientReview')%}
@@ -992,7 +1010,7 @@
 {% elif  checked('debtType','debt6') and checked('adhocAction','debtReview')%}    
      {{ debtrowreviewadhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
 
-{% elif  checked('debtType','debt6') and checked('adhocAction','clientRemains')%}
+{% elif  checked('debtType','debt6') and checked('adhocAction','clientRemains') or checked('debtType','debt6') and checked('clientreview','bsended') or checked('debtType','debt6') and checked('adhocAction','bsended') %}
     {{ debtrow_review_client_completed_adhoc("Council tax", "Southwark Council", "£1179", "LCC3456789", "debt6") }}
 
 {% elif checked('debtType','debt6') and checked('adhocAction','clientReview')%}
@@ -1018,7 +1036,7 @@
 {% elif  checked('debtType','debt7') and checked('adhocAction','debtReview')%}    
        {{ debtrowreviewadhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}    
 
-{% elif  checked('debtType','debt7') and checked('adhocAction','clientRemains')%}
+{% elif  checked('debtType','debt7') and checked('adhocAction','clientRemains') or checked('debtType','debt7') and checked('clientreview','bsended') or checked('debtType','debt7') and checked('adhocAction','bsended')%}
     {{ debtrow_review_client_completed_adhoc("Self assessment paye", "HMRC", "£789", "KN23455", "debt7") }}
 
 

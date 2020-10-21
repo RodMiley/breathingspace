@@ -4,26 +4,47 @@
    {% if debtTaskToDo == 'yes' %}
     <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds">
-<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">Creditor asked us to review this debt</strong>
+ {% if debtName == 'Credit card' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review this debt
+</strong>
+ {% elif debtName == 'Water' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review the client
+</strong>
+
+ {% elif debtName == 'Gas' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor has sold the debt
+</strong>
+{% endif %}
  </div>
  <div class="govuk-grid-column-one-third">
 
-<ul class="govuk-list govuk-!-font-size-16">
+<ul class="govuk-list">
               <li>
                
-
-                <form class="form" action="eligibility-review-adhoc" method="post">
+ {% if debtName == 'Credit card' %}
+                <form class="form" action="eligibility-review" method="post">
                   <button class="govuk-body govuk-link">
                    Review the debt
                   </button>
                    {% include "./_debtypeHiddenRadio.html" %} 
                    {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
+
+   {% elif debtName == 'Water' %}  
+   <a href="eligibility-review-client" class="govuk-body">Review the client</a>    
+   {% elif debtName == 'Gas' %}  
+  <a href="sold-debt" class="govuk-body">Reassign the debt to the new creditor</a>      
+  {% endif %}            
              
               </li>
               </ul>
  </div>
  </div>
+  
+
    {% endif %}
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 

@@ -4,9 +4,9 @@
           <ul class="app-task-list__items govuk-!-margin-bottom-1">
 
 
-               {% if checked('adhocAction','clientReview') or  checked('adhocAction','clientRemains')%}
+               {% if checked('adhocAction','clientReview') or  checked('adhocAction','clientRemains') or checked('adhocAction','bsended') %}
         <li class="app-task-list__item">
-              {% if checked('adhocAction','clientRemains') or checked('clientreview','bsended') %}
+              {% if checked('adhocAction','clientRemains') or checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>  
               {% else %}
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
@@ -15,15 +15,15 @@
               {% include "./_creditornames.html" %}  have asked us to review the client's eligibility
               </h4>
               <span class="app-task-list__task-name">
-               {% if  checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') %}
+               {% if  checked('client-eligibility-adhoc','yes') and checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                     <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" >
              Client not eligible after review, view details  
               {% elif checked('adhocAction','clientRemains') %} 
-            <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="facet" aria-describedby="read-declaration-status">
+            <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" class="govuk-button" >
                   Client eligible after review, view details   
              {% elif checked('clientreview','bsended') %}    
              {% else %}  
-                           <a href="eligibility-review-client-adhoc?reference={{customer.reference}}">
+            <a href="eligibility-review-client-adhoc?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
              Review client eligibility  
              {% endif %}  
                     </a>
@@ -39,6 +39,7 @@
         <li class="app-task-list__item">
               {% if checked('adhocAction','debtRemains') or checked('adhocAction','debtRemoved') %}
                <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>  
+                {% elif checked('clientreview','bsended') or checked('adhocAction','bsended')%}    
               {% else %}
              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>  
              {% endif %}
@@ -56,7 +57,7 @@
                  {% elif checked('clientreview','bsended') %}    
 
              {% else %}  
-                           <a href="eligibility-review-adhoc?reference={{customer.reference}}">
+                           <a href="eligibility-review-adhoc?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
              Review the debt
              {% endif %}  
                     </a>
@@ -72,7 +73,7 @@
               <li class="app-task-list__item">
                {% if data['debtreview'] %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-                {% elif checked('clientreview','bsended') %}    
+                {% elif checked('clientreview','bsended') or checked('adhocAction','bsended')%}    
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -81,13 +82,13 @@
               </h4>
                <p class="govuk-!-margin-bottom-1"> Debt type: Credit card </p>
               <span class="app-task-list__task-name">
-               {% if checked('debtreview','debtremoved') or checked('debtreview','debtremains')  or checked('clientreview','bsended') %}
+               {% if checked('debtreview','debtremoved') or checked('debtreview','debtremains')  or checked('clientreview','bsended') or checked('adhocAction','bsended') %}
                     <a href="eligibility-review-details?reference={{customer.reference}}">
              View review details  
            
 
           {% else %}  
-            <a href="eligibility-review?reference={{customer.reference}}">
+            <a href="eligibility-review?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
              Review the debt
           {% endif %}        
                     </a>
@@ -98,7 +99,7 @@
                             <li class="app-task-list__item">
                                    {% if checked('proposed','yes')%}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-                 {% elif checked('clientreview','bsended') %}
+                 {% elif checked('clientreview','bsended') or checked('adhocAction','bsended') %}
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -109,55 +110,32 @@
          
               
               <span class="app-task-list__task-name">
-              <a href="proposed-debt?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+              <a href="proposed-debt?reference={{customer.reference}}" >
                    {% if checked('proposed-debt','yes') and checked('proposed','yes') %}
+                    <a href="proposed-debt?reference={{customer.reference}}" >
                    Proposed debt accepted view details
+                   </a>
                    {% elif checked('proposed-debt','no') and checked('proposed','yes') %}
+                    <a href="proposed-debt?reference={{customer.reference}}" >
                    View details
-                   {% elif checked('clientreview','bsended') %}
-                   View proposed debt
+                   </a>
+                   {% elif checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+                   <a href="proposed-debt?reference={{customer.reference}}" >
+                  View proposed debt
+                  </a>
                    {% else %}
+                    <a href="proposed-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
                    Accept or reject proposed debt
+                   </a>
                    {% endif %}
               </a>
               </span>
               </li>
 
-              <li class="app-task-list__item">
-                    
-            {% if  checked('client-eligibility','yes') and checked('clientreview','bsended') or checked('client-eligibility','no') and checked('adHocClientReviewed','yes')  %}
-             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-            {% elif checked('clientreview','bsended') %}
-            {% else %}
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-            {% endif %}  
-              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-               Yorkshire Water Services Ltd have asked us to review the clients eligibility
-              </h4>
-              <span class="app-task-list__task-name">
-             
-                {% if checked('client-eligibility','yes') and checked('clientreview','bsended') %}
-                 <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet">
-                 Client not eligible after review - view details  
-                {% elif checked('client-eligibility','no') and checked('adHocClientReviewed','yes') %} 
-                 <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet">
-                  Client eligible after review, view details  
-                   {% elif checked('clientreview','bsended') %}
-                     <a href="eligibility-review-client-details?reference={{customer.reference}}" class="facet">
-                  View review details
-                {% else %}  
-                 <a href="eligibility-review-client?reference={{customer.reference}}" class="facet">
-                  Review client eligibility
-                {% endif %}   
-              </a>
-              </span>
-            
-              </li>
-
-       <li class="app-task-list__item">
+                     <li class="app-task-list__item">
              {% if checked('dontown','yes') %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-               {% elif checked('clientreview','bsended') %}
+               {% elif checked('clientreview','bsended') or checked('adhocAction','bsended') %}
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
@@ -167,15 +145,15 @@
               <p class="govuk-!-margin-bottom-1"> Debt type: Gas </p>
               <span class="app-task-list__task-name">
                 {% if checked('dontown','yes') %}
-               <a href="sold-debt-details?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+               <a href="sold-debt-details?reference={{customer.reference}}" >
                    View reassigned debt details
               </a>
-              {% elif checked('clientreview','bsended')%}
-               <a href="sold-debt?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+              {% elif checked('clientreview','bsended') or checked('adhocAction','bsended')%}
+               <a href="sold-debt?reference={{customer.reference}}" >
                    View details
               </a>
             {% else %}
-                 <a href="sold-debt?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+                 <a href="sold-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
                    Reassign the debt to the new creditor
               </a>
             {% endif %}  
@@ -186,13 +164,46 @@
       
               </li>
 
+              <li class="app-task-list__item">
+                    
+            {% if  checked('client-eligibility','yes') and checked('clientReview','bsended') or checked('client-eligibility','no') and checked('cmpClientReview','clientRemains')  %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% elif checked('clientreview','bsended') or checked('adhocAction','bsended')%}
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}  
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+               Yorkshire Water Services Ltd have asked us to review the clients eligibility
+              </h4>
+              <span class="app-task-list__task-name">
+             
+                {% if checked('client-eligibility','yes') and checked('clientreview','bsended') %}
+                 <a href="eligibility-review-client-details?reference={{customer.reference}}">
+                 Client not eligible after review - view details  
+                {% elif checked('client-eligibility','no') and checked('cmpClientReview','clientRemains') %} 
+                 <a href="eligibility-review-client-details?reference={{customer.reference}}">
+                  Client eligible after review, view details  
+                   {% elif checked('clientreview','bsended') or checked('adhocAction','bsended') %}
+                     <a href="eligibility-review-client-details?reference={{customer.reference}}">
+                  View review details
+                {% else %}  
+                 <a href="eligibility-review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
+                  Review client eligibility
+                {% endif %}   
+              </a>
+              </span>
+            
+              </li>
+
+
+
 <!--
                                          <li class="app-task-list__item">
               <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
               Money advice organisation transfer request
               </h4>
               <span class="app-task-list__task-name">
-              <a href="transfer-request?reference={{customer.reference}}" aria-describedby="read-declaration-status">
+              <a href="transfer-request?reference={{customer.reference}}" >
                     Stepchange have requested ownership of this case
               </a>
               </span>
