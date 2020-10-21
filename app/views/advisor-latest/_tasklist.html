@@ -182,7 +182,7 @@
 
                {% if checked('dontown','yes') %}
                 <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome</h4>
-                 <p class="govuk-body govuk-!-margin-bottom-2">Debt reassigned to the new creditor</p>
+                 <p class="govuk-body govuk-!-margin-bottom-2">Debt transferred to the new creditor</p>
                {% endif %}
               <span class="app-task-list__task-name">
                 {% if checked('dontown','yes') %}
@@ -195,7 +195,7 @@
               </a>
             {% else %}
                  <a href="sold-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2 govuk-!-margin-top-1">
-                   Reassign the debt to the new creditor
+                   Transfer this debt to the new creditor
               </a>
             {% endif %}  
               

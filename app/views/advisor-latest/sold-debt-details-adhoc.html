@@ -12,11 +12,13 @@
     <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
-      Reassigned debt details
+      Transferred debt details
       </h1>
+  <h2 class="govuk-heading-s  govuk-!-margin-bottom-2">Reason this debt was tranferred</h2>
+<p> {% include "./_creditornames.html" %}  told us they had sold this debt</p>    
   {% include "./_debtDetailsSoldDebt.html" %} 
 
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reassigned by</h2>          
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Transferred by</h2>          
 <p class="govuk-body">Paul Smith, Advice UK, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>
 
     </div>

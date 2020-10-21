@@ -300,7 +300,7 @@
 
                 <form class="form" action="sold-debt" method="post">
                   <button class="govuk-body govuk-link">
-                   Reassign the debt to the new creditor
+                   Transfer this debt to the new creditor
                   </button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
@@ -591,8 +591,8 @@
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 
       <ul class="govuk-list">
-      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reassigned the debt</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
-      <li>Creditor: {{creditor}} (Reassigned: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li> 
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor transferred this sold debt</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
+      <li>Creditor: {{creditor}} (Transfered: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li> 
       <li>Old Creditor: EDF Energy Ltd</li> 
       <li>Amount: {{amount}}<li>
       <li> Reference: {{reference}}</li>
@@ -605,7 +605,7 @@
              <ul class="govuk-list govuk-!-font-size-16" >
                <li class="govuk-!-margin-bottom-4">
                 <form class="form" action="sold-debt-details" method="post">
-                  <button class="govuk-body govuk-link">View reassigned debt details</button>
+                  <button class="govuk-body govuk-link">View transferred debt details</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
@@ -666,8 +666,8 @@
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 
       <ul class="govuk-list">
-      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reassigned the debt</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
-      <li>Creditor: {{changedebtcreditor}} (Reassigned: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li> 
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor transferred this sold debt</strong><h2 class="govuk-heading-s">Debt: {{type}}</h2></li>
+      <li>Creditor: {{changedebtcreditor}} (Transferred: {{ 'DD MMMM YYYY' | baseDateAdd(0) }})</li> 
       <li>Old Creditor: {{creditor}}</li> 
       <li>Amount: {{amount}}<li>
       <li> Reference: {{reference}}</li>
@@ -678,7 +678,7 @@
              <ul class="govuk-list govuk-!-font-size-16" >
               <li class="govuk-!-margin-bottom-4">
                 <form class="form" action="sold-debt-details-adhoc" method="post">
-                  <button class="govuk-body govuk-link">View reassigned debt details</button>
+                  <button class="govuk-body govuk-link">View transferred debt details</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
