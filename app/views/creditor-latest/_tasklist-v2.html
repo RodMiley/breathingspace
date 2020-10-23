@@ -15,7 +15,7 @@
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %} 
-              <h4 class="govuk-heading-s">   
+              <h3 class="govuk-heading-s">   
  {% if customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
                 A money adviser has reviewed the debt
 {% elif customer.status == 'new' %} 
@@ -25,20 +25,23 @@ A money adviser has added a new debt
   {% elif customer.status == 'dont-own' %} 
 We have told the money advisor we've sold this debt 
   {% elif customer.status == 'applied' %} 
-All recovery action against this debt has been stopped
+All action against this debt has been stopped
+  {% elif customer.status == 'client-review-accepted' or  customer.status == 'client-review-rejected' %}
+          A money adviser has reviewed the debt    
  {% endif %}
-   </h4>
-
-              {% if customer.status == 'review-accepted' %}
-            <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
-            <p><strong>Outcome of review: </strong>debt removed after review</p>
-            </div>
+   </h3>
+   {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' or customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %}
+ <h4 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">Outcome</h4>
+            {% if customer.status == 'review-accepted' %}
+            <p>Debt removed after review</p>
             {% elif customer.status == 'review-rejected'%}
-            <div class="govuk-details__text govuk-!-margin-bottom-2 govuk-!-margin-top-2 govuk-tag--blue">
-            <p><strong>Outcome of review:</strong> debt not removed after review</p>
-            </div>
-            {% endif %}  
-
+            <p>Debt not removed after review</p>
+            {% elif customer.status == 'client-review-accepted'%}
+            <p>Breathing Space has ended after client review</p>
+            {% elif customer.status == 'client-review-rejected'%}
+            <p>Breathing Space has not ended after client review</p>
+            {% endif %}      
+   {% endif %}
        {% include "./_debt-amount-ref-v2.html" %}
             {% if customer.status == 'new' or customer.status == 'applied' %} 
                           <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Choose an option</h2>   
@@ -113,9 +116,9 @@ All recovery action against this debt has been stopped
               {% if customer.substatus == 'proposedDebt' %}
               <li class="app-task-list__item">
                   <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to Money Adviser</strong>
-              <h4 class="govuk-heading-s">
+              <h3 class="govuk-heading-s">
               We have proposed a new debt to the money adviser
-             </h4>
+             </h3>
 
               <ul class="govuk-list">
                 <li>Debt type: {% if checked('typeOfDebt','other')%}
@@ -137,9 +140,9 @@ All recovery action against this debt has been stopped
                          {% if customer.clientReview == 'yes' %}
               <li class="app-task-list__item">
                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to money adviser</strong>
-              <h4 class="govuk-heading-s">
+              <h3 class="govuk-heading-s">
            We have asked the money advisor to review the clients eligibility  
-              </h4>
+              </h3>
                 <span class="app-task-list__task-name">
                 <a href='review-client-details?reference={{customer.reference}}'>View review details</a>
                 </span>

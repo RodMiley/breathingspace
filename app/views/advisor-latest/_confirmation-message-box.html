@@ -5,27 +5,27 @@
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
   {% if checked('confirmationmessage','debtremoved')%}
-  <p class="govuk-body">You've have removed the debt</p>
+  <p class="govuk-body">Review completed. You've removed the debt</p>
   {% elif checked('confirmationmessage','debtremains')%}
-  <p class="govuk-body">Review completed, you have not removed the debt</p>
+  <p class="govuk-body">Review completed. You have not removed the debt</p>
 {% elif checked('confirmationmessage','proposedaccepted')%}
-  <p class="govuk-body">Proposed debt accepted, the debt has been added </p>
+  <p class="govuk-body">Proposed debt accepted. The debt has been added </p>
   {% elif checked('confirmationmessage','proposedrejected')%}
-  <p class="govuk-body">Proposed debt rejected, you have not added the debt</p>
+  <p class="govuk-body">Proposed debt rejected. You have not added the debt</p>
 
   {% elif checked('confirmationmessage','clientremains')%}
-  <p class="govuk-body">Review completed, you have not removed the client</p>
+  <p class="govuk-body">Review completed. You have not removed the client</p>
 
   {% elif checked('confirmationmessage','adhocClientReviewrequested')%}
-  <p class="govuk-body">You have recorded that the creditor has asked us to review the client, we have added a new task to do</p>
+  <p class="govuk-body">You've recorded that the creditor has asked us to review the client. We've have added a new task to do</p>
 
   {% elif checked('confirmationmessage','adhocReviewrequested')%}
-  <p class="govuk-body  govuk-!-margin-bottom-0">You have recorded that the creditor has asked us to review the debt, we have added a new task to do</p>
+  <p class="govuk-body  govuk-!-margin-bottom-0">You've recorded that the creditor has asked us to review the debt. We've added a new task to do</p>
 
   {% elif checked('confirmationmessage','solddebt')%}
-  <p class="govuk-body govuk-!-margin-bottom-2">You have transferred the debt to the new creditor</p>
-  <h3 class="govuk-heading-s govuk-!-margin-bottom-2 govuk-!-margin-top-0">What next</h3>
-  <p class="govuk-body">We will notify the new creditor</p>
+  <p class="govuk-body govuk-!-margin-bottom-2">You've transferred the debt to the new creditor</p>
+  <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2 govuk-!-margin-top-0">What next</h3>
+  <p class="govuk-body">We will notify the new creditor</p> -->
  
   {% endif %}
 </div>

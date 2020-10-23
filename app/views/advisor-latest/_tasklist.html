@@ -214,15 +214,15 @@
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
             {% endif %}  
               <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
-               Yorkshire Water Services Ltd have asked us to review the clients eligibility
+               Yorkshire Water Services Ltd have asked us to review the client's eligibility
               </h3>
 
                {% if data['client-eligibility'] %}   
             <h4 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">Outcome</h4>
               {% if checked('client-eligibility','yes') %} 
-            <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space has ended after client review</p>
+            <p class="govuk-body govuk-!-margin-bottom-2">You've removed the client from Breathing Space</p>
               {% elif checked('client-eligibility','no') %} 
-                <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space remains active after client review</p>
+                <p class="govuk-body govuk-!-margin-bottom-2">You have not removed the client from Breathing Space</p>
               {% endif %}
               {% endif %}
               <span class="app-task-list__task-name">

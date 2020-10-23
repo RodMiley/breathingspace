@@ -11,5 +11,11 @@
        Active - after money adviser review
     {% elif customer.status == 'review-accepted'%}
        Removed - after money adviser review
+   {% elif customer.status == 'client-review-accepted'%}
+       Ended - after money adviser client review
+
+      {% elif customer.status == 'client-review-rejected'%}
+       Active - after money adviser client review    
+
     {% endif%}
    

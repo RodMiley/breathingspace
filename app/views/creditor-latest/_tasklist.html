@@ -24,14 +24,14 @@
  {% endif %}
    </h4>
 
-        {% if customer.status == 'review'%}
-      
-        {% endif %}
-
             {% if customer.status == 'review-accepted' %}
             <p>Outcome of review: debt removed from Breathing Space</p>
             {% elif customer.status == 'review-rejected'%}
             <p>Outcome of review: debt not removed from Breathing Space</p>
+               {% elif customer.status == 'client-review-accepted'%}
+            <p>Breathing Space has ended after client review</p>
+            {% elif customer.status == 'client-review-rejected'%}
+            <p>Breathing Space has not ended after client review</p>
             {% endif %}         
              
               <span class="app-task-list__task-name">
