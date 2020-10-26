@@ -42,7 +42,20 @@ var creditordebts = require('./creditordebtlist.js')
     }) 
   
   
+    router.get('/*', function (req, res, next) {
+      let findCustomer = {}
+ 
+      for (let i = 0; i < creditordebts.length; i++ ) {
+      if(creditordebts[i].reference === req.query.reference){
+        findCustomer = creditordebts[i];
+      }
   
+      }
+
+      res.locals.customer = findCustomer
+       next()
+        })
+
   
    router.get('/account-landing-tabs', function (req, res, next) {
     let findCustomer = {}
@@ -495,10 +508,10 @@ var creditordebts = require('./creditordebtlist.js')
         findCustomer7.status ='new' 
         findCustomer7.todo='Yes'
         findCustomer7.substatus=''
-        findCustomer8.status ='new' 
+        findCustomer8.status ='client-review-rejected' 
         findCustomer8.todo='Yes'
         findCustomer8.substatus=''
-        findCustomer9.status ='new' 
+        findCustomer9.status ='client-review-accepted' 
         findCustomer9.todo='Yes'
         findCustomer9.substatus=''
       }  

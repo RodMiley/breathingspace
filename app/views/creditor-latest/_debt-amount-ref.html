@@ -15,7 +15,7 @@
                </strong><br> Reference: <strong>{{customer.reference}}</strong></p>
                <p class="govuk-body-s" >
                <span class="block">Date started: {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}</span>
-                 {% if customer.status == 'review-accepted'%}
+                 {% if customer.status == 'review-accepted' or customer.status == 'client-review-accepted' %}
                <span class="block">Date ended: {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</span>
                {% else %}
                  <span class="block">Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(59) }}</span>

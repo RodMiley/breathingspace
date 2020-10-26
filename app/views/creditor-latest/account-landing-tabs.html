@@ -40,7 +40,7 @@
 </p> 
   
                {% include "./_tasklist-v2.html" %}
-{% if checked('clientReviewConfirm','yes') %}
+{% if checked('clientReviewConfirm','yes') or customer.status == 'client-review-accepted' %}
 {% else %}
      <h2 class="govuk-heading-m">
                 Other actions
@@ -49,9 +49,12 @@
     <a href="add-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
           Add debts that should be included
         </a>
+        {% if customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected'%}
+        {% else %}
         <a href="review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
         The client's not eligible, ask for a review
         </a>
+        {% endif %}
 {% endif %}
 
               <h2 class="govuk-heading-m">

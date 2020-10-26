@@ -1,22 +1,43 @@
-  <div class="govuk-grid-row govuk-!-margin-top-5">
-      <div class="govuk-grid-column-one-half">
+
+       <div class="govuk-grid-row keydetails  govuk-!-margin-top-5">
+      <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
      
            <span class="govuk-caption-l">
-
-                     <strong class="govuk-tag">
+{% if customer.status == 'client-review-accepted' %}
+  <strong class="govuk-tag govuk-tag--grey">
+  Inactive
+</strong>  
+{% else %}
+  <strong class="govuk-tag">
   Active
 </strong>  
-
+{% endif %}
     
     
     Breathing Space account for</span>
-    {{customer.name | default("Joe Black") }}
+     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+      </h1>
       </div>
-            <div class="govuk-grid-column-one-half">
-          <p class="header_highlight_info"><span><span>Day 1</span> of <span>60</span></span>Breathing space started: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} </strong><br>Breathing space ends: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(60) }} </strong></p>
+            <div class="govuk-grid-column-one-third">
+ <p class="header_highlight_info">         
+<span class=" govuk-!-margin-bottom-1">
+<strong>Breathing Space 
+{% if checked('clientreview','bsended') or customer.status == 'client-review-accepted' %}
+{% else %}
+day 1 of 60 
+{% endif %}
+</strong>
+</span>
+<span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} <br>
+{% if checked('clientreview','bsended') or customer.status == 'client-review-accepted' %}
+Ended: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} 
+{% else %}
+Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 
+{% endif %}
+</span> </p>
       </div>
-      <div class="govuk-grid-column-full">
+          <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible keydetails">
      </div>
      </div>

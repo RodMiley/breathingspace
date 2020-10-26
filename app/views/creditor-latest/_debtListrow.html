@@ -16,7 +16,11 @@
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
     <li> Status: {% include "./_status-playback.html" %}</li>
     <li>Date entered {{ customer.startdate }}</li>
+    {% if customer.status == 'client-review-accepted' %}
+     <li>Date ended {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</li>
+    {% else %}
     <li>Date ends {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
+    {% endif %}
     <ul>
   </div>
     <div class="govuk-grid-column-one-half">
