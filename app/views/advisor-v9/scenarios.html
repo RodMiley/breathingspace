@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Private Beta - MVP</span>
+       Money adviser choose scenario
+      </h1>
+<h2 class="govuk-heading-l">Breathing space choice page</h2> 
+<p><a href="debt-list-tabs-pre-submission">Start scenario (inactive account)</a></p>
+
+<h2 class="govuk-heading-l">Client page</h2>  
+<p><a href="account-page-active">Start scenario (active account)</a></p>
+
+
+<h2 class="govuk-heading-l">End Breathing Space</h2>
+<p><a href="endbreathingspace">Start scenario (Standard BS)</a></p>
+<p><a href="endbreathingspacemh">Start scenario (Mental health BS)</a></p>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditorfour'
+      var name ='creditorfour'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="names" method="post">
+
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Add client details: Step 1 of 4</span>
+       Personal details
+      </h1>
+
+      <ul class="govuk-list">
+      <li>First name: {{ firstname | default("Joe") }}</li>
+      {% if data['middlename'] %}<li>Middle name: {{ middlename | default("John") }} </li>{% endif %}
+      <li>Last name: {{ lastname | default("Black") }}</li>
+      <li>Date of birth:  {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+      </ul>
+
+       <!-- <h2 class="govuk-heading-m">
+       Matched records
+      </h2>
+      <p>We have matched <strong>5</strong> Breathing Spaces that match the surname and date of birth you have entered</p>
+      <p><a href="search-results-static">View matched records</a></p> -->
+
+
+      <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
+      <h2 class="govuk-heading-m">
+       Matched client details
+      </h2>
+      <p class="govuk-body">We have searched and matched <strong>5</strong> Breathing Spaces with the same lastname and date of birth you have entered</p>
+      <p class="govuk-body  govuk-!-font-weight-bold"><a href="search-results-page-static">View matched search results</a></p>
+            </div>
+
+ <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You must check that your client is eligible to be put into to Breathing Space
+  </strong>
+</div> 
+
+<p class="govuk-body">
+If you are sure that your client is eligible please continue
+</p>
+   
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

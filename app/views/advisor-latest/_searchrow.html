@@ -1,41 +1,30 @@
    
    
    
-   
-<table class="govuk-table fixcol">
-  <!--<caption class="govuk-table__caption visually-hidden">Name date of births and first line of addresses</caption>-->
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Name</th>
-      <th scope="col" class="govuk-table__header">Breathing Space reference</th>
-      <th scope="col" class="govuk-table__header">Date of birth</th>
-      <th scope="col" class="govuk-table__header">First line of address</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
+    <ul class="govuk-list">
+    {% for client in clients %} 
+    <li>
+    <div class="card">
 
-{% for client in clients %} 
-{% if data['reference'] ==client.reference
-   or data['dob'] ==client.dob
-   or data['fullname'] ==client.fullname and data['dob']==''
-   or data['fullname'] ==client.fullname and data['dob'] ==client.dob 
-   or data['fullname'] ==client.lastname and client.id =='1' and data['dob']==''
-   or data['fullname'] ==client.lastname and client.id =='1' and data['dob']==client.dob
-   or data['fullname'] ==client.fullname and data['reference'] ==client.reference
-   or data['fullname'] ==client.lastname and data['reference'] ==client.reference
-    %} 
 
-   <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-      <a href='debt-list-tabs-search'>{{client.fullname}}</a>
- 
-      </th>
-      <td class="govuk-table__cell">{{client.reference}}</td>
-      <td class="govuk-table__cell">{{client.dob}}</td>
-      <td class="govuk-table__cell">{{client.address}}</td>
-    </tr>
-    {% endif %}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-active?reference={{client.reference}}">{{client.name}} {{ lastname }}</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
 
- {% endfor %}
-</tbody>
-</table>
+{% if client.status =='active'%}
+    <strong class="govuk-tag govuk-!-margin-top-3">Active : {{client.reference}}</strong>
+{% else %}
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive : {{client.reference}}</strong>
+ {% endif %}
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: {{client.type}}</li>
+    <li>Started: {{ client.startdate }} - Ended {{ client.enddate }}</li>
+    <li>DOB: {{client.dob}}</li>
+    <li>Address: {{client.address}}</li>
+    <li>Money advice organisation: {{client.adviceorg}}</li>
+    <ul>
+</div>
+
+    </li>
+     {% endfor %}
+    </ul>
