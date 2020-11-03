@@ -2,23 +2,23 @@
 
 
       <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="searchedby-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
        Search by
       </h1>
     </legend>
-    <div id="contact-hint" class="govuk-hint">
+    <div id="searchedby-hint" class="govuk-hint">
       Select one option.
     </div>
     <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="searchedby" name="searchedby" type="radio" value="reference" data-aria-controls="conditional-searchedby"  {{checked('searchedby', 'reference') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby">
           Breathing space reference
         </label>
       </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby">
      <div class="govuk-form-group">
   <label class="govuk-label" for="reference">
       Reference
@@ -26,16 +26,16 @@
       <span id="account-number-hint" class="govuk-hint">
     For example, GHK19873G
   </span>
-  <input class="govuk-input govuk-!-width-one-quarter" id="reference" name="reference" type="text" value="{{reference}}">
+  <input class="govuk-input govuk-!-width-one-quarter" id="reference" name="searchreference" type="text" value="{{searchreference}}">
 </div>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <input class="govuk-radios__input" id="searchedby-2" name="searchedby" type="radio" value="lastname_dob" data-aria-controls="conditional-searchedby-2" {{checked('searchedby', 'lastname_dob') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby-2">
          Lastname and date of birth
         </label>
       </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby-2">
 <h2 class="govuk-heading-s">Enter clients lastname and date of birth </h2>
     <div class="govuk-form-group">
   <label class="govuk-label" for="lastname">
@@ -84,26 +84,26 @@
  
 </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
-        <label class="govuk-label govuk-radios__label" for="contact-3">
+        <input class="govuk-radios__input" id="searchedby-3" name="searchedby" type="radio" value="lastname_postcode" data-aria-controls="conditional-searchedby-3" {{checked('searchedby', 'lastname_postcode') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby-3">
          Last name and postcode
         </label>
       </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby-3">
         <h2 class="govuk-heading-s">Enter clients lastname and postcode </h2>
         
         <div class="govuk-form-group">
-  <label class="govuk-label" for="fullname">
+  <label class="govuk-label" for="lastnamepc">
       Last name
     </label>
-  <input class="govuk-input govuk-!-width-one-quarter" id="fullname" name="fullname" type="text" value="{{fullname}}">
+  <input class="govuk-input govuk-!-width-one-quarter" id="lastnamepc" name="lastnamepc" type="text" value="{{lastnamepc}}">
 </div>
 <div class="govuk-form-group">
-  <label class="govuk-label" for="dob">
+  <label class="govuk-label" for="searchpostcode">
       Postcode
     </label>
  
-  <input class="govuk-input govuk-!-width-one-quarter" id="dob" name="dob" type="text" value="{{dob}}">
+  <input class="govuk-input govuk-!-width-one-quarter" id="searchpostcode" name="searchpostcode" type="text" value="{{searchpostcode}}">
 </div>
     </div>
 

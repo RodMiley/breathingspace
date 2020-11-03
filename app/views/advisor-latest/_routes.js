@@ -5,7 +5,7 @@ var searchClient = require('./search.json')
 var maClient = require('./data/maClients.js')
 
 
-     router.get('/search-results-page', function (req, res, next) {
+     router.get('/*', function (req, res, next) {
       res.locals.clients = searchClient
       next()
        })
@@ -23,6 +23,21 @@ var maClient = require('./data/maClients.js')
          res.locals.customer = findCustomer
           next()
            })
+
+
+           router.get('/*', function (req, res, next) {
+            let findCustomer = {}
+       
+            for (let i = 0; i < searchClient.length; i++ ) {
+            if(searchClient[i].reference === req.query.reference){
+              findCustomer = searchClient[i];
+            }
+        
+            }
+   
+            res.locals.client = findCustomer
+             next()
+              })
 
 
 

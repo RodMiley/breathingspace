@@ -1,11 +1,13 @@
   <div class="govuk-grid-row keydetails  govuk-!-margin-top-5">
       <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+
      
-           <span class="govuk-caption-l">
-{% if checked('clientreview','bsended') or checked('adhocAction','bsended')%}
+     
+           <span class="govuk-caption-m">
+{% if checked('clientreview','bsended') or checked('adhocAction','bsended') or client.status =='active' %}
                      <strong class="govuk-tag govuk-tag--grey">
-  Inactive
+  Inactive : {{ client.reference }}
 </strong>  
   {% else %} 
                      <strong class="govuk-tag">
@@ -15,8 +17,8 @@
 
     
     
-    Breathing Space account for</span>
-     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+    Breathing Space reference </span>
+     {% if data['fullname']%} {{fullname}} {% else %} {{client.name | default("Joe") }} {{ lastname | default("Black")}} {% endif %}
       </h1>
       </div>
             <div class="govuk-grid-column-one-third">

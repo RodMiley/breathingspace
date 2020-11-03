@@ -1,13 +1,14 @@
    
-   
-   
-    <ul class="govuk-list">
-    {% for client in clients %} 
     <li>
     <div class="card">
 
 
- <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-active?reference={{client.reference}}">{{client.name}} {{ lastname }}</a>
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-active?reference={{client.reference}}">{{client.name}}  
+ {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc }}
+ {% else %}
+ {{ lastname }}
+ {% endif %}
+  </a>
   <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
  <hr class="govuk-section-break govuk-section-break--visible">
 
@@ -19,12 +20,22 @@
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
     <li>Type of Breathing Space: {{client.type}}</li>
     <li>Started: {{ client.startdate }} - Ended {{ client.enddate }}</li>
-    <li>DOB: {{client.dob}}</li>
-    <li>Address: {{client.address}}</li>
+    <li>DOB: 
+     {% if checked('searchedby','lastname_dob') %} 
+      {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+ {% else %}
+    {{client.dob}}
+ {% endif %}
+</li>
+    <li>Address: {{client.address}},
+    {% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode}}
+ {% endif %}
+    </li>
     <li>Money advice organisation: {{client.adviceorg}}</li>
     <ul>
 </div>
 
     </li>
-     {% endfor %}
-    </ul>

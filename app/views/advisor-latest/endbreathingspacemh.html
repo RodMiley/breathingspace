@@ -29,8 +29,48 @@
         </label>
       </div>
 
+
             <!-- reveal  conditional -->
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="treatmentStopped">
+
+            <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="treatmentEnd-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        What date did the treatment end?
+      </label>
+    </legend>
+    <div id="treatmentEnd-hint" class="govuk-hint">
+      For example, 12 11 2020
+    </div>
+    <div class="govuk-date-input" id="treatmentEnd">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="treatmentEndDay">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="treatmentEndDay" name="treatmentEndDay" type="text" inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="treatmentEndMonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="treatmentEndMonth" name="treatmentEndMonth" type="text"  inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="treatmentEndYear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="treatmentEndYear" name="treatmentEndYear" type="text" inputmode="numeric"></div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
       {% include "./_midwayreviewradiosmh.html" %}
       </div>
     <!-- -->
@@ -138,10 +178,50 @@
  
 
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="bsEndReason-8" name="bsEndReason" type="radio" value="The client is deceased"  {{checked('bsEndReason', 'The client is deceased') }}>
+        <input class="govuk-radios__input" id="bsEndReason-8" name="bsEndReason" type="radio" value="The client is deceased"  {{checked('bsEndReason', 'The client is deceased') }} data-aria-controls="deceasedDateReveal">
         <label class="govuk-label govuk-radios__label" for="bsEndReason-8">
         The client is deceased
         </label>
+      </div>
+
+      
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="deceasedDateReveal">
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="deceased-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        What was the date of death?
+      </label>
+    </legend>
+    <div id="deceased-hint" class="govuk-hint">
+      For example, 12 11 2020
+    </div>
+    <div class="govuk-date-input" id="deceased">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="deceasedDay">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceasedDay" name="deceasedDay" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="deceasedMonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceasedMonth" name="deceasedMonth" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="deceasedYear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="deceasedYear" name="deceasedYear" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
       </div>
 
 

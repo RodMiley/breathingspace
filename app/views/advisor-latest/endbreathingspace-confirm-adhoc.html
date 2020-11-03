@@ -35,6 +35,16 @@
                     . This decision was made as part of a 30 day review
                     {% endif %}
                 </p>
+
+                {% if checked('bsEndReason','The client is deceased')%}
+                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date of death</h3>
+                <p class="govuk-body">{{ deceasedDay }} {{ deceasedMonth | toMonth }} {{ deceasedYear }}</p>
+                {% endif %}
+
+                {% if checked ('bsEndReason','The client has stopped receiving mental health crisis treatment')%}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date the treatment ended</h3>
+                <p class="govuk-body">{{ treatmentEndDay }} {{ treatmentEndMonth | toMonth }} {{ treatmentEndYear }}</p>
+                {% endif %}
             
            
      

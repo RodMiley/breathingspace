@@ -27,6 +27,8 @@
   <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2 govuk-!-margin-top-0">What next</h3>
   <p class="govuk-body">We will notify the new creditor</p> -->
  
+   {% elif checked('confirmationmessage','nonComplianceReported')%}
+  <p class="govuk-body govuk-!-margin-bottom-2">You've reported creditor non compliance to the Insolvency Service</p>
   {% endif %}
 </div>
 
