@@ -1,0 +1,32 @@
+
+
+<div role="navigation" aria-labelledby="nav2">
+<h2 class="govuk-heading-s" id='nav2' >Manage applications</h2>
+<nav class="app-subnav"> 
+          <ul class="app-subnav__section">
+          {% if currentnav == 'viewallapplications' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link  govuk-link--no-visited-state" href="viewallapplications">View all applications</a>
+              
+            </li>
+             {% if currentnav == 'addapplicationtosandbox' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="addapplicationtosandbox">Add application to the sandbox</a>
+              
+            </li>   
+        {% if currentnav == 'getproductioncredentials' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="getproductioncredentials">Get production credentials</a>
+            </li>   
+          </ul>
+</nav>
+</div>

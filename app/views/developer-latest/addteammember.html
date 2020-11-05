@@ -1,0 +1,113 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+      <li class="govuk-breadcrumbs__list-item">
+      <a href="teammembers">Manage team members</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+     Add a team member
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+
+
+
+  <form class="form" action="teammembers" method="post">
+
+  
+    <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Add a team member</h1>
+
+    <div class="govuk-grid-row  govuk-!-margin-top-5">
+    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Application:</span></div>
+    <div class="govuk-grid-column-three-quarters" data-app-name=""><span class="govuk-body">{% include "./_appName.html" %}</span></div>
+</div>
+
+<div class="govuk-grid-row  govuk-!-margin-bottom-5">
+    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Environment:</span></div>
+    <div id="environmentName" class="govuk-grid-column-three-quarters" data-app-env=""><span class="govuk-body">Sandbox</span></div>
+</div>
+
+<h2 class="govuk-heading-l">
+Team member
+</h2>
+
+<div class="govuk-form-group ">
+        <label class="govuk-label " for="email" id="email-label">Email address</label>
+        
+
+        <input type="text" id="email" name="email" value="" class="govuk-input" aria-labelledby="email-label">
+    </div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="permissions-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        What permissions do you want to give them?
+      </label>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="permissions" name="permissions" type="radio" value="Developer" aria-describedby="permissions-item-hint">
+        <label class="govuk-label govuk-radios__label" for="permissions">
+         Developer
+        </label>
+        <div id="permissions-item-hint" class="govuk-hint govuk-radios__hint">
+          <ul class="govuk-list">
+                        <li>Test an application</li>
+                        <li>Subscribe to sandbox APIs</li>
+                        <li>Add redirect URIs</li>
+                        <li>View team members</li>
+                    </ul>
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="permissions-2" name="permissions" type="radio" value="Admin" aria-describedby="permissions-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="permissions-2">
+        Administrator
+        </label>
+        <div id="permissions-2-item-hint" class="govuk-hint govuk-radios__hint">
+        <ul class="govuk-list">
+                        <li>Test an application</li>
+                        <li>Subscribe to sandbox APIs and request to change production APIs</li>
+                        <li>Change application details</li>
+                        <li>Add or remove team members</li>
+                    </ul>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>    
+
+
+<button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+ Add team member
+</button> 
+<a href="teammembers" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Cancel
+</a> 
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

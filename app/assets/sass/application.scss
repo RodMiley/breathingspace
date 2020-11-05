@@ -268,7 +268,7 @@ hr.keydetails
 // Design system nav //
 
 .app-subnav {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     padding: 0px 15px 0 0;
     font-family: "GDS Transport",Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -483,6 +483,21 @@ ul.searchresults{
 }
 }
 
+
+
+
+// Start developer hub styling //
+
+.signin{
+    float:right;
+
+    li{
+        display:inline-block;
+        padding-left:10px;
+    }
+}
+
+// End developer hub styling //
 
 
   

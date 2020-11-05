@@ -1,0 +1,61 @@
+
+<div role="navigation" aria-labelledby="nav2">
+<h2 class="govuk-heading-s" id='nav2' > {% include "./_appName.html" %}</h2>
+<nav class="app-subnav"> 
+          <ul class="app-subnav__section">
+          {% if currentnav == 'applicationdetails' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link  govuk-link--no-visited-state" href="applicationdetails">Application details</a>
+            </li>
+          
+                {% if currentnav == 'credentials' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="credentials">Credentials</a>
+              
+            </li>   
+                {% if currentnav == 'clientid' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="clientid">Client ID</a>
+            </li>   
+                  {% if currentnav == 'clientsecrets' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="clientsecrets"> Client secrets</a>
+            </li>  
+                     {% if currentnav == 'apisubcriptions' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="apisubcriptions">API subscriptions</a>
+            </li>     
+                    </li>  
+                  {% if currentnav == 'teammembers' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="teammembers">Team members</a>
+            </li>       
+                 {% if currentnav == 'deleteapplication' %}
+           <li class="app-subnav__section-item app-subnav__section-item--current">
+          {% else %}
+            <li class="app-subnav__section-item">
+         {% endif %}   
+              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="deleteapplication">Delete application</a>
+            </li>  
+          </ul>
+</nav>
+</div>
+

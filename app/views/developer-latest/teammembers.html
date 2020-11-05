@@ -1,0 +1,84 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+     Manage team members
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='teammembers' %}
+ <!-- -->
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Manage team members</h1>
+
+    <div class="govuk-grid-row  govuk-!-margin-top-5">
+    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Application:</span></div>
+    <div class="govuk-grid-column-three-quarters" data-app-name=""><span class="govuk-body">{% include "./_appName.html" %}</span></div>
+</div>
+
+<div class="govuk-grid-row  govuk-!-margin-bottom-5">
+    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Environment:</span></div>
+    <div id="environmentName" class="govuk-grid-column-three-quarters" data-app-env=""><span class="govuk-body">Sandbox</span></div>
+</div>
+</div>
+</div>
+    <div class="govuk-grid-row">
+<div class="govuk-grid-column-full"> 
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-visually-hidden">Emails and roles</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Email address</th>
+      <th scope="col" class="govuk-table__header">Role</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href="">robertomullens@cab.org.uk</a></th>
+      <td class="govuk-table__cell">Admin</td>
+       <td class="govuk-table__cell"></td>
+    </tr>
+    {% if checked('permissions', 'Admin') or checked('permissions', 'Developer') or checked('permissions', 'Remains')  %}
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a href="">{{email}}</a></th>
+      <td class="govuk-table__cell">{{ permissions }}</td>
+       <td class="govuk-table__cell"><a href="deleteteammember">Remove</a></td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+
+<a href="addteammember" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+ Add a team member
+</a> 
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+
