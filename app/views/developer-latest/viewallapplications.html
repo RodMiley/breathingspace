@@ -46,11 +46,13 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+  {% if data['applicationname']%}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header"><a href="#">{{ applicationname }}</a></th>
       <td class="govuk-table__cell govuk-table__cell--numeric">Admin</td>
       <td class="govuk-table__cell govuk-table__cell--numeric">No API called</td>
     </tr>
+    {% endif %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header"><a href="applicationdetails"> {% include "./_appName.html" %} </a></th>
       <td class="govuk-table__cell govuk-table__cell--numeric">Admin</td>
