@@ -20,44 +20,78 @@
 
 
 
-  <form class="form" action="index" method="post">
+  <form class="form" action="apisubcriptions" method="post">
 
   
     <div class="govuk-grid-row">
-       <div class="govuk-grid-column-one-quarter"> 
-
-{% include "./_nav1.html" %}
-{% include "./_nav2.html" %}
-
-
-</div>
 <div class="govuk-grid-column-three-quarters"> 
 <h1 class="govuk-heading-l">Manage API subcriptions</h1>
 
+<p class="govuk-body">
+You must subscribe to an API so your application can access it. You’ll receive notifications about its lifecycle events, such as new version introductions and old version retirements.
+</p>
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Appications and roles</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Sandbox applications</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Your role</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Last API call</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"><a href="">InsolvencyTestClient</a></th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">Admin</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">No API called</td>
-    </tr>
-  </tbody>
-</table>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-0">Example API</h2>
 
-<p class="govuk-body">After testing in the sandbox, you can apply for production credentials</p>
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-1">
+         Hello world
+        </span>
+      </h2>
+      <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        
+        {% if checked('apiactive','yes')%}
+         Subscriptions 1
+        {% else %}
+        Subscriptions 0
+        {% endif %}
+      </div>
+    </div>
+    <div id="accordion-with-summary-sections-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-1">
 
-<a href="add-new-debt" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
-  Get production credentials
-</a> 
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" data-app-name=""><p class="govuk-body">
+    <a href="">1.0(stable)</a>
+    
+    </p></div>
+    <div class="govuk-grid-column-one-third"><p class="pull_right govuk-body">
+      {% if checked('apiactive','yes')%}
+         <strong class="govuk-tag">Active</strong>
+         <button class="govuk-link govuk-!-font-size-19">Turn off</button>
+      {% else %}
+    <strong class="govuk-tag govuk-tag--grey">Inactive</strong>
+    <button class="govuk-link govuk-!-font-size-19">Turn on</button>
+    {% endif %}
+    
+  </p> </div>
+  {% if checked('apiactive','yes')%}
+      <div class="govuk-visually-hidden">
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="apiactive" name="apiactive" type="radio" value="no" checked>
+        <label class="govuk-label govuk-radios__label" for="apiactive">
+          Yes
+        </label>
+      </div>
+    </div>
+  {% else %}
+    <div class="govuk-visually-hidden">
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="apiactive" name="apiactive" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="apiactive">
+          Yes
+        </label>
+      </div>
+    </div>
+    {% endif %}
+</div>
+
+    </div>
+  </div>
+  </div>
 
 
 

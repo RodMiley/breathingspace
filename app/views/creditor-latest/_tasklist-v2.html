@@ -100,7 +100,7 @@ A money adviser has added a new debt
 {% elif customer.status == 'review' %}       
  We have asked the money advisor to review this debt   
   {% elif customer.status == 'dont-own' %} 
-We have told the money advisor we've sold this debt 
+We've told the money advisor we've sold this debt 
   {% elif customer.status == 'applied' or customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %} 
 All action against this debt has been stopped
   {% elif customer.status == 'client-review-accepted' or  customer.status == 'client-review-rejected' %}

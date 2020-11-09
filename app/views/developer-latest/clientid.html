@@ -34,17 +34,7 @@
 <a href="#" class="copy-to-clip govuk-body" title="Copies client ID into the system clipboard." data-clip-text="4nTLntUtBY3lhrr77B3DhMh70Ht9" aria-live="polite" aria-label="Copy client ID to clipboard">
             Copy
     </a>
-
-    <div class="govuk-grid-row  govuk-!-margin-top-5">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Application:</span></div>
-    <div class="govuk-grid-column-three-quarters" data-app-name=""><span class="govuk-body">{% include "./_appName.html" %}</span></div>
-</div>
-
-<div class="govuk-grid-row  govuk-!-margin-bottom-5">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Environment:</span></div>
-    <div id="environmentName" class="govuk-grid-column-three-quarters" data-app-env=""><span class="govuk-body">Sandbox</span></div>
-</div>
-
+{% include "./_appdetails.html"%}
 <p class="govuk-body">Your client ID is a unique identifier we created when you added your application.</p>
 <p class="govuk-body">Generate a client secret and use it with your client ID to test your application in the sandbox.</p>
 

@@ -35,17 +35,7 @@
 <div class="govuk-grid-column-three-quarters"> 
 <h1 class="govuk-heading-l">Application details</h1>
 
-
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Application:</span></div>
-    <div class="govuk-grid-column-three-quarters" data-app-name=""><span class="govuk-body">BSAPP001</span></div>
-</div>
-
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Environment:</span></div>
-    <div id="environmentName" class="govuk-grid-column-three-quarters" data-app-env=""><span class="govuk-body">Sandbox</span></div>
-</div>
-
+{% include "./_appdetails.html"%}
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -68,7 +58,7 @@
                 <th scope="row" class="govuk-table__header" >Application details</th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
                     
-                        <a id="change" href="/developer/applications/5f670565-6629-4b03-90dd-5e8d21d5e3df/details/change" >Change <span class="govuk-visually-hidden">application details</span></a>
+                        <a id="change" href="applicationchange" >Change <span class="govuk-visually-hidden">application details</span></a>
                     
                 </td>
             </tr>
@@ -84,15 +74,15 @@
             </tr>
             <tr>
                 <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Application description</th>
-                <td class="govuk-table__cell" id="description">None</td>
+                <td class="govuk-table__cell" id="description">{{ appdescription | default('none')}}</td>
             </tr>
             <tr>
                 <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Privacy policy URL</th>
-                <td class="govuk-table__cell" id="privacyPolicyUrl">None</td>
+                <td class="govuk-table__cell" id="privacyPolicyUrl">{{ appprivacy | default('none')}}</td>
             </tr>
             <tr>
                 <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Terms and conditions URL</th>
-                <td class="govuk-table__cell" id="termsAndConditionsUrl">None</td>
+                <td class="govuk-table__cell" id="termsAndConditionsUrl">{{ appterms | default('none')}}</td>
             </tr>
         </tbody>
     </table>

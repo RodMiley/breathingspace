@@ -31,15 +31,7 @@
 <div class="govuk-grid-column-three-quarters"> 
 <h1 class="govuk-heading-l">Add a team member</h1>
 
-    <div class="govuk-grid-row  govuk-!-margin-top-5">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Application:</span></div>
-    <div class="govuk-grid-column-three-quarters" data-app-name=""><span class="govuk-body">{% include "./_appName.html" %}</span></div>
-</div>
-
-<div class="govuk-grid-row  govuk-!-margin-bottom-5">
-    <div class="govuk-grid-column-one-quarter"><span class="govuk-body govuk-!-font-weight-bold">Environment:</span></div>
-    <div id="environmentName" class="govuk-grid-column-three-quarters" data-app-env=""><span class="govuk-body">Sandbox</span></div>
-</div>
+{% include "./_appdetails.html"%}
 
 <h2 class="govuk-heading-l">
 Team member

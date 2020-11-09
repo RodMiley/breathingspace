@@ -26,38 +26,15 @@
 
   
     <div class="govuk-grid-row">
-       <div class="govuk-grid-column-one-quarter"> 
-
-{% include "./_nav1.html" %}
-{% include "./_nav2.html" %}
-
-</div>
 <div class="govuk-grid-column-three-quarters"> 
 <h1 class="govuk-heading-l">Delete application</h1>
 
+{% include "./_appdetails.html"%}
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Appications and roles</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Sandbox applications</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Your role</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Last API call</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"><a href="">InsolvencyTestClient</a></th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">Admin</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">No API called</td>
-    </tr>
-  </tbody>
-</table>
+<p class="govuk-body">Before deleting this application, check with all your <a href="teammembers">team members</a>.</p>
 
-<p class="govuk-body">After testing in the sandbox, you can apply for production credentials</p>
-
-<a href="add-new-debt" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
-  Get production credentials
+<a href="deleteapplicationconfirm" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+  Continue
 </a> 
 
 

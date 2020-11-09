@@ -16,7 +16,11 @@
             Confirmation
           </h1>
           <div class="govuk-panel__body">
-              You have ended your client's Breathing Space
+          {% if checked('bsEndReason','The client has stopped receiving mental health crisis treatment')%}
+             Your client's Breathing Space will end 30 days after their mental health crisis treatment ended
+          {% else %}
+              You've ended your client's Breathing Space
+          {% endif %}    
           </div>
         </div>
 

@@ -16,11 +16,11 @@
       </h1>
 
 
-                    <h2 class="govuk-heading-m">We will inform all creditors when the client's Breathing Space has ended</h2>
+                    <h2 class="govuk-heading-m">We'll tell all creditors when the client's Breathing Space has ended</h2>
 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
                     <p class="govuk-body">
-                    {% if checked('bsEndReason','The client is no longer eligible') and data['clientReviewReason'] %}{{ clientReviewReason }}
+                    {% if checked('bsEndReason','The client is not eligible') and data['clientReviewReason'] %}{{ clientReviewReason }}
                     
                     {% else %}
                     {{bsEndReason}}
@@ -36,7 +36,7 @@
                     {% endif %}
                 </p>
 
-                {% if checked('bsEndReason','The client is deceased')%}
+                {% if checked('bsEndReason','The client has died')%}
                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date of death</h3>
                 <p class="govuk-body">{{ deceasedDay }} {{ deceasedMonth | toMonth }} {{ deceasedYear }}</p>
                 {% endif %}

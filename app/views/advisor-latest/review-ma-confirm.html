@@ -20,10 +20,11 @@
  <h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review of this debt</h2>
 
   {% include "./_debtDetails.html" %} 
- <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+ <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Creditor's reason for the review</h3>
   <p class="govuk-body">{{ debtReview }}</p>
 
-  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details provided by the creditor</h3>
                     <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
 
      
