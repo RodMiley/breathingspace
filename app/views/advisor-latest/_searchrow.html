@@ -2,8 +2,12 @@
     <li>
     <div class="card">
 
-
- <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-active?reference={{client.reference}}">{{client.name}}  
+{% if client.status =='active' %}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-active?reference={{client.reference}}">
+ {% else %}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-non-owning?reference={{client.reference}}">
+ {% endif %}
+ {{client.name}}  
  {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc }}
  {% else %}
  {{ lastname }}
@@ -13,12 +17,12 @@
  <hr class="govuk-section-break govuk-section-break--visible">
 
 {% if client.status =='active'%}
-    <strong class="govuk-tag govuk-!-margin-top-3">Active : {{client.reference}}</strong>
+    <strong class="govuk-tag govuk-!-margin-top-3">Active {{client.type}}</strong> <strong>{{client.type}}</strong> Breathing Space
 {% else %}
-    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive : {{client.reference}}</strong>
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive</strong>  <strong>{{client.type}}</strong> Breathing Space
  {% endif %}
-    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
-    <li>Type of Breathing Space: {{client.type}}</li>
+    <ul class="govuk-list govuk-!-margin-bottom-0">
+    <li>Reference:  {{client.reference}}</li>
     <li>Started: {{ client.startdate }} - Ended {{ client.enddate }}</li>
     <li>DOB: 
      {% if checked('searchedby','lastname_dob') %} 

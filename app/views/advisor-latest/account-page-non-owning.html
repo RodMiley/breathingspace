@@ -1,0 +1,106 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+  {% include "./_global-nav.html" %} 
+       <div class="govuk-grid-row govuk-!-margin-top-5">
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+     
+           <span class="govuk-caption-m">
+{% if client.status == 'active' %}
+  <strong class="govuk-tag">
+  Active
+</strong>  
+{% else %}
+  <strong class="govuk-tag govuk-tag--grey">
+  Inactive 
+</strong>  
+{% endif %}
+    <strong>{{client.type}}</strong> Breathing Space
+  </span>
+     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+       <span class="govuk-caption-m">Reference: BS00001</span>
+      </h1>
+
+      </div>
+            <div class="govuk-grid-column-one-third">
+ <p class="header_highlight_info">         
+<span class=" govuk-!-margin-bottom-1">
+<strong>Breathing Space 
+{% if client.status == 'inactive' %}
+ran for 60 days
+{% else %}
+day 1 of 60 
+{% endif %}
+</strong>
+</span>
+<span class="govuk-body-s">Started: {{ client.startdate }} <br>
+{% if client.status == 'inactive' %}
+Ended: {{ client.enddate }} 
+{% else %}
+Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 
+{% endif %}
+</span> </p>
+      </div>
+      </div>
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+     <hr class="govuk-section-break govuk-section-break--visible keydetails">
+
+     <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This Breathing Space has ended</h2>
+
+<p>It ended early because the client was not taking money advice.</p>
+
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+</div>
+     </div>
+     </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+                   <h2 class="govuk-heading-m">
+                 Client details
+               </h2> 
+            <ul class="govuk-list">
+              <li>Client:   {{client.name | default("Joe")}}  
+ {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc | default("Black") }}
+ {% else %}
+ {{ lastname | default("Black") }}
+ {% endif %} </li>
+              <li>Date of birth:        {% if checked('searchedby','lastname_dob') %} 
+      {{ dobday }} {{ dobmonth }} {{ dobyear }}
+ {% else %}
+    {{client.dob | default("28 January 1984") }}
+ {% endif %}</li>
+              <li>Address: {{client.address | default('2 Monmouth Drive') }}, London,
+    {% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode | default('NW1 8GH')}}
+ {% endif %}</li>
+              <li>Business name: Elsada tech</li>
+              <li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>
+
+              </ul>
+
+
+              <h2 class="govuk-heading-m">Money advice organisation details</h2>
+              <ul class="govuk-list">
+              <li>Name: {{ client.adviceorg | default('Stepchange')}}</li>
+              <li>Email: breathingspaceteam@{{ client.adviceorg | default('Stepchange') }}.org.uk</li>
+              <li>Telephone: 0151 490 1731</li>
+              </ul>
+</div>
+</div>
+
+
+
+
+{% endblock %}
