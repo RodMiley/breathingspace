@@ -1,0 +1,43 @@
+
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+
+  <form class="form" action="/advisor-private-beta-mvp/index" method="post">
+
+  
+    <div class="govuk-grid-row">
+       <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Time machine</h1>
+
+      <p class="govuk-body-l">Sometime after, the client engages with another money advise organisation, the client doesn't mention a previous Breathing Space.</p>
+     <h2 class="govuk-heading-m">Money Adviser</h2>
+      <p>The Money adviser thinks Breathing Space would work for the client and checks the service as part of an eligibilty check</p>
+
+
+<div class="govuk-radios" style="display:none">
+        
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="Money adviser" name="MAScenaioChoice" type="radio" value="breathing space ended" aria-describedby="Money adviser-item-hint" checked >
+          <label class="govuk-label govuk-radios__label" for="Money adviser">
+        Search for an standard Breathing Space account
+      </label>
+        </div>
+  </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+       </div> 
+
+    </form>
+
+
+{% endblock %}

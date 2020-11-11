@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt5-step2" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 1 of 2</span>
+       Add a debt
+      </h1>
+
+  <div class="govuk-form-group">
+      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="creditorfive">Enter the creditor’s name</label>
+      <span id="changed-name-hint" class="govuk-hint">
+      It can be the name of an organisation or an individual, for example ABC Bank Ltd or Joe Johnson
+     </span>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditorfive'
+      var name ='creditorfive'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

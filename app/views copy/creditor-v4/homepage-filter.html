@@ -1,0 +1,154 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include path+"./_global-nav.html" %}
+
+
+
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+  {% include path+"./_creditorname.html" %}
+  </h1>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="debttype-conditional-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+       Filter
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional  govuk-radios--small" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional" name="debttype" type="radio" value="all" data-aria-controls="conditional-debttype-conditional">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional">
+          All
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional">
+       <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-fieldset__heading">
+        Filter by tasks or status
+      </h2 >
+    </legend>
+    <div class="govuk-radios govuk-radios--small">
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status-6" name="status" type="radio" value="todo">
+        <label class="govuk-label govuk-radios__label" for="status-6">
+         Tasks to do
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="new">
+        <label class="govuk-label govuk-radios__label" for="status">
+          New debts added
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status-2" name="status" type="radio" value="PA">
+        <label class="govuk-label govuk-radios__label" for="status-2">
+          Protections applied
+        </label>
+      </div>
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status-3" name="status" type="radio" value="R">
+        <label class="govuk-label govuk-radios__label" for="status-3">
+          Reviews requested
+        </label>
+      </div>
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status-4" name="status" type="radio" value="RA">
+        <label class="govuk-label govuk-radios__label" for="status-4">
+          Reviews completed - debt removed
+        </label>
+      </div>
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="status-5" name="status" type="radio" value="RR">
+        <label class="govuk-label govuk-radios__label" for="status-5">
+          Reviews completed - debt remains
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional-2" name="debttype" type="radio" value="CT" data-aria-controls="conditional-debttype-conditional-2">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional-2">
+         Council tax
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional-2">
+       
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional-3" name="debttype" type="radio" value="HB" data-aria-controls="conditional-debttype-conditional-3">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional-3">
+         Housing benefit
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional-3">
+       
+
+      </div>
+  
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional-4" name="debttype" type="radio" value="PF" data-aria-controls="conditional-debttype-conditional-3">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional-4">
+         Parking fines
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional-4">
+       
+
+      </div>
+   
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional-5" name="debttype" type="radio" value="RA" data-aria-controls="conditional-debttype-conditional-5">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional-5">
+        Rent arrears
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional-5">
+       
+
+      </div>
+    
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debttype-conditional-6" name="debttype" type="radio" value="Other" data-aria-controls="conditional-debttype-conditional-3">
+        <label class="govuk-label govuk-radios__label" for="debttype-conditional-6">
+        Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debttype-conditional-6">
+       
+
+      </div>
+  </fieldset>
+</div>
+
+
+    </div>
+</div>
+
+{% endblock %}

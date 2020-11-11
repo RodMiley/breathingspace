@@ -1,0 +1,130 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row keydetails">
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+     
+           <span class="govuk-caption-l">
+
+                     <strong class="govuk-tag">
+  Active
+</strong>  
+
+    
+    
+    Breathing Space account for</span>
+     {% if data['fullname']%} {{fullname}} {% else %} Joe Black {% endif %}
+      </h1>
+      </div>
+            <div class="govuk-grid-column-one-third">
+          
+<p class="header_highlight_info">
+
+<span class=" govuk-!-margin-bottom-1"><strong>Breathing Space day 30 </strong></span><span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-30) }} </p>
+      </div>
+          <div class="govuk-grid-column-full">
+     <hr class="govuk-section-break govuk-section-break--visible black">
+     </div>
+     </div>
+
+
+
+
+  <form class="form" action="index" method="post">
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  End Breathing Space
+</a>
+
+
+   
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+
+     {% macro debtrow(type, creditor, amount, reference, changelink, removelink, styleclass ) %}
+        <div class="govuk-summary-list__row {{ styleclass }}">
+            <dt class="govuk-summary-list__key">
+             {{type}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor: {{creditor}}<br>Amount:   {{amount}}<br> Reference: {{reference}}</p>
+              <p class="govuk-body-s" >Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-30) }}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if data['testing'] %} 
+             {% else %}
+              <a class="govuk-link" href="{{changelink}}">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+                                 or
+             <a class="govuk-link" href="{{removelink}}">
+                Remove<span class="govuk-visually-hidden"> Debt</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
+{% endmacro %}
+
+ <h2 class="govuk-heading-m">Debts added to mental health Breathing Space</h2> 
+ <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+
+         {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing", "not-testing") }}
+          {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
+          {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
+          {{ debtrow("Council tax", "Southwark Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
+          {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
+    </dl>
+  
+ <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add a debt
+</a>
+ 
+  </section>
+ {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes') %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+ {% include path+"advisor-mvp/_removeddebtslist.html" %} 
+
+   </section>
+  {% endif %}
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+     {% include path+"advisor-mvp/_personaldetails.html" %} 
+
+  </section>
+
+
+</div>
+
+<button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Close record
+</button>
+    </div>
+    </form>
+
+
+{% endblock %}

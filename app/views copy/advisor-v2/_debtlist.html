@@ -1,0 +1,52 @@
+   
+   {% macro debtrow(type, creditor, amount, reference, link) %}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{type}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor: <strong>{{creditor}}</strong><br>Amount:<strong> {{amount}}</strong><br> Reference: <strong>{{reference}}</strong></p>
+              <p>Date added: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong></p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if data['bsEndReason'] %} 
+             {% else %}
+              <a class="govuk-link" href="{{link}}">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
+{% endmacro %}
+ 
+   <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          {{ debtrow("Loan", "Barclays Bank Plc", "£5400", "8945 4321 5678", "add-debts") }}
+          {{ debtrow("Credit card", "Halifax (credit cards only)", "£3700", "3567 6732 1278", "add-debts") }}
+          {% if checked('debt-eligibility','yes') %}
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+             <p>Status: <a href="eligibility-review">
+        {% if checked('debt-eligibility','no') %}Reviewed{% else %} Review requested{% endif %}</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003</p>
+               <p>Date added: <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong></p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if data['bsEndReason'] %} 
+             {% else %}
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
+          {% endif %}
+          {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "add-debts") }}
+          {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "add-debts") }}
+          {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "add-debts") }}
+          {{ debtrow("Council tax", "Leeds City Council", "£179", "LCC3456789", "add-debts") }}
+          {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "add-debts") }}
+    </dl>

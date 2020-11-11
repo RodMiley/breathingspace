@@ -1,0 +1,177 @@
+<!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set HBNum = 0 %}
+{% set CTNum = 0 %}
+{% set PFNum = 0 %}
+{% set RANum = 0 %}
+{% set OtherNum = 0 %}
+{% set todo = 0 %}
+{% set new = 0 %}
+{% set applied = 0 %}
+{% set review = 0 %}
+{% set accepted = 0 %}
+{% set rejected = 0 %}
+
+<!-- todo VALUES -->
+{% set HBtoDO = 0 %}
+{% set CTtoDO = 0 %}
+{% set PFtoDO = 0 %}
+{% set RAtoDO = 0 %}
+{% set OthertoDO = 0 %}
+{% set NewtoDo = 0 %}
+{% set AppliedtoDo = 0 %}
+{% set ReviewtoDo = 0 %}
+{% set AcceptedtoDo = 0 %}
+{% set RejectedtoDo = 0 %}
+<!-- Status type and todo VALUES -->
+{% set NewHBtoDO = 0 %}
+{% set AppliedHBtoDO = 0 %}
+{% set ReviewHBtoDO = 0 %}
+{% set AcceptedHBtoDO = 0 %}
+{% set RejectedHBtoDO = 0 %}
+
+
+
+
+
+{% set NewCTtoDO = 0 %}
+{% set NewPFtoDO = 0 %}
+{% set NewRAtoDO = 0 %}
+{% set NewOthertoDO = 0 %}
+
+
+
+
+  
+
+	{% for customer in customers %}
+
+<!-- BASE VALUES -->
+	 {% set totNum = totNum + 1 %}
+
+  {% if customer.type === "Housing benefit" %}
+   {% set HBNum = HBNum + 1 %}
+   {% endif %}
+  {% if customer.type === "Council tax" %}
+   {% set CTNum = CTNum + 1 %}
+   {% endif %}
+   {% if customer.type === "Parking fines" %}
+   {% set PFNum = PFNum + 1 %}
+    {% endif %}
+   {% if customer.type === "Rent arrears" %}
+   {% set RANum = RANum + 1 %}
+    {% endif %}
+   {% if customer.type === "Other" %}
+   {% set OtherNum = OtherNum + 1 %}
+    {% endif %}
+
+   <!-- status -->
+  {% if customer.status === "new" %}
+   {% set new = new + 1 %}
+  {% endif %}
+
+  {% if customer.status === "applied" %}
+   {% set applied = applied + 1 %}
+  {% endif %}
+
+
+  {% if customer.status === "review" %}
+   {% set review = review + 1 %}
+  {% endif %}
+
+    {% if customer.status === "review-accepted" %}
+   {% set accepted = accepted + 1 %}
+  {% endif %}
+
+    {% if customer.status === "review-rejected" %}
+   {% set rejected = rejected + 1 %}
+  {% endif %}
+
+
+  
+   {% if customer.todo === "Yes" %}   
+   {% set todo = todo + 1 %}
+   {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    {% if customer.type === "Housing benefit" and customer.todo === "Yes" %}
+     {% set HBtoDO = HBtoDO + 1 %}
+    {% endif %}
+
+    {% if customer.type === "Council tax" and  customer.todo === "Yes" %}
+     {% set CTtoDO = CTtoDO + 1 %}
+    {% endif %}	
+
+    {% if customer.type === "Parking fines" and  customer.todo === "Yes" %}
+     {% set PFtoDO = PFtoDO + 1 %}
+     {% endif %}	
+
+      {% if customer.type === "Rent arrears" and  customer.todo === "Yes" %}
+     {% set RAtoDO = RAtoDO + 1 %}
+      {% endif %}
+
+      {% if customer.type === "Other" and  customer.todo === "Yes" %}
+     {% set OthertoDO = OthertoDO + 1 %}
+      {% endif %}
+
+  <!-- TO DO VALUES Status -->
+  {% if customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewtoDo =  NewtoDo + 1 %} 
+   {% endif %}
+
+     {% if customer.status === "applied" and customer.todo === "Yes" %}
+   {% set AppliedtoDo =  AppliedtoDo + 1 %} 
+   {% endif %}
+
+     {% if customer.status === "review" and customer.todo === "Yes"  %}
+   {% set ReviewtoDo =  ReviewtoDo + 1 %} 
+   {% endif %}
+   
+     {% if customer.status === "review-rejected" and customer.todo === "Yes"  %}
+   {% set AcceptedtoDo =  AcceptedtoDo + 1 %} 
+   {% endif %}
+
+     {% if customer.status === "review-rejected" and customer.todo === "Yes"  %}
+   {% set RejectedtoDo =  RejectedtoDo + 1 %} 
+   {% endif %}
+
+   <!-- Status type and TO DO VALUES Status -->
+
+    {% if customer.type === "Housing benefit" and customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewHBtoDO =  NewHBtoDO + 1 %} 
+   {% endif %}
+
+     {% if customer.type === "Housing benefit" and customer.status === "applied" and customer.todo === "Yes" %}
+   {% set AppliedHBtoDO =  AppliedHBtoDO + 1 %} 
+   {% endif %}
+     {% if customer.type === "Housing benefit" and customer.status === "review" and customer.todo === "Yes" %}
+   {% set ReviewHBtoDO =  ReviewHBtoDO + 1 %} 
+   {% endif %}
+     {% if customer.type === "Housing benefit" and customer.status === "review-accepted" and customer.todo === "Yes" %}
+   {% set AcceptedHBtoDO =  AcceptedHBtoDO + 1 %} 
+   {% endif %}
+     {% if customer.type === "Housing benefit" and customer.status === "review-rejected" and customer.todo === "Yes" %}
+   {% set RejectedHBtoDO =  RejectedHBtoDO + 1 %} 
+   {% endif %}
+
+
+
+
+
+    {% if customer.type === "Council tax" and customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewCTtoDO =  NewCTtoDO + 1 %} 
+   {% endif %}
+
+  {% if customer.type === "Parking fines" and customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewPFtoDO =  NewPFtoDO + 1 %} 
+   {% endif %}
+
+  {% if customer.type === "Rent arrears" and customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewRAtoDO =  NewRAtoDO + 1 %} 
+  {% endif %}
+
+  {% if customer.type === "Other" and customer.status === "new" and customer.todo === "Yes" %}
+   {% set NewOthertoDO =  NewOthertoDO + 1 %} 
+  {% endif %}
+
+{% endfor %}

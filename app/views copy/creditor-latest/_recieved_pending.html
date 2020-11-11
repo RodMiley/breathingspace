@@ -1,0 +1,13 @@
+
+     
+      {% if data['creditorSold'] and data['clientReview'] and data['adddebt']%}
+   <strong class="govuk-tag govuk-tag--blue">3 Responses Pending</strong>
+     
+     {% elif data['creditorSold'] and data['clientReview'] 
+     or  data['creditorSold'] and data['adddebt']
+     or data['clientReview'] or data['adddebt']%}
+   <strong class="govuk-tag govuk-tag--blue">2 Pending</strong>
+  {% elif data['creditorSold'] or  data['clientReview'] or data['adddebt']%}
+   <strong class="govuk-tag govuk-tag--blue">1 Pending</strong>
+
+   {% endif %}

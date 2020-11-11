@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="sold-debt-confirm-adhoc" method="post">
+   
+    <div class="govuk-grid-column-two-thirds">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     Creditor has sold this debt
+      </h1>
+
+        {% include "./_debtDetails.html" %} 
+
+  <div class="govuk-form-group">
+      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="creditor">Who have they sold the debt to?
+</label>   <span id="changed-name-hint" class="govuk-hint">
+      This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson
+    </span>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Transfer this debt to the new creditor
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'changedebtcreditor'
+      var name ='changedebtcreditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

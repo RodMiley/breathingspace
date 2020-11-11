@@ -1,0 +1,100 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <form class="form" action="debt" method="post">
+      <section class="key_details">
+<style>
+ul.styled_list li li{
+  width:18%;
+}
+</style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+           <h1 class="govuk-heading-l">
+           <span class="govuk-caption-l">Breathing space account</span>
+Roberto Henderson
+      </h1>
+      </div>
+      <div class="govuk-grid-column-one-third">
+          <p class="header_highlight_info"><span>Day 10</span> of 60</p>
+      </div>
+      <div class="govuk-grid-column-full">
+      <ul>
+        <li>
+        <p>Date of birth: <span>28 February 1987</span></p>
+        </li>
+        <li>
+        <p>Address: <span>2 Epsom drive, Melling, Liverpool, L36 1KJ </span></p>
+        </li>
+      </ul>
+      </div>
+      </div>
+</section>
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+
+<p class="govuk-body ">A Stepchange money adviser has added the following debts to your Breathing Space <br><a href="" class="">Request a change of money advisor</a></p>
+</p>
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption">Debts and amounts</caption>
+  <thead class="govuk-table__head">
+
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>
+      <th scope="col" class="govuk-table__header">Type</th>
+      <th scope="col" class="govuk-table__header">Creditor</th>
+      <th scope="col" class="govuk-table__header">Amount</th>
+      <th scope="col" class="govuk-table__header">Reference</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">Recieved</td>
+      <td class="govuk-table__cell">Loan</td>
+      <td class="govuk-table__cell">Barclays</td>
+      <td class="govuk-table__cell">£4566.80</td>
+      <td class="govuk-table__cell">BAR12345678</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">Recieved</td>
+      <td class="govuk-table__cell">Credit card</td>
+      <td class="govuk-table__cell">Barclaycard</td>
+      <td class="govuk-table__cell">£780.67</td>
+      <td class="govuk-table__cell">BC2345698543</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">Recieved</td>
+      <td class="govuk-table__cell">Credit card</td>
+      <td class="govuk-table__cell">Halifax</td>
+      <td class="govuk-table__cell">£1250.45</td>
+      <td class="govuk-table__cell">HAL6765432</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"></td>
+      <td class="govuk-table__cell">Rent</td>
+      <td class="govuk-table__cell">Crosby Housing Association</td>
+      <td class="govuk-table__cell">£790.45</td>
+      <td class="govuk-table__cell">123456789</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p class="govuk-body">
+<button class="govuk-button" data-module="govuk-button">
+  Finish
+</button>
+</p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

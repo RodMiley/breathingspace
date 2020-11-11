@@ -1,0 +1,102 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="proposed-debt-confirm" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       {% if checked('proposed-debt','no')%}
+         The following proposed debt was rejected
+        {% elif checked('proposed-debt','yes')%}
+        The following proposed debt was accepted
+        {% else %}
+        Creditor proposed debt
+       {% endif %}
+      </h1>
+
+ {% include "./_proposeddebt.html" %} 
+
+
+    </div> <div class="govuk-grid-column-three-quarters">
+{% if data['proposed']%}  
+
+
+{% if checked('proposed-debt','no')%}             
+<h2 class="govuk-heading-s  govuk-!-margin-bottom-0">Why we rejected it</h2>
+<p class="govuk-body">
+{{ eligibilityNo }}
+</p>
+
+  {% endif %}
+
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{% if checked('proposed-debt','no') %} Rejected {% else %} Accepted{% endif %} by</h3>
+  <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+
+ {% elif checked('clientreview','bsended') %}
+{% else %}  
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="proposed-debt-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+          Do you want accept this proposed debt?
+      </h2>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="proposed-debt" name="proposed-debt" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="proposed-debt">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="proposed-debt-2" name="proposed-debt" type="radio" value="no" data-aria-controls="conditional-proposed-debt-2">
+        <label class="govuk-label govuk-radios__label" for="proposed-debt-2">
+          No
+        </label>
+      </div>
+
+<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-proposed-debt-2">
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="eligibilityNo">
+   Please provide detail why your rejecting this debt?
+  </label>
+  <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
+  </div>
+
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+{% endif %}
+
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+
+  {% block pageScripts %}
+
+  <script>
+
+</script>
+
+  {% endblock %}
+
+

@@ -1,0 +1,101 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+      Application details
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='applicationdetails' %}
+ <!-- -->
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+       <div class="govuk-grid-column-one-quarter"> 
+
+{% include "./_nav1.html" %}
+{% include "./_nav2.html" %}
+
+</div>
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Application details</h1>
+
+{% include "./_appdetails.html"%}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+    <p class="govuk-body-s govuk-!-margin-bottom-1">
+        Created 5 November 2020
+    </p>
+    <p class="govuk-body-s  govuk-!-margin-bottom-5">
+    No API called
+    </p>
+    <br>
+
+    
+
+    <table class="govuk-table">
+       <caption class="govuk-table__caption govuk-visually-hidden">Application details</caption>
+        <thead>
+            <tr>
+                <th scope="row" class="govuk-table__header" >Application details</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                    
+                        <a id="change" href="applicationchange" >Change <span class="govuk-visually-hidden">application details</span></a>
+                    
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Application ID</th>
+                <td class="govuk-table__cell" id="applicationId">5f670565-6629-4b03-90dd-5e8d21d5e3df</td>
+            </tr>
+            <tr>
+                <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Application name</th>
+                <td class="govuk-table__cell" id="applicationName">BSAPP001</td>
+            </tr>
+            <tr>
+                <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Application description</th>
+                <td class="govuk-table__cell" id="description">{{ appdescription | default('none')}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Privacy policy URL</th>
+                <td class="govuk-table__cell" id="privacyPolicyUrl">{{ appprivacy | default('none')}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="govuk-table__cell govuk-!-font-weight-regular">Terms and conditions URL</th>
+                <td class="govuk-table__cell" id="termsAndConditionsUrl">{{ appterms | default('none')}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

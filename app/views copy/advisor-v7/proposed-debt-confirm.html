@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       {% if checked('proposed-debt','no')%}
+         Confirm you are rejecting this proposed debt
+          {% elif checked('proposed-debt','yes')%}
+           Confirm you are accepting this proposed debt and adding it to your client's Breathing Space
+       {% endif %}
+       
+      </h1>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+ {% include "./_proposeddebt.html" %} 
+  </dl> 
+     {% if checked('proposed-debt','no')%}             
+<h2 class="govuk-heading-m">More detail</h2>
+<p class="govuk-body">
+{{ eligibilityNo }}
+</p>
+  {% endif %}
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="proposed" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="proposed" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

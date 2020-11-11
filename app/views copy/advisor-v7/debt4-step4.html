@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt4-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl"> Add a debt: Step 3 of 3</span>
+       Add debt amount type and reference
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body"> {{ creditorfour }}  <a href="debt4">Change</a></p>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amountfour">
+   Debt amount  (optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amountfour" name="amountfour" type="text" spellcheck="false" value="{{ amountfour }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="typefour">
+   Type of debt (optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="typefour" name="typefour" type="text" spellcheck="false" value="{{ typefour }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="referencefour">
+    Reference (optional)
+  </label>
+    <span id="changed-name-hint" class="govuk-hint">
+      This is your personal reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="referencefour" name="referencefour" type="text" spellcheck="false" value="{{ referencefour }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt4" type="radio" value="debt4" checked>
+        <label class="govuk-label govuk-radios__label" for="debt4">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

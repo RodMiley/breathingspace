@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-client" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm review details
+      </h1>
+
+
+
+
+
+<h3 class="govuk-heading-m govuk-!-margin-bottom-5">You are requesting that Advice uk review client eligibility</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason the client is not eligible</h3>
+<p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
+<p class="govuk-body">{{ moreDetailClient }}</p>
+
+
+      <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientReviewConfirm" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="clientReview">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

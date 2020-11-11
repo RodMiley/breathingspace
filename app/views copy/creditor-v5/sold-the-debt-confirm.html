@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="#" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm you have sold this debt
+      </h1>
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
+   <hr class="govuk-section-break govuk-section-break--visible">
+
+{% include "./_debt-info-2.html" %}
+
+<p class="govuk-body-l">You are informing {% include "./_advise-org-name.html" %} that you have sold the debt on to <strong>{{ creditorSold }}</strong></p>
+
+
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="dontOwn~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

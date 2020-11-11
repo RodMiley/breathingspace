@@ -1,0 +1,105 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="add-debt-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Add a debt
+      </h1>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of debt
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Housing benefit"  {{checked('typeOfDebt', 'Housing benefit') }} >
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Housing benefit
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Council tax"  {{checked('typeOfDebt', 'Council tax') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Council tax
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Rent arrears"  {{checked('typeOfDebt', 'Rent arrears') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+        Rent arrears
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Parking fines"  {{checked('typeOfDebt', 'Parking fines') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-4">
+        Parking fines
+        </label>
+      </div>
+
+         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-conditional" name="typeOfDebt" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('typeOfDebt', 'other') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-conditional">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-addDebt-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="otherdebt">
+            Type of Debt
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="otherdebt" name="otherdebt" value="{{otherdebt}}">
+        </div>
+</div>
+  </fieldset>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addamount">
+   Amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addamount" name="addamount" type="text" spellcheck="false" value="{{ addamount }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addreference">
+    Reference (Optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addreference" name="addreference" type="text" spellcheck="false" value="{{ addreference }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes~./add-debt-confirm?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="adddebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

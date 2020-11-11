@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="/creditor-mvp/index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-fieldset__heading">
+       Choose view
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="creditorViewChioce" name="creditorViewChioce" type="radio" value="standard~/creditor-mvp/index">
+        <label class="govuk-label govuk-radios__label" for="creditorViewChioce">
+          Standard
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="creditorViewChioce-2" name="creditorViewChioce" type="radio" value="tabs~/creditor-mvp/account-landing-tabs" >
+        <label class="govuk-label govuk-radios__label" for="creditorViewChioce-2">
+         Tabbed view
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="creditorViewChioce-3" name="creditorViewChioce" type="radio" value="accordion~/creditor-mvp/account-landing-accordion">
+        <label class="govuk-label govuk-radios__label" for="creditorViewChioce-3">
+         Accordion view
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

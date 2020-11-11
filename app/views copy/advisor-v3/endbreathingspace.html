@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-heading-xl">
+      Why do you want to end Breathing Space?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-1" name="bsEndReason" type="radio" value="The client is not engaging with money advice after 30 days"  {{checked('bsEndReason', 'The client is not engaging with money advice after 30 days') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-1">
+            The client is not engaging with money advice after 30 days
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-2" name="bsEndReason" type="radio" value="The client has requested to be removed"  {{checked('bsEndReason', 'The client has requested to be removed') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-2">
+            The client has requested to be removed
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has entered into a debt management solution"  {{checked('bsEndReason', 'The client has entered into a debt management solution') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-3">
+        The client has entered into a debt management solution
+        </label>
+      </div>
+
+                 <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bsEndReason-3" name="bsEndReason" type="radio" value="The client has entered mental health crisis treatment"  {{checked('bsEndReason', 'The client has entered mental health crisis treatment') }}>
+        <label class="govuk-label govuk-radios__label" for="bsEndReason-4">
+        The client has entered mental health crisis treatment
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

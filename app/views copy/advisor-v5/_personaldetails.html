@@ -1,0 +1,83 @@
+       <h2 class="govuk-heading-l">
+     Client details
+      </h2>
+ <h3 class="govuk-heading-m">Personal details</h3>
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ firstname | default("Joe") }}  {{ middlename | default("John") }} {{ lastname | default("Black") }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#firstname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+         
+                   {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+      </dl> 
+
+       <h2 class="govuk-heading-m">Addresses</h2>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-2">  
+                     <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+             Have you agreed with your client to withhold their current address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% if checked('parv','no')%}
+              <p>No</p>
+    
+             {% elif  checked('parv','yes') %}
+              <p>Yes</p>
+             <p>We haven't collected your client's address</p>
+             {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="parv">
+                Change<span class="govuk-visually-hidden">client's address status</span>
+              </a>
+            </dd>
+          </div> 
+         {%if checked('parv','no') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+           {% include "./_address-previous.html" %} 
+        </dl>
+        <p><a class="govuk-link" href="address-history">Add previous address</a></p>
+
+<h2 class="govuk-heading-m">Business</h2>
+      
+        {% include "./_business-details.html" %} 
+

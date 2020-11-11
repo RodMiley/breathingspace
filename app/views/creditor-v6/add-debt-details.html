@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-add-debt" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+Proposed debt details
+      </h1>
+
+
+<h2 class="govuk-heading-m">We have imformed {% include path+"creditor-mvp/_advise-org-name.html" %}  that we have proposed a new debt to be included in Breathing space</h2>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+ <ul class="govuk-list">
+ <li>Debt type: {% if checked('typeOfDebt','other')%}
+             {{ otherdebt }}
+             {% else %}
+             {{typeOfDebt}}
+             {% endif %}     
+</li>
+<li>Amount: £{{ addamount }}</li>
+<li>Reference:{{ addreference }}</li>
+ </ul>  
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+ <p class="govuk-body">{% include path+"creditor-mvp/_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

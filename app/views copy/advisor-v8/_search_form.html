@@ -1,0 +1,39 @@
+
+<form class="form" action="search-results-page" method="post">
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="reference">
+      Reference
+    </label>
+      <span id="account-number-hint" class="govuk-hint">
+    For example, GHK19873G
+  </span>
+  <input class="govuk-input" id="reference" name="reference" type="text" value="{{reference}}">
+</div>
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="fullname">
+      Name
+    </label>
+  <input class="govuk-input" id="fullname" name="fullname" type="text" value="{{fullname}}">
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="dob">
+      Date of birth
+    </label>
+ 
+  <input class="govuk-input" id="dob" name="dob" type="text" value="{{dob}}">
+</div>
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="searched" type="radio" value="searched" checked>
+        <label class="govuk-label govuk-radios__label" for="searched">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button">Search</button>
+</form>

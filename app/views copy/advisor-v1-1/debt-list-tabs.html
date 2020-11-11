@@ -1,0 +1,288 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+           <span class="govuk-caption-xl">Breathing space account for</span>
+       {% if data['debt']%}
+       {% else %}
+       Shirley Mack
+       {% endif %}
+       {{ fullname }} 
+{% if data['debt']%}
+{% else %}
+       <span class="dayindicator">Day 2 <span>of 60</span></span>
+{% endif %}      
+      </h1>
+<style>
+
+    .govuk-heading-xl
+    {
+      position:relative;
+    }
+   .dayindicator {
+     text-align:center;
+     position:absolute;
+     right:0px;
+     padding:15px 20px;
+     font-size:25px;
+     background:#1d70b8;
+     color:#fff;
+     top:0px;
+   }
+
+      .dayindicator span {
+     font-size:20px;
+     display:block;
+     padding:10px 0 0 0;
+
+
+   }
+</style>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+
+
+    <h2 class="govuk-heading-l">Debts</h2>
+    {% if data['debt']%}
+    
+   {% if data['creditor']%}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebt}}
+             
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditor}}<br>Amount: £{{ amount }}<br> Reference: {{ reference }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+    {% if data['creditortwo']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Credit card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditortwo}}<br>Amount: £{{ amounttwo }}<br> Reference: {{ referencetwo }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt2-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    {% endif %}  
+
+    {% if data['creditorthree']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Credit card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditorthree}}<br>Amount: £{{ amountthree }}<br> Reference: {{ referencethree }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt2-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    {% endif %}  
+        </dl>
+    {% endif %}  
+
+    {% else %}
+
+                 <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebttwo }}
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: Barclaycard<br>Amount: £2700<br> Reference: {{ referencetwo }}
+              
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+     </dl>
+
+
+    {% endif %}
+
+
+{% if data['debt9']%}
+ <a href="debt10" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt8']%}
+ <a href="debt9" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt7']%}
+ <a href="debt8" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt6']%}
+ <a href="debt7" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt5']%}
+ <a href="debt6" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt4']%}
+ <a href="debt5" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>  
+{% elif data['debt3']%}
+ <a href="debt4" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>      
+{% elif data['debt2']%}
+ <a href="debt3" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>        
+{% elif data['debt']%}
+ <a href="debt2" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>
+{% else %}
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>
+{% endif %}
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{fullname}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ dobday }} {{ dobmonth}} {{ dobyear }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{phone}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-preferences#phone">
+                Change<span class="govuk-visually-hidden"> Phone number</span>
+              </a>
+            </dd>
+          </div>
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{email}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-preferences#email">
+                Change<span class="govuk-visually-hidden"> Email address</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+  </section>
+
+
+</div>
+
+
+
+
+
+
+
+
+ 
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Submit application
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

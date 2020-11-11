@@ -1,0 +1,111 @@
+
+{% macro debt(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
+   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+   {% if debtTaskToDo == 'yes' %}
+    <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+ {% if debtName == 'Credit card' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review this debt
+</strong>
+ {% elif debtName == 'Water' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review the client
+</strong>
+
+ {% elif debtName == 'Gas' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor has sold the debt
+</strong>
+{% endif %}
+ </div>
+ <div class="govuk-grid-column-one-third">
+
+<ul class="govuk-list">
+              <li>
+               
+ {% if debtName == 'Credit card' %}
+                <form class="form" action="eligibility-review" method="post">
+                  <button class="govuk-body govuk-link">
+                   Review the debt
+                  </button>
+                   {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+
+   {% elif debtName == 'Water' %}  
+   <a href="eligibility-review-client" class="govuk-body">Review the client</a>    
+   {% elif debtName == 'Gas' %}  
+  <a href="sold-debt" class="govuk-body">Reassign the debt to the new creditor</a>      
+  {% endif %}            
+             
+              </li>
+              </ul>
+ </div>
+ </div>
+  
+
+   {% endif %}
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><h2 class="govuk-heading-s">Debt:  {{ debtName }}</h2></li> 
+      <li>Creditor: {{debtCreditor}}</li> 
+      <li>Amount: {{debtAmount}}<li>
+      <li> Reference: {{debtReference}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third"> 
+       {% if checked('clientreview','bsended') or debtTaskToDo == 'yes'  %}
+       {% else %}
+          <ul class="govuk-list govuk-!-font-size-16" >
+             <li>
+             <form class="form" action="change-debt1" method="post">
+                 <button class="govuk-body govuk-link">Update debt details</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+             </li>
+             <li>                
+    <form class="form" action="remove-debt" method="post">
+                 <button class="govuk-body govuk-link">Remove this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+              </li>
+               <li>
+                  <form class="form" action="sold-debt-adhoc" method="post">
+                  <button class="govuk-body govuk-link">Creditor has sold this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+                <li>
+              <form class="form" action="review-client-ma" method="post">
+              <button class="govuk-body govuk-link">Add client eligibility review task</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+              <form class="form" action="" method="post">
+                  <button class="govuk-body govuk-link">Report compliance</button>
+                {% include "./_debtypeHiddenRadio.html" %} 
+                 {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              </ul>
+              {% endif %}
+              </div>
+          
+ </div>
+
+ {% endmacro %}

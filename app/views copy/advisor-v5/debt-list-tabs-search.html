@@ -1,0 +1,98 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+{% include "./_keydetails_active.html" %}
+
+
+
+
+  <form class="form" action="index" method="post">
+   {% if checked('changedetails', 'yes')%}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+  Personal details saved and updated
+</div>
+ {% endif %}
+   {% if data['bsEndReason'] %}  
+  {% else %} 
+ <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add a debt
+</a>
+{% endif %}
+
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  End Breathing Space
+</a>
+
+<button class="govuk-button govuk-button--secondary " data-module="govuk-button">
+  Close record
+</button>
+
+
+   
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+
+      <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#actions">
+      Actions
+      </a>
+    </li>
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+   {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes')  %}
+       <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed debts
+      </a>
+    </li>
+    {% endif %} 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+    <section class="govuk-tabs__panel" id="actions">
+     <h2 class="govuk-heading-l">Actions to do</h2>
+      {% include "./_requests_content.html" %} 
+    </section>
+  <section class="govuk-tabs__panel" id="problem-debt">
+  
+ 
+  {% include path+"advisor-mvp/_debtlist.html" %} 
+  </section>
+ {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes') %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+ {% include "./_removeddebtslist.html" %} 
+
+   </section>
+  {% endif %}
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+     {% include "./_personaldetails.html" %} 
+
+  </section>
+
+
+</div>
+    </div>
+    </form>
+
+
+{% endblock %}

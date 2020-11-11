@@ -1,0 +1,85 @@
+ {% if checked('changedetails', 'yes')%}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+  Personal details saved and updated
+</div>
+ {% endif %}
+
+ <h2 class="govuk-heading-m">Personal details</h2>
+ 
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ fullname | default("Joe Black") }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+        
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+         
+                   {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+        
+            </dd>
+          </div>
+        </dl>
+
+         <h2 class="govuk-heading-m">Addresses</h2>
+
+          <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row last">
+            <dt class="govuk-summary-list__key">
+              Previous address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             99  Pasture Hill Road <br>Haywards Heath<br>London<br>RH16 1LY
+          
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+
+
+        </dl>
+
+         <h2 class="govuk-heading-m">Businesses</h2>
+                   <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             J B Electrical
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Unit 2<br>6 Burrel Rd<br>Haywards Heath<br>RH16 1TW
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+        </dl>

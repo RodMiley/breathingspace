@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Review details
+      </h1>
+
+
+{% if data['review'] or data['identify']%}
+
+
+
+{% if  checked('review', 'debt') %}
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review debt eligibility</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body">{{ debtReview }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+<p class="govuk-body">{{ moreDetail }}</p>
+{% endif %}
+
+{% if  checked('review', 'client') %}
+<h3 class="govuk-heading-m govuk-!-margin-bottom-5">You requested Advice uk to review client eligibility</h3>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+<p class="govuk-body">{{ clientReview }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+<p class="govuk-body">{{ moreDetailClient }}</p>
+{% endif %}
+{% if  checked('identify', 'debt') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the debt</h3>
+{% endif %}
+
+{% if  checked('identify', 'client') %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">We cant identify the client</h3>
+{% endif %}
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Date requested:</h3>
+<p class="govuk-body"> {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</p>
+
+{% endif%}
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

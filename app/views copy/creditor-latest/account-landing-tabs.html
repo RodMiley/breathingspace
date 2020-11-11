@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+ {% include "./_global-nav-account.html" %}
+  <div class="govuk-grid-row">
+  <form class="form" action="" method="post">
+
+    <div class="govuk-grid-column-full">
+      <a href="debttype-landing-page" class="govuk-back-link">
+      {%if checked('creditortype','financial')%} 
+             
+                Back to Loans
+                {% else %}
+                 Back to Self assessment
+                {% endif %}
+     
+      </a>  
+{% include "./_keydetails_active.html" %} 
+{% include "./_protections-confirm.html" %}
+
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+    Breathing Space is a government scheme to help people deal with their debts.
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+ While  {{ customer.name | default("Joe Black") }} is in Breathing Space, you cannot chase them for any listed Breathing Space debts they owe you. If you are taking any enforcement action or have an agent recovering these debts, you must stop this until {{ customer.name | default("Joe Black") }}  Breathing Space has finished.
+  </div>
+</details>
+
+  <p class="govuk-body-l">
+<strong>{% include "./_advise-org-name.html" %}</strong> has entered your client into Breathing Space
+</p> 
+  
+               {% include "./_tasklist-v2.html" %}
+{% if checked('clientReviewConfirm','yes') or customer.status == 'client-review-accepted' %}
+{% else %}
+     <h2 class="govuk-heading-m">
+                Other actions
+      </h2>            
+
+    <a href="add-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+          Add debts that should be included
+        </a>
+        {% if customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected'%}
+        {% else %}
+        <a href="review-client?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+        The client's not eligible, ask for a review
+        </a>
+        {% endif %}
+{% endif %}
+
+              <h2 class="govuk-heading-m">
+                 Client details
+               </h2> 
+            <ul class="govuk-list">
+              <li>Client:  {{ customer.name | default("Joe Black") }} </li>
+              <li>Date of birth:    {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+              <li>Address: 45  Borough Road, Elephant and Castle, London, NW13 2GH</li>
+              <li>Business name: Elsada tech</li>
+              <li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>
+
+              </ul>
+
+
+              <h2 class="govuk-heading-m">Money advice organisation details</h2>
+              <ul class="govuk-list">
+              <li>Name: Advice uk</li>
+              <li>Email: breathingspaceteam@adviceuk.org.uk</li>
+              <li>Telephone: 0151 490 1731</li>
+              </ul>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

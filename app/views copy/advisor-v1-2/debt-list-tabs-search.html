@@ -1,0 +1,283 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+           <span class="govuk-caption-l">Breathing space account for</span>
+     {% if data['fullname']%} {{fullname}} {% else %} Roberto Henderson {% endif %}
+      </h1>
+      </div>
+            <div class="govuk-grid-column-one-third">
+          <p class="header_highlight_info"><span><span>Day 10</span> of <span>60</span></span>End date 27 March 2020</p>
+      </div>
+    <div class="govuk-grid-column-full">
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+
+    {% if checked('debt-eligibility','yes') %}
+          <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-s govuk-!-margin-bottom-1">You have removed the debt from Breathing Space</h2>
+</div>
+    
+    {% endif %}
+
+        {% if checked('debt-eligibility','no') %}
+          <div class="govuk-details__text govuk-!-margin-bottom-5">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform MBNA Europe Bank Ltd that you haven't removed the debt from Breathing Space</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Credit card</h3><p>Amount: £2500<br> Reference: RBC23455003</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3><p>{{ eligibilityNo }}</p>
+<p>25 February 2020</p>
+</div>
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    
+    {% endif %}
+    <h2 class="govuk-heading-l">Debts</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Loan
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: Barclays Bank Plc <br>Amount: £5400<br> Reference: 8945 4321 5678 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: Halifax (credit cards only) <br>Amount: £3700<br> Reference: 3567 6732 1278
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          {% if checked('debt-eligibility','yes') %}
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+             <p>Status: <a href="eligibility-review">
+        {% if checked('debt-eligibility','no') %}Reviewed{% else %} Review requested{% endif %}</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+                              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Water
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: Yorkshire Water Services Ltd<br>Amount: £102<br> Reference: 4949 9494 9449
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+                                        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Gas
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor:EDF Energy Ltd<br>Amount: £189<br> Reference: CRT8536544
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Electric
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor:Southern Electric<br>Amount: £125<br> Reference: SE3456792234
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+                    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Council tax
+             
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor:Leeds City Council<br>Amount: £179<br> Reference: LCC3456789
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+
+                    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Store card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor:Next Retail and Next Directory<br>Amount: £1256<br> Reference: ND6544322
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt-step2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    </dl>
+
+  
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt
+</a>
+
+    {% if checked('debt-eligibility','yes') %}
+     <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+
+
+
+      <div class="govuk-details__text govuk-!-margin-bottom-5">
+     <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: MBNA Europe Bank Ltd<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl>
+
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason was the debt removed</h3>
+<p>It's a non-eligible business debt</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail</h3>
+<p>The credit card is secured against the client's business</p>
+
+</div>
+   
+    {% endif %}
+
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{fullname}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['Debt']%} {{ dobday }} {{ dobmonth}} {{ dobyear }} {% else %} 17 09 1978 {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
+
+  </section>
+
+
+</div>
+
+
+
+
+
+
+
+
+ 
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Finish
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

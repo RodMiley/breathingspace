@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="address-history" method="post">
+ 
+    <div class="govuk-grid-column-two-thirds">
+           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+         <span class="govuk-caption-xl">Create a Breathing Space account : Step 2 of 4</span>
+       What is your client's address?
+      </h1>
+
+      <h2 class="govuk-heading-m">Postcode</h2>
+      <p class="govuk-body">{{ postcode | default("NW1 1JU") }} <a href="address">Change</a></p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Choose address
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published">3 addresses found</option>
+    <option value="two">2 Bourough road, Elephant and castle, London, {{ postcode }}</option>
+    <option value="three">3 Bourough road, Elephant and castle, London, {{ postcode }}</option>
+    <option value="four">4 Bourough road, Elephant and castle, London, {{ postcode }}</option>
+  </select>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  {% if checked('reset','yes')%}
+  <form class="form" action="" method="post">
+  {% elif checked('protection','completed') %}
+  <form class="form" action="" method="post">
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="reset" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="reset">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+      <button class="md-trigger" id="modal" data-modal="modal"></button>
+  {% else %}
+    <form class="form" action="" method="post">
+  {% endif %}
+
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+       Review details
+      </h1>
+           {% if customer.status == 'review-accepted' %} 
+           <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-6 govuk-tag--blue">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Reviewed by {% include "./_advise-org-name.html" %}</h2>
+                    
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Outcome of review</h3>
+                    <p class="govuk-body">Debt removed from Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
+                    <p class="govuk-body">
+                    The client has agreed that this was a debt associated with their business
+                    </p> 
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
+                    <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+            </div>
+            {% endif %}
+    
+              <h2 class="govuk-heading-m">{% include "./_creditorname.html" %} asked the money adviser to review the debt</h2>
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+               {% include "./_debt-amount-ref-v2.html" %}  
+
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reason for the review</h3>
+                  <p class="govuk-body">{{ debtReview | default('The debt is not eligible') }}</p>
+
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
+                    <p class="govuk-body">
+                             {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
+                              We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.
+                              {% else %}
+                              {{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}
+                              {% endif %}
+                    </p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+                    <p class="govuk-body">{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+            
+
+{% if customer.status == 'review-accepted' and checked('protection','completed') %}
+{% elif customer.status == 'review-accepted' %}   
+ <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-form-group govuk-!-margin-top-7">
+  <fieldset class="govuk-fieldset" aria-describedby="completed-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+        Would you like to remove this task from your to do list?
+      </h2>
+    </legend>
+     <div id="completed-hint" class="govuk-hint">
+      You would do this once you have updated your own systems or completed any other process required outside this service.
+    </div>
+    <div class="govuk-radios">
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-2" name="protection" type="radio" value="completed~./review-debt-details?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+        Yes, we've done everything we need to
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="protection" type="radio" value="todo~./account-landing-tabs?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+         No, we still have things to do
+        </label>
+      </div>
+      </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+{% endif %}
+
+
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

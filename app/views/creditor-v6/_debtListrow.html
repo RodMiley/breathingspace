@@ -1,0 +1,35 @@
+<li>
+<div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference={{customer.reference}}">{{ customer.name}}</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+{% if customer.todo == 'Yes'%}
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">To do</strong>
+  {% elif customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes'  or customer.status == 'dont-own' and customer.type == 'type2' %}  
+   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-3">Sent to money advisor</strong>
+{% endif %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li> Status: {% include "./_status-playback.html" %}</li>
+    <li>Date entered {{ customer.startdate }}</li>
+    {% if customer.status == 'client-review-accepted' %}
+     <li>Date ended {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</li>
+    {% else %}
+    <li>Date ends {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
+    {% endif %}
+    <ul>
+  </div>
+    <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Debt type: Self assessment</li>
+    <li>Reference: {{customer.reference}}</li>
+    <li>NI number: {{customer.nino}}</li>
+    </ul>
+  </div>
+</div>
+</div>
+</li>

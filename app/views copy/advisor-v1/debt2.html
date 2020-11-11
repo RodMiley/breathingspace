@@ -1,0 +1,105 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list" method="post">
+    <div class="govuk-grid-columntwo-thirds">
+      <h1 class="govuk-heading-xl">
+       Add a debt
+      </h1>
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="creditortwo">
+    Creditor
+  </label>
+  <input class="govuk-input" id="creditortwo" name="creditortwo" type="text" autocomplete="creditortwo" spellcheck="false" value="{{ creditortwo }}">
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of dept
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="typeOfDebttwo" type="radio" value="Credit card" {{checked('typeOfDebttwo', 'Credit card') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo">
+         Credit card
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebttwo-2" name="typeOfDebttwo" type="radio" value="Loan"  {{checked('typeOfDebttwo', 'Loan') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo-2">
+          Loan
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebttwo-3" name="typeOfDebttwo" type="radio" value="Government"  {{checked('typeOfDebttwo', 'Government') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo-3">
+          Government
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebttwo-4" name="typeOfDebttwo" type="radio" value="Housing"  {{checked('typeOfDebttwo', 'Housing') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo-4">
+          Housing
+        </label>
+      </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebttwo-5" name="typeOfDebttwo" type="radio" value="Utility"  {{checked('typeOfDebttwo', 'Utility') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo-5">
+         Utility
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebttwo-5" name="typeOfDebttwo" type="radio" value="Contract"  {{checked('typeOfDebttwo', 'Contract') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo-5">
+        Contract
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amounttwo">
+   Debt amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="amounttwo" name="amounttwo" type="text" spellcheck="false" value="{{ amounttwo }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="referencetwo">
+    Reference
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="referencetwo" name="referencetwo" type="text" spellcheck="false" value="{{ referencetwo }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debttwo" type="radio" value="debttwo" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebttwo">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -107,7 +107,7 @@
                 {%if checked('creditortype','financial')%} 
                 Mortgages
                 {% else %}
-               Pay as you earn
+             Council tax
                 {% endif %}({{type1Num}})
                 </h23> </a>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -121,7 +121,7 @@
                   {%if checked('creditortype','financial')%} 
                  Loans
                 {% else %}
-               Self assessment
+             Housing benefit
                 {% endif %} ({{type2Num}})
                  </button>
                     <div class="govuk-radios__item govuk-visually-hidden">
@@ -151,7 +151,7 @@
                   {%if checked('creditortype','financial')%} 
                   Overdraft
                 {% else %}
-               National insurance
+              Rent arrears
                 {% endif %}  ({{type3Num}})
                </h3> </a>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -164,22 +164,13 @@
                   {%if checked('creditortype','financial')%} 
                   Insurance
                 {% else %}
-                Tax credits
+             Parking fines
                 {% endif %} ({{type4Num}})
               </h3> </a>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="" class="govuk-body"> Tasks to do ({{type4toDO}})</a>
               </div>
 
-
-            <div class="card">
-                <a href=""><h3 class="govuk-heading-s">
-                Child benefit (45)
-                 </h3> </a>
-                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                 <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
-                 </div>
-             
 
        
 

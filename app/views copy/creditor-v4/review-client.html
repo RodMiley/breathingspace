@@ -1,0 +1,79 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="review-client-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-fieldset__heading">
+        Why is the client not eligible?
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="They do not live in England or Wales"  {{ checked('clientReview', 'They do not live in England or Wales') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview">
+          They do not live in England or Wales
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-2" name="clientReview" type="radio" value="They have had Breathing Space in the last 12 months"  {{ checked('clientReview', 'They have had Breathing Space in the last 12 months') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-2">
+          They have had Breathing Space in the last 12 months
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-3" name="clientReview" type="radio" value="They already have a Breathing Space"  {{ checked('clientReview', 'They already have a Breathing Space') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-3">
+         They already have a Breathing Space
+        </label>
+      </div>
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-4" name="clientReview" type="radio" value="They are currently bankrupt"  {{ checked('clientReview', 'They are currently bankrupt') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-4">
+         They are currently bankrupt
+        </label>
+      </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-5" name="clientReview" type="radio" value="They currently have an IVA"  {{ checked('clientReview', 'They currently have an IVA') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-5">
+         They currently have an IVA
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetailClient">
+    Can you provide more detail?
+  </label>
+  <textarea class="govuk-textarea" id="moreDetailClient" name="moreDetailClient" rows="4" aria-describedby="moreDetailClientHint" >{{ moreDetailClient }}</textarea>
+</div>
+
+      <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debtStatus" type="radio" value="clientReview~./review-client-confirm?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

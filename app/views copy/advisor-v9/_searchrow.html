@@ -1,0 +1,41 @@
+   
+   
+   
+   
+<table class="govuk-table fixcol">
+  <!--<caption class="govuk-table__caption visually-hidden">Name date of births and first line of addresses</caption>-->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Breathing Space reference</th>
+      <th scope="col" class="govuk-table__header">Date of birth</th>
+      <th scope="col" class="govuk-table__header">First line of address</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+{% for client in clients %} 
+{% if data['reference'] ==client.reference
+   or data['dob'] ==client.dob
+   or data['fullname'] ==client.fullname and data['dob']==''
+   or data['fullname'] ==client.fullname and data['dob'] ==client.dob 
+   or data['fullname'] ==client.lastname and client.id =='1' and data['dob']==''
+   or data['fullname'] ==client.lastname and client.id =='1' and data['dob']==client.dob
+   or data['fullname'] ==client.fullname and data['reference'] ==client.reference
+   or data['fullname'] ==client.lastname and data['reference'] ==client.reference
+    %} 
+
+   <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">
+      <a href='debt-list-tabs-search'>{{client.fullname}}</a>
+ 
+      </th>
+      <td class="govuk-table__cell">{{client.reference}}</td>
+      <td class="govuk-table__cell">{{client.dob}}</td>
+      <td class="govuk-table__cell">{{client.address}}</td>
+    </tr>
+    {% endif %}
+
+ {% endfor %}
+</tbody>
+</table>

@@ -1,0 +1,97 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="details-matched" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Add client details: Step 1 of 4</span>
+       Personal details
+      </h1>
+
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text govuk-!-margin-bottom-3">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You must ensure your client is eligible for Breathing Space
+  </strong>
+  <p>You sould search all registers required to satisfy yourself that your client is eligible</p>
+</div>
+
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="firstname">
+  First name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" autocomplete="firstname" spellcheck="false" value="{{ firstname }}">
+</div>
+
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="middlename">
+   Middle name (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" autocomplete="middlename" spellcheck="false" value="{{ middlename }}">
+</div>
+
+    <div class="govuk-form-group">
+  <label class="govuk-label" for="lastname">
+   Last name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        What is your client's date of birth?
+      </h2>
+    </legend>
+    <span id="dob-hint" class="govuk-hint">
+      For example, 31 3 1980
+    </span>
+    <div class="govuk-date-input" id="dob">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobday">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobday" name="dobday" type="number" autocomplete="bdayday" pattern="[0-9]*" value="{{ dobday }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobmonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobmonth" name="dobmonth" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="{{ dobmonth }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobyear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobyear" name="dobyear" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="{{ dobyear }}">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

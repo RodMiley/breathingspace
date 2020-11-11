@@ -1,0 +1,94 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-no" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+   </div>
+   </div>
+   <div class="govuk-grid-row">  
+    <div class="govuk-grid-column-two-thirds"> 
+      <h1 class="govuk-heading-l">
+       
+       Client eligibility review
+      </h1>
+     
+ 
+
+            
+           
+
+                    <h2 class="govuk-heading-m">Yorkshire Water Services Ltd asked for a review</h2>
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
+                    <p class="govuk-body">The client does not meet the eligibility criteria, because the client has had another Breathing Space in the last 12 months</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support review</h3>
+                    <p class="govuk-body">Our records indicate that our client has had a Breathing Space in the last 12 months so they’re not eligible.</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+                    <p class="govuk-body">Kiran Callaghan,  Yorkshire Water Services Ltd,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>
+            
+  
+          
+
+
+ <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">            
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+          Do you want to end your client's Breathing Space?
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
+          No
+        </label>
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="clientEligibilityDetail">
+    Please provide details to support the decision
+  </label>
+  <textarea class="govuk-textarea" id="clientEligibilityDetail" name="clientEligibilityDetail" rows="4" aria-describedby="clientEligibilityDetail-hint"></textarea>
+  </div>
+
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+
+    </div>
+    </form>
+      <!-- righthand column -->
+      <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-s related">Related content</h2>
+          <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance on client eligibility on gov.uk (opens in new tab)</a></p>
+    </div>
+    <!-- -->
+</div>
+
+
+{% endblock %}

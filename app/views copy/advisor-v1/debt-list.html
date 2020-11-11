@@ -1,0 +1,155 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+           <span class="govuk-caption-xl">Breathing space account for</span>
+       {{ fullname }}
+      </h1>
+
+<h2 class="govuk-heading-m">Personal details</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{fullname}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ dobday }} {{ dobmonth}} {{ dobyear }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{phone}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-preferences#phone">
+                Change<span class="govuk-visually-hidden"> Phone number</span>
+              </a>
+            </dd>
+          </div>
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{email}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-preferences#email">
+                Change<span class="govuk-visually-hidden"> Email address</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+ <h2 class="govuk-heading-m">Problem debts</h2>
+
+{% if data['creditor']%}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebt}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditor}}<br>Amount: £{{ amount }}<br> Reference: {{ reference }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+    {% if data['creditortwo']%}
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             {{ typeOfDebttwo }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {{creditortwo}}<br>Amount: £{{ amounttwo }}<br> Reference: {{ referencetwo }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt2">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+    {% endif %}  
+        </dl>
+    {% endif %}  
+
+{% if data['debt']%}
+ <a href="debt2" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a problem debt
+</a>
+{% else %}
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a problem debt
+</a>
+{% endif %}
+
+
+
+<hr class="govuk-section-break govuk-section-break--m  govuk-section-break--visible">
+
+
+
+
+ 
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Submit application
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

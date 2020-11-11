@@ -1,0 +1,118 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Add a debt
+      </h1>
+
+<h2 class="govuk-heading-m">Creditor details</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ creditorfour | default("Beech Garage") }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Hanworth Road<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step2-1">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          </dl>
+
+<!--<h2 class="govuk-heading-m">Notification preference</h2>
+   <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Method
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{howcontactedCreditor}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-pref-contact#howcontactedCreditor">
+                Change<span class="govuk-visually-hidden"> Notification preference</span>
+              </a>
+            </dd>
+          </div>
+  
+        {% if checked('howcontactedCreditor','Email')%}
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{creditorContactByEmail}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-pref-contact#creditorContactByEmail">
+                Change<span class="govuk-visually-hidden"> Email address</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          </dl> -->
+          <h2 class="govuk-heading-m">Debt details</h2>
+          {% if data['typefour'] or data['amountfour'] or data['referencefour'] %}
+          <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            {% if data ['typefour']%}
+              {{ typefour }}
+              {% else %}
+              Debt
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {% if data['amountfour']%} Amount: £{{ amountfour }}{% endif %}
+               {% if data['referencefour']%} <br> Reference: {{ referencefour}} {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="debt4-step4">
+                Change<span class="govuk-visually-hidden">Amount or reference</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+        {% else %}
+        <p><a href="debt4-step4">Add debt details</a></p>
+        {% endif %}
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

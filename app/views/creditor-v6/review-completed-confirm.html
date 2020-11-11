@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="test" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm 
+      </h1>
+
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You're confirming you've done everything you need to show the debt has been removed</h2>
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
+   <hr class="govuk-section-break govuk-section-break--visible">
+ <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                {%if checked('creditortype','financial')%} 
+                 Loan
+                {% else %}
+                Housing benefit 
+                {% endif %}
+              <p class="govuk-body-s govuk-!-margin-top-1">Status:<br>{% if customer.status == "review-accepted" %} Debt reviewed: reason accepted {% else %}New debt added{% endif %}</p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {% include "./_debt-amount-ref.html" %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+      </div>
+  </dl> 
+
+
+
+                <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="complete~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

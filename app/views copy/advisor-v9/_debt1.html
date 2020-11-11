@@ -1,0 +1,10 @@
+<h2 class="govuk-heading-s">Debt: Loan</h2>         
+ <ul class="govuk-list">
+      <li>Creditor: Barclays Bank Plc</li> 
+      <li>Amount: £5400<li>
+      <li> Reference: 8945 4321 5678</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+    {% if checked ('removedebt','debt1')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>

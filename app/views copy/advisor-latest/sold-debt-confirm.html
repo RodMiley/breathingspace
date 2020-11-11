@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you're transferring this debt to the new creditor
+      </h1>
+
+ <h2 class="govuk-heading-s">Debt: Gas</h2>   
+<ul class="govuk-list">
+<li>Creditor: Akinika Debt Recovery Limited</li>
+<li>Old creditor: EDF Energy Ltd</li>
+<li>Amount: £489</li>
+<li>Reference: CRT8536544</li>
+<li>Debt was entered on {{ 'DD MMMM YYYY' | baseDateAdd(-1) }}</li>
+</ul>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="solddebt" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+          {% include "./_confirmShowHiddenRadio.html" %} 
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="dontown" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>            
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

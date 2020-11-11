@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+        {% if data['accept']=='no'%}
+        <h1 class="govuk-panel__title">
+            Breathing Space rejected
+          </h1>
+          <div class="govuk-panel__body">
+            Your rejection reason has been sent to your clients money advisor
+          </div>
+        {% else %}
+          <h1 class="govuk-panel__title">
+            Breathing Space accepted
+          </h1>
+          <div class="govuk-panel__body">
+            Your acceptance has been sent to your clients money advisor
+          </div>
+          {% endif %}
+        </div>
+      </div>
+  
+</div>
+
+{% endblock %}

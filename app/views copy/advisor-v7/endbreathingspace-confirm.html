@@ -1,0 +1,73 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Confirm you are ending your client's Breathing Space
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+                    <h2 class="govuk-heading-m">Details</h2>
+                    <p class="govuk-body-l">We will inform Yorkshire Water Services Ltd that the client's Breathing Space has ended</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason</h3>
+                    <p class="govuk-body">The Client is not eligible for Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail</h3>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+           
+     
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    By ending Breathing Space, all creditor protections will be removed.
+  </strong>
+</div>
+
+<div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="clientreview" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+      <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and end Breathing Space
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

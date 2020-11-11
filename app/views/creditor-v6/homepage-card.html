@@ -1,0 +1,200 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include "./_global-nav.html" %}
+
+{% set todo = 0 %}
+
+
+
+ <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set type1Num = 0 %}
+{% set type2Num = 0 %}
+{% set type3Num = 0 %}
+{% set type4Num = 0 %}
+{% set OtherNum = 0 %}
+
+
+<!-- todo VALUES -->
+{% set type1toDO = 0 %}
+{% set type2toDO = 0 %}
+{% set type3toDO = 0 %}
+{% set type4toDO = 0 %}
+{% set OthertoDO = 0 %}
+
+
+
+	{% for customer in customers %}
+
+<!-- BASE VALUES -->
+	 {% set totNum = totNum + 1 %}
+
+  {% if customer.type === "type2" %}
+   {% set type2Num = type2Num + 1 %}
+   {% endif %}
+  {% if customer.type === "type1" %}
+   {% set type1Num = type1Num + 1 %}
+   {% endif %}
+   {% if customer.type === "type3" %}
+   {% set type3Num = type3Num + 1 %}
+    {% endif %}
+   {% if customer.type === "type4" %}
+   {% set type4Num = type4Num + 1 %}
+    {% endif %}
+   {% if customer.type === "Other" %}
+   {% set OtherNum = OtherNum + 1 %}
+    {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    {% if customer.type === "type2" and customer.todo === "Yes" %}
+     {% set type2toDO = type2toDO + 1 %}
+    {% endif %}
+
+    {% if customer.type === "type1" and  customer.todo === "Yes" %}
+     {% set type1toDO = type1toDO + 1 %}
+    {% endif %}	
+
+    {% if customer.type === "type3" and  customer.todo === "Yes" %}
+     {% set type3toDO = type3toDO + 1 %}
+     {% endif %}	
+
+      {% if customer.type === "type4" and  customer.todo === "Yes" %}
+     {% set type4toDO = type4toDO + 1 %}
+      {% endif %}
+
+      {% if customer.type === "Other" and  customer.todo === "Yes" %}
+     {% set OthertoDO = OthertoDO + 1 %}
+      {% endif %}
+
+{% endfor %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+  {% include "./_creditor.html" %}
+  </h1>
+
+  <h2 class="govuk-heading-l">
+  Active Breathing Spaces: 
+  total debts ({{totNum}})</h2>
+
+  <div class="card-container">
+            <div class="card">
+                 <a href=""><h3 class="govuk-heading-s">
+                All debts
+               ({{totNum}})
+                 </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body"> Tasks to do (36)</a>
+               
+              </div>
+
+                 <div class="card">
+                  <a href=""><h3 class="govuk-heading-s">
+                {%if checked('creditortype','financial')%} 
+                Mortgages
+                {% else %}
+               Pay as you earn
+                {% endif %}({{type1Num}})
+                </h23> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body"> Tasks to do ({{type1toDO}})</a>
+              </div>
+
+                 <div class="card">
+                <a href=""><h3 class="govuk-heading-s">
+                  <form class="" action="debttype-landing-page" method="post">
+                 <button class="govuk-link  govuk-!-font-size-19 govuk-!-font-weight-bold">
+                  {%if checked('creditortype','financial')%} 
+                 Loans
+                {% else %}
+               Self assessment
+                {% endif %} ({{type2Num}})
+                 </button>
+                    <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="all"  checked >
+        <label class="govuk-label govuk-radios__label" for="status">
+          To do 
+        </label>
+      </div>
+                 </form>
+                 
+               </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <form class="" action="debttype-landing-page" method="post">
+                 <button class="govuk-body govuk-link"> Tasks to do ({{type2toDO}})</button>
+      
+         <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="status" name="status" type="radio" value="todo"  checked >
+        <label class="govuk-label govuk-radios__label" for="status">
+          To do 
+        </label>
+      </div>
+              </form>   
+              </div>
+
+                 <div class="card">
+                 <a href=""><h3 class="govuk-heading-s">
+                  {%if checked('creditortype','financial')%} 
+                  Overdraft
+                {% else %}
+               National insurance
+                {% endif %}  ({{type3Num}})
+               </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body"> Tasks to do ({{type3toDO}})</a>
+              </div>
+
+
+                 <div class="card">
+                <a href=""><h3 class="govuk-heading-s">
+                  {%if checked('creditortype','financial')%} 
+                  Insurance
+                {% else %}
+                Tax credits
+                {% endif %} ({{type4Num}})
+              </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body"> Tasks to do ({{type4toDO}})</a>
+              </div>
+
+
+            <div class="card">
+                <a href=""><h3 class="govuk-heading-s">
+                Child benefit (45)
+                 </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
+                 </div>
+             
+
+       
+
+
+                 <div class="card">
+               <a href=""><h3 class="govuk-heading-s">
+                Other ({{OtherNum}})
+                </h3> </a>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="" class="govuk-body">Tasks to do ({{OthertoDO}} )</a>
+                 </div>
+            </div>
+
+
+</div>
+</div>
+
+{% endblock %}

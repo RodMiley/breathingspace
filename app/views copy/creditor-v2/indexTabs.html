@@ -1,0 +1,215 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="choice" method="post">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+           <span class="govuk-caption-xl">Breathing space account for</span>
+Roberto Henderson
+<span></span>
+      </h1>
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debt
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#adviser-details">
+        Adviser details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+ <h2 class="govuk-heading-l">Debt</h2>
+  <p class="govuk-body-l">Stepchange have requested Breathing space for Roberto's Loan</p>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Loan
+
+          <p>Status: received</p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Amount: <strong>£5400</strong><br> Reference: <strong>8945 4321 5678 </strong>
+
+            {% if data['query']%}
+            <br><br>
+            <p><strong>Query sent to stepchange</strong> 
+            <br>{{ query }}</p>
+          
+            {% endif %}
+            </dd>
+           <dd class="govuk-summary-list__actions">
+           <a href="query">Query debt</a>
+             
+          </div>
+  
+      
+
+
+   
+    </dl>
+
+  
+ <a href="debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Add a debt not listed
+</a>
+
+  </section>
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+           {% if data['Debt']%}   {{fullname}} {% else %} Jordan Firmino {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+  
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['Debt']%} {{ dobday }} {{ dobmonth}} {{ dobyear }} {% else %} 17 09 1978 {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+         
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+        
+            </dd>
+          </div>
+
+        </dl>
+
+
+  </section>
+
+   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="adviser-details">
+     <h2 class="govuk-heading-l">Adviser details</h2>
+
+
+    <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Organisation
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Stepchange
+            </dd>
+          </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Advisor
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Paul Smith
+            </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+            078345 677 889
+            </dd>
+        </div>
+
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Email
+            </dt>
+            <dd class="govuk-summary-list__value">
+           paulsmith3@stepchange.org.uk
+            </dd>
+        </div>
+  
+      
+
+
+   
+    </dl>
+
+   </section>
+
+
+</div>
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="accept-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+        Do want to query something with the money adviser?
+      </h2>
+    </legend>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept" name="accept" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="accept">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-2" name="accept" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="accept-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+
+ 
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

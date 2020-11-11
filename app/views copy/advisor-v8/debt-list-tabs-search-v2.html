@@ -1,0 +1,163 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <!-- {% include path+"advisor-mvp/_keydetails_active.html" %} --> 
+{% include path+"advisor-mvp/_keydetails_active_v2.html" %}
+ <!-- {% include path+"advisor-mvp/_keydetails_active_v3.html" %} -->
+
+  <form class="form" action="index" method="post">
+
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  End Breathing Space
+</a>
+
+
+   
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+   {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes')  %}
+       <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed debts
+      </a>
+    </li>
+    {% endif %} 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+  
+ 
+  {% include path+"advisor-mvp/_debtlist.html" %} 
+  {% if data['bsEndReason'] %}  
+  {% else %} 
+ <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add a debt
+</a>
+ <!--<a href="remove-a-debt" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Remove a debt 
+</a> -->
+{% endif %}
+
+  </section>
+ {% if checked('debt-eligibility','yes') or checked('removedebt', 'yes') %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+ <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+
+ {% if checked('debt-eligibility','yes') %}
+    
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card <br> <p><a href="remove-reviewed-debt-detail">Reviewed and removed detail</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor:<strong> MBNA Europe Bank Ltd</strong><br>Amount:<strong> £2500</strong><br>Reference:<strong> RBC23455003</strong></p>
+              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+              
+               <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if checked('removedebt', 'yes') %}
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card <br> <p><a href="remove-debt-detail">Removed detail</a></p>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p>Creditor:<strong> Halifax</strong><br>Amount:<strong> £3700</strong><br>Reference:<strong> 3567 6732 1278</strong></p>
+              <p class="govuk-body-s">Date added: {{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</p>
+              
+               <p class="govuk-body-s">Date removed:   <strong class="govuk-tag govuk-tag--blue">Pending</strong> </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+          {% endif%}
+  </dl>
+
+   </section>
+  {% endif %}
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{fullname}} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#fullname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['Debt']%} {{ dobday }} {{ dobmonth}} {{ dobyear }} {% else %} 17 09 1978 {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sort']=='two'%} 2 {% elif data['sort']=='three' %} 3 {% else %} 4 {% endif %} Monmouth drive<br>London<br>{{postcode}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address#postcode">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
+
+  </section>
+
+
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Finish
+</button>
+    </div>
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview" name="clientReview" type="radio" value="The client does not meet the eligibility criteria"  {{ checked('clientReview', ' The client does not meet the eligibility criteria') }} data-aria-controls="conditional-how-contacted-conditional">
+        <label class="govuk-label govuk-radios__label" for="clientReview">
+         The client does not meet the eligibility criteria
+        </label>
+      </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-contacted-conditional">
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-fieldset__heading">
+        Why is does the client not meet the eligibility criteria?
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason" name="clientReviewReason" type="radio" value="the client does not live or usually reside in England and Wales">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason">
+          The client does not live or usually reside in England and Wales
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-2" name="clientReviewReason" type="radio" value="the client has a Debt Relief Order">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-2">
+         The client has a Debt Relief Order
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-3" name="clientReviewReason" type="radio" value="the client has an interim order or Individual Voluntary Arrangement">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-3">
+          The client has an interim order or Individual Voluntary Arrangement
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-4" name="clientReviewReason" type="radio" value="the client is an undischarged bankrupt">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-4">
+          The client is an undischarged bankrupt
+        </label>
+      </div>
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReviewReason-5" name="clientReviewReason" type="radio" value="the client has had another Breathing Space in the last 12 months">
+        <label class="govuk-label govuk-radios__label" for="clientReviewReason-5">
+          The client has had another Breathing Space in the last 12 months
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="clientReview-2" name="clientReview" type="radio" value="The client has sufficient funds to discharge their debt"  {{ checked('clientReview', 'The client has sufficient funds to discharge their debt') }}>
+        <label class="govuk-label govuk-radios__label" for="clientReview-2">
+          The client has sufficient funds to discharge their debt
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="moreDetailClient">
+    Please provide details to support the review
+  </label>
+  <textarea class="govuk-textarea" id="moreDetailClient" name="moreDetailClient" rows="4" aria-describedby="moreDetailClientHint" >{{ moreDetailClient }}</textarea>
+</div>

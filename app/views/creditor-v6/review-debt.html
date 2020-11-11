@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="review-debt-confirm" method="post">
+    <div class="govuk-grid-column-full">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+</div>
+</div>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+       Ask the money advisor to review this debt
+      </h1>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+{% include "./_debt-amount-ref-v2.html" %}
+
+
+{% include "./_debt-review-capture.html" %}
+    
+              <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="no~./review-debt-confirm?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+        <div class="govuk-radios__item" style="display:none">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="review" checked>
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+          Yes, but we want the money adviser to review the debt
+        </label>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-s related">Related content</h2>
+  <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about debt eligibility on GOV.UK (opens in new tab)</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

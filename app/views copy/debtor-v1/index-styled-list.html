@@ -1,0 +1,87 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <form class="form" action="debt" method="post">
+      <section class="key_details">
+<style>
+ul.styled_list li li{
+  width:18%;
+}
+</style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+           <h1 class="govuk-heading-l">
+           <span class="govuk-caption-l">Breathing space account</span>
+Roberto Henderson
+      </h1>
+      </div>
+      <div class="govuk-grid-column-one-third">
+          <p class="header_highlight_info"><span>Day 10</span> of 60</p>
+      </div>
+      <div class="govuk-grid-column-full">
+      <ul>
+        <li>
+        <p>Date of birth: <span>28 February 1987</span></p>
+        </li>
+        <li>
+        <p>Address: <span>2 Epsom drive, Melling, Liverpool, L36 1KJ </span></p>
+        </li>
+      </ul>
+      </div>
+      </div>
+</section>
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+
+<p class="govuk-body ">A Stepchange money adviser has added the following debts to your Breathing Space <br><a href="" class="">Request a change of money advisor</a></p>
+</p>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-1">Debt</h2>
+
+<ul class="styled_list  govuk-!-margin-bottom-5">
+<li>
+    <ul>
+        <li><p class="govuk-!-margin-bottom-0">Status:<span>Recieved</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>Loan</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Creditor: <span>Barclays</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Amount: <span>£4556</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Reference: <span>BAR342007564</span></p></li>
+    </ul>
+</li>
+<li>
+    <ul>
+        <li><p class="govuk-!-margin-bottom-0">Status:<span>Recieved</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>Credit card</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Creditor: <span>Crosby housing association</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Amount: <span>£1856</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Reference: <span>BC23456789</span></p></li>
+    </ul>
+</li>
+<li>
+    <ul>
+        <li><p class="govuk-!-margin-bottom-0"></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Type of debt: <span>Rent</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Creditor: <span>Barclaycard</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Amount: <span>£1856</span></p></li>
+        <li><p class="govuk-!-margin-bottom-0">Reference: <span>BC23456789</span></p></li>
+    </ul>
+</li>
+</ul>
+
+
+<p class="govuk-body">
+<button class="govuk-button" data-module="govuk-button">
+  Finish
+</button>
+</p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

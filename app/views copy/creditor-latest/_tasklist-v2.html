@@ -1,0 +1,239 @@
+
+      <ol class="app-task-list">
+        <li>
+          <h3 class="govuk-heading-m">
+           Tasks
+          </h3>
+          <ul class="app-task-list__items govuk-!-margin-bottom-5">
+
+
+
+               {% if customer.substatus == 'proposedDebt' %}
+              <li class="app-task-list__item">
+                  <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to Money Adviser</strong>
+              <h3 class="govuk-heading-s">
+              We have proposed a new debt to the money adviser
+             </h3>
+
+              <ul class="govuk-list">
+                <li>Debt type: {% if checked('typeOfDebt','other')%}
+                            {{ otherdebt }}
+                            {% else %}
+                            {{typeOfDebt}}
+                            {% endif %}     
+                </li>
+                <li>Amount: £{{ addamount }}</li>
+                <li>Reference:{{ addreference }}</li>
+                </ul> 
+              
+                <span class="app-task-list__task-name">
+                <a href='add-debt-details?reference={{customer.reference}}'>View proposed debt details</a>
+                </span>
+           
+              </li>
+              {% endif %}
+              {% if customer.clientReview == 'yes' or customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %}
+              <li class="app-task-list__item">
+                {% if customer.status == 'client-review-accepted' and checked('protection','clientreviewactioncompleted') 
+                or customer.status == 'client-review-rejected' and checked('protection','clientreviewactioncompleted')
+                  %}
+              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+              {% elif customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+              {% else %}
+               <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to money adviser</strong>
+               {% endif%}
+
+            
+              <h3 class="govuk-heading-s">
+                {% if customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %}
+                  A money adviser has reviewed the client
+              {% else %}
+              We have asked the money advisor to review the clients eligibility  
+              {% endif %}
+          
+              </h3>
+
+                 {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' or customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %}
+ <h4 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">Outcome</h4>
+         
+            {% if customer.status == 'client-review-accepted'%}
+            <p>Client removed after review</p>
+            {% elif customer.status == 'client-review-rejected'%}
+            <p>Client not removed after review</p>
+            {% endif %}      
+   {% endif %}
+                <span class="app-task-list__task-name">
+
+              {% if customer.status == 'client-review-accepted' and checked('protection','clientreviewactioncompleted') 
+                or customer.status == 'client-review-rejected' and checked('protection','clientreviewactioncompleted')%}
+                 <a href='review-client-details?reference={{customer.reference}}'>View review details</a>
+                  {% elif customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected'  %}
+                 
+                    <a href="review-client-details?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
+                       View review details and confirm you have completed your to do 
+                  </a>
+
+               
+                  {% else %}
+                <a href='review-client-details?reference={{customer.reference}}'>View review details</a>
+                {% endif %}
+                </span>
+           
+              </li>
+              {% endif %}      
+              <li class="app-task-list__item">
+                   {% if customer.status == 'review' %}
+             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to money adviser</strong>
+                {% elif customer.status == 'dont-own' %}
+             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to money adviser</strong>
+            {% elif customer.status == 'applied' or customer.status == 'dont-own' or customer.status == 'review-accepted' and checked('protection','completed') or customer.status == 'review-rejected' and checked('protection','rejectedcompleted') or customer.status == 'client-review-accepted' or  customer.status == 'client-review-rejected'  %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %} 
+              <h3 class="govuk-heading-s">   
+ {% if customer.status == 'review-accepted' or customer.status == 'review-rejected'%}
+                A money adviser has reviewed the debt
+{% elif customer.status == 'new'%} 
+A money adviser has added a new debt  
+{% elif customer.status == 'review' %}       
+ We have asked the money advisor to review this debt   
+  {% elif customer.status == 'dont-own' %} 
+We've told the money advisor we've sold this debt 
+  {% elif customer.status == 'applied' or customer.status == 'client-review-accepted' or customer.status == 'client-review-rejected' %} 
+All action against this debt has been stopped
+  {% elif customer.status == 'client-review-accepted' or  customer.status == 'client-review-rejected' %}
+          A money adviser has reviewed the debt    
+ {% endif %}
+   </h3>
+   {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
+ <h4 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-3">Outcome</h4>
+            {% if customer.status == 'review-accepted' %}
+            <p>Debt removed after review</p>
+            {% elif customer.status == 'review-rejected'%}
+            <p>Debt not removed after review</p>
+            {% endif %}      
+   {% endif %}
+       {% include "./_debt-amount-ref-v2.html" %}
+            {% if customer.status == 'new' or customer.status == 'applied' %} 
+                          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Choose an option</h2>   
+            {% endif %}                
+              <span class="app-task-list__task-name">
+                  {% if customer.status == 'review'  %}
+                    <a href="review-debt-details?reference={{customer.reference}}" >
+                         View review details
+                  </a>
+                 
+                  {% elif customer.status == 'review-accepted' and checked('protection','completed')  %}
+                    <a href="review-debt-details?reference={{customer.reference}}">
+                        View  review details
+                  </a>
+
+                   
+                  {% elif customer.status == 'review-rejected' and checked('protection','rejectedcompleted')   %}
+                    <a href="review-debt-details-rejected?reference={{customer.reference}}">
+                        View  review details
+                  </a>
+
+                 {% elif customer.status == 'review-accepted' %}
+                 
+                    <a href="review-debt-details?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
+                       View review details and confirm you have completed your to do 
+                  </a>
+
+                   {% elif customer.status == 'review-rejected' %}
+                 
+                    <a href="review-debt-details-rejected?reference={{customer.reference}}" class="govuk-button govuk-button--secondary">
+                       View review details and confirm you have completed your to do 
+                  </a>
+        
+                  {% elif customer.status == 'applied' or customer.status == 'client-review-rejected' %} 
+
+                       <a href="review-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        The debt's not eligible, ask for a review
+                      </a>
+                    
+
+                       <a href="sold-the-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        We've sold this debt
+                      </a>
+
+                     {% elif customer.status == 'dont-own' %} 
+                    <a href="sold-the-debt-details?reference={{customer.reference}}">
+                         View details
+                    </a>
+
+                    {% elif customer.status == 'client-review-accepted' %}
+
+
+
+                  {% else %}
+                       
+  
+
+                     <a href="protections-confirm?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                         We've stopped all action
+                    </a>
+
+                  
+
+                       <a href="review-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        The debt's not eligible, ask for a review
+                      </a>
+
+                       <a href="sold-the-debt?reference={{customer.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        We've sold this debt
+                      </a>
+
+
+                 {% endif %}
+                 
+              </span> 
+              </li>
+              {% if customer.reference =='VFDgzk9NKIu6O' %} 
+                 <li class="app-task-list__item">
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+          
+              <h3 class="govuk-heading-s">   
+
+A money adviser has added a new debt  
+
+   </h3>
+    <ul class="govuk-list">
+      <li>Debt type: Pay as you earn </li> 
+      <!-- <li>Status: {% include "./_status-playback.html" %}</li> -->
+      <li>Amount: 
+      
+      £678
+   
+    </li> 
+     <li>NI number: {{customer.nino }}</li>    
+     <li> Reference: HM23GH78</li>
+    <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+      <li>
+               Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(59) }}
+
+     </li>          
+             </ul>
+  
+                          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Choose an option</h2>   
+                          <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                              We've stopped all action
+                          </a>
+                       <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        The debt's not eligible, ask for a review
+                      </a>
+
+                       <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
+                        We've sold this debt
+                      </a>
+
+
+                 
+              </span> 
+              </li>
+              {% endif %}
+              </ul>
+        </li>
+      </ol>

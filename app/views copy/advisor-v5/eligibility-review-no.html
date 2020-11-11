@@ -1,0 +1,69 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-removedebt" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Confirm you are not removing the debt from Breathing Space
+      </h1>
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+<dl class="govuk-summary-list govuk-!-margin-bottom-5">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Credit card
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount: £2500<br> Reference: RBC23455003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+  </dl> 
+
+    </div>
+   <div class="govuk-grid-column-three-quarters">
+  <ul class="govuk-list timeline govuk-!-margin-bottom-6">
+
+
+             <li>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We will inform {% include path+"advisor-mvp/_review_creditor.html" %} the debt has not been removed.</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
+                    <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+                </li>
+
+
+                <li>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">{% include path+"advisor-mvp/_review_creditor.html" %} have requested a debt eligibility review </h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">The debt does not qualify for Breathing Space</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+                    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
+                  
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested: {% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+                </li>
+              </ul>  
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

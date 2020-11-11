@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+    
+        <div class="govuk-panel govuk-panel--confirmation">
+      
+          <h1 class="govuk-panel__title">
+          Confirmation
+          </h1>
+        
+          <div class="govuk-panel__body">
+           {% if data['addDebt']%}
+             A new debt has been identified
+             {% endif %}
+               {% if  checked('review', 'client') %}
+           You have requested a review of client eligibility
+         {% endif %}
+             {% if  checked('review', 'debt') %}
+          You have requested a review of debt eligibility
+          {% endif %}
+          </div>
+    
+        </div>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">
+          The money advisor will be notified that:
+        </p>
+      
+        <ul class="govuk-list">
+          {% if data['addDebt']%}
+          <li>You have identified a new debt</li>
+  
+        {% endif %}
+           {% if  checked('review', 'client') %}
+           <li>You have requested a review of client eligibility</li>
+            {% endif %}
+        {% if  checked('review', 'debt') %}
+       
+          <li>You have requested a review of debt eligibility</li>
+       
+        {% endif %}
+         </ul>
+      </div>
+  
+</div>
+
+{% endblock %}

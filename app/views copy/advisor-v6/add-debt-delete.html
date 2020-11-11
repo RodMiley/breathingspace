@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="{% include path+"advisor-mvp/_landingpagepath.html" %}" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+       Delete debt
+      </h1>
+
+      <ul class="govuk-list">
+       <li>Type: <strong>    {{ debttype }}
+             </strong></li>
+       <li> Creditor: <strong>{{ newcreditor }}</strong></li>
+       <li>Amount: <strong>£{{adddebtamount}}</strong></li>
+       <li>Reference: <strong>{{adddebtreference}}</strong></li>
+      </ul>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Delete debt 
+</button>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

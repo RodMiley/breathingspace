@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="mh-summary" method="post">
+ 
+    <div class="govuk-grid-column-two-thirds">
+           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-l">
+       What is the point of contact address?
+      </h1>
+
+      <h2 class="govuk-heading-m">Postcode</h2>
+      <p class="govuk-body">{{ postcodeMh | default("NW1 1JU") }} <a href="mh-poc-address">Change</a></p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="mhSort">
+    Choose address
+  </label>
+  <select class="govuk-select" id="mhSort" name="mhSort">
+    <option value="published">3 addresses found</option>
+    <option value="two">2 Melling road, Elephant and castle, London, {{ postcodeMh }}</option>
+    <option value="three">3 Melling road, Elephant and castle, London, {{ postcodeMh }}</option>
+    <option value="four">4 Melling road, Elephant and castle, London, {{ postcodeMh }}</option>
+  </select>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+<p class="govuk-body"><a href="mh-poc-address-manual">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

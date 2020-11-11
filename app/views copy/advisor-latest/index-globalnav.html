@@ -1,0 +1,28 @@
+
+{% extends "layout-globalnav.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block nav %}
+    {% include "./_global-nav.html" %} 
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
+ <span class="govuk-caption-xl">Breathing Space portal for</span>
+ {% if checked('MAScenaioChoice','breathing space ended')%} Stepchange {% else %}Advice uk{% endif %}</h1>
+
+       <p class="govuk-body">Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Enter a client with problem debt into a Breathing Space</li>
+          <li>Update the details of a client if they're already in Breathing Space</li>
+        </ul>
+</div>
+
+{% endblock %}

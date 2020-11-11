@@ -1,0 +1,49 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="review-client-ma-confirm" method="post">
+    <div class="govuk-grid-column-full">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+    </div>
+    </div>
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+       Add client eligibility review task
+      </h1>
+
+
+<h2 class="govuk-heading-m">{% include "./_creditornames.html" %} asked for a review</h2>
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-label govuk-!-font-weight-bold">
+        Why does the creditor think their client is not eligible?
+      </label>
+    </legend>
+
+
+{% include "creditor-latest/_client-review-capture.html" %}
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+    <!-- righthand coloumn -->
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s related">Related content</h2>
+      <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance on client eligibility on gov.uk (opens in new tab)</a></p>
+    </div>
+    <!-- -->
+</div>
+
+{% endblock %}

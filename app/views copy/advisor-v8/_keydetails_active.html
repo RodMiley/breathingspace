@@ -1,0 +1,51 @@
+  <div class="govuk-grid-row keydetails  govuk-!-margin-top-5">
+      <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-3">
+     
+           <span class="govuk-caption-l">
+{% if checked('clientreview','bsended') %}
+                     <strong class="govuk-tag govuk-tag--grey">
+  Inactive
+</strong>  
+  {% else %} 
+                     <strong class="govuk-tag">
+  Active
+</strong>  
+{% endif%}
+
+    
+    
+    Breathing Space account for</span>
+     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+      </h1>
+      </div>
+            <div class="govuk-grid-column-one-third">
+          
+          {% if checked('MAScenaioSubChoice','return to active account v3')%}
+<p class="header_highlight_info info">
+{% elif checked('MAScenaioSubChoice','return to active account v2')%}
+<p class="header_highlight_info active">
+{% else %}
+<p class="header_highlight_info">
+{% endif %}
+
+<span class=" govuk-!-margin-bottom-1">
+<strong>Breathing Space 
+{% if checked('clientreview','bsended') %}
+{% else %}
+day 2 of 60 
+{% endif %}
+</strong>
+</span>
+<span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} <br>
+{% if checked('clientreview','bsended') %}
+Ended: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} 
+{% else %}
+Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 
+{% endif %}
+</span> </p>
+      </div>
+          <div class="govuk-grid-column-full">
+     <hr class="govuk-section-break govuk-section-break--visible keydetails">
+     </div>
+     </div>

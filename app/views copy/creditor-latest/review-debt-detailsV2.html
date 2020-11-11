@@ -1,0 +1,132 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="#" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+{% if customer.status == 'review' %}
+Review requested
+{% else %}
+Review completed
+{% endif %}
+      </h1>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<hr class="govuk-section-break govuk-section-break--visible">
+{% include "./_debt-info.html" %} 
+
+  
+
+
+
+        {% if customer.status == 'review-accepted' %}
+           <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have accepted your review reason</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-5">The debt has been removed from Breathing Space</h3>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">
+                    The client has agreed that this was a debt accociated with their business
+                    </p>           
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+            </div>
+
+    {% endif %}        
+                
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">We requested a review of the debts eligibility</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">{{ debtReview | default ("The debt does not qualify for Breathing Space")}}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
+                    <p class="govuk-body">{{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}</p>
+                  
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested By:{% include "./_creditor-advisor.html" %}, {% include "./_creditorname.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-5 govuk-fullborder--blue">
+                           <p><strong class="govuk-tag govuk-tag--blue">
+  Responce
+</strong></p>
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">Advice Uk have not removed the debt from Breathing Space</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
+                    <p class="govuk-body">
+                    The client is a sole trader and his business is not registered for Vat, so the debt qualifies as a personal debt under the clients name as a sole trader.
+                    </p>           
+                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Reviewed: {% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+              </div>
+              
+ 
+<div class="govuk-form-group govuk-!-margin-top-7">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Update the debt status
+      </h1>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="reviewapplied~./review-completed-rejected-confirm?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+          We agree protections will remain in place
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="dispute~./review-completed-rejected-confirm?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+          Protections will remain but we dispute the eligibilty 
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+
+
+{% if customer.status == 'review-accepted' and customer.todo == 'No' %}
+{% elif customer.status == 'review-accepted' %}    
+<div class="govuk-form-group govuk-!-margin-top-7">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+        Have you completed the tasks needed because the debt has been removed?
+      </h2>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="completed~./review-completed-confirm?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus">
+         Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtStatus-2" name="debtStatus" type="radio" value="completedno~./account-landing-tabs?reference={{customer.reference}}">
+        <label class="govuk-label govuk-radios__label" for="debtStatus-2">
+        No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+{% endif %}
+
+
+
+
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

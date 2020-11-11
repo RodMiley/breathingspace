@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+    <form class="form" action="add-business-guard" method="post">
+{% endif%}
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Add client details: Step 2 of 3</span>
+       Address history
+      </h1>
+
+       <dl class="govuk-summary-list">
+       {% if checked('parv','yes')%}
+       {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	            {% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
+              {% else %}  
+              <span class="govuk-!-display-block">{{addressline1 | default("4 Bourough road") }}</span>
+              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
+              <span class="govuk-!-display-block">{{addresspostcode | default("NW10 2JU")}} </span>   
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+  {% include "./_address-previous.html" %} 
+
+        </dl>
+
+      <h2 class="govuk-heading-m">Add clients previous addresses in the last 3 years</h2>
+<p>If you can provide previous addresses it will help your clients creditors match their debts and apply the Breathing Space protections.</p>
+
+ <p><a href="address-previous" class="govuk-button govuk-button--secondary">Add previous address</a></p>
+
+<p>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+</p>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

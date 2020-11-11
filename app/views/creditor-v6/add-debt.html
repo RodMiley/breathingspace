@@ -1,0 +1,112 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="add-debt-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Add a debt
+      </h1>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        Type of debt
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+     
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Pay as you earn"  {{checked('typeOfDebt', 'Pay as you earn') }} >
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
+            Pay as you earn
+        </label>
+      </div>
+
+        <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Self assessment"  {{checked('typeOfDebt', 'Self assessment') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
+            Self assessment
+        </label>
+      </div>
+    
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="National insurance"  {{checked('typeOfDebt', 'National insurance') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
+       National insurance
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-34" name="typeOfDebt" type="radio" value="Tax credits"  {{checked('typeOfDebt', 'Tax credits') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-4">
+       Tax credits
+        </label>
+      </div>
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="typeOfDebt-5" name="typeOfDebt" type="radio" value="Child benefit"  {{checked('typeOfDebt', 'Child benefit') }}>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt-5">
+       Child benefit
+        </label>
+      </div>
+
+         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="addDebt-conditional" name="typeOfDebt" type="radio" value="other" data-aria-controls="conditional-addDebt-conditional"  {{checked('typeOfDebt', 'other') }}>
+        <label class="govuk-label govuk-radios__label" for="addDebt-conditional">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-addDebt-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="otherdebt">
+            Type of Debt
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="otherdebt" name="otherdebt" value="{{otherdebt}}">
+        </div>
+</div>
+  </fieldset>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addamount">
+   Amount
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addamount" name="addamount" type="text" spellcheck="false" value="{{ addamount }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="addreference">
+    Reference
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="addreference" name="addreference" type="text" spellcheck="false" value="{{ addreference }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes~./add-debt-confirm?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="adddebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

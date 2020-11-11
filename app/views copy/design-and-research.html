@@ -1,0 +1,75 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+  Breathing space
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+       Design and research
+        <span class="govuk-caption-xl">Prototypes</span>
+      </h1>{{releaseVersion | log }}
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<div class="card-container">
+
+    <div class="card ">
+      <h2 class="govuk-heading-m">
+      Money advisers</h2>
+      
+      <a href="/money-advisers" class="govuk-button govuk-button--secondary">View prototypes</a>
+     
+   </div>
+
+         <div class="card">
+      <h2 class="govuk-heading-m">
+ Creditors</h2>
+      <a href="creditors" class="govuk-button govuk-button--secondary">View prototypes</a>
+      </div>
+
+
+<div class="card">
+      <h2 class="govuk-heading-m">
+      Developer hub</h2>
+       
+      <a href="/developer-latest/viewallapplications" class="govuk-button govuk-button--secondary">View prototypes</a>
+      
+   </div>
+
+<div class="card">
+      <h2 class="govuk-heading-m">
+      Private Beta - MVP</h2>
+       
+      <a href="/private-beta-mvp" class="govuk-button govuk-button--secondary">View prototypes</a>
+      
+   </div>
+
+       <div class="card">
+      <h2 class="govuk-heading-m">
+      Mental health professional</h2>
+    
+      <a href="/mental-health" class="govuk-button govuk-button--secondary">View prototypes</a>
+    
+   </div>
+
+
+      <div class="card">
+      <h2 class="govuk-heading-m">
+ Client / Debtor</h2>
+ 
+  
+      <a href="debtor" class="govuk-button govuk-button--secondary">View prototypes</a>
+      </div>    
+
+</div>
+</div>
+</div>
+
+{% endblock %}

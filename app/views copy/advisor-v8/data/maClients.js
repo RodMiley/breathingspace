@@ -1,0 +1,10 @@
+module.exports = [{"name":"Cross Castagnier","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"13-Aug-2020","enddate":"12-Oct-2020","reference":"257-91-7362"},
+{"name":"Chilton Cossey","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"02-Aug-2020","enddate":"01-Oct-2020","reference":"546-88-1739"},
+{"name":"Lev Romagnosi","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"23-Aug-2020","enddate":"22-Oct-2020","reference":"521-15-7418"},
+{"name":"Shellie Romans","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"06-Sep-2020","enddate":"05-Nov-2020","reference":"497-78-5040"},
+{"name":"Nelly Lillicrap","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"22-Aug-2020","enddate":"21-Oct-2020","reference":"690-59-6025"},
+{"name":"Carrissa Orta","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"20-Aug-2020","enddate":"19-Oct-2020","reference":"198-16-9800"},
+{"name":"Filide Collingridge","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"29-Aug-2020","enddate":"28-Oct-2020","reference":"234-96-1609"},
+{"name":"Alexi Affleck","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"28-Jun-2020","enddate":"27-Aug-2020","reference":"157-07-1045"},
+{"name":"Lisa Bryning","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"04-Sep-2020","enddate":"03-Nov-2020","reference":"895-32-5103"},
+{"name":"Ava Andreuzzi","debt1":"Loan","debt2":"Credit card","debt3":"Council tax","startdate":"19-Jul-2020","enddate":"17-Sep-2020","reference":"642-26-7983"}]

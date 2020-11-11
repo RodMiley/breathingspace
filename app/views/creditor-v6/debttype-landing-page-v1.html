@@ -1,0 +1,392 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include "./_global-nav-account.html" %}
+
+ <!-- BASE VALUES -->
+
+{% set type2Num = 0 %}
+{% set type2NNum = 0 %}
+{% set type2ANum = 0 %}
+{% set type2RNum = 0 %}
+{% set type2RANum = 0 %}
+{% set type2RRNum = 0 %}
+{% set dontOwnNum = 0 %}
+{% set type2RCNum = 0 %}
+{% set disputeNum = 0 %}
+{% set propDebtNum = 0 %}
+
+
+<!-- todo VALUES -->
+{% set type2toDO = 0 %}
+
+
+
+	{% for customer in customers %}
+
+<!-- BASE VALUES -->
+
+
+  {% if customer.type === "type2" %}
+   {% set type2Num = type2Num + 1 %}
+   {% endif %}
+
+   <!-- TO DO VALUES Type -->
+    {% if customer.type === "type2" and customer.todo === "Yes" %}
+     {% set type2toDO = type2toDO + 1 %}
+    {% endif %}
+
+
+     {% if customer.type === "type2" and customer.status === "new" %}
+     {% set type2NNum = type2NNum + 1 %}
+    {% endif %}
+
+      {% if customer.type === "type2" and customer.status === "applied" %}
+     {% set type2ANum = type2ANum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "type2" and customer.status === "review" or customer.clientReview === "yes" %}
+     {% set type2RNum = type2RNum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RANum = type2RANum + 1 %}
+    {% endif %}
+
+  {% if customer.type === "type2" and customer.status === "review-rejected" %}
+     {% set type2RRNum = type2RRNum + 1 %}
+    {% endif %}
+
+
+    {% if customer.type === "type2" and customer.status === "review-rejected" or customer.type === "type2" and customer.status === "review-accepted" %}
+     {% set type2RCNum = type2RCNum + 1 %}
+    {% endif %}
+
+
+
+      {% if customer.type === "type2" and customer.status === "dont-own" %}
+     {% set dontOwnNum = dontOwnNum + 1 %}
+    {% endif %}
+
+        {% if customer.type === "type2" and customer.status === "dispute" %}
+     {% set disputeNum = disputeNum + 1  %}
+    {% endif %}
+
+    {% if customer.type === "type2" and customer.substatus === "proposedDebt" %}
+     {% set  propDebtNum =  propDebtNum + 1  %}
+    {% endif %}
+
+
+{% endfor %}
+
+
+
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<form class="form" action="#" method="post">
+<h2 class="govuk-heading-m govuk-!-margin-top-5">Filter by:</h2>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Status
+      </label>
+    </legend>
+
+    <div class="govuk-radios  govuk-radios--small">
+
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_1" name="status" type="radio" value="all"  {{ checked('status', 'all') }}>
+        <label class="govuk-label govuk-radios__label" for="status_1">
+          All debts ({{type2Num}})
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="new"  {{ checked('status', 'new') }}>
+        <label class="govuk-label govuk-radios__label" for="status_2">
+          New  debts added ({{type2NNum}})
+        </label>
+      </div>
+ <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="PA"  {{ checked('status', 'PA') }}>
+        <label class="govuk-label govuk-radios__label" for="status_3">
+          Protections applied  ({{type2ANum}})
+        </label>
+      </div>
+
+
+     <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_4" name="status" type="radio" value="R"  {{ checked('status', 'R') }}>
+        <label class="govuk-label govuk-radios__label" for="status_4">
+          Reviews requested ({{type2RNum}})
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="RC"  {{ checked('status', 'RC') }}>
+        <label class="govuk-label govuk-radios__label" for="status_5">
+          Reviews completed ({{type2RCNum}})
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="dispute"  {{ checked('status', 'dispute') }}>
+        <label class="govuk-label govuk-radios__label" for="status_6">
+          Eligibility disputes ({{disputeNum}})
+        </label>
+      </div>
+
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_7" name="status" type="radio" value="dont-own"  {{ checked('status', 'dont-own') }}>
+        <label class="govuk-label govuk-radios__label" for="status_7">
+          We dont own these debts anymore ({{dontOwnNum}})
+        </label>
+      </div>
+
+               <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_8" name="status" type="radio" value="propDebt"  {{ checked('status', 'propDebt') }}>
+        <label class="govuk-label govuk-radios__label" for="status_8">
+          Proposed debts ({{propDebtNum}})
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Tasks
+      </label >
+    </legend>
+
+    <div class="govuk-radios  govuk-radios--small">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_9" name="status" type="radio" value="todo" {{ checked('status', 'todo') }}>
+        <label class="govuk-label govuk-radios__label" for="status_9">
+          To do 
+            ({{type2toDO}})
+            
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button"  id="facetFilterBtn" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+</div>
+<div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+   {%if checked('creditortype','financial')%} 
+                 Loans
+                {% else %}
+                Housing benefit 
+                {% endif %}
+  </h1>
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+{% if checked('status','new')%}
+New debts added ({{type2NNum}}) 
+{% elif checked('status','PA')%}
+Protections applied ({{type2ANum}}) 
+{% elif checked('status','R')%}
+Reviews requested ({{type2RNum}}) 
+{% elif checked('status','RA')%}
+Reviews completed - debt removed ({{type2RANum}}) 
+{% elif checked('status','RR')%}
+Reviews completed - debt remains ({{type2RRNum}}) 
+{% elif checked('status','DO')%}
+We dont own these debts anymore ({{dontOwnNum}}) 
+{% elif checked('status','RC')%}
+Eligibility reviews completed ({{type2RCNum}}) 
+{% elif checked('status','todo')%}
+To do ({{type2toDO}}) 
+{% elif checked('status','dispute')%}
+Eligibility disputes ({{disputeNum}}) 
+{% elif checked('status','dont-own')%}
+We dont own these debts anymore ({{disputeNum}}) 
+{% elif checked('status','propDebt')%}
+Proposed debts ({{propDebtNum}}) 
+{% elif checked('status','all')%}
+All debts ({{type2Num}}) 
+{% else %}
+All debts ({{type2Num}}) 
+{% endif %}
+
+
+</h2>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Sort by
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="started" >Started soonest</option>
+    <option value="ending">Ending soonest</option>
+  </select>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+<dl class="govuk-summary-list sort-list" id="xnum">
+
+{% if checked('status','new')%}
+{% for customer in customers %}
+{% if customer.status == 'new' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %} 
+
+{% elif checked('status','PA')%}
+{% for customer in customers %}
+{% if customer.status == 'applied' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','R')%}
+{% for customer in customers %}
+{% if customer.status == 'review' and customer.type == 'type2' or customer.clientReview == 'yes' %}
+  {% include "./_debtListrowReview.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','RC')%}
+{% for customer in customers %}
+  {% if customer.type === "type2" and customer.status === "review-rejected" or customer.type === "type2" and customer.status === "review-accepted" %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','RA')%}
+{% for customer in customers %}
+{% if customer.status == 'review-accepted' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+
+{% elif checked('status','RR')%}
+{% for customer in customers %}
+{% if customer.status == 'review-rejected' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','DO')%}
+{% for customer in customers %}
+{% if customer.status == 'dont-own' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','dispute')%}
+{% for customer in customers %}
+{% if customer.status == 'dispute' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','dont-own')%}
+{% for customer in customers %}
+{% if customer.type === "type2" and customer.status === "dont-own" %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','propDebt')%}
+{% for customer in customers %}
+{% if customer.type === "type2" and customer.substatus === "proposedDebt" %}
+  {% include "./_debtListrowPropdebt.html" %} 
+{% endif %} 
+{% endfor %}
+
+{% elif checked('status','todo')%}
+{% for customer in customers %}
+{% if customer.todo == 'Yes' and customer.type == 'type2' %}
+  {% include "./_debtListrow.html" %} 
+{% endif %} 
+{% endfor %}
+
+
+{% elif checked('status','all')%}
+{% for customer in customers %}
+{% if customer.type == 'type2'%}
+  {% include "./_debtListrow.html" %} 
+{% endif %}  
+{% endfor %}
+
+
+{% else %}
+{% for customer in customers %}
+{% if customer.type == 'type2'%}
+  {% include "./_debtListrow.html" %} 
+{% endif %}  
+{% endfor %}
+
+{% endif %}
+</dl>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+ {% block pageScripts %}
+
+ <script>
+(function($){
+    var container = $(".sort-list");
+    var items = $(".sort-item");
+    
+    items.each(function() {
+       // Convert the string in 'data-event-date' attribute to a more
+       // standardized date format
+       var BCDate = $(this).attr("data-event-date").split("-");
+       var standardDate = BCDate[1]+" "+BCDate[0]+" "+BCDate[2];
+       standardDate = new Date(standardDate).getTime();
+       $(this).attr("data-event-date", standardDate);
+ 
+    });
+    
+
+    items.sort(function(a,b){
+        a = parseFloat($(a).attr("data-event-date"));
+        b = parseFloat($(b).attr("data-event-date"));
+        return a<b ? -1 : a>b ? 1 : 0;
+
+    }).each(function(){
+        container.prepend(this);
+    });
+
+})
+
+(jQuery);
+
+
+
+</script>
+ 
+ {% endblock %}

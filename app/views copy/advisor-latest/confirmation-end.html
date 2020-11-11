@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Confirmation
+          </h1>
+          <div class="govuk-panel__body">
+          {% if checked('bsEndReason','The client has stopped receiving mental health crisis treatment')%}
+             Your client's Breathing Space will end 30 days after their mental health crisis treatment ended
+          {% else %}
+              You've ended your client's Breathing Space
+          {% endif %}    
+          </div>
+        </div>
+
+  <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">
+       We'll tell all the creditors when the Breathing Space ends.
+        </p>
+        <ul class="govuk-list">
+          <li><a href="account-page-active">Return to client page</a></li>
+
+          <li><a href="index">Return to service homepage</a></li>
+        </p>
+        <ul>     
+      </div>
+ <p><a href="time-machine-bsended" class="timemachine-link">On to next Scenario</a></p>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+  <form class="form" action="debt4-step4" method="post">
+{% endif%}
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+   
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="howcontactedCreditor-conditional-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        <span class="govuk-caption-l">Add client details: Step 3 of 4</span>
+         How would the creditor like to recieve notifications?
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="howcontactedCreditor-conditional" name="howcontactedCreditor" type="radio" value="Email" data-aria-controls="email" {{ checked('howcontactedCreditor','Email')}}>
+        <label class="govuk-label govuk-radios__label" for="howcontactedCreditor-conditional">
+          Email
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="email">
+      
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="creditorContactByEmail">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="creditorContactByEmail" name="creditorContactByEmail" type="email" spellcheck="false" value="{{creditorContactByEmail}}">
+        </div>
+
+        <p class="govuk-body govuk-!-font-weight-bold">A creditor must give their concent to use email for notifations</p>
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="creditorConfirm-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-label">
+        Creditor consent
+      </label>
+    </legend>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="creditorConfirm" name="creditorConfirm" type="checkbox" value="Yes" aria-describedby="creditorConfirm-item-hint" {{ checked('creditorConfirm','Yes')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="creditorConfirm">
+          I confirm that the creditor has given consent to recieve notifications by email
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="post" name="howcontactedCreditor" type="radio" value="Post" data-aria-controls="Post" {{ checked('howcontactedCreditor','Post')}}>
+        <label class="govuk-label govuk-radios__label" for="post">
+          Post
+        </label>
+    </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

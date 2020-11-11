@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  {% if checked('debtStatus','applied')%}
+  <form class="form" action="" method="post">
+
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="protection" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="protection">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+      <button class="md-trigger" id="modal" data-modal="modal"></button>
+
+  {% else %}
+    <form class="form" action="" method="post">
+  {% endif %}
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm you've stopped all action against this debt
+      </h1>
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "You confirm this once you have stopped action on this debt. You do this on your own systems or complete any other processes required outside this service."
+}) }}
+
+
+<h2 class="govuk-heading-m ">Debt</h3>
+  {% include "./_debt-amount-ref-v2.html" %}
+
+  <div class="govuk-radios__item" style="display:none">
+                            <input class="govuk-radios__input" id="debtStatus" name="debtStatus" type="radio" value="applied~./protections-confirm?reference={{customer.reference}}" checked>
+                            <label class="govuk-label govuk-radios__label" for="debtStatus">
+                              Yes
+                            </label>
+                          </div>
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

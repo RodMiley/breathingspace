@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+      New debts identified by creditors
+      </h1>
+    </legend>
+       <span id="waste-hint" class="govuk-hint">
+      Select the debts you want to add to breathing space
+    </span>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+     
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="bsadddebt-1" name="bsadddebt" type="checkbox" value="Overdraft"  {{checked('bsadddebt', 'Overdraft') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="bsadddebt-1">
+            Overdraft
+        </label>
+         <span id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Creditor: Barclays Bank Plc <br> Amount:£500<br> Reference:234566788
+        </span>
+      </div>
+
+        <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="bsadddebt-2" name="bsadddebt" type="checkbox" value="Creditcard"  {{checked('bsadddebt', 'Creditcard') }}>
+        <label class="govuk-label govuk-checkboxes__label" for="bsadddebt-2">
+            Credit card
+        </label>
+         <span id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+           Creditor: Halifax (credit cards only) <br> Amount:£280<br> Reference:456276
+        </span>
+      </div>
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+    {% if customer.status == 'applied' %}
+       Active - action stopped
+      {% elif customer.status == 'dont-own' %}
+       Active - debt sold on
+    {% elif customer.status == 'new' %}
+       Active - new debt
+    {% elif customer.status == 'review'%}
+       Active - asked for a review
+    {% elif customer.status == 'review-rejected'%}
+       Active - after money adviser review
+    {% elif customer.status == 'review-accepted'%}
+       Removed - after money adviser review
+   {% elif customer.status == 'client-review-accepted'%}
+       Ended - after money adviser client review
+
+      {% elif customer.status == 'client-review-rejected'%}
+       Active - after money adviser client review    
+
+    {% endif%}
+   

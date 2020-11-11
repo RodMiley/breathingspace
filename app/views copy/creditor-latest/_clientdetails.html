@@ -1,0 +1,83 @@
+ {% if checked('changedetails', 'yes')%}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+  Personal details saved and updated
+</div>
+ {% endif %}
+
+ <h2 class="govuk-heading-m">Personal details</h2>
+ 
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ customer.name | default("Joe Black") }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+        
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+         
+                   {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+        
+            </dd>
+          </div>
+            {% include "./_names-previous.html" %} 
+        </dl>
+
+         <h2 class="govuk-heading-m">Addresses</h2>
+
+          <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	          45  Borough Road <br>Elephant and Castle<br>London<br>NW13 2GH
+            </dd>
+            <dd class="govuk-summary-list__actions">
+       
+            </dd>
+          </div>
+
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous address
+            </dt>
+            <dd class="govuk-summary-list__value">
+            <p>
+                2  Treasant close <br>Elephant and Castle<br>London<br>NW11 4GH
+                
+               <p>Moved in {{ movedInMonth | default("10") | toMonth }} {{ movedInYear | default("2017") }} <br>
+                Moved out  {{ movedOutMonth | default("01") | toMonth }} {{ movedOutYear | default("2020") }} </p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
+
+
+        </dl>
+
+         <h2 class="govuk-heading-m">Businesses</h2>
+                   <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Elsada tech
+            </dt>
+            <dd class="govuk-summary-list__value">
+             	27 Turner Grove <br>Elephant and Castle<br>London<br>NW11 4FD
+            </dd>
+            <dd class="govuk-summary-list__actions">
+      
+            </dd>
+          </div>
+        </dl>
+        </dl>
