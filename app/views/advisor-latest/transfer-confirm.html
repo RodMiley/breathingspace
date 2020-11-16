@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-non-owning" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you are asking to transfer this Breathing Space
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+    <ul class="govuk-list">
+    <li>Client name: {{ client.name }}</li>
+    <li>Breathing Space reference: {{ client.reference }}</li>
+    </ul>
+           
+     
+
+
+
+
+      <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="askedfortransfer" type="radio" value="yes~./account-page-non-owning?reference=BS000019929" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

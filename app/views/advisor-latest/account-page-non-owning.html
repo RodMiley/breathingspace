@@ -23,7 +23,11 @@
 {% endif %}
     <strong>{{client.type}}</strong> Breathing Space
   </span>
-     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+       {{client.name | default("Joe")}}  
+ {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc | default("Black") }}
+ {% else %}
+ {{ lastname | default("Black") }}
+ {% endif %}
        <span class="govuk-caption-m">Reference: {{ client.reference}} </span>
       </h1>
 
@@ -53,19 +57,62 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
       <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible keydetails">
-
-     <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
+{% if client.status == 'inactive '%}
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">This Breathing Space has ended</h2>
-
-{% if client.status == 'inactive' and  client.reference =='BS000017712'%}<p>It ended early because the client was not taking money advice.</p>{% endif %}
-
 <p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
 </div>
+{% endif %}
+
+{% if checked('askedfortransfer','yes') %}
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--green">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">Confirmation</h2>
+<p>You have asked  {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to your organisation</p>
+</div>
+
+
+
+
+                   <h2 class="govuk-heading-m">
+                 Tasks
+               </h2> 
+      <ol class="app-task-list">
+        <li>
+          <ul class="app-task-list__items govuk-!-margin-bottom-5">
+
+
+        <li class="app-task-list__item">
+            
+             
+             <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="read-declaration-status">Sent to money adviser</strong>  
+            
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+             We have asked {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to us
+              </h3>
+
+              <p class="govuk-body govuk-!-margin-bottom-1">Requested: Paul Smith,  Advice uk,  {{ 'DD MMMM YYYY' | baseDateAdd(0) }}, 10.33 am</p>
+     
+            
+            
+              <span class="app-task-list__task-name">
+           <!-- <a href="eligibility-review-client-adhoc-details?reference={{customer.reference}}" >
+             Review client eligibility  
+            </a> -->
+              </span>
+      
+           </li>
+           </li>
+           </ul>
+
+
+
+
+
+{% endif %}
      </div>
      </div>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
 
                    <h2 class="govuk-heading-m">
                  Client details
@@ -99,6 +146,15 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
               <li>Email: breathingspaceteam@{{ client.adviceorg | default('Stepchange') }}.org.uk</li>
               <li>Telephone: 0151 490 1731</li>
               </ul>
+
+              {% if client.status == 'active' %}
+              <h2 class="govuk-heading-m">Transfer</h2>
+<p class='govuk-body'>You can request {{ client.adviceorg | default('Stepchange') }} transfer this Breathing Space to your organisation, If {{client.name | default("Joe")}}  {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc | default("Black") }}
+ {% else %}
+ {{ lastname | default("Black") }}
+ {% endif %} has asked you to</p>              
+<a href="transfer-confirm?reference=BS000019929" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
+{% endif %}
 </div>
 </div>
 
