@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="sold-debt-confirm" method="post">
+  <form class="form" action="" method="post">
     <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
@@ -26,8 +26,16 @@
   <p class="govuk-body-l">EDF Energy Ltd told us they have sold the debt to <strong>Akinika Debt Recovery Limited</strong></p>
 
 
-{% if checked('clientreview','bsended')%}
+{% if checked('transferDebt','bsended')%}
 {% else %}
+
+   <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="transferDebt" name="debtStatus" type="radio" value="transferDebt~sold-debt-confirm?reference={{client.reference}}" checked >
+        <label class="govuk-label govuk-radios__label" for="transferDebt">
+         Hidden radio for logic
+        </label>
+        </div>
+
 <button class="govuk-button" data-module="govuk-button">
    Transfer this debt to the new creditor
 </button>

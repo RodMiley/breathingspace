@@ -48,13 +48,13 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility" type="radio" value="yes~endbreathingspace-confirm?reference={{client.reference}}">
         <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
           Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility" type="radio" value="no~endbreathingspace-no?reference={{client.reference}}">
         <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
           No
         </label>
@@ -70,9 +70,12 @@
   <textarea class="govuk-textarea" id="clientEligibilityDetail" name="clientEligibilityDetail" rows="4" aria-describedby="clientEligibilityDetail-hint"></textarea>
   </div>
 
-
-
-
+    <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="clientreview" name="debtStatus" type="radio" value="clientreview" checked >
+        <label class="govuk-label govuk-radios__label" for="debtreview">
+         Hidden radio for logic
+        </label>
+        </div>
 
 
 <button class="govuk-button" data-module="govuk-button">

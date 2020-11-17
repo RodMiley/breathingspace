@@ -1,10 +1,11 @@
 
 {% macro debt(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-   {% if debtTaskToDo == 'yes' %}
+   {% if client.task =='debtreview' %}
+ 
     <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds">
- {% if debtName == 'Credit card' %}
+ {% if debtName == 'Credit card' and  client.task =='debtreview' %}
 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
 Creditor asked us to review this debt
 </strong>
@@ -49,7 +50,8 @@ Creditor has sold the debt
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 
       <ul class="govuk-list">
-      <li><h2 class="govuk-heading-s">Debt:  {{ debtName }}</h2></li> 
+      <li><h2 class="govuk-heading-s">Debt:{{ debtName }}  {{client.task}}
+</h2></li> 
       <li>Creditor: {{debtCreditor}}</li> 
       <li>Amount: {{debtAmount}}<li>
       <li> Reference: {{debtReference}}</li>
@@ -96,8 +98,8 @@ Creditor has sold the debt
               </form>
               </li>
               <li>
-              <form class="form" action="" method="post">
-                  <button class="govuk-body govuk-link">Report compliance</button>
+              <form class="form" action="compliance" method="post">
+                  <button class="govuk-body govuk-link">Report this creditor</button>
                 {% include "./_debtypeHiddenRadio.html" %} 
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>

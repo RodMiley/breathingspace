@@ -1,0 +1,45 @@
+
+   <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set totTasks = 0 %}
+{% set taskDebtReview = 0 %}
+{% set taskClientReview = 0 %}
+{% set taskTransferDebt = 0 %}
+{% set taskTransferClient = 0 %}
+{% set taskProposedDebt = 0 %}
+
+
+
+	{% for client in clients %}
+
+<!-- BASE VALUES -->
+   {% if client.status === "active" %}
+	{% set totNum = totNum + 1 %}
+  {% endif %}
+
+   {% if client.task === "debtreview" and client.adviceorg ==='Advice uk' %}
+    {% set taskDebtReview = taskDebtReview + 1 %}
+   {% endif %}
+  {% if client.task === "clientreview"  and client.adviceorg ==='Advice uk' %}
+    {% set taskClientReview = taskClientReview + 1 %}
+   {% endif %}
+      {% if client.task === "transferdebt" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferDebt = taskTransferDebt + 1 %}
+   {% endif %}
+      {% if client.task === "transferclient" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferClient = taskTransferClient + 1 %}
+   {% endif %}
+      {% if client.task === "proposeddebt" and client.adviceorg ==='Advice uk' %}
+        {% set taskProposedDebt = taskProposedDebt + 1 %}
+   {% endif %}
+ 
+
+
+  {% if client.task and client.adviceorg ==='Advice uk' %}
+    {% set totTasks = totTasks + 1 %}
+   {% endif %}
+
+
+
+
+ {% endfor %}  

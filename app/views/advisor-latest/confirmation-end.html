@@ -18,6 +18,9 @@
           <div class="govuk-panel__body">
           {% if checked('bsEndReason','The client has stopped receiving mental health crisis treatment')%}
              Your client's Breathing Space will end 30 days after their mental health crisis treatment ended
+
+          {% elif checked('transferclient','yes')%}  
+                  You've transfered your client's Breathing Space 
           {% else %}
               You've ended your client's Breathing Space
           {% endif %}    
@@ -26,11 +29,18 @@
 
   <h2 class="govuk-heading-m">What happens next</h2>
            <p class="govuk-body">
+        {% if checked('transferclient','yes')%}  
+        We'll tell Stepchange you have transfered the Breathing Space to them.
+        {% else %}    
        We'll tell all the creditors when the Breathing Space ends.
+       {% endif %}
         </p>
         <ul class="govuk-list">
-          <li><a href="account-page-active">Return to client page</a></li>
-
+         {% if checked('transferclient','yes')%}  
+         <li><a href="account-page-non-owning?reference={{client.reference}}">Return to client page</a></li>
+         {% else %}
+          <li><a href="account-page?reference={{client.reference}}">Return to client page</a></li>
+         {% endif %}
           <li><a href="index">Return to service homepage</a></li>
         </p>
         <ul>     

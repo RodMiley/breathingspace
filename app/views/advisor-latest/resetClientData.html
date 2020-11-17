@@ -10,17 +10,6 @@
 
 {% block content %}
 
-{% set totNum = 0 %}
-{% set type2toDO = 0 %}
-
-	{% for customer in customers %}
-
-<!-- BASE VALUES -->
-	 {% set totNum = totNum + 1 %}
-    {% if customer.type === "type2" and customer.todo === "Yes" %}
-     {% set type2toDO = type2toDO + 1 %}
-    {% endif %}
-{% endfor %}
 
   <form method="post">
   <div class="govuk-grid-row">
@@ -37,29 +26,9 @@
 </div>
 
 <ul class="govuk-list">
-{% for customer in customers %}
-{% if customer.name == 'Edyth Rosi'
-   or customer.name == 'Valerie Pateman'
-   or customer.name == 'Ev Tinkler'
-   or customer.name == 'Sally Boyes'
-   or customer.name == 'Edyth Rosi'
-   or customer.name == 'Julita Hallihan'
-   or customer.name == 'Gunilla Siberry'
-%}
-<li>
-{{ customer.name }}, Status:{{ customer.status }} ,To do:{{ customer.todo }}, {{customer.substatus}}  {{customer.clientReview}}
-</li>
- {% endif %}
-{% endfor %}
 
 {% for client in clients %}
 {% if customer.task == 'proposedComplete'
-   or customer.name == 'Valerie Pateman'
-   or customer.name == 'Ev Tinkler'
-   or customer.name == 'Sally Boyes'
-   or customer.name == 'Edyth Rosi'
-   or customer.name == 'Julita Hallihan'
-   or customer.name == 'Gunilla Siberry'
 %}
 <li>
 {{ client.name }},

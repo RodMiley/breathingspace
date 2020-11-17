@@ -8,104 +8,44 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="transfer-request-confirm" method="post">
-    <div class="govuk-grid-column-full">
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-xl">
-       Money advice org transfer request
+      <h1 class="govuk-heading-l">
+       Transfer this Breathing Space
       </h1>
 
-<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
-<hr class="govuk-section-break govuk-section-break--visible">
-<dl class="govuk-summary-list govuk-!-margin-bottom-5">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Credit card
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}<br>Amount: £2500<br> Reference: RBC23455003
-            </dd>
-            <dd class="govuk-summary-list__actions">
-       
-            </dd>
-          </div>
-  </dl> 
+  <p class="govuk-body-l">Stepchange have asked us to transfer  {{ client.name }}'s Breathing Space to them </p>
 
-    </div>
-   <div class="govuk-grid-column-three-quarters">
+<h2 class="govuk-heading-s">Breathing Space Details</h2>
+<ul class="govuk-list">
+<li>Name: {{ client.name }}</li>
+<li>Reference: {{ client.reference }}</li>
+<li>Started: {{ client.startdate }}</li>
+<li>Due to end:{{ client.enddate }}</li>
+</ul>
 
-
-  <!--   {% macro timeline_entry(heading, reason, moredetail, name_org_timestamp ) %}
-               <li>
-               <h2 class="govuk-heading-m govuk-!-margin-bottom-5">{{heading}}</h2>
-                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-                  <p class="govuk-body">{{reason}}</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More Detail:</h3>
-                    <p class="govuk-body">{{moredetail}}</p>
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">{{name_org_timestamp}}</p>
-               </li>
-      {% endmacro %}
-
-  <ul class="govuk-list timeline govuk-!-margin-bottom-6">
-        {{ timeline_entry("We have informed Halifax (Credit cards only) that you haven't removed the debt from Breathing Space", "The debt does not qualify for Breathing Space", "This is a none eligible business debt, the credit card was secured against the clients business", "Requested: Sammy Hewitt, Halifax (Credit cards only), 04 June 2020 at 11.32am") }}
-  </ul> -->
-
-
-  <ul class="govuk-list timeline govuk-!-margin-bottom-6">
-
-
-                <li>
-                    <h2 class="govuk-heading-m govuk-!-margin-bottom-5">{% include path+"advisor-mvp/_review_creditor.html" %} have requested a debt eligibility review </h2>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reason:</h3>
-                    <p class="govuk-body">The debt does not qualify for Breathing Space</p>
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">More detail:</h3>
-                    <p class="govuk-body">{{ moreDetail | default("This is a none eligible business debt, the credit card was secured against the clients business") }}</p>
-                  
-                    <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-2">Requested: {% include path+"advisor-mvp/_creditor-advisor.html" %}, {% include path+"advisor-mvp/_review_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
-                </li>
-              </ul>      
-
-
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="debt-eligibility-conditional-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h2 class="govuk-fieldset__heading">
-          Do you want to remove this debt from Breathing Space?
-      </h2>
-    </legend>
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debt-eligibility-conditional" name="debt-eligibility" type="radio" value="yes~eligibility-review-yes">
-        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional">
-          Yes
+ <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="transferClient" name="debtStatus" type="radio" value="transferClient~transfer-request-confirm?reference={{client.reference}}" checked >
+        <label class="govuk-label govuk-radios__label" for="transferClient">
+         Hidden radio for logic
         </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="debt-eligibility-conditional-2" name="debt-eligibility" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="debt-eligibility-conditional-2">
-          No
-        </label>
-      </div>
-     
-    </div>
-  </fieldset>
-</div>
-<div class="govuk-form-group">
-  <label class="govuk-label" for="eligibilityNo">
-    Can you provide more detail?
-  </label>
-  <textarea class="govuk-textarea" id="eligibilityNo" name="eligibilityNo" rows="4" aria-describedby="eligibilityNo-hint"></textarea>
-  </div>
-
-
-
-
-
+        </div>
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
+
+
+    </div>
+   <div class="govuk-grid-column-three-quarters">    
+
+
+
+
+
+
+
     </div>
     </form>
 </div>

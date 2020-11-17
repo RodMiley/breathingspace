@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="account-page-active" method="post">
+  <form class="form" action="" method="post">
     <div class="govuk-grid-column-three-quarters">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
@@ -19,7 +19,6 @@
        {% endif %}
        
       </h1>
-
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">     
@@ -51,7 +50,7 @@
     {% if checked('proposed-debt','no')%}  
       <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="proposedrejected" checked>
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="proposedrejected~account-page?reference={{client.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>
@@ -60,7 +59,7 @@
       {% else %}
            <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="proposedaccepted" checked>
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="proposedaccepted~account-page?reference={{client.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="review">
          hidden radio
         </label>

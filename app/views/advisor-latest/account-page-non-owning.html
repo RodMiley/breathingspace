@@ -142,8 +142,8 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 
               <h2 class="govuk-heading-m">Money advice organisation details</h2>
               <ul class="govuk-list">
-              <li>Name: {{ client.adviceorg | default('Stepchange')}}</li>
-              <li>Email: breathingspaceteam@{{ client.adviceorg | default('Stepchange') }}.org.uk</li>
+              <li>Name:  {% if checked('transferclient','yes')%} Stepchange {% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}</li>
+              <li>Email: breathingspaceteam@{% if checked('transferclient','yes')%}stepchange{% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}.org.uk</li>
               <li>Telephone: 0151 490 1731</li>
               </ul>
 

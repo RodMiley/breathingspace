@@ -1,0 +1,330 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+  {% include "./_global-nav.html" %} 
+{% include "./_keydetails_active.html" %}
+
+
+
+{% include "./_confirmation-message-box.html" %}
+
+
+<!-- debtrow macro -->
+
+
+{% macro debtrow(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
+   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+   {% if client.task =='debtreview' %}
+ 
+    <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+ {% if debtName == 'Credit card' and  client.task =='debtreview' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review this debt
+</strong>
+ {% elif debtName == 'Water' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor asked us to review the client
+</strong>
+
+ {% elif debtName == 'Gas' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+Creditor has sold the debt
+</strong>
+{% endif %}
+ </div>
+ <div class="govuk-grid-column-one-third">
+
+<ul class="govuk-list">
+              <li>
+               
+ {% if debtName == 'Credit card' %}
+                <form class="form" action="eligibility-review" method="post">
+                  <button class="govuk-body govuk-link">
+                   Review the debt
+                  </button>
+                   {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+
+   {% elif debtName == 'Water' %}  
+   <a href="eligibility-review-client" class="govuk-body">Review the client</a>    
+   {% elif debtName == 'Gas' %}  
+  <a href="sold-debt" class="govuk-body">Reassign the debt to the new creditor</a>      
+  {% endif %}            
+             
+              </li>
+              </ul>
+ </div>
+ </div>
+  
+
+   {% endif %}
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><h2 class="govuk-heading-s">Debt:{{ debtName }}
+</h2></li> 
+      <li>Creditor: {{debtCreditor}}</li> 
+      <li>Amount: {{debtAmount}}<li>
+      <li> Reference: {{debtReference}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third"> 
+       {% if checked('clientreview','bsended') or debtTaskToDo == 'yes'  %}
+       {% else %}
+          <ul class="govuk-list govuk-!-font-size-16" >
+             <li>
+             <form class="form" action="change-debt1" method="post">
+                 <button class="govuk-body govuk-link">Update debt details</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+             </li>
+             <li>                
+    <form class="form" action="remove-debt" method="post">
+                 <button class="govuk-body govuk-link">Remove this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+              </li>
+               <li>
+                  <form class="form" action="sold-debt-adhoc" method="post">
+                  <button class="govuk-body govuk-link">Creditor has sold this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+                <li>
+              <form class="form" action="review-client-ma" method="post">
+              <button class="govuk-body govuk-link">Add client eligibility review task</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              <li>
+              <form class="form" action="compliance" method="post">
+                  <button class="govuk-body govuk-link">Report this creditor</button>
+                {% include "./_debtypeHiddenRadio.html" %} 
+                 {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              </ul>
+              {% endif %}
+              </div>
+          
+ </div>
+
+ {% endmacro %}
+
+<!-- endmacro -->
+
+
+
+
+    {% set debts = [
+        {
+          "debt_name"  : "Loan",
+          "debt_creditor"  : "Barclays Bank Plc",
+          "debt_amount" : "£5400",
+          "debt_reference" : "8945 4321 5678",
+          "debt_type" : "debt1"
+         
+        },
+        {
+          "debt_name"  : "Credit card",
+          "debt_creditor"  : "Halifax credit cards only",
+          "debt_amount" : "£5400",
+          "debt_reference" : "HAL345TH456",
+          "debt_type" : "debt2"
+         
+        },
+        {
+          "debt_name"  : "Rent arrears",
+          "debt_creditor"  : " M Jones(landlord)",
+          "debt_amount" : "£1250",
+          "debt_reference" : "Flat 4 Monmouth Rd",
+          "debt_type" : "debt3"
+       
+        },
+        {
+          "debt_name"  : "Water",
+          "debt_creditor"  : "Yorkshire Water Services Ltd",
+          "debt_amount" : "£102",
+          "debt_reference" : "4949 9494 9449",
+          "debt_type" : "debt4"
+          
+        } ,
+        {
+          "debt_name"  : "Gas",
+          "debt_creditor"  : "EDF Energy Ltd",
+          "debt_amount" : "£389",
+          "debt_reference" : "CRT8536544",
+          "debt_type" : "debt5"
+         
+        } ,
+        {
+          "debt_name"  : "Council tax",
+          "debt_creditor"  : "Southwark Council",
+          "debt_amount" : "£1179",
+          "debt_reference" : "LCC3456789",
+          "debt_type" : "debt6"
+         
+        },
+        {
+          "debt_name"  : "Self assessment paye",
+          "debt_creditor"  : "HMRC",
+          "debt_amount" : "£789",
+          "debt_reference" : "KN23455",
+          "debt_type" : "debt7"
+         
+        } 
+      ]
+    %}
+
+  
+
+
+ 
+
+
+
+
+
+
+   {% if checked('changedetails', 'yes')%}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+  Personal details saved and updated
+</div>
+ {% endif %}
+  {% if checked('clientreview','bsended') or client.status =='inactive' %}
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
+<h2 class="govuk-heading-m">This Breathing Space has ended</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-2">Reason</h3>
+<p class="govuk-body">The client is not eligible because they have had another Breathing Space in the last 12 months</p>
+<p class="govuk-body">A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+</div>
+
+  {% else %} 
+ <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add a debt
+</a>
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  End Breathing Space
+</a>
+
+{% endif %}
+
+
+
+
+   
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+
+      <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#actions">
+      Tasks
+      </a>
+    </li>
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+   {% if checked('debt-eligibility','yes') 
+   or checked('removedebt', 'debt1') 
+   or checked('removedebt', 'debt2')  
+   or checked('removedebt', 'debt3')
+   or checked('removedebt', 'debt4')
+   or checked('removedebt', 'debt5')
+   or checked('removedebt', 'debt6')
+   or checked('removedebt', 'debt7')  
+   or checked('removedebt', 'proposed')    
+   %}
+       <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed debts
+      </a>
+    </li>
+    {% endif %} 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Client details
+      </a>
+    </li>
+
+  </ul>
+    <section class="govuk-tabs__panel" id="actions">
+     <h2 class="govuk-heading-l">Tasks</h2>
+     {% include "./_tasklist_data.html" %} 
+    </section>
+  <section class="govuk-tabs__panel" id="problem-debt">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Debts</h2>
+
+   
+   
+   
+   {{ debtrow(
+ "Loan",
+ "Barclays Bank Plc",
+ "£5400",
+ "8945 4321 5678",
+ "debt1"
+) }}
+
+{{ debtrow(
+"Credit card",
+"Halifax credit cards only",
+"£5400",
+"HAL345TH456",
+"debt2"
+) }}
+   
+
+  </section>
+ {% if checked('debt-eligibility','yes')
+   or checked('removedebt', 'debt1') 
+   or checked('removedebt', 'debt2')  
+   or checked('removedebt', 'debt3')
+   or checked('removedebt', 'debt4')
+   or checked('removedebt', 'debt5')
+   or checked('removedebt', 'debt6')
+   or checked('removedebt', 'debt7') 
+   or checked('removedebt', 'proposed')    %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+ {% include "./_removeddebtslist.html" %} 
+
+   </section>
+  {% endif %}
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+     {% include "./_personaldetails.html" %} 
+
+  </section>
+
+
+</div>
+    </div>
+   
+
+
+{% endblock %}
