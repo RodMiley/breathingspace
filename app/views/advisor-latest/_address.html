@@ -5,12 +5,11 @@
             </dt>
             <dd class="govuk-summary-list__value">
      {% include "./_address-hidden.html" %} 
-             	<p>{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode}}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode}} 
-              {% else %}  
-              <span class="govuk-!-display-block">{{addressline1 | default("4 Bourough road") }}</span>
-              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
-              <span class="govuk-!-display-block">{{addresspostcode | default("NW10 2JU")}} </span>   
-              {% endif %}</p>
+             	<p> {{client.address}} <br> London <br>{% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode}}
+ {% endif %}
            
             </dd>
             <dd class="govuk-summary-list__actions">

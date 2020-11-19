@@ -1,5 +1,6 @@
 
 {% extends "layout.html" %}
+{% set globalnav = "taskstodo" %}
 
 {% block pageTitle %}
   Breathing space
@@ -8,6 +9,9 @@
 
 {% block content %}
   {% include "./_global-nav.html" %} 
+
+
+ {% set currentnav ='clientsecrets' %}
 
 
    <!-- BASE VALUES -->
@@ -55,17 +59,15 @@
    {% endif %}
  
  {% endfor %}  
-
  <div class="govuk-grid-row">
 <div class="govuk-grid-column-one-third">
 <form class="form" action="#" method="post">
 <h2 class="govuk-heading-m govuk-!-margin-top-5">Filter by:</h2>
-
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-0">
       <label class="govuk-fieldset__heading">
-       Tasks <strong class="govuk-tag govuk-tag--grey">to do</strong>
+       Tasks
       </label>
     </legend>
 

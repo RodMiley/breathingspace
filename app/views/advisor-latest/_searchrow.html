@@ -8,7 +8,7 @@
  <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-non-owning?reference={{client.reference}}">
  {% endif %}
  {{client.name}}  
- {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc }}
+ {% if checked('searchedby','reference') %} {{ client.lastname }}
  {% else %}
  {{ lastname }}
  {% endif %}
@@ -23,7 +23,13 @@
  {% endif %}
     <ul class="govuk-list govuk-!-margin-bottom-0">
     <li>Reference:  {{client.reference}}</li>
-    <li>Started: {{ client.startdate }} - Ended {{ client.enddate }}</li>
+    <li>
+    {% if client.status =='active'%}
+    Started: 29 October 2020 - Due to end: 28 December 2020
+    {% else %}
+    Started: {{ client.startdate }} - Ended {{ client.enddate }}
+    {% endif %}
+    </li>
     <li>DOB: 
      {% if checked('searchedby','lastname_dob') %} 
       {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}

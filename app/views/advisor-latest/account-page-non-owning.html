@@ -149,11 +149,15 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 
               {% if client.status == 'active' %}
               <h2 class="govuk-heading-m">Transfer</h2>
-<p class='govuk-body'>You can request {{ client.adviceorg | default('Stepchange') }} transfer this Breathing Space to your organisation, If {{client.name | default("Joe")}}  {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc | default("Black") }}
- {% else %}
- {{ lastname | default("Black") }}
- {% endif %} has asked you to</p>              
-<a href="transfer-confirm?reference=BS000019929" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
+<p class='govuk-body'>You can request 
+{% if checked('transferclient','yes')%}
+Stepchnge
+{% else %}
+{{ client.adviceorg | default('Stepchange') }}
+{% endif %}
+
+ transfer this Breathing Space to your organisation</p>              
+<a href="transfer-confirm?reference={{client.reference}}" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
 {% endif %}
 </div>
 </div>

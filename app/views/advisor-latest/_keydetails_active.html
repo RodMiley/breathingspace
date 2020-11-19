@@ -16,7 +16,15 @@
 {% endif%}
   <strong>{{client.type}}</strong> Breathing Space
   </span>
-     {% if data['fullname']%} {{fullname}} {% else %} {{client.name | default("Joe") }} {{ lastname | default("Black")}} {% endif %}
+     {% if data['fullname'] %} 
+     {{fullname}} {% else %} 
+     {{client.name | default("Joe") }}
+      {% if client.task %}     
+       {{ client.lastname }}
+     {% else %} 
+     {{ lastname | default("Black")}}
+     {% endif %}
+     {% endif %}
        <span class="govuk-caption-m">Reference: {{ client.reference | default("BS0000123568")}} </span>
       </h1>
       </div>

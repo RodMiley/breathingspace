@@ -15,11 +15,9 @@
 
 
 <!-- debtrow macro -->
-
-
 {% macro debtrow(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-   {% if client.task =='debtreview' %}
+   {% if client.task or checked('debtStatus','nonComplianceReported') %}
  
     <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds">
@@ -27,36 +25,42 @@
 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
 Creditor asked us to review this debt
 </strong>
- {% elif debtName == 'Water' %}
+ {% elif debtName == 'Credit card' and  client.task =='debtReviewComplete' %}
+<strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed the debt</strong>
+ {% elif debtName == 'Water' and  client.task =='clientreview' %}
 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
 Creditor asked us to review the client
 </strong>
 
- {% elif debtName == 'Gas' %}
+ {% elif debtName == 'Gas' and  client.task =='transferdebt' %}
 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
 Creditor has sold the debt
 </strong>
 {% endif %}
+
+
+ {% if checked('debtStatus','nonComplianceReported') and debtType=="debt3" %}
+ <strong class="govuk-tag govuk-!-margin-bottom-2">
+Creditor reported to Insolvency Service
+</strong>
+ {% endif %}
  </div>
  <div class="govuk-grid-column-one-third">
 
 <ul class="govuk-list">
               <li>
-               
- {% if debtName == 'Credit card' %}
-                <form class="form" action="eligibility-review" method="post">
-                  <button class="govuk-body govuk-link">
-                   Review the debt
-                  </button>
-                   {% include "./_debtypeHiddenRadio.html" %} 
-                   {% include "./_confirmRemoveHiddenRadio.html" %} 
-              </form>
-
-   {% elif debtName == 'Water' %}  
-   <a href="eligibility-review-client" class="govuk-body">Review the client</a>    
-   {% elif debtName == 'Gas' %}  
-  <a href="sold-debt" class="govuk-body">Reassign the debt to the new creditor</a>      
-  {% endif %}            
+  {% if debtName == 'Credit card' and  client.task =='debtReviewComplete'  %}
+    <a href="eligibility-review?reference={{client.reference}}" class="govuk-body">View debt review details</a>               
+ {% elif debtName == 'Credit card' and client.task =='debtreview' %}
+    <a href="eligibility-review?reference={{client.reference}}" class="govuk-body">Review the debt</a>                
+   {% elif debtName == 'Water' and client.task =='clientreview' %}  
+   <a href="eligibility-review-client?reference={{client.reference}}" class="govuk-body">Review the client</a>    
+   {% elif debtName == 'Gas' and client.task =='transferdebt' %}  
+  <a href="sold-debt?reference={{client.reference}}" class="govuk-body">Transfer the debt</a>      
+  {% endif %}   
+   {% if checked('debtStatus','nonComplianceReported') and debtType=="debt3" %}    
+     <a href="compliance-details?reference={{client.reference}}" class="govuk-body">View details</a> 
+   {% endif %}     
              
               </li>
               </ul>
@@ -77,7 +81,75 @@ Creditor has sold the debt
     </ul>
     </div>
      <div class="govuk-grid-column-one-third"> 
-       {% if checked('clientreview','bsended') or debtTaskToDo == 'yes'  %}
+    {% if debtName == 'Credit card' and  client.task =='debtReviewComplete'  %}
+
+
+  <ul class="govuk-list govuk-!-font-size-16" >
+             <li>
+             <form class="form" action="change-debt1" method="post">
+                 <button class="govuk-body govuk-link">Update debt details</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+             </li>
+             <li>                
+    <form class="form" action="remove-debt" method="post">
+                 <button class="govuk-body govuk-link">Remove this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+             </form>
+              </li>
+               <li>
+                  <form class="form" action="sold-debt-adhoc" method="post">
+                  <button class="govuk-body govuk-link">Creditor has sold this debt</button>
+                  {% include "./_debtypeHiddenRadio.html" %} 
+                   {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+    {% if debtName == 'Credit card' and  client.task =='debtReviewComplete'  %}
+    {% else %}
+                <li>
+              <form class="form" action="review-client-ma" method="post">
+              <button class="govuk-body govuk-link">Add client eligibility review task</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+     {% endif %}         
+              <li>
+                <form class="form" action="review-debt-ma" method="post">
+                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
+              {% include "./_debtypeHiddenRadio.html" %} 
+               {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+               {% if checked('debtStatus','nonComplianceReported') and debtType=="debt3" %}
+              <li>
+              <form class="form" action="compliance" method="post">
+                  <button class="govuk-body govuk-link">Report this creditor</button>
+                    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debtType" type="radio" value="{{debtType}}~compliance?reference={{client.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+                 {% include "./_confirmRemoveHiddenRadio.html" %} 
+              </form>
+              </li>
+              {% endif %}
+              </ul>
+
+
+
+       {% elif checked('clientreview','bsended') 
+       or client.task =='debtreview' and debtTaskToDo =='yes' 
+       or client.task =='clientreview' and debtTaskToDo =='yes' 
+       or client.task =='transferdebt' and debtTaskToDo =='yes' 
+       or client.task =='transferclient' and debtTaskToDo =='yes' %}
+
+
        {% else %}
           <ul class="govuk-list govuk-!-font-size-16" >
              <li>
@@ -115,13 +187,21 @@ Creditor has sold the debt
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+               {% if checked('debtStatus','nonComplianceReported') and debtType=="debt3" %}
+               {% else %}
               <li>
-              <form class="form" action="compliance" method="post">
+              <form class="form" action="compliance?reference={{client.reference}}" method="post">
                   <button class="govuk-body govuk-link">Report this creditor</button>
-                {% include "./_debtypeHiddenRadio.html" %} 
+               <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="" name="debtType" type="radio" value="{{debtType}}~compliance?reference={{client.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
                  {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>
               </li>
+              {% endif %}
               </ul>
               {% endif %}
               </div>
@@ -133,69 +213,6 @@ Creditor has sold the debt
 <!-- endmacro -->
 
 
-
-
-    {% set debts = [
-        {
-          "debt_name"  : "Loan",
-          "debt_creditor"  : "Barclays Bank Plc",
-          "debt_amount" : "£5400",
-          "debt_reference" : "8945 4321 5678",
-          "debt_type" : "debt1"
-         
-        },
-        {
-          "debt_name"  : "Credit card",
-          "debt_creditor"  : "Halifax credit cards only",
-          "debt_amount" : "£5400",
-          "debt_reference" : "HAL345TH456",
-          "debt_type" : "debt2"
-         
-        },
-        {
-          "debt_name"  : "Rent arrears",
-          "debt_creditor"  : " M Jones(landlord)",
-          "debt_amount" : "£1250",
-          "debt_reference" : "Flat 4 Monmouth Rd",
-          "debt_type" : "debt3"
-       
-        },
-        {
-          "debt_name"  : "Water",
-          "debt_creditor"  : "Yorkshire Water Services Ltd",
-          "debt_amount" : "£102",
-          "debt_reference" : "4949 9494 9449",
-          "debt_type" : "debt4"
-          
-        } ,
-        {
-          "debt_name"  : "Gas",
-          "debt_creditor"  : "EDF Energy Ltd",
-          "debt_amount" : "£389",
-          "debt_reference" : "CRT8536544",
-          "debt_type" : "debt5"
-         
-        } ,
-        {
-          "debt_name"  : "Council tax",
-          "debt_creditor"  : "Southwark Council",
-          "debt_amount" : "£1179",
-          "debt_reference" : "LCC3456789",
-          "debt_type" : "debt6"
-         
-        },
-        {
-          "debt_name"  : "Self assessment paye",
-          "debt_creditor"  : "HMRC",
-          "debt_amount" : "£789",
-          "debt_reference" : "KN23455",
-          "debt_type" : "debt7"
-         
-        } 
-      ]
-    %}
-
-  
 
 
  
@@ -237,13 +254,14 @@ Creditor has sold the debt
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-
+{% if client.task%}
       <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
 
       <a class="govuk-tabs__tab" href="#actions">
       Tasks
       </a>
     </li>
+ {% endif %}   
     <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#problem-debt">
        Debts
@@ -272,10 +290,12 @@ Creditor has sold the debt
     </li>
 
   </ul>
+  {% if client.task%}
     <section class="govuk-tabs__panel" id="actions">
      <h2 class="govuk-heading-l">Tasks</h2>
      {% include "./_tasklist_data.html" %} 
     </section>
+    {% endif %}
   <section class="govuk-tabs__panel" id="problem-debt">
       <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Debts</h2>
 
@@ -290,14 +310,67 @@ Creditor has sold the debt
  "debt1"
 ) }}
 
+{% if checked('debtreview','debtremoved') %}
+{% else %}
+
 {{ debtrow(
 "Credit card",
 "Halifax credit cards only",
 "£5400",
 "HAL345TH456",
-"debt2"
+"debt2",
+"yes"
 ) }}
-   
+
+
+{% endif %}
+
+
+   {{ debtrow(
+  " Rent arrears",
+  " M Jones(landlord)",
+  "£1250",
+  "Flat 4 Monmouth Rd",
+  "debt3"
+) }}
+
+
+   {{ debtrow(
+ "Water",
+ "Yorkshire Water Services Ltd",
+ "£102",
+ "4949 9494 9449",
+ "debt4"
+) }}
+
+
+   {{ debtrow(
+  "Gas",
+  "EDF Energy Ltd",
+  "£389",
+  "CRT8536544",
+  "debt5",
+  "yes"
+) }}
+
+
+   {{ debtrow(
+   "Council tax",
+   "Southwark Council",
+   "£1179",
+   "LCC3456789",
+   "debt6"
+) }}
+
+
+   {{ debtrow(
+   "Self assessment paye",
+   "HMRC",
+   "£789",
+   "KN23455",
+   "debt7"
+) }}
+
 
   </section>
  {% if checked('debt-eligibility','yes')

@@ -1,17 +1,18 @@
 
 {% extends "layout.html" %}
+{% set globalnav = "search" %}
 
 {% block pageTitle %}
   Breathing space
 {% endblock %}
 
 {% block content %}
-
-  <div class="govuk-grid-row">
+  {% include "./_global-nav.html" %} 
+  <div class="govuk-grid-row govuk-!-margin-top-5">
   
     <div class="govuk-grid-column-full">
  
-    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+   <!-- <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  -->
  <form class="form" action="search-results-page" method="post">
 {% include "./_search_formv2.html" %} 
 </form>
