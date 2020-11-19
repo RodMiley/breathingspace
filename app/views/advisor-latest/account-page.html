@@ -17,7 +17,10 @@
 <!-- debtrow macro -->
 {% macro debtrow(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-   {% if client.task or checked('debtStatus','nonComplianceReported') %}
+   {% if client.task =='debtreview' 
+   or client.task =='transferdebt' 
+   or client.task =='proposeddebt' 
+   or checked('debtStatus','nonComplianceReported') %}
  
     <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds">
@@ -147,7 +150,7 @@ Creditor reported to Insolvency Service
        or client.task =='debtreview' and debtTaskToDo =='yes' 
        or client.task =='clientreview' and debtTaskToDo =='yes' 
        or client.task =='transferdebt' and debtTaskToDo =='yes' 
-       or client.task =='transferclient' and debtTaskToDo =='yes' %}
+       %}
 
 
        {% else %}
@@ -182,7 +185,7 @@ Creditor reported to Insolvency Service
               </li>
               <li>
                 <form class="form" action="review-debt-ma" method="post">
-                  <button class="govuk-body govuk-link">Record debt eligibility review</button>
+                  <button class="govuk-body govuk-link">Add debt eligibility review task</button>
               {% include "./_debtypeHiddenRadio.html" %} 
                {% include "./_confirmRemoveHiddenRadio.html" %} 
               </form>

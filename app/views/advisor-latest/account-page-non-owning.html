@@ -63,8 +63,8 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 <p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
 </div>
 {% endif %}
-
-{% if checked('askedfortransfer','yes') %}
+{% if checked('askedfortransfer','complete') %}
+{% elif checked('askedfortransfer','yes') %}
 <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--green">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Confirmation</h2>
 <p>You have asked  {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to your organisation</p>
@@ -146,8 +146,8 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
               <li>Email: breathingspaceteam@{% if checked('transferclient','yes')%}stepchange{% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}.org.uk</li>
               <li>Telephone: 0151 490 1731</li>
               </ul>
-
-              {% if client.status == 'active' %}
+{% if client.status == 'active' and checked('askedfortransfer','yes')%}
+{% elif client.status == 'active' or client.status == 'active' and checked('askedfortransfer','complete') %}
               <h2 class="govuk-heading-m">Transfer</h2>
 <p class='govuk-body'>You can request 
 {% if checked('transferclient','yes')%}

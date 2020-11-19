@@ -109,7 +109,7 @@
           <div class="govuk-radios__item">
         <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="status_6"  {{ checked('status', 'status_6') }}>
         <label class="govuk-label govuk-radios__label withHint" for="status_6">
-         Creditor asked us to transfer the client ({{taskTransferClient}})
+         Money advisor asked us to transfer the client ({{taskTransferClient}})
         </label>
       </div>
    </div>
@@ -144,7 +144,7 @@ Creditor proposed a new debt ({{taskProposedDebt}})
 {% elif checked('status','status_5')%}
 Creditor asked us to transfer a sold debt ({{taskTransferDebt}}) 
 {% elif checked('status','status_6')%}
-Creditor asked us to transfer the client ({{taskTransferClient}}) 
+Money advisor asked us to transfer the client ({{taskTransferClient}}) 
 
 {% else %}
 All ({{totTasks}}) 
