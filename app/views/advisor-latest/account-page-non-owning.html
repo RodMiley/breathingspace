@@ -23,8 +23,10 @@
 {% endif %}
     <strong>{{client.type}}</strong> Breathing Space
   </span>
-       {{client.name | default("Joe")}}  
+   {{client.name | default("Joe")}}  
  {% if checked('searchedby','lastname_postcode') %} {{ lastnamepc | default("Black") }}
+ {% elif checked('askedfortransfer','complete') %}
+ {{ client.lastname }}
  {% else %}
  {{ lastname | default("Black") }}
  {% endif %}
@@ -142,15 +144,15 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 
               <h2 class="govuk-heading-m">Money advice organisation details</h2>
               <ul class="govuk-list">
-              <li>Name:  {% if checked('transferclient','yes')%} Stepchange {% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}</li>
-              <li>Email: breathingspaceteam@{% if checked('transferclient','yes')%}stepchange{% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}.org.uk</li>
+              <li>Name:  {% if checked('askedfortransfer','complete') %} Stepchange {% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}</li>
+              <li>Email: breathingspaceteam@{% if checked('askedfortransfer','complete')%}stepchange{% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}.org.uk</li>
               <li>Telephone: 0151 490 1731</li>
               </ul>
 {% if client.status == 'active' and checked('askedfortransfer','yes')%}
 {% elif client.status == 'active' or client.status == 'active' and checked('askedfortransfer','complete') %}
               <h2 class="govuk-heading-m">Transfer</h2>
 <p class='govuk-body'>You can request 
-{% if checked('transferclient','yes')%}
+{% if checked('askedfortransfer','complete')%}
 Stepchnge
 {% else %}
 {{ client.adviceorg | default('Stepchange') }}
