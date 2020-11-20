@@ -9,6 +9,8 @@
  {% endif %}
  {{client.name}}  
  {% if checked('searchedby','reference') %} {{ client.lastname }}
+ {% elif checked('searchedby','lastname_postcode') %} 
+ {{ lastnamepc }}
  {% else %}
  {{ lastname }}
  {% endif %}
