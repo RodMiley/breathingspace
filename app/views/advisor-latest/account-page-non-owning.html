@@ -151,14 +151,14 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 {% if client.status == 'active' and checked('askedfortransfer','yes')%}
 {% elif client.status == 'active' or client.status == 'active' and checked('askedfortransfer','complete') %}
               <h2 class="govuk-heading-m">Transfer</h2>
-<p class='govuk-body'>You can request 
+<p class='govuk-body'>You can ask 
 {% if checked('askedfortransfer','complete')%}
 Stepchnge
 {% else %}
 {{ client.adviceorg | default('Stepchange') }}
 {% endif %}
 
- transfer this Breathing Space to your organisation</p>              
+ to transfer this Breathing Space to your organisation</p>              
 <a href="transfer-confirm?reference={{client.reference}}" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
 {% endif %}
 </div>
