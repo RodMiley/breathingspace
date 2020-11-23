@@ -17,7 +17,7 @@
       </h1>
 
 
-<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You are informing {% include path+"creditor-mvp/_advise-org-name.html" %}  that you have identified another debt that should be included in Breathing Space</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-5">You're telling {% include path+"creditor-mvp/_advise-org-name.html" %}  you have identified another debt that should be included in Breathing Space</h2>
 
 <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debt</h3>
    <hr class="govuk-section-break govuk-section-break--visible">
@@ -49,12 +49,21 @@
 
 <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="addDebtStep2" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes~./account-landing-tabs?reference={{customer.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="adddebt">
          hidden radio
         </label>
       </div>
+</div>
+
+<div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="status" type="radio" value="propDebt" checked>
+        <label class="govuk-label govuk-radios__label" for="adddebt">
+         hidden radio
+        </label>
       </div>
+</div>
 
 <button class="govuk-button" data-module="govuk-button">
     Confirm and submit

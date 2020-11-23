@@ -1,0 +1,43 @@
+ 
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <form class="form" action="remove-debt-confirm" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="account-page-active" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Remove debt
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+   
+     {% include "./_debtDetails.html" %} 
+
+  <div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="removeDebtDetail">
+   Why are you removing the debt?
+  </label>
+  <textarea class="govuk-textarea govuk-!-width-two-thirds" id="removeDebtDetail" name="removeDebtDetail" rows="5"></textarea>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Save and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}
+

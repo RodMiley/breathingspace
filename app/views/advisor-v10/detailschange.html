@@ -1,0 +1,104 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  {% if checked('MAScenaioChoice','accordion')%}
+  <form class="form" action="account-landingpage" method="post">
+  {% else %}
+  <form class="form" action="debt-list-tabs-search#personal-details" method="post">
+  {% endif %}
+    <div class="govuk-grid-column-two-thirds">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+ <span class="govuk-caption-xl">Create a Breathing Space account : Step 1 of 2</span>
+       Add client's details
+      </h1>
+
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="firstname">
+  First name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" autocomplete="firstname" spellcheck="false" value="{{ firstname }}">
+</div>
+
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="middlename">
+   Middle name (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" autocomplete="middlename" spellcheck="false" value="{{ middlename }}">
+</div>
+
+    <div class="govuk-form-group">
+  <label class="govuk-label" for="lastname">
+   Last name
+  </label>
+  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h2 class="govuk-label">
+        What is your clients date of birth?
+      </h2>
+    </legend>
+    <span id="dob-hint" class="govuk-hint">
+      For example, 31 3 1980
+    </span>
+    <div class="govuk-date-input" id="dob">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" autocomplete="bdayday" pattern="[0-9]*" value="10">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="07">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="1969">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+     <!--<div class="govuk-form-group">
+  <label class="govuk-label" for="ni">
+    Client's national insurance number
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="ni" name="ni" type="text" autocomplete="ni" spellcheck="false" value="{{ ni }}">
+</div> -->
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="changedetails" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="debt4">
+         hidden radio
+        </label>
+      </div>
+      </div>
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -71,6 +71,11 @@
 
     }
 
+    &.half{
+        width: calc(100% * (1.5/3) - 0px - 20px); 
+
+    }
+
    }
 
 @media screen and (max-width:960px){

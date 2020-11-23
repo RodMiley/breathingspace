@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <form class="form" action="compliance-confirm" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+     You have reported this creditor
+      </h1>
+
+              {% include "./_debtDetails.html" %} 
+
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
+                    <p class="govuk-body">Paul Smith, Advice UK,{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>   
+    </div>
+    </form>
+</div>
+
+{% endblock %}

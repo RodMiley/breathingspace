@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="transfer-client-confirm" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Ask for a transfer
+      </h1>
+
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+    <ul class="govuk-list">
+    <li>Client name:{% if data['fullname'] %} 
+     {{fullname}} {% else %} 
+     {{client.name | default("Joe") }}
+      {% if client.task %}     
+       {{ client.lastname }}
+     {% else %} 
+     {{ lastname | default("Black")}}
+     {% endif %}
+     {% endif %}</li>
+    <li>Reference: {{ client.reference }}</li>
+    <li>Started: {{ client.startdate }}</li>
+<li>Due to end:{{ client.enddate }}</li>
+<li>Money advice organisation: {{client.adviceorg}}</li>
+    </ul>
+
+    <div class="govuk-form-group">
+ <label class="govuk-label govuk-label--s" for="transferdetail">
+      Why are you asking to transfer this Breathing Space?
+    </label>
+  <textarea class="govuk-textarea" id="transferdetail" name="transferdetail" rows="8" aria-describedby="transferdetail-hint"></textarea>
+</div>
+           
+
+
+  <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="askedfortransfer" type="radio" value="yes~./transfer-client-confirm?reference={{client.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

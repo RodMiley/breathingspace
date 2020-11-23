@@ -1,0 +1,100 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="not-testing" method="post">
+    <div class="govuk-grid-column-full">
+      {% include path+"advisor-mvp/_keydetails.html" %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">   
+
+                 <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing Space in the last 12 months</h2>
+<h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
+<p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
+Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong>
+</p>
+
+
+
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+</div>  
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Previous Breathing Spaces
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Personal details
+      </a>
+    </li>
+
+  </ul>
+  <section class="govuk-tabs__panel" id="problem-debt">
+  <table class="govuk-table">
+  <caption class="govuk-table__caption">Previous Breathing Spaces</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+     <th scope="col" class="govuk-table__header">Type</th>
+      <th scope="col" class="govuk-table__header">Start date</th>
+      <th scope="col" class="govuk-table__header">End date</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Standard</th>
+      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</td>
+      <td class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</td>
+      <td class="govuk-table__cell"><a href="endbreathingspace-previous">View more details</a></td>
+    </tr>
+  </tbody>
+</table>
+
+  </section>
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+    <h2 class="govuk-heading-l">Personal details</h2>
+    {% include path+"advisor-mvp/_personaldetails.html" %} 
+  </section>
+
+
+</div>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    This person is not eligible for a standard Breathing Space
+  </strong>
+</div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Start a new Breathing Space
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

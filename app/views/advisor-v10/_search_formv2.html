@@ -1,0 +1,114 @@
+
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="searchedby-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+       Search by
+      </h1>
+    </legend>
+    <div id="searchedby-hint" class="govuk-hint">
+      Select one option.
+    </div>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="searchedby" name="searchedby" type="radio" value="reference" data-aria-controls="conditional-searchedby"  {{checked('searchedby', 'reference') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby">
+          Breathing space reference
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby">
+     <div class="govuk-form-group">
+  <label class="govuk-label" for="reference">
+      Reference
+    </label>
+      <span id="account-number-hint" class="govuk-hint">
+    For example, GHK19873G
+  </span>
+  <input class="govuk-input govuk-!-width-one-quarter" id="reference" name="searchreference" type="text" value="{{searchreference}}">
+</div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="searchedby-2" name="searchedby" type="radio" value="lastname_dob" data-aria-controls="conditional-searchedby-2" {{checked('searchedby', 'lastname_dob') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby-2">
+         Lastname and date of birth
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby-2">
+<h2 class="govuk-heading-s">Enter clients lastname and date of birth </h2>
+    <div class="govuk-form-group">
+  <label class="govuk-label" for="lastname">
+   Last name
+  </label>
+  <input class="govuk-input govuk-!-width-one-quarter" id="lastname" name="lastname" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
+</div>
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h2 class="govuk-label">
+        What is your client's date of birth?
+      </h2>
+    </legend>
+    <span id="dob-hint" class="govuk-hint">
+      For example, 31 3 1980
+    </span>
+    <div class="govuk-date-input" id="dob">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobday">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobday" name="dobday" type="number" autocomplete="bdayday" pattern="[0-9]*" value="{{ dobday }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobmonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobmonth" name="dobmonth" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="{{ dobmonth }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dobyear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobyear" name="dobyear" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="{{ dobyear }}">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ 
+</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="searchedby-3" name="searchedby" type="radio" value="lastname_postcode" data-aria-controls="conditional-searchedby-3" {{checked('searchedby', 'lastname_postcode') }}>
+        <label class="govuk-label govuk-radios__label" for="searchedby-3">
+         Last name and postcode
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-searchedby-3">
+        <h2 class="govuk-heading-s">Enter clients lastname and postcode </h2>
+        
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="lastnamepc">
+      Last name
+    </label>
+  <input class="govuk-input govuk-!-width-one-quarter" id="lastnamepc" name="lastnamepc" type="text" value="{{lastnamepc}}">
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="searchpostcode">
+      Postcode
+    </label>
+ 
+  <input class="govuk-input govuk-!-width-one-quarter" id="searchpostcode" name="searchpostcode" type="text" value="{{searchpostcode}}">
+</div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+<button class="govuk-button">Search</button>

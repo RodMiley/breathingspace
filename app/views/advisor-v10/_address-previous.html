@@ -1,0 +1,36 @@
+            
+{% if data['prevAddress']%}
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous address
+            </dt>
+            <dd class="govuk-summary-list__value">
+            <p>
+            {% if checked('prevAddress', 'manual')%}
+             <span class="govuk-!-display-block">{{prevaddressline1}}</span>
+             <span class="govuk-!-display-block">{{prevaddressline2}}</span>
+              <span class="govuk-!-display-block">{{prevaddresstown}}</span>
+              <span class="govuk-!-display-block">{{prevaddresscounty}}</span>
+              <span class="govuk-!-display-block">{{prevaddresspostcode}}</span>  
+              <span class="govuk-!-display-block">{{country}}</span> 
+                {% elif checked('prevAddress', 'pclookup')%} 
+                {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
+                {% endif %}
+
+               <p>{% if data['movedInMonth']%}Moved in {{ movedInMonth | default("10") | toMonth }} {{ movedInYear | default("2017") }} <br>{% endif %}
+                {% if data['movedOutMonth']%} Moved out  {{ movedOutMonth | default("01") | toMonth }} {{ movedOutYear | default("2020") }} </p>{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <ul class="govuk-list">
+              <li> 
+              <a class="govuk-link govuk-!-font-size-19" href="address-previous-choice">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a></li>
+              <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Delete<span class="govuk-visually-hidden"> Address</span>
+              </a></li>
+              </ul>
+            </dd>
+          </div>
+
+{% endif %}

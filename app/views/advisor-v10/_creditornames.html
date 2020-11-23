@@ -1,0 +1,18 @@
+{% if checked('debtType','debt1') or checked('debtType','proposed') %}
+Barclays Bank Plc
+{% elif checked('debtType','debt2')  %}
+Halifax (Credit cards only)
+{% elif checked('debtType','debt3')  %}
+M Jones(landloard)
+{% elif checked('debtType','debt4')  %}
+Yorkshire Water Services Ltd
+{% elif checked('debtType','debt5') and  checked('dontown','yes')%}
+Akinika Debt Recovery Limited
+{% elif checked('debtType','debt5')  %}
+EDF Energy Ltd
+{% elif checked('debtType','debt6')  %}
+Southwark Council
+{% elif checked('debtType','debt7')  %}
+HMRC
+{% endif %}
+   

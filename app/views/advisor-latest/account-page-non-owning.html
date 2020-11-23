@@ -69,7 +69,7 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 {% elif checked('askedfortransfer','yes') %}
 <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--green">
 <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Confirmation</h2>
-<p>You have asked  {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to your organisation</p>
+<p>You've asked  {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to your organisation</p>
 </div>
 
 
@@ -92,7 +92,7 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
              We have asked {{ client.adviceorg | default('Stepchange') }} to transfer this Breathing Space to us
               </h3>
 
-              <p class="govuk-body govuk-!-margin-bottom-1">Requested: Paul Smith,  Advice uk,  {{ 'DD MMMM YYYY' | baseDateAdd(0) }}, 10.33 am</p>
+            <a href="transfer-client-details?reference={{client.reference}}">View transfer details</a>
      
             
             
@@ -159,7 +159,7 @@ Stepchnge
 {% endif %}
 
  to transfer this Breathing Space to your organisation</p>              
-<a href="transfer-confirm?reference={{client.reference}}" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
+<a href="transfer-client?reference={{client.reference}}" class="govuk-button govuk-button--secondary">Ask for a transfer</a>
 {% endif %}
 </div>
 </div>

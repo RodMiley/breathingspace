@@ -15,7 +15,7 @@
 
 
 <!-- debtrow macro -->
-{% macro debtrow(debtName, debtCreditor, debtAmount, debtReference, debtType, debtTaskToDo) %}
+{% macro debtrow(debtname, debtCreditor, debtAmount, debtReference, debtdate, debtType, debtTaskToDo) %}
    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
    {% if client.task =='debtreview' 
    or client.task =='transferdebt' 
@@ -74,14 +74,16 @@ Creditor reported to Insolvency Service
    {% endif %}
   <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds"> 
+
       <ul class="govuk-list">
-      <li><h2 class="govuk-heading-s">Debt:{{ debtName }}
+      <li><h2 class="govuk-heading-s">Debt: {{ debtname }}
 </h2></li> 
       <li>Creditor: {{debtCreditor}}</li> 
       <li>Amount: {{debtAmount}}<li>
       <li> Reference: {{debtReference}}</li>
-      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      <li> Debt was entered on {{ debtdate }}<li>
     </ul>
+
     </div>
      <div class="govuk-grid-column-one-third"> 
     {% if debtName == 'Credit card' and  client.task =='debtReviewComplete'  %}
@@ -239,7 +241,7 @@ Creditor reported to Insolvency Service
 </div>
 
   {% else %} 
- <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+ <a href="add-new-debt?reference={{client.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
   Add a debt
 </a>
  <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
@@ -301,15 +303,22 @@ Creditor reported to Insolvency Service
     {% endif %}
   <section class="govuk-tabs__panel" id="problem-debt">
       <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Debts</h2>
-
-   
-   
+  {% if checked('addDebt','yes') %} 
+   {{ debtrow(
+  [debttype],
+ [newcreditor],
+ [adddebtamount],
+ [adddebtreference],
+ ['Do MMMM YYYY' | baseDateAdd(0)]
+) }}
+  {% endif %}
    
    {{ debtrow(
  "Loan",
  "Barclays Bank Plc",
  "£5400",
  "8945 4321 5678",
+  ['Do MMMM YYYY' | baseDateAdd(-2)],
  "debt1"
 ) }}
 
@@ -321,6 +330,7 @@ Creditor reported to Insolvency Service
 "Halifax credit cards only",
 "£5400",
 "HAL345TH456",
+['Do MMMM YYYY' | baseDateAdd(-2)],
 "debt2",
 "yes"
 ) }}
@@ -334,6 +344,7 @@ Creditor reported to Insolvency Service
   " M Jones(landlord)",
   "£1250",
   "Flat 4 Monmouth Rd",
+  ['Do MMMM YYYY' | baseDateAdd(-2)],
   "debt3"
 ) }}
 
@@ -343,6 +354,7 @@ Creditor reported to Insolvency Service
  "Yorkshire Water Services Ltd",
  "£102",
  "4949 9494 9449",
+['Do MMMM YYYY' | baseDateAdd(-2)],
  "debt4"
 ) }}
 
@@ -353,6 +365,7 @@ Creditor reported to Insolvency Service
   "£389",
   "CRT8536544",
   "debt5",
+  ['Do MMMM YYYY' | baseDateAdd(-2)],
   "yes"
 ) }}
 
@@ -362,6 +375,7 @@ Creditor reported to Insolvency Service
    "Southwark Council",
    "£1179",
    "LCC3456789",
+   ['Do MMMM YYYY' | baseDateAdd(-2)],
    "debt6"
 ) }}
 
@@ -371,6 +385,7 @@ Creditor reported to Insolvency Service
    "HMRC",
    "£789",
    "KN23455",
+     ['Do MMMM YYYY' | baseDateAdd(-2)],
    "debt7"
 ) }}
 

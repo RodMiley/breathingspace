@@ -1,15 +1,14 @@
 
 {% if checked('status','PA') 
 or checked('status','R') 
-or customer.status == 'new' and data['clientReviewConfirm'] !=='yes'
 or checked('status','DO')
 or checked('status','dont-own')
 or checked('status','dispute')
-or checked('status','propDebt')
 or customer.status == 'review-accepted' and data['protection'] !=='completed'
 or checked('status','RC') and checked('protection','complete')
 or customer.status == 'review-rejected' and data['protection'] !=='rejectedcompleted'
 %}
+
   {% elif checked('protection','yes')%}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
@@ -35,10 +34,10 @@ or customer.status == 'review-rejected' and data['protection'] !=='rejectedcompl
   </p>
   </div> 
 
-  {% elif checked('addDebtStep2','yes') or checked('addDebtStep2','yes') and checked('protection','yes') %}
+  {% elif checked('status','propDebt') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
-  <p class="govuk-body">We've told the money adviser that you've proposed a debt that should be included in Breathing Space
+  <p class="govuk-body">We've told the money adviser that you've sent a debt that should be included in Breathing Space
   </p>
   </div>
 

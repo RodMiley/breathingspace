@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-no" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Client eligibility review
+      </h1>
+      </div>
+   <div class="govuk-grid-column-three-quarters">
+
+   {% if checked('client-eligibility','yes') %}
+
+    <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-tag--blue">
+<h2 class="govuk-heading-m">Review completed</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome of review</h3>
+                    <p class="govuk-body">You have removed the client from Breathing Space after review</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the decision</h3>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We agree that this Client has had a Breathing Space in the last 12 months, so we are ending the clients Breathing Space") }}</p>
+                     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+</div>             
+
+{% elif checked('client-eligibility','no') %}
+
+                    <div class="govuk-details__text govuk-!-margin-bottom-5 govuk-tag--blue">
+                    <h2 class="govuk-heading-m">Review completed</h2>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome of review</h3>
+                    <p class="govuk-body">You have not removed the client from Breathing Space after review</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the decision</h3>
+                    <p class="govuk-body">{{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reviewed by</h3>
+                    <p class="govuk-body">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+           </div>
+
+{% endif %}
+             
+            
+           
+
+                    <h2 class="govuk-heading-m">Yorkshire Water Services Ltd asked for a review</h2>
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
+                    <p class="govuk-body">They have had Breathing Space in the last 12 months</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
+                    <p class="govuk-body">Our records indicate that our client has had a Breathing Space in the last 12 months so they’re not eligible.</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+                    <p class="govuk-body">Kiran Callaghan,  Yorkshire Water Services Ltd,{{ 'DD MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</p>    
+
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

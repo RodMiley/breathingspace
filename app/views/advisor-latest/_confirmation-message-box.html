@@ -29,6 +29,9 @@
  
    {% elif checked('confirmationmessage','nonComplianceReported')%}
   <p class="govuk-body govuk-!-margin-bottom-2">You've reported creditor to the Insolvency Service</p>
+
+     {% elif checked('confirmationmessage','newdebt')%}
+  <p class="govuk-body govuk-!-margin-bottom-2"> You've added a new debt  to your clients Breathing Space</p>
   {% endif %}
 </div>
 
