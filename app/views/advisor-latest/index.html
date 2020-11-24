@@ -72,11 +72,11 @@
 
                           <div class="card double">
                                     <form class="form" action="tasks-to-do" method="post">
-                        <h2 class="govuk-heading-s"><button class="govuk-body govuk-link govuk-!-font-weight-bold">Tasks to do
-               ({{totTasks}})</button></h2>
+                        <h2 class="govuk-heading-s"><button class="govuk-body govuk-link govuk-!-font-weight-bold">All active Breathing Spaces
+               ({{totNum}})</button></h2>
                           <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_1" name="status" type="radio" value="status_1"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_1">
+                            <input class="govuk-radios__input facet" id="status_0" name="status" type="radio" value="status_0"  checked >
+                            <label class="govuk-label govuk-radios__label" for="status_0">
                               hidden radio for logic
                             </label>
                           </div>
@@ -84,11 +84,20 @@
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                 <ul class="govuk-list">
                 <li>
+              <form class="form" action="tasks-to-do" method="post">
+                        <button class="govuk-body govuk-link govuk-!-font-weight-bold">Tasks to do
+               ({{totTasks}})</button>
+                            {% include "./_tasksstatusradio.html" %}
+                     </form>
+                
+                </li>
+                <li>
                      <form class="form" action="tasks-to-do" method="post">
                         <button class="govuk-body govuk-link">Creditor asked us to review a debt ({{taskDebtReview}})</button>
-                          <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="status_2"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_2">
+                   {% include "./_tasksstatusradio.html" %}
+                                 <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_2" name="substatus" type="radio" value="substatus_2"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_2">
                               hidden radio for logic
                             </label>
                           </div>
@@ -97,9 +106,10 @@
                 <li>    
                 <form class="form" action="tasks-to-do" method="post">
                         <button class="govuk-body govuk-link">Creditor asked us to review a client ({{taskProposedDebt}})</button>
-                          <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_3" name="status" type="radio" value="status_3"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_3">
+                             {% include "./_tasksstatusradio.html" %}
+                                          <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_3" name="substatus" type="radio" value="substatus_3"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_3">
                               hidden radio for logic
                             </label>
                           </div>
@@ -108,9 +118,10 @@
                 <li>
                        <form class="form" action="tasks-to-do" method="post">
                         <button class="govuk-body govuk-link">Creditor proposed a new debt ({{taskClientReview}})</button>
-                          <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_4" name="status" type="radio" value="status_4"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_4">
+                               {% include "./_tasksstatusradio.html" %}
+                                            <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_4" name="substatus" type="radio" value="substatus_4"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_4">
                               hidden radio for logic
                             </label>
                           </div>
@@ -119,9 +130,10 @@
                 <li>
                       <form class="form" action="tasks-to-do" method="post">
                         <button class="govuk-body govuk-link">Creditor asked us to transfer a sold debt ({{taskTransferDebt}})</button>
-                          <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_5" name="status" type="radio" value="status_5"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_5">
+                            {% include "./_tasksstatusradio.html" %}
+                                         <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_4" name="substatus" type="radio" value="substatus_5"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_5">
                               hidden radio for logic
                             </label>
                           </div>
@@ -130,9 +142,10 @@
                 <li>
                        <form class="form" action="tasks-to-do" method="post">
                         <button class="govuk-body govuk-link">Money adviser asked us to transfer the client  ({{taskTransferClient}})</button>
-                          <div class="govuk-radios__item govuk-visually-hidden">
-                            <input class="govuk-radios__input facet" id="status_6" name="status" type="radio" value="status_6"  checked >
-                            <label class="govuk-label govuk-radios__label" for="status_6">
+                           {% include "./_tasksstatusradio.html" %}
+                                        <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_6" name="substatus" type="radio" value="substatus_6"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_6">
                               hidden radio for logic
                             </label>
                           </div>
@@ -146,8 +159,8 @@
                 <h2 class="govuk-heading-s">
                 Create new
                  </h2> 
-                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
- <div class="govuk-warning-text govuk-!-margin-bottom-2">
+                <hr class="govuk-section-break govuk-section-break--visible">
+ <div class="govuk-warning-text govuk-!-margin-top-2 govuk-!-margin-bottom-2">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>

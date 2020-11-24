@@ -32,6 +32,9 @@
 
      {% elif checked('confirmationmessage','newdebt')%}
   <p class="govuk-body govuk-!-margin-bottom-2"> You've added a new debt  to your clients Breathing Space</p>
+
+  {% elif checked('confirmationmessage','notransferred')%}
+  <p class="govuk-body govuk-!-margin-bottom-2"> You have not transfered this Breathing Space</p>
   {% endif %}
 </div>
 

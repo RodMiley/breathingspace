@@ -39,7 +39,7 @@
  <label class="govuk-label govuk-label--s" for="transferdetail">
       Why are you asking to transfer this Breathing Space?
     </label>
-  <textarea class="govuk-textarea" id="transferdetail" name="transferdetail" rows="8" aria-describedby="transferdetail-hint"></textarea>
+  <textarea class="govuk-textarea" id="transferdetail" name="transferdetail" rows="5" aria-describedby="transferdetail-hint"></textarea>
 </div>
            
 
@@ -52,6 +52,13 @@
         </label>
       </div>
       </div>
+
+       <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="askForTransfer" name="debtStatus" type="radio" value="askForTransfer" checked >
+        <label class="govuk-label govuk-radios__label" for="askForTransfer">
+         Hidden radio for logic
+        </label>
+        </div>
 
 
 

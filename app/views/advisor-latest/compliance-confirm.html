@@ -10,13 +10,20 @@
 
 <div class="govuk-grid-row">
   <form class="form" action="account-page" method="post">
-
+     <div class="govuk-grid-column-full">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+     </div> 
+     </div>
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
        Confirm you're reporting this creditor
       </h1>
                   {% include "./_debtDetails.html" %} 
+
+       <h2 class="govuk-heading-s">What happens when you report a creditor</h2>
+<p class="govuk-body">The Insolvency Service will send a notification to the creditor by email or letter, reminding them of their obligations and its the law to do so.</p>
+       
       <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
@@ -51,6 +58,14 @@
   Confirm and continue
 </button>
     </div>
+
+    <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-s related">Related content</h2>
+  <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about reporting a creditor on GOV.UK (opens in new tab)</a></p>
+    <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See an example report a creditor notification on GOV.UK (opens in new tab)</a></p>
+    </div>
+    </form>
+</div>    
     </form>
 </div>
 

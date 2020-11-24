@@ -260,24 +260,32 @@
 
               {% endif %}
 
-                 {% if client.task =='transferclient' %}
+                 {% if client.task =='transferclient' or client.task =='transferTaskComplete' %}
 
 
                                          <li class="app-task-list__item">
+                 {% if checked('transfer','yes') or client.task =='transferTaskComplete' %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}                             
               <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
              Stepchange have asked us to transfer this Breathing Space
               </h3>
               <span class="app-task-list__task-name">
+                {% if client.task =='transferTaskComplete' %}
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-1">Outcome</h4>
+                <p class="govuk-body govuk-!-margin-bottom-2">Breathing Space not transfered</p>
+
+                 <a href="transfer-request?reference={{client.reference}}" >
+                   View transfer details
+              </a>
+                {% else %}
               <a href="transfer-request?reference={{client.reference}}" class="govuk-button govuk-button--secondary  govuk-!-margin-bottom-2 govuk-!-margin-top-1" >
                    Transfer this Breathing Space
               </a>
+              {% endif %}
               </span>
-      
-            {% if checked('transfer','yes') %}
-             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
-            {% else %}
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-            {% endif %}  
               </li>
               {% endif %}
              

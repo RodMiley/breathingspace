@@ -105,6 +105,46 @@ router.get('/transfer-request-confirm', function (req, res, next) {
    })
 
 
+   router.get('/transfer-request-no-confirm', function (req, res, next) {
+    let findCustomer = {}
+  
+    for (let i = 0; i < searchClient.length; i++ ) {
+      if(searchClient[i].reference === req.query.reference){
+        findCustomer = searchClient[i];
+      }
+    }
+  
+  
+    let status = req.session.data['debtStatus']
+    if(status === 'transferClient'){
+      findCustomer.task ='transferTaskComplete' 
+      }   
+   
+    res.locals.client = findCustomer
+    next()
+     })  
+
+
+     // Ask for a client transferchange task status ---------------------------------------------/
+router.get('/transfer-client-confirm?', function (req, res, next) {
+  let findCustomer = {}
+
+  for (let i = 0; i < searchClient.length; i++ ) {
+    if(searchClient[i].reference === req.query.reference){
+      findCustomer = searchClient[i];
+    }
+  }
+
+
+  let status = req.session.data['debtStatus']
+  if(status === 'askForTransfer'){
+    findCustomer.task ='askedForTransfer' 
+    }   
+ 
+  res.locals.client = findCustomer
+  next()
+   })
+
 
  // Review debt change task status ---------------------------------------------/
  router.get('/eligibility-review-yes', function (req, res, next) {
@@ -200,6 +240,8 @@ router.get('/transfer-request-confirm', function (req, res, next) {
     let findCustomer3 = {}
     let findCustomer4 = {}
     let findCustomer5 = {}
+    let findCustomer6 = {}
+    let findCustomer7 = {}
      
     for (let i = 0; i < searchClient.length; i++ ) {
 
@@ -220,6 +262,13 @@ router.get('/transfer-request-confirm', function (req, res, next) {
 
      if(searchClient[i].task === 'transferClientComplete'){
       findCustomer5 = searchClient[i];
+     }
+
+     if(searchClient[i].task === 'transferTaskComplete'){
+      findCustomer6 = searchClient[i];
+     }
+     if(searchClient[i].task === 'askedForTransfer'){
+      findCustomer6 = searchClient[i];
      }
     }
     
@@ -243,6 +292,15 @@ router.get('/transfer-request-confirm', function (req, res, next) {
 
       if(status === 'yes'){
         findCustomer5.task ='transferclient'
+      }  
+
+      if(status === 'yes'){
+        findCustomer6.task ='transferclient'
+      } 
+      
+      
+      if(status === 'yes'){
+        findCustomer7.task =''
       }  
     
     next()
