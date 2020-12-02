@@ -1,0 +1,85 @@
+
+{% extends "layout-developerv2.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="organisation"> Organisation</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+     Add developer
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+
+
+
+  <form class="form" action="organisation" method="post">
+
+  
+    <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Add developer</h1>
+
+<div class="govuk-form-group ">
+        <label class="govuk-label " for="emaildev" id="emaildev-label">Email address</label>
+        
+
+        <input type="text" id="emaildev" name="emaildev" value="" class="govuk-input" aria-labelledby="emaildev-label">
+    </div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="scope-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Choose scopes
+      </label>
+    </legend>
+ <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="scope" name="scope" type="checkbox" value="Scope 1">
+        <label class="govuk-label govuk-checkboxes__label" for="scope">
+          Scope 1
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="scope-2" name="scope2" type="checkbox" value="Scope 2">
+        <label class="govuk-label govuk-checkboxes__label" for="scope-2">
+         Scope 2
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>    
+
+    <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="developer" name="developer" type="radio" value="added"  checked>
+        <label class="govuk-label govuk-radios__label" for="developer">
+      hidden radio for logic
+        </label>
+      </div>
+
+
+<button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+ Save and submit
+</button> 
+
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

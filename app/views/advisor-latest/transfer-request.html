@@ -15,7 +15,7 @@
        Transfer this Breathing Space
       </h1>
 
-  <p class="govuk-body-l">Stepchange have asked us to transfer this Breathing Space to them </p>
+  <p class="govuk-body-l">Stepchange have asked Advice uk to transfer this Breathing Space to them </p>
 
 <h2 class="govuk-heading-s">Breathing Space Details</h2>
 <ul class="govuk-list">
@@ -26,7 +26,7 @@
 </ul>
 
 <h2 class="govuk-heading-s">Reason for the transfer</h2>
-<p>{{ client.name }} {{ client.lastname }} has asked us to take on their Breathing Space, I spoke to Paul Smith from your organisation about this and he has agreed to the transfer.<p>
+<p>{{ client.name }} {{ client.lastname }} needs a casework approach, so were asking Advice uk to transfer this Breathing Space to Stepchange<p>
 
     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
     <p class="govuk-body">Stepchange, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>   
@@ -47,7 +47,7 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no~transfer-request-no-confirm?reference={{client.reference}}">
+        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no~transfer-request-confirm?reference={{client.reference}}">
         <label class="govuk-label govuk-radios__label" for="changed-name-2">
           No
         </label>

@@ -1,0 +1,42 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <form class="form" action="compliance-confirm" method="post">
+     <div class="govuk-grid-column-full">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+     </div> 
+     </div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+     You have reported this creditor
+      </h1>
+
+              {% include "./_debtDetails.html" %} 
+
+                     <h2 class="govuk-heading-s">What's happened</h2>
+<p class="govuk-body">The Insolvency Service has sent a notification to the creditor by email or letter, reminding them of their obligations and its the law to do so.</p>
+<p class="govuk-body">Notification sent on {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>   
+
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reported by</h3>          
+                    <p class="govuk-body">Paul Smith, Advice UK, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>   
+    </div>
+    </form>
+        <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-s related">Related content</h2>
+  <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about reporting a creditor on GOV.UK (opens in new tab)</a></p>
+    <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See an example report a creditor notification on GOV.UK (opens in new tab)</a></p>
+    </div>
+    </form>
+</div>  
+</div>
+
+{% endblock %}

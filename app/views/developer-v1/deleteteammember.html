@@ -1,0 +1,83 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+      <li class="govuk-breadcrumbs__list-item">
+      <a href="teammembers">Manage team members</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+     Delete a team member
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+
+
+
+  <form class="form" action="teammembers" method="post">
+
+  
+    <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Remove a team member</h1>
+{% include "./_appdetails.html"%}
+<h2 class="govuk-heading-m">
+Team member
+</h2>
+
+<p class="govuk-body">{{ email | default('ghenderson@cab.org.co.uk') }}</p>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="permissions-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <label class="govuk-fieldset__heading">
+        Are you sure you want to remove this team member from this application?
+      </label>
+    </legend>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="permissions" name="permissions" type="radio" value="remove">
+        <label class="govuk-label govuk-radios__label" for="permissions">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="permissions-2" name="permissions" type="radio" value="Remains">
+        <label class="govuk-label govuk-radios__label" for="permissions-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+
+<button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+Remove team member
+</button> 
+<a href="teammembers" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Cancel
+</a> 
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

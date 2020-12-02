@@ -18,7 +18,7 @@
 </strong>  
 {% else %}
   <strong class="govuk-tag govuk-tag--grey">
-  Inactive 
+ Ended
 </strong>  
 {% endif %}
     <strong>{{client.type}}</strong> Breathing Space
@@ -40,6 +40,8 @@
 <strong>Breathing Space 
 {% if client.status == 'inactive' and  client.reference =='BS000017712'%}
 ran for 30 days
+{% elif client.status == 'inactive' and client.type=='Mental Health'%}
+ran for 92 days
 {% elif client.status == 'inactive' %}
 ran for 60 days
 {% else %}
@@ -59,14 +61,21 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
       <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible keydetails">
-{% if client.status == 'inactive '%}
+{% if client.status =='inactive'%}
 <div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
-<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This Breathing Space has ended</h2>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This {% if client.type =='Mental Health' %}Mental Health {% else %}Standard {% endif %}Breathing Space has ended</h2>
+<ul class="govuk-list">
+<li>It ran for  {% if client.type =='Mental Health' %} 92 {% else %} 60 {% endif %}days<li>
+<li>Started: {{ client.startdate }} <li>
+<li>Ended: {{ client.enddate }} <li>
+</ul>
 <p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+<p>To enter a person into another Breathing Space you must create a new one. </p>
 </div>
 {% endif %}
-{% if checked('askedfortransfer','complete') %}
-{% elif checked('askedfortransfer','yes') %}
+
+{% if client.status =='active' and checked('askedfortransfer','complete') %}
+{% elif client.status =='active' and checked('askedfortransfer','yes')  %}
 
 {% if checked('confirmation','remove')%}
 {% else %}

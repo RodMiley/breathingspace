@@ -49,6 +49,7 @@ router.use(radioButtonRedirect)
 router.use('/advisor-v5', require('./views/advisor-v5/_routes'));
 router.use('/advisor-v6', require('./views/advisor-v6/_routes'));
 router.use('/advisor-v10', require('./views/advisor-v10/_routes'));
+router.use('/advisor-v11', require('./views/advisor-v11/_routes'));
 router.use('/advisor-latest', require('./views/advisor-latest/_routes'));
 router.use('/creditor-v3', require('./views/creditor-v3/_routes'));
 router.use('/creditor-v4', require('./views/creditor-v4/_routes'));

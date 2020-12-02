@@ -1,0 +1,207 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+  {% include "./_global-nav.html" %} 
+{% include "./_keydetails_active.html" %}
+
+
+
+{% include "./_confirmation-message-box.html" %}
+
+
+{% import "./_debts.njk" as debtrow %}
+
+
+    {% set debts = [
+        {
+          "debt_name"  : "Loan",
+          "debt_creditor"  : "Barclays Bank Plc",
+          "debt_amount" : "£5400",
+          "debt_reference" : "8945 4321 5678",
+          "debt_type" : "debt1"
+         
+        },
+        {
+          "debt_name"  : "Credit card",
+          "debt_creditor"  : "Halifax credit cards only",
+          "debt_amount" : "£5400",
+          "debt_reference" : "HAL345TH456",
+          "debt_type" : "debt2"
+         
+        },
+        {
+          "debt_name"  : "Rent arrears",
+          "debt_creditor"  : " M Jones(landlord)",
+          "debt_amount" : "£1250",
+          "debt_reference" : "Flat 4 Monmouth Rd",
+          "debt_type" : "debt3"
+       
+        },
+        {
+          "debt_name"  : "Water",
+          "debt_creditor"  : "Yorkshire Water Services Ltd",
+          "debt_amount" : "£102",
+          "debt_reference" : "4949 9494 9449",
+          "debt_type" : "debt4"
+          
+        } ,
+        {
+          "debt_name"  : "Gas",
+          "debt_creditor"  : "EDF Energy Ltd",
+          "debt_amount" : "£389",
+          "debt_reference" : "CRT8536544",
+          "debt_type" : "debt5"
+         
+        } ,
+        {
+          "debt_name"  : "Council tax",
+          "debt_creditor"  : "Southwark Council",
+          "debt_amount" : "£1179",
+          "debt_reference" : "LCC3456789",
+          "debt_type" : "debt6"
+         
+        },
+        {
+          "debt_name"  : "Self assessment paye",
+          "debt_creditor"  : "HMRC",
+          "debt_amount" : "£789",
+          "debt_reference" : "KN23455",
+          "debt_type" : "debt7"
+         
+        } 
+      ]
+    %}
+
+  
+
+
+ 
+
+
+
+
+
+
+   {% if checked('changedetails', 'yes')%}
+<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-1 govuk-!-margin-top-1">
+  Personal details saved and updated
+</div>
+ {% endif %}
+  {% if checked('clientreview','bsended') or client.status =='inactive' %}
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
+<h2 class="govuk-heading-m">This Breathing Space has ended</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-2">Reason</h3>
+<p class="govuk-body">The client is not eligible because they have had another Breathing Space in the last 12 months</p>
+<p class="govuk-body">A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+</div>
+
+  {% else %} 
+ <a href="add-new-debt" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  Add a debt
+</a>
+ <a href="endbreathingspace" class="govuk-button govuk-button--secondary govuk-!-margin-right-2" data-module="govuk-button">
+  End Breathing Space
+</a>
+
+{% endif %}
+
+
+
+
+   
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+
+      <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+
+      <a class="govuk-tabs__tab" href="#actions">
+      Tasks
+      </a>
+    </li>
+    <li  class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#problem-debt">
+       Debts
+      </a>
+    </li>
+   {% if checked('debt-eligibility','yes') 
+   or checked('removedebt', 'debt1') 
+   or checked('removedebt', 'debt2')  
+   or checked('removedebt', 'debt3')
+   or checked('removedebt', 'debt4')
+   or checked('removedebt', 'debt5')
+   or checked('removedebt', 'debt6')
+   or checked('removedebt', 'debt7')  
+   or checked('removedebt', 'proposed')    
+   %}
+       <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#removed-debt">
+       Removed debts
+      </a>
+    </li>
+    {% endif %} 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#personal-details">
+        Client details
+      </a>
+    </li>
+
+  </ul>
+    <section class="govuk-tabs__panel" id="actions">
+     <h2 class="govuk-heading-l">Tasks</h2>
+     {% include "./_tasklist_data.html" %} 
+    </section>
+  <section class="govuk-tabs__panel" id="problem-debt">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Debts</h2>
+
+    {% for debt in debts %}
+
+      {{ 
+         debtrow.debt(
+         debt.debt_name, 
+         debt.debt_creditor,
+         debt.debt_amount, 
+         debt.debt_reference,
+         debt.debt_type,
+         debt.debt_task_to_do
+        ) 
+      }}
+
+    {% endfor %}
+
+  </section>
+ {% if checked('debt-eligibility','yes')
+   or checked('removedebt', 'debt1') 
+   or checked('removedebt', 'debt2')  
+   or checked('removedebt', 'debt3')
+   or checked('removedebt', 'debt4')
+   or checked('removedebt', 'debt5')
+   or checked('removedebt', 'debt6')
+   or checked('removedebt', 'debt7') 
+   or checked('removedebt', 'proposed')    %}
+   <section class="govuk-tabs__panel" id="removed-debt">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+ {% include "./_removeddebtslist.html" %} 
+
+   </section>
+  {% endif %}
+
+  <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+     {% include "./_personaldetails.html" %} 
+
+  </section>
+
+
+</div>
+    </div>
+   
+
+
+{% endblock %}

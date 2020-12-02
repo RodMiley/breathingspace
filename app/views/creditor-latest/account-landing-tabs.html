@@ -16,13 +16,22 @@
              
                 Back to Loans
                 {% else %}
-                 Back to Self assessment
+                 Back to Housing Benefit
                 {% endif %}
      
       </a>  
 {% include "./_keydetails_active.html" %} 
 {% include "./_protections-confirm.html" %}
-
+{% if customer.status == 'client-review-accepted' %}
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This Breathing Space has ended</h2>
+<ul class="govuk-list">
+<li>It ran for 2 days</li><li>
+</li><li>Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }}</li><li>
+</li><li>Ended:{{ 'DD MMMM YYYY' | baseDateAdd(0) }}</li><li>
+</li></ul>
+</div>
+{% else %}
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -37,7 +46,7 @@
   <p class="govuk-body-l">
 <strong>{% include "./_advise-org-name.html" %}</strong> has entered your client into Breathing Space
 </p> 
-  
+ {% endif %} 
                {% include "./_tasklist-v2.html" %}
 {% if checked('clientReviewConfirm','yes') or customer.status == 'client-review-accepted' %}
 {% else %}

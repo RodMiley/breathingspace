@@ -1,0 +1,74 @@
+
+{% extends "layout-developerv2.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='viewallapplications' %}
+ <!-- -->
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+ <!--      <div class="govuk-grid-column-one-quarter"> 
+      
+
+{% include "./_nav2.html" %}
+
+</div> -->
+<div class="govuk-grid-column-full"> 
+<h1 class="govuk-heading-l">Organisations</h1>
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-visually-hidden">organisation type and email</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Type</th>
+      <th scope="col" class="govuk-table__header">Email</th>
+       <th scope="col" class="govuk-table__header govuk-table__header--numeric"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Org 1</th>
+      <td class="govuk-table__cell">Credtitor</td>
+      <td class="govuk-table__cell">joe@org1.com</td>
+       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="organisation">View organisation</a></td>
+    </tr>
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Org 2</th>
+      <td class="govuk-table__cell">Credtitor</td>
+      <td class="govuk-table__cell">sam@org2.com</td>
+       <td class="govuk-table__cell govuk-table__cell--numeric"><a href="organisation">View organisation</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <p class="govuk-body">After testing in the sandbox, you can apply for production credentials</p>
+
+<a href="getproductioncredentials" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+  Get production credentials
+</a>  -->
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

@@ -1,0 +1,49 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+      Delete application
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='deleteapplication' %}
+ <!-- -->
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Delete application</h1>
+
+{% include "./_appdetails.html"%}
+
+<p class="govuk-body">Before deleting this application, check with all your <a href="teammembers">team members</a>.</p>
+
+<a href="deleteapplicationconfirm" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+  Continue
+</a> 
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

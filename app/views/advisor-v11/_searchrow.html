@@ -1,0 +1,52 @@
+   
+    <li>
+    <div class="card">
+
+{% if client.adviceorg =='Advice uk' %}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page?reference={{client.reference}}">
+ {% else %}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-non-owning?reference={{client.reference}}">
+ {% endif %}
+ {{client.name}}  
+ {% if checked('searchedby','reference') %} {{ client.lastname }}
+ {% elif checked('searchedby','lastname_postcode') %} 
+ {{ lastnamepc }}
+ {% else %}
+ {{ lastname }}
+ {% endif %}
+  </a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+{% if client.status =='active'%}
+    <strong class="govuk-tag govuk-!-margin-top-3">Active</strong> <strong>{{client.type}}</strong> Breathing Space
+{% else %}
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive</strong>  <strong>{{client.type}}</strong> Breathing Space
+ {% endif %}
+    <ul class="govuk-list govuk-!-margin-bottom-0">
+    <li>Reference:  {{client.reference}}</li>
+    <li>
+    {% if client.status =='active'%}
+    Started: 29 October 2020 - Due to end: 28 December 2020
+    {% else %}
+    Started: {{ client.startdate }} - Ended {{ client.enddate }}
+    {% endif %}
+    </li>
+    <li>DOB: 
+     {% if checked('searchedby','lastname_dob') %} 
+      {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+ {% else %}
+    {{client.dob}}
+ {% endif %}
+</li>
+    <li>Address: {{client.address}},
+    {% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode}}
+ {% endif %}
+    </li>
+    <li>Money advice organisation: {{client.adviceorg}}</li>
+    <ul>
+</div>
+    </li>

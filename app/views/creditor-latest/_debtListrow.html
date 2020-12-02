@@ -1,9 +1,18 @@
 <li>
 <div class="card">
+  <form class="form" action="" method="post">
+                  <button class="govuk-body govuk-link  govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3">
+                {{ customer.name}}
+                  </button>
 
 
- <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference={{customer.reference}}">{{ customer.name}}</a>
-  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+  <div class="govuk-radios__item  govuk-visually-hidden">
+                            <input class="govuk-radios__input" id="protections" name="protection" type="radio" value="hide~account-landing-tabs?reference={{customer.reference}}" checked>
+                            <label class="govuk-label govuk-radios__label" for="protections">
+                              Yes
+                            </label>
+                          </div>
+</form>
  <hr class="govuk-section-break govuk-section-break--visible">
 
 {% if customer.todo == 'Yes'%}

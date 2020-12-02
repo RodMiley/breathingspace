@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="scenarios" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Step 2 of 2</span>
+       Add a debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body">{{ newcreditor }} <a href="add-new-debt-multi-creditor">Change</a></p>
+
+      <p class="govuk-body">
+      {% if data['newcreditor'] == 'Leeds City Council (Parking fines)' %}
+      <h2 class="govuk-heading-s">Debt type</h2>
+      <p class="govuk-body">
+      Parking fines</p>
+      {% elif data['newcreditor'] == 'Leeds City Council (Council tax)' %}
+      <h2 class="govuk-heading-s">Debt type</h2>
+      <p class="govuk-body">
+      Council tax</p>
+      {% elif data['newcreditor'] == 'Leeds City Council (Housing benefit)' %}
+      <h2 class="govuk-heading-s">Debt type</h2>
+      <p class="govuk-body">
+      Housing benefit</p>
+      {% elif data['newcreditor'] == 'Leeds City Council (Rent arrears)' %}
+      <h2 class="govuk-heading-s">Debt type</h2>
+      <p class="govuk-body">
+      Rent arrears</p>
+      {% else %}
+      <div class="govuk-form-group">
+  <label class="govuk-label" for="debttype">
+   Type of debt (Optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="debttype" name="debttype" type="text" spellcheck="false" value="{{ debttype }}">
+</div>
+
+      {% endif %}
+      </p>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="amounttwo">
+   Debt amount (Optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="adddebtamount" name="adddebtamount" type="text" spellcheck="false" value="{{ adddebtamount }}">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="adddebtreference">
+    Reference (Optional)
+  </label>
+    <span id="changed-name-hint" class="govuk-hint">
+      This is your personal reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="adddebtreference" name="adddebtreference" type="text" spellcheck="false" value="{{ adddebtreference }}">
+</div>
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

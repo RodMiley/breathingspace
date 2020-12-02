@@ -1,0 +1,90 @@
+
+{% extends "layout-developer.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+       <li class="govuk-breadcrumbs__list-item">
+      <a href="applicationdetails"> {% include "./_appName.html" %}</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+   Change application details
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='clientsecrets' %}
+ <!-- -->
+
+
+  <form class="form" action="applicationdetails" method="post">
+
+  
+    <div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">What is the name of your application</h1>
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="applicationname">
+     Application name
+    </label>
+
+  <input class="govuk-input" id="applicationname" name="applicationname" type="text" value="{{ appname | default('BSAPP001')}}">
+</div>
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="appdescription">
+    Application description (optional)
+
+    </label>
+ 
+  <div id="appdescription-hint" class="govuk-hint">
+   We will not show this to users.
+  </div>
+  <textarea class="govuk-textarea" id="appdescription" name="appdescription" rows="8" aria-describedby="appdescription-hint" >{{ appdescription }}</textarea>
+</div>
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="privacy">
+   Privacy policy URL (optional)
+    </label>
+ 
+  <div id="privacy-hint" class="govuk-hint">
+  We will show this to users when your application requests access to their data, making them more likely to agree.
+  </div>
+  <input class="govuk-input" id="privacy" name="appprivacy" type="text" aria-describedby="privacy-hint" value="{{ appprivacy }}">
+</div>
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="terms">
+     Terms and conditions URL (optional)
+    </label>
+ 
+  <div id="terms-hint" class="govuk-hint">
+We will show this to users when your application requests access to their data, making them more likely to agree.
+  </div>
+  <input class="govuk-input" id="terms" name="appterms" type="text" aria-describedby="terms-hint" value="{{ appterms }}">
+</div>
+
+
+<button class="govuk-button  govuk-!-margin-right-2">
+Save changes
+</button> 
+
+<a href="applicationdetails" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Cancel
+</a> 
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

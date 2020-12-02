@@ -1,0 +1,167 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="names" method="post">
+
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Add client details: Step 1 of 4</span>
+       Personal details
+      </h1>
+
+      <ul class="govuk-list">
+      <li>Name: {{ firstname | default("Joe") }}  {{ middlename | default("John") }} {{ lastname | default("Black") }} </li>
+      <li>Date of birth:  {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+      </ul>
+
+       <h2 class="govuk-heading-m">
+       Matched details
+      </h2>
+      <p class="govuk-body">We have searched and matched <strong>5</strong> Breathing Spaces with the same lastname and date of birth you have entered</p>
+
+
+    <ul class="govuk-list">
+    <li>
+    <div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference=VFDgzk9NKIu6O">Adam Black</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive : BS-0000001</strong>
+ 
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: Standard</li>
+    <li>Started: 20 June 2020 - Ended 20 August 2020</li>
+    <li>DOB: 23 June 1976</li>
+    <li>Address: 27 Monmouth Drive, Melling, Liverpool, L33 4GH</li>
+    <li>Money advice organisation: Stepchange</li>
+    <ul>
+</div>
+
+    </li>
+
+    <li>
+    <div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference=VFDgzk9NKIu6O">Joe Black</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive : BS-004567</strong>
+ 
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: Mental Health</li>
+    <li>Started: 05 July 2020 - Ended 7 September 2020</li>
+    <li>DOB: 23 June 1976</li>
+    <li>Address: 14 Denton Road, Salford, M50 4GH</li>
+    <li>Money advice organisation: CAB Manchester</li>
+    <ul>
+</div>
+
+    </li>
+
+
+    <li>
+    <div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference=VFDgzk9NKIu6O">Joseph Black</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+
+    <strong class="govuk-tag govuk-!-margin-top-3">Active : BS-006789</strong>
+ 
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: Standard</li>
+    <li>Started: 23 October 2020 - Ends 23 December 2020</li>
+    <li>DOB: 23 June 1976</li>
+    <li>Address: Flat 1, Herbet House, Fenwick Street, Coventry , CV30 3EH</li>
+    <li>Money advice organisation: Advice uk</li>
+    <ul>
+</div>
+
+    </li>
+
+       <li>
+    <div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference=VFDgzk9NKIu6O">Mary Black</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive : BS-005678</strong>
+ 
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: Standard</li>
+    <li>Started: 29 August 2020 - Ended 28 October 2020</li>
+    <li>DOB: 23 June 1976</li>
+    <li>Address: 34 Breck Rd, Salsbury, SA7 3HR</li>
+    <li>Money advice organisation: Christians Against Poverty</li>
+    <ul>
+</div>
+
+    </li>
+
+           <li>
+    <div class="card">
+
+
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-landing-tabs?reference=VFDgzk9NKIu6O">Paul Joe Black</a>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+
+    <strong class="govuk-tag govuk-!-margin-top-3">Active : BS-008906</strong>
+ 
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li>Type of Breathing Space: Standard</li>
+    <li>Started: 20 October 2020 - Ended 18 December 2020</li>
+    <li>DOB: 23 June 1976</li>
+    <li>Address: 345 Truecotte Lane, Newcastle, NW5 6MN</li>
+    <li>Money advice organisation: Advice UK</li>
+    <ul>
+</div>
+
+    </li>
+    </ul>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+ <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You must check that your client is eligible to be put into to Breathing Space
+  </strong>
+</div> 
+
+<p class="govuk-body">
+If you are sure that your client is eligible please continue
+</p>
+   
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
