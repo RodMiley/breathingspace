@@ -1,16 +1,13 @@
 
-{% extends "layout-developer.html" %}
+{% extends "layout-developerv2.html" %}
 
 {% block pageTitle %}
   Breathing space
 {% endblock %}
 
       {% block breadcrumbsection %}
-          <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="index">Home</a>
-    </li>
-              <li class="govuk-breadcrumbs__list-item">
-      View all applications
+           <li class="govuk-breadcrumbs__list-item">
+      Home
     </li>
     
         {% endblock %}
@@ -18,8 +15,9 @@
 
 {% block content %}
 
-
-
+<!-- sets current in subnav -->
+ {% set currentnav ='Home' %}
+ <!-- -->
 
   <form class="form" action="index" method="post">
 
@@ -28,49 +26,56 @@
        <div class="govuk-grid-column-one-quarter"> 
 
 
-<nav class="app-subnav"> 
-          <ul class="app-subnav__section">
+          <ul class="govuk-list">
           
-            <li class="app-subnav__section-item  app-subnav__section-item--current">
-              <a class="app-subnav__link govuk-link  govuk-link--no-visited-state" href="account-request-subnav">View all applications</a>
+            <li>
+              <a class="" href="organisations">Organisations</a>
               
             </li>
           
-            <li class="app-subnav__section-item">
-              <a class="app-subnav__link govuk-link govuk-link--no-visited-state" href="account-debts-subnav">Add application to the sandbox</a>
-              
+            <li>
+                     <a class="" href="credentials">Client credentials</a>
             </li>   
+
+                
+            <li>
+                     <a class="" href="account-request-subnav">Manage groups</a>
+            </li> 
           </ul>
-</nav>
+
 
 </div>
 <div class="govuk-grid-column-three-quarters"> 
-<h1 class="govuk-heading-l">View all applications</h1>
+<h1 class="govuk-heading-l">Home</h1>
 
-
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-visually-hidden">Appications and roles</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Sandbox applications</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Your role</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Last API call</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"><a href="applicationsummary">InsolvencyTestClient</a></th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">Admin</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">No API called</td>
-    </tr>
-  </tbody>
-</table>
-
-<p class="govuk-body">After testing in the sandbox, you can apply for production credentials</p>
-
-<a href="add-new-debt" class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
-  Get production credentials
-</a> 
+    <table class="govuk-table">
+       <caption class="govuk-table__caption">Organisations</caption>
+        <thead>
+            <tr>
+                <th scope="row" class="govuk-table__header" >Name</th>
+                <th scope="row" class="govuk-table__header" >ID</th>
+                <th scope="row" class="govuk-table__header" >Type</th>
+                <th scope="row" class="govuk-table__header" >Role</th>
+                <th scope="row" class="govuk-table__header" >APIs</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="govuk-table__cell" >ORG 1</td>
+                <td class="govuk-table__cell" >00001</td>
+                <td class="govuk-table__cell" >Creditor</td>
+                <td class="govuk-table__cell" >Developer</td>
+                <td class="govuk-table__cell" ><ul class="govuk-list"><li>Hello world</li><li>Notifications</li></ul></td>
+            </tr>
+            <tr>
+                <td class="govuk-table__cell" >ORG 1</td>
+                <td class="govuk-table__cell" >00002</td>
+                <td class="govuk-table__cell" >Creditor</td>
+                <td class="govuk-table__cell" >Admin</td>
+                <td class="govuk-table__cell" ></td>
+            </tr>
+        </tbody>
+    </table>
 
 
 

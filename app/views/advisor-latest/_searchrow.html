@@ -21,7 +21,7 @@
 {% if client.status =='active'%}
     <strong class="govuk-tag govuk-!-margin-top-3">Active</strong> <strong>{{client.type}}</strong> Breathing Space
 {% else %}
-    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Inactive</strong>  <strong>{{client.type}}</strong> Breathing Space
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Ended</strong>  <strong>{{client.type}}</strong> Breathing Space
  {% endif %}
     <ul class="govuk-list govuk-!-margin-bottom-0">
     <li>Reference:  {{client.reference}}</li>

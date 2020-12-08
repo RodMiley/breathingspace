@@ -6,8 +6,16 @@
 {% endblock %}
 
       {% block breadcrumbsection %}
+
+           <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+                       <li class="govuk-breadcrumbs__list-item">
+      <a href="organisations">Organisations</a>
+    </li>
+
        <li class="govuk-breadcrumbs__list-item">
-      <a href="organisation"> Organisation</a>
+      <a href="organisation">Org 1</a>
     </li>
               <li class="govuk-breadcrumbs__list-item">
      Add developer
@@ -36,23 +44,23 @@
     </div>
 
 <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="scope-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="api-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <label class="govuk-fieldset__heading">
-        Choose scopes
+        Choose APIs
       </label>
     </legend>
  <div class="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="scope" name="scope" type="checkbox" value="Scope 1">
-        <label class="govuk-label govuk-checkboxes__label" for="scope">
-          Scope 1
+        <input class="govuk-checkboxes__input" id="api" name="api" type="checkbox" value="Hello world">
+        <label class="govuk-label govuk-checkboxes__label" for="api">
+          Hello world
         </label>
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="scope-2" name="scope2" type="checkbox" value="Scope 2">
-        <label class="govuk-label govuk-checkboxes__label" for="scope-2">
-         Scope 2
+        <input class="govuk-checkboxes__input" id="api-2" name="api2" type="checkbox" value="Notifications">
+        <label class="govuk-label govuk-checkboxes__label" for="api-2">
+         Notifications
         </label>
       </div>
     </div>

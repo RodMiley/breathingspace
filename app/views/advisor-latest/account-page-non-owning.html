@@ -62,15 +62,15 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
           <div class="govuk-grid-column-full">
      <hr class="govuk-section-break govuk-section-break--visible keydetails">
 {% if client.status =='inactive'%}
-<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
-<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This {% if client.type =='Mental Health' %}Mental Health {% else %}Standard {% endif %}Breathing Space has ended</h2>
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This {% if client.type =='Mental Health' %} mental health {% else %}Standard {% endif %}Breathing Space has ended</h2>
 <ul class="govuk-list">
 <li>It ran for  {% if client.type =='Mental Health' %} 92 {% else %} 60 {% endif %}days<li>
 <li>Started: {{ client.startdate }} <li>
 <li>Ended: {{ client.enddate }} <li>
 </ul>
-<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
-<p>To enter a person into another Breathing Space you must create a new one. </p>
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they might be eligible to be entered into a mental health Breathing Space</p>
+<p>If you're happy that your client's eligible for another Breathing Space, you must <a href="index" class="govuk-link">create a new one</a>. </p>
 </div>
 {% endif %}
 
