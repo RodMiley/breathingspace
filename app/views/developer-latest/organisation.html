@@ -84,7 +84,7 @@
               <tr>
                 <td class="govuk-table__cell" >{{ emaildev }}</td>
                 <td class="govuk-table__cell" >Developer</td>
-                <td class="govuk-table__cell" >{{ scope }}{{ scope2 }}</td>
+                <td class="govuk-table__cell" >{{ api }}</td>
                 <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
             </tr>
        
@@ -95,6 +95,9 @@
                 <td class="govuk-table__cell" ></td>
                 <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
             </tr>
+
+            {% if checked('deleteuser','yes')%}
+            {% else %}
                    <tr>
                 <td class="govuk-table__cell" >{{ emaildevedit | default('paul@org1.com') }}</td>
                 <td class="govuk-table__cell" >Developer</td>
@@ -102,6 +105,7 @@
                 <ul class="govuk-list"><li>{{ scopeedit | default('Hello world') }}</li><li>{{ scopeedit2 }}</li></ul></td>
                  <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
             </tr>
+            {% endif %}
         </tbody>
     </table>
 

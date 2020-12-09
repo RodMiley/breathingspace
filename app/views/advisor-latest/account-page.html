@@ -152,6 +152,7 @@ Creditor reported to Insolvency Service
        or client.task =='debtreview' and debtTaskToDo =='yes' 
        or client.task =='clientreview' and debtTaskToDo =='yes' 
        or client.task =='transferdebt' and debtTaskToDo =='yes' 
+       or client.status =='inactive'
        %}
 
 
@@ -233,11 +234,18 @@ Creditor reported to Insolvency Service
 </div>
  {% endif %}
   {% if checked('clientreview','bsended') or client.status =='inactive' %}
-<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-tag--blue">
-<h2 class="govuk-heading-m">This Breathing Space has ended</h2>
-<h3 class="govuk-heading-s govuk-!-margin-bottom-2">Reason</h3>
+
+<div class="govuk-details__text govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This {% if client.type =='Mental Health' %} mental health {% else %}standard {% endif %}Breathing Space has ended</h2>
+<ul class="govuk-list">
+<li>It ran for  {% if client.type =='Mental Health' %} 92 {% else %} 31 {% endif %}days<li>
+<li>Started: {{ client.startdate }} <li>
+<li>Ended: {{ client.enddate }} <li>
+</ul>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-2">Reason it ended early</h3>
 <p class="govuk-body">The client is not eligible because they have had another Breathing Space in the last 12 months</p>
-<p class="govuk-body">A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they might be eligible to be entered into a mental health Breathing Space</p>
+<p>If you're happy that your client's eligible for another Breathing Space, you must <a href="index" class="govuk-link">create a new one</a>. </p>
 </div>
 
   {% else %} 
@@ -408,7 +416,11 @@ Creditor reported to Insolvency Service
   {% endif %}
 
   <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="personal-details">
+     {% if client.status =='inactive'%}
+      {% include "./_personaldetailsended.html" %} 
+     {% else %}
      {% include "./_personaldetails.html" %} 
+     {% endif %}
 
   </section>
 
