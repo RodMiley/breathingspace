@@ -17,7 +17,7 @@
 
   <p class="govuk-body-l">Stepchange have asked Advice uk to transfer this Breathing Space to them </p>
 
-<h2 class="govuk-heading-s">Breathing Space Details</h2>
+<h2 class="govuk-heading-s">Details</h2>
 <ul class="govuk-list">
 <li>Name: {{ client.name }} {{ client.lastname }}</li>
 <li>Reference: {{ client.reference }}</li>
@@ -31,8 +31,7 @@
     <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
     <p class="govuk-body">Stepchange, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>   
 
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-<div class="govuk-form-group">
+<!-- <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <label class="govuk-fieldset__heading">
@@ -55,17 +54,17 @@
     </div>
 
   </fieldset>
-</div>    
+</div> -->  
 
  <div class="govuk-radios__item govuk-visually-hidden">
-        <input class="govuk-radios__input" id="transferClient" name="debtStatus" type="radio" value="transferClient" checked >
+        <input class="govuk-radios__input" id="transferClient" name="debtStatus" type="radio" value="transferClient~transfer-request-confirm?reference={{client.reference}}" checked >
         <label class="govuk-label govuk-radios__label" for="transferClient">
          Hidden radio for logic
         </label>
         </div>
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+  Transfer Breathing Space
 </button>
 
 

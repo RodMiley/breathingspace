@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-three-quarters">
+
+<div class="govuk-form-group">
+   <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="orgchoice">  
+      Choose which organisation you want to view
+  </label></h1>
+  <select class="govuk-select govuk-!-width-three-quarters" id="orgchoice" name="orgchoice">
+    <option value="Advice uk(North)" selected>Advice uk(North)</option>
+    <option value="Advice uk(South)">Advice uk(South)</option>
+    <option value="Advice uk(Midlands)">Advice uk(Midlands)</option>
+    <option value="Advice uk(Wales)">Advice uk(Wales)</option>
+  </select>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

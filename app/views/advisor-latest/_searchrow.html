@@ -2,8 +2,11 @@
     <li>
     <div class="card">
 
-{% if client.adviceorg =='Advice uk' %}
+{% if client.adviceorg =='Advice uk' and client.status =='active'%}
  <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page?reference={{client.reference}}">
+ 
+ {% elif client.adviceorg =='Advice uk' and client.status =='draftinactive'%}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="debt-list-tabs-pre-submission?reference={{client.reference}}">
  {% else %}
  <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page-non-owning?reference={{client.reference}}">
  {% endif %}
@@ -20,6 +23,8 @@
 
 {% if client.status =='active'%}
     <strong class="govuk-tag govuk-!-margin-top-3">Active</strong> <strong>{{client.type}}</strong> Breathing Space
+{% elif client.status =='draftinactive'%}
+    <strong class="govuk-tag  govuk-tag--grey govuk-!-margin-top-3">Inactive</strong> <strong>{{client.type}}</strong> Breathing Space
 {% else %}
     <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">Ended</strong>  <strong>{{client.type}}</strong> Breathing Space
  {% endif %}
