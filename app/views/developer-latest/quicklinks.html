@@ -1,0 +1,45 @@
+
+{% extends "layout-developerv2-action.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-three-quarters"> 
+<h1 class="govuk-heading-l">Links to developer hub sections</h1>
+<h2 class="govuk-heading-m">Developer hub sections</h2>
+<ul class="govuk-list">
+<li><a href="/developer-latest/index">Home page</a></li>
+<li><a href="/developer-latest/organisations">Organisations</a></li>
+<li><a href="/developer-latest/credentials">Client credentials</a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">Error / Access denied pages</h2>
+<ul class="govuk-list">
+<li><a href="/developer-latest/accessdenied">Access denied</a></li>
+<li><a href="/developer-latest/error">Page not found / error </a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">Sign in organisation</h2>
+<ul class="govuk-list">
+<li><a href="/advisor-latest/orgchoice">Choose the orgainastion you want to view</a></li>
+</ul>
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+
