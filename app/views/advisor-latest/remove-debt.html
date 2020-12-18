@@ -11,21 +11,50 @@
    <form class="form" action="remove-debt-confirm" method="post">
     <div class="govuk-grid-column-full">
      <a href="account-page-active" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-l">
-       Remove debt
-      </h1>
-
+</div>
+</div>
  
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">     
-   
+    <div class="govuk-grid-column-two-thirds">   
+          <h1 class="govuk-heading-l">
+       Remove debt
+      </h1>
      {% include "./_debtDetails.html" %} 
+
+
+     <div class="govuk-form-group">
+   <fieldset class="govuk-fieldset" >
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+       Why are you removing this debt?
+      <label>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="removeDebt-2" name="removeDebt" type="radio" value="The debt is not eligible" {{ checked('removeDebt', 'The debt is not eligible')}}>
+        <label class="govuk-label govuk-radios__label" for="removeDebt-2">
+        The debt is not eligible
+        </label>
+      </div>
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="removeDebt" name="removeDebt" type="radio" value="The Breathing Space unfairly prejudices the interests of the creditor" {{ checked('removeDebt', 'The Breathing Space unfairly prejudices the interests of the creditor')}} aria-describedby="debt-review-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="removeDebt">
+           The Breathing Space unfairly prejudices the interests of the creditor
+        </label>
+          <div id="debt-review-2-item-hint" class="govuk-hint govuk-radios__hint">
+          For example, where you consider that there has been differential or discriminatory treatment in respect of you or your debt
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+ 
 
   <div class="govuk-form-group">
   <label class="govuk-label govuk-!-font-weight-bold" for="removeDebtDetail">
-   Why are you removing the debt?
+   Provide more detail
   </label>
-  <textarea class="govuk-textarea govuk-!-width-two-thirds" id="removeDebtDetail" name="removeDebtDetail" rows="5"></textarea>
+  <textarea class="govuk-textarea" id="removeDebtDetail" name="removeDebtDetail" rows="5"></textarea>
 </div>
 
 
@@ -34,8 +63,15 @@
 </button>
 
 </div>
+              <!-- righthand column -->
+   <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s related">Related content</h2>
+      <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about debt eligibility on GOV.UK (opens in new tab)</a></p>
+   </div>
+   <!-- -->
     </div>
     </form>
+
 </div>
 
 
