@@ -146,6 +146,27 @@ router.get('/transfer-client-confirm?', function (req, res, next) {
    })
 
 
+        // Ask for a client transferchange task status ---------------------------------------------/
+router.get('/account-page?', function (req, res, next) {
+  let findCustomer = {}
+
+  for (let i = 0; i < searchClient.length; i++ ) {
+    if(searchClient[i].reference === req.query.reference){
+      findCustomer = searchClient[i];
+    }
+  }
+
+
+  let status = req.session.data['acknowlegetransfer']
+  if(status === 'yes'){
+    findCustomer.task ='acknowlegedTransfer' 
+  }   
+ 
+  res.locals.client = findCustomer
+  next()
+   })
+
+
  // Review debt change task status ---------------------------------------------/
  router.get('/eligibility-review-yes', function (req, res, next) {
   let findCustomer = {}
@@ -242,6 +263,7 @@ router.get('/transfer-client-confirm?', function (req, res, next) {
     let findCustomer5 = {}
     let findCustomer6 = {}
     let findCustomer7 = {}
+    let findCustomer8 = {}
      
     for (let i = 0; i < searchClient.length; i++ ) {
 
@@ -267,9 +289,15 @@ router.get('/transfer-client-confirm?', function (req, res, next) {
      if(searchClient[i].task === 'transferTaskComplete'){
       findCustomer6 = searchClient[i];
      }
-     if(searchClient[i].task === 'askedForTransfer'){
-      findCustomer6 = searchClient[i];
+
+     if(searchClient[i].task === 'acknowlegedTransfer'){
+      findCustomer7 = searchClient[i];
      }
+     if(searchClient[i].task === 'askedForTransfer'){
+      findCustomer8 = searchClient[i];
+     }
+     
+ 
     }
     
 
@@ -297,11 +325,18 @@ router.get('/transfer-client-confirm?', function (req, res, next) {
       if(status === 'yes'){
         findCustomer6.task ='transferclient'
       } 
+
+      if(status === 'yes'){
+        findCustomer7.task ='transferclientcompleted'
+      } 
       
       
       if(status === 'yes'){
-        findCustomer7.task =''
+        findCustomer8.task =''
       }  
+
+       
+   
     
     next()
   })

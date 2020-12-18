@@ -1,7 +1,7 @@
 
 
 
-  {%if checked('confirmation', 'show')%}
+  {%if checked('confirmation', 'show') or checked('acknowlegetransfer','yes') %}
  <div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-5 govuk-!-margin-top-0">
   <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Confirmation</h2>
   {% if checked('confirmationmessage','debtremoved')%}
@@ -35,6 +35,9 @@
 
   {% elif checked('confirmationmessage','notransferred')%}
   <p class="govuk-body govuk-!-margin-bottom-2"> You have not transfered this Breathing Space</p>
+
+    {% elif checked('acknowlegetransfer','yes')%}
+  <p class="govuk-body govuk-!-margin-bottom-2"> You have removed the task from your to do list</p>
   {% endif %}
 </div>
 

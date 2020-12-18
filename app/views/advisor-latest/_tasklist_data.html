@@ -87,7 +87,7 @@
 
 
 
-          {% if client.task =='debtreview' or client.task =='debtReviewComplete'%}
+          {% if client.task =='debtreview' or client.task =='debtReviewComplete' %}
           
               <li class="app-task-list__item">
                {% if data['debtreview'] %}
@@ -288,6 +288,33 @@
               </span>
               </li>
               {% endif %}
+
+                 {% if client.task =='transferclientcompleted' or client.task =='acknowlegedTransfer'%}
+
+                                                    <li class="app-task-list__item">
+                 {% if checked('acknowlegetransfer','yes') or client.task =='transferTaskComplete' %}
+             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Complete</strong>
+            {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}                             
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+             Stepchange transfered this Breathing Space to Advice uk
+              </h3>
+              <span class="app-task-list__task-name">
+                {% if checked('acknowlegetransfer','yes')  %}
+
+                 <a href="transfer-completed?reference={{client.reference}}" >
+                   View transfer details
+              </a>
+                {% else %}
+              <a href="transfer-completed?reference={{client.reference}}" class="govuk-button govuk-button--secondary  govuk-!-margin-bottom-2 govuk-!-margin-top-1" >
+                   Acknowledge and remove from your to do list
+              </a>
+              {% endif %}
+              </span>
+              </li>
+              
+                 {% endif %}
              
           </ul>
         </li>

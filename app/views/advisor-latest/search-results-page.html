@@ -44,16 +44,16 @@
        <li><a href="search">Change search terms</a></li>
       </ul>
   {% elif checked('searchedby','lastname_dob')%}
- <h2 class="govuk-heading-m">Searched by lastname and date of birth</h2>
+ <h2 class="govuk-heading-m">Searched by last name and date of birth</h2>
  <ul class="govuk-list">
-      <li>Lastname: {{ lastname | default("Black") }}</li>
+      <li>Last name: {{ lastname | default("Black") }}</li>
       <li>Date of birth:  {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
        <li><a href="search">Change search terms</a></li>
       </ul>
   {% elif checked('searchedby','lastname_postcode')%}
- <h2 class="govuk-heading-m">Searched by lastname and postcode</h2>
+ <h2 class="govuk-heading-m">Searched by last name and postcode</h2>
  <ul class="govuk-list">
-      <li>Lastname: {{ lastnamepc | default("Black") }}</li>
+      <li>Last name: {{ lastnamepc | default("Black") }}</li>
       <li>Postcode:  {{ searchpostcode | default("WH1 2HJ") }}</li>
        <li><a href="search">Change search terms</a></li>
       </ul>

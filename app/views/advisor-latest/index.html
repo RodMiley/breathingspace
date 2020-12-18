@@ -19,6 +19,7 @@
 {% set taskTransferDebt = 0 %}
 {% set taskTransferClient = 0 %}
 {% set taskProposedDebt = 0 %}
+{% set taskTransferClientCompleted = 0 %}
 
 
 
@@ -44,6 +45,10 @@
       {% if client.task === "proposeddebt" and client.adviceorg ==='Advice uk' %}
         {% set taskProposedDebt = taskProposedDebt + 1 %}
    {% endif %}
+
+         {% if client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferClientCompleted = taskTransferClientCompleted + 1 %}
+   {% endif %}
  
 
 
@@ -51,7 +56,8 @@
     or client.task ==='clientreview' and client.adviceorg ==='Advice uk'
      or client.task ==='debtreview' and client.adviceorg ==='Advice uk'
       or client.task ==='transferdebt' and client.adviceorg ==='Advice uk'
-       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' %}
+       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' 
+       or client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk'%}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
@@ -146,6 +152,18 @@
                                         <div class="govuk-radios__item govuk-visually-hidden">
                             <input class="govuk-radios__input facet" id="substatus_6" name="substatus" type="radio" value="substatus_6"  checked >
                             <label class="govuk-label govuk-radios__label" for="substatus_6">
+                              hidden radio for logic
+                            </label>
+                          </div>
+                     </form>
+                     </li>
+                         <li>
+                       <form class="form" action="tasks-to-do" method="post">
+                        <button class="govuk-body govuk-link">Money adviser has transfered the client to your organisation  ({{taskTransferClientCompleted}})</button>
+                           {% include "./_tasksstatusradio.html" %}
+                                        <div class="govuk-radios__item govuk-visually-hidden">
+                            <input class="govuk-radios__input facet" id="substatus_7" name="substatus" type="radio" value="substatus_7"  checked >
+                            <label class="govuk-label govuk-radios__label" for="substatus_7">
                               hidden radio for logic
                             </label>
                           </div>

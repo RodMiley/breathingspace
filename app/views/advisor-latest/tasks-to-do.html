@@ -23,7 +23,7 @@
 {% set taskTransferClient = 0 %}
 {% set taskProposedDebt = 0 %}
 {% set sentToMA = 0 %}
-
+{% set taskTransferClientCompleted = 0 %}
 
 
 	{% for client in clients %}
@@ -52,14 +52,17 @@
       {% if client.task === "askedForTransfer" and client.adviceorg ==='Stepchange' %}
         {% set sentToMA = sentToMA + 1 %}
    {% endif %}
- 
+          {% if client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferClientCompleted = taskTransferClientCompleted + 1 %}
+   {% endif %}
 
 
   {% if client.task ==='proposeddebt' and client.adviceorg ==='Advice uk' 
     or client.task ==='clientreview' and client.adviceorg ==='Advice uk'
      or client.task ==='debtreview' and client.adviceorg ==='Advice uk'
       or client.task ==='transferdebt' and client.adviceorg ==='Advice uk'
-       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' %}
+       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' 
+        or client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk'%}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
  
@@ -142,6 +145,8 @@ Creditor proposed a new debt ({{taskProposedDebt}})
 Creditor asked us to transfer a sold debt ({{taskTransferDebt}}) 
 {% elif checked('status','status_1') and checked('substatus','substatus_6')%}
 Money advisor asked us to transfer the client ({{taskTransferClient}}) 
+{% elif checked('status','status_1') and checked('substatus','substatus_7')%}
+Money advisor has transfered the client to your organisation ({{taskTransferClientCompleted}}) 
 {% elif checked('status','status_1') or checked('status','status_1')and checked('substatus','substatus_1') %}
 All ({{totTasks }})
 {% elif checked('status','status_2')%}
@@ -246,6 +251,14 @@ or checked('status','status_2') %}
 
 	{% for client in clients %}
   {% if client.task === "transferclient" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+    {% elif checked('status','status_1') and checked('substatus','substatus_7')%}
+
+	{% for client in clients %}
+  {% if client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk' %}
   {% include "./_active_client.html" %}
   {% endif %}
   {% endfor %} 

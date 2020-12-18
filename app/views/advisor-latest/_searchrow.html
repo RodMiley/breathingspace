@@ -4,7 +4,8 @@
 
 {% if client.adviceorg =='Advice uk' and client.status =='active'%}
  <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page?reference={{client.reference}}">
- 
+ {% elif client.adviceorg =='Advice uk' and client.status =='inactive'%}
+ <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="account-page?reference={{client.reference}}">
  {% elif client.adviceorg =='Advice uk' and client.status =='draftinactive'%}
  <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="debt-list-tabs-pre-submission?reference={{client.reference}}">
  {% else %}
