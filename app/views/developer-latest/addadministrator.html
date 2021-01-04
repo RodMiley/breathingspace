@@ -1,26 +1,11 @@
 
-{% extends "layout-developerv2.html" %}
+{% extends "layout-developerv2-action.html" %}
 
 {% block pageTitle %}
   Breathing space
 {% endblock %}
 
-      {% block breadcrumbsection %}
 
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="index">Home</a>
-    </li>
-                       <li class="govuk-breadcrumbs__list-item">
-      <a href="organisations">Organisations</a>
-    </li>
-       <li class="govuk-breadcrumbs__list-item">
-      <a href="organisation">Org 1</a>
-    </li>
-              <li class="govuk-breadcrumbs__list-item">
-     Add administrator
-    </li>
-    
-        {% endblock %}
 
 {% block content %}
 
@@ -33,6 +18,7 @@
     <div class="govuk-grid-row">
 
 <div class="govuk-grid-column-three-quarters"> 
+ <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 <h1 class="govuk-heading-l">Add administrator</h1>
 
 <div class="govuk-form-group ">
