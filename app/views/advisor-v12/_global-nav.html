@@ -1,0 +1,39 @@
+<nav id="nav"  class="secondary ">
+  <div class="navbar">
+     <ul class="navbar__list-items signin">
+        <li>
+            <p>Paul Smith</p>
+      </li>
+        <li>
+         <a href="orgchoice">{{ orgchoice | default('Advice uk')}}</a>
+      </li>
+      <li>
+        <a href="#">Sign out</a>
+      </li>
+    
+    </ul>
+    <ul class="navbar__list-items">
+         {% if globalnav  == 'home' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <a href="index">Home</a>
+      </li>
+  <!--      {% if globalnav  == 'taskstodo' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <a href="tasks-to-do">Active Breathing Spaces {{ totTasks }}</a>
+      </li> -->
+          {% if globalnav  == 'search' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <a href="search">Search</a>
+      </li>
+    </ul>
+  </div>
+</nav>

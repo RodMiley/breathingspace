@@ -69,11 +69,29 @@
                  Client details
                </h2> 
             <ul class="govuk-list">
-              <li>Client:  {{ customer.name | default("Joe Black") }} </li>
-              <li>Date of birth:    {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
-              <li>Address: 45  Borough Road, Elephant and Castle, London, NW13 2GH</li>
+
+             {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}
+              <li>Client: {{ firstname | default("Joe")}} {{middlename}} {{ lastname | default("Black") }}</li>
+              <li>Date of birth:  {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+              <li>Address:{% if data['sort']%} {{ sort }}, Marylebone, London, {{ postcode | default("W1H 1JS") }}
+              {% else %}  
+             {{addressline1 | default("44 Crawford St, Marylebone") }},
+              {{addresstown | default("London")}},
+             {{addresspostcode | default("W1H 1JS")}},
+             {{country}}
+              {% endif %}</li>
+             {% else %}
+             <li>Name: {{customer.name | default("Joe Black") }} </li>
+             <li>Date of birth: {{customer.dob | default("28 February 1978")}} </li>
+             <li>Address: 44 Crawford St, Marylebone, London, W1H 1JS</li>
               <li>Business name: Elsada tech</li>
               <li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>
+             {% endif %}
+               {% if checked('addBusiness', 'yes')%}
+             <li>Business name:  {{ businessName }}</li>
+             <li>Business address: 2  Borough Road, Elephant and Castle, London,{{ postcode | default("NW10 8LL") }}</li>
+              {% endif %}
+      
 
               </ul>
 
@@ -87,5 +105,6 @@
     </div>
     </form>
 </div>
+ <p><a href="/advisor-latest/account-page" class="timemachine-link">On to next scenario</a></p>
 
 {% endblock %}

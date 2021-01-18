@@ -1,0 +1,114 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+{% set refNum = 0 %}
+{% set searchedNum = 0 %}
+
+
+
+
+
+ {% for client in clients %} 
+
+<!-- BASE VALUES -->
+
+
+  {% if client.reference == data['searchreference']%}
+   {% set refNum = refNum + 1 %}
+   {% endif %}
+
+   {% if client.search ==="searched" %}
+     {% set searchedNum = searchedNum + 1 %}
+    {% endif %}
+
+
+{% endfor %}
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-full">
+ 
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+
+ <h1 class="govuk-heading-xl">Search results</h1>
+ {% if checked('searchedby','reference')%}
+  <h2 class="govuk-heading-m">Searched by Breathing Space reference</h2>
+   <ul class="govuk-list">
+      <li>Reference: {{ searchreference | default("BS0003456") }}</li>
+       <li><a href="search">Change search terms</a></li>
+      </ul>
+  {% elif checked('searchedby','lastname_dob')%}
+ <h2 class="govuk-heading-m">Searched by last name and date of birth</h2>
+ <ul class="govuk-list">
+      <li>Last name: {{ lastname | default("Black") }}</li>
+      <li>Date of birth:  {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}</li>
+       <li><a href="search">Change search terms</a></li>
+      </ul>
+  {% elif checked('searchedby','lastname_postcode')%}
+ <h2 class="govuk-heading-m">Searched by last name and postcode</h2>
+ <ul class="govuk-list">
+      <li>Last name: {{ lastnamepc | default("Black") }}</li>
+      <li>Postcode:  {{ searchpostcode | default("WH1 2HJ") }}</li>
+       <li><a href="search">Change search terms</a></li>
+      </ul>
+  {% endif %}
+
+
+ <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  <p class="govuk-body">Showing:  {% if checked('searchedby','reference') %}
+  <span class="govuk-!-font-weight-bold">{{ refNum }} result</span> 
+  {% elif checked('searchedby','lastname_postcode') %}
+  <span class="govuk-!-font-weight-bold">{{ searchedNum }} results </span>
+   {% elif checked('searchedby','lastname_dob') %}
+    <span class="govuk-!-font-weight-bold"> {{ searchedNum }} results </span>
+  {% endif %}
+  </p>
+
+
+
+
+
+   
+   
+    <ul class="govuk-list">
+
+
+
+
+
+{% if checked('searchedby','reference') %}
+
+<!-- Searched by reference -->
+
+ {% for client in clients %} 
+{% if client.reference == data['searchreference']%}
+      {% include "./_searchrow.html" %} 
+{% endif %}
+  {% endfor %}
+<!-- End Search by reference -->
+
+{% else %}
+
+    {% for client in clients %} 
+    {% if client.search ==="searched" %}
+         {% include "./_searchrow.html" %} 
+    {% endif %}     
+     {% endfor %}
+
+{% endif %}     
+    
+    </ul>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

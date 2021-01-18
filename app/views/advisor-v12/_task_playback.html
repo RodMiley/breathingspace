@@ -1,0 +1,13 @@
+{% if client.task === 'debtreview'%}
+Creditor has asked us to review the debt
+{% elif client.task === 'clientreview'%}
+Creditor has asked us to review the client
+{% elif client.task === 'proposeddebt'%}
+Creditor has proposed a new debt 
+{% elif client.task === 'transferclient'%}
+Money Adviser has asked us to transfer the client 
+{% elif client.task === 'transferclientcompleted'%}
+Money Adviser transfered the client to your organisation
+{% elif client.task === 'transferdebt'%}
+Creditor has asked us to transfer the debt
+{% endif %}

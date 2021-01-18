@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="debt-list-tabs-search" method="post">
+    <div class="govuk-grid-column-two-thirds">
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="add-debts-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+       Add debts to Breathing Space
+      </h1>
+    </legend>
+    <span id="add-debts-hint" class="govuk-hint">
+      Choose the debts you want to include in Breathing Space
+    </span>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="add-debts" name="add-debt" type="checkbox" value="Credit card" aria-describedby="add-debts-item-hint">
+        <label class="govuk-label govuk-checkboxes__label govuk-label--s" for="add-debts">
+          Credit card
+        </label>
+        <span id="add-debts-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Organisation: Barclaycard
+        </span>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="add-debts-2" name="add-debt" type="checkbox" value="Loan" aria-describedby="add-debts-2-item-hint">
+        <label class="govuk-label govuk-checkboxes__label govuk-label--s" for="add-debts-2">
+         Loan
+        </label>
+        <span id="add-debts-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Organisation: Halifax
+        </span>
+      </div>
+          <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="add-debts-3" name="add-debt" type="checkbox" value="Council tax" aria-describedby="add-debts-3-item-hint">
+        <label class="govuk-label govuk-checkboxes__label govuk-label--s" for="add-debts-3">
+         Council tax
+        </label>
+        <span id="add-debts-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Organisation: Leeds city council
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

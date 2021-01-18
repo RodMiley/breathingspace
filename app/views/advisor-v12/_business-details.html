@@ -1,0 +1,58 @@
+ 
+
+ <dl class="govuk-summary-list govuk-!-margin-bottom-2">
+  {% if checked('addBusiness', 'yes')%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            {{ businessName }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+                {% include "./_address-hidden.html" %} 
+              {% if checked('businessAddress','currentAddress')%}
+             	{% if data['sort']=='two'%} 2  Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='three' %} 3 Borough Road <br>Elephant and Castle<br>London<br>{{postcode | default("NW10 8LL") }}{% elif data['sort']=='four' %} 4 Borough Road <br>Elephant and Castle<br>London<br> {{postcode | default("NW10 8LL")}} 
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }}<br>
+              {{addresstown | default("London")}}<br>
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
+               
+               {% elif checked('businessAddress','previousAddress')%}
+                 {% if checked('prevAddress', 'manual')%}
+             <span class="govuk-!-display-block">{{prevaddressline1}}</span>
+             <span class="govuk-!-display-block">{{prevaddressline2}}</span>
+              <span class="govuk-!-display-block">{{prevaddresstown}}</span>
+              <span class="govuk-!-display-block">{{prevaddresscounty}}</span>
+              <span class="govuk-!-display-block">{{prevaddresspostcode}}</span>  
+                {% elif checked('prevAddress', 'pclookup')%} 
+                {% if data['sortPrev']=='two'%} 2  Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close <br>Elephant and Castle<br>London<br>{{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close <br>Elephant and Castle<br>London<br> {{postcodePrevious}} </p>{% endif %}
+                {% endif %}
+
+               {% else %}
+
+             	{% if data['businesssort']=='two'%} 27 Turner Grove <br>Elephant and Castle<br>London<br>{{postcodeBusiness}}{% elif data['businesssort']=='three' %}29 Turner Grove <br>Elephant and Castle<br>London<br>{{postcodeBusiness}}{% elif data['businesssort']=='four' %} 31 Turner Grove <br>Elephant and Castle<br>London<br> {{postcodeBusiness}} 
+              {% else %}  
+              <span class="govuk-!-display-block">{{businessaddressline1 | default("4 Bourough road") }}</span>
+              <span class="govuk-!-display-block">{{businessaddressline2 | default("4 Bourough road") }}</span>
+              <span class="govuk-!-display-block">{{businessaddresstown | default("London")}}</span>
+              <span class="govuk-!-display-block">{{businessaddresscounty | default("London")}}</span>
+              <span class="govuk-!-display-block">{{businessaddresspostcode | default("NW10 2JU")}} </span>   
+              {% endif %}
+            {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                 <ul class="govuk-list">
+              <li> <a class="govuk-link govuk-!-font-size-19" href="add-business">
+                Change<span class="govuk-visually-hidden"> Business name and address</span>
+              </a></li>
+              <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Delete<span class="govuk-visually-hidden">Business name and Address</span>
+              </a></li>
+              </ul>
+            
+            </dd>
+          </div>
+        </dl>
+    
+       {% else %}
+        {% endif %}
+              <p><a class="govuk-link" href="add-business-history">Add client business</a></p>       

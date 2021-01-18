@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you not are ending your client's Breathing Space 
+      </h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
+                    <p class="govuk-body">
+                    
+                  
+                                         {% if checked('client-eligibility-adhoc','no')%}
+                                          {{ clientEligibilityDetailAdhoc | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}
+                                          {% elif checked('client-eligibility','no')%}
+                                                {{ clientEligibilityDetail | default("We disagree that this Client has had a Breathing Space in the last 12 months, so we are not ending the clients Breathing Space") }}
+                                          {% endif %}
+                    </p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>
+                    <p class="govuk-body govuk-!-margin-top-1">{% include path+"creditor-mvp/_ma-advisor.html" %}, {% include path+"creditor-mvp/_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
+               
+
+
+
+  <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="clientremains" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+       {% if checked('client-eligibility-adhoc','no') %}
+           <div class="govuk-radios" style="display:none">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="" name="adhocAction" type="radio" value="clientRemains" checked>
+              <label class="govuk-label govuk-radios__label" for="confirmation">
+              hidden radio
+              </label>
+            </div>
+      </div>
+      {% else %}
+
+           <div class="govuk-radios" style="display:none">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="" name="clientreview" type="radio" value="bsended" checked>
+              <label class="govuk-label govuk-radios__label" for="confirmation">
+              hidden radio
+              </label>
+            </div>
+      </div>
+               
+      {% endif %}
+   
+  
+                        
+
+     
+
+   {% include "./_confirmShowHiddenRadio.html" %} 
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

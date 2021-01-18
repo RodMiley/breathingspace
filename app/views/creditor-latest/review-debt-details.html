@@ -41,7 +41,11 @@
                     <p class="govuk-body">Debt removed from Breathing Space</p>
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
                     <p class="govuk-body">
+                    {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}
+                    {{ eligibilityNo | default(" The client has agreed that this was a debt associated with their business") }}
+                    {% else %}
                     The client has agreed that this was a debt associated with their business
+                    {% endif%}
                     </p> 
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Reviewed by</h3>          
                     <p class="govuk-body">{% include "./_ma-advisor.html" %}, {% include "./_advise-org-name.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd() }} at 11.42am</p>
@@ -58,7 +62,7 @@
                   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Details to support the review</h3>
                     <p class="govuk-body">
                              {% if customer.status == 'review-accepted' or customer.status == 'review-rejected' %}
-                              We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.
+                              {{ moreDetail | default("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}
                               {% else %}
                               {{ moreDetail | default ("We have evidence that this is a debt secured against the clients business, Elsada Co, So believe this debt isn't eligible for Breathing Space.") }}
                               {% endif %}

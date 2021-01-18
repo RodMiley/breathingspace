@@ -250,6 +250,38 @@ router.get('/account-page?', function (req, res, next) {
 
 
 
+
+         // ---------------------------------------------------------
+
+     
+         router.get('/index', function (req, res, next) {
+          let findCustomer = {}
+        
+          for (let i = 0; i < searchClient.length; i++ ) {
+          if(searchClient[i].reference === req.query.reference){
+            findCustomer = searchClient[i];
+           }
+          }
+    
+    
+          let status = req.session.data['clientStatus']
+          if(status === 'newbs'){
+            findCustomer.status ='active'
+            }   
+
+   
+
+            let debtstatus = req.session.data['debtStatus']
+            if(debtstatus === 'review'){
+              findCustomer.task ='debtreview' 
+              }   
+         
+          res.locals.customer = findCustomer
+          next()
+           })
+
+
+
 // -------------------------------- Reset client data
 
 
@@ -264,6 +296,7 @@ router.get('/account-page?', function (req, res, next) {
     let findCustomer6 = {}
     let findCustomer7 = {}
     let findCustomer8 = {}
+    let findCustomerNew = {}
      
     for (let i = 0; i < searchClient.length; i++ ) {
 
@@ -295,6 +328,10 @@ router.get('/account-page?', function (req, res, next) {
      }
      if(searchClient[i].task === 'askedForTransfer'){
       findCustomer8 = searchClient[i];
+     }
+
+     if(searchClient[i].reference === 'BS0004623'){
+      findCustomerNew = searchClient[i];
      }
      
  
@@ -333,6 +370,11 @@ router.get('/account-page?', function (req, res, next) {
       
       if(status === 'yes'){
         findCustomer8.task =''
+      }  
+
+      if(status === 'yes'){
+        findCustomerNew.status ='inactive'
+        findCustomerNew.task =''
       }  
 
        

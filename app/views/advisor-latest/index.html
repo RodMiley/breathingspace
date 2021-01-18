@@ -23,6 +23,7 @@
 
 
 
+
 	{% for client in clients %}
 
 <!-- BASE VALUES -->
@@ -201,6 +202,9 @@
 </div>
 
 </div></div>
-              
-
+            {% if checked('debtStatus','debtreview')%}  
+ <p><a href="/creditor-latest/time-machine-reviewcompleted" class="timemachine-link">On to next scenario</a></p>
+ {% else %}
+ <p><a href="time-machine-creditor" class="timemachine-link">On to next scenario</a></p>
+ {% endif %}
 {% endblock %}

@@ -1,0 +1,122 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+{% if checked('clientDetails','complete')%}
+  <form class="form" action="confirm-details" method="post">
+{% elif checked('clientDetails','confirmed')%}
+ <form class="form" action="debt-list-tabs#personal-details" method="post">
+{%else %}
+ <form class="form" action="address-history" method="post">
+{% endif%}
+ 
+ 
+    <div class="govuk-grid-column-two-thirds">
+           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Add client details: Step 2 of 4</span>
+       What is your client's previous address?
+      </h1>
+
+      <h2 class="govuk-heading-s">Postcode</h2>
+      <p class="govuk-body">{{ postcodePrevious | default("NW1 1JU") }} <a href="address-previous">Change</a></p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="sortPrev">
+    Choose address
+  </label>
+  <select class="govuk-select" id="sortPrev" name="sortPrev">
+    <option value="published">3 addresses found</option>
+    <option value="two">2 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
+    <option value="three">3 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
+    <option value="four">4 Treasant close, Elephant and castle, London, {{ postcodePrevious }}</option>
+  </select>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="movedInhint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        What date did your client move in to this address
+      </label>
+    </legend>
+    <span id="movedInhint" class="govuk-hint">
+      For example, 11 2017
+    </span>
+    <div class="govuk-date-input" id="moved-in">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="movedInMonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="movedInMonth" name="movedInMonth" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ movedInMonth }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="movedInYear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="movedInYear" name="movedInYear" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ movedInYear }}">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="movedInhint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        What date did your client move out of this address
+      </label>
+    </legend>
+    <span id="movedOuthint" class="govuk-hint">
+      For example, 11 2017
+    </span>
+    <div class="govuk-date-input" id="movedOut">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="movedOutMonth">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="movedOutMonth" name="movedOutMonth" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ movedOutMonth }}">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="movedOutYear">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="movedOutYear" name="movedOutYear" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ movedOutYear }}">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="prevAddress" name="prevAddress" type="radio" value="pclookup" checked>
+        <label class="govuk-label govuk-radios__label" for="prevAddress">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+<p class="govuk-body"><a href="address-previous-manual">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

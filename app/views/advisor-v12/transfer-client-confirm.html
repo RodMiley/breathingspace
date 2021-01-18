@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-non-owning" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you're asking to transfer this Breathing Space to your organisation
+      </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">     
+
+    <ul class="govuk-list">
+    <li>Client name:{% if data['fullname'] %} 
+     {{fullname}} {% else %} 
+     {{client.name | default("Joe") }}
+      {% if client.task %}     
+       {{ client.lastname }}
+     {% else %} 
+     {{ lastname | default("Black")}}
+     {% endif %}
+     {% endif %}</li>
+    <li>Reference: {{ client.reference }}</li>
+    <li>Started: {{ client.startdate }}</li>
+<li>Due to end:{{ client.enddate }}</li>
+<li>Money advice organisation: {{client.adviceorg}}</li>
+    </ul>
+           
+     <h2 class='govuk-heading-s govuk-!-margin-bottom-1'>Reason for this transfer</h2>
+<p class="govuk-body">{{transferdetail}}</p>
+
+
+
+      <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="askedfortransfer" type="radio" value="yes~./account-page-non-owning?reference={{client.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+ Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

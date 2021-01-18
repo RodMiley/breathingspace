@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="index" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Beta</span>
+       Money adviser choose scenario
+      </h1>
+<h2 class="govuk-heading-l">Personal details match</h2> 
+<p><a href="details-match">Version 1</a></p>
+<p><a href="details-match2">Version 2</a></p>
+
+<h2 class="govuk-heading-l">Client page</h2>  
+<p><a href="account-page-active">Start scenario (active account)</a></p>
+
+
+<h2 class="govuk-heading-l">Search</h2>
+<p><a href="search">Start scenario</a></p>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditorfour'
+      var name ='creditorfour'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

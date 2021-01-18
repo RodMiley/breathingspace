@@ -1,0 +1,31 @@
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+     {% include "./_address-hidden.html" %} 
+             	<p> {{client.address}} <br> London <br>{% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode}}
+ {% endif %}
+           
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <ul class="govuk-list">
+            <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a></li>
+            <li>
+              <a class="govuk-link govuk-!-font-size-19" href="parv">
+        {% if checked('parv','yes')%}
+        Update address hidden
+       {% else %} Hide address  {% endif %}<span class="govuk-visually-hidden"> from creditors</span>
+      
+              </a>
+            </li>  
+            <ul>
+            </dd>
+          </div>
+         

@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+{% include "./_keydetails_static.html" %}
+
+<div class="govuk-details__text govuk-!-margin-bottom-5 govuk-!-margin-top-0 govuk-fullborder--blue">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">This person has had a Breathing Space in the last 12 months</h2>
+<h3 class="govuk-heading-s  govuk-!-margin-bottom-1">Breathing Space:</h3>
+<p>Started:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(-10) }}</strong><br>
+Ended:<strong>{{ 'Do MMMM YYYY' | baseDateAdd(30) }}</strong>
+</p>
+
+
+
+<p>A person can only have one standard Breathing Space in any 12 month period. If a person is receiving mental health crisis treatment they are entitled to be entered into a mental health Breathing Space</p>
+</div>  
+
+{% include "./_adviser_content.html" %}
+
+
+
+  
+
+{% endblock %}

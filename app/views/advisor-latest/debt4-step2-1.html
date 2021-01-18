@@ -8,7 +8,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="debt4-pref-contact" method="post">
+  <form class="form" action="debt4-step4" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
@@ -26,14 +26,14 @@
   <label class="govuk-label" for="sort">
     Choose address
   </label>
-  <select class="govuk-select" id="sort" name="sort">
+  <select class="govuk-select" id="sort" name="sortcreditor">
     <option value="published">6 address's found</option>
-    <option value="two">22 Hanworth Road, London , {{ creditorpostcode }}</option>
-    <option value="three">23 Hanworth Road, London , {{ creditorpostcode }}</option>
-    <option value="four">24 Hanworth Road, London , {{ creditorpostcode }}</option>
-       <option value="two">25 Hanworth Road, London , {{ creditorpostcode }}</option>
-    <option value="three">26 Hanworth Road, London , {{ creditorpostcode }}</option>
-    <option value="four">27 Hanworth Road, London , {{ creditorpostcode }}</option>
+    <option value="22 Hanworth Road">22 Hanworth Road, London , {{ creditorpostcode }}</option>
+    <option value="25 Hanworth Road">23 Hanworth Road, London , {{ creditorpostcode }}</option>
+    <option value="27 Hanworth Road">24 Hanworth Road, London , {{ creditorpostcode }}</option>
+       <option value="29 Hanworth Road">25 Hanworth Road, London , {{ creditorpostcode }}</option>
+    <option value="31 Hanworth Road">26 Hanworth Road, London , {{ creditorpostcode }}</option>
+    <option value="33 Hanworth Road">27 Hanworth Road, London , {{ creditorpostcode }}</option>
   </select>
 </div>
 

@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block breadcrumb %}
+  <div class="govuk-breadcrumbs ">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">Section</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item" aria-current="page">Subsection</li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Manage Users Debt Respite Scheme (Breathing Space)</h1>
+        <h2 class="govuk-heading-m">Money advisers</h2>
+        <p class="govuk-body">Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Add your client's debts into the Debt Respite Scheme (Breathing Space)</li>
+          <li>Update and add details to existing clients</li>
+          <li>Perform eligibity reviews</li>
+          <li>Check the Breathing Space register to confirm eligibility </li>
+          <li>Request or accept a transfer of a client, to or from, another money advice organisation</li>
+        </ul>
+
+            <h2 class="govuk-heading-m">Creditors</h2>
+        <p class="govuk-body">Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Review your clients Debt Respite Scheme (Breathing Space)</li>
+          <li>Ask for eligibility reviews</li>
+          <li>Propose new debts to be added to your clients Debt Respite Scheme (Breathing Space) </li>
+          <li>Inform the money adviser you dont own the debt anymore</li>
+        </ul>
+
+
+        <a href="#" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8 govuk-button--start" data-module="govuk-button">
+          Sign in
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+          </svg></a>
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+
+        <p class="govuk-body">An administrator from your organisation will have given you access via a government gateway account. You will need a govenment gateway account to access this service.</p>
+        <p class="govuk-body">If you don't have access contact your organisations administrator to request it.</p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+
+        <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+        <aside class="app-related-items" role="complementary">
+          <h2 class="govuk-heading-m" id="subsection-title">
+            Related content
+          </h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+                  <li>
+                <a href="#" class="govuk-link">
+                 What is the Debt Respite Scheme (Breathing Space)
+                </a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">
+                 Guidance for money advisors
+                </a>
+              </li>
+              <li>
+                <a class="govuk-link" href="#">
+                  Guidance for creditors
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+      </div>
+    </div>
+
+
+{% endblock %}

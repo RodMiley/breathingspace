@@ -38,7 +38,7 @@
          <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">Address hidden</strong></br>
               {% endif %}  
              
-              {% if data['sort']=='two'%} 107 Tonbridge Road, Cooper, {{postcode | default('NW10 8LL')}}{% elif data['sort']=='three' %} 109 Tonbridge Road, Cooper, {{postcode | default('NW10 8LL')}} {% elif data['sort']=='four' %}  111 Tonbridge Road, Cooper {{postcode | default('NW10 8LL')}} 
+              {% if data['sort']%} {{ sort }}, Marylebone, London, {{ postcode | default("W1H 1JS") }}
               {% else %}  
               {{addressline1 | default("4 Bourough road") }},
               {{addresstown | default("London")}},

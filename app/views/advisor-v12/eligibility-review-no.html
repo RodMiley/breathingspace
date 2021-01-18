@@ -1,0 +1,69 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="account-page-active" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Confirm you are not removing this debt
+      </h1>
+<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Debt</h2>
+<ul class="govuk-list">
+<li>Debt type: Credit card</li>
+<li>Creditor: {% include path+"advisor-mvp/_review_creditor.html" %}</li>
+<li>Amount: £2500</li>
+<li>Reference: RBC23455003</li>
+</ul>
+
+    </div>
+   <div class="govuk-grid-column-three-quarters">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the decision</h3>
+                    <p class="govuk-body">{{ eligibilityNo | default("The clients business is below the VAT threshold therefore this debt is eligible for Breathing Space") }}</p>
+                    
+            
+                  
+
+      
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debtreview" type="radio" value="debtremains~account-page?reference={{client.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+         
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="confirmationmessage" type="radio" value="debtremains" checked>
+        <label class="govuk-label govuk-radios__label" for="review">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+         {% include "./_confirmShowHiddenRadio.html" %} 
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and continue
+</button>
+
+</div>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

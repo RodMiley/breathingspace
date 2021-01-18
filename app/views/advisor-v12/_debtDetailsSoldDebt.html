@@ -1,0 +1,107 @@
+          {% if checked('debtType','debt1') %}
+ <h2 class="govuk-heading-s">Debt: Loan</h2>         
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor: Barclays Bank Plc</li> 
+      <li>Amount: £5400<li>
+      <li> Reference: 8945 4321 5678</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+    {% if checked ('removedebt','debt1')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+{% elif checked('debtType','debt2')  %}
+<h2 class="govuk-heading-s">Debt: Credit Card</h2>
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor:  Halifax (Credit cards only)</li> 
+      <li>Amount: £2500<li>
+      <li> Reference: RBC23455003</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+            {% if checked ('removedebt','debt2')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+
+    </ul>
+{% elif checked('debtType','debt3')  %}
+<h2 class="govuk-heading-s">Debt: Rent arrears</h2>
+ <ul class="govuk-list">
+      <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor:  M Jones(landloard)</li> 
+      <li>Amount: £1250<li>
+      <li>Reference: Flat 4 Monmouth Rd</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+         {% if checked ('removedebt','debt3')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+    {% elif checked('debtType','debt4')  %}
+ <ul class="govuk-list">
+ <h2 class="govuk-heading-s">Debt: Water</h2>
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old Old creditor:  Yorkshire Water Services Ltd</li> 
+      <li>Amount: £102<li>
+      <li> Reference: 4949 9494 9449</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+         {% if checked ('removedebt','debt4')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+    {% elif checked('debtType','debt5')  %}
+ <h2 class="govuk-heading-s">Debt: Gas</h2>   
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor: EDF Energy Ltd</li> 
+      <li>Amount: £489<li>
+      <li> Reference:CRT8536544</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+         {% if checked ('removedebt','debt5')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+    {% elif checked('debtType','debt6')  %}
+ <h2 class="govuk-heading-s">Debt: Council tax</h2>   
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor: Southwark Council</li> 
+      <li>Amount: £1179<li>
+      <li> Reference: LCC3456789</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+      {% if checked ('removedebt','debt6')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+    {% elif checked('debtType','debt7')  %}
+    <h2 class="govuk-heading-s">Debt: Self assessment</h2>
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor: HMRC</li> 
+      <li>National insurance number: JE 34 45 67 C</li>
+      <li>Amount: £789<li>
+      <li> Reference: KN23455</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+    {% if checked ('removedebt','debt7')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+        {% elif checked('debtType','proposed')  %}
+    <h2 class="govuk-heading-s">Debt: Overdraft</h2>
+ <ul class="govuk-list">
+    <li>Creditor: {{changedebtcreditor}}</li> 
+      <li>Old creditor: Barclays Bank Plc</li> 
+      <li>Amount: £789<li>
+      <li>Reference: BAR3456789</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    {% if checked ('removedebt','debt7')%}
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      {% endif %}
+    </ul>
+
+
+{% endif %}
+   

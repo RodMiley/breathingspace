@@ -16,7 +16,7 @@
        Add a debt
       </h1>
       <h2 class="govuk-heading-s">Creditor</h2>
-       <p class="govuk-body">{{ creditor | default("Barclays Bank") }} <a href="debt">Change</a></p>
+       <p class="govuk-body">{{ creditor | default("Newcastle City Council") }} <a href="debt">Change</a></p>
 
 
 <div class="govuk-form-group">
@@ -29,31 +29,31 @@
     <div class="govuk-radios" data-module="govuk-radios">
      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Loan"  {{checked('typeOfDebt', 'Loan') }} >
+        <input class="govuk-radios__input" id="typeOfDebt-1" name="typeOfDebt" type="radio" value="Council tax"  {{checked('typeOfDebt', 'Council tax') }} >
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-1">
-            Personal Loan
+            Council tax
         </label>
       </div>
 
         <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Mortgage"  {{checked('typeOfDebt', 'Mortgage') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-2" name="typeOfDebt" type="radio" value="Housing Benefit"benefit  {{checked('typeOfDebt', 'Housing Benefit') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-2">
-            Mortgage
+            Housing Benefit
         </label>
       </div>
     
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Overdraft"  {{checked('typeOfDebt', 'Overdraft') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Rent arrears"  {{checked('typeOfDebt', 'Rent arrears') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
-        Overdraft
+        Rent arrears
         </label>
       </div>
 
 
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Insurance"  {{checked('typeOfDebt', 'Insurance') }}>
+        <input class="govuk-radios__input" id="typeOfDebt-3" name="typeOfDebt" type="radio" value="Parking fines"  {{checked('typeOfDebt', 'Parking fines') }}>
         <label class="govuk-label govuk-radios__label" for="typeOfDebt-3">
-        Insurance
+        Parking fines
         </label>
       </div>
 
@@ -85,12 +85,12 @@
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label" for="reference">
-    Reference (optional)
+  <label class="govuk-label" for="debtReference1">
+   Reference (optional)
   </label>
   <span id="changed-name-hint" class="govuk-hint">
       This is your personal reference for the debt</span>
-  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="text" spellcheck="false" value="{{ reference }}">
+  <input class="govuk-input govuk-input--width-10" id="debtReference1" name="debtReference1" type="text" spellcheck="false" value="{{ debtReference1 }}">
 </div>
 
      <div class="govuk-radios" style="display:none">

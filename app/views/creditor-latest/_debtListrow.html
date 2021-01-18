@@ -2,7 +2,11 @@
 <div class="card">
   <form class="form" action="" method="post">
                   <button class="govuk-body govuk-link  govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3">
+                {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}
+                    {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
+                {% else %}
                 {{ customer.name}}
+                {% endif %}
                   </button>
 
 
@@ -23,20 +27,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
-    <li> Status: {% include "./_status-playback.html" %}</li>
-    <li>Date entered {{ customer.startdate }}</li>
-    {% if customer.status == 'client-review-accepted' %}
-     <li>Date ended {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</li>
+    <li>Status:{% include "./_status-playback.html" %}</li>
+    <li>Date entered: 
+    
+    {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}
+    {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
     {% else %}
-    <li>Date ends {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
+    {{ customer.startdate }}{% endif %}</li>
+    {% if customer.status == 'client-review-accepted' %}
+     <li>Date ended: {{ 'Do MMMM YYYY' | baseDateAdd(0) }}</li>
+    {% else %}
+    <li>Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
     {% endif %}
     <ul>
   </div>
     <div class="govuk-grid-column-one-half">
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
     <li>Debt type: Housing benefit</li>
-    <li>Reference: {{customer.reference}}</li>
-    <li>NI number: {{customer.nino}}</li>
+    <li>
+     Breathing Space reference: 
+     {{customer.reference  | default("BSS00012585") }}
+    </li>
     </ul>
   </div>
 </div>

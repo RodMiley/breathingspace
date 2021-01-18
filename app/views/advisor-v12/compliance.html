@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <form class="form" action="compliance-confirm" method="post">
+     <div class="govuk-grid-column-full">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+     </div> 
+     </div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+     Report this creditor
+      </h1>
+
+              {% include "./_debtDetails.html" %} 
+
+<h2 class="govuk-heading-s">Creditor obligations</h2>
+<p class="govuk-body">A creditor must:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>Stop chasing your client any listed Breathing Space debts</li>
+<li>Stop any enforcement action or stop an agent recovering these debts</li>
+<li>Stop and interest and charges on the debts listed</li>
+</ul>
+
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+     If a creditor is not following their Breathing Space obligations in a reasonable time, you must contact them to ask them to do so.
+  </strong>
+</div>
+
+        <p>
+     Once you’ve done this, if they are still not meeting their obligations, you can report them to the Insolvency Service.
+     The Insolvency Service will contact them on your behalf, and remind them of their obligations.
+      </p>
+
+   
+
+
+<a href="compliance-confirm?reference={{client.reference}}" class="govuk-button" data-module="govuk-button">
+  Confirm and continue
+</a>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-s related">Related content</h2>
+  <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about reporting a creditor on GOV.UK (opens in new tab)</a></p>
+    </div>
+    </form>
+</div>    
+    </form>
+</div>
+
+{% endblock %}

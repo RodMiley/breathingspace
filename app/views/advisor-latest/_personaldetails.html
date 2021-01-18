@@ -13,14 +13,11 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['fullname'] %} 
-     {{fullname}} {% else %} 
-     {{client.name | default("Joe") }}
-      {% if client.task %}     
+    {% if client.reference !=='BS0004623' %} 
+       {{client.name | default("Joe") }}
        {{ client.lastname }}
      {% else %} 
-     {{ lastname | default("Black")}}
-     {% endif %}
+         {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
      {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -34,11 +31,12 @@
               Date of birth
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if checked('searchedby','lastname_dob') %} 
-      {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
- {% else %}
-    {{client.dob}}
- {% endif %}
+             {% if client.reference !=='BS0004623' %} 
+              {{client.dob | default("28 February 1978")}}
+             {% else %}
+            {{ dobday | default("28") }} {{ dobmonth | default("02") | toMonth }} {{ dobyear | default("1978") }}
+            {% endif %}
+  
                   
             </dd>
             <dd class="govuk-summary-list__actions">

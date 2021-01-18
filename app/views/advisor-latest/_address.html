@@ -5,11 +5,22 @@
             </dt>
             <dd class="govuk-summary-list__value">
      {% include "./_address-hidden.html" %} 
-             	<p> {{client.address}} <br> London <br>{% if checked('searchedby','lastname_postcode') %} 
+     {% if client.reference !=='BS0004623' %}
+          <p> {{client.address | default("44 Crawford St, Marylebone")}} <br> London <br>
+               {% if checked('searchedby','lastname_postcode') %} 
     {{ searchpostcode }}
  {% else %}
- {{client.postcode}}
+ {{client.postcode | default("W1H 1JS")}}
  {% endif %}
+ {% else %}
+   {% if data['sort']%} {{ sort }} <br> Marylebone <br>London<br>{{ postcode | default("W1H 1JS") }}
+              {% else %}  
+              <span class="govuk-!-display-block">{{addressline1 | default("44 Crawford St, Marylebone") }}</span>
+              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
+              <span class="govuk-!-display-block">{{addresspostcode | default("W1H 1JS")}} </span> 
+              <span class="govuk-!-display-block">{{country}}</span>  
+              {% endif %}
+{% endif %}
            
             </dd>
             <dd class="govuk-summary-list__actions">

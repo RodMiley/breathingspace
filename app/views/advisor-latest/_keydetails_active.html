@@ -14,18 +14,17 @@
   Active
 </strong>  
 {% endif%}
-  <strong>{{client.type}}</strong> Breathing Space
+  <strong>{{client.type | default('Standard')}}</strong> Breathing Space
   </span>
-     {% if data['fullname'] %} 
-     {{fullname}} {% else %} 
-     {{client.name | default("Joe") }}
-      {% if client.task %}     
-       {{ client.lastname }}
+      {% if  client.reference ==='BS0004623' %}
+          {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
+     {% elif client.reference %} 
+       {{client.name | default("Joe") }}
+       {{ client.lastname }} 
      {% else %} 
-     {{ lastname | default("Black")}}
+         {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
      {% endif %}
-     {% endif %}
-       <span class="govuk-caption-m">Reference: {{ client.reference | default("BS0000123568")}} </span>
+       <span class="govuk-caption-m">Reference: {{ client.reference | default("BS0004623")}} </span>
       </h1>
       </div>
             <div class="govuk-grid-column-one-third">
@@ -43,14 +42,14 @@
 {% if checked('clientreview','bsended') or client.status == 'inactive' %}
 ran for 31 days
 {% else %}
-day 2 of 60 
+day 1 of 60 
 {% endif %}
 </strong>
 </span>
 <span class="govuk-body-s">
 Started: 
-{% if client %}
- {{ client.startdate }} 
+{% if client.reference !=='BS0004623' %}
+ {{ client.startdate | default()}}
 {% else %}
 {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} 
 {% endif %}
@@ -59,7 +58,7 @@ Started:
 Ended: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} 
 {% elif client.status == 'inactive' %}
 Ended: {{client.enddate}}
-{% elif client.status == 'active' %}
+{% elif client.status == 'active' and client.reference !=='BS0004623' %}
 Ends: {{client.enddate}}
 {% else %}
 Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 

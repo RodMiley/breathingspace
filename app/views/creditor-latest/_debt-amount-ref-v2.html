@@ -2,7 +2,8 @@
       <li>Debt type: Housing benefit </li> 
       <!-- <li>Status: {% include "./_status-playback.html" %}</li> -->
       <li>Amount: 
-      {% if customer.status == 'applied'%}
+       {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}£{{ amount | default("1245") }}
+      {% elif customer.status == 'applied'%}
       £1850
     {% elif customer.status == 'new' or customer.status == 'dontown' %}
       £1850
@@ -16,13 +17,18 @@
      £567
     {% endif%}
     </li> 
-     <li>NI number: {{customer.nino }}</li>    
-     <li> Reference: {{customer.reference  | default("RD56tggg") }}</li>
-    <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+     <li> Reference: 
+      {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}
+      {{ debtReference1 | default("NCC-HB23190")  }}
+      {% else %}
+     {{customer.debtreference  | default("RD56tggg") }}
+     {% endif %}
+     </li>
+    <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
       <li>           {% if customer.status == 'review-accepted' or customer.status == 'client-review-accepted'%}
               Debt removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}
                {% else %}
-               Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(59) }}
+               Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(60) }}
                {% endif%}
      </li>          
              </ul>

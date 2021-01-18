@@ -410,6 +410,30 @@ var creditordebts = require('./creditordebtlist.js')
 
 
          // ---------------------------------------------------------
+
+     
+         router.get('/homepage-card', function (req, res, next) {
+          let findCustomer = {}
+        
+          for (let i = 0; i < creditordebts.length; i++ ) {
+          if(creditordebts[i].reference === req.query.reference){
+            findCustomer = creditordebts[i];
+           }
+          }
+    
+    
+          let status = req.session.data['debtStatus']
+          if(status === 'review-accepted'){
+            findCustomer.status ='review-accepted'
+            findCustomer.todo='Yes' 
+            }   
+         
+          res.locals.customer = findCustomer
+          next()
+           })
+    
+    
+             // ---------------------------------------------------------    
   
   
         router.post('/account-landing-tabs', function (req, res, next) {
@@ -435,46 +459,44 @@ var creditordebts = require('./creditordebtlist.js')
     let findCustomer4 = {}
     let findCustomer5 = {}
     let findCustomer6 = {}
+    let findCustomer7 = {}
+    let findCustomer8 = {}
+
      
     for (let i = 0; i < creditordebts.length; i++ ) {
 
-    if(creditordebts[i].reference === 'VFDgzk9NKIu6O'){
+    if(creditordebts[i].reference === 'BS0004623'){
       findCustomer = creditordebts[i];
      }
 
-    if(creditordebts[i].reference === 'WXOmP5LuJwiU2'){
+    if(creditordebts[i].reference === 'BS0089931'){
       findCustomer2 = creditordebts[i];
      }
     
-     if(creditordebts[i].reference === 'JMFYIFw1KB3fg'){
+     if(creditordebts[i].reference === 'BS0099148'){
       findCustomer3 = creditordebts[i];
      }
      
-     if(creditordebts[i].reference === 'SKFnFFE3LcJbs'){
+     if(creditordebts[i].reference === 'BS0065180'){
       findCustomer4 = creditordebts[i];
      } 
 
-     if(creditordebts[i].reference === 'HCQ4xqX3xBfRd'){
+     if(creditordebts[i].reference === 'BS0079634'){
       findCustomer5 = creditordebts[i];
      } 
 
-     if(creditordebts[i].reference === 'LMDUypbrz9oS1'){
+     if(creditordebts[i].reference === 'BS0059486'){
       findCustomer6 = creditordebts[i];
      } 
 
         
-     if(creditordebts[i].reference === 'EFNUupyThEwv1'){
+     if(creditordebts[i].reference === 'BS0082564'){
       findCustomer7 = creditordebts[i];
      } 
 
            
-     if(creditordebts[i].reference === 'FXWvIvRill0O7'){
+     if(creditordebts[i].reference === 'BS0023427'){
       findCustomer8 = creditordebts[i];
-     } 
-
-           
-     if(creditordebts[i].reference === 'WSWV041GW4bJB'){
-      findCustomer9 = creditordebts[i];
      } 
 
     }
@@ -505,15 +527,12 @@ var creditordebts = require('./creditordebtlist.js')
         findCustomer6.todo='Yes'
         findCustomer6.substatus='' 
         findCustomer6.clientReview=''
-        findCustomer7.status ='new' 
+        findCustomer7.status ='client-review-accepted' 
         findCustomer7.todo='Yes'
         findCustomer7.substatus=''
         findCustomer8.status ='client-review-rejected' 
         findCustomer8.todo='Yes'
         findCustomer8.substatus=''
-        findCustomer9.status ='client-review-accepted' 
-        findCustomer9.todo='Yes'
-        findCustomer9.substatus=''
       }  
     
     next()

@@ -21,11 +21,11 @@
  <div class="govuk-grid-column-two-thirds"> 
       <ul class="govuk-list">
       <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed</strong>
-      <li><h2 class="govuk-heading-s">Debt: Credit Card</h2></li> 
-      <li>Creditor:  Halifax (Credit cards only)</li> 
-      <li>Amount: £2500<li>
-      <li> Reference: RBC23455003</li>
-      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+      <li><h2 class="govuk-heading-s">Debt: Housing benefit </h2></li> 
+      <li>Creditor: Newcastle city council</li> 
+      <li>Amount: {{ amount }}<li>
+      <li> Reference: {{ debtReference1}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
       <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
     </ul>
     </div>

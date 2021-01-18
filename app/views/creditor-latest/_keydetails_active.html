@@ -12,11 +12,16 @@
   <strong class="govuk-tag">
   Active
 </strong>  
+
 {% endif %}
+
     
-    
-    Breathing Space account for</span>
-     {% if data['fullname']%} {{fullname}} {% else %} {{customer.name | default("Joe Black") }} {% endif %}
+
+    Breathing Space</span>
+     {% if checked('newclient','yes') and customer.reference == 'BS0004623' %}{{ firstname | default("Joe")}} {{middlename}} {{ lastname | default("Black") }}{% else %} {{customer.name | default("Joe Black") }} {% endif %}
+
+  <span class="govuk-caption-m">Reference: {{ client.reference | default("BS0004623")}} </span>
+
       </h1>
       </div>
             <div class="govuk-grid-column-one-third">
@@ -29,7 +34,7 @@ day 1 of 60
 {% endif %}
 </strong>
 </span>
-<span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(-2) }} <br>
+<span class="govuk-body-s">Started: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} <br>
 {% if checked('clientreview','bsended') or customer.status == 'client-review-accepted' %}
 Ended: {{ 'DD MMMM YYYY' | baseDateAdd(0) }} 
 {% else %}

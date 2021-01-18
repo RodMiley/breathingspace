@@ -1,0 +1,59 @@
+      
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+    <legend class="govuk-fieldset__legend">
+      <label class="govuk-label govuk-visually-hidden">
+       Types of tasks to do
+      </label>
+    </legend>
+
+     <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_1" name="substatus" type="radio" value="substatus_1" {{ checked('substatus', 'substatus_1') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_1">
+          All ({{totTasks}})
+        </label>
+      </div>
+    <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_2" name="substatus" type="radio" value="substatus_2" {{ checked('substatus', 'substatus_2') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_2">
+          Debts to review ({{taskDebtReview}})
+        </label>
+      </div>
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_3" name="substatus" type="radio" value="substatus_3" {{ checked('substatus', 'substatus_3') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_3">
+         Clients to review ({{taskClientReview}})
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_4" name="substatus" type="radio" value="substatus_4"  {{ checked('substatus', 'substatus_4') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_4">
+         Proposed new debts ({{taskProposedDebt}})
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_5" name="substatus" type="radio" value="substatus_5"  {{ checked('substatus', 'substatus_5') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_5">
+         Sold debts to transfer ({{taskTransferDebt}})
+        </label>
+      </div>
+          <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_6" name="substatus" type="radio" value="substatus_6"  {{ checked('substatus', 'substatus_6') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_6">
+         Clients to transfer ({{taskTransferClient}})
+        </label>
+      </div>
+             <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="substatus_7" name="substatus" type="radio" value="substatus_7"  {{ checked('substatus', 'substatus_7') }}>
+        <label class="govuk-label govuk-radios__label" for="substatus_7">
+         Clients transfered to us ({{taskTransferClientCompleted}})
+        </label>
+      </div>
+</div>
+      </fieldset>
+      </div>

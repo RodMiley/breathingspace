@@ -15,12 +15,7 @@
   {% endif %}
     <div class="govuk-grid-column-full">
 
-{% if data['debt']%}
-{% else %}
-<div class="govuk-inset-text govuk-tag--green govuk-!-margin-bottom-4 govuk-!-margin-top-0">
-  Account created
-</div>
-{% endif %}
+
 
   {% include "./_keydetails.html" %} 
 {% if data['deletedebt-1'] %}
@@ -95,12 +90,12 @@
              {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              Creditor: {{creditor | default("Barclays") }}
+              Creditor: {{creditor | default("Newcastle city council") }}
               {% if data['amount']%}
               <br>Amount: £{{ amount | default("5467") }}
               {% endif %}
               {% if data['amount']%}
-              <br> Reference: {{ reference | default("BAR234897HC")}}
+              <br> Reference: {{ debtReference1 | default("NCC-HB-234573")}}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -152,7 +147,7 @@
      {% elif data['creditorfour']%}
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            {% if data['tyefour']%}
+            {% if data['typefour']%}
              {{ typefour }}
              {% else %}
              Debt
@@ -209,31 +204,11 @@
           </div>
 {% endmacro %}
 
-      <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               Self assessment
 
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Creditor: HMRC
-              <br>Amount: £1763
-              <br> Reference: GB12345
-              <br>NI number: HU 23 45 56 K
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="not-testing">
-                Change<span class="govuk-visually-hidden"> debt</span>
-              </a>
-                       or
-             <a class="govuk-link" href="not-testing">
-                Delete<span class="govuk-visually-hidden"> Debt</span>
-              </a>
-            </dd>
-          </div>
-          {{ debtrow("Gas", "EDF Energy Ltd", "£189", "CRT8536544", "not-testing" , "not-testing") }}
-          {{ debtrow("Electric", "Southern Electric", "£125", "SE3456792234", "not-testing", "not-testing") }}
-          {{ debtrow("Council tax", "Southwark Council", "£179", "LCC3456789", "not-testing", "not-testing") }}
-          {{ debtrow("Store card", "Next Retail and Next Directory", "£1256", "ND6544322", "not-testing", "not-testing") }}
+          {{ debtrow("Water", "Yorkshire Water Services Ltd", "£102", "4949 9494 9449", "not-testing" , "not-testing") }}
+          {{ debtrow("Gas", "EDF Energy Ltd", "£389", "CRT8536544", "not-testing", "not-testing") }}
+          {{ debtrow("Council tax", "Southwark Council", "£1179", "LCC3456789", "not-testing", "not-testing") }}
+          {{ debtrow("Self assessment paye", "HMRC", "£789", "KN23455", "not-testing", "not-testing") }}
     {% endif %}
    {% else %}
   {% endif %}

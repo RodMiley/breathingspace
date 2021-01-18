@@ -191,49 +191,7 @@ All action against this debt has been stopped
                  
               </span> 
               </li>
-              {% if customer.reference =='VFDgzk9NKIu6O' %} 
-                 <li class="app-task-list__item">
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
-          
-              <h3 class="govuk-heading-s">   
 
-A money adviser has added a new debt  
-
-   </h3>
-    <ul class="govuk-list">
-      <li>Debt type: Rent arrears </li> 
-      <!-- <li>Status: {% include "./_status-playback.html" %}</li> -->
-      <li>Amount: 
-      
-      £678
-   
-    </li> 
-     <li>NI number: {{customer.nino }}</li>    
-     <li> Reference: HM23GH78</li>
-    <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
-      <li>
-               Breathing space ends {{ 'Do MMMM YYYY' | baseDateAdd(59) }}
-
-     </li>          
-             </ul>
-  
-                          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Choose an option</h2>   
-                          <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
-                              We've stopped all action
-                          </a>
-                       <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
-                        The debt's not eligible, ask for a review
-                      </a>
-
-                       <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">
-                        We've sold this debt
-                      </a>
-
-
-                 
-              </span> 
-              </li>
-              {% endif %}
               </ul>
         </li>
       </ol>

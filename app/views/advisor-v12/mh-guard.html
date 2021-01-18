@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+  <form class="form" action="" method="post">
+
+    <div class="govuk-grid-column-three-quarters">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="creditorConfirm-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+       <h1 class="govuk-fieldset__heading">
+       Eligibility confirmation
+      </h1>
+    </legend>
+    <div id="creditorConfirm-hint" class="govuk-hint">
+     <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-4 govuk-!-margin-bottom-5">
+     <li> You must have seen evidence from an approved mental health professional that your client is recieving mental health crisis treatment</li>
+     <li> You must have carried out a credit check on your client with a credit reference agency</li>
+   </ul>  
+    </div>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input facet" id="creditorConfirm" name="creditorConfirm" type="checkbox" value="yes" {{ checked('creditorConfirm','yes')}} >
+        <label class="govuk-label govuk-checkboxes__label facet" for="creditorConfirm">
+          I confirm I have seen the evidence  <strong>and</strong> I have carried out a credit check on my client
+          </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<button class="govuk-button" id="facetFilterBtn" data-module="govuk-button">
+  click event
+</button>
+{% if checked('creditorConfirm','yes')%}
+<a href="mh-point-of-contact" class="govuk-button">
+  Save and continue
+</a>
+{% else %}
+
+<button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+  Save and continue
+</button>
+</form>
+{% endif %}
+    </div>
+   
+</div>
+
+
+{% endblock %}
