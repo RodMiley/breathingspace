@@ -13,9 +13,11 @@
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-    {% if client.reference !=='BS0004623' %} 
+     {% if  client.reference ==='BS0004623' %}
+          {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
+     {% elif client.reference %} 
        {{client.name | default("Joe") }}
-       {{ client.lastname }}
+       {{ client.lastname }} 
      {% else %} 
          {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
      {% endif %}
