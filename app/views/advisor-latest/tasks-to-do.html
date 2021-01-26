@@ -199,7 +199,7 @@ or checked('status','status_2') %}
 {% elif checked('status','status_2') %}
 
 	{% for client in clients %}
-  {% if client.task === "askedForTransfer" and client.adviceorg ==='Stepchange' %}
+  {% if client.task === "askedForTransfer" and client.adviceorg ==='Stepchange' or client.task === "askedForTransfer" and client.adviceorg ==='CAB' %}
   {% include "./_active_client.html" %}
   {% endif %}
   {% endfor %} 

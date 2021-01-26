@@ -75,7 +75,7 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
 {% endif %}
 
 {% if client.status =='active' and checked('askedfortransfer','complete') %}
-{% elif client.status =='active' and checked('askedfortransfer','yes')  %}
+{% elif client.status =='active' and checked('askedfortransfer','yes') or client.status =='active' and client.task =='askedForTransfer'  %}
 
 {% if checked('confirmation','remove')%}
 {% else %}
@@ -160,7 +160,7 @@ Ends: {{ 'DD MMMM YYYY' | baseDateAdd(60) }}
               <li>Email: breathingspaceteam@{% if checked('askedfortransfer','complete')%}stepchange{% else %} {{ client.adviceorg | default('Stepchange')}} {% endif %}.org.uk</li>
               <li>Telephone: 0151 490 1731</li>
               </ul>
-{% if client.status == 'active' and checked('askedfortransfer','yes')%}
+{% if client.status == 'active' and checked('askedfortransfer','yes') or client.status =='active' and client.task =='askedForTransfer' %}
 {% elif client.status == 'active' or client.status == 'active' and checked('askedfortransfer','complete') %}
               <h2 class="govuk-heading-m">Transfer</h2>
 <p class='govuk-body'>You can ask 

@@ -23,14 +23,14 @@
   <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
  <hr class="govuk-section-break govuk-section-break--visible">
 
-  {% if client.task %}
+  {% if client.task !=='askedForTransfer'%}
     <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">To do</strong>
   
   {% endif %}
 
 
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
-    {% if client.task%}
+    {% if client.task !=='askedForTransfer'%}
     <li>Task:{% include "./_task_playback.html" %}</li>
     {% endif %}
     <li>Reference: {{client.reference}}</li>
