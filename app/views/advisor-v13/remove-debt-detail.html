@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation-removedebt" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Removed debt
+      </h1>
+
+     {% include "./_debtDetails.html" %} 
+
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reason the debt was removed</h2>
+<p class="govuk-body" >{{removeDebt}}</p>  
+
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h2>
+<p class="govuk-body" >{{removeDebtDetail}}</p>  
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Removed by</h3>          
+<p class="govuk-body">Paul Smith, Advice UK, {{ 'Do MMMM YYYY' | baseDateAdd(0) }} at 11.42am</p>
+
+    </form>
+</div>
+
+
+{% endblock %}

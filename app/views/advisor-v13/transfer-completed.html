@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+       Transfer completed 
+      </h1>
+
+  <p class="govuk-body-l">Stepchange have transfered this Breathing Space to Advice uk </p>
+
+
+<h2 class="govuk-heading-s">Details</h2>
+<ul class="govuk-list">
+<li>Name: {{ client.name }} {{ client.lastname }}</li>
+<li>Reference: {{ client.reference }}</li>
+<li>Started: {{ client.startdate }}</li>
+<li>Due to end:{{ client.enddate }}</li>
+</ul>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Transfered by</h3>
+    <p class="govuk-body">Sarah Housten, Stepchange, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.10am</p>   
+
+<h2 class="govuk-heading-s">Reason for the transfer</h2>
+<p>{{ client.name }} {{ client.lastname }} needs a casework approach, so were asking Stepchange to transfer this Breathing Space to Advice uk<p>
+
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+    <p class="govuk-body">Advice uk, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>   
+
+{% if checked('acknowlegetransfer','yes') %}  
+{% else %}  
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="acknolegetransfer-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Would you like to remove this task from your to do list?
+      </label>
+    </legend>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="acknowlegetransfer" name="acknowlegetransfer" type="radio" value="yes~account-page?reference={{client.reference}}">
+        <label class="govuk-label govuk-radios__label" for="acknolegetransfer">
+           Yes, we've done everything we need to
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="acknowlegetransfer-2" name="acknowlegetransfer" type="radio" value="no~account-page?reference={{client.reference}}">
+        <label class="govuk-label govuk-radios__label" for="acknolegetransfer-2">
+          No, we still have things to do
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div> 
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+{% endif %}
+
+    </div>
+   <div class="govuk-grid-column-three-quarters">    
+
+
+
+
+
+
+
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

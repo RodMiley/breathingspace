@@ -1,0 +1,87 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="endbreathingspace-no-adhoc" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      </div>
+      </div>
+      <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+         <h1 class="govuk-heading-l">
+       Client eligibility review
+      </h1>        
+            
+                    <h2 class="govuk-heading-m">{% include "./_creditornames.html" %}  asked for a review</h2>
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why this client is not eligible</h3>
+                    <p class="govuk-body">{{ clientReview }}, {% if checked('clientReview','The client does not meet the eligibility criteria')%} because {{ clientReviewReason }}{% endif%}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Details to support the review</h3>
+                    <p class="govuk-body">{{ moreDetailClient }}</p>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requested by</h3>
+                    <p class="govuk-body">{% include "./_creditornames.html" %} ,{{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+            
+  
+          
+
+
+ <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">            
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+          Do you want to end your client's Breathing Space?
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional" name="client-eligibility-adhoc" type="radio" value="yes~endbreathingspace-review-confirm-adhoc">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="client-eligibility-conditional-2" name="client-eligibility-adhoc" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="client-eligibility-conditional-2">
+          No
+        </label>
+      </div>
+     
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-!-font-weight-bold" for="clientEligibilityDetailAdhoc">
+    Please provide details to support the decision
+  </label>
+  <textarea class="govuk-textarea" id="clientEligibilityDetailAdhoc" name="clientEligibilityDetailAdhoc" rows="4"></textarea>
+  </div>
+
+
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+    </div>
+    </form>
+        <!-- righthand coloumn -->
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s related">Related content</h2>
+      <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance on client eligibility on gov.uk (opens in new tab)</a></p>
+    </div>
+    <!-- -->
+</div>
+
+
+{% endblock %}

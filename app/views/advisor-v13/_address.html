@@ -1,0 +1,42 @@
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+     {% include "./_address-hidden.html" %} 
+     {% if client.reference !=='BS0004623' %}
+          <p> {{client.address | default("44 Crawford St, Marylebone")}} <br> London <br>
+               {% if checked('searchedby','lastname_postcode') %} 
+    {{ searchpostcode }}
+ {% else %}
+ {{client.postcode | default("W1H 1JS")}}
+ {% endif %}
+ {% else %}
+   {% if data['sort']%} {{ sort }} <br> Marylebone <br>London<br>{{ postcode | default("W1H 1JS") }}
+              {% else %}  
+              <span class="govuk-!-display-block">{{addressline1 | default("44 Crawford St, Marylebone") }}</span>
+              <span class="govuk-!-display-block">{{addresstown | default("London")}}</span>
+              <span class="govuk-!-display-block">{{addresspostcode | default("W1H 1JS")}} </span> 
+              <span class="govuk-!-display-block">{{country}}</span>  
+              {% endif %}
+{% endif %}
+           
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <ul class="govuk-list">
+            <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a></li>
+            <li>
+              <a class="govuk-link govuk-!-font-size-19" href="parv">
+        {% if checked('parv','yes')%}
+        Update address hidden
+       {% else %} Hide address  {% endif %}<span class="govuk-visually-hidden"> from creditors</span>
+      
+              </a>
+            </li>  
+            <ul>
+            </dd>
+          </div>
+         

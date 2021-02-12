@@ -1,0 +1,82 @@
+
+
+
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <form method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Reset client data?  {{ totNum }} {{type2toDO}}
+      </h1>
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    This will clear all of the data entered in this session
+  </strong>
+</div>
+
+<ul class="govuk-list">
+
+{% for client in clients %}
+{% if customer.task == 'proposedComplete'
+%}
+<li>
+{{ client.name }},
+</li>
+ {% endif %}
+{% endfor %}
+
+
+ </ul>
+
+
+    
+ {% if checked('debtReset','yes')%}
+  <a class="govuk-body" href="/prototype-admin/clear-data">Go to reset data now</a>
+  {% else %}
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you want to reset the data
+      </h1>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReset" name="debtReset" type="radio" value="yes" {{ checked('debtReset','yes')}}>
+        <label class="govuk-label govuk-radios__label" for="debtReset">
+         Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="debtReset-2" name="debtReset" type="radio" value="no" >
+        <label class="govuk-label govuk-radios__label" for="debtReset-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+  <button class="govuk-button" data-module="govuk-button">
+  Reset client the data
+</button>
+
+{% endif %}
+
+
+
+
+    </div>
+  </div>
+</form>
+{% endblock %}

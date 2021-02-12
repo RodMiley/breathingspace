@@ -8,35 +8,46 @@
 {% block content %}
   {% include "./_global-nav.html" %} 
 {% include "./_keydetails_active.html" %}
-
-
+<!--
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      Training outcome recorded and trainee withdrawn
+    </p>
+    <p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there's a problem.</p>
+  </div>
+</div> -->
 
 {% include "./_confirmation-message-box.html" %}
 <!-- debtrow macro -->
 {% macro debtrow(debtname, debtCreditor, debtAmount, debtReference, debtdate, debtType, debtTaskToDo) %}
-   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-   {% if client.task =='debtreview' 
+ <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+ <dt>
+ <h2 class="govuk-heading-s"><span class="govuk-!-display-block" >Debt: {{ debtname }}</span>
+   {% if client.task =='debtreview' and debtname == 'Housing benefit' 
    or client.task =='debtReviewComplete'
    or client.task =='transferdebt' 
    or client.task =='clientreview' and debtname =='Water' 
    or client.task =='proposeddebt' 
    or checked('debtStatus','nonComplianceReported') %}
-
-    <div class="govuk-grid-row">
- <div class="govuk-grid-column-two-thirds">
- {% if debtname == 'Housing benefit' and  client.task =='debtreview' %}
-<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+  {% if debtname == 'Housing benefit' and  client.task =='debtreview' %}
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-2">
 Creditor asked us to review this debt
 </strong>
  {% elif debtname == 'Housing benefit' and  client.task =='debtReviewComplete' %}
-<strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed the debt</strong>
+<strong class="govuk-tag govuk-!-margin-top-2">Money advisor reviewed the debt</strong>
  {% elif debtname == 'Water' and  client.task =='clientreview' %}
-<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-2">
 Creditor asked us to review the client
 </strong>
 
  {% elif debtname == 'Gas' and  client.task =='transferdebt' %}
-<strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">
+<strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-2">
 Creditor has sold the debt
 </strong>
 {% endif %}
@@ -47,11 +58,42 @@ Creditor has sold the debt
 Creditor reported to Insolvency Service
 </strong>
  {% endif %}
- </div>
- <div class="govuk-grid-column-one-third">
+  {% endif %}
+ </dt>
+  
 
-<ul class="govuk-list">
-              <li>
+ 
+<dd class="govuk-!-margin-left-0">
+    <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+
+ </div>
+ </div>
+  
+</dd>
+  
+ <dd class="govuk-!-margin-left-0">
+  <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li>Creditor: {{debtCreditor}}</li> 
+      <li>Amount: {{debtAmount}}<li>
+      <li> Reference: {{debtReference}}</li>
+      <li> Debt was entered on {{ debtdate }}<li>
+    </ul>
+
+    </div>
+     <div class="govuk-grid-column-one-third"> 
+
+  <ul class="govuk-list govuk-!-font-size-16" >
+
+       {% if checked('clientreview','bsended') 
+       or client.task =='debtreview' and debtname =='Housing benefit' 
+       or client.task =='clientreview' and debtname =='Water' 
+       or client.task =='transferdebt' and debtname =='Gas' 
+       or client.status =='inactive'
+       %}
+      <li>
   {% if debtname == 'Housing benefit' and  client.task =='debtReviewComplete'  %}
     <a href="eligibility-review?reference={{client.reference}}" class="govuk-body">View debt review details</a>               
  {% elif debtname == 'Housing benefit' and client.task =='debtreview' %}
@@ -66,37 +108,8 @@ Creditor reported to Insolvency Service
    {% endif %}     
              
               </li>
-              </ul>
- </div>
- </div>
-  
-
-   {% endif %}
-  <div class="govuk-grid-row">
- <div class="govuk-grid-column-two-thirds"> 
-
-      <ul class="govuk-list">
-      <li><h2 class="govuk-heading-s">Debt: {{ debtname }}
-</h2></li> 
-      <li>Creditor: {{debtCreditor}}</li> 
-      <li>Amount: {{debtAmount}}<li>
-      <li> Reference: {{debtReference}}</li>
-      <li> Debt was entered on {{ debtdate }}<li>
-    </ul>
-
-    </div>
-     <div class="govuk-grid-column-one-third"> 
-
-
-
-       {% if checked('clientreview','bsended') 
-       or client.task =='debtreview' and debtname =='Housing benefit' 
-       or client.task =='clientreview' and debtname =='Water' 
-       or client.task =='transferdebt' and debtname =='Gas' 
-       or client.status =='inactive'
-       %}
        {% else %}
-          <ul class="govuk-list govuk-!-font-size-16" >
+        
              <li>
              <form class="form" action="change-debt1" method="post">
                  <button class="govuk-body govuk-link">Update debt details</button>
@@ -151,11 +164,14 @@ Creditor reported to Insolvency Service
               </form>
               </li>
               {% endif %}
-              </ul>
+             
               {% endif %}
+               </ul>
               </div>
           
  </div>
+ </dd>
+
 
  {% endmacro %}
 
@@ -248,12 +264,13 @@ Creditor reported to Insolvency Service
   </ul>
   {% if client.task%}
     <section class="govuk-tabs__panel" id="actions">
-     <h2 class="govuk-heading-l">Tasks</h2>
+     <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Tasks</h2>
      {% include "./_tasklist_data.html" %} 
     </section>
     {% endif %}
   <section class="govuk-tabs__panel" id="problem-debt">
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Debts</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Debts</h2>
+  <dl>     
   {% if checked('addDebt','yes') %} 
    {{ debtrow(
   [debttype],
@@ -339,7 +356,7 @@ Creditor reported to Insolvency Service
      ['Do MMMM YYYY' | baseDateAdd(0)],
    "debt7"
 ) }}
-
+ </dl>
 
   </section>
  {% if checked('debt-eligibility','yes')
@@ -352,7 +369,7 @@ Creditor reported to Insolvency Service
    or checked('removedebt', 'debt7') 
    or checked('removedebt', 'proposed')    %}
    <section class="govuk-tabs__panel" id="removed-debt">
-        <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Removed debts</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Removed debts</h2>
  {% include "./_removeddebtslist.html" %} 
 
    </section>

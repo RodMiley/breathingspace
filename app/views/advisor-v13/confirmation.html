@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+  <form class="form" action="index" method="post">
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Breathing Space submitted
+          </h1>
+          <div class="govuk-panel__body">
+            Your client's reference number<br><strong>BS0004623</strong>
+          </div>
+        </div>
+          <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">Your client has been submitted into Breathing Space. </p>
+
+{% if checked('poc','yes')%}  
+<p class="govuk-body">We will notify your client’s creditors and point of contact that their Breathing Space has started.</p>
+{% else%}         
+<p class="govuk-body">We will notify your client and there creditors that their Breathing Space has started.</p>
+{% endif %}
+      <ul class="govuk-list">
+          <!-- <li><a href="account-page">Return to client page</a></li> -->
+          <li><button class="govuk-link govuk-body ">Return to service homepage</button></li>
+        </p>
+        <ul> 
+
+           <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientStatus" type="radio" value="newbs~index?reference=BS0004623" checked>
+        <label class="govuk-label govuk-radios__label" for="newclient">
+         hidden radio
+        </label>
+      </div>
+      </div>
+</form>
+ <!-- <p><a href="time-machine-creditor" class="timemachine-link">On to next scenario</a></p> -->
+      </div>
+  
+</div>
+
+      
+
+{% endblock %}

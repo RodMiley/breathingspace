@@ -1,0 +1,58 @@
+
+ {% if checked('adhocAction','debtRemoved') %}
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list govuk-!-margin-bottom-0">
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed</strong>
+    </ul>
+      {% include "./_debtDetails.html" %} 
+    </div>
+     <div class="govuk-grid-column-one-third">
+     <a class="govuk-body"href="eligibility-review-adhoc-details">View review details</a>
+     </div>
+     </div>
+          {% endif %}
+
+
+ {% if checked('debtreview','debtremoved') %}
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds"> 
+      <ul class="govuk-list">
+      <li><strong class="govuk-tag govuk-!-margin-bottom-2">Money advisor reviewed</strong>
+      <li><h2 class="govuk-heading-s">Debt: Housing benefit </h2></li> 
+      <li>Creditor: Newcastle city council</li> 
+      <li>Amount: {{ amount }}<li>
+      <li> Reference: {{ debtReference1}}</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+      <li> Debt was removed on {{ 'Do MMMM YYYY' | baseDateAdd(0) }}<li>
+    </ul>
+    </div>
+     <div class="govuk-grid-column-one-third">
+     <a class="govuk-body"href="eligibility-review-details">View review details</a>
+     </div>
+     </div>
+          {% endif %}
+
+          {% if checked('removedebt', 'debt1') 
+              or checked('removedebt', 'debt2')  
+              or checked('removedebt', 'debt3')
+              or checked('removedebt', 'debt4')
+              or checked('removedebt', 'debt5')
+              or checked('removedebt', 'debt6')
+              or checked('removedebt', 'debt7')
+              or checked('removedebt','proposed') %}
+           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+           <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">       
+     {% include "./_debtDetails.html" %} 
+ </div>
+       <div class="govuk-grid-column-one-third">
+     <a class="govuk-body"href="remove-debt-detail">View reason the debt was removed</a>
+     </div>
+     </div>
+
+          {% endif%}
+ 

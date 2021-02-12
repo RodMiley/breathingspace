@@ -51,6 +51,7 @@ router.use('/advisor-v6', require('./views/advisor-v6/_routes'));
 router.use('/advisor-v10', require('./views/advisor-v10/_routes'));
 router.use('/advisor-v11', require('./views/advisor-v11/_routes'));
 router.use('/advisor-v12', require('./views/advisor-v12/_routes'));
+router.use('/advisor-v13', require('./views/advisor-v13/_routes'));
 router.use('/advisor-latest', require('./views/advisor-latest/_routes'));
 router.use('/creditor-v3', require('./views/creditor-v3/_routes'));
 router.use('/creditor-v4', require('./views/creditor-v4/_routes'));

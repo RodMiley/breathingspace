@@ -11,29 +11,28 @@
   <form class="form" action="add-debt-confirm" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">Step 2 of 2</span>
-       Add a debt
+       <h1 class="govuk-heading-xl">
+        Add debt type, amount and reference
       </h1>
       <h2 class="govuk-heading-s">Creditor</h2>
       <p class="govuk-body">{{ newcreditor }} <a href="debt2">Change</a></p>
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-!-font-weight-bold" for="debttype">
-   Type of debt
+  <label class="govuk-label" for="debttype">
+   Type of debt (optional)
   </label>
   <input class="govuk-input govuk-input--width-10" id="debttype" name="debttype" type="text" spellcheck="false" value="{{ debttype }}">
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-!-font-weight-bold" for="amounttwo">
-   Debt amount
+  <label class="govuk-label" for="amounttwo">
+   Debt amount (optional)
   </label>
   <input class="govuk-input govuk-input--width-10" id="adddebtamount" name="adddebtamount" type="text" spellcheck="false" value="{{ adddebtamount }}">
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-!-font-weight-bold" for="adddebtreference">
-    Reference
+  <label class="govuk-label" for="adddebtreference">
+    Reference (optional)
   </label>
     <span id="changed-name-hint" class="govuk-hint">
       This is your personal reference for the debt</span>

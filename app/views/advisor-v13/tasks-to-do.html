@@ -1,0 +1,294 @@
+
+{% extends "layout.html" %}
+{% set globalnav = "taskstodo" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+{% block content %}
+  {% include "./_global-nav.html" %} 
+
+
+ {% set currentnav ='clientsecrets' %}
+
+
+   <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set totTasks = 0 %}
+{% set taskDebtReview = 0 %}
+{% set taskClientReview = 0 %}
+{% set taskTransferDebt = 0 %}
+{% set taskTransferClient = 0 %}
+{% set taskProposedDebt = 0 %}
+{% set sentToMA = 0 %}
+{% set taskTransferClientCompleted = 0 %}
+
+
+	{% for client in clients %}
+
+<!-- BASE VALUES -->
+   {% if client.status === "active" %}
+	{% set totNum = totNum + 1 %}
+  {% endif %}
+
+   {% if client.task === "debtreview" and client.adviceorg ==='Advice uk' %}
+    {% set taskDebtReview = taskDebtReview + 1 %}
+   {% endif %}
+  {% if client.task === "clientreview"  and client.adviceorg ==='Advice uk' %}
+    {% set taskClientReview = taskClientReview + 1 %}
+   {% endif %}
+      {% if client.task === "transferdebt" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferDebt = taskTransferDebt + 1 %}
+   {% endif %}
+      {% if client.task === "transferclient" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferClient = taskTransferClient + 1 %}
+   {% endif %}
+      {% if client.task === "proposeddebt" and client.adviceorg ==='Advice uk' %}
+        {% set taskProposedDebt = taskProposedDebt + 1 %}
+   {% endif %}
+
+      {% if client.task === "askedForTransfer" and client.adviceorg ==='Stepchange' %}
+        {% set sentToMA = sentToMA + 1 %}
+   {% endif %}
+          {% if client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk' %}
+  {% set taskTransferClientCompleted = taskTransferClientCompleted + 1 %}
+   {% endif %}
+
+
+  {% if client.task ==='proposeddebt' and client.adviceorg ==='Advice uk' 
+    or client.task ==='clientreview' and client.adviceorg ==='Advice uk'
+     or client.task ==='debtreview' and client.adviceorg ==='Advice uk'
+      or client.task ==='transferdebt' and client.adviceorg ==='Advice uk'
+       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' 
+        or client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk'%}
+    {% set totTasks = totTasks + 1 %}
+   {% endif %}
+ 
+ {% endfor %}  
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<form class="form" action="#" method="post">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <label class="govuk-fieldset__heading">
+       Filter by:
+      </label>
+    </legend>
+       <div class="govuk-radios govuk-radios--conditional govuk-radios--small" >
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_0" name="status" type="radio" value="status_0"  {{ checked('status', 'status_0') }}>
+        <label class="govuk-label govuk-radios__label" for="status_0">
+          Active Breathing Spaces ({{totNum}})
+        </label>
+      </div>
+ 
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_1" name="status" type="radio" value="status_1"  {{ checked('status', 'status_1') }}>
+        <label class="govuk-label govuk-radios__label" for="status_1">
+          Tasks ({{totTasks}}) <strong class="govuk-tag govuk-tag--grey">To do</strong>
+        </label>
+      </div>
+{% if checked('status','status_1') %}
+     <div class="govuk-radios__conditional" id="conditional-contact">
+        <div class="govuk-form-group">
+         {% include "./_sub_tasks_radios.html" %}
+
+      </div>
+</div>
+{% endif %}
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="status_2" name="status" type="radio" value="status_2"  {{ checked('status', 'status_2') }}>
+        <label class="govuk-label govuk-radios__label" for="status_2">
+          Sent to money adviser ({{sentToMA}})
+        </label>
+      </div>
+   </div>
+  </fieldset>
+</div>
+
+
+
+
+
+
+
+<button class="govuk-button"  id="facetFilterBtn" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+</div>
+<div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+             {% if checked('status','status_1')%}
+Tasks to do
+{% elif checked('status','status_2')%}
+Sent to money advisor
+{% else %}
+Active Breathing Spaces
+{% endif %}
+  </h1>
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+{% if checked('status','status_0')%}
+All ({{ totNum }})
+{% elif checked('status','status_1') and checked('substatus','substatus_2') %}
+Creditor asked us to review the debt ({{taskClientReview}}) 
+{% elif checked('status','status_1') and  checked('substatus','substatus_3')%}
+Creditor asked us to review client ({{taskClientReview}}) 
+{% elif checked('status','status_1') and  checked('substatus','substatus_4')%}
+Creditor proposed a new debt ({{taskProposedDebt}}) 
+{% elif checked('status','status_1') and checked('substatus','substatus_5')%}
+Creditor asked us to transfer a sold debt ({{taskTransferDebt}}) 
+{% elif checked('status','status_1') and checked('substatus','substatus_6')%}
+Money advisor asked us to transfer the client ({{taskTransferClient}}) 
+{% elif checked('status','status_1') and checked('substatus','substatus_7')%}
+Money advisor has transfered the client to your organisation ({{taskTransferClientCompleted}}) 
+{% elif checked('status','status_1') or checked('status','status_1')and checked('substatus','substatus_1') %}
+All ({{totTasks }})
+{% elif checked('status','status_2')%}
+
+
+All ({{sentToMA}}) 
+
+
+{% else %}
+All ({{totNum}}) 
+{% endif %}
+
+
+</h2>
+
+{% if  
+checked('status','status_1') and checked('substatus','substatus_2')
+or checked('status','status_1') and checked('substatus','substatus_3')
+or checked('status','status_1') and checked('substatus','substatus_4')
+or checked('status','status_1') and checked('substatus','substatus_5')
+or checked('status','status_1') and checked('substatus','substatus_6') 
+or checked('status','status_2') %}
+{% else %}
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Sort by
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="started" >Date - newest</option>
+    <option value="ending">Date - oldest</option>
+    <option value="ending">Alphabetically</option>
+  </select>
+</div>
+{% endif %}
+
+
+<ul class="govuk-list" id="xnum">
+
+
+{% if checked('status','status_0') %}
+{% for client in clients %}
+ {% if client.status ==='active' and client.adviceorg ==='Advice uk' 
+
+ %}
+{% include "./_active_client.html" %}
+{% endif %}
+{% endfor %} 
+
+
+{% elif checked('status','status_2') %}
+
+	{% for client in clients %}
+  {% if client.task === "askedForTransfer" and client.adviceorg ==='Stepchange' or client.task === "askedForTransfer" and client.adviceorg ==='CAB' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+    {% elif checked('status','status_1')and checked('substatus','substatus_1') %}
+
+	{% for client in clients %}
+  {% if client.task ==='proposeddebt' and client.adviceorg ==='Advice uk' 
+    or client.task ==='clientreview' and client.adviceorg ==='Advice uk'
+     or client.task ==='debtreview' and client.adviceorg ==='Advice uk'
+      or client.task ==='transferdebt' and client.adviceorg ==='Advice uk'
+       or client.task ==='transferclient' and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1')and checked('substatus','substatus_2') %}
+
+	{% for client in clients %}
+  {% if client.task === "debtreview" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1') and checked('substatus','substatus_3') %}
+
+	{% for client in clients %}
+  {% if client.task === "clientreview" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1') and checked('substatus','substatus_4')%}
+
+	{% for client in clients %}
+  {% if client.task === "proposeddebt" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1') and checked('substatus','substatus_5')%}
+
+	{% for client in clients %}
+  {% if client.task === "transferdebt" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1') and checked('substatus','substatus_6')%}
+
+	{% for client in clients %}
+  {% if client.task === "transferclient" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+    {% elif checked('status','status_1') and checked('substatus','substatus_7')%}
+
+	{% for client in clients %}
+  {% if client.task === "transferclientcompleted" and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %} 
+
+  {% elif checked('status','status_1') %}
+{% for client in clients %}
+ {% if client.task ==='proposeddebt' and client.adviceorg ==='Advice uk' 
+    or client.task ==='clientreview' and client.adviceorg ==='Advice uk'
+     or client.task ==='debtreview' and client.adviceorg ==='Advice uk'
+      or client.task ==='transferdebt' and client.adviceorg ==='Advice uk'
+       or client.task ==='transferclient' and client.adviceorg ==='Advice uk'
+
+ %}
+{% include "./_active_client.html" %}
+{% endif %}
+{% endfor %} 
+
+  {% else %}
+
+  {% for client in clients %}
+  {% if client.status ==='active' and client.adviceorg ==='Advice uk' %}
+  {% include "./_active_client.html" %}
+  {% endif %}
+  {% endfor %}
+
+  {% endif %}
+</ul>
+    </div>
+</div>
+
+
+{% endblock %}

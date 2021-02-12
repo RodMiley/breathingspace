@@ -1,0 +1,54 @@
+<li>
+<div class="card">
+
+       <form class="form" action="" method="post">
+                  <button class="govuk-body govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3">
+                   {% if client.reference ==='BS0004623'%} 
+                      {{firstname | default('Joe')}} {{middlename}} {{lastname | default('Black')}}
+                   {% else %}
+                  {{ client.name }} {{ client.lastname }}
+                  {% endif %}
+                  </button>
+                  <div class="govuk-radios__item govuk-visually-hidden">
+        {% if checked('status','status_2')%}  
+          <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="remove~account-page-non-owning?reference={{client.reference}}" checked>
+        {% else %}        
+        <input class="govuk-radios__input" id="" name="confirmation" type="radio" value="remove~account-page?reference={{client.reference}}" checked>
+        {% endif %}
+        <label class="govuk-label govuk-radios__label" for="typeOfDebt">
+         hidden radio
+        </label>
+      </div>
+              </form>
+  <!--<strong class="govuk-tag govuk-tag--blue pull-right">Asked for client review</strong>-->
+ <hr class="govuk-section-break govuk-section-break--visible">
+
+  {% if client.task !=='askedForTransfer'%}
+    <strong class="govuk-tag govuk-tag--grey govuk-!-margin-top-3">To do</strong>
+  
+  {% endif %}
+
+
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    {% if client.task !=='askedForTransfer'%}
+    <li>Task:{% include "./_task_playback.html" %}</li>
+    {% endif %}
+    <li>Reference: {{client.reference}}</li>
+    <li>Date started {{ client.startdate }}</li>
+    <li>Date due to end 
+    {% if  client.reference == 'BS0004623' and client.status == 'active' %}
+    {{ 'DD MMMM YYYY' | baseDateAdd(60) }} 
+    {% else %}
+    {{ client.enddate }}
+    {% endif %}   
+    </li>
+
+    <ul>
+  </div>
+    <div class="govuk-grid-column-one-half">
+    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+    <li></li>
+    </ul>
+
+</div>
+</li>

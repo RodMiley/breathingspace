@@ -10,20 +10,23 @@
   <div class="govuk-grid-row">
   <form class="form" action="debt3-step2" method="post">
     <div class="govuk-grid-column-two-thirds">
+           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
-      <span class="govuk-caption-xl">Step 1 of 2</span>
-       Add a debt
+       Add a creditor for this debt
       </h1>
 
+
+  <div class="govuk-inset-text">
+  If the creditor you enter does not appear in the list, continue and you will be asked to provide the creditor address on the next screen
+</div>
+
   <div class="govuk-form-group">
-      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="creditorthree">Enter the creditor’s name</label>
-      <span id="changed-name-hint" class="govuk-hint">
-        This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson
-     </span>
+      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="creditor">Enter the creditor's name
+</label>   <span id="changed-name-hint" class="govuk-hint">
+      This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson 
+    </span>
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
-
 
 
 
