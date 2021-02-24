@@ -8,8 +8,9 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="confirm-details" method="post">
+  <div class="govuk-grid-column-full"><a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+  </div>
     <div class="govuk-grid-column-two-thirds">
-        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
    <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="add-business-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -53,6 +54,12 @@
 </button>
     </div>
     </form>
+  <!-- righthand column -->
+   <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s related">Related content</h2>
+      <p><a href="https://www.gov.uk/government/publications/debt-respite-scheme-breathing-space-guidance/debt-respite-scheme-breathing-space-guidance-for-money-advisers#qualifying-debts" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about business debt eligibility on GOV.UK (opens in new tab)</a></p>
+   </div>
+   <!-- -->
 </div>
 
 {% endblock %}

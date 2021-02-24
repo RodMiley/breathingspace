@@ -15,39 +15,143 @@
         Quick links to prototype sections
       </h1>
 
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+{% set maHtml %}
+<h2 class="govuk-heading-l">Money adviser links</h2>
+
+<h2 class="govuk-heading-m">Homepage and tasks pages</h2>
+<ul class="govuk-list">
+<li><a href="/advisor-latest/index">Money adviser homepage</a></li>
+<li><a href="/advisor-latest/tasks-to-do">Tasks to do</a></li>
+</ul>
 <h2 class="govuk-heading-m">Search</h2>
 <ul class="govuk-list">
-<li><a href="/advisor-v7/search-results-page">Search</a></li>
-<li><a href="/advisor-v7/search-results-page-static">Search static (List results approach)</a></li>
+<li><a href="/advisor-latest/search">Search</a></li>
+<li><a href="/advisor-latest/search-results-page-static">Search static (List results approach)</a></li>
 </ul>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 <h2 class="govuk-heading-m">Create client details</h2>
 <ul class="govuk-list">
-<li><a href="/advisor-v7/details">Personal details</a></li>
-<li><a href="/advisor-v7/address">Addresses</a></li>
-<li><a href="/advisor-v7/pref-contact">Client notification preference</a></li>
-<li><a href="/advisor-v7/add-business-guard">Business</a></li>
-<li><a href="/advisor-v7/confirm-details">Client details summary</a></li>
+<li><a href="/advisor-latest/details">Personal details</a></li>
+<li><a href="/advisor-latest/address">Addresses</a></li>
+<li><a href="/advisor-latest/pref-contact">Client notification preference</a></li>
+<li><a href="/advisor-latest/add-business-guard">Business guard question</a></li>
+<li><a href="/advisor-latest/add-business-history">Businesses</a></li>
+<li><a href="/advisor-latest/confirm-details">Client details summary</a></li>
 </ul>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-<h2 class="govuk-heading-m">Client page</h2>
+<h2 class="govuk-heading-m">Client page pre Breathing Space submission</h2>
 <ul class="govuk-list">
-<li><a href="/advisor-v7/debt-list-tabs">Inactive client page</a></li>
-<li><a href="/advisor-v7/debt-list-tabs-search">Active client page</a></li>
-<li><a href="/advisor-v7/debt">Add a debt (Loan - creditor list)</a></li>
-<li><a href="/advisor-v7/debt3">Add a debt (Credit Card - creditor list)</a></li>
-<li><a href="/advisor-v7/debt4">Add a debt (Creditor not on the list)</a></li>
+<li><a href="/advisor-latest/debt-list-tabs">Inactive client page</a></li>
+<li><a href="/advisor-latest/debt">Add a debt (Loan - creditor list)</a></li>
+<li><a href="/advisor-latest/debt3">Add a debt (Credit Card - creditor list)</a></li>
+<li><a href="/advisor-latest/debt4">Add a debt (Creditor not on the list)</a></li>
 </ul>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
 <h2 class="govuk-heading-m">Submit</h2>
 <ul class="govuk-list">
-<li><a href="/advisor-v7/bs-save-submit">Submit or save</a></li>
-<li><a href="/advisor-v7/bs-type-choice">Breathing space choice</a></li>
+<li><a href="/advisor-latest/bs-save-submit">Submit or save</a></li>
+<li><a href="/advisor-latest/bs-type-choice">Breathing space choice</a></li>
+<li><a href="/advisor-latest/bs-type-choice">Breathing space choice</a></li>
+<li><a href="/advisor-latest/consent">Declaration</a></li>
+<li><a href="/advisor-latest/confirmation">Confirmation</a></li>
+</ul>
+
+<h2 class="govuk-heading-m">Submit Mental Health</h2>
+<ul class="govuk-list">
+<li><a href="/advisor-latest/mh-guard">Eligibility Confirmation</a></li>
+<li><a href="/advisor-latest/mh-point-of-contact">Mental health point of contact details</a></li>
+<li><a href="/advisor-latest/mh-consent">Mental Health declaration</a></li>
 </ul>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">Client page post Breathing Space submission</h2>
+<ul class="govuk-list">
+<li><a href="/advisor-latest/account-page?reference=BS0089371">Active client page</a></li>
+<li><a href="/advisor-latest/add-new-debt?reference=BS0089371">Add a debt</a></li>
+<li><a href="/advisor-latest/endbreathingspace">End Breathing Space</a></li>
+</ul>
+
+<h3 class="govuk-heading-s">Tasks</h3>
+
+<ul class="govuk-list">
+<li><a href="/advisor-latest/eligibility-review-client?reference=BS0089371">Client review</a></li>
+<li><a href="/advisor-latest/eligibility-review?reference=BS0098924">Debt review</a></li>
+<li><a href="/advisor-latest/proposed-debt?reference=BS0095257">Creditor proposed a new debt</a></li>
+<li><a href="/advisor-latest/sold-debt?reference=BS0003829">Transfer a sold debt</a></li>
+<li><a href="/advisor-latest/transfer-request?reference=BS0006236">Confirm transfer of a Breathing Space to another organisation</a></li>
+</ul>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+{% endset -%}
+
+{% set creditorHtml %}
+<h2 class="govuk-heading-l">Creditors Links</h2>
+
+<h3 class="govuk-heading-m">Homepage and tasks pages</h3>
+<ul class="govuk-list">
+<li><a href="/creditor-latest/homepage-card">Creditor homepage</a></li>
+<li><a href="/creditor-latest/debttype-landing-page">Debt type tasks to do</a></li>
+</ul>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h3 class="govuk-heading-m">Debt page </h3>
+<ul class="govuk-list">
+<li><a href="/creditor-latest/account-landing-tabs">Client/debt page</a></li>
+<li><a href="/creditor-latest/protections-confirm">Apply protections</a></li>
+<li><a href="/creditor-latest/review-debt">Ask for a debt review</a></li>
+<li><a href="/creditor-latest/sold-the-debt">Sold the debt</a></li>
+<li><a href="/creditor-latest/add-debt">Add a debt</a></li>
+<li><a href="/creditor-latest/review-client">Ask for a client review</a></li>
+</ul>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">Tasks</h2>
+<ul class="govuk-list">
+<li><a href="/creditor-latest/account-landing-tabs?reference=BS0089931">Client/debt page - Status new debt</a></li>
+<li><a href="/creditor-latest/account-landing-tabs?reference=BS0059486#">Client/debt page - Status debt removed after debt review</a></li>
+<li><a href="/creditor-latest/account-landing-tabs?reference=BS0082564#">Client/debt page - Status debt active after debt review</a></li>
+<li><a href="/creditor-latest/account-landing-tabs?reference=BS0079634#">Client/debt page - Status ended after client review</a></li>
+<li><a href="/creditor-latest/account-landing-tabs?reference=BS0023427#">Client/debt page - Status Active after client review</a></li>
+</ul>
+
+
+{% endset -%}
+
+
+
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "Money adviser links",
+      id: "money-adviser",
+      panel: {
+        html: maHtml
+      }
+    },
+    {
+      label: "Creditor links",
+      id: "creditor",
+      panel: {
+        html: creditorHtml
+      }
+    }
+  ]
+}) }}
+
+
 
 
 
