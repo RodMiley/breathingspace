@@ -1,0 +1,57 @@
+ 
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <form class="form" action="remove-debt-confirm" method="post">
+    <div class="govuk-grid-column-full">
+     <a href="account-page-active" class="govuk-back-link">Back</a>   
+</div>
+</div>
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">   
+          <h1 class="govuk-heading-l">
+       Remove debt
+      </h1>
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You cannot remove this debt.</span>
+  </strong>
+</div>
+
+<div class="govuk-inset-text">
+  To have an active Breathing Space you need one debt that qualifies, if your client doesn't have any 
+    debts that qualify you should end the Breathing Space
+</div>
+
+<h2 class="govuk-heading-s">Debt: Credit Card</h2>
+ <ul class="govuk-list">
+      <li>Creditor:  Halifax (Credit cards only)</li> 
+      <li>Amount: £2500<li>
+      <li> Reference: RBC23455003</li>
+      <li> Debt was entered on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}<li>
+    </ul>
+  
+</div>
+              <!-- righthand column -->
+   <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s related">Related content</h2>
+      <p><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">See guidance about debt eligibility on GOV.UK (opens in new tab)</a></p>
+   </div>
+   <!-- -->
+    </div>
+    </form>
+
+</div>
+
+
+{% endblock %}
+

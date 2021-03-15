@@ -25,7 +25,7 @@
    <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-3">Sent to money adviser</strong>
 {% endif %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-full">
     <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
     <li>Status:{% include "./_status-playback.html" %}</li>
     <li>Date entered: 
@@ -39,16 +39,12 @@
     {% else %}
     <li>Date ends: {{ 'Do MMMM YYYY' | baseDateAdd(60) }}</li>
     {% endif %}
-    <ul>
-  </div>
-    <div class="govuk-grid-column-one-half">
-    <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
-    <li>Debt type: Housing benefit</li>
+        <li>Debt type: Housing benefit</li>
     <li>
      Breathing Space reference: 
      {{customer.reference  | default("BSS00012585") }}
     </li>
-    </ul>
+    <ul>
   </div>
 </div>
 </div>
