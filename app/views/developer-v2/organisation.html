@@ -1,0 +1,123 @@
+
+{% extends "layout-developerv2.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+      {% block breadcrumbsection %}
+
+
+           <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+
+                   <li class="govuk-breadcrumbs__list-item">
+      <a href="organisations">Organisations</a>
+    </li>
+              <li class="govuk-breadcrumbs__list-item">
+      Org 1
+    </li>
+    
+        {% endblock %}
+
+{% block content %}
+
+<!-- sets current in subnav -->
+ {% set currentnav ='applicationdetails' %}
+ <!-- -->
+
+
+  <form class="form" action="index" method="post">
+
+  
+    <div class="govuk-grid-row">
+   <!--    <div class="govuk-grid-column-one-quarter"> 
+
+{% include "./_nav1.html" %}
+{% include "./_nav2.html" %}
+
+</div> -->
+<div class="govuk-grid-column-full"> 
+<h1 class="govuk-heading-l"><span class="govuk-caption-m">Organisation</span>Org 1</h1>
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+</div>
+      <div class="govuk-grid-column-one-quarter">
+
+<h2 class="govuk-heading-s">Available APIs</h2>
+<ul class="govuk-list">
+<li>Hello world</li>
+<li>Notifications</li>
+<li>API type 3</li>
+<li>API type 4</li>
+</ul> 
+</div>
+<div class="govuk-grid-column-three-quarters">
+<a href="adddeveloper" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add developer</a>
+<a href="addadministrator" class="govuk-button govuk-button--secondary">Add administrator</a>
+    <table class="govuk-table">
+       <caption class="govuk-table__caption">Users</caption>
+        <thead>
+            <tr>
+                <th scope="row" class="govuk-table__header" >Email</th>
+                <th scope="row" class="govuk-table__header" >Role</th>
+                <th scope="row" class="govuk-table__header" >APIs</th>
+                <th scope="row" class="govuk-table__header" ></th>
+            </tr>
+        </thead>
+        <tbody>
+      {% if checked('admin','added')%}
+              <tr>
+                <td class="govuk-table__cell" >{{ emailadmin }}</td>
+                <td class="govuk-table__cell" >Administrator</td>
+                <td class="govuk-table__cell" ></td>
+                <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
+            </tr>
+       
+        {% endif %}
+
+
+        {% if checked('developer','added')%}
+              <tr>
+                <td class="govuk-table__cell" >{{ emaildev }}</td>
+                <td class="govuk-table__cell" >Developer</td>
+                <td class="govuk-table__cell" >{{ api }}</td>
+                <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
+            </tr>
+       
+        {% endif %}
+            <tr>
+                <td class="govuk-table__cell" >{{ emailadminedit | default('joe@org1.com') }}</td>
+                <td class="govuk-table__cell" >Administrator</td>
+                <td class="govuk-table__cell" ></td>
+                <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
+            </tr>
+
+            {% if checked('deleteuser','yes')%}
+            {% else %}
+                   <tr>
+                <td class="govuk-table__cell" >{{ emaildevedit | default('paul@org1.com') }}</td>
+                <td class="govuk-table__cell" >Developer</td>
+                <td class="govuk-table__cell" >
+                <ul class="govuk-list"><li>{{ scopeedit | default('Hello world') }}</li><li>{{ scopeedit2 }}</li></ul></td>
+                 <td class="govuk-table__cell" ><a href="deleteuser">Delete</a></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+

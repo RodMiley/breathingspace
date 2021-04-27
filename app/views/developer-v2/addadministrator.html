@@ -1,0 +1,55 @@
+
+{% extends "layout-developerv2-action.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+  <form class="form" action="organisation" method="post">
+
+  
+    <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-three-quarters"> 
+ <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+<h1 class="govuk-heading-l">Add administrator</h1>
+
+<div class="govuk-form-group ">
+        <label class="govuk-label " for="emailadmin" id="emailadmin-label">Email address</label>
+        
+
+        <input type="text" id="emailadmin" name="emailadmin" value="" class="govuk-input" aria-labelledby="emailadmin-label">
+    </div>
+
+ 
+
+    <div class="govuk-radios__item govuk-visually-hidden">
+        <input class="govuk-radios__input" id="admin" name="admin" type="radio" value="added"  checked>
+        <label class="govuk-label govuk-radios__label" for="admin">
+      hidden radio for logic
+        </label>
+      </div>
+
+
+<button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">
+ Save and submit
+</button> 
+
+
+
+
+      </div>
+      </div>
+    </div>
+    </form>
+
+
+{% endblock %}
+
