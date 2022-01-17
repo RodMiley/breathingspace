@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# breathingspace
-=======
+
 # GOV.UK Prototype Kit
 
 Go to the [GOV.UK Prototype Kit site](https://govuk-prototype-kit.herokuapp.com/docs) to download the latest version and read the documentation.
@@ -36,4 +34,3 @@ If you’ve got an idea or suggestion you can:
 
 * [get in touch on the developer Slack channel](https://ukgovernmentdigital.slack.com/messages/prototype-kit-dev)([open in app](slack://channel?team=T04V6EBTR&amp;id=C0E1063DW))
 * [create a GitHub issue](https://github.com/alphagov/govuk-prototype-kit/issues)
->>>>>>> 4de1586fb0ee215b6ca8593fefa1c48eb0023d6a

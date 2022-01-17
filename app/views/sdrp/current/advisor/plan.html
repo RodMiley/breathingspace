@@ -1,0 +1,77 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for Sarah Philips
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/_global-nav.html" %} 
+  <form class="form" action="details" method="post">
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+  <p class="govuk-!-margin-top-5 ">
+  This client is on <strong> Day 46</strong> of an Active Breathing space 
+    <a class="govuk-notification-banner__link" href="/advisor-latest/account-page">view Breathing Space</a>.
+  </p>
+
+
+
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-m"> <strong class="govuk-tag govuk-tag--grey">
+  Draft
+</strong> Debt repayment plan</span>
+ Sarah Philips
+ <span class="govuk-caption-m">Reference: SDRP0001 </span>
+ </h1>
+ <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<button class="govuk-button govuk-!-margin-right-3">Iniciate the plan</button> <a href="" class="govuk-button govuk-button--secondary">Add a debt</a>
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+{% set debtsHtml %}
+<h2 class="govuk-heading-l">Debts</h2>
+
+{% include  "../includes/_debts.html" %} 
+
+
+
+
+
+
+{% endset -%}
+
+{% set clientHtml %}
+<h2 class="govuk-heading-l">Client details</h2>
+
+{% include  "../includes/_client_details.html" %} 
+{% endset -%}
+
+{{ govukTabs({
+  items: [
+    {
+      label: "Debts",
+      id: "debts",
+      panel: {
+        html: debtsHtml
+      }
+    },
+    {
+      label: "Client details",
+      id: "clientDetails",
+      panel: {
+        html: clientHtml
+      }
+    }
+  ]
+}) }}
+
+</div></div>
+</form>
+{% endblock %}

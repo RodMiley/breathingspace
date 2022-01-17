@@ -24,6 +24,7 @@ router.get('*', function (req, res, next) {
 
   res.locals.path1 = res.locals.path + '/' + bits[0]
   res.locals.path2 = res.locals.path + '/' + bits[0] + '/' + bits[1]
+  res.locals.path3 = res.locals.path + '/' + bits[0] + '/' + bits[2]
   res.locals.stage = req.cookies.stage || 1
   res.locals.query = req.query
 
@@ -34,6 +35,19 @@ router.get('*', function (req, res, next) {
 
   next()
 })
+
+// GET SPRINT NAME - useful for relative templates
+router.use('/', (req, res, next) => {
+  res.locals.currentURL = req.originalUrl; //current screen
+  res.locals.prevURL = req.get('Referrer'); // previous screen
+  req.folder = req.originalUrl.split('/')[1]; //folder, e.g. 'current'
+  req.subfolder = req.originalUrl.split('/')[2]; //sub-folder e.g. 'service'
+  res.locals.folder = req.folder; // what folder the url is
+  res.locals.subfolder = req.subfolder; // what subfolder the URL is in
+console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder  );
+  console.log('previous page is: ' + res.locals.prevURL + " and current page is " + req.url + " " + res.locals.currentURL );
+  next();
+});
 
 router.use('/', (req, res, next) => {
   res.locals.currentURL = req.originalUrl; //current screen
@@ -58,6 +72,7 @@ router.use('/creditor-v4', require('./views/creditor-v4/_routes'));
 router.use('/creditor-v5', require('./views/creditor-v5/_routes'));
 router.use('/creditor-v6', require('./views/creditor-v6/_routes'));
 router.use('/creditor-latest', require('./views/creditor-latest/_routes'));
+
 
 
 

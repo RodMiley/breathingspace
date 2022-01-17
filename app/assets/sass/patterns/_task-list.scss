@@ -24,17 +24,14 @@
   }
 }
 
-.app-task-list__tag{
-  float:right;
-}
-
 .app-task-list__items {
   @include govuk-font($size: 19);
   @include govuk-responsive-margin(9, "bottom");
   list-style: none;
   padding-left: 0;
-
-
+  @include govuk-media-query($from: tablet) {
+    padding-left: govuk-spacing(6);
+  }
 }
 
 .app-task-list__item {
@@ -56,6 +53,10 @@
   }
 }
 
+// The `app-task-list__task-completed` class was previously used on the task
+// list for the completed tag (changed in 86c90ec) – it's still included here to
+// avoid breaking task lists in existing prototypes.
+.app-task-list__tag,
 .app-task-list__task-completed {
   margin-top: govuk-spacing(2);
   margin-bottom: govuk-spacing(1);

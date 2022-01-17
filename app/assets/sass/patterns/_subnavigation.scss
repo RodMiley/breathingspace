@@ -3,11 +3,11 @@
     {
       border-bottom:1px solid $govuk-border-colour;
 
-      margin-top:-50px; //dirty hack for prototype only
 
       .navbar .navbar__list-items {
         padding: 0;
         margin:0 0px;
+        display:inline-block;
       
         li {
           display: inline-block;
@@ -81,9 +81,8 @@
       }
 
       @media screen and (max-width: 768px) { 
-        margin-top:-30px;
         padding:10px 0;
-       
+        border-bottom:none;
 
 
         & .signin  {
