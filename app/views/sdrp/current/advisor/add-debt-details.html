@@ -1,0 +1,80 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Add details about the debt
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="add-debt-confirm-debt-details" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+       Add details about the debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body">{{ newcreditor | default("Southwark Council") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
+
+      <h2 class="govuk-heading-s">Debt type</h2>
+      <p class="govuk-body">Credit card</p>
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="newDebtAmount">
+   Debt amount
+  </label>
+   <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+  <input class="govuk-input govuk-input--width-10" id="newDebtAmount" name="newDebtAmount" type="text" spellcheck="false" value="{{ newDebtAmount }}">
+</div>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="newDebtReference">
+    Reference (optional)
+  </label>
+  <span id="changed-name-hint" class="govuk-hint">
+      This is the creditors reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="newDebtReference" name="newDebtReference" type="text" spellcheck="false" value="{{ newDebtReference  }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="newDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

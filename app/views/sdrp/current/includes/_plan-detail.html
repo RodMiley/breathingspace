@@ -1,0 +1,35 @@
+
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Payment budget per month</dt>
+    <dd class="govuk-summary-list__value">£ {{data['budget']}}</dd>
+
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="budget">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Total amount to repay</dt>
+    <dd class="govuk-summary-list__value">£3500.80</dd>
+
+    <span class="govuk-summary-list__actions"></span>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Length of plan</dt>
+    <dd class="govuk-summary-list__value">
+    {% if data['updateDebtType']%}
+    3 years 2 months
+    {% else %}
+   Plan cannot be calculated because their are tasks to do
+    {% endif %}
+    
+    </dd>
+
+    <span class="govuk-summary-list__actions"></span>
+  </div>
+</dl>

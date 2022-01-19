@@ -9,30 +9,56 @@ Debt repayment plan for Sarah Philips
 
 {% block content %}
 {% include  "../includes/_global-nav.html" %} 
-  <form class="form" action="details" method="post">
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-full">
 
-  <p class="govuk-!-margin-top-5 ">
+  <!--<p class="govuk-!-margin-top-5 ">
   This client is on <strong> Day 46</strong> of an Active Breathing space 
     <a class="govuk-notification-banner__link" href="/advisor-latest/account-page">view Breathing Space</a>.
-  </p>
+  </p> -->
 
-
+{% include  "../includes/_confirmation-messages.html" %} 
 
        <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
  <span class="govuk-caption-m"> <strong class="govuk-tag govuk-tag--grey">
-  Draft
-</strong> Debt repayment plan</span>
+  Draft repayment plan
+</strong> Reference: SDRP0001</span>
  Sarah Philips
- <span class="govuk-caption-m">Reference: SDRP0001 </span>
  </h1>
- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-<button class="govuk-button govuk-!-margin-right-3">Iniciate the plan</button> <a href="" class="govuk-button govuk-button--secondary">Add a debt</a>
+{% include  "../includes/_plan-detail.html" %} 
+
+
+
+<form class="govuk-!-display-inline" action="upload-consent" method="post">
+<button class="govuk-button govuk-!-margin-right-2">Iniciate the plan</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add a debt</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<form class="govuk-!-display-inline" action="upload-consent" method="post">
+<button  class="govuk-button govuk-button--secondary">Delete draft plan</button>
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% set clientHtml %}
+<h2 class="govuk-heading-l">Client details</h2>
+{% include  "../includes/_client_details.html" %} 
+{% endset -%}
+
+
+
+{% set tasksHtml %}
+<h2 class="govuk-heading-l">Tasks</h2>
+{% include  "../includes/_tasklist.html" %} 
+{% endset %}
 
 
 {% set debtsHtml %}
@@ -55,6 +81,13 @@ Debt repayment plan for Sarah Philips
 
 {{ govukTabs({
   items: [
+        {
+      label: "Tasks",
+      id: "tasks",
+      panel: {
+        html: tasksHtml
+      }
+    },
     {
       label: "Debts",
       id: "debts",
@@ -73,5 +106,6 @@ Debt repayment plan for Sarah Philips
 }) }}
 
 </div></div>
+
 </form>
 {% endblock %}

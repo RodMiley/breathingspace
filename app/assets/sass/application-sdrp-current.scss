@@ -27,11 +27,29 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/subnavigation";
 
 
-
+//Start Prototype only helper classes -----------------------------------------------------------------
 
 .float-right{
     float:right;
 }
 
+button.govuk-link{
+    border:none;
+    background:transparent;
+    text-decoration:underline;
+    text-align:left;
+    color: $govuk-link-colour;
+    margin-bottom:0px;
+    padding-left:0;
 
+    &:visited{
+        color:$govuk-link-visited-colour;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+//End Prototype only helper classes -----------------------------------------------------------------
 

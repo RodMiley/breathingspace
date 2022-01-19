@@ -1,0 +1,25 @@
+{% if checked('taskcompleted','show')%}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+<span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
+
+{% set html %}
+{% if checked('task','newDebtAdded')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a new debt
+  </h3>
+{% else %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  {% endif%}
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% else %}
+{% endif %}

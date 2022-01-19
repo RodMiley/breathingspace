@@ -1,0 +1,18 @@
+<ol class="app-task-list">
+  <li>
+    <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
+      <li class="app-task-list__item">
+      {% if data['updateDebtType']%}
+       <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+      {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% endif %}  
+        <span class="app-task-list__task-name">
+          <a href="update-debt-detail">
+            Assign debt type to Southwark Council's debt
+          </a>
+        </span>
+      </li>
+    </ul>
+  </li>
+</ol>

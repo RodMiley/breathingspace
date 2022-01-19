@@ -1,20 +1,20 @@
 <dl>
-  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
+
+  {% if checked('task','newDebtAdded')%}
+   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
   <dt>
     <h2 class="govuk-heading-s">
-      <span class="govuk-!-display-block">Housing benefit</span>
+      <span class="govuk-!-display-block">Credit card</span>
     </h2>
   </dt>
-
   <dd class="govuk-!-margin-left-0">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <ul class="govuk-list">
-          <li>Creditor: Newcastle city council</li>
-          <li>Amount: £867</li>
+          <li>Creditor: {{ newcreditor }}</li>
+          <li>Amount: £{{ newDebtAmount | default("3567") }}</li>
           <li></li>
-          <li>Reference: NCC-HB-23417</li>
-          <li>Debt was entered on 5th January 2022</li>
+          <li>Reference:{{ newDebtReference | default("123456789101") }}</li>
           <li></li>
         </ul>
       </div>
@@ -27,7 +27,40 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </dd>
+  {% endif %}
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
+  <dt>
+    <h2 class="govuk-heading-s">
+      <span class="govuk-!-display-block">Housing benefit</span>
+    </h2>
+  </dt>
+  <dd class="govuk-!-margin-left-0">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <ul class="govuk-list">
+          <li>Creditor: Newcastle city council</li>
+          <li>Amount: £867</li>
+          <li></li>
+          <li>Reference: NCC-HB-23417</li>
+        </ul>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            <form class="form" action="change-debt1" method="post">
+              <button class="govuk-body govuk-link">Update debt details</button>
+            </form>
+          </li>
+          <li>
+            <form class="form" action="remove-debt" method="post">
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -61,7 +94,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -95,7 +128,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -117,8 +150,7 @@
       <li>Creditor: EDF Energy Ltd</li> 
       <li>Amount: £389</li><li>
       </li><li> Reference: CRT8536544</li>
-      <li> Debt was entered on debt5</li><li>
-    </li></ul>
+</ul>
       </div>
       <div class="govuk-grid-column-one-third">
         <ul class="govuk-list govuk-!-font-size-16">
@@ -129,7 +161,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -141,7 +173,7 @@
   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
  <dt>
     <h2 class="govuk-heading-s">
-      <span class="govuk-!-display-block">Council tax</span>
+      <span class="govuk-!-display-block">{{ updateDebtType | default("Debt") }}</span>
     </h2>
   </dt>
   <dd class="govuk-!-margin-left-0">
@@ -149,10 +181,9 @@
       <div class="govuk-grid-column-two-thirds">
     <ul class="govuk-list">
       <li>Creditor: Southwark Council</li> 
-      <li>Amount: £1179</li><li>
-      </li><li> Reference: LCC3456789</li>
-      <li> Debt was entered on 5th January 2022</li><li>
-    </li></ul>
+      <li>Amount: £ {{ updateDebtAmount | default("1179") }}</li><li>
+      </li><li> Reference: {{ updateDebtReference | default("SC3456789") }}</li>
+  </ul>
       </div>
       <div class="govuk-grid-column-one-third">
         <ul class="govuk-list govuk-!-font-size-16">
@@ -163,7 +194,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -183,8 +214,7 @@
       <li>Creditor:  M Jones(landlord)</li> 
       <li>Amount: £1250</li><li>
       </li><li> Reference: Flat 4 Monmouth Rd</li>
-      <li> Debt was entered on 5th January 2022</li><li>
-    </li></ul>
+</ul>
       </div>
       <div class="govuk-grid-column-one-third">
         <ul class="govuk-list govuk-!-font-size-16">
@@ -195,7 +225,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
@@ -218,8 +248,7 @@
       <li>Amount: £789</li><li>
       <li>National insurance number: GH 34 34 34 D</li>
       </li><li> Reference: KN23455</li>
-      <li> Debt was entered on 5th January 2022</li><li>
-    </li></ul>
+  </ul>
       </div>
       <div class="govuk-grid-column-one-third">
         <ul class="govuk-list govuk-!-font-size-16">
@@ -230,7 +259,7 @@
           </li>
           <li>
             <form class="form" action="remove-debt" method="post">
-              <button class="govuk-body govuk-link">Remove this debt</button>
+              <button class="govuk-body govuk-link">Delete this debt</button>
             </form>
           </li>
         </ul>
