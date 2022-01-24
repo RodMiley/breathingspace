@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-three-quarters">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+        Declaration
+      </h1>
+     <p class="govuk-body">By submitting this application, you agree that:</p>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Agree and iniciate the debt repayment plan
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -3,7 +3,7 @@
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">Payment budget per month</dt>
-    <dd class="govuk-summary-list__value">£ {{data['budget']}}</dd>
+    <dd class="govuk-summary-list__value">£ {{data['budget'] | default('175') }}</dd>
 
     <dd class="govuk-summary-list__actions">
       <a class="govuk-link" href="budget">
@@ -14,7 +14,15 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">Total amount to repay</dt>
-    <dd class="govuk-summary-list__value">£3500.80</dd>
+    <dd class="govuk-summary-list__value">
+     {% if checked('task','debtUpdated') and case.task =='Creditor has raised discrepancies' %}
+    £10430
+    {% elif checked('task','newDebtAdded')%}
+    £13476
+    {% else %}
+    £9976
+    {% endif %}
+    </dd>
 
     <span class="govuk-summary-list__actions"></span>
   </div>
@@ -22,8 +30,13 @@
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">Length of plan</dt>
     <dd class="govuk-summary-list__value">
-    {% if data['updateDebtType']%}
-    3 years 2 months
+     {% if checked('task','debtUpdated') and case.task =='Creditor has raised discrepancies' %}
+    5 years
+      {% elif checked('task','debtUpdated') or case.task =='Creditor has raised discrepancies' %}
+    4 years 8 months
+    
+    {% elif checked('task','newDebtAdded')%}
+    6 years 5 months
     {% else %}
    Plan cannot be calculated because their are tasks to do
     {% endif %}

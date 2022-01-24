@@ -80,7 +80,12 @@
       <div class="govuk-grid-column-two-thirds">
       <ul class="govuk-list">
       <li>Creditor: Halifax credit cards only</li> 
-      <li>Amount: £5400</li><li>
+      <li>Amount: 
+         {% if data['updateDebtType'] or checked('task','debtUpdated') and case.task =='Creditor has raised discrepancies' %}
+         £5854
+         {% else %}
+         £5400
+         {% endif %}</li><li>
       </li><li> Reference: HAL345TH456</li>
       <li> Debt was entered on 5th January 2022</li><li>
     </li></ul>
