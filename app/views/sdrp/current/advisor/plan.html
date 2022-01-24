@@ -24,7 +24,7 @@ Debt repayment plan for Sarah Philips
  {% if case.status == 'Final plan'%}
   <strong class="govuk-tag govuk-tag--green">Final plan</strong> 
  {% elif case.status == 'Initiated plan'%}
-  <strong class="govuk-tag govuk-tag--blue">Iniciated plan</strong> 
+  <strong class="govuk-tag govuk-tag--blue">Initiated plan</strong> 
  {% else %}
  <strong class="govuk-tag govuk-tag--grey">Draft plan</strong>  {% endif %}
  </span>
@@ -52,7 +52,7 @@ Debt repayment plan for Sarah Philips
 </form> -->
 
 <form class="govuk-!-display-inline" action="not-testing" method="post">
-<button  class="govuk-button govuk-button--secondary">Delete iniciated plan</button>
+<button  class="govuk-button govuk-button--secondary">Delete initiated plan</button>
 {% include  "../includes/_hide-confirmation.html" %} 
 </form>
 {% elif case.status == 'Final plan'%}
