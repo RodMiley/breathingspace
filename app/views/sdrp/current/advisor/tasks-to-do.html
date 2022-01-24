@@ -20,8 +20,9 @@
 {% set totAnnualReviews = 0 %}
 
 	{% for case in cases %}
-
- {% if case.task === "Creditor has raised discrepancies" or case.task === "Annual review due" %}
+ {% if checked('task','debtUpdated') and case.ref !== "SDRP592821" %}   
+ {% set totTasks = '5' %}
+ {% elif case.task === "Creditor has raised discrepancies" or case.task === "Annual review due" %}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
@@ -70,6 +71,7 @@ Creditor has raised discrepancies ({{totDiscprenceies}})
 All ({{totTasks}}) 
 {% endif %}
 </h2>
+
 
 
 <ul class="govuk-list" id="xnum">

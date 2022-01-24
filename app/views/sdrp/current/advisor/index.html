@@ -11,6 +11,26 @@
 {% block content %}
 {% include  "../includes/_global-nav.html" %} 
 
+{% set totTasks = 0 %}
+{% set totDiscprenceies = 0 %}
+{% set totAnnualReviews = 0 %}
+
+	{% for case in cases %}
+
+ {% if case.task === "Creditor has raised discrepancies" or case.task === "Annual review due" %}
+    {% set totTasks = totTasks + 1 %}
+   {% endif %}
+
+    {% if case.task === "Creditor has raised discrepancies" %}
+    {% set totDiscprenceies = totDiscprenceies + 1 %}
+   {% endif %}
+
+  {% if case.task === "Annual review due" %}
+    {% set totAnnualReviews = totAnnualReviews + 1 %}
+   {% endif %}
+
+   {% endfor %}
+
   <div class="govuk-grid-row govuk-!-margin-top-5">
   
    <div class="govuk-grid-column-full">
@@ -18,26 +38,23 @@
  <span class="govuk-caption-xl">Debt repayment plan</span>
  Advice uk</h1>
  <h2 class="govuk-heading-s">We currently have<br>
- <span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">145</span><br>  Active Debt repayment plans  </h2>
+ <span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">145</span><br>Debt repayment plans  </h2>
 
 <div class="card-container">
 
-                          <div class="card double">
-                  <h2 class="govuk-heading-s"><a href="tasks-to-do">Tasks to do <strong>(7)</strong></a></h2>
+              <div class="card double">
+                  <h2 class="govuk-heading-s"><a href="tasks-to-do">Tasks to do <strong>({{totTasks}})</strong></a></h2>
                   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                   <ul class="govuk-list">
-                  <li><a href="tasks-to-do">Creditor has raised discrepancies (4) </a></li>
-                  <li><a href="tasks-to-do">Reviews to complete (3) </a></li>
+                  <li><a href="tasks-to-do">Creditor has raised discrepancies ({{totDiscprenceies}}) </a></li>
+                  <li><a href="tasks-to-do">Reviews to complete ({{totAnnualReviews}}) </a></li>
                   </ul>
-     
               </div>
-
-                   <div class="card">
+              <div class="card">
                 <h2 class="govuk-heading-s">
                 Create new
                  </h2> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
-
                  <a href="create-guard" class="govuk-button govuk-!-margin-bottom-2">Create a debt repayment plan</a>
               </div>
 </div>

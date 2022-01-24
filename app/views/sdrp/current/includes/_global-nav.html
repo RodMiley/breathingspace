@@ -6,7 +6,10 @@
       {% else %}
          <li>
          {% endif %}
-        <a href="index">Home</a>
+        <form class="govuk-!-display-inline" action="index" method="post">
+<button  class="govuk-body govuk-link">Home</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
       </li>
    <!--   {% if globalnav  == 'breathing space' %}
       <li class="active">
@@ -28,7 +31,10 @@
       {% else %}
          <li>
          {% endif %}
-        <a href="search">Search</a>
+               <form class="govuk-!-display-inline" action="search" method="post">
+<button  class="govuk-body govuk-link">Search</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
       </li>
     </ul>
          <ul class="navbar__list-items signin">
