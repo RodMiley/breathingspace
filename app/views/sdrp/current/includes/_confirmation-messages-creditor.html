@@ -14,6 +14,13 @@
   </h3>
    <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the udpdate</p>
     <p>If Advice Uk don't need more information the next notification you will recieve is a proposal or cancelation of the plan</p>
+
+
+  {% elif checked('task','soldDebt') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have informed the money adviser that you have sold the debt</p>
   {% endif%}
 {% endset %}
 

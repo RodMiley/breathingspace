@@ -3,7 +3,11 @@
     <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
 
       <li class="app-task-list__item">
-      {% if data['updateDebtType'] or checked('task','debtUpdated') and case.task =='Creditor has raised discrepancies' %}
+     {% if checked('task','confirmDisc') and case.task =='Creditor has raised discrepancies' %}
+     <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+      {% elif case.task =='Creditor has raised discrepancies' or case.task =='Annual review due' %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% elif data['updateDebtType']%}
        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
       {% else %}
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>

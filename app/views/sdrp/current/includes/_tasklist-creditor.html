@@ -4,7 +4,7 @@
       class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0"
     >
       <li class="app-task-list__item">
-        {% if data['updateDebtType'] or checked('task','debtUpdated') and
+        {% if data['updateDebtType'] or checked('task','soldDebt')or checked('task','debtUpdated') and
         case.task =='Creditor has raised discrepancies' %}
         <strong
           class="govuk-tag app-task-list__tag"
@@ -29,13 +29,15 @@
 <form class="govuk-!-display-inline" action="update-debt-detail" method="post">
 {% if checked('task','debtUpdated') %}
 <a href="debt-discrepancies" class="govuk-!-display-inline-block govuk-!-margin-bottom-2">View updated the debt details</a>
+{% elif checked('task','soldDebt')%}
+<a href="sold-debt-details" class="govuk-!-display-inline-block govuk-!-margin-bottom-2">View sold debt details</a>
 {% else %}
         <span class="app-task-list__task-name">
          <button class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Confirm or update debt details</button> 
 {% include  "../includes/_hide-confirmation.html" %} 
 </form>
 
-<form class="govuk-!-display-inline" action="not-testing" method="post">
+<form class="govuk-!-display-inline" action="sold-debt-choose-creditor" method="post">
 <button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">We've sold this debt</button>
 {% include  "../includes/_hide-confirmation.html" %} 
 </form>

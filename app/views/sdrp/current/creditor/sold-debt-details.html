@@ -1,0 +1,37 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name you have sold the debt to
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Newcastle Council have sold this debt
+      </h1>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+      <ul class="govuk-list">
+      <li>Debt type: Self assessment </li> 
+      <li>Amount:
+     £567
+    </li> 
+     <li> Reference: VFDgzk9NKIu6O</li>         
+    </ul>
+
+<p class="govuk-body-l">You have informed Advice UK that Newcastle Council have sold the debt to <strong>Lowell Group</strong></p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Actioned by</h3>
+<p class="govuk-body"> Paul Smith, Newcastle Council, 24 January 2022 at 11.32am</p>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
