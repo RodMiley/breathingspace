@@ -9,11 +9,13 @@
 
   <div class="govuk-grid-row">
   <form class="form" action="confirm-debt-discrepancies" method="post">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
          Creditor has raised the following discrepancies to the debt
       </h1>
+      </div>
+      <div class="govuk-grid-column-full">
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 {{ govukTable({
