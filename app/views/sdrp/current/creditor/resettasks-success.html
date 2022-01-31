@@ -1,5 +1,8 @@
 
-{% extends "../layout-sdrp.html.html" %}
+
+
+
+{% extends "../layout-sdrp.html" %}
 
 
 {% block pageTitle %}
@@ -8,15 +11,23 @@ Not testing this page today!
 
 
 {% block content %}
-  <form class="form" action="details" method="post">
+
+<form class="form" action="index" method="post">
+
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
       <h1 class="govuk-heading-xl">
-       Not testing this today!
+       Reset tasks
       </h1>
       <p class="govuk-body-l">Don't worry you haven't broken anything, were not testing this today,just hit the back button and we'll carry on.</p>
+
+      {{case.task}}
+
+<button class="govuk-link govuk-body">Prototype home page</button>
+
+</form>
     </div>
 </div>
 {% endblock %}

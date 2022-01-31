@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
-         Confirm debt details
+         Confirm debt details {{ creditorcase.task}}
       </h1>
         <dl class="govuk-summary-list govuk-!-margin-bottom-5">
             <div class="govuk-summary-list__row">
@@ -21,7 +21,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <ul class="govuk-list">
-             
               <li>Debt type: <strong>{{ updateDebtType | default("Debt") }}</strong></li>
               <li>Amount: <strong>£ {{ updateDebtAmount | default("1179") }}</strong></li>
               <li> Reference: <strong> {{ updateDebtReference | default("SC3456789") }}</strong></li>
@@ -41,8 +40,16 @@
 
          <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="task" type="radio" value="debtUpdated" checked>
-        <label class="govuk-label govuk-radios__label" for="debtUpdated">
+        <input class="govuk-radios__input" id="" name="tasktodo" type="radio" value="completed" checked>
+        <label class="govuk-label govuk-radios__label" for="completed">
+         hidden radio
+        </label>
+      </div>
+      </div>
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~plan?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
          hidden radio
         </label>
       </div>

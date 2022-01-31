@@ -16,7 +16,7 @@
       {% else %}
          <li>
          {% endif %}
-               <form class="govuk-!-display-inline" action="search" method="post">
+               <form class="govuk-!-display-inline" action="not-testing" method="post">
 <button  class="govuk-body govuk-link">Search</button> 
 {% include  "../includes/_hide-confirmation.html" %} 
 </form>
@@ -27,7 +27,7 @@
             <p>Paul Smith</p>
       </li>
         <li>
-         <a href="orgchoice">Newcastle city council</a>
+         <a href="orgchoice">{% include "../includes/_creditor.html" %}</a>
       </li>
   
     

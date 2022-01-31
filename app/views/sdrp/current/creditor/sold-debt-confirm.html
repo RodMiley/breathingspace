@@ -30,8 +30,17 @@
    {% include  "../includes/_show-confirmation.html" %} 
  <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="task" type="radio" value="soldDebt" checked="">
-        <label class="govuk-label govuk-radios__label" for="task">
+        <input class="govuk-radios__input" id="" name="taskoutcome" type="radio" value="soldDebt" checked="">
+        <label class="govuk-label govuk-radios__label" for="taskoutcome">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+          <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~plan?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
          hidden radio
         </label>
       </div>

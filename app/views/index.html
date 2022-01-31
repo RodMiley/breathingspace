@@ -35,6 +35,14 @@
    </div>
    </div>
 
+ {% for creditorcase in creditorcases %}
+    {% if creditorcase.status === "Initiated plan" and creditorcase.task === "Yes"   %}
+    {{creditorcase.name}}
+    {% endif %}  
+
+
+             {% endfor %} 
+
 </div>
 
 {% endblock %}
