@@ -41,11 +41,11 @@
      5 years 4 months
    {% elif case.task %}
     5 years 2 months
-           {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') %}
+           {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') and data['budgetupdated']%}
     3 years 9 months
 
     
-    {% elif checked('adddebtcouncil','yes') and data['budget']%}
+    {% elif checked('adddebtcouncil','yes') and data['budgetupdated']%}
      1 years 3 months to fully repay all the debts
     {% else %}
 
