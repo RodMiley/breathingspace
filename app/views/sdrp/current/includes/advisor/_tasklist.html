@@ -1,0 +1,37 @@
+<ol class="app-task-list">
+  <li>
+    <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
+
+      <li class="app-task-list__item">
+     {% if checked('task','confirmDisc') and case.task =='Creditor has raised discrepancies' or case.task =='Proposed plan due' and checked('task','confirmProp') %} 
+     <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+      {% elif case.task =='Creditor has raised discrepancies' or case.task =='Annual review due' %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% elif data['updateDebtType']%}
+       <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+      {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% endif %}  
+        <span class="app-task-list__task-name">
+        {% if case.task === "Creditor has raised discrepancies"%}
+           <a href="debt-discrepancies?reference={{case.reference}}">
+            Creditor has raised discrepancies
+          </a>
+        {% elif case.task === "Creditor can't find the debt"  %}
+          <a href="cant-find-debt?reference={{case.reference}}">
+            Creditor can't find the debt
+          </a>
+        {% elif case.task === "Proposed plan due"  %}
+          <a href="check-proposal?reference={{case.reference}}">
+            Proposed plan due
+          </a>
+        {% else %}
+          <a href="update-debt-detail">
+            Assign debt type to Southwark Council's debt
+          </a>
+        {% endif %} 
+        </span>
+      </li>
+    </ul>
+  </li>
+</ol>

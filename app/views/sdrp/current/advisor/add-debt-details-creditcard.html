@@ -1,0 +1,65 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Details about the debt
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="Plan" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+       Details about the debt
+      </h1>
+      <h2 class="govuk-heading-s  govuk-!-margin-bottom-1">Creditor</h2>
+       <p class="govuk-body ">{{ creditor2 | default("Halifax creditcards only") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
+
+
+       <h2 class="govuk-heading-s  govuk-!-margin-bottom-1">Debt type</h2>
+       <p class="govuk-body">Creditcard</p>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="creditcardDebtAmount">
+   Estimated debt amount
+  </label>
+   <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+  <input class="govuk-input govuk-input--width-10" id="creditcardDebtAmount" name="creditcardDebtAmount" type="text" spellcheck="false" value="{{ creditcardDebtAmount }}">
+</div>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="creditcardDebtReference">
+    Reference (optional)
+  </label>
+  <span id="priority-debt-hint" class="govuk-hint">
+      If you enter a 16 digit creditcard number, we will not show the first 8 numbers in any notification</span>
+  <input class="govuk-input govuk-input--width-10" id="creditcardDebtReference" name="creditcardDebtReference" type="text" spellcheck="false" value="{{ creditcardDebtReference  }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebtcreditcard" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="creditcardDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

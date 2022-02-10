@@ -1,0 +1,19 @@
+ <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+ <h1 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-3">
+     {{ case.name | default('Sarah Philips')}}
+  <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
+ </h1>
+ </div>
+  <div class="govuk-grid-column-one-third">
+  {% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-4 govuk-!-display-inline-block float-right"> <strong>Day 1</strong> of Propose the plan stage</p>
+  {% elif case.task =='Proposed plan due' %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-!-display-inline-block"> <strong>Day 22</strong> of Intention to iniciate a plan stage<br>You have <strong>7 days</strong> to propose the plan</p>
+  {% elif case.task %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-!-display-inline-block">Day 7 of Intention to iniciate a plan<br>14 days before you can propose the plan</p>
+  {% else%}
+  {% endif %}
+  </div>
+  </div>
+ <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />

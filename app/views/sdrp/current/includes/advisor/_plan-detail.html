@@ -1,0 +1,156 @@
+
+
+{% include  "../advisor/_plan-summary.html" %} 
+
+<h3 class="govuk-heading-m">Monthly repayments breakdown</h3>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      10% Scheme administration cost
+    </dt>
+    <dd class="govuk-summary-list__value">
+     {% if data['budgetupdated'] or case.task %} £{{ fees }}.00 {% else %}Cannot calculate{% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+     Priority debts 30% (Pro rata)
+    </dt>
+    <dd class="govuk-summary-list__value">
+     {% if data['budgetupdated']  or case.task %} £{{ priority }}.00 {% else %}Cannot calculate{% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      All debts 70% (Pro rata)
+    </dt>
+    <dd class="govuk-summary-list__value">
+       {% if data['budgetupdated']  or case.task %} £{{ nonpriority }}.00{% else %}Cannot calculate{% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+     Total 
+    </dt>
+    <dd class="govuk-summary-list__value">
+       {% if data['budgetupdated']  or case.task %}£{{ surplus }}.00 {% else %}Cannot calculate{% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    
+    </dd>
+  </div>
+</dl>
+
+<h3 class="govuk-heading-m">Monthly amounts creditors will recieve</h3>
+    {% if case.task  %}
+<h4 class="govuk-heading-s govuk-!-margin-bottom-2">Priority debts</h4>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        Southwark council
+        <span class="govuk-body">| Council tax</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ ( debtArepayment|float ).toFixed(2)}}</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        EDF Energy Ltd
+        <span class="govuk-body">| Gas</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ ( debtBrepayment|float ).toFixed(2)}}</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+<h4 class="govuk-heading-s govuk-!-margin-bottom-2">Non priority debts</h4>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        Yorkshire Water Services Ltd
+        <span class="govuk-body">| Water</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ ( debtCrepayment|float ).toFixed(2)}}</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        Halifax credit cards
+        <span class="govuk-body">| Credit card</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ ( debtDrepayment|float ).toFixed(2)}}</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        Next retail plc
+        <span class="govuk-body">| Store card</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ ( debtErepayment|float ).toFixed(2)}}</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+    {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') %}
+<h4 class="govuk-heading-s">Priority debts</h4>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        {{ creditor }}   <span class="govuk-body">| Council tax</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £89.28</br> 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+
+<h4 class="govuk-heading-s">Non priority debts</h4>
+<dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        {{ creditor2 }}   <span class="govuk-body">| Credit card</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £90.72 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+
+    {% else %}
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        {{ creditor }}  <span class="govuk-body">| Council tax</span>
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £{{ surplus_fees }}.00 
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+ {% endif %}
+

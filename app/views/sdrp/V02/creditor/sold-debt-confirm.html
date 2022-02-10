@@ -1,0 +1,59 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name you have sold the debt to
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+ Confirm Newcastle Council have sold this debt
+      </h1>
+
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Debt</h3>
+      <ul class="govuk-list">
+      <li>Debt type: Self assessment </li> 
+      <li>Amount:
+     £567
+    </li> 
+     <li> Reference: VFDgzk9NKIu6O</li>         
+    </ul>
+
+<p class="govuk-body-l">You're telling Advice UK  you have sold the debt to <strong>Lowell Group</strong></p>
+
+   {% include  "../includes/_show-confirmation.html" %} 
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="taskoutcome" type="radio" value="soldDebt" checked="">
+        <label class="govuk-label govuk-radios__label" for="taskoutcome">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+          <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~plan?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and submit
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

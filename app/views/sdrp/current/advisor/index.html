@@ -9,15 +9,16 @@
 
 
 {% block content %}
-{% include  "../includes/_global-nav.html" %} 
+{% include  "../includes/advisor/_global-nav.html" %} 
 
 {% set totTasks = 0 %}
 {% set totDiscprenceies = 0 %}
-{% set totAnnualReviews = 0 %}
+{% set totProposed = 0 %}
+{% set totCantFind = 0 %}
 
 	{% for case in cases %}
 
- {% if case.task === "Creditor has raised discrepancies" or case.task === "Annual review due" %}
+ {% if case.task === "Creditor has raised discrepancies" or case.task === "Proposed plan due" or case.task === "Creditor can't find the debt" %}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
@@ -25,9 +26,14 @@
     {% set totDiscprenceies = totDiscprenceies + 1 %}
    {% endif %}
 
-  {% if case.task === "Annual review due" %}
-    {% set totAnnualReviews = totAnnualReviews + 1 %}
+  {% if case.task === "Proposed plan due" %}
+    {% set totProposed = totProposed + 1 %}
    {% endif %}
+
+   {% if case.task === "Creditor can't find the debt" %}
+    {% set totCantFind = totCantFind + 1 %}
+   {% endif %}
+
 
    {% endfor %}
 
@@ -47,7 +53,8 @@
                   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                   <ul class="govuk-list">
                   <li><a href="tasks-to-do">Creditor has raised discrepancies ({{totDiscprenceies}}) </a></li>
-                  <li><a href="tasks-to-do">Reviews to complete ({{totAnnualReviews}}) </a></li>
+                  <li><a href="tasks-to-do">Creditor can't find the debt ({{totCantFind}}) </a></li>
+                  <li><a href="tasks-to-do">Proposeds plan due ({{totProposed}}) </a></li>
                   </ul>
               </div>
               <div class="card">
@@ -55,7 +62,7 @@
                 Create new
                  </h2> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
-                 <a href="create-guard" class="govuk-button govuk-!-margin-bottom-2">Create a debt repayment plan</a>
+                 <a href="create-guard" class="govuk-button govuk-!-margin-bottom-2">Create a draft plan</a>
               </div>
 </div>
 

@@ -1,0 +1,138 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Details about the debt
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="Plan#debts" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+       Details about the debt
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+       <p class="govuk-body govuk-!-margin-bottom-9">{{ creditor | default("Southwark Council") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
+
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set textHtml %}
+{{ govukInput({
+  id: "council-other-debt",
+  name: "council-other-debt",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Type of Debt"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  id: "debtcouncil",
+  name: "debtcouncil",
+  fieldset: {
+    legend: {
+      text: "What type of debt is it?",
+      isPageHeading: false,
+      classes: "govuk-label"
+    }
+  },
+  items: [
+   {
+      value: "Council tax",
+      text: "Council tax"
+    },
+    {
+      value: "Rent arrears",
+      text: "Rent arrears"
+    },
+    {
+      value: "Housing benefit",
+      text: "Housing benifit"
+    },
+    {
+      value: "Parking fines",
+      text: "Parking fines"
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "priority-debt-council",
+  name: "priority-debt-council",
+  fieldset: {
+    legend: {
+      text: "Is this a priorty debt?",
+      isPageHeading: false,
+      classes: ""
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="debtA">
+   Estimated debt amount
+  </label>
+   <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+  <input class="govuk-input govuk-input--width-10" id="debtA" name="debtA" type="text" spellcheck="false" value="{{ debtA }}">
+</div>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="councilDebtReference">
+    Reference (optional)
+  </label>
+  <span id="priority-debt-hint" class="govuk-hint">
+      This is the creditors reference for the debt</span>
+  <input class="govuk-input govuk-input--width-10" id="councilDebtReference" name="councilDebtReference" type="text" spellcheck="false" value="{{ councilDebtReference  }}">
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebtcouncil" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="councilDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -8,7 +8,7 @@
 
 
 {% block content %}
-{% include  "../includes/_global-nav.html" %} 
+{% include  "../includes/advisor/_global-nav.html" %} 
 
 
  {% set currentnav ='findCasesecrets' %}
@@ -17,12 +17,12 @@
    <!-- BASE VALUES -->
 {% set totTasks = 0 %}
 {% set totDiscprenceies = 0 %}
-{% set totAnnualReviews = 0 %}
+{% set totProposed = 0 %}
+{% set totCantFind = 0 %}
 
 	{% for case in cases %}
- {% if checked('task','debtUpdated') and case.ref !== "SDRP592821" %}   
- {% set totTasks = '5' %}
- {% elif case.task === "Creditor has raised discrepancies" or case.task === "Annual review due" %}
+
+ {% if case.task === "Creditor has raised discrepancies" or case.task === "Proposed plan due" or case.task === "Creditor can't find the debt" %}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
@@ -30,18 +30,24 @@
     {% set totDiscprenceies = totDiscprenceies + 1 %}
    {% endif %}
 
-  {% if case.task === "Annual review due" %}
-    {% set totAnnualReviews = totAnnualReviews + 1 %}
+  {% if case.task === "Proposed plan due" %}
+    {% set totProposed = totProposed + 1 %}
    {% endif %}
 
+   {% if case.task === "Creditor can't find the debt" %}
+    {% set totCantFind = totCantFind + 1 %}
+   {% endif %}
+
+
    {% endfor %}
+
 
  <div class="govuk-grid-row">
 <div class="govuk-grid-column-one-third">
 <form class="form" action="#" method="post">
 
         <div class="govuk-form-group">
-         {% include "../includes/_sub_tasks_radios.html" %}
+         {% include "../includes/advisor/_sub_tasks_radios.html" %}
 
       </div>
 
@@ -63,10 +69,13 @@ Tasks to do
   </h1>
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
-{% if checked('taskFilter','Annual reviews due')%}
-Annual reviews due ({{totAnnualReviews}})
-{% elif checked('taskFilter','Creditor has raised discrepancies')%}
+
+{% if checked('taskFilter','Creditor has raised discrepancies')%}
 Creditor has raised discrepancies ({{totDiscprenceies}})
+{% elif checked('taskFilter','Creditor cant find the debt')%}
+Creditor can't find the debt ({{totCantFind}})
+{% elif checked('taskFilter','Proposed plan due')%}
+Proposed plan due ({{totProposed}})
 {% else %}
 All ({{totTasks}}) 
 {% endif %}
@@ -94,17 +103,23 @@ All ({{totTasks}})
               </div>   -->
 
    {% for case in cases %}
-
-{% if checked('taskFilter','Annual reviews due')%}
-    {% if case.task === "Annual review due"  %}
-    {% include  "../includes/_todo-card.html" %} 
-    {% endif %}  
-{% elif checked('taskFilter','Creditor has raised discrepancies')%} 
+ 
+{% if checked('taskFilter','Creditor has raised discrepancies')%} 
     {% if case.task === "Creditor has raised discrepancies" %}
     {% include  "../includes/_todo-card.html" %} 
-    {% endif %}  
+    {% endif %}
+
+{% elif checked('taskFilter','Creditor cant find the debt')%}
+    {% if case.task === "Creditor can't find the debt"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}       
+    
+{% elif checked('taskFilter','Proposed plan due')%}
+    {% if case.task === "Proposed plan due"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}   
 {% else %}
-    {% if case.task === "Creditor has raised discrepancies" or case.task === "Annual review due"  %}
+    {% if case.task === "Creditor has raised discrepancies" or case.task === "Proposed plan due" or case.task === "Creditor can't find the debt" %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
 {% endif %}
@@ -118,3 +133,4 @@ All ({{totTasks}})
 
 
 {% endblock %}
+

@@ -8,136 +8,201 @@ Debt repayment plan for Sarah Philips
 
 
 {% block content %}
-{% include  "../includes/_global-nav.html" %} 
+{% include  "../includes/advisor/_global-nav.html" %} 
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-full">
 
-  <!--<p class="govuk-!-margin-top-5 ">
-  This client is on <strong> Day 46</strong> of an Active Breathing space 
-    <a class="govuk-notification-banner__link" href="/advisor-latest/account-page">view Breathing Space</a>.
-  </p> -->
+   {% if case.task and data['budgetupdated']%}
+   {% set budget = budgetupdated %}
+   {% else %}
+   {% set budget = 200 %}
+   {% endif %}
 
-{% include  "../includes/_confirmation-messages.html" %} 
+   {% set surplus = budget %}
+    {% set fees = budget / 100 * 10 %}
+   {% set surplus_fees = budget / 100 * 90 %}
+  {% set priority = surplus_fees / 100  * 30 %}
+   {% set nonpriority = surplus_fees / 100 * 70 %}
 
-       <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
- <span class="govuk-caption-m"> 
- {% if case.status == 'Final plan'%}
-  <strong class="govuk-tag govuk-tag--green">Final plan</strong> 
- {% elif case.status == 'Initiated plan'%}
-  <strong class="govuk-tag govuk-tag--blue">Initiated plan</strong> 
- {% else %}
- <strong class="govuk-tag govuk-tag--grey">Draft plan</strong>  {% endif %}
- </span>
-{{ case.name | default('Sarah Philips')}}
-  <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
- </h1>
+<!-- debt values  -->
 
-
-{% include  "../includes/_plan-detail.html" %} 
-
-
-{% if case.status == 'Initiated plan'%}
-<form class="govuk-!-display-inline" action="not-testing" method="post">
-<button class="govuk-button govuk-!-margin-right-2">Propose the plan</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
-<form class="govuk-!-display-inline" action="not-testing" method="post">
-<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add a debt</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
-
-<!-- <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
-<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add SFS information</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form> -->
-
-<form class="govuk-!-display-inline" action="not-testing" method="post">
-<button  class="govuk-button govuk-button--secondary">Delete initiated plan</button>
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
-{% elif case.status == 'Final plan'%}
-<form class="govuk-!-display-inline" action="not-testing" method="post">
-<button class="govuk-button govuk-!-margin-right-2">Variate the plan</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
+{% set debtA = 2977 %}
+{% set debtB = 825  %}
+{% set debtC = 1146 %}
+{% if checked('task','confirmDisc')%}
+{% set debtD = 6361 %}
 {% else %}
-<form class="govuk-!-display-inline" action="upload-consent" method="post">
-<button class="govuk-button govuk-!-margin-right-2">Initiate the plan</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
-
-<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
-<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add a debt</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
-
-<form class="govuk-!-display-inline" action="not-testing" method="post">
-<button  class="govuk-button govuk-button--secondary">Delete draft plan</button>
-{% include  "../includes/_hide-confirmation.html" %} 
-</form>
+{% set debtD = 6061 %}
 {% endif %}
+{% set debtE = 1291 %}
 
+
+{% set totDebt = debtA + debtB + debtC + debtD + debtE%}
+
+{% set priorityDebt = debtA + debtB %}
+
+{% set debtApercent = totDebt / debtA %}
+{% set debtAPriorityPercent = priorityDebt / debtA %}
+{% set debtArepayment = nonpriority / debtApercent + priority / debtAPriorityPercent %}
+
+
+{% set debtBpercent = totDebt / debtB %}
+{% set debtBPriorityPercent = priorityDebt / debtB %}
+{% set debtBrepayment = nonpriority / debtBpercent + priority / debtBPriorityPercent %}
+
+{% set debtCpercent = totDebt / debtC %}
+{% set debtCrepayment = nonpriority / debtCpercent%}
+
+{% set debtDpercent = totDebt / debtD %}
+{% set debtDrepayment = nonpriority / debtDpercent%}
+
+{% set debtEpercent = totDebt / debtE %}
+{% set debtErepayment = nonpriority / debtEpercent  %}
+
+  {% set lengthOfPlan = totDebt / budget %}
+  {% set payOffPriorityDebts = priorityDebt / priority %}
+
+
+
+
+<!-- Surplus:{{ surplus }}<br>
+Fees: {{ fees }}<br>
+Total: {{ surplus_fees }}<br>
+Priority: {{ priority }}<br>
+Non priority: {{ nonpriority }}<br>
+Debt A: {{ debtA}}<br>
+Debt B:{{ debtB}}<br>
+Debt C:{{ debtC}}<br>
+Debt D{{ debtD}}<br>
+Debt E:{{ debtE}}<br>
+Total debts:{{ totDebt }}<br>
+Total Priority debt owed:{{ priorityDebt }}<br>
+Length of plan:{{ lengthOfPlan }}<br>
+Pay off priority debts:{{ payOffPriorityDebts }}<br> -->
+
+<!--{% if data['budget'] %}
+Debt A monthly payment{{ ( debtArepayment|float ).toFixed(2)}}<br>
+Debt B monthly payment{{ ( debtBrepayment|float ).toFixed(2)}}<br>
+Debt C monthly payment{{ ( debtCrepayment|float ).toFixed(2)}}<br>
+Debt D monthly payment{{ ( debtDrepayment|float ).toFixed(2)}}<br>
+Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
+{% endif %} -->
+
+
+
+
+{% include  "../includes/advisor/_confirmation-messages.html" %} 
+{% include  "../includes/advisor/_client_name_reference.html" %} 
+
+<div class="govuk-grid-row"> 
+<div class="govuk-grid-column-two-thirds">
+{% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+<ul class="govuk-list stages govuk-body-s">
+<li>1. Add information</li>
+<li>2. Validate the information</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>3. </span>Propose the plan</strong></li>
+<li>4. Plan starts</li>
+</ul>
+{% elif case.task %}
+<ul class="govuk-list stages govuk-body-s">
+<li>1. Add information</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Validate the information</strong></li>
+<li>3. Propose the plan</li>
+<li>4. Plan starts</li>
+</ul>
+{% else %}
+<ul class="govuk-list stages govuk-body-s">
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Add information</strong></li>
+<li>2. Validate the information</li>
+<li>3. Propose the plan</li>
+<li>4. Plan starts</li>
+</ul>
+{% endif %}
+</div>
+<div class="govuk-grid-column-one-third">
+<!--<p>This stage is an opportunity to validate the information with creditors</p> -->
+{% if case.task =='Proposed plan due' and checked('task','confirmProp')  %}
+  {% elif case.task =='Proposed plan due'%}
+<a href="check-proposal?reference={{case.reference}}" class="govuk-button govuk-!-margin-bottom-0 float-right">Send proposed plan to the creditors</a> 
+</form>
+{% elif case.task%}
+
+  {% elif data['budgetupdated'] and checked('adddebtcouncil','yes')%}
+<form class="govuk-!-display-inline" action="consent" method="post">
+<button class="govuk-button govuk-!-margin-bottom-0 float-right">Send information to the creditors</button> 
+{% include  "../includes/advisor/_hide-confirmation.html" %} 
+</form>
+
+{% endif %}
+</div>
+</div>
+ <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
+
+{% include  "../includes/advisor/_plan-summary.html" %} 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
-{% set clientHtml %}
-<h2 class="govuk-heading-l">Client details</h2>
-{% include  "../includes/_client_details.html" %} 
-{% endset -%}
-
-
-
-{% set tasksHtml %}
-<h2 class="govuk-heading-l">Tasks</h2>
-{% include  "../includes/_tasklist.html" %} 
-{% endset %}
-
-
-{% set debtsHtml %}
+<div class="govuk-tabs" data-module="govuk-tabs">
+ <ul class="govuk-tabs__list">
+  {% if case.task %} 
+  <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#tasks">
+        Tasks
+      </a>
+    </li> 
+    {% else %} 
+    {% endif %}
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#debts">
+        Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#clientDetails">
+       Client details
+      </a>
+    </li>
+     {% if data['budgetupdated'] and checked('adddebtcouncil','yes') or case.task %}
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#plan">
+       The plan
+      </a>
+    </li>
+    {% else %}
+    {% endif %}
+  </ul>
+  {% if case.task %} 
+  <div class="govuk-tabs__panel" id="tasks">
+  <h2 class="govuk-heading-l">Tasks</h2>
+   {% include  "../includes/advisor/_tasklist.html" %} 
+  </div>
+  {% else %}
+  {% endif %}
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="debts">
 <h2 class="govuk-heading-l">Debts</h2>
+{% include  "../includes/advisor/_debts.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
+  <h2 class="govuk-heading-l">Client details</h2>
+{% include  "../includes/advisor/_client_details.html" %} 
 
-{% include  "../includes/_debts.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan">
+<h2 class="govuk-heading-l">The plan</h2>
+<p>This information won't be shared with creditors until you send the proposed plan.</p>
+{% include  "../includes/advisor/_plan-detail.html" %} 
+  </div>
+</div>
 
 
 
-
-
-
-{% endset -%}
-
-{% set clientHtml %}
-<h2 class="govuk-heading-l">Client details</h2>
-
-{% include  "../includes/_client_details.html" %} 
-{% endset -%}
-
-{{ govukTabs({
-  items: [
-        {
-      label: "Tasks",
-      id: "tasks",
-      panel: {
-        html: tasksHtml
-      }
-    },
-    {
-      label: "Debts",
-      id: "debts",
-      panel: {
-        html: debtsHtml
-      }
-    },
-    {
-      label: "Client details",
-      id: "clientDetails",
-      panel: {
-        html: clientHtml
-      }
-    }
-  ]
-}) }}
-
-</div></div>
 
 </form>
+
+{% block page_scripts %}
+<script>
+</script>
 {% endblock %}
+
+{% endblock %}
+

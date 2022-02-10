@@ -1,0 +1,35 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirmation" method="post">
+    <div class="govuk-grid-column-three-quarters">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+        Declaration
+      </h1>
+     <p class="govuk-body">By submitting this application, you agree that:</p>
+<ul class="govuk-list govuk-list--bullet">
+          <li>you've explained the Statutory debt repayment plan to your client</li>
+          <li><strong>{{ case.name | default('Sarah Philips')}}</strong> has told you to put them into the Statutory debt repayment plan</li>
+          <li>the information you've provided is complete and correct to the best of your knowledge
+          </li>
+          <li>your client meets the required conditions and eligibility criteria</li>
+        </ul>
+
+<button class="govuk-button" data-module="govuk-button">
+  Agree and iniciate the debt repayment plan
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

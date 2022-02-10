@@ -1,0 +1,29 @@
+{% if checked('taskcompleted','show')%}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+<span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
+
+{% set html %}
+{% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+ <h3 class="govuk-notification-banner__heading">
+    You have sent the proposed plan to your clients creditors
+  </h3>
+{% elif checked('task','newDebtAdded')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a new debt
+  </h3>
+{% elif checked('task','debtUpdated') or checked('task','confirmDisc') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  {% endif%}
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% else %}
+{% endif %}

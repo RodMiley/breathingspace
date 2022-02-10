@@ -1,0 +1,143 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for Sarah Philips
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/_global-nav.html" %} 
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+  <!--<p class="govuk-!-margin-top-5 ">
+  This client is on <strong> Day 46</strong> of an Active Breathing space 
+    <a class="govuk-notification-banner__link" href="/advisor-latest/account-page">view Breathing Space</a>.
+  </p> -->
+
+{% include  "../includes/_confirmation-messages.html" %} 
+
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-m"> 
+ {% if case.status == 'Final plan'%}
+  <strong class="govuk-tag govuk-tag--green">Final plan</strong> 
+ {% elif case.status == 'Initiated plan'%}
+  <strong class="govuk-tag govuk-tag--blue">Initiated plan</strong> 
+ {% else %}
+ <strong class="govuk-tag govuk-tag--grey">Draft plan</strong>  {% endif %}
+ </span>
+{{ case.name | default('Sarah Philips')}}
+  <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
+ </h1>
+
+
+{% include  "../includes/_plan-detail.html" %} 
+
+
+{% if case.status == 'Initiated plan'%}
+<form class="govuk-!-display-inline" action="not-testing" method="post">
+<button class="govuk-button govuk-!-margin-right-2">Propose the plan</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+<form class="govuk-!-display-inline" action="not-testing" method="post">
+<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add a debt</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<!-- <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add SFS information</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form> -->
+
+<form class="govuk-!-display-inline" action="not-testing" method="post">
+<button  class="govuk-button govuk-button--secondary">Delete initiated plan</button>
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+{% elif case.status == 'Final plan'%}
+<form class="govuk-!-display-inline" action="not-testing" method="post">
+<button class="govuk-button govuk-!-margin-right-2">Variate the plan</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+{% else %}
+<form class="govuk-!-display-inline" action="upload-consent" method="post">
+<button class="govuk-button govuk-!-margin-right-2">Initiate the plan</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add a debt</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<form class="govuk-!-display-inline" action="not-testing" method="post">
+<button  class="govuk-button govuk-button--secondary">Delete draft plan</button>
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+{% endif %}
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% set clientHtml %}
+<h2 class="govuk-heading-l">Client details</h2>
+{% include  "../includes/_client_details.html" %} 
+{% endset -%}
+
+
+
+{% set tasksHtml %}
+<h2 class="govuk-heading-l">Tasks</h2>
+{% include  "../includes/_tasklist.html" %} 
+{% endset %}
+
+
+{% set debtsHtml %}
+<h2 class="govuk-heading-l">Debts</h2>
+
+{% include  "../includes/_debts.html" %} 
+
+
+
+
+
+
+{% endset -%}
+
+{% set clientHtml %}
+<h2 class="govuk-heading-l">Client details</h2>
+
+{% include  "../includes/_client_details.html" %} 
+{% endset -%}
+
+{{ govukTabs({
+  items: [
+        {
+      label: "Tasks",
+      id: "tasks",
+      panel: {
+        html: tasksHtml
+      }
+    },
+    {
+      label: "Debts",
+      id: "debts",
+      panel: {
+        html: debtsHtml
+      }
+    },
+    {
+      label: "Client details",
+      id: "clientDetails",
+      panel: {
+        html: clientHtml
+      }
+    }
+  ]
+}) }}
+
+</div></div>
+
+</form>
+{% endblock %}

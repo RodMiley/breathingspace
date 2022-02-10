@@ -1,0 +1,78 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for {{ creditorcase.name | default('Sarah Philips')}} 
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/_global-nav-creditor.html" %} 
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+  <!--<p class="govuk-!-margin-top-5 ">
+  This client is on <strong> Day 46</strong> of an Active Breathing space 
+    <a class="govuk-notification-banner__link" href="/advisor-latest/account-page">view Breathing Space</a>.
+  </p> -->
+
+{% include  "../includes/_confirmation-messages-creditor.html" %} 
+
+       <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-m"> 
+ {% if creditorcase.status == 'Final plan'%}
+  <strong class="govuk-tag govuk-tag--green">Final plan</strong> 
+ {% else  %}
+  <strong class="govuk-tag govuk-tag--blue">Initiated plan</strong> 
+ {% endif %}
+ </span>
+{{ creditorcase.name | default('Sarah Philips')}}
+  <span class="govuk-caption-m">Statutory debt repayment plan reference: {{ creditorcase.reference | default('SDRP0001')}}</span>
+ </h1>
+ </div>
+ <div class="govuk-grid-column-two-thirds">
+<p>Advice uk are helping your customer manage their money better, Advice uk have began the process of setting up a statutory debt repayment plan.</p>
+<p>The plan was initiated on {{ 'DD MMMM YYYY' | baseDateAdd(0) }}</p>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+
+    It's important that we have all the right information about the debt, you have till {{ 'DD MMMM YYYY' | baseDateAdd(21) }} tell us the if any of the details are incorrect.
+  </strong>
+</div>
+<p>You will recieve the proposed plan by {{ 'DD MMMM YYYY' | baseDateAdd(28) }}, If Advice uk don't provide a proposed plan within this time, the plan will be cancelled. We will notify you if this happens.</p>
+<p>The next few weeks will be used to get all the information up to date so the proposed plan can be as accurate as possible.</p>
+<!-- {% include  "../includes/_plan-detail.html" %} --> 
+</div>
+ <div class="govuk-grid-column-full">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Tasks</h2>
+{% include  "../includes/_tasklist-creditor.html" %} 
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2 govuk-!-margin-top-3">Other actions</h2>
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Add debts that should be included</button> 
+{% include  "../includes/_hide-confirmation.html" %} 
+</form>
+
+<h2 class="govuk-heading-m">Client details</h2>
+<ul class="govuk-list">     
+<li>Name: {{ creditorcase.name | default('Sarah Philips')}}</li>
+<li>Date of birth: 28 February 1978 </li>
+<li>Address: 44 Crawford St, Marylebone, London, W1H 1JS</li>
+<li>Business name: Elsada tech</li>
+<li>Business address: 	27 Turner Grove, Elephant and Castle, London, NW11 4FD</li>
+</ul>
+
+<h2 class="govuk-heading-m">Money advice organisation details</h2>
+<ul class="govuk-list">
+<li>Name: Advice uk</li>
+<li>Email: breathingspaceteam@adviceuk.org.uk</li>
+<li>Telephone: 0151 490 1731</li>
+</ul>
+</div>
+</div>
+
+</form>
+{% endblock %}

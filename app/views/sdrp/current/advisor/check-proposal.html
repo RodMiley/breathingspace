@@ -1,0 +1,104 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+ Check proposed plan
+{% endblock %}
+
+{% block content %}
+
+   {% if case.task and data['budgetupdated']%}
+   {% set budget = budgetupdated %}
+   {% else %}
+   {% set budget = 200 %}
+   {% endif %}
+
+   {% set surplus = budget %}
+    {% set fees = budget / 100 * 10 %}
+   {% set surplus_fees = budget / 100 * 90 %}
+  {% set priority = surplus_fees / 100  * 30 %}
+   {% set nonpriority = surplus_fees / 100 * 70 %}
+
+<!-- debt values  -->
+
+{% set debtA = 2977 %}
+{% set debtB = 825  %}
+{% set debtC = 1146 %}
+{% if checked('task','confirmDisc')%}
+{% set debtD = 6361 %}
+{% else %}
+{% set debtD = 6061 %}
+{% endif %}
+{% set debtE = 1291 %}
+
+
+{% set totDebt = debtA + debtB + debtC + debtD + debtE%}
+
+{% set priorityDebt = debtA + debtB %}
+
+{% set debtApercent = totDebt / debtA %}
+{% set debtAPriorityPercent = priorityDebt / debtA %}
+{% set debtArepayment = nonpriority / debtApercent + priority / debtAPriorityPercent %}
+
+
+{% set debtBpercent = totDebt / debtB %}
+{% set debtBPriorityPercent = priorityDebt / debtB %}
+{% set debtBrepayment = nonpriority / debtBpercent + priority / debtBPriorityPercent %}
+
+{% set debtCpercent = totDebt / debtC %}
+{% set debtCrepayment = nonpriority / debtCpercent%}
+
+{% set debtDpercent = totDebt / debtD %}
+{% set debtDrepayment = nonpriority / debtDpercent%}
+
+{% set debtEpercent = totDebt / debtE %}
+{% set debtErepayment = nonpriority / debtEpercent  %}
+
+  {% set lengthOfPlan = totDebt / budget %}
+  {% set payOffPriorityDebts = priorityDebt / priority %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+        {% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+      <h1 class="govuk-heading-l">
+        Proposed plan
+      </h1>
+            <p>The plan was proposed by Paul Smith  on {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am </p>
+        {% else %}
+        <h1 class="govuk-heading-l">
+        Check proposed plan
+      </h1>
+      {% endif %}
+      </div>
+      <div class="govuk-grid-column-full">
+
+ {% include  "../includes/advisor/_plan-detail.html" %} 
+{% include  "../includes/advisor/_client_details-check-answers.html" %} 
+
+     {% include  "../includes/advisor/_show-confirmation.html" %} 
+
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="task" type="radio" value="confirmProp~plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="task">
+        Please ignore hidden radio for hacky prototype
+        </label>
+      </div>
+      </div>
+        {% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+        {% else %}
+       <button class="govuk-button" data-module="govuk-button">
+Confirm and send proposal
+</button>
+      {% endif %}
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

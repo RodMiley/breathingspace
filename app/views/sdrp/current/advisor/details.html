@@ -9,16 +9,11 @@
 
 
   <div class="govuk-grid-row">
-{% if checked('clientDetails','complete')%}
-  <form class="form" action="confirm-details" method="post">
-{% elif checked('clientDetails','confirmed')%}
- <form class="form" action="debt-list-tabs#personal-details" method="post">
-{%else %}
-  <form class="form" action="names" method="post">
-{% endif%}
+  <form class="form" action="time-machine-personal-details" method="post">
+
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-l">
       Add client name and date of birth
       </h1>
      <div class="govuk-form-group">

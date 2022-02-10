@@ -52,4 +52,18 @@ button.govuk-link{
 }
 
 //End Prototype only helper classes -----------------------------------------------------------------
+//End bespoke styling for the stages displan on the plan page -----------------------------------------------------------------
+.stages li
+{
+   
+    display:inline-block;
+    margin-right:30px;
+}
+//End bespoke styling for the stages displan on the plan page -----------------------------------------------------------------
 
+// Page width overide --------------------------------------------------------------------------------
+
+.govuk-width-container {
+    max-width: 1160px;
+}
+// End page with overide -----------------------------------------------------------------------------

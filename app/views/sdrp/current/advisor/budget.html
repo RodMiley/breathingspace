@@ -2,32 +2,33 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-  Breathing space
+   What is your clients surplus budget per month?
 {% endblock %}
 
 {% block content %}
 
 
   <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
 
-  <form class="form" action="plan" method="post">
-
+  <form class="form" action="plan?reference={{case.reference}}" method="post">
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
 
 
 <div class="govuk-form-group">
   <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="budget">
-      What is your clients total overall payment budget per month?
+      What is your clients surplus budget per month?
     </label>
   </h1>
   <div class="govuk-input__wrapper">
     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-    <input class="govuk-input govuk-input--width-5" id="budget" name="budget" type="text" spellcheck="false">
+    <input class="govuk-input govuk-input--width-5" id="budgetupdated" name="budgetupdated" type="text" value="{{ budgetupdated }}" spellcheck="false">
   </div>
 </div>
-
-
+  {% include  "../includes/_urlredirect.html" %} 
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
@@ -35,5 +36,11 @@
     </div>
     </form>
 </div>
+
+   {% block pageScripts %}
+   <script>
+      
+   </script>
+    {% endblock %}
 
 {% endblock %}

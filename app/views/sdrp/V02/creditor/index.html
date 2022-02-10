@@ -1,0 +1,117 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include "../includes/_global-nav-creditor.html" %}
+
+{% set todo = 0 %}
+
+
+
+ <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set status1 = 0 %}
+{% set status2 = 0 %}
+{% set status3 = 0 %}
+{% set status1task = 0 %}
+{% set status2task = 0 %}
+{% set status3task = 0 %}
+
+
+
+
+	{% for creditorcase in creditorcases %}
+
+<!-- BASE VALUES -->
+	 {% set totNum = totNum + 1 %}
+
+   {% if creditorcase.status === "Initiated plan" %}
+   {% set status1 = status1 + 1 %}
+   {% endif %}
+   {% if creditorcase.status === "Proposed plan" %}
+   {% set status2 = status2 + 1 %}
+   {% endif %}
+   {% if creditorcase.status === "Final plan" %}
+   {% set status3 = status3 + 1 %}
+   {% endif %}
+ 
+   <!-- TO DO VALUES Type -->
+    {% if creditorcase.status === "Initiated plan" and creditorcase.task === "Yes"  %}
+     {% set status1task = status1task + 1 %}
+    {% endif %}
+
+      {% if creditorcase.status === "Proposed plan" and creditorcase.task === "Yes"  %}
+     {% set status2task = status2task + 1 %}
+    {% endif %}
+
+
+    {% if creditorcase.status === "Final plan" and creditorcase.task === "Yes"  %}
+     {% set status3task = status3task + 1 %}
+    {% endif %}
+
+
+
+{% endfor %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Manage a debt repayment plan</span>
+  {% include "../includes/_creditor.html" %}
+  </h1>
+  <h2 class="govuk-heading-m">
+ <span class="govuk-caption-m">Total customer</span>
+  Debt repayment plans ({{totNum}}) </h2>
+  <h3 class="govuk-heading-s">
+  Stages
+ </h3>
+  <div class="card-container">
+            <div class="card">
+                <h3 class="govuk-heading-s">
+                Initiated plans ({{status1}})
+               
+                 </h3>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
+                 <a href="tasks-to-do" class="govuk-body"> Tasks to do ({{status1task}})</a>
+               
+              </div>
+
+                 <div class="card">
+                 <h3 class="govuk-heading-s">
+                   Proposed plans ({{status2}})
+                </h3> 
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="not-testing" class="govuk-body"> Tasks to do ({{4}})</a>
+              </div>
+
+                 <div class="card">
+                <h3 class="govuk-heading-s">Final plans ({{status3}})</h3>
+                </h3> 
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <a href="not-testing" class="govuk-body"> Tasks to do (6)</a>
+              </div>
+
+       
+
+
+
+       
+
+
+    
+
+
+</div>
+</div>
+
+{% endblock %}

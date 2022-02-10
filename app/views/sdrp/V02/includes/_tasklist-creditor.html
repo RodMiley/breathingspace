@@ -1,0 +1,55 @@
+<ol class="app-task-list">
+  <li>
+    <ul
+      class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0"
+    >
+      <li class="app-task-list__item">
+        {% if creditorcase.task ==='completedUpdatedDebt' %}
+        <strong
+          class="govuk-tag app-task-list__tag"
+          id="read-declaration-status"
+          >Completed</strong
+        >
+        {% else %}
+        <strong
+          class="govuk-tag govuk-tag--grey app-task-list__tag"
+          id="read-declaration-status"
+          >To do</strong
+        >
+        {% endif %}
+
+        <h3 class="govuk-heading-s">   
+  
+Please tell us if these details are incorrect
+  
+   </h3>
+
+        <ul class="govuk-list">
+
+          <li>Debt type: {{ updateDebtType | default("Housing benefit") }}</li>
+          <li>Amount: £{{ updateDebtAmount | default("1179") }}</li>
+          <li>Reference: {{ updateDebtReference | default(" Not provided") }}</li>
+        </ul>
+
+{% if  creditorcase.task ==='completedUpdatedDebt' %}
+<a href="debt-discrepancies" class="govuk-!-display-inline-block govuk-!-margin-bottom-2">View updated the debt details</a>
+{% elif creditorcase.task ==='completedSoldDebt' %}
+<a href="sold-debt-details" class="govuk-!-display-inline-block govuk-!-margin-bottom-2">View sold debt details</a>
+{% else %}
+        <span class="app-task-list__task-name">
+         <a href="update-debt-detail?reference={{creditorcase.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Update debt details</a> 
+
+</form>
+
+
+ <a href="sold-debt-choose-creditor?reference={{creditorcase.reference}}" class="govuk-button govuk-button--secondary govuk-!-margin-right-2">Weve sold the debt</a>
+
+
+<button  class="govuk-button govuk-button--secondary">We can't find this debt</button>
+
+        </span>
+        {% endif %}
+      </li>
+    </ul>
+  </li>
+</ol>

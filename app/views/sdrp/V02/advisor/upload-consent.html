@@ -1,0 +1,34 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Upload written consent
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+
+  <form class="form" action="consent" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+      <a href="plan?reference={{case.reference}}" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+     Upload your clients written consent
+      </h1>
+    
+<div class="govuk-form-group">
+  <label class="govuk-label" for="file-upload-1">
+    Upload a file
+  </label>
+  <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+</div>
+
+<button class="govuk-button">Save and continue</button>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

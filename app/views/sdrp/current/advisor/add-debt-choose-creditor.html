@@ -8,7 +8,14 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-  <form class="form" action="add-debt-choose-creditor-validation" method="post">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  {% if checked('adddebtcouncil','yes')%}
+   <form class="form" action="add-debt-details-creditcard" method="post">
+  {% else %}
+   <form class="form" action="add-debt-details-council" method="post">
+  {% endif %}
     <div class="govuk-grid-column-two-thirds">
     <a href="plan" class="govuk-back-link">Back</a>  
   <div class="govuk-form-group">
@@ -18,7 +25,7 @@
     </span>
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
-<p><a href="add-debt-adhock-creditor">The creditor doesn't appear in the list</a></p>
+<p><a href="add-debt-adhock-creditor">The creditor doesn't appear in the list, enter the creditor details manually</a></p>
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
@@ -30,18 +37,32 @@
 
    <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
    <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
-
+  {% if checked('adddebtcouncil','yes')%} 
         <script type="text/javascript">
       var element = document.querySelector('#tt-default')
-      var id = 'newcreditor'
-      var name ='newcreditor'
+      var id = 'creditor2'
+      var name ='creditor2' 
       accessibleAutocomplete({
         element: element,
         id: id,
         name: name,
         source: creditors
       })
+      </script>
+   {% else %}
+      <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor' 
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+ </script>
+   {% endif %}
 
-    </script>
+   
 
 {% endblock %}

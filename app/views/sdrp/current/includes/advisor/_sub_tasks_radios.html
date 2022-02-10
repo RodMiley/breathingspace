@@ -1,0 +1,44 @@
+    
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+    <legend class="govuk-fieldset__legend">
+      <label class="govuk-label">
+       Filter tasks
+      </label>
+    </legend>
+
+     <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_1" name="taskFilter" type="radio" value="All" {{ checked('taskFilter', 'All') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_1">
+          All ({{totTasks}})
+        </label>
+      </div>
+    <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_2" name="taskFilter" type="radio" value="Creditor has raised discrepancies" {{ checked('taskFilter', 'Creditor has raised discrepancies') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_2">
+          Creditor has raised discrepancies ({{totDiscprenceies}})
+        </label>
+      </div>
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_3" name="taskFilter" type="radio" value="Creditor cant find the debt" {{ checked('taskFilter', 'Creditor cant find the debt') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_3">
+         Creditor can't find the debt ({{totCantFind}})
+        </label>
+      </div>
+
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_4" name="taskFilter" type="radio" value="Proposed plan due" {{ checked('taskFilter', 'Proposed plan due') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_34">
+         Proposed plan due ({{totProposed}})
+        </label>
+      </div>
+
+
+
+</div>
+      </fieldset>
+      </div>

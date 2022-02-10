@@ -1,0 +1,69 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name you have sold the debt to
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="sold-debt-confirm" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="plan" class="govuk-back-link">Back</a>  
+  <div class="govuk-form-group">
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Search and select the creditor
+</label></h1>   <span id="changed-name-hint" class="govuk-hint">
+      This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson
+    </span>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+<p><a href="add-debt-adhock-creditor">The creditor doesn't appear in the list, add the creditor address manually</a></p>
+
+        <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~sold-debt-confirm?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+    
+    
+    
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="tasktodo" type="radio" value="completed" checked>
+        <label class="govuk-label govuk-radios__label" for="completed">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'newcreditor'
+      var name ='newcreditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}
