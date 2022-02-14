@@ -4,9 +4,10 @@
 <span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
 
 {% set html %}
-{% if case.task =='Proposed plan due' and checked('task','confirmProp') %}
+{% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
  <h3 class="govuk-notification-banner__heading">
-    You have sent the proposed plan to your clients creditors
+    You have sent the plan to your client’s creditors. Creditors now have 21 days to review the proposed plan and raise any discrepancies.
+
   </h3>
 {% elif checked('task','newDebtAdded')%}
   <h3 class="govuk-notification-banner__heading">

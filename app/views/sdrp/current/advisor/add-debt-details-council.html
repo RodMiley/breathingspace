@@ -2,7 +2,8 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-Details about the debt
+Debt details
+
 {% endblock %}
 
 {% block content %}
@@ -13,7 +14,8 @@ Details about the debt
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
      
-       Details about the debt
+  Debt details
+
       </h1>
       <h2 class="govuk-heading-s">Creditor</h2>
        <p class="govuk-body govuk-!-margin-bottom-9">{{ creditor | default("Southwark Council") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
@@ -44,19 +46,19 @@ Details about the debt
   },
   items: [
    {
-      value: "Council tax",
+      value: "council tax",
       text: "Council tax"
     },
     {
-      value: "Rent arrears",
+      value: "rent arrears",
       text: "Rent arrears"
     },
     {
-      value: "Housing benefit",
-      text: "Housing benifit"
+      value: "housing benefit",
+      text: "Housing benefit"
     },
     {
-      value: "Parking fines",
+      value: "parking fines",
       text: "Parking fines"
     },
     {
@@ -76,7 +78,7 @@ Details about the debt
   name: "priority-debt-council",
   fieldset: {
     legend: {
-      text: "Is this a priorty debt?",
+      text: "Is this a priority debt?",
       isPageHeading: false,
       classes: ""
     }
@@ -110,7 +112,8 @@ Details about the debt
     Reference (optional)
   </label>
   <span id="priority-debt-hint" class="govuk-hint">
-      This is the creditors reference for the debt</span>
+      This is the creditor’s reference for the debt
+</span>
   <input class="govuk-input govuk-input--width-10" id="councilDebtReference" name="councilDebtReference" type="text" spellcheck="false" value="{{ councilDebtReference  }}">
 </div>
 
@@ -127,7 +130,7 @@ Details about the debt
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+  Continue
 </button>
     </div>
     </form>

@@ -6,7 +6,7 @@
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-      10% Scheme administration cost
+      10% scheme administration cost
     </dt>
     <dd class="govuk-summary-list__value">
      {% if data['budgetupdated'] or case.task %} £{{ fees }}.00 {% else %}Cannot calculate{% endif %}
@@ -16,7 +16,7 @@
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-     Priority debts 30% (Pro rata)
+     Priority debts 30% (pro rata)
     </dt>
     <dd class="govuk-summary-list__value">
      {% if data['budgetupdated']  or case.task %} £{{ priority }}.00 {% else %}Cannot calculate{% endif %}
@@ -26,7 +26,7 @@
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-      All debts 70% (Pro rata)
+      All debts 70% (pro rata)
     </dt>
     <dd class="govuk-summary-list__value">
        {% if data['budgetupdated']  or case.task %} £{{ nonpriority }}.00{% else %}Cannot calculate{% endif %}
@@ -54,7 +54,7 @@
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
         Southwark council
-        <span class="govuk-body">| Council tax</span>
+        <span class="govuk-body">| council tax</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ ( debtArepayment|float ).toFixed(2)}}</br> 
@@ -65,7 +65,7 @@
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
         EDF Energy Ltd
-        <span class="govuk-body">| Gas</span>
+        <span class="govuk-body">| gas</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ ( debtBrepayment|float ).toFixed(2)}}</br> 
@@ -79,7 +79,7 @@
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
         Yorkshire Water Services Ltd
-        <span class="govuk-body">| Water</span>
+        <span class="govuk-body">| water</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ ( debtCrepayment|float ).toFixed(2)}}</br> 
@@ -90,7 +90,7 @@
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
         Halifax credit cards
-        <span class="govuk-body">| Credit card</span>
+        <span class="govuk-body">| credit card</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ ( debtDrepayment|float ).toFixed(2)}}</br> 
@@ -101,7 +101,7 @@
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
         Next retail plc
-        <span class="govuk-body">| Store card</span>
+        <span class="govuk-body">| store card</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ ( debtErepayment|float ).toFixed(2)}}</br> 
@@ -115,7 +115,7 @@
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor }}   <span class="govuk-body">| Council tax</span>
+        {{ creditor }}   <span class="govuk-body">| council tax</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £89.28</br> 
@@ -129,7 +129,7 @@
 <dl class="govuk-summary-list">
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor2 }}   <span class="govuk-body">| Credit card</span>
+        {{ creditor2 }}   <span class="govuk-body">| credit card</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £90.72 
@@ -143,7 +143,7 @@
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor }}  <span class="govuk-body">| Council tax</span>
+        {{ creditor }}  <span class="govuk-body">| council tax</span>
     </dt>
     <dd class="govuk-summary-list__value">
      £{{ surplus_fees }}.00 

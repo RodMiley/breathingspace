@@ -2,7 +2,7 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-  Enter the creditor's name and select one from the list
+  Add a creditor
 {% endblock %}
 
 {% block content %}
@@ -19,16 +19,17 @@
     <div class="govuk-grid-column-two-thirds">
     <a href="plan" class="govuk-back-link">Back</a>  
   <div class="govuk-form-group">
-       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Enter the creditor's name and select one from the list
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Add a creditor
 </label></h1>   <span id="changed-name-hint" class="govuk-hint">
-      This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson
+   Type the creditor’s name and select them from the list. 
     </span>
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
-<p><a href="add-debt-adhock-creditor">The creditor doesn't appear in the list, enter the creditor details manually</a></p>
+<p>If the creditor doesn’t appear on the list, you can 
+<a href="add-debt-adhock-creditor">enter their details manually</a></p>
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+ Continue
 </button>
     </div>
     </form>

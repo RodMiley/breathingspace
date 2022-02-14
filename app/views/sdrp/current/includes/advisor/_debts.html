@@ -1,4 +1,5 @@
-<p>Please add as much debt information as possible, estimated amounts are ok, we will ask the creditors confirm the amounts or update any inacurate information once you have started the intention to iniciate a plan stage.</p>
+<p>Please add as much debt information as you can and be as accurate as you can. Where exact debt amounts are unknown, please give an estimate. Creditors will be able to update any incorrect amounts once they receive the proposed plan.
+</p>
 <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
 <button  class="govuk-link govuk-body">Add a debt</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
@@ -26,7 +27,7 @@
         text: "Southwark Council"
       },
       value: {
-          html: "Debt type: Council tax <br>Debt amount: £2977<br>Reference: SC3456789"
+          html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
       },
       actions: {
         items: [
@@ -43,7 +44,7 @@
         text: "EDF Energy Ltd"
       },
       value: {
-        html: "Debt type: Gas <br>Debt amount: £825<br>Reference: CRT8536544"
+        html: "Debt type: gas <br>Debt amount: £825<br>Reference: CRT8536544"
       },
       actions: {
         items: [
@@ -67,7 +68,7 @@
         text: "Yorkshire Water Services Ltd"
       },
       value: {
-        html: "Debt type: Water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
+        html: "Debt type: water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
       },
       actions: {
         items: [
@@ -84,7 +85,7 @@
         text: "Halifax credit card"
       },
       value: {
-        html: "Debt type: Credit card <br>Debt amount:£6361<br>Reference: 2356 5678 4567"
+        html: "Debt type: credit card <br>Debt amount:£6361<br>Reference: 2356 5678 4567"
       },
       actions: {
         items: [
@@ -101,7 +102,7 @@
         text: "Next retail plc"
       },
       value: {
-          html: "Debt type: Store card <br>Debt amount: £1,291<br>Reference: NX23452345"
+          html: "Debt type: store card <br>Debt amount: £1,291<br>Reference: NX23452345"
       },
       actions: {
         items: [
@@ -128,7 +129,7 @@
         text: "Southwark Council"
       },
       value: {
-          html: "Debt type: Council tax <br>Debt amount: £2977<br>Reference: SC3456789"
+          html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
       },
       actions: {
         items: [
@@ -145,7 +146,7 @@
         text: "EDF Energy Ltd"
       },
       value: {
-        html: "Debt type: Gas <br>Debt amount: £825<br>Reference: CRT8536544"
+        html: "Debt type: gas <br>Debt amount: £825<br>Reference: CRT8536544"
       },
       actions: {
         items: [
@@ -169,7 +170,7 @@
         text: "Yorkshire Water Services Ltd"
       },
       value: {
-        html: "Debt type: Water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
+        html: "Debt type: water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
       },
       actions: {
         items: [
@@ -186,7 +187,7 @@
         text: "Halifax credit card"
       },
       value: {
-        html: "Debt type: Credit card <br>Debt amount:£6061<br>Reference: 2356 5678 4567"
+        html: "Debt type: credit card <br>Debt amount:£6061<br>Reference: 2356 5678 4567"
       },
       actions: {
         items: [
@@ -203,7 +204,7 @@
         text: "Next retail plc"
       },
       value: {
-          html: "Debt type: Store card <br>Debt amount: £1,291<br>Reference: NX23452345"
+          html: "Debt type: store card <br>Debt amount: £1,291<br>Reference: NX23452345"
       },
       actions: {
         items: [
@@ -227,7 +228,7 @@
      {{ creditor }}
     </dt>
     <dd class="govuk-summary-list__value">
-     Debt type:{{ debtcouncil | default('Council tax')}}<br>
+     Debt type:{{ debtcouncil | default('council tax')}}<br>
      Estimated debt amount: £{{ debtA | default('2,977') }}<br>
      Reference: {{ councilDebtReference | default('Not provided') }}
     </dd>
@@ -248,7 +249,7 @@
      {{ creditor2 }}
     </dt>
     <dd class="govuk-summary-list__value">
-     Debt type: Creditcard<br>
+     Debt type: credit card<br>
      Estimated debt amount: £{{ creditcardDebtAmount | default('2,977') }}<br>
      Reference: {{ creditcardDebtReference | default('Not provided') }}
     </dd>

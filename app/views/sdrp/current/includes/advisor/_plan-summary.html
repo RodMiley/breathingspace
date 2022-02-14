@@ -1,4 +1,10 @@
-<h3 class="govuk-heading-m">Plan summary</h3>
+<h3 class="govuk-heading-m">
+{% if checked('proposed','yes')%}
+Proposed plan summary
+{% else %}
+Draft plan summary
+{% endif %}
+</h3>
 <dl class="govuk-summary-list">
 
   <div class="govuk-summary-list__row">
@@ -11,7 +17,7 @@
     {% elif checked('adddebtcouncil','yes')%}
     £{{ councilDebtAmount | default('2,977') }}
     {% else %}
-    No debts added
+    £0
     {% endif %}
     </dd>
 
@@ -25,11 +31,11 @@
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
-    <dd class="govuk-summary-list__value">{% if data['budgetupdated']  or case.task  %} £{{ surplus}}.00 {% else %} Not added {% endif %}</dd>
+    <dd class="govuk-summary-list__value">{% if data['budgetupdated']  or case.task  %} £{{ surplus}}.00 {% else %}£0 {% endif %}</dd>
 
     <dd class="govuk-summary-list__actions">
       <a class="govuk-link" href="budget?reference={{case.reference}}">
-        {% if data['budgetupdated']  or case.task %} Change {% else %}Add {% endif %} <span class="govuk-visually-hidden">Surplus budget</span>
+        {% if checked('proposed','yes')%} {% elif data['budgetupdated']  or case.task %} Change {% else %}Add {% endif %} <span class="govuk-visually-hidden">Surplus budget</span>
       </a>
     </dd>
   </div>
@@ -49,7 +55,7 @@
      1 years 3 months to fully repay all the debts
     {% else %}
 
- You need to add some debts and the clients surplus budget to calculate the length of the plan
+     0 years, 0 months
     {% endif %}
     
     </dd>

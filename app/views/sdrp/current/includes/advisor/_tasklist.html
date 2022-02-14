@@ -3,7 +3,7 @@
     <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
 
       <li class="app-task-list__item">
-     {% if checked('task','confirmDisc') and case.task =='Creditor has raised discrepancies' or case.task =='Proposed plan due' and checked('task','confirmProp') %} 
+     {% if checked('task','confirmDisc') and case.task =='Creditor has raised discrepancies' or case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %} 
      <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
       {% elif case.task =='Creditor has raised discrepancies' or case.task =='Annual review due' %}
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
@@ -21,9 +21,9 @@
           <a href="cant-find-debt?reference={{case.reference}}">
             Creditor can't find the debt
           </a>
-        {% elif case.task === "Proposed plan due"  %}
+        {% elif case.task === "Draft plans nearing deadline"  %}
           <a href="check-proposal?reference={{case.reference}}">
-            Proposed plan due
+            Draft plans nearing deadline
           </a>
         {% else %}
           <a href="update-debt-detail">
