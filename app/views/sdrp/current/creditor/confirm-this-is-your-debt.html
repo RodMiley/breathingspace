@@ -29,16 +29,13 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="confirm-debt-status" name="confirm-debt-status" type="radio" value="confirm-debt-detail~confirm-debt-details?reference={{creditorcase.reference}}">
+        <input class="govuk-radios__input" id="confirm-debt-status" name="confirm-debt-status" type="radio" value="confirm-debt-detail~debt-detail-guard?reference={{creditorcase.reference}}">
         <label class="govuk-label govuk-radios__label" for="confirm-debt-status">
           Yes
         </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="confirm-debt-status-2" name="confirm-debt-status" type="radio" value="update-debt-details~update-debt-detail?reference={{creditorcase.reference}}">
-        <label class="govuk-label govuk-radios__label" for="confirm-debt-status-2">
-          Yes, but some of the details are incorrect
-        </label>
+        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+          If any of the debt details are incorrect you can update them later
+        </div>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="confirm-debt-status-4" name="confirm-debt-status" type="radio" value="we-cant-find-this-debt~why-cant-you-find-the-debt?reference={{creditorcase.reference}}">
@@ -49,7 +46,7 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="confirm-debt-status-3" name="confirm-debt-status" type="radio" value="weve-sold-the-debt~sold-debt-choose-creditor?reference={{creditorcase.reference}}">
         <label class="govuk-label govuk-radios__label" for="confirm-debt-status-3">
-          No, we dont own this debt
+          No we have sold this debt
         </label>
       </div>
     </div>

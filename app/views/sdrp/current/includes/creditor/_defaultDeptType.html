@@ -3,7 +3,7 @@
 {% if checked('creditorType','Council')%}
 {{ updateDebtType | default("Council tax") }}
 {% elif checked('creditorType','Govenment')%}
-{{ updateDebtType | default("Tax Credits") }}
+{{ updateDebtType | default("Tax credits") }}
 {% elif checked('creditorType','Bank')%}
 {{ updateDebtType | default("Loan") }}
 {% elif checked('creditorType','Utility')%}

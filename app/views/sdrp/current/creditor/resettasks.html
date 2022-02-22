@@ -29,7 +29,12 @@ Not testing this page today!
       </ul>
       </p>
 
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
+{{ govukWarningText({
+  text: "Keep clicking the button until all the tasks are marked 'to do', then follow the clear data the link", 
+  iconFallbackText: "Warning"
+}) }}
 
 <button class="govuk-button">Reset task</button>
 <p><a href="/prototype-admin/clear-data">Clear the data</a></p>
