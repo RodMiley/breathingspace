@@ -1,0 +1,58 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+What type of creditor ar you testing with!
+{% endblock %}
+
+
+{% block content %}
+  <form class="form" action="index" method="post">
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-two-thirds">
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "creditorType",
+  name: "creditorType",
+  fieldset: {
+    legend: {
+      text: "What type of creditor ar you testing with?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Council",
+      text: "Council"
+    },
+    {
+      value: "Govenment",
+      text: "Govenment"
+    },
+    {
+      value: "Bank",
+      text: "Bank"
+    },
+    {
+      value: "Utility",
+      text: "Utility"
+    },
+    {
+      value: "Other creditor type",
+      text: "Other creditor type"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+    </div>
+</div>
+{% endblock %}

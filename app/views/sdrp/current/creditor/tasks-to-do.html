@@ -8,7 +8,7 @@
 
 
 {% block content %}
-{% include  "../includes/_global-nav-creditor.html" %} 
+ {% include "../includes/creditor/_global-nav.html" %}
 
 
 
@@ -18,11 +18,9 @@
 {% set totAnnualReviews = 0 %}
 
 	{% for creditorcase in creditorcases %}
-
-   {% if creditorcase.status === "Initiated plan" and creditorcase.task === "Yes"  %}
+   {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do"%}
      {% set totTasks = totTasks + 1 %}
     {% endif %}
-
    {% endfor %}
 
  <div class="govuk-grid-row">
@@ -75,7 +73,7 @@ All ({{totTasks}})
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
 {% else %}
-    {% if creditorcase.status === "Initiated plan" and creditorcase.task === "Yes"   %}
+    {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do" %}
     {% include  "../includes/_todo-list-item.html" %} 
     {% endif %}  
 {% endif %}

@@ -2,31 +2,28 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-  Confirm debt details
+
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
   <form class="form" action="plan" method="post">
-    <div class="govuk-grid-column-full">
-        {% include  "../includes/creditor/_client_name_reference.html" %} 
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
-         Confirm debt details
+Confirm the reason you can't find this debt
       </h1>
-  {% include  "../includes/creditor/_debt_details.html" %} 
+
+{% include  "../includes/creditor/_debt_details.html" %} 
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Why can't you find debt?</h3>
+<p>{{ data['cant-find-debt'] }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">More detail</h3>
+<p>{{ data['cant-find-debt-more-detail'] }}</p>
+
 
         {% include  "../includes/_show-confirmation.html" %} 
-
-         <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="tasktodo" type="radio" value="completed" checked>
-        <label class="govuk-label govuk-radios__label" for="completed">
-         hidden radio
-        </label>
-      </div>
-      </div>
          <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~plan?reference={{creditorcase.reference}}" checked>
@@ -38,10 +35,14 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-Confirm and continue
+Confirm
 </button>
+    
+    
     </div>
     </form>
 </div>
+
+
 
 {% endblock %}

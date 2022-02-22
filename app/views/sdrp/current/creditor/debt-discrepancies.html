@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
-         Newcastle Council has raised the following discrepancies
+          {% include  "../includes/creditor/_creditor.html" %} has raised the following discrepancies
       </h1>
       </div>
       <div class="govuk-grid-column-full">
@@ -46,7 +46,7 @@
         
           
           
-          <td class="govuk-table__cell">Newcastle Council</td>
+          <td class="govuk-table__cell"> {% include  "../includes/creditor/_creditor.html" %} </td>
           
         
           
@@ -122,7 +122,7 @@
     
   </tbody>
 </table>
- <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Date the discrepancies were raised and sent to the Advice uk on</h2>
+ <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Date the discrepancies were raised and sent to the Advice uk</h2>
  <p>{{ 'DD MMMM YYYY' | baseDateAdd(0) }}</p>
     </div>
     </form>

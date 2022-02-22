@@ -8,9 +8,21 @@
          {% endif %}
         <form class="govuk-!-display-inline" action="index" method="post">
 <button  class="govuk-body govuk-link">Home</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
+{% include  "../_hide-confirmation.html" %} 
 </form>
       </li>
+
+         {% if globalnav  == 'taskstodo' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <form class="govuk-!-display-inline" action="tasks-to-do" method="post">
+<button  class="govuk-body govuk-link">Tasks to do</button> 
+{% include  "../_hide-confirmation.html" %} 
+</form>
+      </li>
+
           {% if globalnav  == 'search' %}
       <li class="active">
       {% else %}
@@ -18,7 +30,7 @@
          {% endif %}
                <form class="govuk-!-display-inline" action="not-testing" method="post">
 <button  class="govuk-body govuk-link">Search</button> 
-{% include  "../includes/_hide-confirmation.html" %} 
+{% include  "../_hide-confirmation.html" %} 
 </form>
       </li>
     </ul>
@@ -27,7 +39,7 @@
             <p>Paul Smith</p>
       </li>
         <li>
-         <a href="orgchoice">{% include "../includes/_creditor.html" %}</a>
+         <a href="orgchoice">{% include "../creditor/_creditor.html" %}</a>
       </li>
   
     

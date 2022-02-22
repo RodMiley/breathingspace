@@ -8,6 +8,19 @@
   <h3 class="govuk-notification-banner__heading">
     You have added a new debt
   </h3>
+{% elif creditorcase.task ==='completedConfirmedDebtDetail' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+
+{% elif creditorcase.task ==='completedCantFindDebt' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have the reason you can't find the debt to the money advice organisation</p>
+
+
+
 {% elif creditorcase.task ==='completedUpdatedDebt' %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task

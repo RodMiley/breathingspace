@@ -1,0 +1,41 @@
+<ol class="app-task-list">
+  <li>
+    <ul
+      class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0"
+    >
+      <li class="app-task-list__item">
+        {% if creditorcase.task ==='completedUpdatedDebt' or  creditorcase.task ==='completedSoldDebt' or creditorcase.task == 'completedConfirmedDebtDetail' or  creditorcase.task == 'completedCantFindDebt'%}
+        <strong
+          class="govuk-tag app-task-list__tag"
+          id="read-declaration-status"
+          >Completed</strong
+        >
+        {% else %}
+        <strong
+          class="govuk-tag govuk-tag--grey app-task-list__tag"
+          id="read-declaration-status"
+          >To do</strong
+        >
+        {% endif %}
+
+
+{% if  creditorcase.task ==='completedConfirmedDebtDetail' %}
+<a href="confirmed-debt-details?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view confirmed debt details</a>
+{% elif  creditorcase.task ==='completedUpdatedDebt' %}
+<a href="debt-discrepancies" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view the updated debt details</a>
+{% elif creditorcase.task ==='completedSoldDebt' %}
+<a href="sold-debt-details" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view sold debt details</a>
+{% elif creditorcase.task ==='completedCantFindDebt' %}
+<a href="confirmed-cant-find-debt?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view you cant find the debt reason</a>
+{% else %}
+        <span class="app-task-list__task-name">
+         <a href="confirm-debt-status?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - confirm this is your debt </a> 
+
+</form>
+
+        </span>
+        {% endif %}
+      </li>
+    </ul>
+  </li>
+</ol>

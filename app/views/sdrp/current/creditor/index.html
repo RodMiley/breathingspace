@@ -11,7 +11,7 @@
 
 {% block content %}
 
- {% include "../includes/_global-nav-creditor.html" %}
+ {% include "../includes/creditor/_global-nav.html" %}
 
 {% set todo = 0 %}
 
@@ -34,18 +34,18 @@
 <!-- BASE VALUES -->
 	 {% set totNum = totNum + 1 %}
 
-   {% if creditorcase.status === "Initiated plan" %}
+   {% if creditorcase.status === "Draft plan" %}
    {% set status1 = status1 + 1 %}
    {% endif %}
    {% if creditorcase.status === "Proposed plan" %}
    {% set status2 = status2 + 1 %}
    {% endif %}
-   {% if creditorcase.status === "Final plan" %}
+   {% if creditorcase.status === "Agreed plan" %}
    {% set status3 = status3 + 1 %}
    {% endif %}
  
    <!-- TO DO VALUES Type -->
-    {% if creditorcase.status === "Initiated plan" and creditorcase.task === "Yes"  %}
+    {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
      {% set status1task = status1task + 1 %}
     {% endif %}
 
@@ -54,7 +54,7 @@
     {% endif %}
 
 
-    {% if creditorcase.status === "Final plan" and creditorcase.task === "Yes"  %}
+    {% if creditorcase.status === "Agreed plan" and creditorcase.task === "Yes"  %}
      {% set status3task = status3task + 1 %}
     {% endif %}
 
@@ -67,18 +67,18 @@
    <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
  <span class="govuk-caption-xl">Manage a debt repayment plan</span>
-  {% include "../includes/_creditor.html" %}
+  {% include "../includes/creditor/_creditor.html" %}
   </h1>
   <h2 class="govuk-heading-m">
  <span class="govuk-caption-m">Total customer</span>
-  Debt repayment plans ({{totNum}}) </h2>
+  Debt repayment plans({{totNum}}) </h2>
   <h3 class="govuk-heading-s">
   Stages
  </h3>
   <div class="card-container">
             <div class="card">
                 <h3 class="govuk-heading-s">
-                Initiated plans ({{status1}})
+                Draft plans ({{status1}})
                
                  </h3>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
@@ -95,7 +95,7 @@
               </div>
 
                  <div class="card">
-                <h3 class="govuk-heading-s">Final plans ({{status3}})</h3>
+                <h3 class="govuk-heading-s">Agreed plans ({{status3}})</h3>
                 </h3> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="not-testing" class="govuk-body"> Tasks to do (6)</a>

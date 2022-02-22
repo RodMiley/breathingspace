@@ -35,6 +35,28 @@ router.get('/*', function (req, res, next) {
 
       let status = req.session.data['tasktodo']
       if(status === 'completed'){
+        findCase.task ='completedConfirmedDebtDetail'
+      }
+     
+      res.locals.creditorcase = findCase
+      res.locals.creditorcases = creditorcases
+      next()
+       })
+
+
+    router.get('/creditor/confirm-updated-debt-details', function (req, res, next) {
+      let findCase = {}
+
+      for (let i = 0; i < creditorcases.length; i++ ) {
+        if(creditorcases[i].reference === req.query.reference){
+          findCase = creditorcases[i];
+        }
+      
+        }
+      
+
+      let status = req.session.data['tasktodo']
+      if(status === 'completed'){
         findCase.task ='completedUpdatedDebt'
       }
      
@@ -65,33 +87,66 @@ router.get('/*', function (req, res, next) {
       next()
        })
 
-    
 
-
-       router.get('/creditor/resettasks', function (req, res, next) {
-
+       router.get('/creditor/confirm-cant-find-debt', function (req, res, next) {
         let findCase = {}
-        let findCase2 = {}
-
-        for (let i = 0; i < creditorcases.length; i++ ) {
-        if(creditorcases[i].task === 'completedUpdatedDebt'){
-          findCase = creditorcases[i];
-        }
-        if(creditorcases[i].task === 'completedSoldDebt'){
-          findCase2 = creditorcases[i];
-        }
-        }
-    
   
-        let status = req.session.data['resettask']
-        if(status === 'Yes'){
-          findCase.task ='Yes'
-          findCase2.task ="Yes"
-          }   
+        for (let i = 0; i < creditorcases.length; i++ ) {
+          if(creditorcases[i].reference === req.query.reference){
+            findCase = creditorcases[i];
+          }
+        
+          }
+        
+  
+        let status = req.session.data['tasktodo']
+        if(status === 'completed'){
+          findCase.task ='completedCantFindDebt'
+        }
        
-        res.locals.creditorcases = findCase
+        res.locals.creditorcase = findCase
+        res.locals.creditorcases = creditorcases
         next()
-         })  
+         })
+
+    
+
+
+  
+
+
+         router.get('/creditor/resettasks', function (req, res, next) {
+
+          let findCase = {}
+  
+          for (let i = 0; i < creditorcases.length; i++ ) {
+          if(creditorcases[i].task === 'completedConfirmedDebtDetail'){
+            findCase = creditorcases[i];
+          }
+
+          if(creditorcases[i].task === 'completedUpdatedDebt'){
+            findCase = creditorcases[i];
+          }
+
+          if(creditorcases[i].task === 'completedCantFindDebt'){
+            findCase = creditorcases[i];
+          }
+
+          if(creditorcases[i].task === 'completedSoldDebt'){
+            findCase = creditorcases[i];
+          }
+      
+          }
+      
+    
+          let status = req.session.data['reset-task']
+          if(status === 'yes'){
+            findCase.task ='to do'
+            }   
+         
+          res.locals.case = findCase
+          next()
+           })  
 
 
   
