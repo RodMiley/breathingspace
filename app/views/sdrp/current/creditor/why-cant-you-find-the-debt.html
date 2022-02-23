@@ -10,28 +10,33 @@
   <div class="govuk-grid-row">
   <form class="form" action="confirm-cant-find-debt" method="post">
     <div class="govuk-grid-column-full">
-    {% include  "../includes/creditor/_client_name_reference.html" %} 
-      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+    {% include  "../includes/creditor/_client_name_reference.html" %}
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
       </div>
       </div>
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-<h1 class="govuk-heading-l">We can't match the client or the debt</h1>
+<h1 class="govuk-heading-l">Incorrect debt details</h1>
 
-{% include  "../includes/creditor/_debt_details.html" %}  
+{% include  "../includes/creditor/_debt_details.html" %}
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
 
-       Why can't you match the client or the debt?
-     
+       Which debt details are incorrect?
+
     </legend>
+    <div id="cant-find-debt-more-detail-hint" class="govuk-hint">
+
+       Please tick all that apply
+
+    </div>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="cant-find-debt" name="cant-find-debt" type="checkbox" value="Name not spelt correctly">
         <label class="govuk-label govuk-checkboxes__label" for="cant-find-debt">
-          Name not spelt correctly
+          Name spelled incorrectly
         </label>
       </div>
       <div class="govuk-checkboxes__item">
@@ -55,9 +60,14 @@
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="cant-find-debt-5" name="cant-find-debt" type="checkbox" value="Date of birth">
         <label class="govuk-label govuk-checkboxes__label" for="cant-find-debt-5">
-         Wrong date of birth 
+         Wrong date of birth
         </label>
       </div>
+      <div class="govuk-checkboxes__item">
+<input class="govuk-checkboxes__input" id="cant-find-debt-4" name="cant-find-debt" type="checkbox" value="Postcode">
+<label class="govuk-label govuk-checkboxes__label" for="cant-find-debt-4">
+Other - please explain below
+</label>
     </div>
 
   </fieldset>
@@ -65,11 +75,14 @@
 
 <div class="govuk-form-group">
   <label class="govuk-label govuk-label--m" for="cant-find-debt-more-detail">
-      Can you provide more detail?
+      What are the correct details for this debt?
+
     </label>
- 
+
   <div id="cant-find-debt-more-detail-hint" class="govuk-hint">
-    Do not include personal or financial information, like your National Insurance number or credit card details.
+    The money advise organisation will work with the individual
+    to determine if the debts match. </div>
+    <div id="cant-find-debt-more-detail-hint" class="govuk-hint"> Please do not include personal or financial information, such as the individual's National Insurance number or credit card details.
   </div>
   <textarea class="govuk-textarea" id="cant-find-debt-cant-find-debt-more-detail" name="cant-find-debt-more-detail" rows="5" aria-describedby="cant-find-debt-more-detail-hint"></textarea>
 </div>
@@ -83,7 +96,7 @@
         </label>
       </div>
       </div>
-      
+
 
 <button class="govuk-button" data-module="govuk-button">
 Continue

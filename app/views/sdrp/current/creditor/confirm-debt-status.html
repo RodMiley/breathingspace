@@ -10,11 +10,11 @@
   <div class="govuk-grid-row">
   <form class="form" action="plan" method="post">
     <div class="govuk-grid-column-full">
-    {% include  "../includes/creditor/_client_name_reference.html" %} 
-      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+    {% include  "../includes/creditor/_client_name_reference.html" %}
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 
 <h1 class="govuk-heading-l">Confirm this is your debt</h1>
-{% include  "../includes/creditor/_debt_details.html" %} 
+{% include  "../includes/creditor/_debt_details.html" %}
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -25,7 +25,13 @@
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
 
        Is this your debt?
-     
+
+    </legend>
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+       If this is your debt, please select yes even if all the details aren't correct.
+       You can update these on the next page
+
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
@@ -35,28 +41,22 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="confirm-debt-status-2" name="confirm-debt-status" type="radio" value="update-debt-details~update-debt-detail?reference={{creditorcase.reference}}">
-        <label class="govuk-label govuk-radios__label" for="confirm-debt-status-2">
-          Yes, but some of the details are incorrect
-        </label>
-      </div>
-      <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="confirm-debt-status-4" name="confirm-debt-status" type="radio" value="we-cant-find-this-debt~why-cant-you-find-the-debt?reference={{creditorcase.reference}}">
         <label class="govuk-label govuk-radios__label" for="confirm-debt-status-4">
-          Not sure, we can't match the client and the debt with the information provided
+          Possibly, but I can't match the client and the debt with the information provided
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="confirm-debt-status-3" name="confirm-debt-status" type="radio" value="weve-sold-the-debt~sold-debt-choose-creditor?reference={{creditorcase.reference}}">
         <label class="govuk-label govuk-radios__label" for="confirm-debt-status-3">
-          No, we dont own this debt
+          No
         </label>
       </div>
     </div>
 
   </fieldset>
 </div>
-      
+
 
 <button class="govuk-button" data-module="govuk-button">
 Continue

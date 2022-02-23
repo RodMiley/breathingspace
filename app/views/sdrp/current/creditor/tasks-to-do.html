@@ -18,7 +18,7 @@
 {% set totAnnualReviews = 0 %}
 
 	{% for creditorcase in creditorcases %}
-   {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do"%}
+   {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do"%}
      {% set totTasks = totTasks + 1 %}
     {% endif %}
    {% endfor %}
@@ -31,13 +31,13 @@
 Tasks to do
   </h1>
 
-<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span>
 {% if checked('taskFilter','Annual reviews due')%}
 Annual reviews due ({{totAnnualReviews}})
 {% elif checked('taskFilter','Creditor has raised discrepancies')%}
 Creditor has raised discrepancies ({{totDiscprenceies}})
 {% else %}
-All ({{totTasks}}) 
+All ({{totTasks}})
 {% endif %}
 </h2>
 
@@ -46,14 +46,14 @@ All ({{totTasks}})
 <ul class="govuk-list" id="xnum">
 
     <!--  {% for debt in creditorcase.debt %}
-            
+
                {{ debt.type }}
                {{debt.amount}}
 
                {% endfor %} -->
           <!--    <a href="../creditorcase/creditorcase-details-and-tasks-accordion?reference={{creditorcase.reference}}" class="govuk-body govuk-link  govuk-!-display-block govuk-!-margin-bottom-0">{{creditorcase.name}} {{creditorcase.reference}} </a>
                 {{creditorcase.task}} -->
-              
+
 
               <!-- <div class="govuk-radios__item  govuk-visually-hidden">
                 <input class="govuk-radios__input" id="creditorcase-links" name="creditorcase-link" type="radio" value="hide~../creditorcase/creditorcase-details-and-tasks-accordion?reference={{creditorcase.reference}}" checked>
@@ -66,19 +66,19 @@ All ({{totTasks}})
 
 {% if checked('taskFilter','Annual reviews due')%}
     {% if creditorcase.task === "Annual review due"  %}
-    {% include  "../includes/_todo-card.html" %} 
-    {% endif %}  
-{% elif checked('taskFilter','Creditor has raised discrepancies')%} 
+    {% include  "../includes/_todo-card.html" %}
+    {% endif %}
+{% elif checked('taskFilter','Creditor has raised discrepancies')%}
     {% if creditorcase.task === "Creditor has raised discrepancies" %}
-    {% include  "../includes/_todo-card.html" %} 
-    {% endif %}  
+    {% include  "../includes/_todo-card.html" %}
+    {% endif %}
 {% else %}
     {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do" %}
-    {% include  "../includes/_todo-list-item.html" %} 
-    {% endif %}  
+    {% include  "../includes/_todo-list-item.html" %}
+    {% endif %}
 {% endif %}
 
-             {% endfor %} 
+             {% endfor %}
 
 
 </ul>

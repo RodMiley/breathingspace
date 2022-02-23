@@ -8,16 +8,16 @@ Debt repayment plan for Sarah Philips
 
 
 {% block content %}
-{% include  "../includes/creditor/_global-nav.html" %} 
+{% include  "../includes/creditor/_global-nav.html" %}
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-full">
 
 
 
-{% include  "../includes/creditor/_confirmation-messages.html" %} 
-{% include  "../includes/creditor/_client_name_reference.html" %} 
+{% include  "../includes/creditor/_confirmation-messages.html" %}
+{% include  "../includes/creditor/_client_name_reference.html" %}
 
-<div class="govuk-grid-row"> 
+<div class="govuk-grid-row">
 <div class="govuk-grid-column-full">
 {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
 <ul class="govuk-list stages">
@@ -33,14 +33,13 @@ Debt repayment plan for Sarah Philips
 </li>
 <li>3. Agreed plan</li>
 </ul>
-<p>The draft plan was sent {{ 'DD MMMM YYYY' | baseDateAdd(0) }}<br>
-You have <strong>20 days</strong> to tell us the if any of the details are incorrect. After you will recieve a provisional plan or a cancelation notification </p>
+You have <strong>20 days</strong> to confirm if the debts below are yours. </p>
 {% endif %}
 </div>
 </div>
  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
 
-<p>Advice uk are helping your customer manage their money better, Advice uk have began the process of setting up a statutory debt repayment plan.</p>
+<p>This debt repayment plan is being created by AdviceUK.
 <!-- <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
@@ -61,12 +60,12 @@ You have <strong>20 days</strong> to tell us the if any of the details are incor
       <a class="govuk-tabs__tab" href="#tasks">
         Tasks
       </a>
-    </li> 
+    </li>
       <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#debts">
         Debts
       </a>
-    </li> 
+    </li>
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#clientDetails">
        Client details
@@ -92,29 +91,34 @@ You have <strong>20 days</strong> to tell us the if any of the details are incor
   </ul>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-l">Tasks</h2>
-   {% include  "../includes/creditor/_tasklist.html" %} 
+  <p>Please review each debt listed below and confirm if:
+    <ul class="govuk-list govuk-list--bullet">
+    <li>the debt is yours</li>
+    <li>the debt details are correct</li>
+    </ul></p>
+   {% include  "../includes/creditor/_tasklist.html" %}
   </div>
     <div class="govuk-tabs__panel" id="debts">
   <h2 class="govuk-heading-l">Debts</h2>
-   {% include  "../includes/creditor/_debts.html" %} 
+   {% include  "../includes/creditor/_debts.html" %}
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
   <h2 class="govuk-heading-l">Client details</h2>
-{% include  "../includes/creditor/_client_details.html" %} 
+{% include  "../includes/creditor/_client_details.html" %}
 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan">
  {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
  <h2 class="govuk-heading-l">Proposed plan</h2>
- {% else %} 
+ {% else %}
 <h2 class="govuk-heading-l">Draft plan</h2>
 <p>This information won't be shared with creditors until you send the proposed plan.</p>
 {% endif %}
-{% include  "../includes/advisor/_plan-detail.html" %} 
+{% include  "../includes/advisor/_plan-detail.html" %}
   </div>
     <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="maDetails">
   <h2 class="govuk-heading-l">Money advice organisation details</h2>
-{% include  "../includes/creditor/_ma_details.html" %} 
+{% include  "../includes/creditor/_ma_details.html" %}
 
   </div>
 </div>
@@ -130,4 +134,3 @@ You have <strong>20 days</strong> to tell us the if any of the details are incor
 {% endblock %}
 
 {% endblock %}
-
