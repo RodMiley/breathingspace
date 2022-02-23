@@ -10,18 +10,18 @@
   <div class="govuk-grid-row">
   <form class="form" action="plan" method="post">
 <div class="govuk-grid-column-full">
-   {% include  "../includes/creditor/_client_name_reference.html" %} 
-      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+   {% include  "../includes/creditor/_client_name_reference.html" %}
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
       <h1 class="govuk-heading-l">
            <!-- <span class="govuk-caption-xl">Add a debt</span> -->
- Confirm    {% include  "../includes/creditor/_creditor.html" %}  has sold this debt
+ Confirm sold debt details
       </h1>
 
-{% include  "../includes/creditor/_debt_details.html" %} 
+{% include  "../includes/creditor/_debt_details.html" %}
 
-<p class="govuk-body-l">You're telling Advice UK  you have sold the debt to <strong>Lowell Group</strong></p>
+<p class="govuk-body-l">The debt above has been sold to <strong>Lowell Group</strong>.</p>
 
-   {% include  "../includes/_show-confirmation.html" %} 
+   {% include  "../includes/_show-confirmation.html" %}
  <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="taskoutcome" type="radio" value="soldDebt" checked="">
@@ -42,7 +42,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Confirm and submit
+  Confirm
 </button>
     </div>
     </form>
