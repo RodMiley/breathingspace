@@ -34,7 +34,7 @@
 <!-- BASE VALUES -->
 	 {% set totNum = totNum + 1 %}
 
-   {% if creditorcase.status === "Draft plan" %}
+   {% if creditorcase.status === "Confirm debts" %}
    {% set status1 = status1 + 1 %}
    {% endif %}
    {% if creditorcase.status === "Proposed plan" %}
@@ -45,7 +45,7 @@
    {% endif %}
  
    <!-- TO DO VALUES Type -->
-    {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
+    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"%}
      {% set status1task = status1task + 1 %}
     {% endif %}
 
@@ -78,7 +78,7 @@
   <div class="card-container">
             <div class="card">
                 <h3 class="govuk-heading-s">
-                Draft plans ({{status1}})
+                Confirm debts ({{status1}})
                
                  </h3>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
@@ -88,17 +88,17 @@
 
                  <div class="card">
                  <h3 class="govuk-heading-s">
-                   Proposed plans ({{status2}})
+                   Review draft plans ({{status2}})
                 </h3> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                  <a href="not-testing" class="govuk-body"> Tasks to do ({{4}})</a>
               </div>
 
                  <div class="card">
-                <h3 class="govuk-heading-s">Agreed plans ({{status3}})</h3>
+                <h3 class="govuk-heading-s">Active plans ({{status3}})</h3>
                 </h3> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                 <a href="not-testing" class="govuk-body"> Tasks to do (6)</a>
+                <p>Tasks to do (0)</p>
               </div>
 
        

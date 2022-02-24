@@ -4,7 +4,11 @@
       class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0"
     >
       <li class="app-task-list__item">
-        {% if creditorcase.task ==='completedUpdatedDebt' or  creditorcase.task ==='completedSoldDebt' or creditorcase.task == 'completedConfirmedDebtDetail' or  creditorcase.task == 'completedCantFindDebt'%}
+        {% if creditorcase.task ==='completedUpdatedDebt' 
+        or  creditorcase.task ==='completedSoldDebt' 
+        or creditorcase.task == 'completedConfirmedDebtDetail' 
+        or  creditorcase.task == 'completedCantFindDebt'
+        or creditorcase.task == 'completedNotCreditor'%}
         <strong
           class="govuk-tag app-task-list__tag"
           id="read-declaration-status"
@@ -20,16 +24,18 @@
 
 
 {% if  creditorcase.task ==='completedConfirmedDebtDetail' %}
-<a href="confirmed-debt-details?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view confirmed debt details</a>
+<a href="confirmed-debt-details?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block"> {% include "../creditor/_defaultDeptType.html" %} - confirmed debt details</a>
 {% elif  creditorcase.task ==='completedUpdatedDebt' %}
-<a href="debt-discrepancies" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view the updated debt details</a>
+<a href="updated-debt-details?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block"> {% include "../creditor/_defaultDeptType.html" %} - updated debt details</a>
 {% elif creditorcase.task ==='completedSoldDebt' %}
-<a href="sold-debt-details" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view sold debt details</a>
+<a href="sold-debt-details?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block"> {% include "../creditor/_defaultDeptType.html" %} - weve sold the debt</a>
 {% elif creditorcase.task ==='completedCantFindDebt' %}
-<a href="confirmed-cant-find-debt?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block govuk-!-margin-bottom-2"> {% include "../creditor/_defaultDeptType.html" %} - view you cant find the debt reason</a>
+<a href="confirmed-cant-find-debt?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block"> {% include "../creditor/_defaultDeptType.html" %} - incorrect debt details</a>
+{% elif creditorcase.task ==='completedNotCreditor' %}
+<a href="confirmed-not-creditor?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block"> {% include "../creditor/_defaultDeptType.html" %} - were not the creditor</a>
 {% else %}
         <span class="app-task-list__task-name">
-         <a href="confirm-this-is-your-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - confirm this is your debt </a> 
+         <a href="confirm-this-is-your-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %}</a> 
 
 </form>
 

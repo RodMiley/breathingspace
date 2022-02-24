@@ -17,7 +17,7 @@
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
-   <p>We have the reason you can't find the debt to the money advice organisation</p>
+   <p>We've informed the money advice organisation that some of the details were incorrect</p>
 
 
 
@@ -34,6 +34,13 @@
     You have completed your task
   </h3>
    <p>We have informed the money adviser that you have sold the debt</p>
+
+
+  {% elif  creditorcase.task ==='completedNotCreditor' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have informed the money adviser that your not the creditor</p>
   {% endif%}
 {% endset %}
 

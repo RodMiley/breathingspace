@@ -109,6 +109,28 @@ router.get('/*', function (req, res, next) {
         next()
          })
 
+
+         router.get('/creditor/confirm-not-creditor', function (req, res, next) {
+          let findCase = {}
+    
+          for (let i = 0; i < creditorcases.length; i++ ) {
+            if(creditorcases[i].reference === req.query.reference){
+              findCase = creditorcases[i];
+            }
+          
+            }
+          
+    
+          let status = req.session.data['tasktodo']
+          if(status === 'completed'){
+            findCase.task ='completedNotCreditor'
+          }
+         
+          res.locals.creditorcase = findCase
+          res.locals.creditorcases = creditorcases
+          next()
+           })
+
     
 
 
@@ -133,6 +155,10 @@ router.get('/*', function (req, res, next) {
           }
 
           if(creditorcases[i].task === 'completedSoldDebt'){
+            findCase = creditorcases[i];
+          }
+
+          if(creditorcases[i].task === 'completedNotCreditor'){
             findCase = creditorcases[i];
           }
       

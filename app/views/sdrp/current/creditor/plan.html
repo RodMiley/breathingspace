@@ -21,34 +21,25 @@ Debt repayment plan for Sarah Philips
 <div class="govuk-grid-column-full">
 {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
 <ul class="govuk-list stages">
-<li>1. Draft plan</li>
-<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Proposed plan
+<li>1. Confirm debts plan</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
 </strong></li>
-<li>4. Agreed plan</li>
+<li>4. Active plan</li>
 </ul>
 {% else %}
 <ul class="govuk-list stages">
-<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Draft plan - Day 1</strong></li>
-<li>2. Proposed plan
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Confirm debts - Day 1</strong></li>
+<li>2. Review draft plan
 </li>
-<li>3. Agreed plan</li>
+<li>3. Active plan</li>
 </ul>
-<p>The draft plan was sent {{ 'DD MMMM YYYY' | baseDateAdd(0) }}<br>
-You have <strong>20 days</strong> to tell us the if any of the details are incorrect. After you will recieve a provisional plan or a cancelation notification </p>
+<p>You have <strong>20 days</strong> to confirm if the debts below are yours.</p>
 {% endif %}
 </div>
 </div>
  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
 
-<p>Advice uk are helping your customer manage their money better, Advice uk have began the process of setting up a statutory debt repayment plan.</p>
-<!-- <div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-
-    It's important that we have all the right information about the debt, you have till {{ 'DD MMMM YYYY' | baseDateAdd(21) }} tell us the if any of the details are incorrect.
-  </strong>
-</div> -->
+<p>This debt repayment plan is being created by AdviceUK.</p>
 
 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
@@ -92,6 +83,11 @@ You have <strong>20 days</strong> to tell us the if any of the details are incor
   </ul>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-l">Tasks</h2>
+    <p>Please review each debt listed below and confirm if:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>the debt is yours</li>
+    <li>the debt details are correct</li>
+    </ul>
    {% include  "../includes/creditor/_tasklist.html" %} 
   </div>
     <div class="govuk-tabs__panel" id="debts">

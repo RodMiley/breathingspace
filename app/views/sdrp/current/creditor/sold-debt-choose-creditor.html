@@ -11,7 +11,7 @@
   <form class="form" action="sold-debt-confirm" method="post">
     <div class="govuk-grid-column-full">
         {% include  "../includes/creditor/_client_name_reference.html" %} 
-    <a href="plan" class="govuk-back-link">Back</a>  
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
     </div>
     </div>
       <div class="govuk-grid-row">
@@ -20,11 +20,11 @@
        <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Who have you sold the debt to?
 </label></h1> 
 <span id="changed-name-hint" class="govuk-hint">
-   Type the creditor’s name and select them from the list. 
+  Type the organisation’s name and select them from the list
     </span> 
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
-<p>If the creditor doesn’t appear on the list, you can<a href="add-debt-adhock-creditor">enter their details manually</a></p>
+<p>If the organisation doesn’t appear on the list, you can <a href="add-debt-adhock-creditor">enter their details manually</a></p>
 
         <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
@@ -49,7 +49,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Save and continue
+  Continue
 </button>
     </div>
     </form>
