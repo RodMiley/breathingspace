@@ -107,7 +107,28 @@ router.get('/*', function (req, res, next) {
         res.locals.creditorcase = findCase
         res.locals.creditorcases = creditorcases
         next()
-         })
+         }) 
+         
+         router.get('/creditor/confirm-cant-find-debt-alt', function (req, res, next) {
+          let findCase = {}
+    
+          for (let i = 0; i < creditorcases.length; i++ ) {
+            if(creditorcases[i].reference === req.query.reference){
+              findCase = creditorcases[i];
+            }
+          
+            }
+          
+    
+          let status = req.session.data['tasktodo']
+          if(status === 'completed'){
+            findCase.task ='completedCantFindDebtAlt'
+          }
+         
+          res.locals.creditorcase = findCase
+          res.locals.creditorcases = creditorcases
+          next()
+           })
 
 
          router.get('/creditor/confirm-not-creditor', function (req, res, next) {
@@ -151,6 +172,10 @@ router.get('/*', function (req, res, next) {
           }
 
           if(creditorcases[i].task === 'completedCantFindDebt'){
+            findCase = creditorcases[i];
+          }
+
+          if(creditorcases[i].task === 'completedCantFindDebtAlt'){
             findCase = creditorcases[i];
           }
 

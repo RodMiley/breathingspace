@@ -40,7 +40,11 @@
         </label>
       </div>
       <div class="govuk-radios__item">
+      {% if checked('choose-incorrect-debt-page','Incorrect debt details design 2')%}
+       <input class="govuk-radios__input" id="confirm-debt-status-4" name="confirm-debt-status" type="radio" value="we-cant-find-this-debt~why-cant-you-find-the-debt-alt?reference={{creditorcase.reference}}">
+      {% else %}
         <input class="govuk-radios__input" id="confirm-debt-status-4" name="confirm-debt-status" type="radio" value="we-cant-find-this-debt~why-cant-you-find-the-debt?reference={{creditorcase.reference}}">
+      {% endif %}
         <label class="govuk-label govuk-radios__label" for="confirm-debt-status-4">
          Possibly, but I can't match the client and the debt with the information provided
         </label>

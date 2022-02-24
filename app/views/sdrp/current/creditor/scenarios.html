@@ -48,10 +48,34 @@ What type of creditor ar you testing with!
   ]
 }) }}
 
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "choose-incorrect-debt-page",
+  name: "choose-incorrect-debt-page",
+  fieldset: {
+    legend: {
+      text: "Choose page design",
+      isPageHeading: False,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Incorrect debt details design 1",
+      text: "Incorrect debt details design 1"
+    },
+    {
+      value: "Incorrect debt details design 2",
+      text: "Incorrect debt details design 2"
+    }
+  ]
+}) }}
+
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Save and continue"
+  text: "Continue"
 }) }}
     </div>
 </div>
