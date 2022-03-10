@@ -96,13 +96,14 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
 
 <div class="govuk-grid-row"> 
 <div class="govuk-grid-column-two-thirds">
-{% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+{% if case.task =='Draft plans nearing deadline' %}
 <ul class="govuk-list stages">
 <li>1. Confirm debts</li>
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Draft plan
 </strong></li>
 <li>4. Active plan</li>
 </ul>
+  <p>Once you send the plan to creditors, it becomes a proposed plan. At this point protections begin for your client.  </p>
 {% else %}
 <ul class="govuk-list stages">
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Confirm debts</strong></li>
@@ -111,11 +112,7 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
 <li>3. Active plan</li>
 </ul>
 
-{% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp')  %}
-  {% elif case.task =='Draft plans nearing deadline'%}
-  <p>Once you send the plan to creditors, it becomes a proposed plan. At this point protections begin for your client.  </p>
-{% elif case.task%}
-{% endif %}
+
 {% endif %}
 </div>
 <div class="govuk-grid-column-one-third">
@@ -144,7 +141,7 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
        Client details
       </a>
     </li>
-     {% if data['budgetupdated'] and checked('adddebtcouncil','yes') or case.task %}
+     {% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') and checked('adddebtcouncil','yes') or case.task %}
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#plan">
       {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
@@ -160,19 +157,14 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-l">Tasks</h2>
    {% if case.task =='Draft plans nearing deadline' %} 
-    <p>We need to add some income and expenditure information to share with creditors</p>  
     <p>Please complete each task listed:</p>
-    <ul class="govuk-list govuk-list--bullet">
-    <li>Add household information</li>
-    <li>Add monthly income</li>
-    <li>Add monthly outgoings</li>
-    <li>Send the draft plan</li>
-    </ul>
    {% else %}
       <p>Please complete each task listed:</p>
     <ul class="govuk-list govuk-list--bullet">
     <li>Add all your clients debts</li>
-    <li>Add surplus budget to check the plans viability</li>
+    <li>Add household information</li>
+    <li>Add monthly income</li>
+    <li>Add monthly outgoings</li>
     <li>Send the debts to the creditor to confirm or update the debt amount</li>
     </ul>
     {% endif %}
@@ -187,23 +179,19 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
 {% include  "../includes/advisor/_client_details.html" %} 
 
   </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan">
- {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
- <h2 class="govuk-heading-l">Draft plan</h2>
- {% else %} 
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan"> 
 <h2 class="govuk-heading-l">Draft plan</h2>
-<p>This information won't be shared with creditors until you send the draft plan.</p>
-{% endif %}
 {% include  "../includes/advisor/_plan-detail.html" %} 
   </div>
 </div>
 
+  <form class="form" action="scenarios" method="post">
+{% include  "../includes/advisor/_hide-confirmation.html" %} 
 
-
+<button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
 
 </form>
 
-<a href="scenarios" class="timemachine-link govuk-body">Back to scenarios</a>
 
 {% block page_scripts %}
 <script>

@@ -2,30 +2,6 @@
   <li>
     <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
  {% if case.task === "Draft plans nearing deadline"  %}
-        <li class="app-task-list__item">
-       {% if checked('householdinfo','yes')%}
-            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
-       {% else %}
-        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
-        {% endif %}
-           <a href="household?reference={{case.reference}}">Add household information</a>
-       <li>
-      <li class="app-task-list__item">
-            {% if checked('monthly-income','yes')%}
-            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
-       {% else %}
-        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
-        {% endif %}
-           <a href="monthly-income?reference={{case.reference}}">Add monthly income</a>
-       <li>
-      <li class="app-task-list__item">
-        {% if checked('monthly-outgoings','yes')%}
-        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
-        {% else%}
-        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
-        {% endif %}
-           <a href="monthly-outgoings?reference={{case.reference}}">Add monthly outgoings</a>
-       <li>
            <li class="app-task-list__item">
             {% if checked('monthly-outgoings','yes') and  checked('monthly-income','yes') and checked('householdinfo','yes') %}
     
@@ -78,7 +54,32 @@
        
         </span>
       </li>
-        <li class="app-task-list__item">
+
+      <li class="app-task-list__item">
+       {% if checked('householdinfo','yes')%}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+       {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="household?reference={{case.reference}}">Add household information</a>
+       </li>
+      <li class="app-task-list__item">
+            {% if checked('monthly-income','yes')%}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+       {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="monthly-income?reference={{case.reference}}">Add monthly income</a>
+       </li>
+      <li class="app-task-list__item">
+        {% if checked('monthly-outgoings','yes')%}
+        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+        {% else%}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="monthly-outgoings?reference={{case.reference}}">Add monthly outgoings</a>
+       </li>
+       <!-- <li class="app-task-list__item">
             {% if data['budgetupdated'] and checked('adddebtcouncil','yes') or case.task %}
             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
             {% else %}
@@ -87,12 +88,12 @@
                 <a class="govuk-link" href="budget?reference={{case.reference}}">
       Add surplus budget
       </a>
-      <li>
+      <li> -->
            <li class="app-task-list__item">
               {% if case.task or checked('scenario1','completed') %}
            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
            <a href="consent">Send debts to creditors to confirm</a>
-          {% elif data['budgetupdated'] and checked('adddebtcouncil','yes') %}
+          {% elif checked('monthly-income','yes') and checked('monthly-outgoings','yes') and checked('adddebtcouncil','yes') %}
            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
            <a href="consent">Send debts to creditors to confirm</a>
            {% else %}
