@@ -10,8 +10,13 @@ Debt details
 
   <div class="govuk-grid-row">
   <form class="form" action="plan?reference={{case.reference}}" method="post">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+             {% include  "../includes/advisor/_client_name_reference.html" %} 
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+    </div>
+    </div>
+  <div class="govuk-grid-row">
+       <div class="govuk-grid-column-two-thirds"> 
       <h1 class="govuk-heading-l">
      
   Household information
