@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <form class="form" action="index" method="post">
+  <form class="form" action="scenarios" method="post">
 
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
@@ -15,7 +15,7 @@
    <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-top-5">
           <h1 class="govuk-panel__title">
-            We have sent the information to creditors and the 21 day intention to iniciate a plan stage has started
+            We have sent the information to creditors
           </h1>
           
           <div class="govuk-panel__body">
@@ -24,7 +24,7 @@
         </div>
           <h2 class="govuk-heading-m">What happens next</h2>
            <p class="govuk-body">You and your client's creditors have 21 days to agree the information in the plan</p>
-           <p class="govuk-body">After 21 days you have until {{ 'DD MMMM YYYY' | baseDateAdd(28) }} to send a proposed plan to the creditors, If you don't provide a proposed plan within this time, the plan will be cancelled.</p>
+           <p class="govuk-body">After 21 days you have 7 days to send a draft plan to the creditors, If you don't provide a proposed plan within this time, the plan will be cancelled.</p>
     
 
       <ul class="govuk-list">
@@ -34,7 +34,7 @@
 
            <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="clientStatus" type="radio" value="newbs~index?reference=BS0004623" checked>
+        <input class="govuk-radios__input" id="" name="scenario1" type="radio" value="completed" checked>
         <label class="govuk-label govuk-radios__label" for="newclient">
          hidden radio
         </label>
@@ -46,6 +46,7 @@
   
 </div>
 
-      
+  
+<a href="scenarios" class="timemachine-link govuk-body">Back to scenarios</a>    
 
 {% endblock %}

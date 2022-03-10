@@ -1,0 +1,51 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+  <form class="form" action="index" method="post">
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+   <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-top-5">
+          <h1 class="govuk-panel__title">
+            We have sent the information to creditors and the 21 day intention to iniciate a plan stage has started
+          </h1>
+          
+          <div class="govuk-panel__body">
+            Your client's reference number<br><strong>SDRP0001</strong>
+          </div>
+        </div>
+          <h2 class="govuk-heading-m">What happens next</h2>
+           <p class="govuk-body">You and your client's creditors have 21 days to agree the information in the plan</p>
+           <p class="govuk-body">After 21 days you have until {{ 'DD MMMM YYYY' | baseDateAdd(28) }} to send a proposed plan to the creditors, If you don't provide a proposed plan within this time, the plan will be cancelled.</p>
+    
+
+      <ul class="govuk-list">
+          <!-- <li><a href="account-page">Return to client page</a></li> -->
+          <li><button class="govuk-link govuk-body ">Return to service homepage</button></li>
+        <ul> 
+
+           <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientStatus" type="radio" value="newbs~index?reference=BS0004623" checked>
+        <label class="govuk-label govuk-radios__label" for="newclient">
+         hidden radio
+        </label>
+      </div>
+      </div>
+</form>
+ <!-- <p><a href="time-machine-creditor" class="timemachine-link">On to next scenario</a></p> -->
+      </div>
+  
+</div>
+
+      
+
+{% endblock %}

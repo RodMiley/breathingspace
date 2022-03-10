@@ -1,0 +1,54 @@
+{% if checked('taskcompleted','show')%}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+<span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
+
+{% set html %}
+{% if checked('task','newDebtAdded')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a new debt
+  </h3>
+{% elif creditorcase.task ==='completedConfirmedDebtDetail' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+
+{% elif creditorcase.task ==='completedCantFindDebt' or creditorcase.task == 'completedCantFindDebtAlt' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We've informed the money advice organisation that some of the details were incorrect</p>
+
+
+
+{% elif creditorcase.task ==='completedUpdatedDebt' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the update</p>
+    <p>If Advice Uk don't need more information the next notification you will receive is a proposal or cancelation of the plan</p>
+
+
+  {% elif  creditorcase.task ==='completedSoldDebt' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have informed the money adviser that you have sold the debt</p>
+
+
+  {% elif  creditorcase.task ==='completedNotCreditor' %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We have informed the money adviser that your not the creditor</p>
+  {% endif%}
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% else %}
+{% endif %}

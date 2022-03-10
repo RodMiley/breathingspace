@@ -15,7 +15,7 @@
     <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
-         Creditor can't find the debt
+          Creditor can't match the information provided
       </h1>
       </div>
       <div class="govuk-grid-column-full">
@@ -64,33 +64,40 @@
 }) }}
 
 <h2 class="govuk-heading-m">Creditor response</h2>
-<p>There is an issue with the client name on the case</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Incorrect client details</h3>
+<p>Different surname</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Correct information</h3>
+<p>Our records show a different name for this debt, the name we have is Dorrete Henderson</p>
 
-<h3 class="govuk-heading-s">More detail</h3>
-<p>We think we may have matched this debt, but your information doesn't match our records, we would need to have matching 
-information to confirm this is a qualifying debt and should be included in this debt repayment plan.</p>
- 
+
+{% if checked('task','replied') %} 
+   {% include  "../includes/advisor/_datetimestamp.html" %} 
+   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reply</h3>
+   <p>{{ data['reply-detail'] }}</p>  
+{% elif checked('task','complete') %}
+   {% include  "../includes/advisor/_datetimestamp.html" %}     
+{% else %}
 <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="task-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
         Do you want to do next?
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
-        <label class="govuk-label govuk-radios__label" for="accept-changes">
+        <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="replied~reply-to-creditor?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-2">
           Reply to the creditor
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes-3" name="accept-changes" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="accept-changes-3">
+        <input class="govuk-radios__input" id="task-3" name="task" type="radio" value="complete~plan?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-3">
           Mark the task as complete
         </label>
       </div>
          <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes-4" name="accept-changes" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="accept-changes-4">
+        <input class="govuk-radios__input" id="task-4" name="task" type="radio" value="notcomplete~plan?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-4">
           Complete the task later
         </label>
       </div>
@@ -102,6 +109,9 @@ information to confirm this is a qualifying debt and should be included in this 
 <button class="govuk-button" data-module="govuk-button">
 Confirm and continue
 </button>
+
+{% endif %}
+
     </div>
     </form>
 </div>

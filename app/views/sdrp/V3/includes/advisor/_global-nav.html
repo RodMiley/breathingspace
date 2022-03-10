@@ -1,0 +1,62 @@
+<nav id="nav"  class="secondary ">
+  <div class="navbar">
+    <ul class="navbar__list-items">
+         {% if globalnav  == 'home' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <form class="govuk-!-display-inline" action="index" method="post">
+<button  class="govuk-body govuk-link">Home</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+</form>
+      </li>
+   <!--   {% if globalnav  == 'breathing space' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <a href="/advisor-latest/index">Breathing Space</a>
+      </li>
+
+      {% if globalnav  == 'dept repayment plan' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <a href="index">Debt repayment plans</a>
+      </li> -->
+
+                {% if globalnav  == 'tasks' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+               <form class="govuk-!-display-inline" action="tasks-to-do" method="post">
+<button  class="govuk-body govuk-link">Tasks to do</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+</form>
+      </li>
+          {% if globalnav  == 'search' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+               <form class="govuk-!-display-inline" action="search" method="post">
+<button  class="govuk-body govuk-link">Search</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+</form>
+      </li>
+    </ul>
+         <ul class="navbar__list-items signin">
+        <li>
+            <p>Paul Smith</p>
+      </li>
+        <li>
+         <a href="orgchoice">{{ orgchoice | default('Advice uk')}}</a>
+      </li>
+  
+    
+    </ul>
+  </div>
+</nav>

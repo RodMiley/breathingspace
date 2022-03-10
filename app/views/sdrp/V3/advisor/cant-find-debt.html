@@ -1,0 +1,109 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+         Creditor can't find the debt
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Debt details",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+
+  rows: [
+     [
+      {
+        text: "Creditor",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Southwark council"
+      }
+    ],
+    [
+      {
+        text: "Debt type"
+      },
+      {
+        text: "Council tax"
+      }
+    ],
+    [
+      {
+        text: "Amount"
+      },
+      {
+        text: "£2977"
+      }
+    ],
+    [
+      {
+        text: "Reference"
+      },
+      {
+        text: "SC3456789"
+      }
+    ]
+  ]
+}) }}
+
+<h2 class="govuk-heading-m">Creditor response</h2>
+<p>There is an issue with the client name on the case</p>
+
+<h3 class="govuk-heading-s">More detail</h3>
+<p>We think we may have matched this debt, but your information doesn't match our records, we would need to have matching 
+information to confirm this is a qualifying debt and should be included in this debt repayment plan.</p>
+ 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Do you want to do next?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="accept-changes">
+          Reply to the creditor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes-3" name="accept-changes" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="accept-changes-3">
+          Mark the task as complete
+        </label>
+      </div>
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes-4" name="accept-changes" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="accept-changes-4">
+          Complete the task later
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

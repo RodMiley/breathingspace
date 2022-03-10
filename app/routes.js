@@ -72,11 +72,8 @@ router.use('/creditor-v4', require('./views/creditor-v4/_routes'));
 router.use('/creditor-v5', require('./views/creditor-v5/_routes'));
 router.use('/creditor-v6', require('./views/creditor-v6/_routes'));
 router.use('/creditor-latest', require('./views/creditor-latest/_routes'));
+router.use('/sdrp/v3', require('./views/sdrp/v3/_routes'));
 router.use('/sdrp/v2', require('./views/sdrp/v2/_routes'));
 router.use('/sdrp/current', require('./views/sdrp/current/_routes'));
-
-
- 
-
 
 module.exports = router

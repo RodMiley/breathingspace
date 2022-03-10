@@ -1,0 +1,360 @@
+
+{% if checked('monthly-outgoings','yes') %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+<h4 class="govuk-heading-s">Fixed costs</h4>
+{{ govukSummaryList({
+  rows: [
+ 
+   
+    {
+      key: {
+        text: "Rent",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Rent']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Rent",
+            text: "Change",
+            visuallyHiddenText: "Rent"
+          }
+        ]
+      }
+    },
+     
+    {
+      key: {
+        text: "Mortgage",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Mortgage']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Mortgage",
+            text: "Change",
+            visuallyHiddenText: "Mortgage"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Other secured loans",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Other secured loans']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Other secured loans",
+            text: "Change",
+            visuallyHiddenText: "Other secured loans"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Council tax / rates",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Council tax / rates']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Council tax / rates",
+            text: "Change",
+            visuallyHiddenText: "Council tax / rates"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Other home and contents",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Other home and contents']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Other home and contents",
+            text: "Change",
+            visuallyHiddenText: "Other home and contents"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Gas",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Gas']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Gas",
+            text: "Change",
+            visuallyHiddenText: "Gas"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Electric",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Electric']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Electric",
+            text: "Change",
+            visuallyHiddenText: "Electric"
+          }
+        ]
+      }
+    },
+       {
+      key: {
+        text: "Other utility costs (e.g.coal, oil, calorgas)",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Other utility costs (e.g.coal, oil, calorgas)']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Other utility costs (e.g.coal, oil, calorgas)",
+            text: "Change",
+            visuallyHiddenText: "Other utility costs (e.g.coal, oil, calorgas)"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Water",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Water']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Water",
+            text: "Change",
+            visuallyHiddenText: "Water"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Care and health costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Care and health costs']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Care and health costs",
+            text: "Change",
+            visuallyHiddenText: "Care and health costs"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Transport and travel",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Transport and travel']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Transport and travel",
+            text: "Change",
+            visuallyHiddenText: "Transport and travel"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "School costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['School costs']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#School costs",
+            text: "Change",
+            visuallyHiddenText: "School costs"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Pensions and insurances",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Pensions and insurances']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Pensions and insurances",
+            text: "Change",
+            visuallyHiddenText: "Pensions and insurances"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Professional costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Professional costs']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Professional costs",
+            text: "Change",
+            visuallyHiddenText: "Professional costs"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "Other essential costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Other essential costs']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Other essential costs",
+            text: "Change",
+            visuallyHiddenText: "Other essential costs"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h4 class="govuk-heading-s">Flexible costs</h4>
+{{ govukSummaryList({
+  rows: [    {
+      key: {
+        text: "Communications and leisure",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Communications and leisure']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Communications and leisure",
+            text: "Change",
+            visuallyHiddenText: "Communications and leisure"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "Food and housekeeping",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Food and housekeeping']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Food and housekeeping",
+            text: "Change",
+            visuallyHiddenText: "Food and housekeeping"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Personal costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Personal costs']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Personal costs",
+            text: "Change",
+            visuallyHiddenText: "Personal costs"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+<h4 class="govuk-heading-s">Savings</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "Savings contribution",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Savings contribution']
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Savings contribution",
+            text: "Change",
+            visuallyHiddenText: "Savings contribution"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+ 
+{% else %}
+<p><a href='monthly-outgoings'>Add monthly outgoings</a></p>
+{% endif %}

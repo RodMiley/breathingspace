@@ -26,12 +26,22 @@
             Draft plans nearing deadline
           </a>
         {% else %}
-          <a href="update-debt-detail">
-            Assign debt type to Southwark Council's debt
+          <a href="add-debt-choose-creditor">
+            Add debts
           </a>
         {% endif %} 
         </span>
       </li>
+        <li class="app-task-list__item">
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+                <a class="govuk-link" href="budget?reference={{case.reference}}">
+      Add surplus budget
+      </a>
+      <li>
+           <li class="app-task-list__item">
+           <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Cannot start yet</strong>
+           Send debts to creditors to confirm
+      <li>
     </ul>
   </li>
 </ol>

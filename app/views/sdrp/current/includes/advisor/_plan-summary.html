@@ -1,6 +1,6 @@
 <h3 class="govuk-heading-m">
 {% if checked('proposed','yes')%}
-Proposed plan summary
+Draft plan summary
 {% else %}
 Draft plan summary
 {% endif %}
@@ -28,6 +28,37 @@ Draft plan summary
 </form>
 </span>
   </div>
+     {% if case.task === "Draft plans nearing deadline" and checked('monthly-income','yes')%}
+
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly income</dt>
+    <dd class="govuk-summary-list__value"> £1350.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+     {% endif %}
+
+        {% if case.task === "Draft plans nearing deadline" and checked('monthly-outgoings','yes')%}
+
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly outgoings</dt>
+    <dd class="govuk-summary-list__value"> £1150.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+      <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Savings contribution</dt>
+    <dd class="govuk-summary-list__value"> £50.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+     {% endif %}
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>

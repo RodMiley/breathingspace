@@ -1,0 +1,378 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Monthly outgoings
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+Monthly outgoings
+
+      </h1>
+
+<p>Please enter your client's outgoings per month for each of the options listed</p>   
+
+<h2 class="govuk-heading-m">Fixed costs</h2>
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Rent",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Rent",
+  name: "Rent",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Rent']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Mortgage",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Mortgage",
+  name: "Mortgage",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Mortgage']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Other secured loans",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other secured loans",
+  name: "Other secured loans",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other secured loans']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Council tax / rates",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Council tax / rates",
+  name: "Council tax / rates",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Council tax / rates']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Other home and contents",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other home and contents",
+  name: "Other home and contents",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other home and contents']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Gas",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Gas",
+  name: "Gas",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Gas']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Electric",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Electric",
+  name: "Electric",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Electric']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Other utility costs (e.g.coal, oil, calorgas)",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other utility costs (e.g.coal, oil, calorgas)",
+  name: "Other utility costs (e.g.coal, oil, calorgas)",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other utility costs (e.g.coal, oil, calorgas)']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Water",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Water",
+  name: "Water",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Water']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Care and health costs",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Care and health costs",
+  name: "Care and health costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Care and health costs']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Transport and travel",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Transport and travel",
+  name: "Transport and travel",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Transport and travel']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "School costs",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "School costs",
+  name: "School costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['School costs']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Pensions and insurances",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Pensions and insurances",
+  name: "Pensions and insurances",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Pensions and insurances']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Professional costs",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Professional costs",
+  name: "Professional costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Professional costs']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Other essential costs",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other essential costs",
+  name: "Other essential costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other essential costs']
+}) }}  
+
+<h2 class="govuk-heading-m">Flexible costs</h2>
+
+
+{{ govukInput({
+  label: {
+    text: "Communications and leisure",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Communications and leisure",
+  name: "Communications and leisure",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Communications and leisure']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Food and housekeeping",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Food and housekeeping",
+  name: "Food and housekeeping",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Food and housekeeping']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Personal costs",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Personal costs",
+  name: "Personal costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Personal costs']
+}) }} 
+
+<h2 class="govuk-heading-m">Savings contribution</h2>
+
+{{ govukInput({
+  label: {
+    text: "Savings contribution",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Savings contribution",
+  name: "Savings contribution",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Savings contribution']
+}) }} 
+
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="monthly-outgoings" type="radio" value="yes~plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="monthly-outgoings">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

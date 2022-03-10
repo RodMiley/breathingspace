@@ -1,0 +1,25 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+        {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+         Were not the creditor
+      </h1>
+  {% include  "../includes/creditor/_debt_details.html" %} 
+  {% include  "../includes/creditor/_datetimestamp.html" %} 
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

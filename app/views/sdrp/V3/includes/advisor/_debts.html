@@ -1,0 +1,271 @@
+<p>Please add as much debt information as you can and be as accurate as you can. Where exact debt amounts are unknown, please give an estimate. Creditors will be able to update any incorrect amounts once they receive the proposed plan.
+</p>
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-link govuk-body">Add a debt</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+{% if case.task %}
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="url" type="radio" value="go~not-testing?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+ {% endif %}     
+</form>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+{% if case.task  and checked('task','confirmDisc') %}
+
+<h3 class="govuk-heading-m">Priority debts</h3>
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Southwark Council"
+      },
+      value: {
+          html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "EDF Energy Ltd"
+      },
+      value: {
+        html: "Debt type: gas <br>Debt amount: £825<br>Reference: CRT8536544"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">Non priority debts</h3>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Yorkshire Water Services Ltd"
+      },
+      value: {
+        html: "Debt type: water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+     {
+      key: {
+        text: "Halifax credit card"
+      },
+      value: {
+        html: "Debt type: credit card <br>Debt amount:£6361<br>Reference: 2356 5678 4567"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next retail plc"
+      },
+      value: {
+          html: "Debt type: store card <br>Debt amount: £1,291<br>Reference: NX23452345"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+{% elif case.task %}
+
+<h3 class="govuk-heading-m">Priority debts</h3>
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Southwark Council"
+      },
+      value: {
+          html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "EDF Energy Ltd"
+      },
+      value: {
+        html: "Debt type: gas <br>Debt amount: £825<br>Reference: CRT8536544"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">Non priority debts</h3>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Yorkshire Water Services Ltd"
+      },
+      value: {
+        html: "Debt type: water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+     {
+      key: {
+        text: "Halifax credit card"
+      },
+      value: {
+        html: "Debt type: credit card <br>Debt amount:£6061<br>Reference: 2356 5678 4567"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next retail plc"
+      },
+      value: {
+          html: "Debt type: store card <br>Debt amount: £1,291<br>Reference: NX23452345"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "View or update",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% else %}
+{% if checked('adddebtcouncil','yes')%}
+<h3 class="govuk-heading-m">Priority debts</h3>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     {{ creditor }}
+    </dt>
+    <dd class="govuk-summary-list__value">
+     Debt type:{{ debtcouncil | default('council tax')}}<br>
+     Estimated debt amount: £{{ debtA | default('2,977') }}<br>
+     Reference: {{ councilDebtReference | default('Not provided') }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+{% if checked('adddebtcreditcard','yes')%}
+<h3 class="govuk-heading-m">None priority debts</h3>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     {{ creditor2 }}
+    </dt>
+    <dd class="govuk-summary-list__value">
+     Debt type: credit card<br>
+     Estimated debt amount: £{{ creditcardDebtAmount | default('2,977') }}<br>
+     Reference: {{ creditcardDebtReference | default('Not provided') }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+{% endif %}
+
+
+
+
+{% endif %}
+{% endif %}
+
+

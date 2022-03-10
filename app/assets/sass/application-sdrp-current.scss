@@ -52,7 +52,19 @@ button.govuk-link{
 }
 
 //End Prototype only helper classes -----------------------------------------------------------------
-//End bespoke styling for the stages displan on the plan page -----------------------------------------------------------------
+
+// Prototype only styling ---------------------------------------------------------------------------
+.timemachine-link{
+    position:absolute;
+    top:0px;
+    right:0px;
+    display:block;
+    background:#fff;
+    padding:10px 10px 14px 10px;
+  }
+// End prototype only styling ---------------------------------------------------------------------------
+
+//End bespoke styling for the stages display on the plan page -----------------------------------------------------------------
 .stages li
 {
    

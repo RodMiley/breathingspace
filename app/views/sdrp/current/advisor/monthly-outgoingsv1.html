@@ -1,0 +1,301 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Monthly outgoings
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+Monthly outgoings
+
+      </h1>
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's rent per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Rent",
+  name: "Rent",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Rent']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's mortgage per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "mortgage",
+  name: "mortgage",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Mortgage']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's other secured loans per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other secured loans",
+  name: "Other secured loans",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other secured loans']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's council tax / rates per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Council tax / rates",
+  name: "Council tax / rates",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Council tax / rates']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's other home and contents per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other home and contents",
+  name: "Other home and contents",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other home and contents']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's gas per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Gas",
+  name: "Gas",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Gas']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's electric per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Electric",
+  name: "Electric",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Electric']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's mortgage per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "mortgage",
+  name: "mortgage",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Rent']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's other utility costs (e.g.coal, oil, calorgas) per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other utility costs (e.g.coal, oil, calorgas)",
+  name: "Other utility costs (e.g.coal, oil, calorgas)",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other utility costs (e.g.coal, oil, calorgas)']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's water per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Water",
+  name: "Water",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Water']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's transport and travel per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Transport and travel",
+  name: "Transport and travel",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Transport and travel']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's school costs per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "School costs",
+  name: "School costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['School costs']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's pensions and insurances per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Pensions and insurances",
+  name: "Pensions and insurances",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Pensions and insurances']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's professional costs per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Professional costs",
+  name: "Professional costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Professional costs']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "How much is your client's other essential costs per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other essential costs",
+  name: "Other essential costs",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Other essential costs']
+}) }}  
+
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="householdinfo" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="householdinfo">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

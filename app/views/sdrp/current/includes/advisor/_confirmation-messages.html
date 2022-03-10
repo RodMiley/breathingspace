@@ -1,4 +1,5 @@
-{% if checked('taskcompleted','show')%}
+{% if checked('task','notcomplete') %}
+{% elif checked('taskcompleted','show')%}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 <span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
@@ -6,16 +7,27 @@
 {% set html %}
 {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
  <h3 class="govuk-notification-banner__heading">
-    You have sent the plan to your client’s creditors. Creditors now have 7 days to review the proposed plan and raise any discrepancies.
+    You have sent the plan to your client’s creditors. Creditors now have 14 days to object to the plan or raise any discrepancies.
 
   </h3>
 {% elif checked('task','newDebtAdded')%}
   <h3 class="govuk-notification-banner__heading">
     You have added a new debt
   </h3>
-{% elif checked('task','debtUpdated') or checked('task','confirmDisc') %}
+{% elif checked('task','debtUpdated') or checked('task','confirmDisc') or checked('task','complete') %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
+  </h3>
+  {% elif checked('task','replied') %}
+     <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>
+  We have sent your reply to the creditor
+  </p>
+    {% elif checked('task','addname')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a another name
   </h3>
   {% endif%}
 {% endset %}

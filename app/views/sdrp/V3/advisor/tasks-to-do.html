@@ -1,0 +1,136 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "taskstodo" %}
+
+{% block pageTitle %}
+  Tasks to do
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/advisor/_global-nav.html" %} 
+
+
+ {% set currentnav ='findCasesecrets' %}
+
+
+   <!-- BASE VALUES -->
+{% set totTasks = 0 %}
+{% set totDiscprenceies = 0 %}
+{% set totProposed = 0 %}
+{% set totCantFind = 0 %}
+
+	{% for case in cases %}
+
+ {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
+    {% set totTasks = totTasks + 1 %}
+   {% endif %}
+
+    {% if case.task === "Creditor has raised discrepancies" %}
+    {% set totDiscprenceies = totDiscprenceies + 1 %}
+   {% endif %}
+
+  {% if case.task === "Draft plans nearing deadline" %}
+    {% set totProposed = totProposed + 1 %}
+   {% endif %}
+
+   {% if case.task === "Creditor can't find the debt" %}
+    {% set totCantFind = totCantFind + 1 %}
+   {% endif %}
+
+
+   {% endfor %}
+
+
+ <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<form class="form" action="#" method="post">
+
+        <div class="govuk-form-group">
+         {% include "../includes/advisor/_sub_tasks_radios.html" %}
+
+      </div>
+
+
+
+
+
+
+
+<button class="govuk-button"  id="facetFilterBtn" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+</div>
+<div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+Tasks to do
+  </h1>
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+
+{% if checked('taskFilter','Creditor has raised discrepancies')%}
+Creditor has raised discrepancies ({{totDiscprenceies}})
+{% elif checked('taskFilter','Creditor cant find the debt')%}
+Creditor can't find the debt ({{totCantFind}})
+{% elif checked('taskFilter','Draft plans nearing deadline')%}
+Draft plans nearing deadline ({{totProposed}})
+{% else %}
+All ({{totTasks}}) 
+{% endif %}
+</h2>
+
+
+
+<ul class="govuk-list" id="xnum">
+
+    <!--  {% for debt in case.debt %}
+            
+               {{ debt.type }}
+               {{debt.amount}}
+
+               {% endfor %} -->
+          <!--    <a href="../case/case-details-and-tasks-accordion?reference={{case.reference}}" class="govuk-body govuk-link  govuk-!-display-block govuk-!-margin-bottom-0">{{case.name}} {{case.reference}} </a>
+                {{case.task}} -->
+              
+
+              <!-- <div class="govuk-radios__item  govuk-visually-hidden">
+                <input class="govuk-radios__input" id="case-links" name="case-link" type="radio" value="hide~../case/case-details-and-tasks-accordion?reference={{case.reference}}" checked>
+                <label class="govuk-label govuk-radios__label" for="case-links">
+                  selected radio for logic
+                </label>
+              </div>   -->
+
+   {% for case in cases %}
+ 
+{% if checked('taskFilter','Creditor has raised discrepancies')%} 
+    {% if case.task === "Creditor has raised discrepancies" %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}
+
+{% elif checked('taskFilter','Creditor cant find the debt')%}
+    {% if case.task === "Creditor can't find the debt"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}       
+    
+{% elif checked('taskFilter','Draft plans nearing deadline')%}
+    {% if case.task === "Draft plans nearing deadline"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}   
+{% else %}
+    {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %}  
+{% endif %}
+
+             {% endfor %} 
+
+
+</ul>
+    </div>
+</div>
+
+
+{% endblock %}
+

@@ -2,155 +2,200 @@
 
 {% include  "../advisor/_plan-summary.html" %} 
 
-<h3 class="govuk-heading-m">Monthly repayments breakdown</h3>
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-      10% scheme administration cost
-    </dt>
-    <dd class="govuk-summary-list__value">
-     {% if data['budgetupdated'] or case.task %} £{{ fees }}.00 {% else %}Cannot calculate{% endif %}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-     Priority debts 30% (pro rata)
-    </dt>
-    <dd class="govuk-summary-list__value">
-     {% if data['budgetupdated']  or case.task %} £{{ priority }}.00 {% else %}Cannot calculate{% endif %}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-      All debts 70% (pro rata)
-    </dt>
-    <dd class="govuk-summary-list__value">
-       {% if data['budgetupdated']  or case.task %} £{{ nonpriority }}.00{% else %}Cannot calculate{% endif %}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-     Total 
-    </dt>
-    <dd class="govuk-summary-list__value">
-       {% if data['budgetupdated']  or case.task %}£{{ surplus }}.00 {% else %}Cannot calculate{% endif %}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    
-    </dd>
-  </div>
-</dl>
+<h3 class="govuk-heading-m">Household information</h3>
+{% include  "../advisor/_plan-housholdinfo.html" %} 
 
-<h3 class="govuk-heading-m">Monthly amounts creditors will recieve</h3>
+<h3 class="govuk-heading-m">Monthly lncome</h3>
+{% include  "../advisor/_plan-monthlyincome.html" %} 
+
+<h3 class="govuk-heading-m">Monthly Outgoings</h3>
+{% include  "../advisor/_plan-monthlyoutgoings.html" %} 
+
+
+ {% from "govuk/components/table/macro.njk" import govukTable %}
     {% if case.task  %}
-<h4 class="govuk-heading-s govuk-!-margin-bottom-2">Priority debts</h4>
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        Southwark council
-        <span class="govuk-body">| council tax</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ ( debtArepayment|float ).toFixed(2)}}</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-    <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        EDF Energy Ltd
-        <span class="govuk-body">| gas</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ ( debtBrepayment|float ).toFixed(2)}}</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-</dl>
-<h4 class="govuk-heading-s govuk-!-margin-bottom-2">Non priority debts</h4>
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        Yorkshire Water Services Ltd
-        <span class="govuk-body">| water</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ ( debtCrepayment|float ).toFixed(2)}}</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-    <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        Halifax credit cards
-        <span class="govuk-body">| credit card</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ ( debtDrepayment|float ).toFixed(2)}}</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        Next retail plc
-        <span class="govuk-body">| store card</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ ( debtErepayment|float ).toFixed(2)}}</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-</dl>
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Monthly repayment"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Southwark council"
+      },
+      {
+        text: "£2977"
+      },
+      {
+        text: "£72.78"
+      },
+      {
+        text: "Priority"
+      }
+    ],
+    [
+      {
+        text: "EDF Energy Ltd"
+      },
+      {
+        text: "£825"
+      },
+      {
+        text: "£20.17"
+      },
+      {
+        text: "Priority"
+      }
+    ], 
+    [
+      {
+        text: "Yorkshire Water Services Ltd"
+      },
+      {
+        text: "£1,146"
+      },
+      {
+        text: "£11.74"
+      },
+      {
+        text: "Non priority"
+      }
+    ],
+    [
+      {
+        text: "Halifax credit cards"
+      },
+      {
+        text: "£6061"
+      },
+      {
+        text: "£62.09"
+      }
+      ,
+      {
+        text: "Non priority"
+      }
+    ],
+    [
+      {
+        text: "Next retail plc"
+      },
+      {
+        text: "1,291"
+      },
+      {
+        text: "£13.22"
+      },
+      {
+        text: "Non priority"
+      }
+    ]
+  ]
+}) }}
     {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') %}
-<h4 class="govuk-heading-s">Priority debts</h4>
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor }}   <span class="govuk-body">| council tax</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £89.28</br> 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-</dl>
 
-<h4 class="govuk-heading-s">Non priority debts</h4>
-<dl class="govuk-summary-list">
-    <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor2 }}   <span class="govuk-body">| credit card</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £90.72 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-</dl>
 
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Monthly repayment"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: data['creditor']
+      },
+      {
+        text: '£' + data['debtA']
+      },
+      {
+        text: "£89.28"
+      },
+      {
+        text: "Priority"
+      }
+    ],
+    [
+      {
+        html: data['creditor2']
+      },
+      {
+        text: '£' + data['creditcardDebtAmount']
+      },
+      {
+        text: "£90.72"
+      },
+      {
+        text: "Non priority"
+      }
+    ]
+  ]
+}) }}
     {% else %}
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-half">
-        {{ creditor }}  <span class="govuk-body">| council tax</span>
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £{{ surplus_fees }}.00 
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-</dl>
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Monthly repayment"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: data['creditor']
+      },
+      {
+        text: "£2977"
+      },
+      {
+        text: "£180"
+      },
+      {
+        text: "Priority"
+      }
+    ]
+  ]
+}) }}    
  {% endif %}
+
 
