@@ -1,5 +1,5 @@
 
-{% if checked('householdinfo','yes') %}
+{% if checked('householdinfo','yes') or case.task === "Creditor can't find the debt"%}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {{ govukSummaryList({
   rows: [
@@ -11,7 +11,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['children under 16']
+        html: data['children under 16'] | default('2')
       },
       actions: {
         items: [
@@ -30,7 +30,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['children between 16 - 18']
+        html: data['children between 16 - 18'] | default('0')
       },
       actions: {
         items: [
@@ -48,7 +48,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['other dependents']
+        html: data['other dependents'] | default('0')
       },
       actions: {
         items: [
@@ -66,7 +66,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['peopleinhousehold']
+        html: data['peopleinhousehold'] | default('4')
       },
       actions: {
         items: [
@@ -84,7 +84,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['Number of vehicles']
+        html: data['Number of vehicles'] | default('2')
       },
       actions: {
         items: [
@@ -102,7 +102,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['house tenure']
+        html: data['house tenure'] | default('Private - tenant')
       },
       actions: {
         items: [
@@ -120,7 +120,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html: data['employment']
+        html: data['employment']| default('Employed')
       },
       actions: {
         items: [

@@ -1,5 +1,5 @@
 
-{% if checked('monthly-outgoings','yes') %}
+{% if checked('monthly-outgoings','yes')  or case.task === "Creditor can't find the debt" %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 <h4 class="govuk-heading-s">Fixed costs</h4>
 {{ govukSummaryList({
@@ -12,7 +12,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Rent']
+        html:  "£" + data['Rent'] | default('480.00')
       },
       actions: {
         items: [
@@ -31,7 +31,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Mortgage']
+        html:  "£" + data['Mortgage'] | default('0.00')
       },
       actions: {
         items: [
@@ -49,7 +49,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Other secured loans']
+        html:  "£" + data['Other secured loans']  | default('0.00')
       },
       actions: {
         items: [
@@ -67,7 +67,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Council tax / rates']
+        html:  "£" + data['Council tax / rates'] | default('120.00')
       },
       actions: {
         items: [
@@ -85,7 +85,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Other home and contents']
+        html:  "£" + data['Other home and contents'] | default('0.00')
       },
       actions: {
         items: [
@@ -110,7 +110,7 @@
           {
             href: "household#Gas",
             text: "Change",
-            visuallyHiddenText: "Gas"
+            visuallyHiddenText: "Gas"  | default('80.00')
           }
         ]
       }
@@ -121,7 +121,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Electric']
+        html:  "£" + data['Electric']  | default('85.00')
       },
       actions: {
         items: [
@@ -139,7 +139,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Other utility costs (e.g.coal, oil, calorgas)']
+        html:  "£" + data['Other utility costs (e.g.coal, oil, calorgas)'] | default('0.00')
       },
       actions: {
         items: [
@@ -156,7 +156,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Water']
+        html:  "£" + data['Water'] | default('45.00')
       },
       actions: {
         items: [
@@ -173,7 +173,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Care and health costs']
+        html:  "£" + data['Care and health costs'] | default('0.00')
       },
       actions: {
         items: [
@@ -190,7 +190,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Transport and travel']
+        html:  "£" + data['Transport and travel'] | default('0.00')
       },
       actions: {
         items: [
@@ -207,7 +207,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['School costs']
+        html:  "£" + data['School costs'] | default('0.00')
       },
       actions: {
         items: [
@@ -224,7 +224,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Pensions and insurances']
+        html:  "£" + data['Pensions and insurances'] | default('0.00')
       },
       actions: {
         items: [
@@ -241,7 +241,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Professional costs']
+        html:  "£" + data['Professional costs'] | default('0.00')
       },
       actions: {
         items: [
@@ -258,7 +258,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Other essential costs']
+        html:  "£" + data['Other essential costs'] | default('0.00')
       },
       actions: {
         items: [
@@ -281,7 +281,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Communications and leisure']
+        html:  "£" + data['Communications and leisure'] | default('40.00')
       },
       actions: {
         items: [
@@ -298,7 +298,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Food and housekeeping']
+        html:  "£" + data['Food and housekeeping'] | default('380.00')
       },
       actions: {
         items: [
@@ -316,7 +316,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Personal costs']
+        html:  "£" + data['Personal costs'] | default('0.00')
       },
       actions: {
         items: [
@@ -340,7 +340,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Savings contribution']
+        html:  "£" + data['Savings contribution'] | default('33.00')
       },
       actions: {
         items: [
