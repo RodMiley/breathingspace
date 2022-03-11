@@ -62,7 +62,7 @@ Draft plan summary
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
-    <dd class="govuk-summary-list__value">{% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}£185.00 {% else %}£0 {% endif %}</dd>
+    <dd class="govuk-summary-list__value">{% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') or  case.task === "Creditor can't find the debt" or  case.task === "Draft plans nearing deadline"  %}£185.00 {% else %}£0 {% endif %}</dd>
 
     <dd class="govuk-summary-list__actions">
   
@@ -76,7 +76,7 @@ Draft plan summary
      5 years 4 months
    {% elif case.task %}
     5 years 2 months
-           {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes')%}
+           {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}
     3 years 9 months
 
     
