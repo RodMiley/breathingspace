@@ -3,7 +3,7 @@
     <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
  {% if case.task === "Draft plans nearing deadline"  %}
            <li class="app-task-list__item">
-            {% if checked('monthly-outgoings','yes') and  checked('monthly-income','yes') and checked('householdinfo','yes') %}
+            {% if case.task =='Draft plans nearing deadline' %}
     
             {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
