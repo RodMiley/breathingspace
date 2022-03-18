@@ -131,6 +131,11 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
         Tasks
       </a>
     </li> 
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#messages">
+        Messages (3 new)
+      </a>
+    </li>  
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#debts">
         Debts
@@ -169,6 +174,23 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
     </ul>
     {% endif %}
    {% include  "../includes/advisor/_tasklist-stage1.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="messages">
+    <h2 class="govuk-heading-l">Messages</h2>
+    <ul class="govuk-list">
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="message">Barclays</a></h3>
+        <p class="govuk-!-margin-bottom-0">Debt details incorrect</p>
+        <p>The correct debt level is £3678...</p>
+        <hr class="govuk-section-break govuk-section-break--visible">
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="message">Leeds city council</a></h3>
+        <p class="govuk-!-margin-bottom-0">Surname wrong</p>
+        <p>We have a different surname listed on our records ...</p>
+        <hr class="govuk-section-break govuk-section-break--visible">
+      </li>
+    </ul>
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="debts">
 <h2 class="govuk-heading-l">Debts</h2>
