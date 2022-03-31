@@ -1,6 +1,6 @@
 
 {% extends "../layout-sdrp.html" %}
-{% set globalnav = "taskstodo" %}
+{% set globalnav = "new-messages" %}
 
 {% block pageTitle %}
  New messages
@@ -31,7 +31,7 @@
 New messages
   </h1>
 
-<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+<h2 class="govuk-heading-s"><span style="font-weight:normal">Showing:</span> 
 {% if checked('taskFilter','Annual reviews due')%}
 Annual reviews due ({{totAnnualReviews}})
 {% elif checked('taskFilter','Creditor has raised discrepancies')%}

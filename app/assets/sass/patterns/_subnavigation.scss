@@ -20,8 +20,6 @@
            
           }
 
-       
-
           a, .govuk-link  {
             color: $govuk-link-colour ;
             font-size:1.05em;
@@ -40,10 +38,13 @@
             }
 
           }
+       
           &.active a,
-          &.active a:hover {
+          &.active .govuk-link,
+          &.active a:hover,
+          &.active .govuk-link:hover  {
           color: #0B0C0C;
-          border-bottom: 3px solid #0B0C0C;
+          border-bottom: 3px solid #0B0C0C !important;
           font-weight: bold;
           }
         }

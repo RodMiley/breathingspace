@@ -28,7 +28,7 @@
 
       <tr class="govuk-table__row">
         <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
-        <td scope="row" class="govuk-table__cell">The debt amount listed is incorrect...</td>
+        <td scope="row" class="govuk-table__cell">The amount owed for our TV subscription debt...</td>
         <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</td>
         <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message1">View message</a></td>
       </tr>
@@ -43,6 +43,7 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Status</th>  
       <th scope="col" class="govuk-table__header">Message</th>
+      <th scope="col" class="govuk-table__header">Actioned by</th>
       <th scope="col" class="govuk-table__header"></th>
     </tr>
   </thead>
@@ -51,12 +52,14 @@
     <tr class="govuk-table__row">
         <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
         <td scope="row" class="govuk-table__cell">{{ data['message-to-ma-2'] }}</td>
+        <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.35am</td>
         <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message2">View message</a></td>
       </tr>
     {% endif%}
     <tr class="govuk-table__row">
       <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
       <td scope="row" class="govuk-table__cell">{{ data['message-to-ma'] }}</td>
+      <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</td>
       <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message1">View message</a></td>
     </tr>
   </tbody>

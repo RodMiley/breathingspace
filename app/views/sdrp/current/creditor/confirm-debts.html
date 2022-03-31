@@ -41,8 +41,8 @@ Tasks to do
   </h1>
 
 <h2 class="govuk-heading-s"><span style="font-weight:normal" class="govuk-!-font-weight-normal govuk-!-margin-right-4">Showing:</span> 
-  <span class="govuk-!-margin-right-4">All ({{totTasks}}) </span>
-<a href="confirm-debts.html" class="govuk-!-margin-right-4">Confirm debts ({{totConfirm}})</a>
+<a href="tasks-to-do" class="govuk-!-margin-right-4">All ({{totTasks}})</a>
+<span class="govuk-!-margin-right-4">Confirm debts ({{totConfirm}}) </span>
 <a href="draft-plans">Draft plans ({{totDraft}})</a>
 </h2>
 <p>
@@ -52,19 +52,10 @@ Tasks to do
 
    {% for creditorcase in creditorcases %}
 
-{% if checked('taskFilter','Annual reviews due')%}
-    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do" %}
-    {% include  "../includes/_todo-list-item.html" %} 
-    {% endif %} 
-{% elif checked('taskFilter','Creditor has raised discrepancies')%} 
-    {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  %}
-    {% include  "../includes/_todo-list-item.html" %} 
-    {% endif %}
-{% else %}
-    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do" or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  %}
+    {% if creditorcase.status === "Confirm debts" %}
     {% include  "../includes/_todo-list-item.html" %} 
     {% endif %}  
-{% endif %}
+
 
              {% endfor %} 
 

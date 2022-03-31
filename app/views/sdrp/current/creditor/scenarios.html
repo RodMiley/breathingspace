@@ -27,23 +27,57 @@ What type of creditor ar you testing with!
   items: [
     {
       value: "Council",
-      text: "Council"
+      text: "Council",
+      checked: checked("creditorType", "Council")
     },
     {
       value: "Govenment",
-      text: "Govenment"
+      text: "Govenment",
+      checked: checked("creditorType", "Govenment")
     },
     {
       value: "Bank",
-      text: "Bank"
+      text: "Bank",
+      checked: checked("creditorType", "Bank")
     },
     {
       value: "Utility",
-      text: "Utility"
+      text: "Utility",
+      checked: checked("creditorType", "Utility")
     },
     {
       value: "Other creditor type",
-      text: "Other creditor type"
+      text: "Other creditor type",
+      checked: checked("creditorType", "Other creditor type")
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "chooseScenario",
+  name: "chooseScenario",
+  fieldset: {
+    legend: {
+      text: "Choose scenario",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Scenario 1~confirm-debts?reference={{creditorcase.reference}}",
+      text: "Scenario 1",
+      checked: checked("chooseScenario", "Scenario 1")
+    },
+    {
+      value: "Scenario 2~new-messages?reference={{creditorcase.reference}}",
+      text: "Scenario 2",
+      checked: checked("chooseScenario", "Scenario 2")
+    },
+    {
+      value: "Scenario 3~draft-plans?reference={{creditorcase.reference}}",
+      text: "Scenario 3",
+      checked: checked("chooseScenario", "Scenario 3")
     }
   ]
 }) }}
