@@ -334,6 +334,26 @@ Monthly outgoings
   value: data['Personal costs']
 }) }} 
 
+
+<h2 class="govuk-heading-m">Payments to discretionary and non eligible creditors</h2>
+
+{{ govukInput({
+  label: {
+    text: "How much does your client pay to discretionary and non discretionary creditors per month?",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "discrectionary payments",
+  name: "discrectionary payments",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['discrectionary payments']
+}) }} 
+
 <h2 class="govuk-heading-m">Savings contribution</h2>
 
 {{ govukInput({
@@ -352,6 +372,26 @@ Monthly outgoings
   spellcheck: false,
   value: data['Savings contribution']
 }) }} 
+
+
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "outgoings-detail",
+  id: "outgoings-detail",
+  classes:"govuk-!-width-two-thirds",
+  rows: "8",
+  value: data['outgoings-detail'],
+  label: {
+    text: "Can you provide more detail?",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "e.g.Communications and leisure: Mobile phone- client has multiple family members abroad"
+  }
+}) }}
 
 
 

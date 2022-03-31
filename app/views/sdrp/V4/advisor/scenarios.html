@@ -1,0 +1,20 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+Money advisor scenarios
+{% endblock %}
+
+
+{% block content %}
+  <form class="form" action="index" method="post">
+<h1 class="govuk-heading-l govuk-!-margin-top-5">Choose scenarios</h1>
+
+<p class="govuk-!-width-one-quarter"><a href="plan">Scenario 1</a>{% if checked('scenario1','completed') %}<strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>{% endif %}</p>
+<p class="govuk-!-width-one-quarter"><a href="plan?reference=SDRP726245">Scenario 2</a></p>
+<p class="govuk-!-width-one-quarter"><a href="plan?reference=SDRP904312">Scenario 3</a></p>
+
+    </div>
+</div>
+{% endblock %}

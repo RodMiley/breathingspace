@@ -1,0 +1,107 @@
+<ol class="app-task-list">
+  <li>
+    <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
+ {% if case.task === "Draft plans nearing deadline"  %}
+           <li class="app-task-list__item">
+            {% if case.task =='Draft plans nearing deadline' %}
+    
+            {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+            {% endif %}
+<form class="govuk-!-display-inline" action="check-draft-plan" method="post">
+<button class="govuk-link govuk-body">Send draft plan</button>
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="proposed" type="radio" value="yes~check-draft-plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="creditcardDebtType">
+         Please ingore hidden radio for hacky protoype
+        </label>
+      </div>
+      </div>
+</form>
+            {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Can not start</strong>
+            Send draft plan
+        {% endif %}
+      
+       <li>
+ {% else%}
+  {% if case.task === "Creditor can't find the debt"  %}
+               <li class="app-task-list__item">
+     {% if checked('task','complete') or checked('task','replied')%} 
+     <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+      {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+       {% endif %}
+          <a href="cant-find-debt?reference={{case.reference}}">
+            Creditor can't match the information provided
+          </a>
+        </span>
+      </li>
+{% endif %}
+
+      <li class="app-task-list__item">
+     {% if checked('adddebtcouncil','yes') or  case.task === "Creditor can't find the debt" %} 
+     <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+      {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+       {% endif %}
+          <a href="add-debt-choose-creditor">
+            Add debts
+          </a>
+       
+        </span>
+      </li>
+
+      <li class="app-task-list__item">
+       {% if checked('householdinfo','yes') or case.task === "Creditor can't find the debt"%}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+       {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="household?reference={{case.reference}}">Add household information</a>
+       </li>
+      <li class="app-task-list__item">
+            {% if checked('monthly-income','yes') or case.task === "Creditor can't find the debt"%}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+       {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="monthly-income?reference={{case.reference}}">Add monthly income</a>
+       </li>
+      <li class="app-task-list__item">
+        {% if checked('monthly-outgoings','yes') or case.task === "Creditor can't find the debt" %}
+        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+        {% else%}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+        {% endif %}
+           <a href="monthly-outgoings?reference={{case.reference}}">Add monthly outgoings</a>
+       </li>
+       <!-- <li class="app-task-list__item">
+            {% if data['budgetupdated'] and checked('adddebtcouncil','yes') or case.task %}
+            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+            {% else %}
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+          {% endif %}
+                <a class="govuk-link" href="budget?reference={{case.reference}}">
+      Add surplus budget
+      </a>
+      <li> -->
+           <li class="app-task-list__item">
+              {% if case.task or checked('scenario1','completed') %}
+           <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+           <a href="consent">Send debts to creditors to confirm</a>
+          {% elif checked('monthly-income','yes') and checked('monthly-outgoings','yes') and checked('adddebtcouncil','yes') %}
+           <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+           <a href="consent">Send debts to creditors to confirm</a>
+           {% else %}
+               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Cannot start yet</strong>
+           Send debts to creditors to confirm
+           {% endif%}
+      </li>
+{% endif %}
+    </ul>
+  </li>
+</ol>

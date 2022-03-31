@@ -1,9 +1,7 @@
 <h3 class="govuk-heading-m">
-{% if checked('proposed','yes')%}
-Draft plan summary
-{% else %}
-Draft plan summary
-{% endif %}
+
+Plan overview
+
 </h3>
 <dl class="govuk-summary-list">
 
@@ -28,7 +26,7 @@ Draft plan summary
 </form>
 </span>
   </div>
-     {% if checked('monthly-income','yes') or  case.task %}
+     {% if checked('monthly-income','yes') %}
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly income</dt>
@@ -40,7 +38,7 @@ Draft plan summary
 
      {% endif %}
 
-        {% if checked('monthly-outgoings','yes') or case.task%}
+        {% if checked('monthly-outgoings','yes')%}
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly outgoings</dt>
@@ -59,15 +57,16 @@ Draft plan summary
   </div>
 
      {% endif %}
-
+     {% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
-    <dd class="govuk-summary-list__value">{% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') or  case.task === "Creditor can't find the debt" or  case.task === "Draft plans nearing deadline"  %}£185.00 {% else %}£0 {% endif %}</dd>
+    <dd class="govuk-summary-list__value">£185.00 </dd>
 
     <dd class="govuk-summary-list__actions">
   
     </dd>
   </div>
+
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Length of plan</dt>
@@ -91,6 +90,7 @@ Draft plan summary
 
     <span class="govuk-summary-list__actions"></span>
   </div>
+  {% endif %}
  <!-- <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">Standard financial statement</dt>
     <dd class="govuk-summary-list__value">

@@ -1,0 +1,119 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+         Creditor has raised the following discrepancies to the debt
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Original and updated debt details",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Details"
+    },
+    {
+      text: "Original details"
+    },
+    {
+      text:"Creditor changes"
+    }
+  ],
+  rows: [
+     [
+      {
+        text: "Creditor"
+      },
+      {
+        text: "Halifax credit cards"
+      }
+      ,
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Debt type"
+      },
+      {
+        text: "Credit card"
+      }
+      ,
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Amount"
+      },
+      {
+        text: "£6061"
+      },
+      {
+        text: "£6361"
+      }
+    ],
+    [
+      {
+        text: "Reference"
+      },
+      {
+        text: "2356 5678 4567"
+      },
+      {
+        text: ""
+      }
+    ]
+  ]
+}) }}
+ 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Do you want to accept the creditors changes?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="accept-changes">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes-2" name="accept-changes" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="accept-changes-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

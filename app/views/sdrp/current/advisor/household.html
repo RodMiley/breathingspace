@@ -200,6 +200,41 @@ Debt details
 }) }}
 
 
+{{ govukInput({
+  label: {
+    text: "Value of clients assets",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "client assets",
+  name: "client assets",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['client assets']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Client savings",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "savings",
+  name: "savings",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['savings']
+}) }} 
+
+
      <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="householdinfo" type="radio" value="yes~plan?reference={{case.reference}}" checked>

@@ -1,0 +1,86 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+What type of creditor ar you testing with!
+{% endblock %}
+
+
+{% block content %}
+  <form class="form" action="index" method="post">
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-two-thirds">
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "creditorType",
+  name: "creditorType",
+  fieldset: {
+    legend: {
+      text: "What type of creditor ar you testing with?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Council",
+      text: "Council"
+    },
+    {
+      value: "Govenment",
+      text: "Govenment"
+    },
+    {
+      value: "Bank",
+      text: "Bank"
+    },
+    {
+      value: "Utility",
+      text: "Utility"
+    },
+    {
+      value: "Other creditor type",
+      text: "Other creditor type"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "choose-incorrect-debt-page",
+  name: "choose-incorrect-debt-page",
+  fieldset: {
+    legend: {
+      text: "Choose page design",
+      isPageHeading: False,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Incorrect debt details design 1",
+      text: "Incorrect debt details design 1"
+    },
+    {
+      value: "Incorrect debt details design 2",
+      text: "Incorrect debt details design 2"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h3 class="govuk-heading-l">Alternative approach</h3>
+<p class="govuk-body"><a href="confirm-this-is-your-debt-v2">Confirm this is your debt</a></p>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+    </div>
+</div>
+{% endblock %}

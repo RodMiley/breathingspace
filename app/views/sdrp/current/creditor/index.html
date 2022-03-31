@@ -37,10 +37,10 @@
    {% if creditorcase.status === "Confirm debts" %}
    {% set status1 = status1 + 1 %}
    {% endif %}
-   {% if creditorcase.status === "Proposed plan" %}
+   {% if creditorcase.status === "New message" %}
    {% set status2 = status2 + 1 %}
    {% endif %}
-   {% if creditorcase.status === "Agreed plan" %}
+   {% if creditorcase.status === "Draft plan" %}
    {% set status3 = status3 + 1 %}
    {% endif %}
  
@@ -54,7 +54,7 @@
     {% endif %}
 
 
-    {% if creditorcase.status === "Agreed plan" and creditorcase.task === "Yes"  %}
+    {% if creditorcase.status === "Draft plan"%}
      {% set status3task = status3task + 1 %}
     {% endif %}
 
@@ -73,29 +73,31 @@
  <span class="govuk-caption-m">Total customer</span>
   Debt repayment plans({{totNum}}) </h2>
   <h3 class="govuk-heading-s">
-  Stages
+Notifications
  </h3>
   <div class="card-container">
             <div class="card">
                 <h3 class="govuk-heading-s">
-                Confirm debts ({{status1}})
+                Confirm debts
                
                  </h3>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
-                 <a href="tasks-to-do" class="govuk-body"> Tasks to do ({{status1task}})</a>
-               
+                 <ul class="govuk-list govuk-!-margin-bottom-0">
+                   <li><a href="tasks-to-do" class="govuk-body"> Tasks to do ({{status1task}})</a></li>
+                   <li><a href="new-messages" class="govuk-body">New messages ({{status2}})</a></li>
+                 </ul>
               </div>
 
                  <div class="card">
                  <h3 class="govuk-heading-s">
-                   Review draft plans ({{status2}})
+                   Review draft plans
                 </h3> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                 <p>Tasks to do ({{status2}})</p>
+                 <p><a href="tasks-to-do" class="govuk-body"> Tasks to do ({{status3task}})</a></p>
               </div>
 
                  <div class="card">
-                <h3 class="govuk-heading-s">Active plans ({{status3}})</h3>
+                <h3 class="govuk-heading-s">Active plans</h3>
                 </h3> 
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                 <p>Tasks to do (0)</p>
@@ -113,5 +115,12 @@
 
 </div>
 </div>
+
+<form class="form" action="scenarios" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+  
+  </form>
 
 {% endblock %}

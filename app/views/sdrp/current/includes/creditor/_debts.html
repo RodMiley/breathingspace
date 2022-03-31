@@ -1,29 +1,40 @@
-<p>Please add any other debts you have that arn't on the list
-</p>
-<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
-<button  class="govuk-link govuk-body">Add a debt</button> 
-{% include  "../advisor/_hide-confirmation.html" %} 
-{% if case.task %}
- <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="url" type="radio" value="go~not-testing?reference={{case.reference}}" checked>
-        <label class="govuk-label govuk-radios__label" for="updateDebtType">
-         hidden radio
-        </label>
-      </div>
-      </div>
- {% endif %}     
-</form>
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-<dl class="govuk-summary-list">
+<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType.html" %}</h3>
+<dl class="govuk-summary-list govuk-!-margin-bottom-6">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-   {% include "../creditor/_defaultDeptType.html" %}
+      Amount owed
     </dt>
     <dd class="govuk-summary-list__value">
-     Amount: £{{ updateDebtAmount | default("1179") }}<br>
-     Reference: {{ updateDebtReference | default('SC3456789') }}
+    £{{ updateDebtAmount | default("1179") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {{ updateDebtReference | default('SC3456789') }}
+    </dd>
+  </div>
+</dl>
+
+<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType2.html" %}</h3>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Amount owed
+    </dt>
+    <dd class="govuk-summary-list__value">
+    £580
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+    2347YUD34566
     </dd>
   </div>
 </dl>

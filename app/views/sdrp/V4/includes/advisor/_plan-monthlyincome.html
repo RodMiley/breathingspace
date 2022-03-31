@@ -1,0 +1,86 @@
+
+{% if checked('monthly-income','yes') or case.task%}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{{ govukSummaryList({
+  rows: [
+ 
+   
+    {
+      key: {
+        text: "Earnings",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: "£" + data['Earnings'] | default('1210.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-income#Earnings",
+            text: "Change",
+            visuallyHiddenText: "Earnings"
+          }
+        ]
+      }
+    },
+     
+    {
+      key: {
+        text: "Benefits and tax credits",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: "£" + data['Benefits and tax credits'] | default('140.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-income#Benefits and tax credits",
+            text: "Change",
+            visuallyHiddenText: "Benefits and tax credits"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Pensions",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Pensions'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-income#Pensions",
+            text: "Change",
+            visuallyHiddenText: "Pensions"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Other income",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Other income'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-income#Other income",
+            text: "Change",
+            visuallyHiddenText: "Other income"
+          }
+        ]
+      }
+    }
+
+  ]
+}) }}
+{% else %}
+<p><a href='monthly-income'>Add monthly income</a></p>
+{% endif %}

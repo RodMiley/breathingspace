@@ -1,9 +1,10 @@
 <li>
   <div class="card">
-    <a
-      class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3"
-      href="plan?reference={{creditorcase.reference}}"
-      >{{creditorcase.name}}</a>
+   {%if creditorcase.status == 'New message'%} 
+   <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="plan?reference={{creditorcase.reference}}#messages">{{creditorcase.name}}</a>
+   {% else %}
+   <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="plan?reference={{creditorcase.reference}}">{{creditorcase.name}}</a>
+   {% endif %}   
     <hr class="govuk-section-break govuk-section-break--visible" />
 
 

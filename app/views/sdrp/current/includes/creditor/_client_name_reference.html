@@ -19,3 +19,5 @@
   </div>
   </div>
  <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
+ <p class="govuk-!-margin-bottom-3">This intended plan was submitted on  <strong> {% if creditorcase.status == 'Draft plan' %}{{ 'Do MMMM YYYY' | baseDateAdd(-20) }}{% else %}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} {% endif %}</strong></p>
+ <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />

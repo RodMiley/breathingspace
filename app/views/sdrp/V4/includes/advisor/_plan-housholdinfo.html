@@ -1,0 +1,139 @@
+
+{% if checked('householdinfo','yes') or case.task %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{{ govukSummaryList({
+  rows: [
+ 
+   
+    {
+      key: {
+        text: "Dependent children under 16",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['children under 16'] | default('2')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#children under 16",
+            text: "Change",
+            visuallyHiddenText: "dependent under 16"
+          }
+        ]
+      }
+    },
+     
+    {
+      key: {
+        text: "Dependent children between 16 - 18",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['children between 16 - 18'] | default('0')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#children between 16 - 18",
+            text: "Change",
+            visuallyHiddenText: "Dependent children in the household under between 16 - 18"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Other dependents in the household",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['other dependents'] | default('0')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#other dependents",
+            text: "Change",
+            visuallyHiddenText: "Other dependents in the household"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Amount of people who live in the household",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['peopleinhousehold'] | default('4')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#peopleinhousehold",
+            text: "Change",
+            visuallyHiddenText: "The amount of people who live in the household"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Number of vehicles",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['Number of vehicles'] | default('2')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#Number of vehicles",
+            text: "Change",
+            visuallyHiddenText: "Number of vehicles in household"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Tenure of the house",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['house tenure'] | default('Private - tenant')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#house tenure",
+            text: "Change",
+            visuallyHiddenText: "tenure of the house"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Your clients employment status",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html: data['employment']| default('Employed')
+      },
+      actions: {
+        items: [
+          {
+            href: "household#employement",
+            text: "Change",
+            visuallyHiddenText: "Your clients employment status"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% else %}
+<p><a href=''>Add household information</a></p>
+{% endif %}

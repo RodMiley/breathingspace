@@ -120,7 +120,6 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
 </div>
  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
 
-{% include  "../includes/advisor/_plan-summary.html" %} 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
@@ -131,11 +130,13 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
         Tasks
       </a>
     </li> 
-   <!-- <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+    {% if case.task === "Creditor can't find the debt"  %}
+   <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#messages">
-        Messages (3 new)
+        Messages
       </a>
-    </li>  -->
+    </li> 
+    {% endif %}
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#debts">
         Debts
@@ -146,51 +147,33 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
        Client details
       </a>
     </li>
-     {% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') and checked('adddebtcouncil','yes') or case.task %}
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#plan">
-      {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
       Draft plan
-      {% else %}
-       Draft plan
-       {% endif%}
       </a>
     </li>
-    {% else %}
-    {% endif %}
   </ul>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-l">Tasks</h2>
    {% if case.task =='Draft plans nearing deadline' %} 
+
     <p>Please complete each task listed:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Add household information</li>
+    <li>Add monthly income</li>
+    <li>Add monthly outgoings</li>
+    </ul>
    {% else %}
       <p>Please complete each task listed:</p>
     <ul class="govuk-list govuk-list--bullet">
     <li>Add all your clients debts</li>
-    <li>Add household information</li>
-    <li>Add monthly income</li>
-    <li>Add monthly outgoings</li>
     <li>Send the debts to the creditor to confirm or update the debt amount</li>
     </ul>
     {% endif %}
    {% include  "../includes/advisor/_tasklist-stage1.html" %} 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="messages">
-    <h2 class="govuk-heading-l">Messages</h2>
-    <ul class="govuk-list">
-      <li>
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="message">Barclays</a></h3>
-        <p class="govuk-!-margin-bottom-0">Debt details incorrect</p>
-        <p>The correct debt level is £3678...</p>
-        <hr class="govuk-section-break govuk-section-break--visible">
-      </li>
-      <li>
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="message">Leeds city council</a></h3>
-        <p class="govuk-!-margin-bottom-0">Surname wrong</p>
-        <p>We have a different surname listed on our records ...</p>
-        <hr class="govuk-section-break govuk-section-break--visible">
-      </li>
-    </ul>
+    {% include  "../includes/advisor/_messages.html" %} 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="debts">
 <h2 class="govuk-heading-l">Debts</h2>

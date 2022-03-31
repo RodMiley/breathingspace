@@ -18,7 +18,7 @@
 {% set totAnnualReviews = 0 %}
 
 	{% for creditorcase in creditorcases %}
-   {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do"%}
+   {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
      {% set totTasks = totTasks + 1 %}
     {% endif %}
    {% endfor %}
@@ -73,7 +73,7 @@ All ({{totTasks}})
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
 {% else %}
-    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Proposed plan" and creditorcase.task ==="to do" %}
+    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do" or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  %}
     {% include  "../includes/_todo-list-item.html" %} 
     {% endif %}  
 {% endif %}

@@ -1,5 +1,5 @@
 
-{% if checked('monthly-outgoings','yes')  or case.task %}
+{% if checked('monthly-outgoings','yes') %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 <h4 class="govuk-heading-s">Fixed costs</h4>
 {{ govukSummaryList({
@@ -17,7 +17,7 @@
       actions: {
         items: [
           {
-            href: "household#Rent",
+            href: "monthly-outgoings#Rent",
             text: "Change",
             visuallyHiddenText: "Rent"
           }
@@ -36,7 +36,7 @@
       actions: {
         items: [
           {
-            href: "household#Mortgage",
+            href: "monthly-outgoings#Mortgage",
             text: "Change",
             visuallyHiddenText: "Mortgage"
           }
@@ -54,7 +54,7 @@
       actions: {
         items: [
           {
-            href: "household#Other secured loans",
+            href: "monthly-outgoings#Other secured loans",
             text: "Change",
             visuallyHiddenText: "Other secured loans"
           }
@@ -72,7 +72,7 @@
       actions: {
         items: [
           {
-            href: "household#Council tax / rates",
+            href: "monthly-outgoings#Council tax / rates",
             text: "Change",
             visuallyHiddenText: "Council tax / rates"
           }
@@ -90,7 +90,7 @@
       actions: {
         items: [
           {
-            href: "household#Other home and contents",
+            href: "monthly-outgoings#Other home and contents",
             text: "Change",
             visuallyHiddenText: "Other home and contents"
           }
@@ -108,7 +108,7 @@
       actions: {
         items: [
           {
-            href: "household#Gas",
+            href: "monthly-outgoings#Gas",
             text: "Change",
             visuallyHiddenText: "Gas"  | default('80.00')
           }
@@ -126,7 +126,7 @@
       actions: {
         items: [
           {
-            href: "household#Electric",
+            href: "monthly-outgoings#Electric",
             text: "Change",
             visuallyHiddenText: "Electric"
           }
@@ -144,7 +144,7 @@
       actions: {
         items: [
           {
-            href: "household#Other utility costs (e.g.coal, oil, calorgas)",
+            href: "monthly-outgoings#Other utility costs (e.g.coal, oil, calorgas)",
             text: "Change",
             visuallyHiddenText: "Other utility costs (e.g.coal, oil, calorgas)"
           }
@@ -161,7 +161,7 @@
       actions: {
         items: [
           {
-            href: "household#Water",
+            href: "monthly-outgoings#Water",
             text: "Change",
             visuallyHiddenText: "Water"
           }
@@ -178,7 +178,7 @@
       actions: {
         items: [
           {
-            href: "household#Care and health costs",
+            href: "monthly-outgoings#Care and health costs",
             text: "Change",
             visuallyHiddenText: "Care and health costs"
           }
@@ -195,7 +195,7 @@
       actions: {
         items: [
           {
-            href: "household#Transport and travel",
+            href: "monthly-outgoings#Transport and travel",
             text: "Change",
             visuallyHiddenText: "Transport and travel"
           }
@@ -212,7 +212,7 @@
       actions: {
         items: [
           {
-            href: "household#School costs",
+            href: "monthly-outgoings#School costs",
             text: "Change",
             visuallyHiddenText: "School costs"
           }
@@ -229,7 +229,7 @@
       actions: {
         items: [
           {
-            href: "household#Pensions and insurances",
+            href: "monthly-outgoings#Pensions and insurances",
             text: "Change",
             visuallyHiddenText: "Pensions and insurances"
           }
@@ -246,7 +246,7 @@
       actions: {
         items: [
           {
-            href: "household#Professional costs",
+            href: "monthly-outgoings#Professional costs",
             text: "Change",
             visuallyHiddenText: "Professional costs"
           }
@@ -263,7 +263,7 @@
       actions: {
         items: [
           {
-            href: "household#Other essential costs",
+            href: "monthly-outgoings#Other essential costs",
             text: "Change",
             visuallyHiddenText: "Other essential costs"
           }
@@ -286,7 +286,7 @@
       actions: {
         items: [
           {
-            href: "household#Communications and leisure",
+            href: "monthly-outgoings#Communications and leisure",
             text: "Change",
             visuallyHiddenText: "Communications and leisure"
           }
@@ -303,7 +303,7 @@
       actions: {
         items: [
           {
-            href: "household#Food and housekeeping",
+            href: "monthly-outgoings#Food and housekeeping",
             text: "Change",
             visuallyHiddenText: "Food and housekeeping"
           }
@@ -321,7 +321,7 @@
       actions: {
         items: [
           {
-            href: "household#Personal costs",
+            href: "monthly-outgoings#Personal costs",
             text: "Change",
             visuallyHiddenText: "Personal costs"
           }
@@ -331,8 +331,31 @@
   ]
 }) }}
 
+<h4 class="govuk-heading-s">Payments to discretionary and non eligible creditors</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "Monthly payments to discretionary and non eligible creditors",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['discrectionary payments'] | default('33.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#discrectionary payments",
+            text: "Change",
+            visuallyHiddenText: "discrectionary payments"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
 
-<h4 class="govuk-heading-s">Savings</h4>
+
+<h4 class="govuk-heading-s">Savings contribution</h4>
 {{ govukSummaryList({
   rows: [ {
       key: {
@@ -345,7 +368,7 @@
       actions: {
         items: [
           {
-            href: "household#Savings contribution",
+            href: "monthly-outgoings#Savings contribution",
             text: "Change",
             visuallyHiddenText: "Savings contribution"
           }
@@ -354,6 +377,30 @@
     }
   ]
 }) }}
+
+<h4 class="govuk-heading-s">More detail</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "More detail",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['outgoings-detail'] | default('33.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#outgoings-detail",
+            text: "Change",
+            visuallyHiddenText: "outgoings-detail"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
  
 {% else %}
 <p><a href='monthly-outgoings'>Add monthly outgoings</a></p>

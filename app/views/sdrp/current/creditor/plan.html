@@ -19,7 +19,7 @@ Debt repayment plan for Sarah Philips
 
 <div class="govuk-grid-row"> 
 <div class="govuk-grid-column-full">
-{% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+{% if creditorcase.status ==='Draft plan' %}
 <ul class="govuk-list stages">
 <li>1. Confirm debts plan</li>
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
@@ -33,7 +33,7 @@ Debt repayment plan for Sarah Philips
 </li>
 <li>3. Active plan</li>
 </ul>
-<p>You have <strong>20 days</strong> to confirm if the debts below are yours.</p>
+<p>You have <strong>20 days</strong> to tell the debt advisor if any of the information is incorrect.</p>
 {% endif %}
 </div>
 </div>
@@ -53,7 +53,12 @@ Debt repayment plan for Sarah Philips
         Tasks
       </a>
     </li> 
-      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#messages">
+       Messages
+      </a>
+    </li> 
+      <li class="govuk-tabs__list-item ">
       <a class="govuk-tabs__tab" href="#debts">
         Debts
       </a>
@@ -63,18 +68,6 @@ Debt repayment plan for Sarah Philips
        Client details
       </a>
     </li>
-     {% if data['budgetupdated'] and checked('adddebtcouncil','yes') or case.task %}
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#plan">
-      {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
-      Proposed plan
-      {% else %}
-       Draft plan
-       {% endif%}
-      </a>
-    </li>
-    {% else %}
-    {% endif %}
       <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#maDetails">
       Money advice organisation details
@@ -83,15 +76,21 @@ Debt repayment plan for Sarah Philips
   </ul>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-l">Tasks</h2>
-    <p>Please review each debt listed below and confirm if:</p>
-    <ul class="govuk-list govuk-list--bullet">
-    <li>the debt is yours</li>
-    <li>the debt details are correct</li>
-    </ul>
    {% include  "../includes/creditor/_tasklist.html" %} 
   </div>
+  <div class="govuk-tabs__panel" id="messages">
+    <h2 class="govuk-heading-l">Messages</h2>
+    {% include  "../includes/creditor/_messages.html" %} 
+
+    </div>
     <div class="govuk-tabs__panel" id="debts">
   <h2 class="govuk-heading-l">Debts</h2>
+  <p>Please add any other debts you have that arn't on the list
+  </p>
+  <p><a href="not-testing?reference={{creditorcase.reference}}">Add a debt</a></p>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
    {% include  "../includes/creditor/_debts.html" %} 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
@@ -99,15 +98,7 @@ Debt repayment plan for Sarah Philips
 {% include  "../includes/creditor/_client_details.html" %} 
 
   </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan">
- {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
- <h2 class="govuk-heading-l">Proposed plan</h2>
- {% else %} 
-<h2 class="govuk-heading-l">Draft plan</h2>
-<p>This information won't be shared with creditors until you send the proposed plan.</p>
-{% endif %}
-{% include  "../includes/advisor/_plan-detail.html" %} 
-  </div>
+
     <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="maDetails">
   <h2 class="govuk-heading-l">Money advice organisation details</h2>
 {% include  "../includes/creditor/_ma_details.html" %} 

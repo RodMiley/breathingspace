@@ -1,0 +1,87 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+Review details
+      </h1>
+      <p class="govuk-body-l">Please review the information provided</p>  
+       <ul class="govuk-list govuk-list--bullet">
+         <li>The debt amount should be the amount owed to you on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}, when we sent this information to you. </li>
+         <li>Please provide the right information if any of these details are incorrect.  </li>
+       </ul>
+<h2 class="govuk-heading-l">Debts</h2>
+{% include  "../includes/creditor/_debts.html" %} 
+
+
+      <h2 class="govuk-heading-l">Client details</h2>   
+      
+      {% include  "../includes/creditor/_client_details.html" %} 
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="review-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      Are these details correct?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review" name="review" type="radio" value="yes~plan?reference={{creditorcase.reference}}" {{ checked('review','yes')}}>
+        <label class="govuk-label govuk-radios__label" for="review">
+          Yes 
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="review-2" name="review" type="radio" value="no~review-debt-confirm-message?reference={{creditorcase.reference}}" data-aria-controls="conditional-review-2"  {{ checked('review','no')}} >
+        <label class="govuk-label govuk-radios__label" for="review-2">
+         No
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-review-2">
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+  
+        {{ govukTextarea({
+          name: "message-to-ma",
+          id: "message-to-ma",
+          rows: "10",
+          value: data['message-to-ma'],
+          label: {
+            text: "Send message to debt advisor",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Please tell the debt advisor what is wrong"
+          }
+        }) }}
+
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {% include "../includes/_show-confirmation.html" %}
+    <button class="govuk-button">Confirm</button>
+
+</div>
+
+    </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

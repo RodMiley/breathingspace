@@ -1,0 +1,106 @@
+<h3 class="govuk-heading-m">
+{% if checked('proposed','yes')%}
+Draft plan summary
+{% else %}
+Draft plan summary
+{% endif %}
+</h3>
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Total amount to repay</dt>
+    <dd class="govuk-summary-list__value">
+      {% if case.task %}
+   £{{totDebt}}
+     {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') %}
+    £9338
+    {% elif checked('adddebtcouncil','yes')%}
+    £{{ councilDebtAmount | default('2,977') }}
+    {% else %}
+    £0
+    {% endif %}
+    </dd>
+
+    <span class="govuk-summary-list__actions">
+<!-- <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-link govuk-body">Add a debt</button> 
+{% include  "../advisor/_hide-confirmation.html" %} -->
+</form>
+</span>
+  </div>
+     {% if checked('monthly-income','yes') or  case.task %}
+
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly income</dt>
+    <dd class="govuk-summary-list__value"> £1350.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+     {% endif %}
+
+        {% if checked('monthly-outgoings','yes') or case.task%}
+
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly outgoings</dt>
+    <dd class="govuk-summary-list__value"> £1165.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+      <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Savings contribution</dt>
+    <dd class="govuk-summary-list__value"> £50.00</dd>
+
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+     {% endif %}
+
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
+    <dd class="govuk-summary-list__value">{% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') or  case.task === "Creditor can't find the debt" or  case.task === "Draft plans nearing deadline"  %}£185.00 {% else %}£0 {% endif %}</dd>
+
+    <dd class="govuk-summary-list__actions">
+  
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key  govuk-!-width-one-half">Length of plan</dt>
+    <dd class="govuk-summary-list__value">
+    {% if case.task and checked('task','confirmDisc') %}
+     5 years 4 months
+   {% elif case.task %}
+    5 years 2 months
+           {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}
+    3 years 9 months
+
+    
+    {% elif checked('adddebtcouncil','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}
+     1 years 3 months to fully repay all the debts
+    {% else %}
+
+     0 years, 0 months
+    {% endif %}
+    
+    </dd>
+
+    <span class="govuk-summary-list__actions"></span>
+  </div>
+ <!-- <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Standard financial statement</dt>
+    <dd class="govuk-summary-list__value">
+    <a href="">View standard financial statement (PDF 115kb)</a>
+    </dd>
+
+    <span class="govuk-summary-list__actions">
+       <a class="govuk-link" href="budget">
+        Change<span class="govuk-visually-hidden">Standard financial statement</span>
+      </a>
+    </span>
+  </div> -->
+</dl>

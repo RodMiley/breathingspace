@@ -1,0 +1,81 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "taskstodo" %}
+
+{% block pageTitle %}
+ New messages
+{% endblock %}
+
+
+{% block content %}
+ {% include "../includes/creditor/_global-nav.html" %}
+
+
+
+   <!-- BASE VALUES -->
+{% set totTasks = 0 %}
+{% set totDiscprenceies = 0 %}
+{% set totAnnualReviews = 0 %}
+
+	{% for creditorcase in creditorcases %}
+   {% if creditorcase.status === "New message" %}
+     {% set totTasks = totTasks + 1 %}
+    {% endif %}
+   {% endfor %}
+
+ <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+New messages
+  </h1>
+
+<h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
+{% if checked('taskFilter','Annual reviews due')%}
+Annual reviews due ({{totAnnualReviews}})
+{% elif checked('taskFilter','Creditor has raised discrepancies')%}
+Creditor has raised discrepancies ({{totDiscprenceies}})
+{% else %}
+All ({{totTasks}}) 
+{% endif %}
+</h2>
+
+
+
+<ul class="govuk-list" id="xnum">
+
+    <!--  {% for debt in creditorcase.debt %}
+            
+               {{ debt.type }}
+               {{debt.amount}}
+
+               {% endfor %} -->
+          <!--    <a href="../creditorcase/creditorcase-details-and-tasks-accordion?reference={{creditorcase.reference}}" class="govuk-body govuk-link  govuk-!-display-block govuk-!-margin-bottom-0">{{creditorcase.name}} {{creditorcase.reference}} </a>
+                {{creditorcase.task}} -->
+              
+
+              <!-- <div class="govuk-radios__item  govuk-visually-hidden">
+                <input class="govuk-radios__input" id="creditorcase-links" name="creditorcase-link" type="radio" value="hide~../creditorcase/creditorcase-details-and-tasks-accordion?reference={{creditorcase.reference}}" checked>
+                <label class="govuk-label govuk-radios__label" for="creditorcase-links">
+                  selected radio for logic
+                </label>
+              </div>   -->
+
+   {% for creditorcase in creditorcases %}
+
+
+    {% if creditorcase.status === "New message" %}
+    {% include  "../includes/_todo-list-item.html" %} 
+    {% endif %}  
+
+
+             {% endfor %} 
+
+
+</ul>
+    </div>
+</div>
+
+
+{% endblock %}

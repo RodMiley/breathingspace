@@ -23,6 +23,18 @@
 </form>
       </li>
 
+
+      {% if globalnav  == 'new-message' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <form class="govuk-!-display-inline" action="new-messages" method="post">
+<button  class="govuk-body govuk-link">New messages</button> 
+{% include  "../_hide-confirmation.html" %} 
+</form>
+      </li>
+
           {% if globalnav  == 'search' %}
       <li class="active">
       {% else %}
