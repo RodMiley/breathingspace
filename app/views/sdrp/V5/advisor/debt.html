@@ -1,0 +1,91 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Debt page
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">Debt details and messages</h1>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Test creditor
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Debt type:{{ debtcouncil | default('council tax')}}<br>
+           Estimated debt amount: £{{ debtA | default('2,977') }}<br>
+           Reference: {{ councilDebtReference | default('Not provided') }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+           <ul class="govuk-list">
+             <li><a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> debt</span>
+            </a></li>
+            <li> 
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> debt</span>
+            </a>
+          </li>
+            </ul> 
+          </dd>
+        </div>
+      </dl>  
+    </div>
+  </div>
+
+
+
+
+    <div class="govuk-grid-row"> 
+      <div class="govuk-grid-column-one-half">
+        <h2 class="govuk-heading-m">Messages</h2>
+        <ol class="timeline">
+          <li class="timeline-event">
+            <h2 class="timeline-event-title">Replied</h2>
+            <span class="timeline-event-meta">22 April 2019</span>
+            <div class="timeline-event-content">
+              <p>Everyone loves port-salut taleggio. Lancashire hard cheese the big cheese taleggio cheddar cheese slices fromage bavarian bergkase. Red leicester macaroni cheese port-salut cheese strings bocconcini cow halloumi smelly cheese. Dolcelatte edam danish fontina the big cheese blue castello cheeseburger.</p>
+            </div>
+          </li>
+          <li class="timeline-event">
+            <h2 class="timeline-event-title">Creditor</h2>
+            <span class="timeline-event-meta">18 April 2019</span>
+            <div class="timeline-event-content">
+              <p>Everyone loves port-salut taleggio. Lancashire hard cheese the big cheese taleggio cheddar cheese slices fromage bavarian bergkase. Red leicester macaroni cheese port-salut cheese strings bocconcini cow halloumi smelly cheese. Dolcelatte edam danish fontina the big cheese blue castello cheeseburger.</p>
+            </div>
+          </li>
+        </ol>
+      </div> 
+      <div class="govuk-grid-column-one-half">
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Message to creditor",
+    classes: "govuk-label--m",
+    isPageHeading: false
+  }
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Send message"
+}) }}
+      </div> 
+    </div>
+    
+
+    </form>
+
+
+{% endblock %}

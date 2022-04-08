@@ -1,0 +1,295 @@
+
+
+{% include  "../advisor/_plan-summary.html" %} 
+
+<h3 class="govuk-heading-m">Household information</h3>
+{% include  "../advisor/_plan-housholdinfo.html" %} 
+
+<h3 class="govuk-heading-m">Monthly lncome</h3>
+{% include  "../advisor/_plan-monthlyincome.html" %} 
+
+<h3 class="govuk-heading-m">Monthly Outgoings</h3>
+{% include  "../advisor/_plan-monthlyoutgoings.html" %} 
+
+
+ {% from "govuk/components/table/macro.njk" import govukTable %}
+
+ {% if case.task and checked('householdinfo','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes')  %}
+
+ {{ govukTable({
+   caption: "Creditors, amounts owed and monthly repayments",
+   captionClasses: "govuk-table__caption--m",
+   firstCellIsHeader: true,
+   head: [
+     {
+       text: "Creditor"
+     },
+     {
+       text: "Total amount owed"
+     },
+     {
+       text: "Monthly repayment"
+     },
+     {
+       text: "Type"
+     }
+   ],
+   rows: [
+     [
+       {
+         text: "Southwark council"
+       },
+       {
+         text: "£2977"
+       },
+       {
+         text: "£72.78"
+       },
+       {
+         text: "Priority"
+       }
+     ],
+     [
+       {
+         text: "EDF Energy Ltd"
+       },
+       {
+         text: "£825"
+       },
+       {
+         text: "£20.17"
+       },
+       {
+         text: "Priority"
+       }
+     ], 
+     [
+       {
+         text: "Yorkshire Water Services Ltd"
+       },
+       {
+         text: "£1,146"
+       },
+       {
+         text: "£11.74"
+       },
+       {
+         text: "Non priority"
+       }
+     ],
+     [
+       {
+         text: "Halifax credit cards"
+       },
+       {
+         text: "£6061"
+       },
+       {
+         text: "£62.09"
+       }
+       ,
+       {
+         text: "Non priority"
+       }
+     ],
+     [
+       {
+         text: "Next retail plc"
+       },
+       {
+         text: "1,291"
+       },
+       {
+         text: "£13.22"
+       },
+       {
+         text: "Non priority"
+       }
+     ]
+   ]
+ }) }}
+    {% elif case.task  %}
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Southwark council"
+      },
+      {
+        text: "£2977"
+      },
+      {
+        text: "Priority"
+      }
+    ],
+    [
+      {
+        text: "EDF Energy Ltd"
+      },
+      {
+        text: "£825"
+      },
+      {
+        text: "Priority"
+      }
+    ], 
+    [
+      {
+        text: "Yorkshire Water Services Ltd"
+      },
+      {
+        text: "£1,146"
+      },
+      {
+        text: "Non priority"
+      }
+    ],
+    [
+      {
+        text: "Halifax credit cards"
+      },
+      {
+        text: "£6061"
+      }
+      ,
+      {
+        text: "Non priority"
+      }
+    ],
+    [
+      {
+        text: "Next retail plc"
+      },
+      {
+        text: "1,291"
+      },
+      {
+        text: "Non priority"
+      }
+    ]
+  ]
+}) }}
+    {% elif checked('adddebtcouncil','yes') and checked('adddebtcreditcard','yes') %}
+
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: data['creditor']
+      },
+      {
+        text: '£' + data['debtA']
+      },
+      {
+        text: "Priority"
+      }
+    ],
+    [
+      {
+        html: data['creditor2']
+      },
+      {
+        text: '£' + data['creditcardDebtAmount']
+      },
+      {
+        text: "Non priority"
+      }
+    ]
+  ]
+}) }}
+{% elif checked('adddebtcouncil','yes') %}
+
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: data['creditor']
+      },
+      {
+        text: '£' + data['debtA']
+      },
+      {
+        text: "Priority"
+      }
+    ]
+  ]
+}) }}
+{% elif checked('adddebtcreditcard','yes') %}
+
+
+{{ govukTable({
+  caption: "Creditors, amounts owed and monthly repayments",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Creditor"
+    },
+    {
+      text: "Total amount owed"
+    },
+    {
+      text: "Type"
+    }
+  ],
+  rows: [
+      {
+        html: data['creditor2']
+      },
+      {
+        text: '£' + data['creditcardDebtAmount']
+      },
+      {
+        text: "Non priority"
+      }
+  ]
+}) }}
+    {% else %}  
+ {% endif %}
+
+

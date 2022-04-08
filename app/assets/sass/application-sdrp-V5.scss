@@ -1,0 +1,92 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+$govuk-new-link-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
+@import "patterns/task-list";
+@import "patterns/related-items";
+@import "patterns/timeline";
+@import "patterns/messages";
+
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+
+@import "patterns/card";
+@import "patterns/accessible-autocomplete";
+//@import "patterns/govuk_search";
+@import "patterns/subnavigation";
+
+
+//Start Prototype only helper classes -----------------------------------------------------------------
+
+.float-right{
+    float:right;
+}
+
+button.govuk-link{
+    border:none;
+    background:transparent;
+    text-decoration:underline;
+    text-align:left;
+    color: $govuk-link-colour;
+    margin-bottom:0px;
+    padding-left:0;
+
+    &:visited{
+        color:$govuk-link-visited-colour;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+//End Prototype only helper classes -----------------------------------------------------------------
+
+// Prototype only styling ---------------------------------------------------------------------------
+.timemachine-link{
+    position:absolute;
+    top:0px;
+    right:0px;
+    display:block;
+    background:#fff;
+    padding:12px 9px 12px 10px;
+    border:none;
+    color:#1d70b8;
+    cursor: pointer;
+  }
+// End prototype only styling ---------------------------------------------------------------------------
+
+//End bespoke styling for the stages display on the plan page -----------------------------------------------------------------
+.stages li
+{
+   
+    display:inline-block;
+    margin-right:30px;
+}
+//End bespoke styling for the stages displan on the plan page -----------------------------------------------------------------
+
+// Page width overide --------------------------------------------------------------------------------
+
+.govuk-width-container {
+    max-width: 1160px;
+}
+// End page with overide -----------------------------------------------------------------------------
+
+.message{
+    border:1px solid $govuk-border-colour;
+    padding:15px;
+}

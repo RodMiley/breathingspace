@@ -1,0 +1,407 @@
+
+{% if checked('monthly-outgoings','yes') %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+<h4 class="govuk-heading-s">Fixed costs</h4>
+{{ govukSummaryList({
+  rows: [
+ 
+   
+    {
+      key: {
+        text: "Rent",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Rent'] | default('480.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Rent",
+            text: "Change",
+            visuallyHiddenText: "Rent"
+          }
+        ]
+      }
+    },
+     
+    {
+      key: {
+        text: "Mortgage",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Mortgage'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Mortgage",
+            text: "Change",
+            visuallyHiddenText: "Mortgage"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Other secured loans",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Other secured loans']  | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Other secured loans",
+            text: "Change",
+            visuallyHiddenText: "Other secured loans"
+          }
+        ]
+      }
+    },   
+    {
+      key: {
+        text: "Council tax / rates",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Council tax / rates'] | default('120.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Council tax / rates",
+            text: "Change",
+            visuallyHiddenText: "Council tax / rates"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Other home and contents",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Other home and contents'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Other home and contents",
+            text: "Change",
+            visuallyHiddenText: "Other home and contents"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Gas",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Gas'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Gas",
+            text: "Change",
+            visuallyHiddenText: "Gas"  | default('80.00')
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Electric",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Electric']  | default('85.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Electric",
+            text: "Change",
+            visuallyHiddenText: "Electric"
+          }
+        ]
+      }
+    },
+       {
+      key: {
+        text: "Other utility costs (e.g.coal, oil, calorgas)",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Other utility costs (e.g.coal, oil, calorgas)'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Other utility costs (e.g.coal, oil, calorgas)",
+            text: "Change",
+            visuallyHiddenText: "Other utility costs (e.g.coal, oil, calorgas)"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Water",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Water'] | default('45.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Water",
+            text: "Change",
+            visuallyHiddenText: "Water"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Care and health costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Care and health costs'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Care and health costs",
+            text: "Change",
+            visuallyHiddenText: "Care and health costs"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Transport and travel",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Transport and travel'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Transport and travel",
+            text: "Change",
+            visuallyHiddenText: "Transport and travel"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "School costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['School costs'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#School costs",
+            text: "Change",
+            visuallyHiddenText: "School costs"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Pensions and insurances",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Pensions and insurances'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Pensions and insurances",
+            text: "Change",
+            visuallyHiddenText: "Pensions and insurances"
+          }
+        ]
+      }
+    },   {
+      key: {
+        text: "Professional costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Professional costs'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Professional costs",
+            text: "Change",
+            visuallyHiddenText: "Professional costs"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "Other essential costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Other essential costs'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Other essential costs",
+            text: "Change",
+            visuallyHiddenText: "Other essential costs"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h4 class="govuk-heading-s">Flexible costs</h4>
+{{ govukSummaryList({
+  rows: [    {
+      key: {
+        text: "Communications and leisure",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Communications and leisure'] | default('40.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Communications and leisure",
+            text: "Change",
+            visuallyHiddenText: "Communications and leisure"
+          }
+        ]
+      }
+    },  {
+      key: {
+        text: "Food and housekeeping",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Food and housekeeping'] | default('380.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Food and housekeeping",
+            text: "Change",
+            visuallyHiddenText: "Food and housekeeping"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Personal costs",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Personal costs'] | default('0.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Personal costs",
+            text: "Change",
+            visuallyHiddenText: "Personal costs"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h4 class="govuk-heading-s">Payments to discretionary and non eligible creditors</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "Monthly payments to discretionary and non eligible creditors",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['discrectionary payments'] | default('33.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#discrectionary payments",
+            text: "Change",
+            visuallyHiddenText: "discrectionary payments"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+<h4 class="govuk-heading-s">Savings contribution</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "Savings contribution",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['Savings contribution'] | default('33.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#Savings contribution",
+            text: "Change",
+            visuallyHiddenText: "Savings contribution"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<h4 class="govuk-heading-s">More detail</h4>
+{{ govukSummaryList({
+  rows: [ {
+      key: {
+        text: "More detail",
+        classes:'govuk-!-width-one-half'
+      },
+      value: {
+        html:  "£" + data['outgoings-detail'] | default('33.00')
+      },
+      actions: {
+        items: [
+          {
+            href: "monthly-outgoings#outgoings-detail",
+            text: "Change",
+            visuallyHiddenText: "outgoings-detail"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+ 
+{% else %}
+<p><a href='monthly-outgoings'>Add monthly outgoings</a></p>
+{% endif %}

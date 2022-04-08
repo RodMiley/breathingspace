@@ -1,0 +1,13 @@
+
+
+{% if checked('creditorType','Council')%}
+{{ updateDebtType | default("Council tax 2018") }}
+{% elif checked('creditorType','Govenment')%}
+{{ updateDebtType | default("Tax credits") }}
+{% elif checked('creditorType','Bank')%}
+{{ updateDebtType | default("Loan") }}
+{% elif checked('creditorType','Utility')%}
+{{ updateDebtType | default("Gas") }}
+{% else %}
+{{ updateDebtType | default("TV subscription") }}
+{% endif %}

@@ -1,0 +1,68 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "taskstodo" %}
+
+{% block pageTitle %}
+  Tasks to do
+{% endblock %}
+
+
+{% block content %}
+ {% include "../includes/creditor/_global-nav.html" %}
+
+
+
+   <!-- BASE VALUES -->
+{% set totTasks = 0 %}
+{% set totConfirm = 0 %}
+{% set totDraft = 0 %}
+
+	{% for creditorcase in creditorcases %}
+   {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
+     {% set totTasks = totTasks + 1 %}
+    {% endif %}
+
+    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"%}
+    {% set totConfirm = totConfirm + 1 %}
+   {% endif %}
+
+   {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
+   {% set totDraft = totDraft + 1 %}
+  {% endif %}
+
+   {% endfor %}
+
+ <div class="govuk-grid-row">
+
+<div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+Tasks to do
+  </h1>
+
+<h2 class="govuk-heading-s"><span style="font-weight:normal" class="govuk-!-font-weight-normal govuk-!-margin-right-4">Showing:</span> 
+<a href="tasks-to-do" class="govuk-!-margin-right-4">All ({{totTasks}})</a>
+<span class="govuk-!-margin-right-4">Confirm debts ({{totConfirm}}) </span>
+<a href="draft-plans">Draft plans ({{totDraft}})</a>
+</h2>
+<p>
+</p>
+
+<ul class="govuk-list" id="xnum">
+
+   {% for creditorcase in creditorcases %}
+
+    {% if creditorcase.status === "Confirm debts" %}
+    {% include  "../includes/_todo-list-item.html" %} 
+    {% endif %}  
+
+
+             {% endfor %} 
+
+
+</ul>
+    </div>
+</div>
+
+
+{% endblock %}

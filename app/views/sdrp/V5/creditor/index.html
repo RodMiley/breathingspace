@@ -1,0 +1,127 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "home" %}
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+ {% include "../includes/creditor/_global-nav.html" %}
+
+{% set todo = 0 %}
+
+
+
+ <!-- BASE VALUES -->
+{% set totNum = 0 %}
+{% set status1 = 0 %}
+{% set status2 = 0 %}
+{% set status3 = 0 %}
+{% set status1task = 0 %}
+{% set status2task = 0 %}
+{% set status3task = 0 %}
+
+
+
+
+	{% for creditorcase in creditorcases %}
+
+<!-- BASE VALUES -->
+	 {% set totNum = totNum + 1 %}
+
+   {% if creditorcase.status === "Confirm debts" %}
+   {% set status1 = status1 + 1 %}
+   {% endif %}
+   {% if creditorcase.status === "New message" %}
+   {% set status2 = status2 + 1 %}
+   {% endif %}
+   {% if creditorcase.status === "Draft plan" %}
+   {% set status3 = status3 + 1 %}
+   {% endif %}
+ 
+   <!-- TO DO VALUES Type -->
+    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"%}
+     {% set status1task = status1task + 1 %}
+    {% endif %}
+
+      {% if creditorcase.status === "Proposed plan" and creditorcase.task === "Yes"  %}
+     {% set status2task = status2task + 1 %}
+    {% endif %}
+
+
+    {% if creditorcase.status === "Draft plan"%}
+     {% set status3task = status3task + 1 %}
+    {% endif %}
+
+
+
+{% endfor %}
+
+  <div class="govuk-grid-row">
+  
+   <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+ <span class="govuk-caption-xl">Manage a debt repayment plan</span>
+  {% include "../includes/creditor/_creditor.html" %}
+  </h1>
+  <h2 class="govuk-heading-m">
+ <span class="govuk-caption-m">Total customer</span>
+  Debt repayment plans({{totNum}}) </h2>
+  <h3 class="govuk-heading-s">
+Notifications
+ </h3>
+  <div class="card-container">
+            <div class="card">
+                <h3 class="govuk-heading-s">
+                Confirm debts
+               
+                 </h3>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
+                 <ul class="govuk-list govuk-!-margin-bottom-0">
+                   <li><a href="confirm-debts" class="govuk-body"> Tasks to do ({{status1task}})</a></li>
+                   <li><a href="new-messages" class="govuk-body">New messages ({{status2}})</a></li>
+                 </ul>
+              </div>
+
+                 <div class="card">
+                 <h3 class="govuk-heading-s">
+                   Review draft plans
+                </h3> 
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                 <p><a href="draft-plans" class="govuk-body"> Tasks to do ({{status3task}})</a></p>
+              </div>
+
+                 <div class="card">
+                <h3 class="govuk-heading-s">Active plans</h3>
+                </h3> 
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                <p>Tasks to do (0)</p>
+              </div>
+
+       
+
+
+
+       
+
+
+    
+
+
+</div>
+</div>
+
+<form class="form" action="scenarios" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+  
+  </form>
+
+{% endblock %}

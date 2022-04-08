@@ -1,0 +1,6 @@
+      <ul class="govuk-list">
+          <li>Creditor: {% include  "../creditor/_creditor.html" %} </li>
+          <li>Debt type: {% include "../creditor/_defaultDeptType.html" %}</li>
+          <li>Amount: £{{ updateDebtAmount | default("1179") }}</li>
+          <li>Reference:  {{ updateDebtReference | default("SC3456789") }}</li>
+        </ul>

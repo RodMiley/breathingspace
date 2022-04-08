@@ -1,0 +1,30 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name you have sold the debt to
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+           <!-- <span class="govuk-caption-xl">Add a debt</span> -->
+We've sold the debt
+      </h1>
+
+{% include  "../includes/creditor/_debt_details.html" %} 
+<p class="govuk-body-l">The debt has been sold to <strong>Lowell Group</strong></p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Actioned by</h3>
+<p class="govuk-body"> Paul Smith, {% include  "../includes/creditor/_creditor.html" %} , 24 January 2022 at 11.32am</p>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

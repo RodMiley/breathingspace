@@ -1,0 +1,21 @@
+ <div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+ <h1 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-3">
+     {{ case.name | default('Sarah Philips')}}
+  <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
+ </h1>
+ </div>
+  <div class="govuk-grid-column-one-third">
+  {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-4 govuk-!-display-inline-block float-right">Draft plan
+
+ <strong>day 1</strong> <br>14 days until the plan can start</p>
+  {% elif case.task =='Draft plans nearing deadline' %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-!-display-inline-block">Draft plan <strong>Day 22</strong><br>You have <strong>7 days</strong> to send the plan to creditors</p>
+  {% elif case.task %}
+  <p class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-!-display-inline-block">Draft plan <strong>day 7</strong><br><strong>14 days</strong> before you can send the draft plan</p>
+  {% else%}
+  {% endif %}
+  </div>
+  </div>
+ <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />

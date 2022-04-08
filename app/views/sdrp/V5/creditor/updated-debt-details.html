@@ -1,0 +1,130 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+          Updated debt details
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+
+<table class="govuk-table">
+  
+  <caption class="govuk-table__caption govuk-table__caption--m">Original and updated debt details</caption>
+  
+  
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header">Details</th>
+    
+      <th scope="col" class="govuk-table__header">Original details</th>
+    
+      <th scope="col" class="govuk-table__header">Creditor changes</th>
+    
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header">Creditor</th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"> {% include  "../includes/creditor/_creditor.html" %} </td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"></td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header">Debt type</th>
+          
+        
+          
+          
+          <td class="govuk-table__cell">Housing benefit</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"></td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header">Amount</th>
+          
+        
+          
+          
+          <td class="govuk-table__cell">£1179</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell">£{{ updateDebtAmount | default("1179") }}</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header">Reference</th>
+          
+        
+          
+          
+          <td class="govuk-table__cell">SC3456789</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell">{{ updateDebtReference }}</td>
+          
+        
+        </tr>
+      
+    
+  </tbody>
+</table>
+  {% include  "../includes/creditor/_datetimestamp.html" %} 
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+        {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+         Confirm your objecting to the plan
+      </h1>
+
+      <h2 class="govuk-heading-m">Objection reason</h2>
+      <p class="govuk-body-l">{{ data['object-to-plan-reason']}}</p>
+
+        {% include  "../includes/_show-confirmation.html" %}
+        {% include  "../includes/creditor/_urlredirect.html" %}
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
