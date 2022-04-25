@@ -162,7 +162,96 @@
 }) }}
 
 <h3 class="govuk-heading-m">Non priority debts</h3>
-
+{% if checked('task','addeddebts')%}
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Lowel"
+    },
+    value: {
+      html: "Debt type: Catelogue <br>Debt amount: £375<br>Reference: L0-3456-D-456"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "debt details"
+        }
+      ]
+    }
+  },   {
+    key: {
+      text: "Lowel"
+    },
+    value: {
+      html: "Debt type: Mobile phone <br>Debt amount: £580<br>Reference: L0-6785-M-346"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "debt details"
+        }
+      ]
+    }
+  },
+    {
+      key: {
+        text: "Yorkshire Water Services Ltd"
+      },
+      value: {
+        html: "Debt type: water <br>Debt amount: £1,146<br>Reference: 4949 9494 9449"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+     {
+      key: {
+        text: "Halifax credit card"
+      },
+      value: {
+        html: "Debt type: credit card <br>Debt amount:£6061<br>Reference: 2356 5678 4567"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next retail plc"
+      },
+      value: {
+          html: "Debt type: store card <br>Debt amount: £1,291<br>Reference: NX23452345"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "debt details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% else %}
 {{ govukSummaryList({
   rows: [
     {
@@ -218,6 +307,7 @@
     }
   ]
 }) }}
+{% endif %}
 {% else %}
 {% if checked('adddebtcouncil','yes')%}
 <h3 class="govuk-heading-m">Priority debts</h3>

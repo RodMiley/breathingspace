@@ -20,93 +20,84 @@ Debt page
 
     <div class="govuk-grid-row"> 
       <div class="govuk-grid-column-two-thirds">
-        <div id="messages" class="moj-messages-container">
+    
 
-            <div class="moj-message-list">
+
           
-                  <time class="moj-message-list__date" datetime="17 March 2019">17 March 2019</time>
 
                 {% if data['message-to-creditor']%}  
-                <div class="moj-message-item moj-message-item--sent">
-                    <div class="moj-message-item__text moj-message-item__text--sent">{{ data['message-to-creditor'] }}</div>
+                <div class="message govuk-!-margin-bottom-5">
+                  <h3 class="govuk-heading-s">Sent message</h3>
+                    <p>{{ data['message-to-creditor'] }}</p>
                     <div class="moj-message-item__meta">
-                      <span class="moj-message-item__meta--sender">Joe Smith - Advice uk</span> at <time class="moj-message-item__meta--timestamp" datetime="10:53am">10:53am</time>
+                      <p class="govuk-body-s govuk-!-margin-bottom-0">Advice uk, 20 April 2022 at 11.35am</p>
                     </div>
                   </div>
                 {% endif %}
-          
-                <div class="moj-message-item moj-message-item--received">
-                  <div class="moj-message-item__text moj-message-item__text--received">
-                    <p>
-                        {% if checked('message-read','yes')%}
-                        <strong class="govuk-tag">Read</strong>
-                        {% else %}
-                        <strong class="govuk-tag govuk-tag--blue">New</strong>
-                        {% endif %}
-                    </p>   
-                    <p>Our records show the amount owed on the 21st March 22 is £3012 not the £2977 as stated in the notification  </p></div>
-                  <div class="moj-message-item__meta">
-                    <span class="moj-message-item__meta--sender">Paul smith - Southwark Council</span> at <time class="moj-message-item__meta--timestamp" datetime="10:51am">10:51am</time>
-                  </div>
-                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                  <form class="form" action="message" method="post"> 
-                  <div class="govuk-form-group  govuk-!-margin-bottom-0">
-                    <fieldset class="govuk-fieldset">
-                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-visually-hidden">
-                        Confirm you have read the message
-                      </legend>
-                      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-                        <div class="govuk-checkboxes__item">
-                          <input class="govuk-checkboxes__input" id="message-read" name="message-read" type="checkbox" value="yes" {{checked('message-read', 'yes') }}>
-                          <label class="govuk-label govuk-checkboxes__label" for="message-read">
-                            Mark message as read
-                          </label>
+
+                <div class="message govuk-!-margin-bottom-5" id="message2">
+                  <h3 class="govuk-heading-s"> 
+                    {% if checked('message-read','yes')%}
+                    <strong class="govuk-tag">Read</strong>
+                    {% else %}
+                    <strong class="govuk-tag govuk-tag--blue">New</strong>
+                    {% endif %}
+                    
+                    <span" class="govuk-!-display-block govuk-!-margin-top-3">Recieved message</span"></h3>
+                      <p>Our records show another surname for your client</p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-0">Southwark council, 20 April 2022 at 11.35am</p>
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                        <form class="form" action="messages" method="post"> 
+                        <div class="govuk-form-group  govuk-!-margin-bottom-0">
+                          <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-visually-hidden">
+                              Confirm you have read the message
+                            </legend>
+                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                              <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="message-read" name="message-read" type="checkbox" value="yes" {{checked('message-read', 'yes') }}>
+                                <label class="govuk-label govuk-checkboxes__label" for="message-read">
+                                  Mark message as read
+                                </label>
+                              </div>
+                          </div>
+                          <div class="govuk-radios" style="display:none">
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="" name="client" type="radio" value="yes~message?reference={{case.reference}}" checked>
+                                <label class="govuk-label govuk-radios__label" for="councilDebtType">
+                                 hidden radio for hacky prototype
+                                </label>
+                              </div>
+                              </div>
+                          </fieldset>
+                          <button class="govuk-button govuk-button--secondary govuk-!-margin-top-2 govuk-!-margin-bottom-0">Confirm</button>
                         </div>
-                    </div>
-                    <div class="govuk-radios" style="display:none">
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="" name="client" type="radio" value="yes~message?reference={{case.reference}}" checked>
-                          <label class="govuk-label govuk-radios__label" for="councilDebtType">
-                           hidden radio for hacky prototype
-                          </label>
-                        </div>
-                        </div>
-                    </fieldset>
-                    <button class="govuk-button govuk-button--secondary govuk-!-margin-top-2 govuk-!-margin-bottom-0">Confirm</button>
+                       </form>
                   </div>
-                 </form>
-                </div>          
-               <!--  <time class="moj-message-list__date" datetime="19 March 2019">19 March 2019</time>
-          
-                <div class="moj-message-item moj-message-item--sent">
-                  <div class="moj-message-item__text moj-message-item__text--sent">Fusce et vulputate justo. Integer suscipit felis non urna lobortis, vel finibus sem tristique.</div>
-                  <div class="moj-message-item__meta">
-                    <span class="moj-message-item__meta--sender">Person A</span> at <time class="moj-message-item__meta--timestamp" datetime="10:53am">10:53am</time>
-                  </div>
-                </div><div class="moj-message-item moj-message-item--sent">
-                  <div class="moj-message-item__text moj-message-item__text--sent">Mauris tincidunt feugiat orci et convallis. Nam efficitur gravida justo non lobortis. Aliquam velit ante, lobortis eu venenatis sit amet, semper sit amet justo.</div>
-                  <div class="moj-message-item__meta">
-                    <span class="moj-message-item__meta--sender">Person A</span> at <time class="moj-message-item__meta--timestamp" datetime="10:55am">10:55am</time>
-                  </div>
-                </div> -->
-          
-            </div>
-          
-          </div>
+
       </div> 
       <div class="govuk-grid-column-one-third">
-        <form class="form" action="message" method="post">         
+        <form class="form" action="" method="post">         
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {{ govukTextarea({
   name: "message-to-creditor",
   id: "message-to-creditor",
   label: {
-    text: "Message text",
+    text: "Reply to creditor",
     classes: "govuk-label--m",
     isPageHeading: false
   }
 }) }}
+
+<div class="govuk-radios" style="display:none">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="" name="task" type="radio" value="sentMessage~message?reference={{case.reference}}" checked>
+    <label class="govuk-label govuk-radios__label" for="councilDebtType">
+     hidden radio for hacky prototype
+    </label>
+  </div>
+  </div>
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 

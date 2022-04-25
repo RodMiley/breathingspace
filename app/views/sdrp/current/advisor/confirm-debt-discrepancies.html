@@ -14,25 +14,42 @@
   
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-l">
-         Confirm debt details
+         Confirm updated debt details
       </h1>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-5">
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+          Creditor
+          </dt>
+          <dd class="govuk-summary-list__value">
             Halifax credit cards
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list">
-             
-              <li>Debt type: <strong>Credit card</strong></li>
-              <li>Amount: <strong>£6361</strong></li>
-              <li>Reference: <strong>2356 5678 4567</strong></li>
-              </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">          
-            </dd>
-          </div>
-        </dl>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+          Debt type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Credit card
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+           Amount owed
+          </dt>
+          <dd class="govuk-summary-list__value">
+           £6361
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+           Reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+           **** **** 4567
+          </dd>
+        </div>
+      </dl>
 
 
         {% include  "../includes/advisor/_show-confirmation.html" %} 

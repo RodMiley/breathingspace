@@ -17,26 +17,39 @@
    <!-- BASE VALUES -->
 {% set totTasks = 0 %}
 {% set totDiscprenceies = 0 %}
-{% set totProposed = 0 %}
-{% set totCantFind = 0 %}
+{% set newMessage = 0 %}
+{% set totSoldDebt = 0 %}
+{% set totNewdDebt = 0 %}
+{% set totDraftPlan = 0 %}
 
 	{% for case in cases %}
 
- {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
+ {% if case.task === "Review updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt"  or  case.task === "New message" or case.task === "Review new debts added by creditor"%}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
-    {% if case.task === "Creditor has raised discrepancies" %}
+    {% if case.task === "Review updated debt details" %}
     {% set totDiscprenceies = totDiscprenceies + 1 %}
    {% endif %}
 
+
   {% if case.task === "Draft plans nearing deadline" %}
-    {% set totProposed = totProposed + 1 %}
+    {% set totDraftPlan = totDraftPlan + 1 %}
    {% endif %}
 
-   {% if case.task === "Creditor can't find the debt" %}
-    {% set totCantFind = totCantFind + 1 %}
+   {% if case.task === "Confirm sold debt" %}
+    {% set totSoldDebt = totSoldDebt + 1 %}
    {% endif %}
+
+
+   {% if case.task === "New message" %}
+    {% set newMessage = newMessage + 1 %}
+   {% endif %}
+
+   {% if case.task === "Review new debts added by creditor" %}
+   {% set totNewdDebt = totNewdDebt + 1 %}
+  {% endif %}
+
 
 
    {% endfor %}
@@ -70,12 +83,14 @@ Tasks to do
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
 
-{% if checked('taskFilter','Creditor has raised discrepancies')%}
-Creditor has raised discrepancies ({{totDiscprenceies}})
-{% elif checked('taskFilter','Creditor cant find the debt')%}
-New messages ({{totCantFind}})
+{% if checked('taskFilter','Review updated debt details')%}
+Review updated debt details ({{totDiscprenceies}})
+{% elif checked('taskFilter','New message')%}
+New messages ({{newMessage}})
+{% elif checked('taskFilter','Confirm sold debt')%}
+Confirm sold debts ({{totSoldDebt}})
 {% elif checked('taskFilter','Draft plans nearing deadline')%}
-Draft plans nearing deadline ({{totProposed}})
+Draft plans nearing deadline ({{totDraftPlan}})
 {% else %}
 All ({{totTasks}}) 
 {% endif %}
@@ -104,22 +119,32 @@ All ({{totTasks}})
 
    {% for case in cases %}
  
-{% if checked('taskFilter','Creditor has raised discrepancies')%} 
-    {% if case.task === "Creditor has raised discrepancies" %}
+{% if checked('taskFilter','Review updated debt details')%} 
+    {% if case.task === "Review updated debt details" %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}
 
-{% elif checked('taskFilter','Creditor cant find the debt')%}
-    {% if case.task === "Creditor can't find the debt"  %}
+{% elif checked('taskFilter','Confirm sold debt')%}
+    {% if case.task === "Confirm sold debt"  %}
     {% include  "../includes/_todo-card.html" %} 
-    {% endif %}       
+    {% endif %}  
+    
+    {% elif checked('taskFilter','Review new debts added by creditor')%}
+    {% if case.task === "Review new debts added by creditor"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %} 
+
+    {% elif checked('taskFilter','New message')%}
+    {% if case.task === "New message"  %}
+    {% include  "../includes/_todo-card.html" %} 
+    {% endif %} 
     
 {% elif checked('taskFilter','Draft plans nearing deadline')%}
     {% if case.task === "Draft plans nearing deadline"  %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}   
 {% else %}
-    {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
+    {% if case.task === "Review updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt" or case.task === "Review new debts added by creditor" or case.task === "New message" %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
 {% endif %}

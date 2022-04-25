@@ -8,7 +8,8 @@
          {% endif %}
         <form class="govuk-!-display-inline" action="index" method="post">
 <button  class="govuk-body govuk-link">Home</button> 
-{% include  "../advisor/_hide-confirmation.html" %} 
+{% include  "../advisor/_hide-confirmation.html" %}
+{% include  "../advisor/_reset-task.html" %}  
 </form>
       </li>
    <!--   {% if globalnav  == 'breathing space' %}
@@ -35,6 +36,7 @@
                <form class="govuk-!-display-inline" action="tasks-to-do" method="post">
 <button  class="govuk-body govuk-link">Tasks to do</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
+{% include  "../advisor/_reset-task.html" %} 
 </form>
       </li>
           {% if globalnav  == 'search' %}
@@ -45,6 +47,7 @@
                <form class="govuk-!-display-inline" action="search" method="post">
 <button  class="govuk-body govuk-link">Search</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
+{% include  "../advisor/_reset-task.html" %} 
 </form>
       </li>
     </ul>

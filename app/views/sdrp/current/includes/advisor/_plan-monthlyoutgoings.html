@@ -1,8 +1,9 @@
 
 {% if checked('monthly-outgoings','yes') %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-<h4 class="govuk-heading-s">Fixed costs</h4>
+<h4 class="govuk-heading-m">Fixed costs</h4>
 {{ govukSummaryList({
+  classes:'govuk-!-margin-bottom-9',
   rows: [
  
    
@@ -273,8 +274,9 @@
   ]
 }) }}
 
-<h4 class="govuk-heading-s">Flexible costs</h4>
+<h4 class="govuk-heading-m">Flexible costs</h4>
 {{ govukSummaryList({
+  classes:'govuk-!-margin-bottom-9',
   rows: [    {
       key: {
         text: "Communications and leisure",
@@ -331,8 +333,9 @@
   ]
 }) }}
 
-<h4 class="govuk-heading-s">Payments to discretionary and non eligible creditors</h4>
+<h4 class="govuk-heading-m">Payments to discretionary and non eligible creditors</h4>
 {{ govukSummaryList({
+  classes:'govuk-!-margin-bottom-9',
   rows: [ {
       key: {
         text: "Monthly payments to discretionary and non eligible creditors",
@@ -355,11 +358,12 @@
 }) }}
 
 
-<h4 class="govuk-heading-s">Savings contribution</h4>
+<h4 class="govuk-heading-m">Savings contribution</h4>
 {{ govukSummaryList({
+  classes:'govuk-!-margin-bottom-9',
   rows: [ {
       key: {
-        text: "Savings contribution",
+        text: "Monthly savings contribution",
         classes:'govuk-!-width-one-half'
       },
       value: {
@@ -378,11 +382,12 @@
   ]
 }) }}
 
-<h4 class="govuk-heading-s">More detail</h4>
+<h4 class="govuk-heading-m">More detail</h4>
 {{ govukSummaryList({
+  classes:'govuk-!-margin-bottom-9',
   rows: [ {
       key: {
-        text: "More detail",
+        text: "More detail about monthly income and outgoings",
         classes:'govuk-!-width-one-half'
       },
       value: {

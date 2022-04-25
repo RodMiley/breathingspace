@@ -15,19 +15,20 @@
     <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-        Review updated debt details
+         Confirm debt 
       </h1>
+      <p class="govuk-body-l">
+        Next retail plc have sold this debt to Lowell
+      </p>
       </div>
       <div class="govuk-grid-column-full">
-
-
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-    Creditor
+     Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      Halifax credit cards
+     Lowell
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
@@ -35,7 +36,7 @@
     Debt type
     </dt>
     <dd class="govuk-summary-list__value">
-      Credit card
+      Store card
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
@@ -43,7 +44,7 @@
      Amount owed
     </dt>
     <dd class="govuk-summary-list__value">
-     £6061<span class="govuk-!-display-block govuk-!-margin-top-2">£6361 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
+     £1291
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
@@ -51,34 +52,20 @@
      Reference
     </dt>
     <dd class="govuk-summary-list__value">
-     **** **** 4567
+     £NX23452345
     </dd>
   </div>
 </dl>
- 
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-        Do you want to accept the creditors changes?
-    </legend>
-    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
-        <label class="govuk-label govuk-radios__label" for="accept-changes">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes-2" name="accept-changes" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="accept-changes-2">
-          No
-        </label>
-      </div>
-    </div>
 
-  </fieldset>
-</div>
-
+<div class="govuk-radios" style="display:none">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="" name="task" type="radio" value="confirmSoldDebt~plan?reference={{case.reference}}" checked>
+    <label class="govuk-label govuk-radios__label" for="councilDebtType">
+     hidden radio for hacky prototype
+    </label>
+  </div>
+  </div>
+  {% include "../includes/_show-confirmation.html" %}
 <button class="govuk-button" data-module="govuk-button">
 Confirm and continue
 </button>
