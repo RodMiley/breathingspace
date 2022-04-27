@@ -27,8 +27,8 @@ Debt page
 
                 {% if data['message-to-creditor']%}  
                 <div class="message govuk-!-margin-bottom-5">
-                  <h3 class="govuk-heading-s">Sent message</h3>
-                    <p>{{ data['message-to-creditor'] }}</p>
+                  <strong class="govuk-tag govuk-tag--green">Sent message</strong>
+                    <p class="govuk-!-margin-top-5">{{ data['message-to-creditor'] }}</p>
                     <div class="moj-message-item__meta">
                       <p class="govuk-body-s govuk-!-margin-bottom-0">Advice uk, 20 April 2022 at 11.35am</p>
                     </div>
@@ -38,13 +38,12 @@ Debt page
                 <div class="message govuk-!-margin-bottom-5" id="message2">
                   <h3 class="govuk-heading-s"> 
                     {% if checked('message-read','yes')%}
-                    <strong class="govuk-tag">Read</strong>
+                    <strong class="govuk-tag">Read message</strong>
                     {% else %}
-                    <strong class="govuk-tag govuk-tag--blue">New</strong>
+                    <strong class="govuk-tag govuk-tag--blue">New message</strong>
                     {% endif %}
                     
-                    <span" class="govuk-!-display-block govuk-!-margin-top-3">Recieved message</span"></h3>
-                      <p>Our records show another surname for your client</p>
+                      <p class="govuk-!-margin-top-5">Our records show a different last name for this client. Are you able to check if the client has changed their name since entering into an SDRP?</p>
                         <p class="govuk-body-s govuk-!-margin-bottom-0">Southwark council, 20 April 2022 at 11.35am</p>
                         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                         <form class="form" action="messages" method="post"> 

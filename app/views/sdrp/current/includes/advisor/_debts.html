@@ -1,5 +1,6 @@
-<p>Please add as much debt information as you can and be as accurate as you can. Where exact debt amounts are unknown, please give an estimate. Creditors will be able to update any incorrect amounts once they receive the proposed plan.
-</p>
+<p>Add as much information about the debt as you can.</p>
+<p>Be accurate and only give estimates if exact figures are not available.</p>
+<p>Creditors can update incorrect amounts when they receive the proposed plan.</p>
 <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
 <button  class="govuk-link govuk-body">Add a debt</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
@@ -59,7 +60,7 @@
   ]
 }) }}
 
-<h3 class="govuk-heading-m">Non priority debts</h3>
+<h3 class="govuk-heading-m">Non-priority debts</h3>
 
 {{ govukSummaryList({
   rows: [
@@ -161,7 +162,7 @@
   ]
 }) }}
 
-<h3 class="govuk-heading-m">Non priority debts</h3>
+<h3 class="govuk-heading-m">Non-priority debts</h3>
 {% if checked('task','addeddebts')%}
 {{ govukSummaryList({
   rows: [

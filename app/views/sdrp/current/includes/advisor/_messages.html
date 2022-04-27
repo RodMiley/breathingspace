@@ -1,6 +1,5 @@
 {% if case.task =='New message' %}
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--l">Messages</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Status</th>  
@@ -13,7 +12,7 @@
     {% if checked('task','sentMessage')%}
     <tr class="govuk-table__row">
       <td scope="row" class="govuk-table__cell">          
-          <strong class="govuk-tag govuk-tag--green">Sent</strong>
+          <strong class="govuk-tag govuk-tag--green">Sent message</strong>
       </td>
       <td class="govuk-table__cell">Southwark council</td>
       <td scope="row" class="govuk-table__cell">Advice uk, 24th April 2022 at 11.32am</td>
@@ -24,17 +23,16 @@
     <tr class="govuk-table__row">
       <td scope="row" class="govuk-table__cell">          
           {% if checked('message-read','yes')%}
-          <strong class="govuk-tag">Read</strong>
+          <strong class="govuk-tag">Read message</strong>
           {% else %}
-          <strong class="govuk-tag govuk-tag--blue">New</strong>
+          <strong class="govuk-tag govuk-tag--blue">New message</strong>
           {% endif %}</td>
       <td class="govuk-table__cell">Southwark council</td>
-      <td scope="row" class="govuk-table__cell">Paul Smith, 24th April 2022 at 11.32am</td>
+      <td scope="row" class="govuk-table__cell">Joe Healey, 24th April 2022 at 11.32am</td>
       <td scope="row" class="govuk-table__cell"><a href="message?reference={{case.reference}}">View message</a></td>
     </tr>
   </tbody>
 </table>
 {% else %}
-<h2 class="govuk-heading-l">Messages</h2>
-<p>You don't have any messages from your clients creditors yet.</p>
+<p>You have no messages.</p>
   {% endif %}

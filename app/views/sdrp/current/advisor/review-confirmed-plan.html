@@ -11,66 +11,82 @@
    <div class="govuk-grid-column-full">
   {% include  "../includes/advisor/_client_name_reference.html" %} 
   </div>
-  <form class="form" action="confirm-debt-discrepancies" method="post">
+  <form class="form" action="" method="post">
     <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-        Review updated debt details
+        Review the confirmed plan
       </h1>
       </div>
       <div class="govuk-grid-column-full">
-
-
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-    Creditor
+     First payment due
     </dt>
     <dd class="govuk-summary-list__value">
-      Halifax credit cards
+      {{ 'Do MMMM YYYY' | baseDateAdd(7) }}
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-    Debt type
+    Plan starts
     </dt>
     <dd class="govuk-summary-list__value">
-      Credit card
+      {{ 'Do MMMM YYYY' | baseDateAdd(8) }}
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-     Amount owed
+    Monthly payment amount
     </dt>
     <dd class="govuk-summary-list__value">
-     £6061<span class="govuk-!-display-block govuk-!-margin-top-2">£6361 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
+     £185
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-     Reference
+    Payment distributor
     </dt>
     <dd class="govuk-summary-list__value">
-     **** **** 4567
+     PD7 LTD
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Total amount to repay
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £13555
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Length of plan
+    </dt>
+    <dd class="govuk-summary-list__value">
+     5 Years 2 months
     </dd>
   </div>
 </dl>
+
+
  
 <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="task-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      Do you accept the updated debt details?
+       Mark this task as complete?
     </legend>
     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
-        <label class="govuk-label govuk-radios__label" for="accept-changes">
+        <input class="govuk-radios__input" id="task" name="task" type="radio" value="confirmedPlan~plan?reference={{case.reference}}" {{checked('task','confirmedPlan')}}>
+        <label class="govuk-label govuk-radios__label" for="task">
           Yes
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="accept-changes-2" name="accept-changes" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="accept-changes-2">
+        <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="no~plan?reference={{case.reference}}"  {{checked('task','no')}}>
+        <label class="govuk-label govuk-radios__label" for="task-2">
           No
         </label>
       </div>
@@ -79,8 +95,10 @@
   </fieldset>
 </div>
 
+
+
 <button class="govuk-button" data-module="govuk-button">
-Save and continue
+Confirm and continue
 </button>
     </div>
     </form>

@@ -9,14 +9,23 @@
   </div>
   </div>
  <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
- <p class="govuk-!-margin-bottom-3">This intended plan was submitted on  <strong> {% if creditorcase.status == 'Draft plan' %}{{ 'Do MMMM YYYY' | baseDateAdd(-20) }}{% else %}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} {% endif %},</strong>
+ <p class="govuk-!-margin-bottom-3">This intended plan was submitted on  
+     <strong> 
+     {% if case.status == 'Draft plan' %}{{ 'Do MMMM YYYY' | baseDateAdd(-21) }}
+     {% elif case.status == 'Confirmed plan' %}
+     {{ 'Do MMMM YYYY' | baseDateAdd(-42) }}
+     {% else %}
+     {{ 'Do MMMM YYYY' | baseDateAdd(-7) }} 
+     {% endif %},</strong>
 
     {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
 14 days until the plan can start
     {% elif case.task =='Draft plans nearing deadline' %}
-  You have <strong>7 days</strong> to send the plan to creditors
+  you have <strong>7 days</strong> to send the plan to creditors
+  {% elif case.task =='Review confirmed plan' %}
+     the plan starts on <strong>{{ 'Do MMMM YYYY' | baseDateAdd(8) }}</strong>
     {% elif case.task %}
-    <strong>14 days</strong> before you can send the draft plan
+    it's <strong>14 days</strong> before you can send the draft plan
     {% else%}
     {% endif %}
 </p>

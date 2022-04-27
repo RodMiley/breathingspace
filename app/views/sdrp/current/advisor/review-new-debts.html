@@ -15,7 +15,7 @@
       <h1 class="govuk-heading-xl">
         Review new debts added by creditor
       </h1>
-      <p class="govuk-body-l">Please review the information provided</p>         
+      <h2 class="govuk-heading-m">Debt details</h2>         
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -57,34 +57,22 @@
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes" data-aria-controls="conditional-debt1" {{ checked('debt1','yes') }}>
+              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes" {{ checked('debt1','yes') }}>
               <label class="govuk-label govuk-radios__label" for="debt1">
                 Yes 
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="no" data-aria-controls="conditional-debt1-2" {{ checked('debt1','no') }}>
+              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="no" {{ checked('debt1','no') }}>
               <label class="govuk-label govuk-radios__label" for="debt1-2">
                No
               </label>
-            </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debt1-2">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="debt1-by-phone">
-                 Amount owed
-                </label>
-                <div class="govuk-input__wrapper">
-                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                  <input class="govuk-input govuk-input--width-10" id="correct-amount-owed" name="correct-amount-owed" type="text" spellcheck="false" value="{{ data['correct-amount-owed'] }}">
-                </div>
-              </div>
-      
             </div>
           </div>
       
         </fieldset>
       </div>
-    
+      <h2 class="govuk-heading-m">Debt details</h2>  
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -126,28 +114,16 @@
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt2" name="debt2" type="radio" value="yes" data-aria-controls="conditional-debt1" {{ checked('debt2','yes')}}>
+              <input class="govuk-radios__input" id="debt2" name="debt2" type="radio" value="yes" {{ checked('debt2','yes')}}>
               <label class="govuk-label govuk-radios__label" for="debt2">
                 Yes 
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt2-2" name="debt2" type="radio" value="no" data-aria-controls="conditional-debt2-2" {{ checked('debt2','no') }}>
+              <input class="govuk-radios__input" id="debt2-2" name="debt2" type="radio" value="no"  {{ checked('debt2','no') }}>
               <label class="govuk-label govuk-radios__label" for="debt2-2">
                No
               </label>
-            </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-debt2-2">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="debt2-by-phone">
-                 Amount owed
-                </label>
-                <div class="govuk-input__wrapper">
-                  <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                  <input class="govuk-input govuk-input--width-10" id="correct-amount-owed-2" name="correct-amount-owed-2" type="text" spellcheck="false" value="{{ data['correct-amount-owed-2'] }}">
-                </div>
-              </div>
-      
             </div>
           </div>
       
@@ -163,7 +139,7 @@
         </div>
 
   </fieldset>
-  <button class="govuk-button">Confirm</button>
+  <button class="govuk-button">Save and continue</button>
 </div>
 
     </div>
