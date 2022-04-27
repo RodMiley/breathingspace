@@ -15,11 +15,11 @@ Monthly outgoings
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
      
-Monthly outgoings
+        Add monthly outgoings
 
       </h1>
 
-<p>Please enter your client's outgoings per month for each of the options listed</p>   
+<p>Enter your client’s outgoings per month.</p>   
 
 <h2 class="govuk-heading-m">Fixed costs</h2>
 
@@ -146,9 +146,12 @@ Monthly outgoings
 
 {{ govukInput({
   label: {
-    text: "Other utility costs (e.g.coal, oil, calorgas)",
+    text: "Other utility costs",
     classes: "",
     isPageHeading: false
+  },
+  hint: {
+    text: "For example, coal, oil, or liquid gas"
   },
   prefix: {
     text: "£"
@@ -335,11 +338,11 @@ Monthly outgoings
 }) }} 
 
 
-<h2 class="govuk-heading-m">Payments to discretionary and non eligible creditors</h2>
+<h2 class="govuk-heading-m">Payments to creditors who are not eligible under SDRP guidelines</h2>
 
 {{ govukInput({
   label: {
-    text: "How much does your client pay to discretionary and non discretionary creditors per month?",
+    text: "How much does your client pay to discretionary and non-eligible creditors per month?",
     classes: "",
     isPageHeading: false
   },
@@ -358,7 +361,7 @@ Monthly outgoings
 
 {{ govukInput({
   label: {
-    text: "Savings contribution",
+    text: "Monthly savings contribution",
     classes: "",
     isPageHeading: false
   },
@@ -366,11 +369,11 @@ Monthly outgoings
     text: "£"
   },
   classes: "govuk-input--width-10",
-  id: "Savings contribution",
-  name: "Savings contribution",
+  id: "Monthly savings contribution",
+  name: "Monthly savings contribution",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Savings contribution']
+  value: data['Monthly savings contribution']
 }) }} 
 
 
@@ -389,7 +392,7 @@ Monthly outgoings
     isPageHeading: true
   },
   hint: {
-    text: "e.g.Communications and leisure: Mobile phone- client has multiple family members abroad"
+    text: "For example, spending within the SDRP guidelines"
   }
 }) }}
 

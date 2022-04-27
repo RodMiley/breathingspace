@@ -19,9 +19,11 @@ Debt details
        <div class="govuk-grid-column-two-thirds"> 
       <h1 class="govuk-heading-l">
      
-  Household information
-
+        Add household information
+  
       </h1>
+
+ <h2 class="govuk-heading-m">    Enter details of client’s household.</p>     
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -103,7 +105,7 @@ Debt details
   name: "house tenure",
   fieldset: {
     legend: {
-      text: "What is the tenure of the house?",
+      text: "Select client’s housing status",
       isPageHeading: false,
       classes: ""
     }
@@ -150,7 +152,7 @@ Debt details
   name: "employment",
   fieldset: {
     legend: {
-      text: "What is your clients employment status?",
+      text: "Select client’s employment status",
       isPageHeading: false,
       classes: ""
     }
@@ -200,11 +202,17 @@ Debt details
 }) }}
 
 
+<h2 class="govuk-heading-m">Savings and assets</h2>
+
+
 {{ govukInput({
   label: {
-    text: "Value of clients assets",
+    text: "Value of any assets",
     classes: "",
     isPageHeading: false
+  },
+  hint: {
+    text: "Client’s assets can include cars, jewellery or any items of value"
   },
   prefix: {
     text: "£"
@@ -219,7 +227,7 @@ Debt details
 
 {{ govukInput({
   label: {
-    text: "Client savings",
+    text: "Client’s savings",
     classes: "",
     isPageHeading: false
   },

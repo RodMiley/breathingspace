@@ -15,15 +15,15 @@ Monthly income
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-l">
      
-Monthly income
+        Add monthly income
 
       </h1>
-<p>Please enter your client's income per month for each of the options listed</p>   
+<p>Enter your client’s income per month.</p>   
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {{ govukInput({
   label: {
-    text: "Earnings",
+    text: "Earnings from wages",
     classes: "",
     isPageHeading: false
   },
@@ -31,8 +31,8 @@ Monthly income
     text: "£"
   },
   classes: "govuk-input--width-10",
-  id: "Earnings",
-  name: "Earnings",
+  id: "Earnings from wages",
+  name: "Earnings from wages",
   inputmode: "numeric",
   spellcheck: false,
   value: data['Earnings']
