@@ -103,12 +103,12 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   </li>
   <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'></span>3. </span> Confirmed plan</strong></li>
   </ul>
-{% elif case.task =='Draft plans nearing deadline' %}
+{% elif case.task =='Draft plans nearing deadline' or case.task =='Creditor objects to plan' %}
 <ul class="govuk-list stages">
 <li>1. Confirm debts</li>
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Draft plan
 </strong></li>
-<li>4. Confirmed plan</li>
+<li>3. Confirmed plan</li>
 </ul>
   <p>Once you send the plan to creditors, it becomes a proposed plan. At this point protections begin for your client.  </p>
 {% else %}
@@ -166,13 +166,14 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   </ul>
   <div class="govuk-tabs__panel" id="tasks">
   <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Tasks</h2>
-   {% if case.task =='Draft plans nearing deadline' %} 
+   {% if case.task =='Draft plans nearing deadline' or case.status =='Creditor objection' %} 
 
     <p>Please complete each task listed:</p>
     <ul class="govuk-list govuk-list--bullet">
     <li>Add household information</li>
     <li>Add monthly income</li>
     <li>Add monthly outgoings</li>
+    <li>Send the draft plan</li>
     </ul>
    {% elif case.status ==='Confirmed plan' %} 
    <p>Please complete each task listed:</p>

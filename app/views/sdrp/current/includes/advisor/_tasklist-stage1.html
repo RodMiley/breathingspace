@@ -3,11 +3,21 @@
     <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
 
           
-            {% if case.task ==='Draft plans nearing deadline' %}
+            {% if case.task ==='Draft plans nearing deadline' or case.status =='Creditor objection' %}
 
+            {% if case.status =='Creditor objection'  %}
+            <li class="app-task-list__item">
+              {% if checked('task','objectPlan') %}
+                   <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+              {% else %}
+               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
+               {% endif %}
+                  <a href="objection-to-plan?reference={{case.reference}}">View creditor objection</a>
+              </li>
+            {% endif %}
 
       <li class="app-task-list__item">
-        {% if checked('householdinfo','yes')%}
+        {% if checked('householdinfo','yes') or case.status =='Creditor objection' %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
         {% else %}
          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
@@ -15,7 +25,7 @@
             <a href="household?reference={{case.reference}}">Add household information</a>
         </li>
        <li class="app-task-list__item">
-             {% if checked('monthly-income','yes') %}
+             {% if checked('monthly-income','yes') or case.status =='Creditor objection' %}
              <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
         {% else %}
          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
@@ -23,7 +33,7 @@
             <a href="monthly-income?reference={{case.reference}}">Add monthly income</a>
         </li>
        <li class="app-task-list__item">
-         {% if checked('monthly-outgoings','yes') %}
+         {% if checked('monthly-outgoings','yes') or case.status =='Creditor objection' %}
          <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
          {% else%}
          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
@@ -31,8 +41,8 @@
             <a href="monthly-outgoings?reference={{case.reference}}">Add monthly outgoings</a>
         </li>
         <li class="app-task-list__item">
-          {% if checked('householdinfo','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes') %}  
-            {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+          {% if checked('householdinfo','yes') and checked('monthly-income','yes') and checked('monthly-outgoings','yes') or case.status =='Creditor objection' %}  
+            {% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') or case.status =='Creditor objection' %}
             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
             {% else %}
             <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
@@ -62,8 +72,8 @@
    {% else %}
      <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
     {% endif %}
-       <a href="review-confirmed-plan?reference={{case.reference}}">
-         Review confirmed plan
+       <a href="confirmed-plan?reference={{case.reference}}">
+         View confirmed plan
        </a>
      </span>
    </li>   

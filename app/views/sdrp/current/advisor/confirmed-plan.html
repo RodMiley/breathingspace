@@ -15,7 +15,7 @@
     <div class="govuk-grid-column-three-quarters">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-        Review the confirmed plan
+        Confirmed plan
       </h1>
       </div>
       <div class="govuk-grid-column-full">
@@ -25,15 +25,15 @@
      First payment due
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ 'Do MMMM YYYY' | baseDateAdd(7) }}
+      {{ 'Do MMMM YYYY' | baseDateAdd(2) }}
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
     <dt class="govuk-summary-list__key">
-    Plan starts
+    Plan was confirmed on 
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ 'Do MMMM YYYY' | baseDateAdd(8) }}
+      {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}
     </dd>
   </div>
   <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">

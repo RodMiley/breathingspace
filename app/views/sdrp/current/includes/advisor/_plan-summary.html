@@ -28,7 +28,7 @@ Plan overview
 </form>
 </span>
   </div>
-     {% if checked('monthly-income','yes') or case.status==="Confirmed plan" %}
+     {% if checked('monthly-income','yes') or case.status==="Confirmed plan"  or case.status =='Creditor objection' %}
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly income</dt>
@@ -40,7 +40,7 @@ Plan overview
 
      {% endif %}
 
-        {% if checked('monthly-outgoings','yes') or case.status==="Confirmed plan" %}
+        {% if checked('monthly-outgoings','yes') or case.status==="Confirmed plan" or case.status =='Creditor objection' %}
 
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly outgoings</dt>
@@ -59,7 +59,7 @@ Plan overview
   </div>
 
      {% endif %}
-     {% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') or case.status==="Confirmed plan" %}
+     {% if checked('monthly-income','yes') and checked('monthly-outgoings','yes') or case.status==="Confirmed plan" or case.status =='Creditor objection' %}
     <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
     <dd class="govuk-summary-list__value">£185.00 </dd>

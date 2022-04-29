@@ -1,5 +1,5 @@
 
-{% if checked('monthly-outgoings','yes')or case.status==="Confirmed plan"  %}
+{% if checked('monthly-outgoings','yes')or case.status==="Confirmed plan" or case.status =='Creditor objection' %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 <h4 class="govuk-heading-m">Fixed costs</h4>
 {{ govukSummaryList({
@@ -104,14 +104,14 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Gas'] | default('0.00')
+        html:  "£" + data['Gas'] | default('35.00')
       },
       actions: {
         items: [
           {
             href: "monthly-outgoings#Gas",
             text: "Change",
-            visuallyHiddenText: "Gas"  | default('80.00')
+            visuallyHiddenText: "Gas"
           }
         ]
       }
@@ -122,7 +122,7 @@
         classes:'govuk-!-width-one-half'
       },
       value: {
-        html:  "£" + data['Electric']  | default('85.00')
+        html:  "£" + data['Electric']  | default('35.00')
       },
       actions: {
         items: [

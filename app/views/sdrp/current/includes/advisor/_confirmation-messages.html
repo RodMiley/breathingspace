@@ -1,5 +1,5 @@
 {% if checked('task','notcomplete') %}
-{% elif checked('taskcompleted','show') or checked('task','confirmedPlan')%}
+{% elif checked('taskcompleted','show') or checked('task','confirmedPlan') or checked('task','objectPlan')%}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 <span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
@@ -31,7 +31,7 @@
     You have completed your task
   </h3>
   <p>You have added new debts to this plan.</p>  
-{% elif checked('task','debtUpdated') or checked('task','complete') or checked('task','confirmedPlan')%}
+{% elif checked('task','debtUpdated') or checked('task','complete') or checked('task','confirmedPlan') or checked('task','objectPlan')%}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
