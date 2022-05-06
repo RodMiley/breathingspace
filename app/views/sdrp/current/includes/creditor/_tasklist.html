@@ -16,7 +16,7 @@
     class="govuk-tag app-task-list__tag"
     id="read-declaration-status"
     >Completed</strong
-  >
+  > 
   {% else %}
   <strong
   class="govuk-tag govuk-tag--grey app-task-list__tag"
@@ -51,7 +51,7 @@
 <ul
   class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
   <li class="app-task-list__item">
-    {% if checked('review','yes') or checked('review','no') or creditorcase.status == 'New message' %}
+    {% if checked('debt1','yes') or checked('review','no') or creditorcase.status == 'New message' %}
     <strong
       class="govuk-tag app-task-list__tag"
       id="read-declaration-status"
@@ -65,7 +65,27 @@
     >
     {% endif %}
     <span class="app-task-list__task-name">
-     <a href="review-debts?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2">Review debts</a> 
+     <a href="review-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - review debt</a> 
+
+    </span>
+  </li>
+  <li class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
+  <li class="app-task-list__item">
+    {% if checked('debt2','yes') or checked('review','no') or creditorcase.status == 'New message' %}
+    <strong
+      class="govuk-tag app-task-list__tag"
+      id="read-declaration-status"
+      >Completed</strong
+    >
+    {% else %}
+    <strong
+      class="govuk-tag govuk-tag--grey app-task-list__tag"
+      id="read-declaration-status"
+      >To do</strong
+    >
+    {% endif %}
+    <span class="app-task-list__task-name">
+     <a href="review-debt2?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType2.html" %} - review debt</a> 
 
     </span>
   </li>

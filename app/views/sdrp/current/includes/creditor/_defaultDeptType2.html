@@ -1,13 +1,13 @@
 
 
 {% if checked('creditorType','Council')%}
-{{ updateDebtType | default("Council tax 2019") }}
+{{ updateDebtType2 | default("Housing Benefit") }}
 {% elif checked('creditorType','Govenment')%}
-{{ updateDebtType | default("Benefits overpayment") }}
+{{ updateDebtType2 | default("Benefits overpayment") }}
 {% elif checked('creditorType','Bank')%}
-{{ updateDebtType | default("Overdraft") }}
+{{ updateDebtType2 | default("Overdraft") }}
 {% elif checked('creditorType','Utility')%}
-{{ updateDebtType | default("Electric") }}
+{{ updateDebtType2 | default("Electric") }}
 {% else %}
-{{ updateDebtType | default("Broadband") }}
+{{ updateDebtType2 | default("Broadband") }}
 {% endif %}
