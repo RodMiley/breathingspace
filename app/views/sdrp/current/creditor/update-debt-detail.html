@@ -17,13 +17,10 @@ Add details about the debt
      <div class="govuk-grid-row">  
    <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
        Update debt
       </h1>
-      <h2 class="govuk-heading-s">Creditor</h2>
-       <p class="govuk-body"> {% include  "../includes/creditor/_creditor.html" %} 
-       </p>
-
+      
   {% if checked('creditorType','Council') %} 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
@@ -126,9 +123,9 @@ Add details about the debt
 
 
            <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="updateDebtType-3" name="updateDebtType" type="radio" value="Credit card"  {{checked('updateDebtType', 'Credit card') }}>
+        <input class="govuk-radios__input" id="updateDebtType-3" name="updateDebtType" type="radio" value="Overdraft"  {{checked('updateDebtType', 'Overdraft') }}>
         <label class="govuk-label govuk-radios__label" for="updateDebtType-3">
-         Credit card
+         Overdraft
         </label>
       </div>
 

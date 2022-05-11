@@ -90,3 +90,22 @@ button.govuk-link{
     border:1px solid $govuk-border-colour;
     padding:15px;
 }
+
+ul.no-style-list{
+
+    list-style: none;
+    margin:0;
+    padding:0;
+
+    li{
+        width:50%;
+        display:inline-block;
+    }
+
+}
+
+.govuk-summary-list__key
+{
+    vertical-align: top;
+}
+

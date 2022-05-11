@@ -18,56 +18,31 @@ Review debt
       <h2 class="govuk-heading-l">
         {% include "../includes/creditor/_defaultDeptType2.html" %}
       </h2>        
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-        You are owed
-          </dt>
-          <dd class="govuk-summary-list__value">
-            £580
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-        Reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ updateDebtReference | default('2347YUD34566') }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-       Creditor
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% include "../includes/creditor/_creditor.html" %}
-          </dd>
-        </div>
-      </dl>
+      {% include  "../includes/creditor/_debt_details2.html" %} 
       <div class="govuk-form-group govuk-!-margin-bottom-9">
-        <fieldset class="govuk-fieldset" aria-describedby="debt1-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="debt2-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
              Are the debt details correct?
           </legend>
-          <div id="debt1-hint" class="govuk-hint">
+          <div id="debt2-hint" class="govuk-hint">
             The amount should be what was owed on  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}, this was the date we first notified you about the intended plan
           </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes" data-aria-controls="conditional-debt1" {{ checked('debt1','yes') }}>
-              <label class="govuk-label govuk-radios__label" for="debt1">
+              <input class="govuk-radios__input" id="debt2" name="debt2" type="radio" value="yes" data-aria-controls="conditional-debt2" {{ checked('debt2','yes') }}>
+              <label class="govuk-label govuk-radios__label" for="debt2">
                 Yes 
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="no~update-debt-detail?reference={{creditorcase.reference}}" {{ checked('debt1','no') }}>
-              <label class="govuk-label govuk-radios__label" for="debt1-2">
+              <input class="govuk-radios__input" id="debt2-2" name="debt2" type="radio" value="no~update-debt-detail?reference={{creditorcase.reference}}" {{ checked('debt2','no') }}>
+              <label class="govuk-label govuk-radios__label" for="debt2-2">
                No
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="sold~sold-debt-choose-creditor?reference={{creditorcase.reference}}" {{ checked('debt1','sold') }}>
-              <label class="govuk-label govuk-radios__label" for="debt1-2">
+              <input class="govuk-radios__input" id="debt2-2" name="debt2" type="radio" value="sold~sold-debt-choose-creditor?reference={{creditorcase.reference}}" {{ checked('debt2','sold') }}>
+              <label class="govuk-label govuk-radios__label" for="debt2-2">
                No, we have sold this debt
               </label>
             </div>

@@ -51,11 +51,18 @@ Debt repayment plan for Sarah Philips
   <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#tasks">
         Tasks
+        {% if creditorcase.status === "New message" and checked('debt1','yes') %}
+        {% elif  creditorcase.status === "New message" %}<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">1</strong>
+        {% endif %}
       </a>
     </li> 
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#messages">
        Messages
+
+       {% if creditorcase.status === "New message" and checked('message-read','yes') %}
+       {% elif  creditorcase.status === "New message" %}<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">1</strong>
+       {% endif %}
       </a>
     </li> 
       <li class="govuk-tabs__list-item ">

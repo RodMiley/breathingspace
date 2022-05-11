@@ -1,15 +1,17 @@
 
 
-
         <dl class="govuk-summary-list">
+ 
+{% if checked('debt2','sold')%}         
           <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
             <dt class="govuk-summary-list__key">
             Creditor
             </dt>
             <dd class="govuk-summary-list__value">
-              {% include  "../creditor/_creditor.html" %}
+             Lowell Group
             </dd>
           </div>
+ {% endif %}         
           <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
             <dt class="govuk-summary-list__key">
             Debt type
@@ -23,7 +25,7 @@
              Amount owed
             </dt>
             <dd class="govuk-summary-list__value">
-             £580<span class="govuk-!-display-block govuk-!-margin-top-2">£{{ updateDebtAmount2 | default("580") }} <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
+             £580
             </dd>
           </div>
           <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
@@ -31,7 +33,7 @@
              Reference
             </dt>
             <dd class="govuk-summary-list__value">
-              SC3456789
+              {{ updateDebtReference | default('2347YUD34566') }}
             </dd>
           </div>
         </dl>

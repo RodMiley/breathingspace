@@ -9,22 +9,30 @@
     You have added a new debt
   </h3>
 
-{% elif creditorcase.task ==='completedCantFindDebt' or creditorcase.task == 'completedCantFindDebtAlt' %}
+{% elif checked('debt1','sold') or checked('debt2','sold') %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
-   <p>We've informed Advice UK that some of the details were incorrect</p>
+   <p>We've informed Advice UK that some you have sold this debt</p>
+
+   {% elif creditorcase.status =='Draft plan' and checked('debt1','no') %}
 
 
+   <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
 
-{% elif creditorcase.task ==='completedUpdatedDebt' %}
+   <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the update</p>
+   <p>If Advice Uk don't need more information the next notification you will receive is the final plan or cancelation of the plan</p>
+
+{% elif checked('debt1','no') %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
    <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the update</p>
     <p>If Advice Uk don't need more information the next notification you will receive is a proposal or cancelation of the plan</p>
 
-    {%  elif checked('review','yes') or checked('review','no') or checked('debt1','yes') or checked('debt1','no') %}
+    {%  elif checked('review','yes') or checked('review','no') or checked('debt1','yes') %}
     <h3 class="govuk-notification-banner__heading">
       You have completed your task
     </h3>

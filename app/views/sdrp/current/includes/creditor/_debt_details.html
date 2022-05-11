@@ -1,74 +1,51 @@
 
-
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-            <dt class="govuk-summary-list__key">
-            Creditor
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% include  "../creditor/_creditor.html" %}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-            <dt class="govuk-summary-list__key">
-            Debt type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% include "../creditor/_defaultDeptType.html" %}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-            <dt class="govuk-summary-list__key">
-             Amount owed
-            </dt>
-            <dd class="govuk-summary-list__value">
-             £1179<span class="govuk-!-display-block govuk-!-margin-top-2">£{{ updateDebtAmount | default("1179") }} <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-            <dt class="govuk-summary-list__key">
-             Reference
-            </dt>
-            <dd class="govuk-summary-list__value">
-              SC3456789
-              {% if data['updateDebtReference']%} 
-         
-              <span class="govuk-!-display-block govuk-!-margin-top-2">{{ updateDebtReference | default('SC3456789') }} <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
-             {% endif %}
-            </dd>
-          </div>
-        </dl>
-
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Proposed debt details</caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Debt details</th>
-              <th scope="col" class="govuk-table__header">Original</th>
-              <th scope="col" class="govuk-table__header">Proposed</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Amount owed</th>
-              <td class="govuk-table__cell">£1179</td>
-              <td class="govuk-table__cell">£{{ updateDebtAmount | default("1179") }} </td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header"> Creditor</th>
-              <td class="govuk-table__cell">  {% include  "../creditor/_creditor.html" %}</td>
-              <td class="govuk-table__cell">  {% include  "../creditor/_creditor.html" %}</td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Debt type</th>
-              <td class="govuk-table__cell"> {% include "../creditor/_defaultDeptType.html" %}</td>
-              <td class="govuk-table__cell"> {% include "../creditor/_defaultDeptType.html" %}</td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Reference</th>
-              <td class="govuk-table__cell"> SC3456789</td>
-              <td class="govuk-table__cell"> SC3456789</td>
-            </tr>
-          </tbody>
-        </table>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Debt type
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% include "../creditor/_defaultDeptType.html" %}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Amount owed
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {% if checked('debt1','no')%} Original: {% endif %}
+        
+        £1179</div>
+      <div class="govuk-grid-column-one-half">
+        {% if checked('debt1','no')%}
+        Updated: £{{ updateDebtAmount | default("1250") }}
+        {% endif %}
+      </div> 
+      </div> 
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value"> 
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
+            {% elif data['updateDebtReference'] !== 'SC3456789' %}
+            Original:
+            {% endif %}
+            SC3456789
+            </div>
+            <div class="govuk-grid-column-one-half">
+              {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
+              {% elif data['updateDebtReference'] !== 'SC3456789' %}
+              Updated: {{updateDebtReference | default('1238675DF') }} 
+              {% endif %}
+            </div>  
+      </div>
+    </dd>
+  </div>
+</dl>

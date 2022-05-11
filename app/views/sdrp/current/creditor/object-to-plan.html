@@ -12,8 +12,10 @@
     <div class="govuk-grid-column-full">
     {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
-
-
+</div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
@@ -49,6 +51,16 @@
     </div>
 
   </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--l" for="more-detail">
+      Can you provide more detail?
+    </label>
+  <div id="more-detail-hint" class="govuk-hint">
+    Hint text
+  </div>
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
 </div>
          <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">

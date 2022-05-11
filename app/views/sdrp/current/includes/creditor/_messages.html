@@ -7,8 +7,7 @@
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th scope="col" class="govuk-table__header">Status</th>  
-        <th scope="col" class="govuk-table__header">Message</th>
-        <th scope="col" class="govuk-table__header">Actioned by</th>
+        <th scope="col" class="govuk-table__header">From</th>
         <th scope="col" class="govuk-table__header"></th>
       </tr>
     </thead>
@@ -18,17 +17,15 @@
             {% if checked('message-read','yes') %}
             <strong class="govuk-tag">Read</strong>
             {% else %}
-            <strong class="govuk-tag govuk-tag--blue">New</strong>
+            <strong class="govuk-tag govuk-tag--blue">New message</strong>
             {% endif %}
           </td>
-          <td scope="row" class="govuk-table__cell">We have updated the debt amount on the system...</td>
           <td scope="row" class="govuk-table__cell">Advice uk,  {{ 'Do MMMM YYYY' | baseDateAdd(0) }} at 10.32am</td>
           <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message2">View message</a></td>
         </tr>
 
       <tr class="govuk-table__row">
         <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
-        <td scope="row" class="govuk-table__cell">The amount owed for our TV subscription debt...</td>
         <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</td>
         <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message1">View message</a></td>
       </tr>

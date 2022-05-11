@@ -1,40 +1,6 @@
+<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType.html" %}{% if checked('debt1','no')%} <span class="govuk-body-l">- updated and sent to debt advisor to accept into the plan</span>{% endif %}</h3>
 
-<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType.html" %}</h3>
-<dl class="govuk-summary-list govuk-!-margin-bottom-6">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Amount owed
-    </dt>
-    <dd class="govuk-summary-list__value">
-    £{{ updateDebtAmount | default("1179") }}
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-     Reference
-    </dt>
-    <dd class="govuk-summary-list__value">
-    {{ updateDebtReference | default('SC3456789') }}
-    </dd>
-  </div>
-</dl>
+{% include  "../creditor/_debt_details.html" %} 
 
-<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType2.html" %}</h3>
-<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Amount owed
-    </dt>
-    <dd class="govuk-summary-list__value">
-    £580
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-     Reference
-    </dt>
-    <dd class="govuk-summary-list__value">
-    2347YUD34566
-    </dd>
-  </div>
-</dl>
+<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType2.html" %} {% if checked('debt2','sold')%} - sold and sent to debt advisor to accept into the plan {% endif %} </h3>
+{% include  "../creditor/_debt_details2.html" %} 

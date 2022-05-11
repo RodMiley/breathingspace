@@ -17,48 +17,20 @@ Debt page
   </div>
 
     <div class="govuk-grid-row"> 
-      <div class="govuk-grid-column-full">
-        <form class="form" action="review-message" method="post">         
-          {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-  
-  {{ govukTextarea({
-    name: "message-to-ma-2",
-    id: "message-to-ma-2",
-    label: {
-      text: "Send message to debt advisor",
-      classes: "govuk-label--m",
-      isPageHeading: false
-    }
-  }) }}
-  
-  {% from "govuk/components/button/macro.njk" import govukButton %}
-  
-  {{ govukButton({
-    text: "Send message"
-  }) }}
-  {% include  "../includes/_show-confirmation.html" %} 
+      <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-radios" style="display:none">
-    <div class="govuk-radios__item">
-      <input class="govuk-radios__input" id="" name="message" type="radio" value="sent~review-message?reference={{creditorcase.reference}}" checked>
-      <label class="govuk-label govuk-radios__label" for="updateDebtType">
-       hidden radio
-      </label>
-    </div>
-    </div>
-  </form>
 
   {% if  creditorcase.status === "New message" %}
-  <h2 class="govuk-heading-m">Previous messages</h2>
   <div class="message govuk-!-margin-bottom-5" id="message2">
     <h3 class="govuk-heading-s"> 
       {% if checked('message-read','yes') %}
       <strong class="govuk-tag">Read</strong>
       {% else %}
-      <strong class="govuk-tag govuk-tag--blue">New</strong>
+      <strong class="govuk-tag govuk-tag--blue">New message</strong>
       {% endif %}
-      <span" class="govuk-!-display-block govuk-!-margin-top-3">Recieved message</span></h3>
-        <p>We have updated the debt amount on the system to £1179 after confirming it with our client</p>
+      </h3>
+        <p>We have contacted our client and they have confirmed that they had recently been married and was previously known as Sarah Henderson.</p>
+        <p>We have added a previous name to the client details section.</p>
           <p class="govuk-body-s govuk-!-margin-bottom-0"> Advice uk, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.35am</p>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <form class="form" action="messages" method="post"> 
@@ -91,7 +63,7 @@ Debt page
 
   <div class="message" id="message1">
     <h3 class="govuk-heading-s">Sent message</h3>
-        <p>The amount owed for our {% include "../includes/creditor/_defaultDeptType.html" %} debt on the {{ 'DD MMMM YYYY' | baseDateAdd(0) }} is £1179</p>
+        <p>We think we may have located this person on our records, but the surname does not match our records. Can you confirm if the person stated has been known by any other names.</p>
           <p class="govuk-body-s govuk-!-margin-bottom-0">Paul Smith, {% include "../includes/creditor/_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
         </div>
 
@@ -112,6 +84,38 @@ Debt page
       <p class="govuk-body-s govuk-!-margin-bottom-0"> Paul Smith, {% include "../includes/creditor/_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
 </div>
   {% endif %}
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <form class="form" action="review-message" method="post">         
+      {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+name: "message-to-ma-2",
+id: "message-to-ma-2",
+label: {
+  text: "Send message to debt advisor",
+  classes: "govuk-label--m",
+  isPageHeading: false
+}
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Send message"
+}) }}
+{% include  "../includes/_show-confirmation.html" %} 
+
+<div class="govuk-radios" style="display:none">
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="" name="message" type="radio" value="sent~review-message?reference={{creditorcase.reference}}" checked>
+  <label class="govuk-label govuk-radios__label" for="updateDebtType">
+   hidden radio
+  </label>
+</div>
+</div>
+</form>
+  </div>  
 
     </div>
     

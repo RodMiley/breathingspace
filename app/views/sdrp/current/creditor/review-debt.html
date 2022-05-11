@@ -18,32 +18,7 @@ Review debt
       <h2 class="govuk-heading-l">
         {% include "../includes/creditor/_defaultDeptType.html" %}
       </h2>        
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-        You are owed
-          </dt>
-          <dd class="govuk-summary-list__value">
-            £1179 
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-        Reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ updateDebtReference | default('SC3456789') }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-       Creditor
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% include "../includes/creditor/_creditor.html" %}
-          </dd>
-        </div>
-      </dl>
+      {% include  "../includes/creditor/_debt_details.html" %} 
       <div class="govuk-form-group govuk-!-margin-bottom-9">
         <fieldset class="govuk-fieldset" aria-describedby="debt1-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -54,7 +29,7 @@ Review debt
           </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes" data-aria-controls="conditional-debt1" {{ checked('debt1','yes') }}>
+              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes"  {{ checked('debt1','yes') }}>
               <label class="govuk-label govuk-radios__label" for="debt1">
                 Yes 
               </label>
