@@ -43,6 +43,7 @@
               {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
               {% elif data['updateDebtReference'] !== 'SC3456789' %}
               Updated: {{updateDebtReference | default('1238675DF') }} 
+              {% else %}
               {% endif %}
             </div>  
       </div>

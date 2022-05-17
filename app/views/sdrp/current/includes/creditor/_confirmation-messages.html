@@ -9,6 +9,12 @@
     You have added a new debt
   </h3>
 
+  {% elif checked('task','object') %}  
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>The objection to the plan has been received.</p>
+
 {% elif checked('debt1','sold') or checked('debt2','sold') %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
@@ -22,15 +28,17 @@
     You have completed your task
   </h3>
 
-   <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the update</p>
-   <p>If Advice Uk don't need more information the next notification you will receive is the final plan or cancelation of the plan</p>
+   <p>We have sent your changes to the debt adviser.</p>
+   <p>Advice Uk may contact you if they need more information.</p>
+   <p>If no further information is needed you will receive a proposed plan or notification the plan is cancelled.</p>
 
 {% elif checked('debt1','no') %}
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
-   <p>We have sent your changes to the money adviser, they may be in touch if they need more information regarding the update</p>
-    <p>If Advice Uk don't need more information the next notification you will receive is a proposal or cancelation of the plan</p>
+  <p>We have sent your changes to the debt adviser.</p>
+  <p>Advice Uk may contact you if they need more information.</p>
+  <p>If no further information is needed you will receive a proposed plan or notification the plan is cancelled.</p>
 
     {%  elif checked('review','yes') or checked('review','no') or checked('debt1','yes') %}
     <h3 class="govuk-notification-banner__heading">

@@ -13,17 +13,24 @@
         {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-         Confirm your objecting to the plan
+        Confirm objection to the plan
       </h1>
 
-      <h2 class="govuk-heading-m">Objection reason</h2>
-      <p class="govuk-body-l">{{ data['object-to-plan-reason']}}</p>
-
-      <h2 class="govuk-heading-m">More detail</h2>
-      <p class="govuk-body-l">{{ data['more-detail']}}</p>
+      <h2 class="govuk-heading-m">Reason for the objection</h2>
+      <p class="govuk-body">{{ data['object-to-plan-reason']}}</p>
+      <p class="govuk-body">{{ data['more-detail']}}</p>
 
         {% include  "../includes/_show-confirmation.html" %}
         {% include  "../includes/creditor/_urlredirect.html" %}
+
+        <div class="govuk-radios" style="display:none">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="" name="task" type="radio" value="object" checked>
+            <label class="govuk-label govuk-radios__label" for="task">
+             hidden radio
+            </label>
+          </div>
+          </div>
 
 
 <button class="govuk-button" data-module="govuk-button">

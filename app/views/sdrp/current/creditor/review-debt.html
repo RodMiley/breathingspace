@@ -13,7 +13,7 @@
   {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-Review debt
+Confirm debts
       </h1>
       <h2 class="govuk-heading-l">
         {% include "../includes/creditor/_defaultDeptType.html" %}
@@ -25,7 +25,7 @@ Review debt
              Are the debt details correct?
           </legend>
           <div id="debt1-hint" class="govuk-hint">
-            The amount should be what was owed on  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}, this was the date we first notified you about the intended plan
+            <ul class="govuk-list govuk-body--secondary"><li>The amount should be what was owed on  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}.</li><li>This was the date we first notified you about the intended plan.</li></ul>
           </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
@@ -43,7 +43,7 @@ Review debt
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="sold~sold-debt-choose-creditor?reference={{creditorcase.reference}}" {{ checked('debt1','sold') }}>
               <label class="govuk-label govuk-radios__label" for="debt1-2">
-               No, we have sold this debt
+                No, this debt has been sold
               </label>
             </div>
           </div>

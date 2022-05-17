@@ -25,9 +25,9 @@
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason" name="object-to-plan-reason" type="radio" value="Information used to devise the plan is not accurate~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Information used to devise the plan is not accurate')}}>
+        <input class="govuk-radios__input" id="object-to-plan-reason" name="object-to-plan-reason" type="radio" value="The information in the plan is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The information in the plan is not correct')}}>
         <label class="govuk-label govuk-radios__label" for="object-to-plan-reason">
-          Information used to devise the plan is not accurate  
+          The information in the plan is not correct
         </label>
       </div>
       <div class="govuk-radios__item">
@@ -37,7 +37,7 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="Income and expenditure calculation not in line with the SFS guidelines~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Income and expenditure calculation not in line with the SFS guidelines')}}>
+        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="Income and expenditure calculations are not in line with SFS guidelines~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Income and expenditure calculations are not in line with SFS guidelines')}}>
         <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-2">
           Income and expenditure calculation not in line with the SFS guidelines
         </label>
@@ -55,11 +55,8 @@
 
 <div class="govuk-form-group">
   <label class="govuk-label govuk-label--l" for="more-detail">
-      Can you provide more detail?
+    Tell us more about why you object to the plan
     </label>
-  <div id="more-detail-hint" class="govuk-hint">
-    Hint text
-  </div>
   <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
 </div>
          <div class="govuk-radios" style="display:none">

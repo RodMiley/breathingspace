@@ -1,7 +1,7 @@
 
 
 {% if creditorcase.status ==='Draft plan' %}
-    <p>Please complete each task listed</p>
+    <p>Complete each task listed</p>
     <!--<ul class="govuk-list govuk-list--bullet">
     <li>the debt is yours</li>
     <li>the debt details are correct</li>
@@ -22,7 +22,7 @@
   class="govuk-tag govuk-tag--grey app-task-list__tag"
   id="">To do</strong>
   {% endif %}
-  <a href="confirm-debt-amount?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Confirm debt amount</a>
+  <a href="confirm-debt-amount?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Confirm debt amounts</a>
 </li>
 <li class="app-task-list__item">
   {% if checked('object-to-plan','yes') or checked('object-to-plan','yes') %}
@@ -42,7 +42,7 @@
   </li>
 </ol>
 {% elif creditorcase.status ==='New message' %}
-<p>Please complete each task listed</p>
+<p>Complete each task listed</p>
 <ol class="app-task-list">
   <li>
   <ul
@@ -68,7 +68,7 @@
     </li>
 {% else %}
 
-<p>Please complete each task listed</p>
+<p>Complete each task listed</p>
 
 <ol class="app-task-list">
 <li>
@@ -89,7 +89,7 @@
     >
     {% endif %}
     <span class="app-task-list__task-name">
-     <a href="review-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - review debt</a> 
+     <a href="review-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - confirm debt</a> 
 
     </span>
   </li>
@@ -109,7 +109,7 @@
     >
     {% endif %}
     <span class="app-task-list__task-name">
-     <a href="review-debt2?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType2.html" %} - review debt</a> 
+     <a href="review-debt2?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType2.html" %} - confirm debt</a> 
 
     </span>
   </li>

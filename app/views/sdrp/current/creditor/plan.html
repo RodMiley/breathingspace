@@ -21,7 +21,7 @@ Debt repayment plan for Sarah Philips
 <div class="govuk-grid-column-full">
 {% if creditorcase.status ==='Draft plan' %}
 <ul class="govuk-list stages">
-<li>1. Confirm debts plan</li>
+<li>1. Confirm debts</li>
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
 </strong></li>
 <li>4. Active plan</li>
@@ -33,7 +33,7 @@ Debt repayment plan for Sarah Philips
 </li>
 <li>3. Active plan</li>
 </ul>
-<p>You have <strong>20 days</strong> to tell the debt advisor if any of the information is incorrect.</p>
+<p>You have <strong>20 days</strong> to tell the debt adviser if any of the information is incorrect.</p>
 {% endif %}
 </div>
 </div>
@@ -77,7 +77,7 @@ Debt repayment plan for Sarah Philips
     </li>
       <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#maDetails">
-      Money advice organisation details
+        Debt adviser
       </a>
     </li>
   </ul>
@@ -92,7 +92,7 @@ Debt repayment plan for Sarah Philips
     </div>
     <div class="govuk-tabs__panel" id="debts">
   <h2 class="govuk-heading-l">Debts</h2>
-  <p>Please add any other debts you have that arn't on the list
+  <p>Add any debts that are not listed on this page.
   </p>
   <p><a href="not-testing?reference={{creditorcase.reference}}">Add a debt</a></p>
   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -107,7 +107,7 @@ Debt repayment plan for Sarah Philips
   </div>
 
     <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="maDetails">
-  <h2 class="govuk-heading-l">Money advice organisation details</h2>
+  <h2 class="govuk-heading-l">Debt adviser</h2>
 {% include  "../includes/creditor/_ma_details.html" %} 
 
   </div>
