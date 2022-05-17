@@ -41,8 +41,9 @@
             </div>
             <div class="govuk-grid-column-one-half">
               {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
-              {% elif data['updateDebtReference'] !== 'SC3456789' %}
-              Updated: {{updateDebtReference | default('1238675DF') }} 
+              {% elif creditorcase.status === "Confirm debts" and data['updateDebtReference'] == 'SC3456787' %}
+              Updated: {{updateDebtReference }} 
+              {% elif creditorcase.status === "Confirm debts" %}
               {% else %}
               {% endif %}
             </div>  
