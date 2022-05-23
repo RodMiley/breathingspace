@@ -1,0 +1,63 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+    {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+
+<h1 class="govuk-heading-l">Debt details </h1>
+{% include  "../includes/creditor/_debt_details.html" %} 
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+       Are the debt details correct?
+     
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="confirm-debt-status" name="confirm-debt-status" type="radio" value="confirm-debt-detail~confirm-debt-details?reference={{creditorcase.reference}}">
+        <label class="govuk-label govuk-radios__label" for="confirm-debt-status">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="confirm-debt-status-2" name="confirm-debt-status" type="radio" value="update-debt-details~update-debt-detail?reference={{creditorcase.reference}}">
+        <label class="govuk-label govuk-radios__label" for="confirm-debt-status-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="tasktodo" type="radio" value="completed" checked>
+        <label class="govuk-label govuk-radios__label" for="completed">
+         hidden radio
+        </label>
+      </div>
+      </div>      
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

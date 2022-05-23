@@ -1,0 +1,135 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for Sarah Philips
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/creditor/_global-nav.html" %} 
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+
+
+{% include  "../includes/creditor/_confirmation-messages.html" %} 
+{% include  "../includes/creditor/_client_name_reference.html" %} 
+
+<div class="govuk-grid-row"> 
+<div class="govuk-grid-column-full">
+{% if creditorcase.status ==='Draft plan' %}
+<ul class="govuk-list stages">
+<li>1. Confirm debts</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
+</strong></li>
+<li>4. Active plan</li>
+</ul>
+{% else %}
+<ul class="govuk-list stages">
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Confirm debts - Day 1</strong></li>
+<li>2. Review draft plan
+</li>
+<li>3. Active plan</li>
+</ul>
+<p>You have <strong>20 days</strong> to tell the debt adviser if any of the information is incorrect.</p>
+{% endif %}
+</div>
+</div>
+ <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
+
+<p>This debt repayment plan is being created by AdviceUK.</p>
+
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+ <ul class="govuk-tabs__list">
+
+  <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#tasks">
+        Tasks
+        {% if creditorcase.status === "New message" and checked('debt1','yes') %}
+        {% elif  creditorcase.status === "New message" %}<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">1</strong>
+        {% endif %}
+      </a>
+    </li> 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#messages">
+       Messages
+
+       {% if creditorcase.status === "New message" and checked('message-read','yes') %}
+       {% elif  creditorcase.status === "New message" %}<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">1</strong>
+       {% endif %}
+      </a>
+    </li> 
+      <li class="govuk-tabs__list-item ">
+      <a class="govuk-tabs__tab" href="#debts">
+        Debts
+      </a>
+    </li> 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#clientDetails">
+       Client details
+      </a>
+    </li>
+      <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#maDetails">
+        Debt adviser
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-tabs__panel" id="tasks">
+  <h2 class="govuk-heading-l">Tasks</h2>
+   {% include  "../includes/creditor/_tasklist.html" %} 
+  </div>
+  <div class="govuk-tabs__panel" id="messages">
+    <h2 class="govuk-heading-l">Messages</h2>
+    {% include  "../includes/creditor/_messages.html" %} 
+
+    </div>
+    <div class="govuk-tabs__panel" id="debts">
+  <h2 class="govuk-heading-l">Debts</h2>
+  <p>Add any debts that are not listed on this page.
+  </p>
+  <p><a href="not-testing?reference={{creditorcase.reference}}">Add a debt</a></p>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+   {% include  "../includes/creditor/_debts.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
+  <h2 class="govuk-heading-l">Client details</h2>
+{% include  "../includes/creditor/_client_details.html" %} 
+
+  </div>
+
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="maDetails">
+  <h2 class="govuk-heading-l">Debt adviser</h2>
+{% include  "../includes/creditor/_ma_details.html" %} 
+
+  </div>
+</div>
+
+
+
+
+</form>
+
+
+<form class="form" action="scenarios" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+  
+  </form>
+
+{% block page_scripts %}
+<script>
+</script>
+{% endblock %}
+
+{% endblock %}
+

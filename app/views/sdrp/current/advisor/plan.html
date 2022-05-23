@@ -210,10 +210,23 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   </div>
 </div>
 
-  <form class="form" action="scenarios" method="post">
+{% if  case.task =='Draft plans nearing deadline' %}
+<form class="form" action="../advisor/time-machine-recieve-draft-plan" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button class="timemachine-link govuk-body">Forward</button>
+  <div class="govuk-radios__item govuk-visually-hidden">
+    <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="resettask" checked>
+    <label class="govuk-label govuk-radios__label" for="task-2">
+    reset task
+    </label>
+  </div>
+  </form>
+{% else %}
+  <form class="form" action="../advisor/time-machine-send-draft-plan" method="post">
 {% include  "../includes/advisor/_hide-confirmation.html" %} 
 
-<button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+<button class="timemachine-link govuk-body">Forward</button>
 <div class="govuk-radios__item govuk-visually-hidden">
   <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="resettask" checked>
   <label class="govuk-label govuk-radios__label" for="task-2">
@@ -221,6 +234,7 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   </label>
 </div>
 </form>
+{% endif %}
 
 
 {% block page_scripts %}

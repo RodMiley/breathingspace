@@ -1,0 +1,36 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Confirm message to send to debt advisor
+      </h1>
+<h2 class="govuk-heading-l">Message text</h2>
+
+<p class="govuk-body">{{ data['message-to-ma']}}</p>
+
+    {% include "../includes/creditor/_urlredirect.html" %}
+    {% include "../includes/_show-confirmation.html" %}
+    <button class="govuk-button">Send message</button>
+
+</div>
+
+    </div>
+    </form>
+
+
+
+
+
+
+{% endblock %}

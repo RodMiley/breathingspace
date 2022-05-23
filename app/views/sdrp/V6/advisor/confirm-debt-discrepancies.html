@@ -1,0 +1,74 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+         Confirm updated debt details
+      </h1>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+          Creditor
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Halifax credit cards
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+          Debt type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Credit card
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+           Amount owed
+          </dt>
+          <dd class="govuk-summary-list__value">
+           £6361
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">
+           Reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+           **** **** 4567
+          </dd>
+        </div>
+      </dl>
+
+
+        {% include  "../includes/advisor/_show-confirmation.html" %} 
+
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="task" type="radio" value="confirmDisc~plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="debtUpdated">
+        Please ignore hidden radio for hacky prototype
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

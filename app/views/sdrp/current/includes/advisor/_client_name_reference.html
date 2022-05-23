@@ -2,15 +2,16 @@
  <div class="govuk-grid-column-two-thirds">
  <h1 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-3">
      {{ case.name | default('Sarah Philips')}}
-  <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
+  <span class="govuk-caption-m">Reference: SDRP823471</span>
  </h1>
  </div>
   <div class="govuk-grid-column-one-third">
   </div>
   </div>
+  {% if case.status %}  
  <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
- <p class="govuk-!-margin-bottom-3">This intended plan was submitted on  
-     <strong> 
+<p class="govuk-!-margin-bottom-3">This intended plan was submitted on  
+    <strong>  
      {% if case.status == 'Draft plan'  or case.status == 'Creditor objection'%}{{ 'Do MMMM YYYY' | baseDateAdd(-21) }}
      {% elif case.status == 'Confirmed plan' %}
      {{ 'Do MMMM YYYY' | baseDateAdd(-42) }}
@@ -29,4 +30,6 @@
     {% else%}
     {% endif %}
 </p>
+{% else %}
+{% endif %}
  <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />

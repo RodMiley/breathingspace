@@ -1,0 +1,38 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="names" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+     {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Enter the creditor's name",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson"
+  },
+  id: "adhock-creditor-name",
+  name: "adhock-creditor-name"
+}) }}
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

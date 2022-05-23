@@ -1,0 +1,107 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Confirmed plan
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     First payment due
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ 'Do MMMM YYYY' | baseDateAdd(2) }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Plan was confirmed on 
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Monthly payment amount
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £185
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Payment distributor
+    </dt>
+    <dd class="govuk-summary-list__value">
+     PD7 LTD
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Total amount to repay
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £13555
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Length of plan
+    </dt>
+    <dd class="govuk-summary-list__value">
+     5 Years 2 months
+    </dd>
+  </div>
+</dl>
+
+
+ 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="task-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+       Mark this task as complete?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task" name="task" type="radio" value="confirmedPlan~plan?reference={{case.reference}}" {{checked('task','confirmedPlan')}}>
+        <label class="govuk-label govuk-radios__label" for="task">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="no~plan?reference={{case.reference}}"  {{checked('task','no')}}>
+        <label class="govuk-label govuk-radios__label" for="task-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

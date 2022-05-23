@@ -1,0 +1,37 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="budget">
+    Check your information before sending it to creditors
+    </label>
+  </h1>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

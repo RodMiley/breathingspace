@@ -118,14 +118,21 @@ Debt repayment plan for Sarah Philips
 
 </form>
 
-
-<form class="form" action="scenarios" method="post">
+{% if creditorcase.status == 'Confirm debts'%}
+<form class="form" action="../advisor/time-machine-debt-updated" method="post">
   {% include  "../includes/advisor/_hide-confirmation.html" %} 
   
-  <button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+  <button class="timemachine-link govuk-body">Forward</button>
   
   </form>
-
+{% else %}
+<form class="form" action="../advisor/time-machine-final-plan" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button class="timemachine-link govuk-body">Forward</button>
+  
+  </form>
+{% endif %}
 {% block page_scripts %}
 <script>
 </script>

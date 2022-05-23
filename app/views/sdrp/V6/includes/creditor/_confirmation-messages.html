@@ -1,0 +1,68 @@
+{% if checked('taskcompleted','show')%}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+<span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
+
+{% set html %}
+{% if checked('task','newDebtAdded')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a new debt
+  </h3>
+
+  {% elif checked('task','object') %}  
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>The objection to the plan has been received.</p>
+
+{% elif checked('debt1','sold') or checked('debt2','sold') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+   <p>We've informed Advice UK that some you have sold this debt</p>
+
+   {% elif creditorcase.status =='Draft plan' and checked('debt1','no') %}
+
+
+   <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+
+   <p>We have sent your changes to the debt adviser.</p>
+   <p>Advice Uk may contact you if they need more information.</p>
+   <p>If no further information is needed you will receive a proposed plan or notification the plan is cancelled.</p>
+
+{% elif checked('debt1','no') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>We have sent your changes to the debt adviser.</p>
+  <p>Advice Uk may contact you if they need more information.</p>
+  <p>If no further information is needed you will receive a proposed plan or notification the plan is cancelled.</p>
+
+    {%  elif checked('review','yes') or checked('review','no') or checked('debt1','yes') %}
+    <h3 class="govuk-notification-banner__heading">
+      You have completed your task
+    </h3>
+   {% elif data['message-to-ma-2'] %}
+   <h3 class="govuk-notification-banner__heading">
+     You have sent a message to Advice UK
+   </h3>  
+   {% if checked('review','no') %}
+   <P>We have sent your message to Advice UK</P>
+   {% endif %}
+   {% elif checked('message','sent') %}
+   <h3 class="govuk-notification-banner__heading">
+     You have sent a message to Advice UK
+   </h3> 
+  {% endif%}
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% else %}
+{% endif %}

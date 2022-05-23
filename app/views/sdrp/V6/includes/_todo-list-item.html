@@ -1,0 +1,20 @@
+<li>
+  <div class="card">
+   {%if creditorcase.status == 'New message'%} 
+   <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="plan?reference={{creditorcase.reference}}#messages">{{creditorcase.name}}</a>
+   {% else %}
+   <a class="govuk-link govuk-!-font-weight-bold govuk-!-display-block govuk-!-margin-bottom-3" href="plan?reference={{creditorcase.reference}}">{{creditorcase.name}}</a>
+   {% endif %}   
+    <hr class="govuk-section-break govuk-section-break--visible" />
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <ul class="govuk-list govuk-!-margin-bottom-0 govuk-!-font-size-16">
+          <li>Reference: {{creditorcase.reference}}</li>
+          <li>Status: {{creditorcase.status}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</li>

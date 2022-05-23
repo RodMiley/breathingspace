@@ -9,6 +9,12 @@
     You have added a new debt
   </h3>
 
+  {% elif checked('object-to-plan','no') %} 
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>You have not objected to the plan</p>
+  <p>If their are no objections from other creditors the next notification you will recieve will be a final plan</p>
   {% elif checked('task','object') %}  
   <h3 class="govuk-notification-banner__heading">
     You have completed your task

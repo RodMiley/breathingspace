@@ -1,0 +1,48 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+Confirm debt details
+      </h1>
+
+{% include  "../includes/creditor/_debt_details.html" %} 
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Incorrect debt details</h3>
+<p>{{ data['cant-find-debt'] }}</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Correct information</h3>
+<p>{{ data['cant-find-debt-more-detail'] }}</p>
+
+
+        {% include  "../includes/_show-confirmation.html" %} 
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt" type="radio" value="yes~plan?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm
+</button>
+    
+    
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
