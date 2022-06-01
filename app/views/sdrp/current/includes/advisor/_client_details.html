@@ -20,23 +20,19 @@
               </a>
             </dd>
           </div>
-{% if checked('addname','yes')%}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Previous name
+              Previous Name
             </dt>
             <dd class="govuk-summary-list__value">
-      
-     {{ firstnameprev }} {{middlenameprev}} {{ lastnameprev }}
-     
+              Sarah Henderson
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="not-testing">
-                Change<span class="govuk-visually-hidden"> previous name</span>
+              <a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Previous Name</span>
               </a>
-            </dd>
-          </div> 
-          {% endif %}
+         </dd>
+          </div>
           </dl>
   <p><a class="govuk-link" href="add-another-name?reference={{case.reference}}">Add another name</a></p>
  <dl class="govuk-summary-list">
@@ -70,10 +66,9 @@
             <dd class="govuk-summary-list__value">
      
                 
-     
-          <p> 5 Susan Alley <br> London <br>
+              44 Crawford St<br> Marylebone<br> London<br> W1H 1JS
                
- NW0 3NY
+
  
  
            
@@ -92,6 +87,19 @@
             <ul>
             </ul></ul></dd>
           </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous address
+            </dt>
+            <dd class="govuk-summary-list__value">
+                  27 Turner Grove<br>Elephant and Castle<br>  London<br> NW11 4FD
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Previous Address</span>
+              </a>
+         </dd>
+          </div>
           
                        
 
@@ -107,7 +115,7 @@
        Method
             </dt>
             <dd class="govuk-summary-list__value">
-      Email
+      {{howcontacted | default('post')}}
             </dd>
             <dd class="govuk-summary-list__actions">
          
@@ -118,6 +126,24 @@
             
             </dd>
           </div>
+          {% if checked('howcontacted','Email') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+       Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+      {{ contactByEmail | default('sarahp33@gmail.com') }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+         
+              <a class="govuk-link govuk-!-font-size-19" href="pref-contact">
+                Change<span class="govuk-visually-hidden"> notifcation preference</span>
+              </a>
+             
+            
+            </dd>
+          </div>
+          {% endif %}
           
         </dl>
 
@@ -134,3 +160,6 @@
      
 
   </dl>
+
+
+  

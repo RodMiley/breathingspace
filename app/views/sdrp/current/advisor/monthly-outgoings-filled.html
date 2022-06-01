@@ -39,7 +39,7 @@ Monthly outgoings
   name: "Rent",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Rent']
+  value: '380.00'
 }) }}  
 
 {{ govukInput({
@@ -56,7 +56,7 @@ Monthly outgoings
   name: "Mortgage",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Mortgage']
+  value: '0.00'
 }) }}  
 
 {{ govukInput({
@@ -73,7 +73,7 @@ Monthly outgoings
   name: "Other secured loans",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Other secured loans']
+  value: '0.00'
 }) }}  
 
 {{ govukInput({
@@ -90,7 +90,7 @@ Monthly outgoings
   name: "Council tax / rates",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Council tax / rates']
+  value: '105.00'
 }) }}  
 
 {{ govukInput({
@@ -107,7 +107,7 @@ Monthly outgoings
   name: "Other home and contents",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Other home and contents']
+  value: '0.00'
 }) }}  
 
 {{ govukInput({
@@ -124,7 +124,7 @@ Monthly outgoings
   name: "Gas",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Gas']
+  value: '100.00'
 }) }}  
 
 {{ govukInput({
@@ -141,7 +141,7 @@ Monthly outgoings
   name: "Electric",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Electric']
+  value: '80.00'
 }) }}  
 
 {{ govukInput({
@@ -161,7 +161,7 @@ Monthly outgoings
   name: "Other utility costs (e.g.coal, oil, calorgas)",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Other utility costs (e.g.coal, oil, calorgas)']
+  value: '0.00'
 }) }}  
 
 {{ govukInput({
@@ -178,7 +178,7 @@ Monthly outgoings
   name: "Water",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Water']
+  value: '50.00'
 }) }}  
 
 {{ govukInput({
@@ -195,7 +195,7 @@ Monthly outgoings
   name: "Care and health costs",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Care and health costs']
+  value: '60.00'
 }) }}  
 
 {{ govukInput({
@@ -212,7 +212,7 @@ Monthly outgoings
   name: "Transport and travel",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Transport and travel']
+  value: '50.00'
 }) }}  
 
 {{ govukInput({
@@ -229,7 +229,7 @@ Monthly outgoings
   name: "School costs",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['School costs']
+  value: '60.00'
 }) }}  
 
 {{ govukInput({
@@ -246,7 +246,7 @@ Monthly outgoings
   name: "Pensions and insurances",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Pensions and insurances']
+  value: '0.00'
 }) }}  
 
 {{ govukInput({
@@ -263,7 +263,7 @@ Monthly outgoings
   name: "Professional costs",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Professional costs']
+  value:'0.00'
 }) }} 
 
 {{ govukInput({
@@ -280,7 +280,7 @@ Monthly outgoings
   name: "Other essential costs",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Other essential costs']
+  value: '0.00'
 }) }}  
 
 <h2 class="govuk-heading-m">Flexible costs</h2>
@@ -300,7 +300,7 @@ Monthly outgoings
   name: "Communications and leisure",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Communications and leisure']
+  value: '38.00'
 }) }} 
 
 {{ govukInput({
@@ -317,7 +317,7 @@ Monthly outgoings
   name: "Food and housekeeping",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Food and housekeeping']
+  value: '600.00'
 }) }} 
 
 {{ govukInput({
@@ -334,7 +334,7 @@ Monthly outgoings
   name: "Personal costs",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Personal costs']
+  value: '0.00'
 }) }} 
 
 
@@ -354,7 +354,7 @@ Monthly outgoings
   name: "discrectionary payments",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['discrectionary payments']
+  value: '0.00'
 }) }} 
 
 <h2 class="govuk-heading-m">Savings contribution</h2>
@@ -373,7 +373,7 @@ Monthly outgoings
   name: "Monthly savings contribution",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Monthly savings contribution']
+  value:'25.00'
 }) }} 
 
 
@@ -385,7 +385,7 @@ Monthly outgoings
   id: "outgoings-detail",
   classes:"govuk-!-width-two-thirds",
   rows: "8",
-  value: data['outgoings-detail'],
+  value: 'One of the children has lactose intolerance, and requires a special diet, so the food bill is a little higher than a standard houshold of 4 with two adults and two children.',
   label: {
     text: "Provide more detail for monthly outgoings",
     classes: "govuk-label--m",
@@ -415,21 +415,6 @@ Monthly outgoings
 </button>
     </div>
     </form>
-
-
-    <form class="form" action="../advisor/household-filled" method="post">
-      
-      <button class="timemachine-link govuk-body">Forward</button>
-
-      <div class="govuk-radios" style="display:none">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="" name="monthly-outgoings" type="radio" value="yes~monthly-outgoings-filled?reference={{case.reference}}" checked>
-          <label class="govuk-label govuk-radios__label" for="monthly-outgoings">
-           hidden radio
-          </label>
-        </div>
-        </div>
-      </form>
 </div>
 
 

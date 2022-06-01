@@ -35,7 +35,7 @@ Monthly income
   name: "Earnings from wages",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Earnings']
+  value: '1600.00'
 }) }}  
 
 {{ govukInput({
@@ -52,7 +52,7 @@ Monthly income
   name: "Benefits and tax credits",
   inputmode: "numeric",
   spellcheck: false,
-   value: data['Benefits and tax credits']
+   value: '140.00'
 }) }}  
 {{ govukInput({
   label: {
@@ -68,7 +68,7 @@ Monthly income
   name: "Pensions",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Pensions']
+  value:'0.00'
 }) }} 
 
 {{ govukInput({
@@ -85,7 +85,7 @@ Monthly income
   name: "Other income",
   inputmode: "numeric",
   spellcheck: false,
-  value: data['Other income']
+  value: '0.00'
 }) }} 
 
 
@@ -112,20 +112,6 @@ Monthly income
 </button>
     </div>
     </form>
-
-    <form class="form" action="../advisor/income-filled" method="post">
-      
-      <button class="timemachine-link govuk-body">Forward</button>
-
-      <div class="govuk-radios" style="display:none">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="" name="monthly-income" type="radio" value="yes~monthly-income-filled?reference={{case.reference}}" checked>
-          <label class="govuk-label govuk-radios__label" for="monthly-income">
-           hidden radio
-          </label>
-        </div>
-        </div>
-      </form>
 </div>
 
 

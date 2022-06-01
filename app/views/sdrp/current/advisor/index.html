@@ -13,26 +13,44 @@
 
 {% set totTasks = 0 %}
 {% set totDiscprenceies = 0 %}
-{% set totProposed = 0 %}
-{% set totCantFind = 0 %}
+{% set newMessage = 0 %}
+{% set totSoldDebt = 0 %}
+{% set totNewdDebt = 0 %}
+{% set totDraftPlan = 0 %}
+{% set totConfirmedPlan = 0 %}
 
 	{% for case in cases %}
 
- {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
+ {% if case.task === "Confirm updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt"  or  case.task === "New message" or case.task === "New debts added by creditor" or case.task === "Review confirmed plan" %}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
-    {% if case.task === "Creditor has raised discrepancies" %}
+    {% if case.task === "Confirm updated debt details" %}
     {% set totDiscprenceies = totDiscprenceies + 1 %}
    {% endif %}
 
+
   {% if case.task === "Draft plans nearing deadline" %}
-    {% set totProposed = totProposed + 1 %}
+    {% set totDraftPlan = totDraftPlan + 1 %}
    {% endif %}
 
-   {% if case.task === "Creditor can't find the debt" %}
-    {% set totCantFind = totCantFind + 1 %}
+   {% if case.task === "Confirm sold debt" %}
+    {% set totSoldDebt = totSoldDebt + 1 %}
    {% endif %}
+
+
+   {% if case.task === "New message" %}
+    {% set newMessage = newMessage + 1 %}
+   {% endif %}
+
+   {% if case.task === "New debts added by creditor" %}
+   {% set totNewdDebt = totNewdDebt + 1 %}
+  {% endif %}
+
+  {% if case.task === "Review confirmed plan" %}
+  {% set totConfirmedPlan = totConfirmedPlan + 1 %}
+ {% endif %}
+
 
 
    {% endfor %}
@@ -41,8 +59,7 @@
   
    <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">
- Advice uk
- <span class="govuk-caption-xl">Debt repayment plan portal </span>
+ Advice uk</span>
  </h1>
  <h2 class="govuk-heading-s">
  <span class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold">145</span><br>Debt repayment plans  </h2>
@@ -50,14 +67,90 @@
 <div class="card-container">
 
               <div class="card double">
-                  <h2 class="govuk-heading-s"><a href="tasks-to-do">Tasks to do <strong>({{totTasks}})</strong></a></h2>
+                <form class="form" action="tasks-to-do" method="post">
+                  <h2 class="govuk-heading-s"><button  class="govuk-link govuk-heading-m">Tasks to do <strong>({{totTasks}})</strong></button></h2>
+
+                  <div class="govuk-radios govuk-radios--small govuk-visually-hidden" >
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input facet" id="taskFilter_1" name="taskFilter" type="radio" value="All" {{ checked('taskFilter', 'All') }} checked>
+                      <label class="govuk-label govuk-radios__label" for="taskFilter_1">
+                        All ({{totTasks}})
+                      </label>
+                    </div>
+                    </div>
+               </form>    
                   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                   <ul class="govuk-list">
-                  <li><a href="tasks-to-do">Confirm updated debt details </a></li>  
-                  <li><a href="tasks-to-do">Confirm new debt added by creditor </a></li>
-                  <li><a href="tasks-to-do">Creditor sold debts </a></li>
-                  <li><a href="tasks-to-do">New messages ({{totCantFind}}) </a></li>
-                  <li><a href="tasks-to-do">Draft plans nearing deadline ({{totProposed}}) </a></li>
+                  <li><form class="form" action="tasks-to-do" method="post">
+                    <button class="govuk-link govuk-body" >Confirm updated debt details ({{totDiscprenceies}}) </button>
+                    <div class="govuk-radios govuk-radios--small govuk-visually-hidden" >
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input facet" id="taskFilter_2" name="taskFilter" type="radio" value="Confirm updated debt details" {{ checked('taskFilter', 'Confirm updated debt details') }} checked>
+                        <label class="govuk-label govuk-radios__label" for="taskFilter_2">
+                          Review updated debt details ({{totDiscprenceies}})
+                        </label>
+                      </div>
+                      </div>
+                  </form>
+                  </li>  
+                  <li>
+                    <form class="form" action="tasks-to-do" method="post">
+                      <button class="govuk-link govuk-body" >New debts added by creditor ({{totNewdDebt}})</button>
+                      <div class="govuk-radios govuk-radios--small govuk-visually-hidden" >
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input facet" id="taskFilter_3" name="taskFilter" type="radio" value="New debts added by creditor" {{ checked('taskFilter', 'New debts added by creditor') }} checked>
+                          <label class="govuk-label govuk-radios__label" for="taskFilter_3">
+                            Review updated debt details ({{totNewdDebt}})
+                          </label>
+                        </div>
+                        </div>
+                    </form>
+                   </li>
+                  <li>
+                    <form class="form" action="tasks-to-do" method="post">
+                      <button class="govuk-link govuk-body" >Creditor sold debts  ({{totSoldDebt}}) </button>
+                      <div class="govuk-radios__item govuk-visually-hidden">
+                        <input class="govuk-radios__input facet" id="taskFilter_5" name="taskFilter" type="radio" value="Confirm sold debt" {{ checked('taskFilter', 'Confirm sold debt') }} checked>
+                        <label class="govuk-label govuk-radios__label" for="taskFilter_5">
+                        Confirm sold debts ({{totSoldDebt}})
+                        </label>
+                      </div>
+                    
+                    </form>
+                   </li>
+                  <li>
+                    <form class="form" action="tasks-to-do" method="post">
+                      <button class="govuk-link govuk-body" >New messages ({{newMessage}})</button>
+                      <div class="govuk-radios__item govuk-visually-hidden">
+                        <input class="govuk-radios__input facet" id="taskFilter_6" name="taskFilter" type="radio" value="New message" {{ checked('taskFilter', 'New message') }} checked>
+                        <label class="govuk-label govuk-radios__label" for="taskFilter_6">
+                        New messages ({{newMessage}})
+                        </label>
+                      </div>
+                    </form>
+                    </li>
+                  <li>
+                    <form class="form" action="tasks-to-do" method="post">
+                      <button class="govuk-link govuk-body" >Draft plans nearing deadline ({{totDraftPlan}}) </button>
+                      <div class="govuk-radios__item govuk-visually-hidden">
+                        <input class="govuk-radios__input facet" id="taskFilter_4" name="taskFilter" type="radio" value="Draft plans nearing deadline" {{ checked('taskFilter', 'Draft plans nearing deadline') }} checked>
+                        <label class="govuk-label govuk-radios__label" for="taskFilter_34">
+                         Draft plans nearing deadline ({{totDraftPlan}})
+                        </label>
+                      </div>
+                    </form>
+                    </li>
+                  <li>
+                    <form class="form" action="tasks-to-do" method="post">
+                      <button class="govuk-link govuk-body" >Confirmed plans ({{totConfirmedPlan}}) </button>
+                        <div class="govuk-radios__item govuk-visually-hidden">
+                          <input class="govuk-radios__input facet" id="taskFilter_7" name="taskFilter" type="radio" value="Review confirmed plan" {{ checked('taskFilter', 'Review confirmed plan') }} checked>
+                          <label class="govuk-label govuk-radios__label" for="taskFilter_7">
+                          Review confirmed plan ({{totConfirmedPlan}})
+                          </label>
+                        </div>
+                    </form>
+                    </li>
                   </ul>
               </div>
               <div class="card">
