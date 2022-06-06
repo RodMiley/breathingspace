@@ -1,4 +1,6 @@
-<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType.html" %}{% if checked('debt1','no')%} <span class="govuk-body-l">- updated and sent to debt adviser to accept into the plan</span>{% endif %}</h3>
+<h3 class="govuk-heading-m">{% include "../creditor/_defaultDeptType.html" %}
+    {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
+    {% elif checked('debt1','no')%} <span class="govuk-body-l">- updated and sent to debt adviser to accept into the plan</span>{% endif %}</h3>
 
 {% include  "../creditor/_debt_details.html" %} 
 
