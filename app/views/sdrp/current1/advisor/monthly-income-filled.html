@@ -1,0 +1,119 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Monthly income
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+         {% include  "../includes/advisor/_client_name_reference.html" %} 
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-l">
+     
+        Add monthly income
+
+      </h1>
+<p>Enter your client’s income per month.</p>   
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Earnings from wages",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Earnings from wages",
+  name: "Earnings from wages",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: '1600.00'
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "Benefits and tax credits",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Benefits and tax credits",
+  name: "Benefits and tax credits",
+  inputmode: "numeric",
+  spellcheck: false,
+   value: '140.00'
+}) }}  
+{{ govukInput({
+  label: {
+    text: "Pensions",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Pensions",
+  name: "Pensions",
+  inputmode: "numeric",
+  spellcheck: false,
+  value:'0.00'
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Other income",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "Other income",
+  name: "Other income",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: '0.00'
+}) }} 
+
+
+
+
+
+
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="monthly-income" type="radio" value="yes~plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="monthly-income">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

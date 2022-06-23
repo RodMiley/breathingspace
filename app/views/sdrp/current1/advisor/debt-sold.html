@@ -1,0 +1,94 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Creditor has sold debt
+      </h1>
+      <p class="govuk-body-l">
+        Next retail plc has sold this debt to Lowell
+      </p>
+      </div>
+      <div class="govuk-grid-column-full">
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Creditor
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Next retail plc<span class="govuk-!-display-block govuk-!-margin-top-2">Lowell<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Debt type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Store card
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Amount owed
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £1291
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £NX23452345
+    </dd>
+  </div>
+</dl>
+
+
+ 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="accept-sold-debt-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you accept the sale of this debt?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-sold-debt" name="accept-sold-debt" type="radio" value="yes~debt-sold-confirm?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="accept-sold-debt">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-sold-debt-2" name="accept-sold-debt" type="radio" value="no~plan?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="accept-sold-debt-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

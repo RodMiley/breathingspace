@@ -1,0 +1,67 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+  <form class="form" action="details" method="post">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+
+   <div class="govuk-grid-column-two-thirds">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set yesHtml %}
+{{ govukInput({
+  id: "bs-ref",
+  name: "bs-ref",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Enter Breathing Space reference"
+  }
+}) }}
+{% endset -%}
+
+
+
+{{ govukRadios({
+  idPrefix: "create-gaurd",
+  name: "create-gaurd",
+  fieldset: {
+    legend: {
+      text: "Do you want to add your client’s Breathing Space information to the plan?
+",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "Select one option."
+  },
+  items: [
+    {
+      value: "yes~bs-confirm",
+      text: "Yes",
+      conditional: {
+        html: yesHtml
+      }
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+<button class="govuk-button">Continue</button>
+
+</div></div>
+</form>
+{% endblock %}

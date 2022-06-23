@@ -11,7 +11,7 @@
 {% include  "../includes/advisor/_global-nav.html" %} 
 
 
- {% set currentnav ='tasks' %}
+ {% set currentnav ='findCasesecrets' %}
 
 
    <!-- BASE VALUES -->
@@ -21,15 +21,14 @@
 {% set totSoldDebt = 0 %}
 {% set totNewdDebt = 0 %}
 {% set totDraftPlan = 0 %}
-{% set totConfirmedPlan = 0 %}
 
 	{% for case in cases %}
 
- {% if case.task === "Confirm updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt"  or  case.task === "New message" or case.task === "New debts added by creditor" or case.task === "Review confirmed plan" %}
+ {% if case.task === "Review updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt"  or  case.task === "New message" or case.task === "Review new debts added by creditor"%}
     {% set totTasks = totTasks + 1 %}
    {% endif %}
 
-    {% if case.task === "Confirm updated debt details" %}
+    {% if case.task === "Review updated debt details" %}
     {% set totDiscprenceies = totDiscprenceies + 1 %}
    {% endif %}
 
@@ -47,13 +46,9 @@
     {% set newMessage = newMessage + 1 %}
    {% endif %}
 
-   {% if case.task === "New debts added by creditor" %}
+   {% if case.task === "Review new debts added by creditor" %}
    {% set totNewdDebt = totNewdDebt + 1 %}
   {% endif %}
-
-  {% if case.task === "Review confirmed plan" %}
-  {% set totConfirmedPlan = totConfirmedPlan + 1 %}
- {% endif %}
 
 
 
@@ -88,18 +83,14 @@ Tasks to do
 
 <h2 class="govuk-heading-m"><span style="font-weight:normal">Showing:</span> 
 
-{% if checked('taskFilter','Confirm updated debt details')%}
-Confirm updated debt details ({{totDiscprenceies}})
+{% if checked('taskFilter','Review updated debt details')%}
+Review updated debt details ({{totDiscprenceies}})
 {% elif checked('taskFilter','New message')%}
 New messages ({{newMessage}})
-{% elif checked('taskFilter','New debts added by creditor')%}
-New debts added by creditor ({{totNewdDebt}})
 {% elif checked('taskFilter','Confirm sold debt')%}
 Confirm sold debts ({{totSoldDebt}})
 {% elif checked('taskFilter','Draft plans nearing deadline')%}
 Draft plans nearing deadline ({{totDraftPlan}})
-{% elif checked('taskFilter','Review confirmed plan')%}
-Review confirmed plan  ({{totConfirmedPlan}})
 {% else %}
 All ({{totTasks}}) 
 {% endif %}
@@ -128,8 +119,8 @@ All ({{totTasks}})
 
    {% for case in cases %}
  
-{% if checked('taskFilter','Confirm updated debt details')%} 
-    {% if case.task === "Confirm updated debt details" %}
+{% if checked('taskFilter','Review updated debt details')%} 
+    {% if case.task === "Review updated debt details" %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}
 
@@ -138,8 +129,8 @@ All ({{totTasks}})
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
     
-    {% elif checked('taskFilter','New debts added by creditor')%}
-    {% if case.task === "New debts added by creditor"  %}
+    {% elif checked('taskFilter','Review new debts added by creditor')%}
+    {% if case.task === "Review new debts added by creditor"  %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %} 
 
@@ -151,14 +142,9 @@ All ({{totTasks}})
 {% elif checked('taskFilter','Draft plans nearing deadline')%}
     {% if case.task === "Draft plans nearing deadline"  %}
     {% include  "../includes/_todo-card.html" %} 
-    {% endif %}  
-    
-{% elif checked('taskFilter','Review confirmed plan') %}
-    {% if case.task === "Review confirmed plan"  %}
-    {% include  "../includes/_todo-card.html" %} 
-    {% endif %}      
+    {% endif %}   
 {% else %}
-    {% if case.task === "Confirm updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt" or case.task === "New debts added by creditor" or case.task === "New message" or case.task === "Review confirmed plan" %}
+    {% if case.task === "Review updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt" or case.task === "Review new debts added by creditor" or case.task === "New message" %}
     {% include  "../includes/_todo-card.html" %} 
     {% endif %}  
 {% endif %}

@@ -9,5 +9,5 @@
 {% elif checked('creditorType','Utility')%}
 {{ updateDebtType2 | default("Electric") }}
 {% else %}
-{{ updateDebtType2 | default("Housing benefit") }}
+{{ updateDebtType2 | default("Broadband") }}
 {% endif %}

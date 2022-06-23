@@ -23,32 +23,71 @@
        Why are you objecting to the plan?
        </h1>
     </legend>
+    <div id="objection-hint" class="govuk-hint">
+      Select a reason for objecting. <br>You can provide more information on your reason if you need.
+    </div>
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason" name="object-to-plan-reason" type="radio" value="The information in the plan is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The information in the plan is not correct')}}>
+        <input class="govuk-radios__input" id="object-to-plan-reason" name="object-to-plan-reason" type="radio" value="Something in the plan is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Something in the plan is not correct')}}>
         <label class="govuk-label govuk-radios__label" for="object-to-plan-reason">
-          The information in the plan is not correct
+          Something in the plan is not correct
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="Debtor is not eligible~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Debtor is not eligible')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-2">
-          Debtor is not eligible 
+        <input class="govuk-radios__input" id="object-to-plan-reason-1" name="object-to-plan-reason" type="radio" value="The debt repayment schedule is not acceptable~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The debt repayment schedule is not acceptable')}}>
+        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-1">
+          The debt repayment schedule is not acceptable
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="Income and expenditure calculations are not in line with SFS guidelines~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Income and expenditure calculations are not in line with SFS guidelines')}}>
+        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="The plan is not acceptable ~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The plan is not acceptable')}}>
         <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-2">
-          Income and expenditure calculation not in line with the SFS guidelines
+          There are debts missing from the plan
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="The plan unfairly prejudices the interests of the creditor~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The plan unfairly prejudices the interests of the creditor')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-2">
-          The plan unfairly prejudices the interests of the creditor 
+        <input class="govuk-radios__input" id="object-to-plan-reason-3" name="object-to-plan-reason" type="radio" value="The plan is not acceptable~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The plan is not acceptable')}}>
+        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-3">
+          The plan is not acceptable 
         </label>
       </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="object-to-plan-reason-4" name="object-to-plan-reason" type="radio" value="A debt included in the plan can be written off~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','A debt included in the plan can be written off')}}>
+        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-4">
+          A debt included in the plan can be written off
+        </label>
+      </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="object-to-plan-reason-5" name="object-to-plan-reason" type="radio" value="The plan can be cancelled~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The plan can be cancelled')}}>
+      <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-5">
+        The plan can be cancelled 
+      </label>
     </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="object-to-plan-reason-6" name="object-to-plan-reason" type="radio" value="The debtor is able to pay their debts without a plan~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The debtor is able to pay their debts without a plan')}}>
+    <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-6">
+      The debtor is able to pay their debts without a plan
+    </label>
+  </div>
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="object-to-plan-reason-7" name="object-to-plan-reason" type="radio" value="The income and expenditure calculation is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The income and expenditure calculation is not correct')}}>
+  <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-7">
+    The income and expenditure calculation is not correct
+  </label>
+</div>
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="object-to-plan-reason-9" name="object-to-plan-reason" type="radio" value="Debtor is not eligible for a plan~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Debtor is not eligible for a plan')}}>
+  <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-8">
+    Debtor is not eligible for a plan 
+  </label>
+</div>
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="object-to-plan-reason-9" name="object-to-plan-reason" type="radio" value="Other~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Other')}}>
+  <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-9">
+    Other
+  </label>
+</div>
+</div>
 
   </fieldset>
 </div>
@@ -66,10 +105,20 @@
          hidden radio
         </label>
       </div>
-      </div>       
+      </div>      
+
 <button class="govuk-button" data-module="govuk-button">
 Continue
 </button>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-l">Related content</h2>
+      <ul class="govuk-list">
+        <li><a href="guidance#objecting" target="_blank">Objecting to a plan</a></li>
+        <li><a href="guidance#revoking" target="_blank">Revoking a plan"></a></li>
+        <li><a href="guidance#debtoreligibility" target="_blank">Debtor eligibility</a></li>
+        <li><a href="guidance#sfs" target="_blank">SFS income and expenditure guidelines</a></li>
+      </ul>
     </div>
     </form>
 </div>

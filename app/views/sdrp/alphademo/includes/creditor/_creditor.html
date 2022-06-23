@@ -1,0 +1,12 @@
+
+{% if checked('creditorType','Council')%}
+Test council
+{% elif checked('creditorType','Govenment')%}
+Test govenment department
+{% elif checked('creditorType','Bank')%}
+Test bank
+{% elif checked('creditorType','Utility')%}
+Test utility company
+{% else %}
+Westminster City Council
+{% endif %}

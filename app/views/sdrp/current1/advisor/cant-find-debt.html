@@ -1,0 +1,119 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+          Creditor can't match the information provided
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Debt details",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+
+  rows: [
+     [
+      {
+        text: "Creditor",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Southwark council"
+      }
+    ],
+    [
+      {
+        text: "Debt type"
+      },
+      {
+        text: "Council tax"
+      }
+    ],
+    [
+      {
+        text: "Amount"
+      },
+      {
+        text: "£2977"
+      }
+    ],
+    [
+      {
+        text: "Reference"
+      },
+      {
+        text: "SC3456789"
+      }
+    ]
+  ]
+}) }}
+
+<h2 class="govuk-heading-m">Creditor response</h2>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Incorrect client details</h3>
+<p>Different surname</p>
+<h3 class="govuk-heading-s govuk-!-margin-bottom-1">Correct information</h3>
+<p>Our records show a different name for this debt, the name we have is Dorrete Henderson</p>
+
+
+{% if checked('task','replied') %} 
+   {% include  "../includes/advisor/_datetimestamp.html" %} 
+   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Reply</h3>
+   <p>{{ data['reply-detail'] }}</p>  
+{% elif checked('task','complete') %}
+   {% include  "../includes/advisor/_datetimestamp.html" %}     
+{% else %}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="task-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Do you want to do next?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="replied~reply-to-creditor?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-2">
+          Reply to the creditor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task-3" name="task" type="radio" value="complete~plan?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-3">
+          Mark the task as complete
+        </label>
+      </div>
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task-4" name="task" type="radio" value="notcomplete~plan?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="task-4">
+          Complete the task later
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+
+{% endif %}
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

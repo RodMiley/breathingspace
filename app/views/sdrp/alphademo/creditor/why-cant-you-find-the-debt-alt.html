@@ -1,0 +1,174 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="confirm-cant-find-debt-alt" method="post">
+    <div class="govuk-grid-column-full">
+    {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      </div>
+      </div>
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+<h1 class="govuk-heading-l">Incorrect debt details</h1>
+
+{% include  "../includes/creditor/_debt_details.html" %}  
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+
+
+{% set nameHtml %}
+{{ govukInput({
+  id: "updated-name",
+  name: "updated-name",
+  type: "name",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "What is the correct spelling?"
+  }
+}) }}
+{% endset -%}
+
+{% set surnameHtml %}
+{{ govukInput({
+  id: "updated-surname",
+  name: "updated-surname",
+  type: "surnname",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "What is the correct surname?"
+  }
+}) }}
+{% endset -%}
+
+{% set addressHtml %}
+{{ govukTextarea({
+  name: "updated-address",
+  id: "updated-address",
+  label: {
+    text: "What is the correct address?"
+  }
+}) }}
+{% endset -%}
+
+
+{% set postcodeHtml %}
+{{ govukInput({
+  id: "updated-postcode",
+  name: "updated-postcode",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "What is the correct postcode?"
+  }
+}) }}
+{% endset -%}
+
+{% set dobHtml %}
+{{ govukInput({
+  id: "updated-dob",
+  name: "updated-dob",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "What is the correct date of birth?"
+  }
+}) }}
+{% endset -%}
+
+{% set otherHtml %}
+{{ govukTextarea({
+  name: "updated-other",
+  id: "updated-other",
+  label: {
+    text: "What other debt details are incorrect?"
+  }
+}) }}
+{% endset -%}
+
+{{ govukCheckboxes({
+  idPrefix: "incorrect-debt-details",
+  name: "incorrect-debt-details",
+  fieldset: {
+    legend: {
+      text: "Which debt details are incorrect?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "Please tick all that apply"
+  },
+  items: [
+    {
+      value: "Name not spelt correctly",
+      text: "Name not spelt correctly",
+      conditional: {
+        html: nameHtml
+      }
+    },
+    {
+      value: "Different surname",
+      text: "Different surname",
+      conditional: {
+        html: surnameHtml
+      }
+    },
+    {
+      value: "Different address",
+      text: "Different address",
+      conditional: {
+        html: addressHtml
+      }
+     },
+    {
+      value: "Wrong postcode",
+      text: "Wrong postcode",
+      conditional: {
+        html: postcodeHtml
+       }
+      },
+    {
+      value: "Wrong date of birth",
+      text: "Wrong date of birth",
+      conditional: {
+        html: dobHtml
+      }
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }
+  ]
+}) }}
+
+
+         <div class="govuk-checkboxes" style="display:none">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="" name="tasktodo" type="checkbox" value="completed~confirm-cant-find-debt-alt?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="completed">
+         hidden checkbox
+        </label>
+      </div>
+      </div>
+      
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

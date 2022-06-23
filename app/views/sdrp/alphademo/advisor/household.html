@@ -1,0 +1,281 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Debt details
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan?reference={{case.reference}}" method="post">
+    <div class="govuk-grid-column-full">
+             {% include  "../includes/advisor/_client_name_reference.html" %} 
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+    </div>
+    </div>
+  <div class="govuk-grid-row">
+       <div class="govuk-grid-column-two-thirds"> 
+      <h1 class="govuk-heading-l">
+     
+        Add household information
+  
+      </h1>
+
+ <h2 class="govuk-heading-m">    Enter details of client’s household.</p>     
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "How many dependent children in the household under 16?",
+    classes: "",
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-10",
+  id: "children under 16",
+  name: "children under 16",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['children under 16']
+}) }}  
+
+{{ govukInput({
+  label: {
+    text: "How many dependent children in the household between 16 - 18?",
+    classes: "",
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-10",
+  id: "children between 16 - 18",
+  name: "children between 16 - 18",
+  inputmode: "numeric",
+  spellcheck: false,
+   value: data['children between 16 - 18']
+}) }}  
+{{ govukInput({
+  label: {
+    text: "How many other dependents in the household?",
+    classes: "",
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-10",
+  id: "other dependents",
+  name: "other dependents",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['other dependents']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "How people live in the household?",
+    classes: "",
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-10",
+  id: "peopleinhousehold",
+  name: "peopleinhousehold",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['peopleinhousehold']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Number of vehicles in household?",
+    classes: "",
+    isPageHeading: false
+  },
+  classes: "govuk-input--width-10",
+  id: "Number of vehicles",
+  name: "Number of vehicles",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['Number of vehicles']
+}) }} 
+
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{{ govukRadios({
+  classes: "",
+  idPrefix: "house tenure",
+  name: "house tenure",
+  fieldset: {
+    legend: {
+      text: "Select client’s housing status",
+      isPageHeading: false,
+      classes: ""
+    }
+  },
+  items: [
+    {
+      value: "Owner",
+      text: "Owner",
+      checked: checked('house tenure','Owner')
+
+    },
+    {
+      value: "Mortgage",
+      text: "Mortgage",
+      checked: checked('house tenure','Mortgage')
+    },
+    {
+      value: "Tenant - private",
+      text: "Tenant - private",
+      checked: checked('house tenure','Tenant - private')
+    },
+    {
+      value: "Tenant - social",
+      text: "Tenant - social",
+      checked: checked('house tenure','Tenant - social')
+    },
+    {
+      value: "Living with parents",
+      text: "Living with parents",
+      checked: checked('house tenure','Living with parents')
+    },
+    {
+      value: "Other",
+      text: "Other",
+      checked: checked('house tenure','Other')
+    }
+  ]
+}) }}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{{ govukRadios({
+  classes: "",
+  idPrefix: "employement",
+  name: "employment",
+  fieldset: {
+    legend: {
+      text: "Select client’s employment status",
+      isPageHeading: false,
+      classes: ""
+    }
+  },
+  items: [
+    {
+      value: "Full-time",
+      text: "Full-time",
+      checked: checked('employment','Full-time')
+    },
+    {
+      value: "Part-time",
+      text: "Part-time",
+      checked: checked('employment','Part-time')
+    },
+    {
+      value: "Unemployed",
+      text: "Unemployed",
+      checked: checked('employment','Unemployed')
+    },
+    {
+      value: "Self-employed",
+      text: "Self-employed",
+      checked: checked('employment','Self-employed')
+    },
+    {
+      value: "Retired",
+      text: "Retired",
+      checked: checked('employment','Retired')
+    },
+    {
+      value: "Carer",
+      text: "Carer",
+      checked: checked('employment','Carer')
+    },
+    {
+      value: "Student",
+      text: "Student",
+      checked: checked('employment','Student')
+    },
+    {
+      value: "Other",
+      text: "Other",
+      checked: checked('employment','Other')
+    }
+  ]
+}) }}
+
+
+<h2 class="govuk-heading-m">Savings and assets</h2>
+
+
+{{ govukInput({
+  label: {
+    text: "Value of any assets",
+    classes: "",
+    isPageHeading: false
+  },
+  hint: {
+    text: "Client’s assets can include cars, jewellery or any items of value"
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "client assets",
+  name: "client assets",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['client assets']
+}) }} 
+
+{{ govukInput({
+  label: {
+    text: "Client’s savings",
+    classes: "",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  id: "savings",
+  name: "savings",
+  inputmode: "numeric",
+  spellcheck: false,
+  value: data['savings']
+}) }} 
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="householdinfo" type="radio" value="yes~plan?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="householdinfo">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+
+    <form class="form" action="../advisor/household-filled" method="post">
+      
+      <button class="timemachine-link govuk-body">Forward</button>
+
+      <div class="govuk-radios" style="display:none">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="" name="householdinfo" type="radio" value="yes~household-filled?reference={{case.reference}}" checked>
+          <label class="govuk-label govuk-radios__label" for="householdinfo">
+           hidden radio
+          </label>
+        </div>
+        </div>
+      </form>
+</div>
+
+
+
+{% endblock %}

@@ -78,7 +78,7 @@
      </span>
    </li>   
  {% else%}
- {% if case.task === "Confirm updated debt details"  %}
+ {% if case.task === "Review updated debt details"  %}
  <li class="app-task-list__item">
   {% if checked('task','complete') or checked('task','confirmDisc')%} 
   <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
@@ -106,7 +106,7 @@
    </li>
    {% endif %}
 
-   {% if case.task === "New debts added by creditor"  %}
+   {% if case.task === "Review new debts added by creditor"  %}
  <li class="app-task-list__item">
   {% if checked('task','complete') or checked('task','addeddebts')%} 
   <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 

@@ -72,6 +72,7 @@ router.use('/creditor-v4', require('./views/creditor-v4/_routes'));
 router.use('/creditor-v5', require('./views/creditor-v5/_routes'));
 router.use('/creditor-v6', require('./views/creditor-v6/_routes'));
 router.use('/creditor-latest', require('./views/creditor-latest/_routes'));
+router.use('/sdrp/alphademo', require('./views/sdrp/alphademo/_routes'));
 router.use('/sdrp/V6', require('./views/sdrp/V6/_routes'));
 router.use('/sdrp/V5', require('./views/sdrp/V5/_routes'));
 router.use('/sdrp/V4', require('./views/sdrp/V4/_routes'));

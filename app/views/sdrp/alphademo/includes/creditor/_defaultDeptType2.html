@@ -1,0 +1,13 @@
+
+
+{% if checked('creditorType','Council')%}
+{{ updateDebtType2 | default("Housing Benefit") }}
+{% elif checked('creditorType','Govenment')%}
+{{ updateDebtType2 | default("Benefits overpayment") }}
+{% elif checked('creditorType','Bank')%}
+{{ updateDebtType2 | default("Overdraft") }}
+{% elif checked('creditorType','Utility')%}
+{{ updateDebtType2 | default("Electric") }}
+{% else %}
+{{ updateDebtType2 | default("Housing benefit") }}
+{% endif %}

@@ -1,0 +1,47 @@
+<ol class="app-task-list">
+  <li>
+    <ul class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">
+
+      <li class="app-task-list__item">
+     {% if checked('task','confirmDisc') and case.task =='Creditor has raised discrepancies' or case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %} 
+     <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
+      {% elif case.task =='Creditor has raised discrepancies' or case.task =='Annual review due' %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% elif data['updateDebtType']%}
+       <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+      {% else %}
+        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+      {% endif %}  
+        <span class="app-task-list__task-name">
+        {% if case.task === "Creditor has raised discrepancies"%}
+           <a href="debt-discrepancies?reference={{case.reference}}">
+            Creditor has raised discrepancies
+          </a>
+        {% elif case.task === "Creditor can't find the debt"  %}
+          <a href="cant-find-debt?reference={{case.reference}}">
+            Creditor can't find the debt
+          </a>
+        {% elif case.task === "Draft plans nearing deadline"  %}
+          <a href="check-proposal?reference={{case.reference}}">
+            Draft plans nearing deadline
+          </a>
+        {% else %}
+          <a href="add-debt-choose-creditor">
+            Add debts
+          </a>
+        {% endif %} 
+        </span>
+      </li>
+        <li class="app-task-list__item">
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
+                <a class="govuk-link" href="budget?reference={{case.reference}}">
+      Add surplus budget
+      </a>
+      <li>
+           <li class="app-task-list__item">
+           <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Cannot start yet</strong>
+           Send debts to creditors to confirm
+      <li>
+    </ul>
+  </li>
+</ol>

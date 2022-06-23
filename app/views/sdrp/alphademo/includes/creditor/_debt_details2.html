@@ -1,0 +1,39 @@
+
+
+        <dl class="govuk-summary-list">
+ 
+{% if checked('debt2','sold')%}         
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">
+            Creditor
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Lowell Group
+            </dd>
+          </div>
+ {% endif %}         
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">
+            Debt type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% include "../creditor/_defaultDeptType2.html" %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">
+             Amount owed
+            </dt>
+            <dd class="govuk-summary-list__value">
+             £580
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+            <dt class="govuk-summary-list__key">
+             Reference
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ updateDebtReference | default('2347YUD34566') }}
+            </dd>
+          </div>
+        </dl>

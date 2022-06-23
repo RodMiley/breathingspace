@@ -1,5 +1,5 @@
 
-<dl class="govuk-summary-list govuk-!-margin-bottom-7">
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Debt type
@@ -15,16 +15,11 @@
     <dd class="govuk-summary-list__value">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
-        {% if creditorcase.status === "Draft plan" %}
-        £1250
-        {% elif checked('debt1','no')%} Original: 
-        £1179
-        {% else %}
-        £1179
-        {% endif %} </div>
+        {% if checked('debt1','no')%} Original: {% endif %}
+        
+        £1179</div>
       <div class="govuk-grid-column-one-half">
-        {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
-        {% elif checked('debt1','no')%}
+        {% if checked('debt1','no')%}
         Updated: £{{ updateDebtAmount | default("1250") }}
         {% endif %}
       </div> 

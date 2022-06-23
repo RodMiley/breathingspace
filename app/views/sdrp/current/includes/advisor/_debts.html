@@ -1,9 +1,6 @@
 <p>Add as much information about the debt as you can.</p>
 <p>Be accurate and only give estimates if exact figures are not available.</p>
 <p>Creditors can update incorrect amounts when they receive the proposed plan.</p>
-{% if checked('adddebtcreditcard','yes')%}
-<a class="govuk-body" href="time-machine-add-debt">Add a debt</a>
-{% else %}
 <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
 <button  class="govuk-link govuk-body">Add a debt</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
@@ -18,7 +15,6 @@
       </div>
  {% endif %}     
 </form>
-{% endif %}
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 {% if case.task  and checked('task','confirmDisc') %}
 
@@ -29,10 +25,10 @@
   rows: [
     {
       key: {
-        text: "Westminster City Council"
+        text: "Southwark Council"
       },
       value: {
-          html: "Debt type: council tax <br>Debt amount: £1197<br>Reference: SC3456789"
+          html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
       },
       actions: {
         items: [
@@ -122,7 +118,7 @@
   ]
 }) }}
 
-{% elif case.task or checked('time-machine-debts','yes')%}
+{% elif case.task %}
 
 <h3 class="govuk-heading-m">Priority debts</h3>
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
@@ -131,7 +127,7 @@
   rows: [
     {
       key: {
-        text: "Westminster City Council"
+        text: "Southwark Council"
       },
       value: {
           html: "Debt type: council tax <br>Debt amount: £2977<br>Reference: SC3456789"
@@ -323,13 +319,12 @@
      {{ creditor }}
     </dt>
     <dd class="govuk-summary-list__value">
-
      Debt type:{{ debtcouncil | default('council tax')}}<br>
-     Estimated debt amount: £1197<br>
+     Estimated debt amount: £{{ debtA | default('2,977') }}<br>
      Reference: {{ councilDebtReference | default('Not provided') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="add-debt-details-council">
+      <a class="govuk-link" href="#">
         Change<span class="govuk-visually-hidden"> name</span>
       </a>
     </dd>
@@ -337,7 +332,7 @@
 </dl>
 
 {% if checked('adddebtcreditcard','yes')%}
-<h3 class="govuk-heading-m">Non-priority debts</h3>
+<h3 class="govuk-heading-m">None priority debts</h3>
 
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">

@@ -1,0 +1,287 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+Update debts
+      </h1>
+      <p class="govuk-body-l">Please review the information provided</p>  
+       <ul class="govuk-list govuk-list--bullet">
+         <li>The debt amount should be the amount owed to you on {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}, when we sent this information to you. </li>
+         <li>Please update if any of these details are incorrect.  </li>
+         <li>If you have sold the debt please tell us who you have sold it to</li>
+         <li>Please add any debts you have that are not on the list</li>
+       </ul>
+
+       {% from "govuk/components/radios/macro.njk" import govukRadios %}
+       {% from "govuk/components/input/macro.njk" import govukInput %}
+
+<h2 class="govuk-heading-l">Council tax</h2>
+
+{% if checked('solddebt1','yes')%}
+<div class="govuk-inset-text">
+  <h3 class="govuk-heading-m">You have sold this debt to</h3>
+<p class="govuk-body"><strong>Lowell Group</strong></p>
+<p><a href="sold-debt-choose-creditor">Change creditor</a></p>
+</div>
+{% else %}
+
+{% endif %}
+{{ govukInput({
+  id: "amount-owed",
+  name: "amount-owed",
+  label: {
+    text: "Amount-owed to you on 12 April 2022",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  spellcheck: false
+}) }}
+
+{% set otherHtml %}
+{{ govukInput({
+  id: "debt1-other",
+  name: "debt1-other",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Other debt type"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "debt1",
+  name: "debt1",
+  fieldset: {
+    legend: {
+      text: "Debt type",
+      isPageHeading: false
+    }
+  },
+
+  items: [
+    {
+      value: "Council tax",
+      text: "Council tax"
+    },
+    {
+      value: "Housing benefit",
+      text: "Housing benefit"
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Reference"
+  },
+  id: "Reference",
+  name: "Reference",
+  classes: "govuk-input--width-10"
+}) }}
+
+{% if checked('solddebt1','yes')%}
+{% else %}
+<p><a href="sold-debt-choose-creditor">We've sold this debt</a></p>
+{% endif %}
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">Housing benefit</h2>
+{{ govukInput({
+  id: "amount-owed",
+  name: "amount-owed",
+  label: {
+    text: "Amount-owed to you on 12 April 2022",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  spellcheck: false
+}) }}
+
+{% set otherHtml %}
+{{ govukInput({
+  id: "debt1-other",
+  name: "debt1-other",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Other debt type"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "debt1",
+  name: "debt1",
+  fieldset: {
+    legend: {
+      text: "Debt type",
+      isPageHeading: false
+    }
+  },
+
+  items: [
+    {
+      value: "Council tax",
+      text: "Council tax"
+    },
+    {
+      value: "Housing benefit",
+      text: "Housing benefit"
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Reference"
+  },
+  id: "Reference",
+  name: "Reference",
+  classes: "govuk-input--width-10"
+}) }}
+
+
+<p><a href="sold-debt-choose-creditor">We've sold this debt</a></p>
+{% if checked('adddebt','yes')%}
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-l" id="newDebt">New debt</h2>
+
+
+<p><button class="govuk-link govuk-body">Delete debt</a></button>
+
+  <div class="govuk-radios" style="display:none">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="no~update-debts?reference={{creditorcase.reference}}" checked>
+      <label class="govuk-label govuk-radios__label" for="adddebt">
+       hidden radio
+      </label>
+    </div>
+    </div>  
+</form> 
+
+
+{{ govukInput({
+  id: "amount-owed",
+  name: "amount-owed",
+  label: {
+    text: "Amount-owed to you on 12 April 2022",
+    isPageHeading: false
+  },
+  prefix: {
+    text: "£"
+  },
+  classes: "govuk-input--width-10",
+  spellcheck: false
+}) }}
+
+{% set otherHtml %}
+{{ govukInput({
+  id: "debt1-other",
+  name: "debt1-other",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Other debt type"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "debt1",
+  name: "debt1",
+  fieldset: {
+    legend: {
+      text: "Debt type",
+      isPageHeading: false
+    }
+  },
+
+  items: [
+    {
+      value: "Debt",
+      text: "Council tax"
+    },
+    {
+      value: "Housing benefit",
+      text: "Housing benefit"
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Reference"
+  },
+  id: "Reference",
+  name: "Reference",
+  classes: "govuk-input--width-10"
+}) }}
+{% endif %}
+
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">Add debts you have that are not on the list</h2>
+<form class="form" action="" method="post">
+<p><button class="govuk-button govuk-button--secondary">Add a debt</a></button>
+
+  <div class="govuk-radios" style="display:none">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes~update-debts?reference={{creditorcase.reference}}#newDebt" checked>
+      <label class="govuk-label govuk-radios__label" for="adddebt">
+       hidden radio
+      </label>
+    </div>
+    </div>  
+</form>  
+
+  <form class="form" action="" method="post"></form>
+    <button class="govuk-button">Continue</button>
+  </form>
+</div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
