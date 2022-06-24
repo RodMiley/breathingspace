@@ -19,7 +19,89 @@ Your plan
          </div>
         <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
         <p class="govuk-!-margin-bottom-3">This plan became final on   <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-120) }}</strong> </p>
-        <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
+        <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-7  govuk-section-break--visible" />
+
+        <div class="govuk-inset-text blue">
+          <h2 class="govuk-heading-m">Annual review due</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Your debt adviser will be in touch soon to catch up and see if anything has changed in the last 12 months</li>
+            <li>Don't worry the debt advisor is here to help you repay your debts in a sustainaible way</li>
+          </ul>
+        </div>
+
+        <p class="govuk-body-l">If you have a change in circumstances you should tell your debt advisor</p>
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-5">
+
+          Plan overview
+          
+          </h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Total amount to repay</dt>
+              <dd class="govuk-summary-list__value">
+    
+               £13555
+      
+              </dd>
+          
+              <span class="govuk-summary-list__actions">
+  
+          </span>
+            </div>
+          
+              <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly income</dt>
+              <dd class="govuk-summary-list__value"> £1350.00</dd>
+          
+              <dd class="govuk-summary-list__actions">
+              </dd>
+            </div>
+          
+        
+
+          
+              <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Monthly outgoings</dt>
+              <dd class="govuk-summary-list__value"> £1165.00</dd>
+          
+              <dd class="govuk-summary-list__actions">
+              </dd>
+            </div>
+          
+                <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Savings contribution</dt>
+              <dd class="govuk-summary-list__value"> £25.00</dd>
+          
+              <dd class="govuk-summary-list__actions">
+              </dd>
+            </div>
+          
+
+              <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
+              <dd class="govuk-summary-list__value">£185.00 </dd>
+          
+              <dd class="govuk-summary-list__actions">
+            
+              </dd>
+            </div>
+          
+          
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Length of plan</dt>
+              <dd class="govuk-summary-list__value">
+  
+               5 years 4 months
+    
+              </dd>
+          
+              <span class="govuk-summary-list__actions"></span>
+            </div>
+          </dl>
+
+
       <div class="govuk-tabs" data-module="govuk-tabs">
         <h2 class="govuk-tabs__title">
           Contents
@@ -33,6 +115,11 @@ Your plan
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#details">
               Personal information
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#income">
+              Income and expendature
             </a>
           </li>
           <li class="govuk-tabs__list-item">
@@ -257,9 +344,6 @@ Your plan
               
                      </dd>
                      <dd class="govuk-summary-list__actions">
-                       <a class="govuk-link" href="details#firstname">
-                         Change<span class="govuk-visually-hidden"> name</span>
-                       </a>
                      </dd>
                    </div>
          {% if checked('addname','yes')%}
@@ -273,14 +357,10 @@ Your plan
               
                      </dd>
                      <dd class="govuk-summary-list__actions">
-                       <a class="govuk-link" href="not-testing">
-                         Change<span class="govuk-visually-hidden"> previous name</span>
-                       </a>
                      </dd>
                    </div> 
                    {% endif %}
                    </dl>
-           <p><a class="govuk-link" href="add-another-name?reference={{case.reference}}">Add another name</a></p>
           <dl class="govuk-summary-list">
                    <div class="govuk-summary-list__row">
                      <dt class="govuk-summary-list__key">
@@ -289,14 +369,9 @@ Your plan
                      <dd class="govuk-summary-list__value">
                        
                        04 August 1980
-                      
-           
-                           
+      
                      </dd>
                      <dd class="govuk-summary-list__actions">
-                       <a class="govuk-link" href="details#dobday">
-                         Change<span class="govuk-visually-hidden"> date of birth</span>
-                       </a>
                      </dd>
                    </div>
                </dl> 
@@ -321,26 +396,14 @@ Your plan
                     
                      </p></dd>
                      <dd class="govuk-summary-list__actions">
-                     <ul class="govuk-list">
-                     <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
-                         Change<span class="govuk-visually-hidden"> Address</span>
-                       </a></li>
-                     <li>
-                       <a class="govuk-link govuk-!-font-size-19" href="parv">
-                  Hide address  <span class="govuk-visually-hidden"> from creditors</span>
-               
-                       </a>
-                     </li>  
-                     <ul>
-                     </ul></ul></dd>
+        </dd>
                    </div>
                    
                                 
          
           
                  </dl>
-                 <p><a class="govuk-link " href="">Add correspondence address</a><br>
-                    <a class="govuk-link" href="">Add previous address</a></p>
+
          
                     <h2 class="govuk-heading-m">Notification preference</h2>
                 <dl class="govuk-summary-list">  
@@ -352,32 +415,486 @@ Your plan
                Email
                      </dd>
                      <dd class="govuk-summary-list__actions">
+
                   
-                       <a class="govuk-link govuk-!-font-size-19" href="pref-contact">
-                         Change<span class="govuk-visually-hidden"> notifcation preference</span>
-                       </a>
-                      
                      
                      </dd>
                    </div>
                    
                  </dl>
-         
-         <h2 class="govuk-heading-m">Business</h2>
-               
-                  
-         
-          <dl class="govuk-summary-list govuk-!-margin-bottom-2">
-           
-                 
-                       <p><a class="govuk-link" href="add-business-history">Add client business</a></p>        
-         
-          
-              
-         
-           </dl>
+        
       
         </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="income">
+          <h2 class="govuk-heading-xl">Income and expendature </h2>
+
+
+
+    
+          
+          <h3 class="govuk-heading-l">Household information</h3>
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Dependent children under 16
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    2
+                  </dd>
+            
+                  
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Dependent children between 16 - 18
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    0
+                  </dd>
+         
+                  
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other dependents in the household
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    0
+                  </dd>    
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Amount of people who live in the household
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    4
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Number of vehicles
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    2
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Tenure of the house
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Private - tenant
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Your clients employment status
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Employed
+                  </dd>
+                </div>
+   
+                           
+                <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                   Assets
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   £0
+                 </dd>
+               </div>
+   
+                                 
+               <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                  Savings
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   £0
+                 </dd>
+               </div>
+              
+            
+          </dl>
+          
+           
+          
+          <h3 class="govuk-heading-l">Monthly lncome</h3>
+          
+          
+          
+          
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Earnings
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £1210.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Benefits and tax credits
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £140.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Pensions
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other income
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+          </dl>
+          
+           
+          
+          <h3 class="govuk-heading-l">Monthly outgoings</h3>
+          
+          <h4 class="govuk-heading-m">Fixed costs</h4>
+   
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Rent
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £480.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Mortgage
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other secured loans
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Council tax / rates
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £120.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other home and contents
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Gas
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Electric
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £85.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other utility costs (e.g.coal, oil, calorgas)
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Water
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £45.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Care and health costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Transport and travel
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    School costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Pensions and insurances
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                  
+    
+                  
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Professional costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+    
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Other essential costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+             
+                  
+                </div>
+              
+            
+          </dl>
+          
+          
+          <h4 class="govuk-heading-m">Flexible costs</h4>
+          
+          
+          
+            
+          
+            
+          
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Communications and leisure
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £40.00
+                  </dd>
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Food and housekeeping
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £380.00
+                  </dd>
+                  
+                </div>
+              
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Personal costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+              
+            
+          </dl>
+          
+          
+          
+          <h4 class="govuk-heading-m">Savings</h4>
+          
+          
+          
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Savings contribution
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £25.00
+                  </dd>
+                 
+                </div>
+                
+              
+            
+          </dl>
+   
+          <h4 class="govuk-heading-m">Other payments</h4>
+          
+          
+          
+            
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            
+              
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                    Non eligible debts
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £0.00
+                  </dd>
+                </div>
+   
+                     
+                <div class="govuk-summary-list__row">
+                 <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                   Discretionary debts
+                 </dt>
+                 <dd class="govuk-summary-list__value">
+                   £0.00
+                 </dd>
+               </div>
+            
+          </dl>
+   
+   
+          <h3 class="govuk-heading-m">More detail about outgoings</h3>  
+   
+          <p class="govuk-!-margin-bottom-9">One of the children has lactose intolerance, and requires a special diet, so the food bill is a little higher than a standard houshold of 4 with two adults and two children. </p>
+          
+   
+
+
+          </div>
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
           <h2 class="govuk-heading-l">Payment</h2>
           <table class="govuk-table">

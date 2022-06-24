@@ -10,6 +10,11 @@
     You have sent the plan to your client’s creditors. Creditors now have 14 days to object to the plan or raise any discrepancies.
 
   </h3>
+
+  {% elif checked('task','sentMessage')%}
+  <h3 class="govuk-notification-banner__heading">
+    We have sent your message to the creditor
+  </h3> 
 {% elif checked('task','newDebtAdded')%}
   <h3 class="govuk-notification-banner__heading">
     You have added a new debt

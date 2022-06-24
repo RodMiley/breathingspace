@@ -1,3 +1,7 @@
+
+<p><a href="send-message-choice">Send a message</a></p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
 {% if case.task =='New message' %}
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -33,6 +37,30 @@
     </tr>
   </tbody>
 </table>
+{% elif checked('task','sentMessage')%}
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>  
+      <th scope="col" class="govuk-table__header">Creditor</th>
+      <th scope="col" class="govuk-table__header">Subject</th>
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell">          
+          <strong class="govuk-tag govuk-tag--green">Sent message</strong>
+      </td>
+      <td class="govuk-table__cell">{{ data['send-message-creditor'] }}</td>
+      <td scope="row" class="govuk-table__cell">{{ data['subject-message']}}</td>
+      <td scope="row" class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</td>
+      <td scope="row" class="govuk-table__cell"><a href="message?reference={{case.reference}}">View message</a></td>
+    </tr>
+  </tbody>
+</table>
 {% else %}
+
 <p>You have no messages.</p>
   {% endif %}
