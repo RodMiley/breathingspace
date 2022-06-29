@@ -16,6 +16,7 @@
 {% set totTasks = 0 %}
 {% set totConfirm = 0 %}
 {% set totDraft = 0 %}
+{% set totMessage = 0 %}
 
 	{% for creditorcase in creditorcases %}
    {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do"  or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"%}
@@ -30,20 +31,60 @@
    {% set totDraft = totDraft + 1 %}
   {% endif %}
 
+  {% if creditorcase.status === "New message" and creditorcase.task ==="to do"%}
+  {% set totMessage = totMessage + 1 %}
+ {% endif %}
+
    {% endfor %}
 
  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <form class="form" action="#" method="post">
 
-<div class="govuk-grid-column-full">
+      <div class="govuk-form-group">
+       {% include "../includes/creditor/_sub_tasks_radios.html" %}
 
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-5">
+    </div>
+
+
+
+
+
+
+
+<button class="govuk-button"  id="facetFilterBtn" data-module="govuk-button">
+Apply filter
+</button>
+</form>
+  </div>  
+
+<div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-5">
 Tasks to do
   </h1>
 
-<h2 class="govuk-heading-s"><span style="font-weight:normal" class="govuk-!-font-weight-normal govuk-!-margin-right-4">Showing:</span> 
-  <span class="govuk-!-margin-right-4">All ({{totTasks}}) </span>
-<a href="confirm-debts.html" class="govuk-!-margin-right-4">Confirm debts ({{totConfirm}})</a>
-<a href="draft-plans">Draft plans ({{totDraft}})</a>
+<h2 class="govuk-heading-s"><span class="govuk-!-font-weight-normal govuk-!-margin-right-2">Showing:</span> 
+ 
+
+
+{% if checked('taskFilter','Confirm debt')%}
+    Confirm debts ({{totConfirm}})
+   
+{% elif checked('taskFilter','Review draft plans')%} 
+
+    Review draft plans ({{totDraft}})
+    {% elif checked('taskFilter','New message')%} 
+
+    New messages ({{totMessage}})
+
+
+{% else %}
+
+    All ({{totTasks}}) 
+{% endif %}
+
+
 </h2>
 <p>
 </p>
@@ -52,14 +93,19 @@ Tasks to do
 
    {% for creditorcase in creditorcases %}
 
-{% if checked('taskFilter','Annual reviews due')%}
+{% if checked('taskFilter','Confirm debt')%}
     {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do" %}
     {% include  "../includes/_todo-list-item.html" %} 
     {% endif %} 
-{% elif checked('taskFilter','Creditor has raised discrepancies')%} 
+{% elif checked('taskFilter','Review draft plans')%} 
     {% if creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  %}
     {% include  "../includes/_todo-list-item.html" %} 
     {% endif %}
+    {% elif checked('taskFilter','New message')%} 
+    {% if creditorcase.status === "New message" and creditorcase.task ==="to do"  %}
+    {% include  "../includes/_todo-list-item.html" %} 
+    {% endif %}
+
 {% else %}
     {% if creditorcase.status === "Confirm debts" and creditorcase.task ==="to do" or creditorcase.status === "Draft plan" and creditorcase.task ==="to do"  %}
     {% include  "../includes/_todo-list-item.html" %} 

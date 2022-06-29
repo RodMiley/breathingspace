@@ -1,0 +1,43 @@
+    
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset govuk-!-margin-top-5">
+    <legend class="govuk-fieldset__legend">
+      <label class="govuk-label">
+       Filter tasks
+      </label>
+    </legend>
+
+     <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_1" name="taskFilter" type="radio" value="All" {{ checked('taskFilter', 'All') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_1">
+          All ({{totTasks}})
+        </label>
+      </div>
+    <div class="govuk-radios govuk-radios--small" >
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_2" name="taskFilter" type="radio" value="Confirm debt" {{ checked('taskFilter', 'Confirm debt') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_2">
+          Confirm debt ({{totConfirm}})
+        </label>
+      </div>
+
+         <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_3" name="taskFilter" type="radio" value="Review draft plans" {{ checked('taskFilter', 'Review draft plans') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_3">
+          Review draft plans ({{totDraft}})
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input facet" id="taskFilter_6" name="taskFilter" type="radio" value="New message" {{ checked('taskFilter', 'New message') }}>
+        <label class="govuk-label govuk-radios__label" for="taskFilter_6">
+        New messages ({{totMessage}})
+        </label>
+      </div>
+
+
+
+</div>
+      </fieldset>
+      </div>
