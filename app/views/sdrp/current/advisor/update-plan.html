@@ -1,0 +1,62 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How do you want to update the plan?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="update-the-plan" name="update-the-plan" type="radio" value="Delete the plan">
+              <label class="govuk-label govuk-radios__label" for="update-the-plan">
+                Delete the plan
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="update-the-plan-2" name="update-the-plan" type="radio" value="Variate the plan">
+              <label class="govuk-label govuk-radios__label" for="update-the-plan-2">
+                Variate the plan
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="update-the-plan-3" name="update-the-plan" type="radio" value="Revoke the plan">
+              <label class="govuk-label govuk-radios__label" for="update-the-plan-3">
+                Revoke the plan
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="update-the-plan-4" name="update-the-plan" type="radio" value="Add a payment break">
+              <label class="govuk-label govuk-radios__label" for="update-the-plan-4">
+                Add a payment break
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
