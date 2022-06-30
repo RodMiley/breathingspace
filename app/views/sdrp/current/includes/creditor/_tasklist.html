@@ -11,20 +11,6 @@
     <ul
       class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
 <li class="app-task-list__item">
-  {% if checked('debt1','yes') or checked('debt1','no') %}
-  <strong
-    class="govuk-tag app-task-list__tag"
-    id="read-declaration-status"
-    >Completed</strong
-  > 
-  {% else %}
-  <strong
-  class="govuk-tag govuk-tag--grey app-task-list__tag"
-  id="">To do</strong>
-  {% endif %}
-  <a href="confirm-debt-amount?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Confirm debt amounts</a>
-</li>
-<li class="app-task-list__item">
   {% if checked('object-to-plan','yes') or checked('object-to-plan','yes') %}
   <strong
     class="govuk-tag app-task-list__tag"

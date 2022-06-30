@@ -20,47 +20,47 @@
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl ">
       <h1 class="govuk-fieldset__heading">
-       Why are you objecting to the plan?
+        Why are you objecting to the plan?
        </h1>
     </legend>
     <div id="objection-hint" class="govuk-hint govuk-!-margin-top-5 govuk-!-margin-bottom-5">
-      Select one reason and provide further information if needed.<br>Objections will only be considered if they are contained in the SDRP regulations. 
+      Select all that apply.<br>Grounds for objections will only be accepted if they are in the SDRP regulations.
     </div>
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason" name="object-to-plan-reason" type="radio" value="> A debt is in the plan that should not be included~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','A debt is in the plan that should not be included')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason">
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason" name="object-to-plan-reason" type="checkbox" value=" A debt is in the plan that should not be included" {{ checked('object-to-plan-reason','A debt is in the plan that should not be included')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason">
           A debt is in the plan that should not be included
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-1" name="object-to-plan-reason" type="radio" value="A debt is not in the plan that should be included~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','A debt is not in the plan that should be included')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-1">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-1" name="object-to-plan-reason" type="checkbox" value=" A debt is not in the plan that should be included" {{ checked('object-to-plan-reason','A debt is not in the plan that should be included')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-1">
           A debt is not in the plan that should be included
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="radio" value="Debtor is not eligible for an SDRP~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Debtor is not eligible for an SDRP')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-2">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="checkbox" value=" Debtor is not eligible for an SDRP" {{ checked('object-to-plan-reason','Debtor is not eligible for an SDRP')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-2">
           Debtor is not eligible for an SDRP 
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-3" name="object-to-plan-reason" type="radio" value="The payment schedule has an unfair impact on the debt being recovered~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The payment schedule has an unfair impact on the debt being recovered')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-3">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-3" name="object-to-plan-reason" type="checkbox" value=" The payment schedule has an unfair impact on the debt being recovered" {{ checked('object-to-plan-reason','The payment schedule has an unfair impact on the debt being recovered')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-3">
           The payment schedule has an unfair impact on the debt being recovered
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="object-to-plan-reason-4" name="object-to-plan-reason" type="radio" value="Information in the plan is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','Information in the plan is not correct')}}>
-        <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-4">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-4" name="object-to-plan-reason" type="checkbox" value=" Information in the plan is not correct" {{ checked('object-to-plan-reason','Information in the plan is not correct')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-4">
           Information in the plan is not correct
         </label>
       </div>
-    <div class="govuk-radios__item">
-      <input class="govuk-radios__input" id="object-to-plan-reason-5" name="object-to-plan-reason" type="radio" value="The SFS income and expenditure calculation is not correct~confirm-objection?reference={{creditorcase.reference}}" {{ checked('object-to-plan-reason','The SFS income and expenditure calculation is not correct')}}>
-      <label class="govuk-label govuk-radios__label" for="object-to-plan-reason-5">
-        The SFS income and expenditure calculation is not correct
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="object-to-plan-reason-5" name="object-to-plan-reason" type="checkbox" value=" SFS income and expenditure is outside spending guidelines without reasonable explanation" {{ checked('object-to-plan-reason','SFS income and expenditure is outside spending guidelines without reasonable explanation')}}>
+      <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-5">
+        SFS income and expenditure is outside spending guidelines without reasonable explanation
       </label>
     </div>
 </div>
@@ -74,11 +74,11 @@
     </label>
   <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
 </div>
-         <div class="govuk-radios" style="display:none">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="tasktodo" type="radio" value="completed" checked>
-        <label class="govuk-label govuk-radios__label" for="completed">
-         hidden radio
+         <div class="govuk-checkboxes" style="display:none">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="" name="tasktodo" type="checkbox" value="completed~confirm-objection?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="completed">
+         hidden checkbox
         </label>
       </div>
       </div>      

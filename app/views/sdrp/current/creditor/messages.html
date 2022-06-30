@@ -12,7 +12,7 @@ Debt page
     <div class="govuk-grid-column-full">
       {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="plan?reference={{creditorcase.reference}}#messages" class="govuk-back-link">Back</a> 
-      <h1 class="govuk-heading-l">Messages</h1>
+      <h1 class="govuk-heading-xl">Messages</h1>
     </div>
   </div>
 
@@ -85,16 +85,28 @@ Debt page
 </div>
   {% endif %}
   </div>
-  <div class="govuk-grid-column-one-third">
-    <form class="form" action="review-message" method="post">         
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="review-message" method="post">
+   {% if checked('task','newMessage')%} 
+   <h2 class="govuk-heading-l">Subject: {{ data['subject-message']  }}</h2>
+   
+   {% else %}
+   <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--l" for="subject-message">
+        Add subject line
+      </label>
+    
+    <input class="govuk-input" id="subject-message" name="subject-message" type="text">
+    </div> 
+    {% endif %}        
       {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {{ govukTextarea({
 name: "message-to-ma-2",
 id: "message-to-ma-2",
 label: {
-  text: "Send message to debt adviser",
-  classes: "govuk-label--m",
+  text: "Add message",
+  classes: "govuk-label--l",
   isPageHeading: false
 }
 }) }}

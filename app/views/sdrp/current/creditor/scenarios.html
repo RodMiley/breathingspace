@@ -8,7 +8,7 @@ What type of creditor ar you testing with!
 
 
 {% block content %}
-  <form class="form" action="index" method="post">
+  <form class="form" action="plan" method="post">
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
     <div class="govuk-grid-column-two-thirds">
@@ -53,52 +53,15 @@ What type of creditor ar you testing with!
   ]
 }) }}
 
-{{ govukRadios({
-  idPrefix: "chooseScenario",
-  name: "chooseScenario",
-  fieldset: {
-    legend: {
-      text: "Choose scenario",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "Scenario 1~confirm-debts?reference={{creditorcase.reference}}",
-      text: "Scenario 1",
-      checked: checked("chooseScenario", "Scenario 1")
-    },
-    {
-      value: "Scenario 2~new-messages?reference={{creditorcase.reference}}",
-      text: "Scenario 2",
-      checked: checked("chooseScenario", "Scenario 2")
-    },
-    {
-      value: "Scenario 3~draft-plans?reference={{creditorcase.reference}}",
-      text: "Scenario 3",
-      checked: checked("chooseScenario", "Scenario 3")
-    }
-  ]
-}) }}
 
 <div class="govuk-radios" style="display:none">
   <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="" name="debt1" type="radio" value="resetdebt1" checked>
-    <label class="govuk-label govuk-radios__label" for="resetdebt1">
+    <input class="govuk-radios__input" id="" name="Scenario 3" type="radio" value="Scenario 3~plan?reference=SDRP798639" checked>
+    <label class="govuk-label govuk-radios__label" for="Scenario 3">
      hidden radio for hacky prototype
     </label>
   </div>
   </div>
-
-  <div class="govuk-radios" style="display:none">
-    <div class="govuk-radios__item">
-      <input class="govuk-radios__input" id="" name="debt2" type="radio" value="resetdebt2" checked>
-      <label class="govuk-label govuk-radios__label" for="resetdebt2">
-       hidden radio for hacky prototype
-      </label>
-    </div>
-    </div>
 
 {{ govukButton({
   text: "Continue"

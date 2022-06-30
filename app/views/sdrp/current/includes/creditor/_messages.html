@@ -61,5 +61,27 @@
     </tr>
   </tbody>
 </table>
+{% elif checked('task','newMessage')%}  
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>  
+      <th scope="col" class="govuk-table__header">Subject</th>
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell">          
+          <strong class="govuk-tag govuk-tag--green">Sent message</strong>
+      </td>
+      <td scope="row" class="govuk-table__cell">{{ data['subject-message']}}</td>
+      <td scope="row" class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</td>
+      <td scope="row" class="govuk-table__cell"><a href="message-thread?reference={{creditorcase.reference}}">View message</a></td>
+    </tr>
+  </tbody>
+</table>
+
 {% else %}
 {% endif %}

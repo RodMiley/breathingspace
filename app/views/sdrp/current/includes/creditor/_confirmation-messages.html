@@ -13,7 +13,11 @@
   <h3 class="govuk-notification-banner__heading">
     You have completed your task
   </h3>
-  <p>The objection to the plan has been received.</p>
+  <p>The Insolvency Service will only carry out a fair and reasonable assessment on a plan if objections are from:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>single creditors that account for at least 25% of the total debt in the plan</li>
+    <li>multiple creditors when they account for at least 25% of the total debt in the plan</li>
+  </ul>
 
 {% elif checked('debt1','sold') or checked('debt2','sold') %}
   <h3 class="govuk-notification-banner__heading">
