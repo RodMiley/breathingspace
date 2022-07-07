@@ -1,0 +1,52 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="#" method="post">
+    <div class="govuk-grid-column-full">
+     {% include  "../includes/advisor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+</div>
+</div>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+ 
+{{ govukTextarea({
+  name: "reply-detail",
+  id: "reply-detail",
+  label: {
+    text: "Reply to the creditor",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Please do not include sensitive information, such as the individual's National Insurance number or credit card details."
+  }
+}) }}
+     
+     {% include  "../includes/advisor/_show-confirmation.html" %} 
+
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="task" type="radio" value="replied~confirm-reply-to-creditor?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

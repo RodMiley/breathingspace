@@ -1,0 +1,89 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="confirm-debt-discrepancies" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Review updated debt details
+      </h1>
+      </div>
+      <div class="govuk-grid-column-full">
+
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Creditor
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Halifax credit cards
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+    Debt type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Credit card
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Amount owed
+    </dt>
+    <dd class="govuk-summary-list__value">
+     £6061<span class="govuk-!-display-block govuk-!-margin-top-2">£6361 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+     **** **** 4567
+    </dd>
+  </div>
+</dl>
+ 
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="accept-changes-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you accept the updated debt details?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes" name="accept-changes" type="radio" value="yes~confirm-debt-discrepancies?reference={{case.reference}}">
+        <label class="govuk-label govuk-radios__label" for="accept-changes">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="accept-changes-2" name="accept-changes" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="accept-changes-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+<button class="govuk-button" data-module="govuk-button">
+Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

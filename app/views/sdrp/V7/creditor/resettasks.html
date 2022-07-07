@@ -1,0 +1,53 @@
+
+
+
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+Not testing this page today!
+{% endblock %}
+
+
+{% block content %}
+
+<form class="form" action="resettasks" method="post">
+
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+       Reset tasks
+      </h1>
+      <p class="govuk-body-l">
+      <ul class="govuk-list">
+      {% for creditorcase in creditorcases %}
+      <li>{{ creditorcase.name}} - {{creditorcase.task}}</li>
+      {% endfor %}
+      </ul>
+      </p>
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{{ govukWarningText({
+  text: "Keep clicking the button until all the tasks are marked 'to do', then follow the clear data the link", 
+  iconFallbackText: "Warning"
+}) }}
+
+<button class="govuk-button">Reset task</button>
+<p><a href="/prototype-admin/clear-data">Clear the data</a></p>
+   <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="reset-task" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="reset-task">
+         hidden radio for logic
+        </label>
+      </div>
+      </div>
+
+</form>
+    </div>
+</div>
+{% endblock %}

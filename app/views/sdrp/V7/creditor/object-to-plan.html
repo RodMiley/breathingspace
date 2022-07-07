@@ -1,0 +1,102 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+    {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+</div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl ">
+      <h1 class="govuk-fieldset__heading">
+        Why are you objecting to the plan?
+       </h1>
+    </legend>
+    <div id="objection-hint" class="govuk-hint govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+      Select all that apply.<br>Grounds for objections will only be accepted if they are in the SDRP regulations.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason" name="object-to-plan-reason" type="checkbox" value=" A debt is in the plan that should not be included" {{ checked('object-to-plan-reason',' A debt is in the plan that should not be included')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason">
+          A debt is in the plan that should not be included
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-1" name="object-to-plan-reason" type="checkbox" value=" A debt is not in the plan that should be included" {{ checked('object-to-plan-reason',' A debt is not in the plan that should be included')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-1">
+          A debt is not in the plan that should be included
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-2" name="object-to-plan-reason" type="checkbox" value=" Debtor is not eligible for an SDRP" {{ checked('object-to-plan-reason',' Debtor is not eligible for an SDRP')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-2">
+          Debtor is not eligible for an SDRP 
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-3" name="object-to-plan-reason" type="checkbox" value=" The payment schedule has an unfair impact on the debt being recovered" {{ checked('object-to-plan-reason',' The payment schedule has an unfair impact on the debt being recovered')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-3">
+          The payment schedule has an unfair impact on the debt being recovered
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="object-to-plan-reason-4" name="object-to-plan-reason" type="checkbox" value=" Information in the plan is not correct" {{ checked('object-to-plan-reason',' Information in the plan is not correct')}}>
+        <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-4">
+          Information in the plan is not correct
+        </label>
+      </div>
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="object-to-plan-reason-5" name="object-to-plan-reason" type="checkbox" value=" SFS income and expenditure is outside spending guidelines without reasonable explanation" {{ checked('object-to-plan-reason',' SFS income and expenditure is outside spending guidelines without reasonable explanation')}}>
+      <label class="govuk-label govuk-checkboxes__label" for="object-to-plan-reason-5">
+        SFS income and expenditure is outside spending guidelines without reasonable explanation
+      </label>
+    </div>
+</div>
+
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--l" for="more-detail">
+    Tell us more about why you object to the plan
+    </label>
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint" >{{ data['more-detail'] }}</textarea>
+</div>
+         <div class="govuk-checkboxes" style="display:none">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="" name="tasktodo" type="checkbox" value="completed~confirm-objection?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-checkboxes__label" for="completed">
+         hidden checkbox
+        </label>
+      </div>
+      </div>      
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-l">Related content</h2>
+      <ul class="govuk-list">
+        <li><a href="guidance#objecting" target="_blank">Objecting to a plan</a></li>
+        <li><a href="guidance#revoke" target="_blank">Revoking a plan</a></li>
+        <li><a href="guidance#debtoreligibility" target="_blank">Debtor eligibility</a></li>
+        <li><a href="guidance#sfs" target="_blank">SFS income and expenditure guidelines</a></li>
+      </ul>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

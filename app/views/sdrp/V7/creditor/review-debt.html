@@ -1,0 +1,69 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+Confirm debt
+      </h1>
+      <h2 class="govuk-heading-l">
+        {% include "../includes/creditor/_defaultDeptType.html" %}
+      </h2>        
+      {% include  "../includes/creditor/_debt_details.html" %} 
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
+        <fieldset class="govuk-fieldset" aria-describedby="debt1-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+             Are the debt details correct?
+          </legend>
+          <div id="debt1-hint" class="govuk-hint">
+            <ul class="govuk-list govuk-body--secondary"><li>The amount should be what was owed on  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }}.</li><li>This was the date we first notified you about the intended plan.</li></ul>
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes"  {{ checked('debt1','yes') }}>
+              <label class="govuk-label govuk-radios__label" for="debt1">
+                Yes 
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="no~update-debt-detail?reference={{creditorcase.reference}}" {{ checked('debt1','no') }}>
+              <label class="govuk-label govuk-radios__label" for="debt1-2">
+               No
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="sold~sold-debt-choose-creditor?reference={{creditorcase.reference}}" {{ checked('debt1','sold') }}>
+              <label class="govuk-label govuk-radios__label" for="debt1-2">
+                No, this debt has been sold
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
+
+    {% include "../includes/creditor/_urlredirect.html" %}
+    {% include "../includes/_show-confirmation.html" %}
+
+  </fieldset>
+  <button class="govuk-button">Confirm</button>
+</div>
+
+    </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

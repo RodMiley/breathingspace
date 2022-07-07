@@ -1,17 +1,14 @@
 
 
-{% if creditorcase.status ==='Draft plan' %}
+{% if creditorcase.status ==='Draft plan' or creditorcase.status ==='Objection' %}
     <p>Complete each task listed</p>
-    <!--<ul class="govuk-list govuk-list--bullet">
-    <li>the debt is yours</li>
-    <li>the debt details are correct</li>
-    </ul> -->
+
 <ol class="app-task-list">
   <li>
     <ul
       class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
 <li class="app-task-list__item">
-  {% if checked('object-to-plan','yes') or checked('object-to-plan','no') %}
+  {% if checked('object-to-plan','yes') or checked('object-to-plan','no') or creditorcase.status ==='Objection' %}
   <strong
     class="govuk-tag app-task-list__tag"
     id="read-declaration-status"
@@ -22,7 +19,13 @@
   class="govuk-tag govuk-tag--grey app-task-list__tag"
   id="">To do</strong>
   {% endif %}
+  {% if checked('object-to-plan','yes') or checked('object-to-plan','no') or creditorcase.status ==='Objection' %}
+  <p>Review draft plan - you have objected to the plan<br>
+  <a href="review-draft-plan?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Update or remove your objection</a>
+</p>
+  {% else %}
   <a href="review-draft-plan?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Review draft plan</a>
+   {% endif %}
 </li>  
     </ul>
   </li>

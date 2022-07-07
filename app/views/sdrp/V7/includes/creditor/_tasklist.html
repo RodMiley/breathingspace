@@ -1,0 +1,105 @@
+
+
+{% if creditorcase.status ==='Draft plan' %}
+    <p>Complete each task listed</p>
+    <!--<ul class="govuk-list govuk-list--bullet">
+    <li>the debt is yours</li>
+    <li>the debt details are correct</li>
+    </ul> -->
+<ol class="app-task-list">
+  <li>
+    <ul
+      class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
+<li class="app-task-list__item">
+  {% if checked('object-to-plan','yes') or checked('object-to-plan','no') %}
+  <strong
+    class="govuk-tag app-task-list__tag"
+    id="read-declaration-status"
+    >Completed</strong
+  >
+  {% else %}
+  <strong
+  class="govuk-tag govuk-tag--grey app-task-list__tag"
+  id="">To do</strong>
+  {% endif %}
+  <a href="review-draft-plan?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Review draft plan</a>
+</li>  
+    </ul>
+  </li>
+</ol>
+{% elif creditorcase.status ==='New message' %}
+<p>Complete each task listed</p>
+<ol class="app-task-list">
+  <li>
+  <ul
+    class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
+    <li class="app-task-list__item">
+      {% if checked('debt1','yes') %}
+      <strong
+        class="govuk-tag app-task-list__tag"
+        id="read-declaration-status"
+        >Completed</strong
+      >
+      {% else %}
+      <strong
+        class="govuk-tag govuk-tag--grey app-task-list__tag"
+        id="read-declaration-status"
+        >To do</strong
+      >
+      {% endif %}
+      <span class="app-task-list__task-name">
+       <a href="review-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - review debt</a> 
+  
+      </span>
+    </li>
+{% else %}
+
+<p>Complete each task listed</p>
+
+<ol class="app-task-list">
+<li>
+<ul
+  class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
+  <li class="app-task-list__item">
+    {% if checked('debt1','yes') or checked('debt1','no') or checked('debt1','sold')or creditorcase.status == 'New message' %}
+    <strong
+      class="govuk-tag app-task-list__tag"
+      id="read-declaration-status"
+      >Completed</strong
+    >
+    {% else %}
+    <strong
+      class="govuk-tag govuk-tag--grey app-task-list__tag"
+      id="read-declaration-status"
+      >To do</strong
+    >
+    {% endif %}
+    <span class="app-task-list__task-name">
+     <a href="review-debt?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType.html" %} - confirm debt</a> 
+
+    </span>
+  </li>
+  <li class="app-task-list__items govuk-!-margin-bottom-0 govuk-!-padding-left-0">  
+  <li class="app-task-list__item">
+    {% if checked('debt2','yes') or checked('debt2','no') or  checked('debt2','sold') or creditorcase.status == 'New message' %}
+    <strong
+      class="govuk-tag app-task-list__tag"
+      id="read-declaration-status"
+      >Completed</strong
+    >
+    {% else %}
+    <strong
+      class="govuk-tag govuk-tag--grey app-task-list__tag"
+      id="read-declaration-status"
+      >To do</strong
+    >
+    {% endif %}
+    <span class="app-task-list__task-name">
+     <a href="review-debt2?reference={{creditorcase.reference}}" class="govuk-!-margin-right-2"> {% include "../creditor/_defaultDeptType2.html" %} - confirm debt</a> 
+
+    </span>
+  </li>
+</ul>
+</li>
+</ol>
+{% endif %}

@@ -24,7 +24,7 @@ Debt repayment plan for Sarah Philips
 <li>1. Confirm debts</li>
 <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
 </strong></li>
-<li>4. Active plan</li>
+<li>3. Active plan</li>
 </ul>
 {% else %}
 <ul class="govuk-list stages">
@@ -38,6 +38,20 @@ Debt repayment plan for Sarah Philips
 </div>
 </div>
  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
+
+ <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      You have objected to the plan
+      <a class="govuk-notification-banner__link" href="#">update or withdraw your objection</a>.
+    </p>
+  </div>
+</div>
 
 <p>This debt repayment plan is being created by AdviceUK.</p>
 
@@ -54,6 +68,11 @@ Debt repayment plan for Sarah Philips
         {% if creditorcase.status === "New message" and checked('debt1','yes') %}
         {% elif  creditorcase.status === "New message" %}<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">1</strong>
         {% endif %}
+      </a>
+    </li> 
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#plan">
+        Plan
       </a>
     </li> 
     <li class="govuk-tabs__list-item">
@@ -85,6 +104,12 @@ Debt repayment plan for Sarah Philips
   <h2 class="govuk-heading-l">Tasks</h2>
    {% include  "../includes/creditor/_tasklist.html" %} 
   </div>
+
+  <div class="govuk-tabs__panel" id="plan">
+    <h2 class="govuk-heading-l">Plan</h2>
+     
+    </div>
+
   <div class="govuk-tabs__panel" id="messages">
     <h2 class="govuk-heading-l">Messages</h2>
     {% include  "../includes/creditor/_messages.html" %} 

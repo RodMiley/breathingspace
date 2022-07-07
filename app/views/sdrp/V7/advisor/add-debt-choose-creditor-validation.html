@@ -1,0 +1,81 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name and select one from the list
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="add-debt-details" method="post">
+    <div class="govuk-grid-column-two-thirds">
+    <a href="plan" class="govuk-back-link">Back</a>  
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+<!-- Hacky styling for prototype -->
+<style>
+.autocomplete__input {
+  border:3px solid #d4351c;
+}
+</style>
+
+{{ govukErrorSummary({
+  "titleText": "There is a problem",
+  "errorList": [
+    {
+      "text": "Select a creditor from the list",
+      "href": "#tt-default"
+    }
+  ]
+}) }}
+
+  <div class="govuk-form-group govuk-form-group--error">
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Enter the creditor's name and select one from the list
+</label></h1>   <span id="changed-name-hint" class="govuk-hint">
+      This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson 
+    </span>
+
+     <p id="passport-issued-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span> Select a creditor from the list
+    </p>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+
+
+        <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="adddebt" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="confirmation">
+         hidden radio
+        </label>
+      </div>
+      </div>
+<p><a href="add-debt-adhock-creditor">The creditor doesn't appear in the list</a></p>
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'newcreditor'
+      var name ='newcreditor'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Advice uk"
+      }
+    },
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+        text: "breathingspaceteam@adviceuk.org.uk"
+      }
+    },
+    {
+      key: {
+        text: "Telephone"
+      },
+      value: {
+        text: "0800 455 6745"
+      }
+    }
+  ]
+}) }}
