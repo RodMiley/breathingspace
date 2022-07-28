@@ -1,0 +1,99 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="add-business-history" method="post">
+    <div class="govuk-grid-column-two-thirds">
+         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+       Add client's business or trading name and address
+      </h1>
+
+  <div class="govuk-form-group">
+      <label for="autocomplete-default" class="govuk-label govuk-!-font-weight-bold" for="businessName">Enter the client's business or trading name
+</label>
+    <input class="govuk-input" id="businessName" name="businessName" type="text" value="{{ businessName }}">
+  </div>
+
+
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <label class="govuk-fieldset__heading">
+        Choose client's business or trading address
+      </label>
+    </legend>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress" name="businessAddress" type="radio" value="currentAddress">
+        <label class="govuk-label govuk-radios__label" for="businessAddress">
+            	  {% if checked('parv','yes')%}
+         <strong class="govuk-tag govuk-tag--blue govuk-!-margin-bottom-2">Address hidden</strong></br>
+              {% endif %}  
+             
+              {% if data['sort']%} {{ sort }}, Marylebone, London, {{ postcode | default("W1H 1JS") }}
+              {% else %}  
+              {{addressline1 | default("4 Bourough road") }},
+              {{addresstown | default("London")}},
+              {{addresspostcode | default("NW10 2JU")}}
+              {% endif %}
+        </label>
+           {% if checked('parv','yes')%}
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                 This address will not be shared with any of your client's creditors
+        </div>
+              {% endif %}  
+      </div>
+     {% if checked('prevAddress', 'pclookup') or checked('prevAddress', 'manual') %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress-2" name="businessAddress" type="radio" value="previousAddress">
+        <label class="govuk-label govuk-radios__label" for="businessAddress-2">
+             {% if checked('prevAddress', 'manual')%}
+             <span class="">{{prevaddressline1}}, </span>
+             <span class="">{{prevaddressline2}}, </span>
+              <span class="">{{prevaddresstown}}, </span>
+              <span class="">{{prevaddresscounty}}, </span>
+              <span class="">{{prevaddresspostcode}}, </span>  
+                {% elif checked('prevAddress', 'pclookup')%} 
+                {% if data['sortPrev']=='two'%} 2  Treasant close, Elephant and Castle, London, {{postcodePrevious}}{% elif data['sortPrev']=='three' %} 3 Treasant close, Elephant and Castle, London, {{postcodePrevious}}{% elif data['sortPrev']=='four' %} 4 Treasant close, Elephant and Castle, London, {{postcodePrevious}} {% endif %}
+                {% endif %}
+        </label>
+      </div>
+      {% endif %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="businessAddress-3" name="businessAddress" type="radio" value="otherBusinessAddress~add-business-address">
+        <label class="govuk-label govuk-radios__label" for="businessAddress-3">
+          Another address
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="addBusiness" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="addBusiness">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

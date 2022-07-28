@@ -1,0 +1,56 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Names
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <form class="form" action="address" method="post">
+
+    <div class="govuk-grid-column-full">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Names
+      </h1>
+
+       <dl class="govuk-summary-list">
+ 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ firstname | default('Joe') }} {{ middlename}} {{ lastname | default('Black') }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-!-font-size-19" href="details#firstname">
+                Change<span class="govuk-visually-hidden"> Name</span>
+              </a>
+            </dd>
+          </div>
+    
+{%if checked('previousname','yes') %}
+  {% include  "../includes/advisor/_names-previous.html" %} 
+{% endif %}
+        </dl>
+
+      <h2 class="govuk-heading-m">Add client's previous names</h2>
+      <p>If your client has had any other names. For example, a maiden name.</p>
+<p>Giving previous names will help your client’s creditors to find their debts and apply the Breathing Space protections correctly.</p>
+
+ <p><a href="add-another-name" class="govuk-button govuk-button--secondary">Add previous names</a></p>
+
+<p>
+<button class="govuk-button" data-module="govuk-button">
+ Continue
+</button>
+</p>
+
+    </div>
+    </form>
+</div>
+
+{% endblock %}

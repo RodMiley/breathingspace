@@ -11,22 +11,24 @@
    <div class="govuk-grid-column-full">
   {% include  "../includes/advisor/_client_name_reference.html" %} 
   </div>
-   <form class="form" action="add-debt-set-priority" method="post">
+   <form class="form" action="add-debt-details-council" method="post">
+
     <div class="govuk-grid-column-two-thirds">
     <a href="plan" class="govuk-back-link">Back</a>  
   <div class="govuk-form-group">
-       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Add a creditor
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--xl" for="creditor">Search for a creditor
 </label></h1>   <span id="changed-name-hint" class="govuk-hint">
    Type the creditor’s name and select them from the list. 
     </span>
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
-<p>If the creditor doesn’t appear on the list, you can 
-<a href="add-debt-adhock-creditor">enter their details manually</a></p>
 
 <button class="govuk-button" data-module="govuk-button">
- Continue
+Search
 </button>
+
+<p>If the creditor doesn’t appear on the list, you can 
+  <a href="add-debt-adhock-creditor">enter their details manually</a></p>
     </div>
     </form>
 </div>

@@ -1,0 +1,214 @@
+
+{% extends "layout-bs-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+      SDRP
+       
+         <span class="govuk-caption-xl">Quick links to prototype sections</span>
+      </h1>
+
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+
+{% set latestHtml %}
+
+
+<h2 class="govuk-heading-xl">Latest</h2>
+
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Money advisor
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+      <!-- start accordion content-->
+      <h2 class="govuk-heading-l">Homepage and tasks pages</h2>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/index">Money adviser homepage</a></li>
+<li><!-- <a href="/advisor-latest/tasks-to-do">Tasks to do</a>--> Tasks to do</li>
+</ul>
+<h2 class="govuk-heading-l">Search</h2>
+<ul class="govuk-list">
+<li><!-- <a href="/advisor-latest/search">Search</a>--> Search</li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-l">Use Breathing Space Information</h2>
+<ul class="govuk-list">
+  <li><a href="/sdrp/current/advisor/create-guard">Breathing space guard question</a></li>
+  <li><a href="/sdrp/current/advisor/bs-confirm">Confirm you want to use BS information</a></li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-l">Create client details</h2>
+<h3 class="govuk-heading-s">Names and date of birth</h3>
+<ul class="govuk-list">
+  <li><a href="/sdrp/current/advisor/details">Client details</a></li>
+  <li><a href="/sdrp/current/advisor/names">Names</a></li>
+  <li><a href="/sdrp/current/advisor/add-another-name">Add previous name</a></li>
+  </ul>
+
+  <h3 class="govuk-heading-s">Address's</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/address">Add clients current address</a></li>
+<li><a href="sdrp/current/advisor/address-choice.html">Choose clients current address</a></li>
+<li><a href="sdrp/current/advisor/address-history">Address history</a></li>
+<li><a href="sdrp/current/advisor/hide-address">Hide address</a></li>
+<li><a href="sdrp/current/advisor/address-correspondence.html">Add clients corrispondence address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-correspondence.html">Choose clients corrispondence address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Add clients previous address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Choose clients previous address</a></li>
+</ul>
+<h3 class="govuk-heading-s">Notification preference</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/notifcation-preference">Client notification preference</a></li>
+</ul>
+<h3 class="govuk-heading-s">Business</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/business-guard">Business guard question</a></li>
+<li><a href="/sdrp/current/advisor/add-business">Add business</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address">Add business address</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address-choice">Choose business address</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address-manual">Add business address manually</a></li>
+<li><a href="/sdrp/current/advisor/add-business-history">Businesses</a></li>
+</ul>
+<h3 class="govuk-heading-s">Check client details</h3>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/confirm-details">Check client details</a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-m">Client plan</h2>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/plan">New plan</a></li>
+<li><a href="/sdrp/current/advisor/plan">Draft plan</a></li>
+<li><a href="/sdrp/current/advisor/plan">Final plan</a></li>
+</ul>
+      <!-- end accordion content-->
+    </div>
+  </div>
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          Creditor
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+       <!-- start accordion content-->
+       Creditor links
+      <!-- end accordion content-->
+    </div>
+  </div>
+</div>
+
+
+
+{% endset -%}
+
+{% set inc1Html %}
+<h2 class="govuk-heading-xl">Incriment 1</h2>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-l">Homepage</h2>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/index-inc1">Money adviser homepage</a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-l">Use Breathing Space Information</h2>
+<ul class="govuk-list">
+  <li><a href="/sdrp/current/advisor/create-guard">Breathing space guard question</a></li>
+  <li><a href="/sdrp/current/advisor/bs-confirm">Confirm you want to use BS information</a></li>
+  </ul>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-l">Create client details</h2>
+<h3 class="govuk-heading-s">Names and date of birth</h3>
+<ul class="govuk-list">
+  <li><a href="/sdrp/current/advisor/details">Client details</a></li>
+  <li><a href="/sdrp/current/advisor/names">Names</a></li>
+  <li><a href="/sdrp/current/advisor/add-another-name">Add previous name</a></li>
+  </ul>
+
+  <h3 class="govuk-heading-s">Address's</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/address">Add clients current address</a></li>
+<li><a href="sdrp/current/advisor/address-choice.html">Choose clients current address</a></li>
+<li><a href="sdrp/current/advisor/address-history">Address history</a></li>
+<li><a href="sdrp/current/advisor/hide-address">Hide address</a></li>
+<li><a href="sdrp/current/advisor/address-correspondence.html">Add clients corrispondence address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-correspondence.html">Choose clients corrispondence address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Add clients previous address</a></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Choose clients previous address</a></li>
+</ul>
+<h3 class="govuk-heading-s">Notification preference</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/notifcation-preference">Client notification preference</a></li>
+</ul>
+<h3 class="govuk-heading-s">Business</h3>
+<ul class="govuk-list">
+<li><a href="sdrp/current/advisor/business-guard">Business guard question</a></li>
+<li><a href="/sdrp/current/advisor/add-business">Add business</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address">Add business address</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address-choice">Choose business address</a></li>
+<li><a href="/sdrp/current/advisor/add-business-address-manual">Add business address manually</a></li>
+<li><a href="/sdrp/current/advisor/add-business-history">Businesses</a></li>
+</ul>
+
+<h3 class="govuk-heading-s">Check client details</h3>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/confirm-details">Check client details</a></li>
+</ul>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<h2 class="govuk-heading-m">Client plan</h2>
+<ul class="govuk-list">
+<li><a href="/sdrp/current/advisor/plan-inc1">New plan</a></li>
+</ul>
+
+
+
+
+{% endset -%}
+
+
+
+
+
+{{ govukTabs({
+  items: [
+    {
+      label: "Latest links",
+      id: "latest",
+      panel: {
+        html: latestHtml
+      }
+    },
+    {
+      label: "Incriment 1",
+      id: "inc1",
+      panel: {
+        html: inc1Html
+      }
+    }
+  ]
+}) }}
+
+
+
+
+
+</div>
+
+</div>
+
+{% endblock %}

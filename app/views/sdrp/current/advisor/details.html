@@ -2,32 +2,32 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-  Breathing space
+Client’s personal details
 {% endblock %}
 
 {% block content %}
 
 
   <div class="govuk-grid-row">
-  <form class="form" action="time-machine-personal-details" method="post">
+  <form class="form" action="names" method="post">
 
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
       Client’s personal details
       </h1>
      <div class="govuk-form-group">
   <label class="govuk-label" for="firstname">
   Client’s First name
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" autocomplete="firstname" spellcheck="false" value="{{ firstname }}">
+  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ firstname | default('Joe') }}">
 </div>
 
      <div class="govuk-form-group">
   <label class="govuk-label" for="middlename">
    Client’s Middle name (optional)
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" autocomplete="middlename" spellcheck="false" value="{{ middlename }}">
+  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" value="{{ middlename }}">
 </div>
 
     <div class="govuk-form-group">

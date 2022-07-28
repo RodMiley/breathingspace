@@ -68,10 +68,12 @@ Managing debt repayment plans
     <a href="/sdrp/" class="govuk-header__link govuk-header__link--service-name">
       Managing debt repayment plans
     </a>
-    
+    {% if case.status =='test' %}
     <a href="/sdrp/" class="govuk-header__link govuk-!-margin-top-1 govuk-!-font-weight-bold float-right">
      Sign out
     </a>
+    {% else %}
+    {% endif %}
     </div>
     
   </div>

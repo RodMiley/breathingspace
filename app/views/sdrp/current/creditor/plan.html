@@ -39,21 +39,15 @@ Debt repayment plan for Sarah Philips
 </div>
  <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
 
- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Important
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">
-      You have objected to the plan
-      <a class="govuk-notification-banner__link" href="#">update or withdraw your objection</a>.
-    </p>
-  </div>
-</div>
-
 <p>This debt repayment plan is being created by AdviceUK.</p>
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You have objected to this plan
+  </strong>
+</div>
 
 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
@@ -73,6 +67,11 @@ Debt repayment plan for Sarah Philips
     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#plan">
         Plan
+      </a>
+    </li> 
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#objections">
+        Objections
       </a>
     </li> 
     <li class="govuk-tabs__list-item">
@@ -109,7 +108,33 @@ Debt repayment plan for Sarah Philips
     <h2 class="govuk-heading-l">Plan</h2>
      
     </div>
+    <div class="govuk-tabs__panel" id="objections">
 
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--l">Objections</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Type of objection</th>
+            <th scope="col" class="govuk-table__header">Date</th>
+            <th scope="col" class="govuk-table__header"></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Draft plan</th>
+            <td class="govuk-table__cell">12 July 22</td>
+            <td class="govuk-table__cell"><a href="view-objection?reference={{creditorcase.reference}}">View</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Variation to the plan</th>
+            <td class="govuk-table__cell">30 September 22</td>
+            <td class="govuk-table__cell"><a href="">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+       
+      </div>
   <div class="govuk-tabs__panel" id="messages">
     <h2 class="govuk-heading-l">Messages</h2>
     {% include  "../includes/creditor/_messages.html" %} 

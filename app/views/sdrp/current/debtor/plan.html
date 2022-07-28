@@ -20,14 +20,20 @@ Your plan
         <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
         <p class="govuk-!-margin-bottom-3">This plan became final on   <strong>{{ 'Do MMMM YYYY' | baseDateAdd(-120) }}</strong> </p>
         <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-7  govuk-section-break--visible" />
-
-        <div class="govuk-inset-text blue">
-          <h2 class="govuk-heading-m">Annual review due</h2>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Your debt adviser will be in touch soon to catch up and see if anything has changed in the last 12 months</li>
-            <li>Don't worry the debt advisor is here to help you repay your debts in a sustainaible way</li>
-          </ul>
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              Your next payment is due.
+              <a class="govuk-notification-banner__link" href="#">Make a payment</a>.
+            </p>
+          </div>
         </div>
+
 
         <p class="govuk-body-l">If you have a change in circumstances you should tell your debt advisor</p>
 
@@ -69,15 +75,7 @@ Your plan
               <dd class="govuk-summary-list__actions">
               </dd>
             </div>
-          
-                <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Savings contribution</dt>
-              <dd class="govuk-summary-list__value"> £25.00</dd>
-          
-              <dd class="govuk-summary-list__actions">
-              </dd>
-            </div>
-          
+        
 
               <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key  govuk-!-width-one-half">Surplus budget per month</dt>
@@ -90,7 +88,7 @@ Your plan
           
           
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Length of plan</dt>
+              <dt class="govuk-summary-list__key  govuk-!-width-one-half">Length of plan remaining</dt>
               <dd class="govuk-summary-list__value">
   
                5 years 4 months
@@ -123,15 +121,29 @@ Your plan
             </a>
           </li>
           <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#adviser">
+             Debt adviser
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#past-month">
               Payments
             </a>
           </li>
         </ul>
         <div class="govuk-tabs__panel" id="debts">
-          <h2 class="govuk-heading-l">Debts</h2>
-          <h3 class="govuk-heading-m">Westminster city council</h3>
+          <h2 class="govuk-heading-xl">Debts</h2>
+          <h3 class="govuk-heading-l">Priority debts</h3>
+          <p>Priority debts are payed back quicker to your creditors</p>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Creditor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Westminster city council
+              </dd>
+            </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Debt type
@@ -170,8 +182,16 @@ Your plan
             </div>
           </dl>
 
-          <h3 class="govuk-heading-m">EDF Energy Ltd</h3>
+
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Creditor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                EDF Energy Ltd
+              </dd>
+            </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Debt type
@@ -210,8 +230,18 @@ Your plan
             </div>
           </dl>
 
-          <h3 class="govuk-heading-m">Yorkshire Water Services Ltd</h3>
+          <h3 class="govuk-heading-l">Non priority debts</h3>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Creditor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yorkshire Water Services Ltd
+              </dd>
+            </div>
+          
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Debt type
@@ -227,7 +257,7 @@ Your plan
               <dd class="govuk-summary-list__value">
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half"> 
-                  1,146</div>
+                  £1146</div>
                 <div class="govuk-grid-column-one-half">
           
                 </div> 
@@ -249,9 +279,15 @@ Your plan
               </dd>
             </div>
           </dl>
-
-          <h3 class="govuk-heading-m">Halifax credit card</h3>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Creditor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Halifax credit card
+              </dd>
+            </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Debt type
@@ -290,8 +326,17 @@ Your plan
             </div>
           </dl>
 
-          <h3 class="govuk-heading-m">Next retail plc</h3>
+        
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Creditor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Next retail plc
+              </dd>
+            </div>
+          
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Debt type
@@ -332,7 +377,7 @@ Your plan
       
         </div>
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="details">
-          <h2 class="govuk-heading-m">Personal details</h2>
+          <h2 class="govuk-heading-xl">Personal details</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-2">
                    <div class="govuk-summary-list__row">
                      <dt class="govuk-summary-list__key">
@@ -895,8 +940,44 @@ Your plan
 
 
           </div>
+          <div class="govuk-tabs__panel" id="adviser">
+            <h2 class="govuk-heading-xl">Debt advisor</h2>
+
+            {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Advice uk"
+      }
+    },
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+        text: "sdrp@adviceuk.org.uk"
+      }
+    },
+    {
+      key: {
+        text: "Telephone"
+      },
+      value: {
+        text: "0800 455 6745"
+      }
+    }
+  ]
+}) }}
+            </div>
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
-          <h2 class="govuk-heading-l">Payment</h2>
+          <h2 class="govuk-heading-xl">Payments</h2>
+          <p><a href="">Make a payment</a></p>
+          <hr class="govuk-section-break govuk-section-break--visible" />
           <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">

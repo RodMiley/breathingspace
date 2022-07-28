@@ -19,9 +19,18 @@
   class="govuk-tag govuk-tag--grey app-task-list__tag"
   id="">To do</strong>
   {% endif %}
-  {% if checked('object-to-plan','yes') or checked('object-to-plan','no') or creditorcase.status ==='Objection' %}
-  <p>Review draft plan - you have objected to the plan<br>
-  <a href="review-draft-plan?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Update or remove your objection</a>
+  {% if checked('task','cancel-objection') %}  
+  <p class="govuk-body  govuk-!-margin-bottom-2">Review draft plan</p>
+  <p class="govuk-body  govuk-!-margin-bottom-2"><strong>You haven't objected to the plan</strong></p>
+  <a href="object-to-plan?reference={{creditorcase.reference}}">Object to the plan</a>
+  {% elif checked('object-to-plan','yes') or checked('object-to-plan','no') or creditorcase.status ==='Objection' %}
+  <p class="govuk-body  govuk-!-margin-bottom-2">Review draft plan</p>
+  <p class="govuk-body  govuk-!-margin-bottom-2"><strong>You have objected to the plan</strong></p>
+  <ul class="govuk-list">
+    <li><a href="view-objection?reference={{creditorcase.reference}}">View objection</a></li>
+    <li><a href="object-to-plan?reference={{creditorcase.reference}}">Update objection</a></li>
+    <li><a href="cancel-objection?reference={{creditorcase.reference}}">Cancel objection</a></li>
+  </ul>
 </p>
   {% else %}
   <a href="review-draft-plan?reference={{creditorcase.reference}}" class="govuk-!-display-inline-block">Review draft plan</a>

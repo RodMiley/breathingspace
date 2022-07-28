@@ -13,12 +13,16 @@
         {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-        Confirm objection to the plan
+        Cancel objection 
       </h1>
-
-      <h2 class="govuk-heading-m">Reason for the objection</h2>
+      <h3 class="govuk-heading-s">Reason for the objection</h3>
       <ul class="govuk-list">
-      
+        {% if  data['object-to-plan-reason'] ==' A debt is in the plan that should not be included' %}
+        ddddddd
+        {% endif %}
+        {% if  data['object-to-plan-reason'] ==' A debt is not in the plan that should be included' %}
+     bbb
+        {% endif %}
 
 
         {% if checked('object-to-plan-reason',' A debt is in the plan that should not be included')%}
@@ -58,6 +62,33 @@
         {% endif %}
       </ul>
       <p class="govuk-body">{{ data['more-detail']}}</p>
+      {% include  "../includes/creditor/_datetimestamp.html" %}
+
+
+      <div class="govuk-form-group govuk-!-margin-top-7">
+        <fieldset class="govuk-fieldset" aria-describedby="cancel-objection-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <label class="govuk-fieldset__heading">
+              Are you sure you want to cancel this objection?
+            </label>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancel-objection" name="cancel-objection" type="radio" value="yes~confirm-cancel-objection?reference={{creditorcase.reference}}">
+              <label class="govuk-label govuk-radios__label" for="cancel-objection">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancel-objection-2" name="cancel-objection" type="radio" value="no~plan?reference={{creditorcase.reference}}">
+              <label class="govuk-label govuk-radios__label" for="cancel-objection-2">
+                No
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
 
 
         {% include  "../includes/_show-confirmation.html" %}
@@ -65,17 +96,16 @@
 
         <div class="govuk-radios" style="display:none">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="" name="task" type="radio" value="object" checked>
+            <input class="govuk-radios__input" id="" name="task" type="radio" value="cancel-object" checked>
             <label class="govuk-label govuk-radios__label" for="task">
              hidden radio
             </label>
           </div>
           </div>
 
-
-<button class="govuk-button" data-module="govuk-button">
-Confirm
-</button>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+            </button>
     </div>
     </form>
 </div>

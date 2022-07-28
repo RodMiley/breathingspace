@@ -8,7 +8,6 @@ Debt repayment plan for Sarah Philips
 
 
 {% block content %}
-{% include  "../includes/advisor/_global-nav.html" %} 
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-full">
 
@@ -217,19 +216,6 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
 {% include  "../includes/advisor/_plan-detail.html" %} 
   </div>
 </div>
-
-  <form class="form" action="scenarios" method="post">
-{% include  "../includes/advisor/_hide-confirmation.html" %} 
-
-<button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
-<div class="govuk-radios__item govuk-visually-hidden">
-  <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="resettask" checked>
-  <label class="govuk-label govuk-radios__label" for="task-2">
-  reset task
-  </label>
-</div>
-</form>
-
 
 {% block page_scripts %}
 <script>

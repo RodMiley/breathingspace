@@ -13,14 +13,13 @@
         {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-        Confirm objection to the plan
+        Objection 
       </h1>
-
-      <h2 class="govuk-heading-m">Reason for the objection</h2>
+      <h3 class="govuk-heading-s">Reason for the objection</h3>
       <ul class="govuk-list">
-      
-
-
+        {% if  data['object-to-plan-reason'] ==' A debt is in the plan that should not be included' %}
+        A debt is in the plan that should not be included
+        {% endif %}
         {% if checked('object-to-plan-reason',' A debt is in the plan that should not be included')%}
         <li>
           A debt is in the plan that should not be included
@@ -59,7 +58,13 @@
       </ul>
       <p class="govuk-body">{{ data['more-detail']}}</p>
 
-
+      {% include  "../includes/creditor/_datetimestamp.html" %}
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">Update or cancel objection</h2>
+      <ul class="govuk-list">
+        <li><a href="object-to-plan?reference={{creditorcase.reference}}">Update objection</a></li>
+        <li><a href="cancel-objection?reference={{creditorcase.reference}}">Cancel objection</a></li>
+      </ul>
         {% include  "../includes/_show-confirmation.html" %}
         {% include  "../includes/creditor/_urlredirect.html" %}
 
@@ -71,11 +76,6 @@
             </label>
           </div>
           </div>
-
-
-<button class="govuk-button" data-module="govuk-button">
-Confirm
-</button>
     </div>
     </form>
 </div>

@@ -3,7 +3,7 @@
 
 
 {% block pageTitle %}
-Do you want to add your client’s Breathing Space information to the plan?
+  Manage a debt repayment plan
 {% endblock %}
 
 
@@ -11,10 +11,8 @@ Do you want to add your client’s Breathing Space information to the plan?
   <form class="form" action="details" method="post">
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
-
   
    <div class="govuk-grid-column-two-thirds">
-    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -36,10 +34,9 @@ Do you want to add your client’s Breathing Space information to the plan?
   name: "create-gaurd",
   fieldset: {
     legend: {
-      text: "Do you want to add your client’s Breathing Space information to the plan?
-",
+      text: "What type of address?",
       isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
+      classes: "govuk-fieldset__legend--l"
     }
   },
   hint: {
@@ -47,15 +44,15 @@ Do you want to add your client’s Breathing Space information to the plan?
   },
   items: [
     {
-      value: "yes~bs-confirm",
-      text: "Yes",
+      value: "Previous~bs-confirm",
+      text: "Previous address",
       conditional: {
         html: yesHtml
       }
     },
     {
-      value: "no",
-      text: "No"
+      value: "Residential",
+      text: "Residential address"
     }
   ]
 }) }}
