@@ -1,3 +1,5 @@
+
+
 <p>Add as much information about the debt as you can.</p>
 <p>Be accurate and only give estimates if exact figures are not available.</p>
 <p>Creditors can update incorrect amounts when they receive the proposed plan.</p>
@@ -11,87 +13,71 @@
         <label class="govuk-label govuk-radios__label" for="updateDebtType">
          hidden radio
         </label>
-      </div>
-      </div>
+      </div> 
  {% endif %}     
 </form>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+{% from "../advisor/_changeform.njk" import changeform %}
 
+
+
+{% if checked('set-debt-priority1','Priority or secured debt') or
+      checked('set-debt-priority2','Priority or secured debt') or
+      checked('set-debt-priority3','Priority or secured debt') or
+      checked('set-debt-priority4','Priority or secured debt') or
+      checked('set-debt-priority5','Priority or secured debt')
+%} 
 <h3 class="govuk-heading-l">Priority debts</h3>
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-<h4 class="govuk-heading-m govuk-!-margin-bottom-2" >Creditor has provided updated debt details, <a href="">view updated debt details</a></h4>
-<hr class="govuk-section-break govuk-section-break--visible">
-{{ govukSummaryList({
-   classes: 'govuk-!-margin-bottom-2',
-  rows: [
-    {
-      key: {
-        text: "Creditor"
-      },
-      value: {
-        text: "HMRC"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Debt type"
-      },
-      value: {
-        text: "Loan"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Amount"
-      },
-      value: {
-        text: "£10000"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "Amount"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Reference"
-      },
-      value: {
-        html: "as1234567890"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "reference"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
-<p class="govuk-!-margin-bottom-7"><a href="" class="govuk-body">Remove this debt</a></p>
+
+{% endif %}
+
+{% if checked('set-debt-priority5','Priority or secured debt') %}
+{% include  "../advisor/_debt5.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority4','Priority or secured debt') %}
+{% include  "../advisor/_debt4.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority3','Priority or secured debt') %}
+{% include  "../advisor/_debt3.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority2','Priority or secured debt') %}
+{% include  "../advisor/_debt2.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority1','Priority or secured debt') %}
+{% include  "../advisor/_debt1.html" %}
+{% endif %}
+{% if checked('set-debt-priority5','Non-priority or unsecured debt') or checked('set-debt-priority5','Don’t know') or
+      checked('set-debt-priority4','Non-priority or unsecured debt') or checked('set-debt-priority4','Don’t know') or
+      checked('set-debt-priority3','Non-priority or unsecured debt') or checked('set-debt-priority3','Don’t know') or
+      checked('set-debt-priority2','Non-priority or unsecured debt') or checked('set-debt-priority2','Don’t know') or
+      checked('set-debt-priority1','Non-priority or unsecured debt') or checked('set-debt-priority1','Don’t know') 
+%}
+<h3 class="govuk-heading-l">Non-priority debts</h3>
+{% endif%}
+
+
+{% if checked('set-debt-priority5','Non-priority or unsecured debt') or checked('set-debt-priority5','Don’t know')  %}
+{% include  "../advisor/_debt5.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority4','Non-priority or unsecured debt') or checked('set-debt-priority4','Don’t know')  %}
+{% include  "../advisor/_debt4.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority3','Non-priority or unsecured debt') or checked('set-debt-priority3','Don’t know')  %}
+{% include  "../advisor/_debt3.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority2','Non-priority or unsecured debt') or checked('set-debt-priority2','Don’t know')  %}
+{% include  "../advisor/_debt2.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority1','Non-priority or unsecured debt') or checked('set-debt-priority1','Don’t know')  %}
+{% include  "../advisor/_debt1.html" %}
+{% endif %}
+
+

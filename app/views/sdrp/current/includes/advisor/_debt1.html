@@ -1,0 +1,76 @@
+{% if checked('debt1','completed') %}
+<dl class="govuk-summary-list govuk-!-margin-bottom-2">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Creditor
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['creditor1'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-choose-creditor", "creditor") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Category
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data['set-debt-priority1' ] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    {{ changeform("0", "add-debt-set-priority", "catergory") }}
+  </dd>
+</div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Debt type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if checked('debttype1','Other')%} 
+      {{ data['otherdebttype1'] }} 
+      {% else %}
+      {{ data['debttype1'] }}
+      {% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-choose-type", "debt type") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Amount
+    </dt>
+    <dd class="govuk-summary-list__value">
+      £{{ data['debtamount1'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-amount-reference#debtamount", "amount") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Reference
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['debtreference1'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-amount-reference#debtreference", "reference") }}
+    </dd>
+  </div>
+</dl>
+  <form class="govuk-!-margin-top-0" action="remove-debt" method="post">
+    <div class="govuk-visually-hidden">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="" name="debtadded" type="radio" value="1" checked>
+      <label class="govuk-label govuk-radios__label" for="debt">
+       hidden radio
+      </label>
+    </div>
+  </div>
+  
+
+  <button class="govuk-link govuk-body govuk-!-margin-bottom-7">Remove this debt</button>
+</form>
+{% endif %}

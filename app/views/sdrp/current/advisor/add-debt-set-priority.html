@@ -2,41 +2,55 @@
 {% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
-  Add a creditor
+Select a debt category
 {% endblock %}
 
 {% block content %}
+
+
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
 
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-full">
   {% include  "../includes/advisor/_client_name_reference.html" %} 
   </div>
-   <form class="form" action="add-debt-set-priority" method="post">
-    <div class="govuk-grid-column-two-thirds">
-    <a href="plan" class="govuk-back-link">Back</a>  
 
+   <form class="form" action="add-debt-choose-type" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
           <h1 class="govuk-fieldset__heading">
             Select a debt category
           </h1>
         </legend>
         <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="set-debt-priority" name="set-debt-priority" type="radio" value="Priority or secured debt">
+            <input class="govuk-radios__input" id="set-debt-priority{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Priority or secured debt">
             <label class="govuk-label govuk-radios__label" for="set-debt-priority">
               Priority or secured debt
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="set-debt-priority-2" name="set-debt-priority" type="radio" value="Non-priority or unsecured debt ">
+            <input class="govuk-radios__input" id="set-debt-priority-2{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Non-priority or unsecured debt">
             <label class="govuk-label govuk-radios__label" for="set-debt-priority-2">
               Non-priority or unsecured debt 
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="set-debt-priority-3" name="set-debt-priority" type="radio" value="Don’t know ">
+            <input class="govuk-radios__input" id="set-debt-priority-3{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Don’t know">
             <label class="govuk-label govuk-radios__label" for="set-debt-priority-3">
               Don’t know 
             </label>
