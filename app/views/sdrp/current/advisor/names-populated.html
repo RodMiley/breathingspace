@@ -23,7 +23,7 @@ Names
               Name
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ firstname | default('Joe') }} {{ middlename}} {{ lastname | default('Black') }}
+             {{ firstname | default('Sarah') }} {{ middlename}} {{ lastname | default('Gold') }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-!-font-size-19" href="details#firstname">
@@ -31,10 +31,34 @@ Names
               </a>
             </dd>
           </div>
-    
-{%if checked('previousname','yes') %}
-  {% include  "../includes/advisor/_names-previous.html" %} 
-{% endif %}
+          <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Previous name
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Sarah Silver
+         
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-!-font-size-19" href="add-another-name">
+              Change<span class="govuk-visually-hidden">Previous name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Previous name
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Sarah Bronze
+         
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-!-font-size-19" href="add-another-name">
+              Change<span class="govuk-visually-hidden">Previous name</span>
+            </a>
+          </dd>
+        </div>
         </dl>
 
       <h2 class="govuk-heading-l">Add client's previous names</h2>

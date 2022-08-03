@@ -58,7 +58,7 @@
               </dd>
             </div>
       
-      {% if checked('addressCorres','yes')%}
+
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Correspondence addresss
@@ -67,21 +67,59 @@
           2 Willsford avenue<br> Kensington <br>WE33 1DG
         </dd>
         <dd class="govuk-summary-list__actions">
+          <ul class="govuk-list">
+            <li>
           <a class="govuk-link" href="#">
             Change<span class="govuk-visually-hidden">Correspondence address</span>
           </a>
+          </li>
+          <li>
+          <a class="govuk-link" href="#">
+              Delete<span class="govuk-visually-hidden">Correspondence address</span>
+          </a>
+          </li>
+          </ul>
         </dd>
       </div>
-      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Previous addresss
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Flat 13<br>Barrington house<br>Bournmouth <br>BR4 5TH
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden">Previous address</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Previous addresss
+        </dt>
+        <dd class="govuk-summary-list__value">
+          12 Monmouth avenue<br> Southport <br>PR8 4GH
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden">Previous address</span>
+          </a>
+        </dd>
+      </div>
+
+
      
      
           </dl>
-          {% if checked('addressCorres','yes')%}
+        <!--  {% if checked('addressCorres','yes')%}
           {% else %}
           <h2 class="govuk-heading-l">Correspondence address</h2>
           <p>If your client has a correspondence address please add it</p>
           <p><a href="address-correspondence" class="">Add correspondence address</a></p>
-          {% endif %} 
+          {% endif %} -->
           <h2 class="govuk-heading-l">Add client's previous addresses in the last 3 years</h2>
           <p>Previous addresses will help your client’s creditors to find their debts</p>
           <p><a href="address-prev" class="">Add previous address</a></p>

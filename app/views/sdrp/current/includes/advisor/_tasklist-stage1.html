@@ -122,7 +122,7 @@
 
 
       <li class="app-task-list__item">
-     {% if checked('adddebtcouncil','yes') or  case.task %} 
+     {% if checked('debtadded','1') or  case.task %} 
      <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
       {% else %}
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
@@ -138,7 +138,7 @@
               {% if case.task or checked('scenario1','completed') %}
            <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
            <a href="consent">Send debts to creditors to confirm</a>
-          {% elif checked('adddebtcouncil','yes') %}
+          {% elif checked('debtadded','1') %}
            <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">todo</strong>
            <a href="consent">Send debts to creditors to confirm</a>
            {% else %}
