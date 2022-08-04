@@ -11,6 +11,11 @@
 
   </h3>
 
+  {% elif checked('task','debt-removed')%}
+  <h3 class="govuk-notification-banner__heading">
+    The debt has been removed
+  </h3> 
+
   {% elif checked('task','sentMessage')%}
   <h3 class="govuk-notification-banner__heading">
     We have sent your message to the creditor

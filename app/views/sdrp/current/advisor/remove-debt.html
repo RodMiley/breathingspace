@@ -9,12 +9,14 @@ Add previous name
 
 {% if checked('debtadded','5')%}
 {% set debt = 5 %}
-{% elif checked('debtadded','3')%}
+{% elif checked('debtadded','4')%}
 {% set debt = 4 %}
-{% elif checked('debtadded','2')%}
+{% elif checked('debtadded','3')%}
 {% set debt = 3 %}
-{% elif checked('debtadded','1')%}
+{% elif checked('debtadded','2')%}
 {% set debt = 2 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 1 %}
 {% else %}
 {% set debt = 1 %}
 {% endif %}
@@ -350,6 +352,15 @@ Add previous name
         </label>
       </div>
       </div>
+
+      <div class="govuk-radios" style="display:none">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="" name="task" type="radio" value="debt-removed" checked>
+          <label class="govuk-label govuk-radios__label" for="task">
+           hidden radio
+          </label>
+        </div>
+        </div>
 
 
 
