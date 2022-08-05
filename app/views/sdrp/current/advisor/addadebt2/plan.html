@@ -1,0 +1,240 @@
+
+{% extends "../../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for Sarah Philips
+{% endblock %}
+
+
+{% block content %}
+{% include  "../../includes/advisor/_global-nav.html" %} 
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+   {% if case.task and data['budgetupdated']%}
+   {% set budget = budgetupdated %}
+   {% else %}
+   {% set budget = 200 %}
+   {% endif %}
+
+   {% set surplus = budget %}
+    {% set fees = budget / 100 * 10 %}
+   {% set surplus_fees = budget / 100 * 90 %}
+  {% set priority = surplus_fees / 100  * 30 %}
+   {% set nonpriority = surplus_fees / 100 * 70 %}
+
+<!-- debt values  -->
+
+{% set debtA = 2977 %}
+{% set debtB = 825  %}
+{% set debtC = 1146 %}
+{% if checked('task','confirmDisc')%}
+{% set debtD = 6361 %}
+{% else %}
+{% set debtD = 6061 %}
+{% endif %}
+{% set debtE = 1291 %}
+
+
+{% set totDebt = debtA + debtB + debtC + debtD + debtE%}
+
+{% set priorityDebt = debtA + debtB %}
+
+{% set debtApercent = totDebt / debtA %}
+{% set debtAPriorityPercent = priorityDebt / debtA %}
+{% set debtArepayment = nonpriority / debtApercent + priority / debtAPriorityPercent %}
+
+
+{% set debtBpercent = totDebt / debtB %}
+{% set debtBPriorityPercent = priorityDebt / debtB %}
+{% set debtBrepayment = nonpriority / debtBpercent + priority / debtBPriorityPercent %}
+
+{% set debtCpercent = totDebt / debtC %}
+{% set debtCrepayment = nonpriority / debtCpercent%}
+
+{% set debtDpercent = totDebt / debtD %}
+{% set debtDrepayment = nonpriority / debtDpercent%}
+
+{% set debtEpercent = totDebt / debtE %}
+{% set debtErepayment = nonpriority / debtEpercent  %}
+
+{% set lengthOfPlan = totDebt / budget %}
+{% set payOffPriorityDebts = priorityDebt / priority %}
+
+
+
+
+<!-- Surplus:{{ surplus }}<br>
+Fees: {{ fees }}<br>
+Total: {{ surplus_fees }}<br>
+Priority: {{ priority }}<br>
+Non priority: {{ nonpriority }}<br>
+Debt A: {{ debtA}}<br>
+Debt B:{{ debtB}}<br>
+Debt C:{{ debtC}}<br>
+Debt D{{ debtD}}<br>
+Debt E:{{ debtE}}<br>
+Total debts:{{ totDebt }}<br>
+Total Priority debt owed:{{ priorityDebt }}<br>
+Length of plan:{{ lengthOfPlan }}<br>
+Pay off priority debts:{{ payOffPriorityDebts }}<br> -->
+
+<!--{% if data['budget'] %}
+Debt A monthly payment{{ ( debtArepayment|float ).toFixed(2)}}<br>
+Debt B monthly payment{{ ( debtBrepayment|float ).toFixed(2)}}<br>
+Debt C monthly payment{{ ( debtCrepayment|float ).toFixed(2)}}<br>
+Debt D monthly payment{{ ( debtDrepayment|float ).toFixed(2)}}<br>
+Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
+{% endif %} -->
+
+
+
+
+{% include  "../../includes/advisor/_confirmation-messages.html" %} 
+{% include  "../../includes/advisor/_client_name_reference.html" %} 
+
+<div class="govuk-grid-row"> 
+<div class="govuk-grid-column-two-thirds">
+{% if case.status =='Confirmed plan' %}  
+<ul class="govuk-list stages">
+  <li>1. Confirm debts</li>
+  <li>2. Draft plan
+  </li>
+  <li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'></span>3. </span> Confirmed plan</strong></li>
+  </ul>
+{% elif case.task =='Draft plans nearing deadline' or case.task =='Creditor objects to plan' %}
+<ul class="govuk-list stages">
+<li>1. Confirm debts</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Draft plan
+</strong></li>
+<li>3. Confirmed plan</li>
+</ul>
+  <p>Once you send the plan to creditors, it becomes a proposed plan. At this point protections begin for your client.  </p>
+{% else %}
+<ul class="govuk-list stages">
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Confirm debts</strong></li>
+<li>2. Draft plan
+</li>
+<li>3. Confirmed plan</li>
+</ul>
+
+
+{% endif %}
+</div>
+<div class="govuk-grid-column-one-third">
+  {% if case.status =='final' %}
+  <a href="update-plan" class="govuk-button float-right govuk-!-margin-top-2 govuk-button--secondary">Update the plan</a>
+  {% endif %}
+</div>
+</div>
+ <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
+
+
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+ <ul class="govuk-tabs__list">
+  <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#tasks">
+        Tasks
+      </a>
+    </li> 
+
+
+  {% if case.status =='intention' or case.status =='provisional' or case.status =='final' %}
+   <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#messages">
+        Messages
+      </a>
+    </li> 
+  {% else %}   
+  {% endif %}
+ 
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#debts">
+        Debts
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#clientDetails">
+       Client details
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#plan">
+        {% if case.status==="Confirmed plan" %}
+        Plan    
+        {% else %}
+        Draft plan
+        {% endif %}
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-tabs__panel" id="tasks">
+  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Tasks</h2>
+   {% if case.task =='Draft plans nearing deadline' or case.status =='Creditor objection' %} 
+
+    <p>Please complete each task listed:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Add household information</li>
+    <li>Add monthly income</li>
+    <li>Add monthly outgoings</li>
+    <li>Send the draft plan</li>
+    </ul>
+   {% elif case.status ==='Confirmed plan' %} 
+   <p>Please complete each task listed:</p>
+   {% else %}
+      <p>Please complete each task listed:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Add all your clients debts</li>
+    <li>Send the debts to the creditor to confirm or update the debt amount</li>
+    </ul>
+    {% endif %}
+   {% include  "../../includes/advisor/_tasklist-stage1.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="messages">
+    <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Messages</h2>
+    {% include  "../../includes/advisor/_messages.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="debts">
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Debts</h2>
+{% include  "../../includes/advisor/_debts.html" %} 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
+  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Client details</h2>
+{% include  "../../includes/advisor/_client_details.html" %} 
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan"> 
+{% if case.status==="Confirmed plan" %}
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-7">Plan</h2>
+{% else %}
+<h2 class="govuk-heading-xl govuk-!-margin-bottom-7">Draft plan</h2>
+{% endif %}
+
+{% include  "../../includes/advisor/_plan-detail.html" %} 
+  </div>
+</div>
+
+  <form class="form" action="scenarios" method="post">
+{% include  "../../includes/advisor/_hide-confirmation.html" %} 
+
+<button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+<div class="govuk-radios__item govuk-visually-hidden">
+  <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="resettask" checked>
+  <label class="govuk-label govuk-radios__label" for="task-2">
+  reset task
+  </label>
+</div>
+</form>
+
+
+{% block page_scripts %}
+<script>
+</script>
+{% endblock %}
+
+{% endblock %}
+

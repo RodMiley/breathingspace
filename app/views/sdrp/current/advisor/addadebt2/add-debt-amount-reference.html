@@ -1,0 +1,151 @@
+
+{% extends "../../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Add a debt amount and reference
+
+{% endblock %}
+
+{% block content %}
+
+
+{% if checked('debtadded','4')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan#debts" method="post">
+    <div class="govuk-grid-column-full">
+      {% include  "../../includes/advisor/_client_name_reference.html" %} 
+<a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+</div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds"> 
+      <h1 class="govuk-heading-xl">
+  Add debt type, amount and reference
+      </h1>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend">
+            <label class="govuk-fieldset__heading">
+              Select a debt category
+            </label>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="set-debt-priority{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Priority">
+              <label class="govuk-label govuk-radios__label" for="set-debt-priority">
+                Priority
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint"> 
+                Priority debts are:   
+                <ul class="govuk-list govuk-list--bullet govuk-hint">
+                  <li>Rent arrears</li>
+                  <li>Mortgage arrears</li>
+                  <li>Any debt (qualifying) owed to a local authority or to the Crown</li>
+                  <li>Arrears of gas and/or electric</li>
+                  <li>Arrears on a HP agreement</li>
+                  <li>Arrears for an internet provider and/or mobile phone provider</li>
+                </ul>
+                              
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="set-debt-priority-2{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Non-priority">
+              <label class="govuk-label govuk-radios__label" for="set-debt-priority-2">
+                Non-priority
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>      
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="debttype">
+    Debt type (optional)
+  </label>
+  <input class="govuk-input govuk-input--width-10" id="debttype{{ debt }}" name="debttype{{ debt }}" type="text" spellcheck="false">
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="debtamount">
+   Estimated debt amount
+  </label>
+   <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+  <input class="govuk-input govuk-input--width-10" id="debtamount{{ debt }}" name="debtamount{{ debt }}" type="text" spellcheck="false" 
+
+{% if checked('debtadded','4')%}
+value="{{ debtamount5 }}"
+{% elif checked('debtadded','3')%}
+value="{{ debtamount4 }}"
+{% elif checked('debtadded','2')%}
+value="{{ debtamount3 }}"
+{% elif checked('debtadded','1')%}
+value="{{ debtamount2 }}"
+{% else %}
+value="{{ debtamount1 }}"
+{% endif %}
+>
+</div>
+</div>
+
+ <div class="govuk-form-group">
+  <label class="govuk-label" for="debtreference">
+    Reference (optional)
+  </label>
+  <span id="priority-debt-hint" class="govuk-hint">
+      This is the creditor’s reference for the debt
+</span>
+  <input class="govuk-input govuk-input--width-10" id="debtreference{{ debt }}" name="debtreference{{ debt }}" type="text" spellcheck="false" 
+  {% if checked('debtadded','4')%}
+  value="{{ debtreference5 }}"
+{% elif checked('debtadded','3')%}
+value="{{ debtreference4 }}"
+{% elif checked('debtadded','2')%}
+value="{{ debtreference3 }}"
+{% elif checked('debtadded','1')%}
+  value="{{ debtreference2 }}"
+{% else %}
+value="{{ debtreference1 }}"
+{% endif %}
+>
+</div>
+
+     <div class="govuk-radios" style="display:none">
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debtadded" type="radio" value="{{ debt }}" checked>
+        <label class="govuk-label govuk-radios__label" for="debt">
+         hidden radio
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt{{debt}}" type="radio" value="completed" checked>
+        <label class="govuk-label govuk-radios__label" for="debt">
+         hidden radio
+        </label>
+      </div>
+      </div>
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

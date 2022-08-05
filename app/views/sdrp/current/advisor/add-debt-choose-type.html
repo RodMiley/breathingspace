@@ -28,7 +28,7 @@
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <div class="govuk-form-group">
-      {% if checked('set-debt-priority' + debt ,'Priority or secured debt') %}
+      {% if checked('set-debt-priority' + debt ,'Priority') %}
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
@@ -60,7 +60,7 @@
     </select>
   </div>
         </fieldset>
-      {% elif checked('set-debt-priority' + debt ,'Non-priority or unsecured debt') %}
+      {% elif checked('set-debt-priority' + debt ,'Non-priority') %}
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
