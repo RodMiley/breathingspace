@@ -122,7 +122,12 @@
 
 
       <li class="app-task-list__item">
-     {% if checked('debtadded','1') or  case.task %} 
+     {% if checked('debtadded','1') or 
+           checked('debtadded','2') or
+           checked('debtadded','3') or
+           checked('debtadded','4') or
+           checked('debtadded','5') or
+           case.task %} 
      <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
       {% else %}
         <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
