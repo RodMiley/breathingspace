@@ -1,0 +1,65 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Enter the creditor's name you have sold the debt to
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="update-debts" method="post">
+    <div class="govuk-grid-column-full">
+        {% include  "../includes/creditor/_client_name_reference.html" %} 
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+    </div>
+    </div>
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-form-group">
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--l" for="creditor">Who have you sold the debt to?
+</label></h1> 
+<span id="changed-name-hint" class="govuk-hint">
+  Type the organisation’s name and select them from the list
+    </span> 
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+<p>If the organisation doesn’t appear on the list, you can <a href="add-debt-adhock-creditor">enter their details manually</a></p>
+
+        <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="solddebt1" type="radio" value="yes~sold-debt-confirm?reference={{creditorcase.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+    
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'soldDebt'
+      var name ='soldDebt'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+
+    </script>
+
+{% endblock %}

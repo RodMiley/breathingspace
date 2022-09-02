@@ -1,0 +1,42 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+ Add creditor address
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      </div>
+  <form class="form" action="add-debt-adhock-choose-address" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Add creditor address
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body">{{ data['adhock-creditor-name'] | default('Joes Garage') }}  <a href="add-debt-adhock-creditor">Change</a></p>
+
+
+
+ <div class="govuk-form-group">
+
+    <label class="govuk-label govuk-!-font-weight-bold" for="adhock-creditor-name-postcode">
+     Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="adhock-creditor-name-postcode" name="adhock-creditor-name-postcode" type="text"  value="{{ data['adhock-creditor-name-postcode'] }}">
+  </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+   Find address
+</button>
+<p class="govuk-body"><a href="add-debt-adhock-creditor-manual-address.html">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

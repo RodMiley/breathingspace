@@ -1,0 +1,27 @@
+<nav id="nav"  class="secondary ">
+  <div class="navbar">
+    <ul class="navbar__list-items">
+         {% if globalnav  == 'home' %}
+      <li class="active">
+      {% else %}
+         <li>
+         {% endif %}
+        <form class="govuk-!-display-inline" action="index" method="post">
+<button  class="govuk-body govuk-link">Home</button> 
+{% include  "../advisor/_hide-confirmation.html" %}
+{% include  "../advisor/_reset-task.html" %}  
+</form>
+      </li>
+    </ul>
+         <ul class="navbar__list-items signin">
+        <li>
+            <p>Paul Smith</p>
+      </li>
+        <li>
+         <a href="orgchoice">{{ orgchoice | default('Advice uk')}}</a>
+      </li>
+  
+    
+    </ul>
+  </div>
+</nav>

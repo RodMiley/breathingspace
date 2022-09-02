@@ -1,0 +1,68 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+  <form class="form" action="" method="post">
+    <div class="govuk-grid-column-three-quarters">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Creditor has objected to the plan
+      </h1>
+      </div>
+   
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body-m ">EDF Energy Ltd have objected to the plan</p>
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">Reason for objection</h2>
+<p class="govuk-body">Information used to devise the plan is not accurate</p>
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-4">More detail</h2>
+<p class="govuk-body">Your draft plan states that your clients's combined Gas and Electric costs per month are £70, our records show that 
+  your client uses £180 worth of Gas and Elecrtric each month.
+</p>
+
+
+
+
+ 
+<div class="govuk-form-group govuk-!-margin-top-9">
+  <fieldset class="govuk-fieldset" aria-describedby="task-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+       Mark this task as complete?
+    </legend>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task" name="task" type="radio" value="objectPlan~plan?reference={{case.reference}}" {{checked('task','objectPlan')}}>
+        <label class="govuk-label govuk-radios__label" for="task">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="task-2" name="task" type="radio" value="no~plan?reference={{case.reference}}"  {{checked('task','no')}}>
+        <label class="govuk-label govuk-radios__label" for="task-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

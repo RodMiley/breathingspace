@@ -1,0 +1,101 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Select a debt category
+{% endblock %}
+
+{% block content %}
+
+
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+
+   <form class="form" action="add-debt-choose-type" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            Select a debt category
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="set-debt-priority{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Priority">
+            <label class="govuk-label govuk-radios__label" for="set-debt-priority">
+              Priority
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="set-debt-priority-2{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Non-priority">
+            <label class="govuk-label govuk-radios__label" for="set-debt-priority-2">
+              Non-priority
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="set-debt-priority-3{{ debt }}" name="set-debt-priority{{ debt }}" type="radio" value="Do not know">
+            <label class="govuk-label govuk-radios__label" for="set-debt-priority-3">
+              Do not know
+            </label>
+          </div>
+        </div>
+    
+      </fieldset>
+    </div>
+
+<button class="govuk-button" data-module="govuk-button">
+ Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+  {% if checked('adddebtcouncil','yes')%} 
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor2'
+      var name ='creditor2' 
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+      </script>
+   {% else %}
+      <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor'
+      var name ='creditor' 
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+ </script>
+   {% endif %}
+
+   
+
+{% endblock %}

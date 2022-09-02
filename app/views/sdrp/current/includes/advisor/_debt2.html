@@ -1,36 +1,35 @@
-{% if checked('debt2','completed') %}
+{% if checked('debt2','completed') or case.status ==='intention-bs' %}
 <dl class="govuk-summary-list govuk-!-margin-bottom-2">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['creditor2'] }}
+      {{ data['creditor2'] | default("Halifax creditcards only") }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("1", "add-debt-choose-creditor", "creditor") }}
+      {{ changeform("0", "add-debt-choose-creditor", "creditor") }}
     </dd>
   </div>
-  <div class="govuk-summary-list__row">
-  <dt class="govuk-summary-list__key">
-    Category
-  </dt>
-  <dd class="govuk-summary-list__value">
-    {{ data['set-debt-priority2' ] }}
-  </dd>
-  <dd class="govuk-summary-list__actions">
-    {{ changeform("1", "add-debt-set-priority", "catergory") }}
-  </dd>
-</div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Debt type
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debttype2'] }}
+     Creditcard
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("1", "add-debt-choose-type", "debt type") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority2' ] | default("Not set")}}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-details-creditcard#set-debt-priority1", "catergory") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -41,7 +40,7 @@
       £{{ data['debtamount2'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("1", "add-debt-amount-reference#debtamount", "amount") }}
+      {{ changeform("0", "add-debt-details-creditcard#debtamount2", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -52,7 +51,7 @@
       {{ data['debtreference2'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("1", "add-debt-amount-reference#debtreference", "reference") }}
+      {{ changeform("0", "add-debt-details-creditcard#debtreference2", "reference") }}
     </dd>
   </div>
 </dl>

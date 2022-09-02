@@ -1,0 +1,35 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form class="form" action="address-choice-prev" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Add your client's previous address?
+      </h1>
+
+ <div class="govuk-form-group">
+
+    <label class="govuk-label govuk-!-font-weight-bold" for="addressPostcodePrev">
+      Postcode
+    </label>
+       <input class="govuk-input govuk-input--width-10" id="addressPostcodePrev" name="addressPostcodePrev" type="text"  value="{{ addressPostcodePrev }}">
+  </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Find address
+</button>
+<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+{% endblock %}

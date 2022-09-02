@@ -1,0 +1,295 @@
+<p>Add as much information about the debt as you can.</p>
+<p>Be accurate and only give estimates if exact figures are not available.</p>
+<p>Creditors can update incorrect amounts when they receive the proposed plan.</p>
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-link govuk-body">Add a debt</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+{% if case.task %}
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="url" type="radio" value="go~not-testing?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+ {% endif %}     
+</form>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h3 class="govuk-heading-l">Priority debts</h3>
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+<h4 class="govuk-heading-s">Creditor has provided updated debt details, <a href="">view updated debt details</a></h4>
+{{ govukSummaryList({
+   classes: 'govuk-!-margin-bottom-2',
+  rows: [
+    {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "HMRC"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Loan"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: "£10000"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "Amount"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "as1234567890"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "reference"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+<p class="govuk-!-margin-bottom-7"><a href="" class="govuk-body">Remove this debt</a></p>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<div class="govuk-inset-text">
+<h4 class="govuk-heading-s govuk-!-margin-bottom-2"> <strong class="govuk-tag govuk-tag--blue">
+  Creditor update
+</strong> <a href="" class="govuk-!-margin-left-1"> view the updated debt details</a></h4>
+{{ govukSummaryList({
+   classes: '',
+  rows: [
+    {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "HMRC"
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Loan"
+      }
+    },
+    {
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: "£10000"
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "as1234567890"
+      }
+    }
+  ]
+}) }}
+</div>
+<h3 class="govuk-heading-l govuk-!-margin-bottom-3">Barclays</h3>
+<p><a href="" class="govuk-body">Change creditor</a></p>
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+  rows: [
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Loan"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: "£10000"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "Amount"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "as1234567890"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "reference"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: 'Non priority'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "status"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<p><a href="" class="govuk-body">Remove this debt</a></p>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-2',
+  rows: [
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Not entered"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: "£10000"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "Amount"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "as1234567890"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "reference"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: 'Non priority'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "status"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<p><a href="" class="govuk-body">Remove this debt</a></p>

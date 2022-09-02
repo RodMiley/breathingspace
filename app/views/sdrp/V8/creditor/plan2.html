@@ -1,0 +1,151 @@
+
+{% extends "../layout-sdrp.html" %}
+{% set globalnav = "dept repayment plan" %}
+
+{% block pageTitle %}
+Debt repayment plan for Sarah Philips
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/creditor/_global-nav.html" %} 
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+
+
+{% include  "../includes/creditor/_confirmation-messages.html" %} 
+{% include  "../includes/creditor/_client_name_reference.html" %} 
+</div>
+
+<div class="govuk-grid-row"> 
+<div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Plan</h1>
+  <p class="govuk-!-margin-bottom-3">This intended plan was submitted on  <strong> {% if creditorcase.status == 'Draft plan' %}{{ 'Do MMMM YYYY' | baseDateAdd(-20) }}{% else %}{{ 'Do MMMM YYYY' | baseDateAdd(-1) }} {% endif %}</strong>, you have <strong>20 days</strong> to tell the debt adviser if any of the information is incorrect.</p>
+  <hr class="govuk-section-break govuk-!-margin-top-2 govuk-!-margin-bottom-3  govuk-section-break--visible" />
+{% if creditorcase.status ==='Draft plan' %}
+<ul class="govuk-list stages">
+<li>1. Confirm debts</li>
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>2. </span>Review draft plan
+</strong></li>
+<li>4. Active plan</li>
+</ul>
+{% else %}
+<ul class="govuk-list stages">
+<li><span class="govuk-!-margin-right-2">Current step:</span><br><strong> <span class='number'>1. </span>Confirm debts - Day 1</strong></li>
+<li>2. Review draft plan
+</li>
+<li>3. Active plan</li>
+</ul>
+{% endif %}
+</div>
+</div>
+ <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4" />
+    <!-- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+ <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      You have 14 days to review the plan
+      <a class="govuk-notification-banner__link" href="#">record your decision</a>.
+    </p>
+  </div> 
+</div>-->
+<p>This debt repayment plan is being created by AdviceUK.</p>
+
+<h2 class="govuk-heading-l">Tasks</h2>
+
+{% include  "../includes/creditor/_tasklist.html" %} 
+
+
+<div class="govuk-accordion govuk-!-margin-top-9" data-module="govuk-accordion" id="accordion-default">
+ <!-- <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+         Tasks
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+      {% include  "../includes/creditor/_tasklist.html" %} 
+    </div>
+  </div> -->
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+         Client details
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+      {% include  "../includes/creditor/_client_details.html" %} 
+    </div>
+  </div>
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+        Your debts in the plan
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+      <p>Add any debts that are not listed on this page.
+      </p>
+      <p><a href="not-testing?reference={{creditorcase.reference}}">Add a debt</a></p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    
+    
+       {% include  "../includes/creditor/_debts.html" %} 
+    </div>
+  </div>
+<div class="govuk-accordion__section ">
+  <div class="govuk-accordion__section-header">
+    <h2 class="govuk-accordion__section-heading">
+      <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+      Income and expendature
+      </span>
+    </h2>
+  </div>
+  <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+    <p class='govuk-body'>This is the content for Know your audience.</p>
+  </div>
+</div>
+<div class="govuk-accordion__section ">
+  <div class="govuk-accordion__section-header">
+    <h2 class="govuk-accordion__section-heading">
+      <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+        Messages to debt advisor
+      </span>
+    </h2>
+  </div>
+  <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+    {% include  "../includes/creditor/_ma_details.html" %} 
+    {% include  "../includes/creditor/_messages.html" %} 
+  </div>
+</div>
+
+
+
+</form>
+
+
+<form class="form" action="scenarios" method="post">
+  {% include  "../includes/advisor/_hide-confirmation.html" %} 
+  
+  <button href="scenarios" class="timemachine-link govuk-body">Back to scenarios</button>
+  
+  </form>
+
+{% block page_scripts %}
+<script>
+</script>
+{% endblock %}
+
+{% endblock %}
+

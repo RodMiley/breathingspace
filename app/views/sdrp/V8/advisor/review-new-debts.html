@@ -1,0 +1,153 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Review new debts added by creditor
+      </h1>
+      <h2 class="govuk-heading-m">Debt details</h2>         
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+       Creditor
+          </dt>
+          <dd class="govuk-summary-list__value">
+          	Lowell
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+       Debt type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Catologue
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+       Amount owed
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £375
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+        Reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            L0-3456-D-456
+          </dd>
+        </div>
+      </dl>
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
+        <fieldset class="govuk-fieldset" aria-describedby="debt1-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to include this debt in the plan?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt1" name="debt1" type="radio" value="yes" {{ checked('debt1','yes') }}>
+              <label class="govuk-label govuk-radios__label" for="debt1">
+                Yes 
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt1-2" name="debt1" type="radio" value="no" {{ checked('debt1','no') }}>
+              <label class="govuk-label govuk-radios__label" for="debt1-2">
+               No
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
+      <h2 class="govuk-heading-m">Debt details</h2>  
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+       Creditor
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Lowell
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+       Debt type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Mobile phone
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row ">
+          <dt class="govuk-summary-list__key">
+       Amount owed
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £580
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+        Reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            L0-6785-M-346
+          </dd>
+        </div>
+      </dl>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="debt1-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you want to include this debt in the plan?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt2" name="debt2" type="radio" value="yes" {{ checked('debt2','yes')}}>
+              <label class="govuk-label govuk-radios__label" for="debt2">
+                Yes 
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="debt2-2" name="debt2" type="radio" value="no"  {{ checked('debt2','no') }}>
+              <label class="govuk-label govuk-radios__label" for="debt2-2">
+               No
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
+      <div class="govuk-radios" style="display:none">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="" name="client" type="radio" value="yes~review-new-debts-confirm?reference={{case.reference}}" checked>
+          <label class="govuk-label govuk-radios__label" for="councilDebtType">
+           hidden radio for hacky prototype
+          </label>
+        </div>
+        </div>
+
+  </fieldset>
+  <button class="govuk-button">Save and continue</button>
+</div>
+
+    </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

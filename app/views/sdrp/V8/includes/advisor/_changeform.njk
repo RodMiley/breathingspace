@@ -1,0 +1,13 @@
+{% macro changeform(debt, link, linktext) %}
+<form class="govuk-!-margin-top-0" action="{{link}}" method="post">
+  <div class="govuk-visually-hidden">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="" name="debtadded" type="radio" value="{{ debt }}" checked>
+    <label class="govuk-label govuk-radios__label" for="debt">
+     hidden radio
+    </label>
+  </div>
+</div>
+<button class="govuk-link govuk-body">Change <span class="govuk-visually-hidden">{{ linktext }}</span></button>
+</form>
+{% endmacro %}

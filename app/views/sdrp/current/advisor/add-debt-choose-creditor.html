@@ -25,17 +25,24 @@
    <div class="govuk-grid-column-full">
   {% include  "../includes/advisor/_client_name_reference.html" %} 
   </div>
-   <form class="form" action="add-debt-set-priority" method="post">
+  {% if checked('debtadded','2')%}
+  <form class="form" action="add-debt-details" method="post">
+  {% elif checked('debtadded','1')%}
+  <form class="form" action="add-debt-details-creditcard" method="post">
+  {% else %}
+  <form class="form" action="add-debt-details-council" method="post">
+  {% endif %}
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
  
   <div class="govuk-form-group">
-       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--xl" for="creditor">Add a creditor
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--xl" for="creditor">Add a creditor{{debt}}
 </label></h1>   <span id="changed-name-hint" class="govuk-hint">
    Type the creditor’s name and select them from the list. 
     </span>
       <div id="tt-default" class="autocomplete-wrapper"></div>
   </div>
+  {{ data['debt']}}
 <p>If the creditor doesn’t appear on the list, you can 
 <a href="add-debt-adhock-creditor">enter their details manually</a></p>
 
@@ -50,7 +57,7 @@
    <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
    <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
   {% if checked('adddebtcouncil','yes')%} 
-        <script type="text/javascript">
+    <script type="text/javascript">
       var element = document.querySelector('#tt-default')
       var id = 'creditor2'
       var name ='creditor2' 

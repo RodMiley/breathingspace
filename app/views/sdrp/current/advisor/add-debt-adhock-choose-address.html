@@ -1,0 +1,63 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Choose creditor address
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      </div>
+  <form class="form" action="add-debt-details-adhock" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Choose creditor address
+      </h1>
+      <h2 class="govuk-heading-m">Creditor</h2>
+      <p class="govuk-body">{{ data['adhock-creditor-name'] | default('Joes Garage') }}  <a href="add-debt-adhock-creditor">Change</a></p>
+
+
+      <h2 class="govuk-heading-m">Postcode</h2>
+      <p class="govuk-body">{{ data['adhock-creditor-name-postcode'] | default('WM23 2JH')}} <a href="add-debt-adhock-add-postcode">Change</a></p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Choose address
+  </label>
+  <select class="govuk-select" id="sort" name="sortcreditor">
+    <option value="published">6 address's found</option>
+    <option value="22 Hanworth Road">22 Hanworth Road, London , {{ data['adhock-creditor-name-postcode'] }}</option>
+    <option value="25 Hanworth Road">23 Hanworth Road, London , {{ data['adhock-creditor-name-postcode'] }}</option>
+    <option value="27 Hanworth Road">24 Hanworth Road, London , {{ data['adhock-creditor-name-postcode'] }}</option>
+       <option value="29 Hanworth Road">25 Hanworth Road, London ,{{ data['adhock-creditor-name-postcode'] }}</option>
+    <option value="31 Hanworth Road">26 Hanworth Road, London , {{ data['adhock-creditor-name-postcode'] }}</option>
+    <option value="33 Hanworth Road">27 Hanworth Road, London , {{ data['adhock-creditor-name-postcode'] }}</option>
+  </select>
+</div>
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt4" type="radio" value="debt4" checked>
+        <label class="govuk-label govuk-radios__label" for="debt4">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+   Save and continue
+</button>
+<p class="govuk-body"><a href="add-debt-adhock-creditor-manual-address.html">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

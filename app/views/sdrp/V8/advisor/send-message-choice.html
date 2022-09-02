@@ -1,0 +1,70 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+{% include  "../includes/advisor/_client_name_reference.html" %} 
+  <form class="form" action="message" method="post">
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+  
+   <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      idPrefix: "send-message-creditor",
+      name: "send-message-creditor",
+      fieldset: {
+        legend: {
+          text: "Choose the creditor you want to send the message to",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all creditors that apply"
+      },
+      items: [
+        {
+          value: "Westminister City Council",
+          text: "Westminister City Council"
+        },
+        {
+          value: "EDF Energy Ltd",
+          text: "EDF Energy Ltd"
+        },
+        {
+          value: "Yorkshire Water Services Ltd",
+          text: "Yorkshire Water Services Ltd"
+        },
+        {
+          value: "Halifax credit card",
+          text: "Halifax credit card"
+        },
+        {
+          value: "Next retail plc",
+          text: "Next retail plc"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "All creditors",
+          text: "All creditors",
+          behaviour: "exclusive"
+        }
+      ]
+    }) }}
+
+
+
+<button class="govuk-button">Continue</button>
+
+</div></div>
+</form>
+{% endblock %}

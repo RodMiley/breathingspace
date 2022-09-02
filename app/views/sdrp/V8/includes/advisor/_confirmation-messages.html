@@ -1,0 +1,69 @@
+{% if checked('task','notcomplete') %}
+{% elif checked('taskcompleted','show') or checked('task','confirmedPlan') or checked('task','objectPlan')%}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+<span class="govuk-!-margin-top-5 govuk-!-display-block"></span>
+
+{% set html %}
+{% if case.task =='Draft plans nearing deadline' and checked('task','confirmProp') %}
+ <h3 class="govuk-notification-banner__heading">
+    You have sent the plan to your client’s creditors. Creditors now have 14 days to object to the plan or raise any discrepancies.
+
+  </h3>
+
+  {% elif checked('task','debt-removed')%}
+  <h3 class="govuk-notification-banner__heading">
+    The debt has been removed
+  </h3> 
+
+  {% elif checked('task','sentMessage')%}
+  <h3 class="govuk-notification-banner__heading">
+    We have sent your message to the creditor
+  </h3> 
+{% elif checked('task','newDebtAdded')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added a new debt
+  </h3>
+{% elif checked('task','confirmSoldDebt')%}  
+<h3 class="govuk-notification-banner__heading">
+  You have completed your task
+</h3>
+<p>
+  We have sent a notification to the new creditor.
+</p>
+{% elif checked('task','confirmDisc') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>The updated debt details have been reviewed and accepted.</p>
+  {% elif checked('task','addeddebts') %}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>You have added new debts to this plan.</p>  
+{% elif checked('task','debtUpdated') or checked('task','complete') or checked('task','confirmedPlan') or checked('task','objectPlan')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  {% elif checked('task','replied') %}
+     <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
+  <p>
+  We have sent your reply to the creditor
+  </p>
+    {% elif checked('task','addname')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have added another name
+  </h3>
+  {% endif%}
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% else %}
+{% endif %}

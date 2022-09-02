@@ -1,0 +1,116 @@
+
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+<div class="govuk-grid-column-full">
+  {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-l">
+Incorrect debt details
+      </h1>
+
+{% include  "../includes/creditor/_debt_details.html" %} 
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Incorrect debt details and correct information</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-third">Incorrect debt details</th>
+      <th scope="col" class="govuk-table__header">Correct information</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% if checked('incorrect-debt-details','Name not spelt correctly')%}  
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Name not spelt correctly</th>
+      <td class="govuk-table__cell">
+         {% if data['updated-name'] %}
+      {{ data['updated-name']}}
+         {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr> 
+    {% endif %}
+      {% if checked('incorrect-debt-details','Different surname')%}  
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Different surname</th>
+      <td class="govuk-table__cell">
+         {% if data['updated-surname'] %}
+      {{ data['updated-surname']}}
+         {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr>
+     {% endif %}
+    {% if checked('incorrect-debt-details','Different address')%}  
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Different address</th>
+      <td class="govuk-table__cell">
+      {% if data['updated-address'] %}
+      {{ data['updated-address']}}
+      {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr>
+     {% endif %}
+   {% if checked('incorrect-debt-details','Wrong postcode')%}  
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Wrong postcode</th>
+      <td class="govuk-table__cell">
+         {% if data['updated-postcode'] %}
+      {{ data['updated-postcode']}}
+         {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr>
+     {% endif %}
+    {% if checked('incorrect-debt-details','Wrong date of birth')%}  
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Wrong date of birth</th>
+      <td class="govuk-table__cell">
+         {% if data['updated-dob'] %}
+      {{ data['updated-dob']}}
+         {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr>
+     {% endif %}
+    {% if checked('incorrect-debt-details','Other')%}  
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Other debt details that are incorrect</th>
+      <td class="govuk-table__cell">
+         {% if data['updated-other'] %}
+      {{ data['updated-other']}}
+         {% else %}
+       Not provided
+      {% endif %}
+      </td>
+    </tr>
+     {% endif %}
+  </tbody>
+</table>
+  {% include  "../includes/creditor/_datetimestamp.html" %} 
+
+    
+    </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+

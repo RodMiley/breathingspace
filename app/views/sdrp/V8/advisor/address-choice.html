@@ -1,0 +1,45 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form class="form" action="address-history" method="post">
+ 
+    <div class="govuk-grid-column-two-thirds">
+           <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+      <h1 class="govuk-heading-xl">
+       Choose your client's current address
+      </h1>
+
+
+
+      <h2 class="govuk-heading-l">Postcode</h2>
+      <p class="govuk-body">{{ addresspostcode | default("W1H 1JS")}}<a href="address">Change</a></p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Choose address
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published">3 addresses found</option>
+    <option value="44 Crawford Street">44 Crawford St, Marylebone, London, {{ addresspostcode  | default("W1H 1JS") }}</option>
+    <option value="47 Crawford Street">47 Crawford St, Marylebone, London, {{ addresspostcode  | default("W1H 1JS")}}</option>
+    <option value="49 Crawford Street">49 Crawford St, Marylebone, London, {{ addresspostcode | default("W1H 1JS") }}</option>
+  </select>
+</div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
+    </div>
+    </form>
+</div>
+{% endblock %}

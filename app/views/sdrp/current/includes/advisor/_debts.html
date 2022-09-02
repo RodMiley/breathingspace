@@ -1,4 +1,16 @@
 
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
 
 <p>Add as much information about the debt as you can.</p>
 <p>Be accurate and only give estimates if exact figures are not available.</p>
@@ -6,7 +18,7 @@
 <form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
 <button  class="govuk-link govuk-body">Add a debt</button> 
 {% include  "../advisor/_hide-confirmation.html" %} 
-{% if case.task %}
+<!--{% if case.task %}
  <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="" name="url" type="radio" value="go~not-testing?reference={{case.reference}}" checked>
@@ -14,7 +26,7 @@
          hidden radio
         </label>
       </div> 
- {% endif %}     
+ {% endif %} -->    
 </form>
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 {% from "../advisor/_changeform.njk" import changeform %}
@@ -24,7 +36,8 @@
       checked('set-debt-priority2','Priority') or
       checked('set-debt-priority3','Priority') or
       checked('set-debt-priority4','Priority') or
-      checked('set-debt-priority5','Priority')
+      checked('set-debt-priority5','Priority') or
+      case.status ==='intention-bs' 
 %} 
 <h3 class="govuk-heading-l">Priority debts</h3>
 
@@ -47,9 +60,12 @@
 {% include  "../advisor/_debt2.html" %}
 {% endif %}
 
-{% if checked('set-debt-priority1','Priority') %}
+
+{% if checked('set-debt-priority1','Priority') or case.status ==='intention-bs'  %}
 {% include  "../advisor/_debt1.html" %}
 {% endif %}
+
+
 {% if checked('set-debt-priority5','Non-priority') or checked('set-debt-priority5','Do not know') or
       checked('set-debt-priority4','Non-priority') or checked('set-debt-priority4','Do not know') or
       checked('set-debt-priority3','Non-priority') or checked('set-debt-priority3','Do not know') or

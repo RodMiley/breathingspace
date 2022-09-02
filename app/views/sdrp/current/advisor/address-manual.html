@@ -1,0 +1,24 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="address-history" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+
+     {% include  "../includes/advisor/_address-manual-form-fields.html" %} 
+
+<button class="govuk-button" data-module="govuk-button">
+   Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

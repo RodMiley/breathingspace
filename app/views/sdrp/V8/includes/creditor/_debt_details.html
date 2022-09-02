@@ -1,0 +1,53 @@
+
+<dl class="govuk-summary-list  govuk-summary-list--no-border govuk-!-margin-bottom-9">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Debt type
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {% include "../creditor/_defaultDeptType.html" %}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Amount owed
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {% if checked('debt1','no')%} Original: {% endif %}
+        
+        £1179</div>
+      <div class="govuk-grid-column-one-half">
+        {% if checked('debt1','no')%}
+        Updated: £{{ updateDebtAmount | default("1250") }}
+        {% endif %}
+      </div> 
+      </div> 
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Reference
+    </dt>
+    <dd class="govuk-summary-list__value"> 
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
+            {% elif data['updateDebtReference'] !== 'SC3456789' %}
+            Original:
+            {% endif %}
+            SC3456789
+            </div>
+            <div class="govuk-grid-column-one-half">
+              {% if creditorcase.status === "New message" or creditorcase.status === "Draft plan" %}
+              {% elif creditorcase.status === "Confirm debts" and data['updateDebtReference'] == 'SC3456787' %}
+              Updated: {{updateDebtReference }} 
+              {% elif creditorcase.status === "Confirm debts" %}
+              {% else %}
+              {% endif %}
+            </div>  
+      </div>
+    </dd>
+  </div>
+</dl>

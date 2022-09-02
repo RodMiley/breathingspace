@@ -9,7 +9,10 @@
 
 
   <div class="govuk-grid-row">
-  <form class="form" action="names" method="post">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      </div>
+  <form class="form" action="add-debt-adhock-add-postcode" method="post">
 
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
@@ -18,14 +21,15 @@
 {{ govukInput({
   label: {
     text: "Enter the creditor's name",
-    classes: "govuk-label--l",
+    classes: "govuk-label--xl",
     isPageHeading: true
   },
   hint: {
     text: "This can be the name of an organisation or an individual. For example, ABC Bank Ltd or Joe Johnson"
   },
   id: "adhock-creditor-name",
-  name: "adhock-creditor-name"
+  name: "adhock-creditor-name",
+  value: data['adhock-creditor-name']
 }) }}
 
 <button class="govuk-button" data-module="govuk-button">

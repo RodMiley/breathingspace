@@ -1,0 +1,64 @@
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+ Hide address
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+  <form class="form" action="address-history" method="post">
+    <div class="govuk-grid-column-two-thirds">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+       <h1 class="govuk-heading-xl">
+      
+      Hide address
+      </h1>
+
+           <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+   If you hide your client’s address from their creditors, it might be be more difficult for creditors to find the debt(s). This could lead to a delay in creditors applying any Breathing Space protections.
+  </strong>
+</div>
+
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="parv-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+   Have you agreed with your client to hide their current address from their creditors?
+      </h1>
+    </legend>
+   <span id="parv-hint" class="govuk-hint">
+      For example, your client is at risk of domestic violence
+    </span>
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="parv" name="parv" type="radio" value="yes~address-history" aria-describedby="parv-item-hint" {{checked('parv', 'yes') }}>
+        <label class="govuk-label govuk-radios__label govuk-label--s" for="parv">
+         Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="parv-2" name="parv" type="radio" value="no" aria-describedby="parv-2-item-hint" {{checked('parv', 'no') }}>
+        <label class="govuk-label govuk-radios__label govuk-label--s" for="parv-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

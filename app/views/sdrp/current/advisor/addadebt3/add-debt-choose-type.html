@@ -1,0 +1,81 @@
+
+{% extends "../../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Add a creditor
+{% endblock %}
+
+
+{% block content %}
+
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../../includes/advisor/_client_name_reference.html" %} 
+  </div>
+   <form class="form" action="add-debt-amount-reference" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Choose debt type
+            </h1>
+          </legend>
+  
+  
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="debttype">
+      Select a debt type
+    </label>
+
+  
+    <select class="govuk-select" id="debttype{{ debt }}" name="debttype{{ debt }}" aria-describedby="debttype-hint">
+      <option value="Child maintenance" type="Priority">Child maintenance (Priority debt)</option>
+      <option value="Court fine" type="Priority">Court fine (Priority debt)</option>
+      <option value="Council tax" type="Priority">Council tax (Priority debt)</option>
+      <option value="HMRC including income tax, NI or VAT" type="Priority">HMRC including income tax, NI or VAT (Priority debt)</option>
+      <option value="Hire purchase including vehicle finance" type="Priority">Hire purchase including vehicle finance (Priority debt)</option>
+      <option value="Mortgage" type="Priority">Mortgage (Priority debt)</option>
+      <option value="Overpaid tax credits" type="Priority">Overpaid tax credits (Priority debt)</option>
+      <option value="Rent" type="Priority">Rent (Priority debt)</option>
+      <option value="Secured loan" type="Priority">Secured loan (Priority debt)</option>
+      <option value="TV licence" type="Priority">TV licence (Priority debt)</option>
+      <option value="Utilities or subscriptions including mobile, internet or television" type="Priority">Utilities or subscriptions including mobile, internet or television (Priority debt)</option>
+      <option value="Business debts">Business debts</option>
+      <option value="Catalogue">Catalogue</option>
+      <option value="Credit or store card">Credit or store card</option>
+      <option value="Family and friends">Family and friends</option>
+      <option value="Gambling">Gambling</option>
+      <option value="Overpaid benefits (excluding tax credits)">Overpaid benefits (excluding tax credits)</option>
+      <option value="Parking or penalty charge notices">Parking or penalty charge notices</option>
+      <option value="Unsecured loan">Unsecured loan</option>
+      <option value="Other" >Other</option>
+    </select>
+  </div>
+        </fieldset>
+    </div>
+
+<button class="govuk-button" data-module="govuk-button">
+ Continue
+</button>
+    </div>
+    </form>
+</div>
+ 
+
+   
+
+{% endblock %}

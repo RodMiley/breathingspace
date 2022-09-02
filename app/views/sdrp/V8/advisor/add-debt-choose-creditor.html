@@ -1,0 +1,80 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Add a creditor
+{% endblock %}
+
+{% block content %}
+
+
+
+{% if checked('debtadded','4')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+  {% include  "../includes/advisor/_client_name_reference.html" %} 
+  </div>
+   <form class="form" action="add-debt-set-priority" method="post">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+ 
+  <div class="govuk-form-group">
+       <h1 class="govuk-label-wrapper"><label for="autocomplete-default" class="govuk-label govuk-label--xl" for="creditor">Add a creditor
+</label></h1>   <span id="changed-name-hint" class="govuk-hint">
+   Type the creditor’s name and select them from the list. 
+    </span>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+  </div>
+<p>If the creditor doesn’t appear on the list, you can 
+<a href="add-debt-adhock-creditor">enter their details manually</a></p>
+
+<button class="govuk-button" data-module="govuk-button">
+ Continue
+</button>
+    </div>
+    </form>
+</div>
+
+
+   <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+   <script type="text/javascript" src="/public/javascripts/creditorlist.js"></script>
+  {% if checked('adddebtcouncil','yes')%} 
+        <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor2'
+      var name ='creditor2' 
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+      </script>
+   {% else %}
+      <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'creditor{{ debt }}'
+      var name ='creditor{{ debt }}' 
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: name,
+        source: creditors
+      })
+ </script>
+   {% endif %}
+
+   
+
+{% endblock %}

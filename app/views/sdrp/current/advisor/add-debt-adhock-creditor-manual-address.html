@@ -1,0 +1,77 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Breathing space
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      </div>
+  <form class="form" action="debt-list-tabs" method="post">
+    <div class="govuk-grid-column-two-thirds">
+     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
+      <h1 class="govuk-heading-xl">
+       Add creditor address
+      </h1>
+      <h2 class="govuk-heading-s">Creditor</h2>
+      <p class="govuk-body">{{ data['adhock-creditor-name'] | default('Joes Garage') }} <a href="add-debt-adhock-creditor">Change</a></p>
+
+ <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+    <h2 class="govuk-label govuk-!-font-weight-bold">
+      Creditor Address
+    </h2>
+  </legend>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-1">
+      Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+    </label>
+    <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-2">
+      <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+    </label>
+    <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-county">
+      County
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-postcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+  </div>
+
+</fieldset>
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+   Save and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

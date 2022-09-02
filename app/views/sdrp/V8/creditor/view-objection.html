@@ -1,0 +1,83 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+  Confirm debt details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+        {% include  "../includes/creditor/_client_name_reference.html" %} 
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Objection 
+      </h1>
+      <h3 class="govuk-heading-s">Reason for the objection</h3>
+      <ul class="govuk-list">
+        {% if  data['object-to-plan-reason'] ==' A debt is in the plan that should not be included' %}
+        A debt is in the plan that should not be included
+        {% endif %}
+        {% if checked('object-to-plan-reason',' A debt is in the plan that should not be included')%}
+        <li>
+          A debt is in the plan that should not be included
+        </li>
+        {% endif %}
+
+        {% if checked('object-to-plan-reason',' A debt is not in the plan that should be included')%}
+        <li>
+          A debt is not in the plan that should be included
+        </li>
+        {% endif %}
+
+        {% if checked('object-to-plan-reason',' Debtor is not eligible for an SDRP')%}
+        <li>
+          Debtor is not eligible for an SDRP
+        </li>
+        {% endif %}
+
+        {% if checked('object-to-plan-reason',' The payment schedule has an unfair impact on the debt being recovered')%}
+        <li>
+          The payment schedule has an unfair impact on the debt being recovered
+        </li>
+        {% endif %}
+
+        {% if checked('object-to-plan-reason',' Information in the plan is not correct')%}
+        <li>
+          Information in the plan is not correct
+        </li>
+        {% endif %}
+
+        {% if checked('object-to-plan-reason',' SFS income and expenditure is outside spending guidelines without reasonable explanation')%}
+        <li>
+          SFS income and expenditure is outside spending guidelines without reasonable explanation
+        </li>
+        {% endif %}
+      </ul>
+      <p class="govuk-body">{{ data['more-detail']}}</p>
+
+      {% include  "../includes/creditor/_datetimestamp.html" %}
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <h2 class="govuk-heading-m">Update or cancel objection</h2>
+      <ul class="govuk-list">
+        <li><a href="object-to-plan?reference={{creditorcase.reference}}">Update objection</a></li>
+        <li><a href="cancel-objection?reference={{creditorcase.reference}}">Cancel objection</a></li>
+      </ul>
+        {% include  "../includes/_show-confirmation.html" %}
+        {% include  "../includes/creditor/_urlredirect.html" %}
+
+        <div class="govuk-radios" style="display:none">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="" name="task" type="radio" value="object" checked>
+            <label class="govuk-label govuk-radios__label" for="task">
+             hidden radio
+            </label>
+          </div>
+          </div>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

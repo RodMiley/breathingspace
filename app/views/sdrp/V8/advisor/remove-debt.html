@@ -1,0 +1,374 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Add previous name
+{% endblock %}
+
+{% block content %}
+
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','4')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 2 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 1 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+  <div class="govuk-grid-row">
+  <form class="form" action="plan" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+        Confirm you want to remove this debt
+      </h1>
+</div>
+</div>
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+
+  <dl class="govuk-summary-list">
+    {% if checked('debtadded','5') %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor5'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority5' ] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+     
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype5','Other')%} 
+        {{ data['otherdebttype5'] }} 
+        {% else %}
+        {{ data['debttype5'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount5'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference5'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    {% elif checked('debtadded','4') %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor4'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority4' ] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+     
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype4','Other')%} 
+        {{ data['otherdebttype4'] }} 
+        {% else %}
+        {{ data['debttype4'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount4'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference4'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    {% elif checked('debtadded','3') %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor3'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority3' ] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+     
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype3','Other')%} 
+        {{ data['otherdebttype3'] }} 
+        {% else %}
+        {{ data['debttype3'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount3'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference3'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+
+    {% elif checked('debtadded','2') %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor2'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority2' ] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+     
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype2','Other')%} 
+        {{ data['otherdebttype2'] }} 
+        {% else %}
+        {{ data['debttype2'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount2'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference2'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+
+    {% elif checked('debtadded','1') %}
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor1'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority1' ] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+     
+    </dd>
+  </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype1','Other')%} 
+        {{ data['otherdebttype1'] }} 
+        {% else %}
+        {{ data['debttype1'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount1'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference1'] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+       
+      </dd>
+    </div>
+    {% endif %}
+  </dl>
+
+     
+     {% include  "../includes/advisor/_show-confirmation.html" %} 
+
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="debt{{debt}}" type="radio" value="removed" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+      <div class="govuk-radios" style="display:none">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="" name="task" type="radio" value="debt-removed" checked>
+          <label class="govuk-label govuk-radios__label" for="task">
+           hidden radio
+          </label>
+        </div>
+        </div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,27 +1,16 @@
-{% if checked('debt1','completed') %}
+{% if checked('debt1','completed') or case.status ==='intention-bs' %}
 <dl class="govuk-summary-list govuk-!-margin-bottom-2">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['creditor1'] }}
+      {{ data['creditor1'] | default("West minister council") }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-choose-creditor", "creditor") }}
     </dd>
   </div>
-  <div class="govuk-summary-list__row">
-  <dt class="govuk-summary-list__key">
-    Category
-  </dt>
-  <dd class="govuk-summary-list__value">
-    {{ data['set-debt-priority1' ] }}
-  </dd>
-  <dd class="govuk-summary-list__actions">
-    {{ changeform("0", "add-debt-set-priority", "catergory") }}
-  </dd>
-</div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Debt type
@@ -34,7 +23,18 @@
       {% endif %}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-choose-type", "debt type") }}
+      {{ changeform("0", "add-debt-details-council#debttype1", "debt type") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['set-debt-priority1' ] | default("Not set")}}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-details-council#set-debt-priority1", "catergory") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -45,7 +45,7 @@
       £{{ data['debtamount1'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-amount-reference#debtamount", "amount") }}
+      {{ changeform("0", "add-debt-details-council#debtamount1", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -56,7 +56,7 @@
       {{ data['debtreference1'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-amount-reference#debtreference", "reference") }}
+      {{ changeform("0", "add-debt-details-council#debtreference1", "reference") }}
     </dd>
   </div>
 </dl>

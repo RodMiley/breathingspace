@@ -5,10 +5,21 @@
       Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['creditor4'] }}
+      {{ data['adhock-creditor-name'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("3", "add-debt-choose-creditor", "creditor") }}
+      {{ changeform("3", "add-debt-adhock-creditor", "creditor") }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Address
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['sortcreditor']}}<br>London <br> {{ data['adhock-creditor-name-postcode'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("3", "add-debt-adhock-add-postcode", "Address") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -19,7 +30,7 @@
     {{ data['set-debt-priority4' ] }}
   </dd>
   <dd class="govuk-summary-list__actions">
-    {{ changeform("3", "add-debt-set-priority", "catergory") }}
+    {{ changeform("3", "add-debt-details-adhock#set-debt-priority4", "catergory") }}
   </dd>
 </div>
   <div class="govuk-summary-list__row">
@@ -30,7 +41,7 @@
       {{ data['debttype4'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("3", "add-debt-choose-type", "debt type") }}
+      {{ changeform("3", "add-debt-details-adhock#debttype4", "debt type") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -41,7 +52,7 @@
       £{{ data['debtamount4'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("3", "add-debt-amount-reference#debtamount", "amount") }}
+      {{ changeform("3", "add-debt-details-adhock#debtamount4", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -52,7 +63,7 @@
       {{ data['debtreference4'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("3", "add-debt-amount-reference#debtreference", "reference") }}
+      {{ changeform("3", "add-debt-details-adhock#debtreference4", "reference") }}
     </dd>
   </div>
 </dl>

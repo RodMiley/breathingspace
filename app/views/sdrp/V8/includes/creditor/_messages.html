@@ -1,0 +1,87 @@
+<p><a href="messages?reference={{creditorcase.reference}}">Send a message to debt advisor</a></p>
+
+{% if  creditorcase.status === "New message" %}
+
+<table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--l govuk-visually-hidden">Messages</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Status</th>  
+        <th scope="col" class="govuk-table__header">From</th>
+        <th scope="col" class="govuk-table__header"></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {% if checked('message-read','yes') %}
+            <strong class="govuk-tag">Read</strong>
+            {% else %}
+            <strong class="govuk-tag govuk-tag--blue">New message</strong>
+            {% endif %}
+          </td>
+          <td scope="row" class="govuk-table__cell">Advice uk,  {{ 'Do MMMM YYYY' | baseDateAdd(0) }} at 10.32am</td>
+          <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message2">View message</a></td>
+        </tr>
+
+      <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
+        <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</td>
+        <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message1">View message</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+{% elif data['message-to-ma']%}  
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--l govuk-visually-hidden">Messages</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>  
+      <th scope="col" class="govuk-table__header">Message</th>
+      <th scope="col" class="govuk-table__header">Actioned by</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% if data['message-to-ma-2']%}  
+    <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
+        <td scope="row" class="govuk-table__cell">{{ data['message-to-ma-2'] }}</td>
+        <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.35am</td>
+        <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message2">View message</a></td>
+      </tr>
+    {% endif%}
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">Sent</strong></td>
+      <td scope="row" class="govuk-table__cell">{{ data['message-to-ma'] }}</td>
+      <td scope="row" class="govuk-table__cell">Paul Smith, {% include  "../creditor/_creditor.html" %},  {{ 'Do MMMM YYYY' | baseDateAdd(-1) }} at 11.32am</td>
+      <td scope="row" class="govuk-table__cell"><a href="messages?reference={{creditorcase.reference}}#message1">View message</a></td>
+    </tr>
+  </tbody>
+</table>
+{% elif checked('task','newMessage')%}  
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>  
+      <th scope="col" class="govuk-table__header">Subject</th>
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-table__cell">          
+          <strong class="govuk-tag govuk-tag--green">Sent message</strong>
+      </td>
+      <td scope="row" class="govuk-table__cell">{{ data['subject-message']}}</td>
+      <td scope="row" class="govuk-table__cell">{{ 'Do MMMM YYYY' | baseDateAdd(0) }}</td>
+      <td scope="row" class="govuk-table__cell"><a href="message-thread?reference={{creditorcase.reference}}">View message</a></td>
+    </tr>
+  </tbody>
+</table>
+
+{% else %}
+{% endif %}
