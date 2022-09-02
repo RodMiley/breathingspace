@@ -1,11 +1,11 @@
-{% if checked('debt4','completed') %}
+{% if checked('debt4','completed') or case.status ==='intention-bs' %}
 <dl class="govuk-summary-list govuk-!-margin-bottom-4">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['adhock-creditor-name'] }}
+      {{ data['adhock-creditor-name'] | default('Joes Garage') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("3", "add-debt-adhock-creditor", "creditor") }}
@@ -16,7 +16,7 @@
      Address
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['sortcreditor']}}<br>London <br> {{ data['adhock-creditor-name-postcode'] }}
+      {{ data['sortcreditor'] | default('22 Hanworth Road')}}<br>London <br> {{ data['adhock-creditor-name-postcode'] | default(' WM33 1DQ') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("3", "add-debt-adhock-add-postcode", "Address") }}
@@ -27,7 +27,7 @@
     Category
   </dt>
   <dd class="govuk-summary-list__value">
-    {{ data['set-debt-priority4' ] }}
+    {{ data['set-debt-priority4' ] | default('Not set') }}
   </dd>
   <dd class="govuk-summary-list__actions">
     {{ changeform("3", "add-debt-details-adhock#set-debt-priority4", "catergory") }}
@@ -38,7 +38,7 @@
       Debt type
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debttype4'] }}
+      {{ data['debttype4'] | default('Car repair') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("3", "add-debt-details-adhock#debttype4", "debt type") }}
@@ -49,7 +49,7 @@
      Amount
     </dt>
     <dd class="govuk-summary-list__value">
-      £{{ data['debtamount4'] }}
+      £{{ data['debtamount4'] | default('475') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("3", "add-debt-details-adhock#debtamount4", "amount") }}
@@ -60,7 +60,7 @@
     Reference
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debtreference4'] }}
+      {{ data['debtreference4'] | default('MB08 HJB')}}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("3", "add-debt-details-adhock#debtreference4", "reference") }}

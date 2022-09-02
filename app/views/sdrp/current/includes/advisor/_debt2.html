@@ -37,7 +37,7 @@
      Amount
     </dt>
     <dd class="govuk-summary-list__value">
-      £{{ data['debtamount2'] }}
+      £{{ data['debtamount2'] | default('6345')}}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details-creditcard#debtamount2", "amount") }}
@@ -48,7 +48,7 @@
     Reference
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debtreference2'] }}
+      {{ data['debtreference2'] | default('HAl12345678') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details-creditcard#debtreference2", "reference") }}

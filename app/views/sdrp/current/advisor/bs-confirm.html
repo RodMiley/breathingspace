@@ -17,6 +17,9 @@ Confirm you use this information this Breathing Space to pre populate the debt r
 <h1 class="govuk-heading-xl">Confirm you want use this information to pre populate the debt repayment plan</h1>
 
 <h2 class="govuk-heading-l">Information from Breathing Space</h2>
+<p>You can update any of this information once you have confirmed you want to use this information</p>
+
+<h3 class="govuk-heading-m">Client details</h3>
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -29,14 +32,6 @@ Confirm you use this information this Breathing Space to pre populate the debt r
       },
       value: {
         text: "BS0001"
-      }
-    },
-           {
-      key: {
-        text: "Number of debts"
-      },
-      value: {
-        text: "5"
       }
     },
     {
@@ -65,6 +60,171 @@ Confirm you use this information this Breathing Space to pre populate the debt r
     }
   ]
 }) }}
+
+<h3 class="govuk-heading-m">Debts</h3>
+
+{{ govukSummaryList({
+  rows: [
+
+      {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "Westminster city council"
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Council tax"
+      }
+    },
+    {
+      key: {
+        text: "Debt amount"
+      },
+      value: {
+        text: "£1159"
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        text: "00456732555WM"
+      }
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  rows: [
+
+      {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "Halifax creditcards only"
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Creditcard"
+      }
+    },
+    {
+      key: {
+        text: "Debt amount"
+      },
+      value: {
+        text: "£6345"
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        text: "HAl12345678"
+      }
+    }
+  ]
+}) }}
+
+
+{{ govukSummaryList({
+  rows: [
+
+      {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "Lowel group"
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Consumer credit"
+      }
+    },
+    {
+      key: {
+        text: "Debt amount"
+      },
+      value: {
+        text: "£1250"
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        text: "LW1234567"
+      }
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  rows: [
+
+      {
+      key: {
+        text: "Creditor"
+      },
+      value: {
+        text: "Joes garage"
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "22 Hanworth Road<br> London <br> WM33 1DQ"
+      }
+    },
+    {
+      key: {
+        text: "Debt type"
+      },
+      value: {
+        text: "Car repair"
+      }
+    },
+    {
+      key: {
+        text: "Debt amount"
+      },
+      value: {
+        text: "£475"
+      }
+    },
+    {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        text: "MB08 HJB"
+      }
+    }
+  ]
+}) }}
+
+
 
 
 

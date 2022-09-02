@@ -5,7 +5,7 @@
       Creditor
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['creditor1'] | default("West minister council") }}
+      {{ data['creditor1'] | default("Westminster city council") }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-choose-creditor", "creditor") }}
@@ -19,7 +19,7 @@
       {% if checked('debttype1','Other')%} 
       {{ data['otherdebttype1'] }} 
       {% else %}
-      {{ data['debttype1'] | default('Debt') }}
+      {{ data['debttype1'] | default('Council tax') }}
       {% endif %}
     </dd>
     <dd class="govuk-summary-list__actions">
@@ -42,7 +42,7 @@
      Amount
     </dt>
     <dd class="govuk-summary-list__value">
-      £{{ data['debtamount1'] }}
+      £{{ data['debtamount1'] | default('1159') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details-council#debtamount1", "amount") }}
@@ -53,7 +53,7 @@
     Reference
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debtreference1'] }}
+      {{ data['debtreference1'] | default('00456732555WM') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details-council#debtreference1", "reference") }}

@@ -16,7 +16,7 @@
       Debt type
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debttype3'] | default('Debt') }}
+      {{ data['debttype3'] | default('Consumer credit') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details#debttype3", "debt type") }}
@@ -27,7 +27,7 @@
       Category
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['set-debt-priority3' ] | default("Non-priority")}}
+      {{ data['set-debt-priority3' ] | default("Not set")}}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details#set-debt-priority3", "catergory") }}
@@ -38,7 +38,7 @@
      Amount
     </dt>
     <dd class="govuk-summary-list__value">
-      £{{ data['debtamount3'] }}
+      £{{ data['debtamount3'] | default('1250') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details#debtamount3", "amount") }}
@@ -49,7 +49,7 @@
     Reference
     </dt>
     <dd class="govuk-summary-list__value">
-      {{ data['debtreference3'] }}
+      {{ data['debtreference3'] | default('LW1234567') }}
     </dd>
     <dd class="govuk-summary-list__actions">
       {{ changeform("0", "add-debt-details#debtreference3", "reference") }}
