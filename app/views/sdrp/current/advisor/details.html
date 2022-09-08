@@ -14,25 +14,25 @@ Client’s personal details
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
-      Client’s personal details
+        Client’s personal details
       </h1>
      <div class="govuk-form-group">
   <label class="govuk-label" for="firstname">
-  Client’s First name
+    Client’s first name
   </label>
   <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ firstname | default('Joe') }}">
 </div>
 
      <div class="govuk-form-group">
   <label class="govuk-label" for="middlename">
-   Client’s Middle name (optional)
+    Client’s middle name (optional)
   </label>
   <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" value="{{ middlename }}">
 </div>
 
     <div class="govuk-form-group">
   <label class="govuk-label" for="lastname">
-   Client’s Last name
+    Client’s last name
   </label>
   <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
 </div>

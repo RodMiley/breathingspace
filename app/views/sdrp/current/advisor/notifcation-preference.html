@@ -10,7 +10,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-    <form class="form" action="business-guard" method="post">
+    <form class="form" action="confirm-details" method="post">
 
       <div class="govuk-grid-column-two-thirds">
         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
@@ -19,7 +19,7 @@
     <fieldset class="govuk-fieldset" aria-describedby="howcontacted-conditional-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
         <h1 class="govuk-fieldset__heading">
-           How would your client like to to be notified of any updates to their plan
+          How does your client want to be notified of updates to their plan?
         </h1>
       </legend>
       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios" >
@@ -55,7 +55,7 @@
              <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="no-notification" name="howcontacted" type="radio" value="Client does not want to recieve notifications" data-aria-controls="no-notification" {{ checked('howcontacted', 'Client does not want to recieve notifications') }}>
           <label class="govuk-label govuk-radios__label" for="no-notification">
-             My client does not want you to send them any notifications
+            My client does not want to receive any notifications
           </label>
      
         </div>

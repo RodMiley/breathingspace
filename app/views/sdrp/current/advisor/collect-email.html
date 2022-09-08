@@ -1,0 +1,54 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <form class="form" action="confirm-details" method="post">
+
+      <div class="govuk-grid-column-two-thirds">
+        <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+     <h1 class="govuk-heading-xl">Please provide your clients email address</h1>
+     <div class="govuk-form-group">
+      <label class="govuk-label" for="contactByEmail">
+        Email address
+      </label>
+      <div id="email-hint" class="govuk-hint">
+        We will use this to send them notifications and their login details for the debt repayment plan citizen portal
+      </div>
+      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmail" name="contactByEmail" type="email" spellcheck="false" value="{{ contactByEmail }}">
+    </div>
+
+      <div class="govuk-form-group">
+      <label class="govuk-label" for="contactByEmailConfirm">
+        Confirm email address
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmailConfirm" name="contactByEmailConfirm" type="email" spellcheck="false" value="{{ contactByEmailConfirm }}">
+    </div>
+    <p><a href="collect-email-no.html">If your client does not have an email address or access to emails please let us know</a></p>
+  
+  
+    <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="email" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="task">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+  <button class="govuk-button" data-module="govuk-button">
+    Save and continue
+  </button>
+      </div>
+      </form>
+  </div>
+
+{% endblock %}

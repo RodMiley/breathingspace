@@ -9,7 +9,7 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <form class="form" action="notifcation-preference" method="post">
+  <form class="form" action="collect-email" method="post">
  
     <div class="govuk-grid-column-full">
            <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
@@ -49,7 +49,7 @@
               <li>
                 <a class="govuk-link govuk-!-font-size-19" href="hide-address">
           {% if checked('parv','yes')%}
-          Update address hidden
+          Unhide the address
          {% else %} Hide address{% endif %}<span class="govuk-visually-hidden"> from creditors</span>
         
                 </a>
@@ -61,7 +61,7 @@
       {% if checked('addressCorres','yes')%}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Correspondence addresss
+          Correspondence address
         </dt>
         <dd class="govuk-summary-list__value">
           2 Willsford avenue<br> Kensington <br>WE33 1DG
@@ -73,18 +73,34 @@
         </dd>
       </div>
       {% endif %}
+
+      {% if checked('addressOther','yes')%}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['other-address-choice'] }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev']}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden">Other address</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
      
      
           </dl>
           {% if checked('addressCorres','yes')%}
           {% else %}
           <h2 class="govuk-heading-l">Correspondence address</h2>
-          <p>If your client has a correspondence address please add it</p>
+          <p>Add your client’s correspondence address if they have one.</p>
           <p><a href="address-correspondence" class="">Add correspondence address</a></p>
           {% endif %} 
-          <h2 class="govuk-heading-l">Add client's previous addresses in the last 3 years</h2>
-          <p>Previous addresses will help your client’s creditors to find their debts</p>
-          <p><a href="address-prev" class="">Add previous address</a></p>
+          <h2 class="govuk-heading-l">Add client's other addresses in the last 3 years</h2>
+          <p>Add all the addresses that are connected to debts your client has. This will help creditors to find information on the client’s debts.</p>
+          <p><a href="address-prev" class="">Add other address</a></p>
           
 
 

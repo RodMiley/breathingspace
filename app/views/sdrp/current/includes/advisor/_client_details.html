@@ -82,7 +82,7 @@
                 Change<span class="govuk-visually-hidden"> Address</span>
               </a></li>
             <li>
-              <a class="govuk-link govuk-!-font-size-19" href="parv">
+              <a class="govuk-link govuk-!-font-size-19" href="hide-address">
          Hide address  <span class="govuk-visually-hidden"> from creditors</span>
       
               </a>
@@ -90,45 +90,72 @@
             <ul>
             </ul></ul></dd>
           </div>
+
+          {% if checked('addressOther','yes')%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['other-address-choice'] }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden">Other address</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
           
                        
 
  
         </dl>
         <p><a class="govuk-link " href="">Add correspondence address</a><br>
-           <a class="govuk-link" href="">Add previous address</a></p>
+           <a class="govuk-link" href="">Add other address</a></p>
 
-           <h2 class="govuk-heading-m">Notification preference</h2>
-       <dl class="govuk-summary-list">  
-                 <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-       Method
-            </dt>
-            <dd class="govuk-summary-list__value">
-      Email
-            </dd>
-            <dd class="govuk-summary-list__actions">
-         
-              <a class="govuk-link govuk-!-font-size-19" href="pref-contact">
-                Change<span class="govuk-visually-hidden"> notifcation preference</span>
-              </a>
-             
-            
-            </dd>
-          </div>
-          
-        </dl>
-
-<h2 class="govuk-heading-m">Business</h2>
-      
-         
-
- <dl class="govuk-summary-list govuk-!-margin-bottom-2">
+           <h2 class="govuk-heading-m">Email address</h2>
+       <dl class="govuk-summary-list">    
+          <div class="govuk-summary-list__row">
+     <dt class="govuk-summary-list__key">
+      Email address
+     </dt>
+     <dd class="govuk-summary-list__value">
+      {% if checked('email','no') %}
+       Not provided
+      {% else %}
+      {{ data['contactByEmail'] | default('Someone@somewhere.com') }}
+      {% endif %}
+     </dd>
+     <dd class="govuk-summary-list__actions">
   
-        
-              <p><a class="govuk-link" href="add-business-history">Add client business</a></p>        
+       <a class="govuk-link govuk-!-font-size-19" href="collect-email">
+         Change<span class="govuk-visually-hidden"> email address</span>
+       </a>
+      
+     
+     </dd>
+   </div>
+  </dl>
+
+
+   <h2 class="govuk-heading-m">Notifications</h2> 
+  
+   <dl class="govuk-summary-list">    
+     <div class="govuk-summary-list__row">
+ <dt class="govuk-summary-list__key">
+ Notifcation method
+ </dt>
+ <dd class="govuk-summary-list__value">
+  {% if checked('email','no')%} Post {% else %} Digital {% endif %}
+ </dd>
+ <dd class="govuk-summary-list__actions">
+ </dd>
+ </div>
+ </dl>
+
+
 
  
      
 
-  </dl>

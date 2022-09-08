@@ -1,7 +1,15 @@
 <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
       <h1 class="govuk-fieldset__heading">
-        Add your client's current address
+        Add your client's
+        {% if heading == 'other' %}
+        other
+        {% elif heading =='correspondence'%}
+        correspondence
+        {% else %}
+        current
+        {% endif %}
+        address 
       </h1>
     </legend>
   

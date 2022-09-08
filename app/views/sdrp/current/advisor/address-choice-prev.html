@@ -14,7 +14,7 @@
     <div class="govuk-grid-column-two-thirds">
            <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
       <h1 class="govuk-heading-xl">
-       Choose your client's previous address
+        Choose your client's other address
       </h1>
 
 
@@ -23,10 +23,10 @@
       <p class="govuk-body">{{ addressPostcodePrev | default("W1H 1JS")}} <a href="address">Change</a></p>
 
 <div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
-    Choose address
+  <label class="govuk-label" for="other-address-choice">
+    Choose an address
   </label>
-  <select class="govuk-select" id="sort" name="sort">
+  <select class="govuk-select" id="" name="other-address-choice">
     <option value="published">3 addresses found</option>
     <option value="44 Crawford Street">44 Crawford St, Marylebone, London, {{ addressPostcodePrev  | default("W1H 1JS") }}</option>
     <option value="47 Crawford Street">47 Crawford St, Marylebone, London, {{ addressPostcodePrev  | default("W1H 1JS")}}</option>
@@ -34,11 +34,19 @@
   </select>
 </div>
 
+<div class="govuk-radios" style="display:none">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="" name="addressOther" type="radio" value="yes" checked>
+    <label class="govuk-label govuk-radios__label" for="task">
+     hidden radio
+    </label>
+  </div>
+  </div>
 
 <button class="govuk-button" data-module="govuk-button">
   Save and continue
 </button>
-<p class="govuk-body"><a href="address-manual">Enter address manually</a></p>
+<p class="govuk-body"><a href="address-manual-other">Add address manually</a></p>
     </div>
     </form>
 </div>

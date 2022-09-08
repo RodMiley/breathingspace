@@ -1,0 +1,354 @@
+
+{% extends "../layout-sdrp.html" %}
+
+{% block pageTitle %}
+Add previous name
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {% include  "../includes/advisor/_client_name_reference.html" %} 
+      </div>
+  <form class="form" action="plan-inc1" method="post">
+    <div class="govuk-grid-column-full">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
+      <h1 class="govuk-heading-xl">
+         Assign catergory to debts
+      </h1>
+</div>
+</div>
+<h2 class="govuk-heading-l">Debt 1</h2>
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor1'] | default("Westminster city council") }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype1','Other')%} 
+        {{ data['otherdebttype1'] }} 
+        {% else %}
+        {{ data['debttype1'] | default('Council tax') }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount1'] | default('1159') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+   
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference1'] | default('00456732555WM') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+  </dl>
+
+
+  {{ govukRadios({
+    classes: "govuk-radios",
+    idPrefix: "set-debt-priority1",
+    name: "set-debt-priority1",
+    fieldset: {
+      legend: {
+        text: "Select a debt category",
+        isPageHeading: false,
+        classes: "govuk-label govuk-label--m"
+      }
+    },
+    items: [
+      {
+        value: "Priority",
+        text: "Priority"
+      },
+      {
+        value: "Non-priority",
+        text: "Non-priority"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Debt 2</h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor2'] | default("Halifax creditcards only") }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype2','Other')%} 
+        {{ data['otherdebttype2'] }} 
+        {% else %}
+        {{ data['debttype2'] | default('Creditcard') }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount2'] | default('6345') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+   
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference2'] | default('HAL12345678') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+  </dl>
+
+  {{ govukRadios({
+    classes: "govuk-radios",
+    idPrefix: "set-debt-priority2",
+    name: "set-debt-priority2",
+    fieldset: {
+      legend: {
+        text: "Select a debt category",
+        isPageHeading: false,
+        classes: "govuk-label govuk-label--m"
+      }
+    },
+    items: [
+      {
+        value: "Priority",
+        text: "Priority"
+      },
+      {
+        value: "Non-priority",
+        text: "Non-priority"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Debt 3</h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor3'] | default("Lowel group") }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype3','Other')%} 
+        {{ data['otherdebttype3'] }} 
+        {% else %}
+        {{ data['debttype3'] | default('Consumer credit') }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount3'] | default('1250') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+   
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference3'] | default('LW1234567') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+  </dl>
+
+
+  {{ govukRadios({
+    classes: "govuk-radios",
+    idPrefix: "set-debt-priority3",
+    name: "set-debt-priority3",
+    fieldset: {
+      legend: {
+        text: "Select a debt category",
+        isPageHeading: false,
+        classes: "govuk-label govuk-label--m"
+      }
+    },
+    items: [
+      {
+        value: "Priority",
+        text: "Priority"
+      },
+      {
+        value: "Non-priority",
+        text: "Non-priority"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <h2 class="govuk-heading-l">Debt 4</h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Creditor
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['creditor4'] | default("Joes Garage") }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Address
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['sortcreditor'] | default('22 Hanworth Road')}}<br>London <br> {{ data['adhock-creditor-name-postcode'] | default(' WM33 1DQ') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Debt type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if checked('debttype4','Other')%} 
+        {{ data['otherdebttype4'] }} 
+        {% else %}
+        {{ data['debttype4'] | default('Car repair') }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Amount
+      </dt>
+      <dd class="govuk-summary-list__value">
+        £{{ data['debtamount3'] | default('475') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+   
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+      Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['debtreference3'] | default('MB08 HJB') }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+      </dd>
+    </div>
+  </dl>
+
+  {{ govukRadios({
+    classes: "govuk-radios",
+    idPrefix: "set-debt-priority4",
+    name: "set-debt-priority4",
+    fieldset: {
+      legend: {
+        text: "Select a debt category",
+        isPageHeading: false,
+        classes: "govuk-label govuk-label--m"
+      }
+    },
+    items: [
+      {
+        value: "Priority",
+        text: "Priority"
+      },
+      {
+        value: "Non-priority",
+        text: "Non-priority"
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+     
+     {% include  "../includes/advisor/_show-confirmation.html" %} 
+
+         <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="previousname" type="radio" value="yes" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+Confirm and continue
+</button>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
