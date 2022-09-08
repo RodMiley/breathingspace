@@ -3,7 +3,7 @@
               Previous name
             </dt>
             <dd class="govuk-summary-list__value">
-             {{firstnameprev}} {{middlenameprev}} {{lastnameprev}}
+             {{ data['previous-full-name'] | default('Sarah Henderson') }}
            
             </dd>
             <dd class="govuk-summary-list__actions">

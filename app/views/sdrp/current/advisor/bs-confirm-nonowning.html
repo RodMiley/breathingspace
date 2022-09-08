@@ -1,0 +1,75 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+Confirm you use this information this Breathing Space to pre populate the debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+  <form class="form" action="plan-inc1" method="post">
+
+  <div class="govuk-grid-row">
+ 
+   <div class="govuk-grid-column-three-quarters">
+    <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
+<h1 class="govuk-heading-xl">Confirm you want use this information to pre populate the debt repayment plan</h1>
+
+<h2 class="govuk-heading-l">Information from Breathing Space</h2>
+<p>You can update any of this information once you have confirmed you want to use this information</p>
+
+<h3 class="govuk-heading-m">Client details</h3>
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+
+      {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        text: "BS0001"
+      }
+    },
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Sarah Philips"
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: "04 August 1980"
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "72 Guild Street<br>London<br>SE23 6FH"
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">Debts</h3>
+<p>Your client was entered into this Breathing Space by Stepchange, so you cannot use the existing debt information.</p>
+<p>You could <a href="">request for a transfer</a> off the debt advice organisation so you can use the existing debt information or you could continue with importing the client details and adding the debt information yourself.</p>
+
+
+
+
+<a href="plan-inc1?reference=SDRP033228" class="govuk-button">Confirm and continue</a>
+
+</div></div>
+</form>
+{% endblock %}
