@@ -1,5 +1,5 @@
 
-{% extends "layout.html" %}
+{% extends "../layout-sdrp.html" %}
 
 {% block pageTitle %}
   Breathing space
@@ -10,7 +10,8 @@
   <div class="govuk-grid-row">
   <form class="form" action="plan" method="post">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">
+      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+      <h1 class="govuk-heading-xl">
     Check client details
       </h1>
 

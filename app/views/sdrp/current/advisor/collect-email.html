@@ -14,13 +14,16 @@
 
       <div class="govuk-grid-column-two-thirds">
         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
-     <h1 class="govuk-heading-xl">Please provide your clients email address</h1>
+     <h1 class="govuk-heading-xl">Provide an email address for your client</h1>
+     <p>SDRP regulations state that your client must be notified of some updates
+
+    </p>
      <div class="govuk-form-group">
       <label class="govuk-label" for="contactByEmail">
         Email address
       </label>
       <div id="email-hint" class="govuk-hint">
-        We will use this to send them notifications and their login details for the debt repayment plan citizen portal
+        We will use this email address to send important updates and any login details.
       </div>
       <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmail" name="contactByEmail" type="email" spellcheck="false" value="{{ contactByEmail }}">
     </div>
@@ -31,7 +34,7 @@
       </label>
       <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmailConfirm" name="contactByEmailConfirm" type="email" spellcheck="false" value="{{ contactByEmailConfirm }}">
     </div>
-    <p><a href="collect-email-no.html">If your client does not have an email address or access to emails please let us know</a></p>
+    <p><a href="collect-email-no.html">Tell us if your client does not have an email address or access to email. </a></p>
   
   
     <div class="govuk-radios" style="display:none">
