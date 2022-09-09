@@ -1,0 +1,173 @@
+
+     
+     
+ 
+
+ <h2 class="govuk-heading-m">Personal details</h2>
+ <dl class="govuk-summary-list govuk-!-margin-bottom-2">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+      
+     {{ case.name | default('Sarah Philips')}}
+     
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#firstname">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous name
+            </dt>
+            <dd class="govuk-summary-list__value">
+      
+     Sarah Henderson
+     
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="not-testing">
+                Change<span class="govuk-visually-hidden"> previous name</span>
+              </a>
+            </dd>
+          </div> 
+          </dl>
+  <p><a class="govuk-link" href="add-another-name?reference={{case.reference}}">Add another name</a></p>
+ <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              
+              04 August 1980
+             
+  
+                  
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="details#dobday">
+                Change<span class="govuk-visually-hidden"> date of birth</span>
+              </a>
+            </dd>
+          </div>
+      </dl> 
+  
+
+       <h2 class="govuk-heading-m">Addresses</h2>
+       <dl class="govuk-summary-list govuk-!-margin-bottom-2">  
+            
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Current address
+            </dt>
+            <dd class="govuk-summary-list__value">
+     
+                
+     
+          <p> 72 Guild Street<br>London<br>SE23 6FH
+ 
+ 
+           
+            </p></dd>
+            <dd class="govuk-summary-list__actions">
+            <ul class="govuk-list">
+            <li><a class="govuk-link govuk-!-font-size-19" href="not-testing">
+                Change<span class="govuk-visually-hidden"> Address</span>
+              </a></li>
+            <li>
+              <a class="govuk-link govuk-!-font-size-19" href="hide-address">
+         Hide address  <span class="govuk-visually-hidden"> from creditors</span>
+      
+              </a>
+            </li>  
+            <ul>
+            </ul></ul></dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Correspondence address
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Flat4 <br> Harrow drive <br>Aberdeen <br> Scotland<br>AB23 6HY
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden">Other address</span>
+              </a>
+            </dd>
+          </div>
+
+ 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['other-address-choice'] | default('44 Hanover Street') }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev'] | default('WM33 4DV')}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden">Other address</span>
+              </a>
+            </dd>
+          </div>
+          
+                       
+
+ 
+        </dl>
+        <p>
+           <a class="govuk-link" href="">Add other address</a></p>
+
+           <h2 class="govuk-heading-m">Email address</h2>
+       <dl class="govuk-summary-list">    
+          <div class="govuk-summary-list__row">
+     <dt class="govuk-summary-list__key">
+      Email address
+     </dt>
+     <dd class="govuk-summary-list__value">
+      {% if checked('email','no') %}
+       Not provided
+      {% else %}
+      {{ data['contactByEmail'] | default('Someone@somewhere.com') }}
+      {% endif %}
+     </dd>
+     <dd class="govuk-summary-list__actions">
+  
+       <a class="govuk-link govuk-!-font-size-19" href="collect-email">
+         Change<span class="govuk-visually-hidden"> email address</span>
+       </a>
+      
+     
+     </dd>
+   </div>
+  </dl>
+
+
+   <h2 class="govuk-heading-m">Notifications</h2> 
+  
+   <dl class="govuk-summary-list">    
+     <div class="govuk-summary-list__row">
+ <dt class="govuk-summary-list__key">
+ Notifcation method
+ </dt>
+ <dd class="govuk-summary-list__value">
+  {% if checked('email','no')%} Post {% else %} Digital {% endif %}
+ </dd>
+ <dd class="govuk-summary-list__actions">
+ </dd>
+ </div>
+ </dl>
+
+
+
+ 
+     
+

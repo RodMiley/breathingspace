@@ -31,7 +31,7 @@ Confirm you use this information this Breathing Space to pre populate the debt r
         text: "Reference"
       },
       value: {
-        text: "BS0001"
+        html: data['bs-ref'] | default('BS12345678')
       }
     },
     {
@@ -62,8 +62,8 @@ Confirm you use this information this Breathing Space to pre populate the debt r
 }) }}
 
 <h3 class="govuk-heading-m">Debts</h3>
-<p>Your client was entered into this Breathing Space by Stepchange, so you cannot use the existing debt information.</p>
-<p>You could <a href="">request for a transfer</a> off the debt advice organisation so you can use the existing debt information or you could continue with importing the client details and adding the debt information yourself.</p>
+<p>Your client was entered into this Breathing Space by <strong>Stepchange</strong>, so you cannot use the existing debt information.</p>
+<p>You could <a href="">request for a transfer</a> from <strong>Stepchange</strong> so you can use the existing debt information or you could continue with importing the client details and adding the debt information yourself.</p>
 
 
 
