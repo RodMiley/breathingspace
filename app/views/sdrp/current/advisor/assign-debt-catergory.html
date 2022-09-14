@@ -83,11 +83,13 @@ Add previous name
     items: [
       {
         value: "Priority",
-        text: "Priority"
+        text: "Priority",
+        checked: checked('set-debt-priority1','Priority')
       },
       {
         value: "Non-priority",
-        text: "Non-priority"
+        text: "Non-priority",
+        checked: checked('set-debt-priority1','Non-priority')
       }
     ]
   }) }}
@@ -158,11 +160,13 @@ Add previous name
     items: [
       {
         value: "Priority",
-        text: "Priority"
+        text: "Priority",
+        checked: checked('set-debt-priority2','Priority')
       },
       {
         value: "Non-priority",
-        text: "Non-priority"
+        text: "Non-priority",
+        checked: checked('set-debt-priority2','Non-priority')
       }
     ]
   }) }}
@@ -234,11 +238,13 @@ Add previous name
     items: [
       {
         value: "Priority",
-        text: "Priority"
+        text: "Priority",
+        checked: checked('set-debt-priority3','Priority')
       },
       {
         value: "Non-priority",
-        text: "Non-priority"
+        text: "Non-priority",
+        checked: checked('set-debt-priority3','Non-priority')
       }
     ]
   }) }}
@@ -319,11 +325,13 @@ Add previous name
     items: [
       {
         value: "Priority",
-        text: "Priority"
+        text: "Priority",
+        checked: checked('set-debt-priority4','Priority')
       },
       {
         value: "Non-priority",
-        text: "Non-priority"
+        text: "Non-priority",
+        checked: checked('set-debt-priority4','Non-priority')
       }
     ]
   }) }}
@@ -332,10 +340,11 @@ Add previous name
 
      
      {% include  "../includes/advisor/_show-confirmation.html" %} 
+     {% include  "../includes/advisor/_show-confirmation.html" %} 
 
          <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="previousname" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="debtcategory" type="radio" value="yes~plan?reference={{case.reference}}" checked>
         <label class="govuk-label govuk-radios__label" for="updateDebtType">
          hidden radio
         </label>

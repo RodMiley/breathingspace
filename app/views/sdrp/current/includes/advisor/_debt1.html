@@ -17,13 +17,13 @@
     </dt>
     <dd class="govuk-summary-list__value">
       {% if checked('debttype1','Other')%} 
-      {{ data['otherdebttype1'] }} 
+      {{ data['council-other-debt'] }} 
       {% else %}
       {{ data['debttype1'] | default('Council tax') }}
       {% endif %}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-council#debttype1", "debt type") }}
+      {{ changeform("0", "add-debt-details-council-change#debttype1", "debt type") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -34,7 +34,7 @@
       {{ data['set-debt-priority1' ] | default("Not set")}}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-council#set-debt-priority1", "catergory") }}
+      {{ changeform("0", "add-debt-details-council-change#set-debt-priority1", "catergory") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -45,7 +45,7 @@
       £{{ data['debtamount1'] | default('1159') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-council#debtamount1", "amount") }}
+      {{ changeform("0", "add-debt-details-council-change#debtamount1", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -56,7 +56,7 @@
       {{ data['debtreference1'] | default('00456732555WM') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-council#debtreference1", "reference") }}
+      {{ changeform("0", "add-debt-details-council-change#debtreference1", "reference") }}
     </dd>
   </div>
 </dl>

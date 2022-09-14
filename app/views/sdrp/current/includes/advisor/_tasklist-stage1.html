@@ -80,7 +80,7 @@
  {% elif case.status ==='intention-bs' %}   
 
           <li class="app-task-list__item">
-            {% if checked('task','complete') or checked('task','confirmDisc')%} 
+            {% if checked('debtcategory','yes') %} 
             <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 
             {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
@@ -91,7 +91,7 @@
               </span>
             </li>
             <li class="app-task-list__item">
-              {% if checked('scenario1','completed') %}
+              {% if checked('debtcategory','yes') %}
           <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
           <a href="consent">Send debts to creditors to confirm</a>
           {% else %}

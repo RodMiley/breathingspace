@@ -63,23 +63,28 @@ Debt details
   items: [
    {
       value: "Council tax",
-      text: "Council tax"
+      text: "Council tax",
+      checked: checked
     },
     {
       value: "Rent arrears",
-      text: "Rent arrears"
+      text: "Rent arrears",
+      checked: checked('debttype1','Rent arrears')
     },
     {
       value: "Housing benefit",
-      text: "Housing benefit"
+      text: "Housing benefit",
+      checked: checked('debttype1','Housing benefit')
     },
     {
       value: "Parking fines",
-      text: "Parking fines"
+      text: "Parking fines",
+      checked: checked('debttype1','Parking fines')
     },
     {
       value: "Other",
       text: "Other",
+      checked: checked('debttype1','Other'),
       conditional: {
         html: textHtml
       }
@@ -102,11 +107,13 @@ Debt details
   items: [
     {
       value: "Priority",
-      text: "Priority"
+      text: "Priority",
+      checked: checked('set-debt-priority1','Priority')
     },
     {
       value: "Non-priority",
-      text: "Non-priority"
+      text: "Non-priority",
+      checked: checked('set-debt-priority1','Non-priority')
     }
   ]
 }) }}
@@ -118,7 +125,7 @@ Debt details
   </label>
    <div class="govuk-input__wrapper">
     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-  <input class="govuk-input govuk-input--width-10" id="debtamount{{ debt }}" name="debtamount{{ debt }}" type="text" spellcheck="false" value="{{ debtamount1 }}">
+  <input class="govuk-input govuk-input--width-10" id="debtamount{{ debt }}" name="debtamount{{ debt }}" type="text" spellcheck="false" value="{{ debtamount1 | default('1159') }}">
 </div>
 </div>
 
@@ -129,7 +136,7 @@ Debt details
   <span id="priority-debt-hint" class="govuk-hint">
       This is the creditor’s reference for the debt
 </span>
-  <input class="govuk-input govuk-input--width-10" id="debtreference{{ debt }}" name="debtreference{{ debt }}" type="text" spellcheck="false" value="{{ debtreference1 }}">
+  <input class="govuk-input govuk-input--width-10" id="debtreference{{ debt }}" name="debtreference{{ debt }}" type="text" spellcheck="false" value="{{ debtreference1 | default('00456732555WM') }}">
 </div>
 
 <div class="govuk-radios" style="display:none">

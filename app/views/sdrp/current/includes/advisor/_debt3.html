@@ -19,7 +19,7 @@
       {{ data['debttype3'] | default('Consumer credit') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details#debttype3", "debt type") }}
+      {{ changeform("0", "add-debt-detail-changes#debttype3", "debt type") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -30,7 +30,7 @@
       {{ data['set-debt-priority3' ] | default("Not set")}}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details#set-debt-priority3", "catergory") }}
+      {{ changeform("0", "add-debt-details-change#set-debt-priority3", "catergory") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -41,7 +41,7 @@
       £{{ data['debtamount3'] | default('1250') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details#debtamount3", "amount") }}
+      {{ changeform("0", "add-debt-details-change#debtamount3", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -52,7 +52,7 @@
       {{ data['debtreference3'] | default('LW1234567') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details#debtreference3", "reference") }}
+      {{ changeform("0", "add-debt-details-change#debtreference3", "reference") }}
     </dd>
   </div>
 </dl>

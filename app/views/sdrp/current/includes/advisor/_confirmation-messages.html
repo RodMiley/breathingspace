@@ -10,6 +10,10 @@
     You have sent the plan to your client’s creditors. Creditors now have 14 days to object to the plan or raise any discrepancies.
 
   </h3>
+  {% elif checked('debtcategory','yes')%}
+  <h3 class="govuk-notification-banner__heading">
+    You have completed your task
+  </h3>
 
   {% elif checked('task','debt-removed')%}
   <h3 class="govuk-notification-banner__heading">

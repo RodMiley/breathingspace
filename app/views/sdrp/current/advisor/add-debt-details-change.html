@@ -3,7 +3,6 @@
 
 {% block pageTitle %}
 Debt details
-
 {% endblock %}
 
 {% block content %}
@@ -29,69 +28,24 @@ Debt details
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
      
-  Debt details
-
+      Debt details
       </h1>
-      <h2 class="govuk-heading-m">Creditor</h2>
-       <p class="govuk-body govuk-!-margin-bottom-9">{{ creditor1 | default("Southwark Council") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
+      <h2 class="govuk-heading-m  govuk-!-margin-bottom-1">Creditor</h2>
+       <p class="govuk-body ">{{ creditor3 | default("Lowel group") }}, <a href="add-debt-choose-creditor"> change creditor</a></p>
 
+       <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="debttype{{ debt }}">
+        Debt type
+        </label>
+        <input class="govuk-input govuk-input--width-10" id="debttype{{debt}}" name="debttype{{ debt }}" type="text" spellcheck="false" value="{{ debttype3 | default('Consumer credit')}}">
+      </div>
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-
-{% set textHtml %}
-{{ govukInput({
-  id: "council-other-debt",
-  name: "council-other-debt",
-  classes: "govuk-!-width-one-third",
-  label: {
-    text: "Type of Debt"
-  }
-}) }}
-{% endset -%}
-
-{{ govukRadios({
-  id: "debttype1",
-  name: "debttype1",
-  fieldset: {
-    legend: {
-      text: "What type of debt is it?",
-      isPageHeading: false,
-      classes: "govuk-label govuk-label--m"
-    }
-  },
-  items: [
-   {
-      value: "Council tax",
-      text: "Council tax"
-    },
-    {
-      value: "Rent arrears",
-      text: "Rent arrears"
-    },
-    {
-      value: "Housing benefit",
-      text: "Housing benefit"
-    },
-    {
-      value: "Parking fines",
-      text: "Parking fines"
-    },
-    {
-      value: "Other",
-      text: "Other",
-      conditional: {
-        html: textHtml
-      }
-    }
-  ]
-}) }}
-
-
+ 
+ 
 {{ govukRadios({
   classes: "govuk-radios",
-  idPrefix: "set-debt-priority1",
-  name: "set-debt-priority1",
+  idPrefix: "set-debt-priority3",
+  name: "set-debt-priority3",
   fieldset: {
     legend: {
       text: "Select a debt category",
@@ -110,26 +64,24 @@ Debt details
     }
   ]
 }) }}
-
-
+ 
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-label--m" for="debtamount{{ debt }}">
+  <label class="govuk-label govuk-label--m" for="creditcardDebtAmount">
    Estimated debt amount
   </label>
    <div class="govuk-input__wrapper">
     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-  <input class="govuk-input govuk-input--width-10" id="debtamount{{ debt }}" name="debtamount{{ debt }}" type="text" spellcheck="false" value="{{ debtamount1 }}">
+  <input class="govuk-input govuk-input--width-10" id="debtamount{{debt}}" name="debtamount{{ debt }}" type="text" spellcheck="false" value="{{ debtamount3 | default('1250') }}">
 </div>
 </div>
 
  <div class="govuk-form-group">
-  <label class="govuk-label govuk-label--m" for="councilDebtReference">
+  <label class="govuk-label govuk-label--m" for="debtReference">
     Reference (optional)
   </label>
   <span id="priority-debt-hint" class="govuk-hint">
-      This is the creditor’s reference for the debt
-</span>
-  <input class="govuk-input govuk-input--width-10" id="debtreference{{ debt }}" name="debtreference{{ debt }}" type="text" spellcheck="false" value="{{ debtreference1 }}">
+    If you enter a 16 digit creditcard number, we will not show the first 8 numbers in any notification</span>
+  <input class="govuk-input govuk-input--width-10" id="debtreference{{ debt }}" name="debtreference{{ debt }}" type="text" spellcheck="false" value="{{ debtreference3 | default('LW1234567') }}">
 </div>
 
 <div class="govuk-radios" style="display:none">
@@ -152,7 +104,7 @@ Debt details
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Continue
+  Save and continue
 </button>
     </div>
     </form>

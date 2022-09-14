@@ -29,7 +29,7 @@
       {{ data['set-debt-priority2' ] | default("Not set")}}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-creditcard#set-debt-priority1", "catergory") }}
+      {{ changeform("0", "add-debt-details-creditcard-change#set-debt-priority1", "catergory") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -40,7 +40,7 @@
       £{{ data['debtamount2'] | default('6345')}}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-creditcard#debtamount2", "amount") }}
+      {{ changeform("0", "add-debt-details-creditcard-change#debtamount2", "amount") }}
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -51,7 +51,7 @@
       {{ data['debtreference2'] | default('HAl12345678') }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      {{ changeform("0", "add-debt-details-creditcard#debtreference2", "reference") }}
+      {{ changeform("0", "add-debt-details-creditcard-change#debtreference2", "reference") }}
     </dd>
   </div>
 </dl>
