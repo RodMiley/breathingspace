@@ -8,12 +8,22 @@
 
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 <div class="govuk-grid-row">
   <form class="form" action="address-choice-correspondence" method="post">
     <div class="govuk-grid-column-two-thirds">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
-       Add your client's correspondance address?
+       {% if checked('type-of-plan','Joint')%}
+       <span class="govuk-caption-xl">Joint plan</span>
+       Add your client {{ debtor }} correspondance address
+       {% else%}
+       Add your client's correspondance address
+       {% endif %}
       </h1>
 
  <div class="govuk-form-group">
@@ -21,7 +31,7 @@
     <label class="govuk-label govuk-!-font-weight-bold" for="addressPostcodeCorres">
       Postcode
     </label>
-       <input class="govuk-input govuk-input--width-10" id="addressPostcodeCorres" name="addressPostcodeCorres" type="text"  value="{{ addressPostcodeCorres }}">
+       <input class="govuk-input govuk-input--width-10" id="addressPostcodeCorres" name="addressPostcodeCorres{{ debtor }}" type="text"  value="{{ addressPostcodeCorres }}">
   </div>
 
 

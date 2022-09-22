@@ -1,0 +1,60 @@
+
+{% extends "../layout-sdrp.html" %}
+
+
+{% block pageTitle %}
+  Manage a debt repayment plan
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <form class="form" action="create-guard" method="post">
+  <div class="govuk-grid-column-full"><a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+  </div>
+    <div class="govuk-grid-column-two-thirds">
+   <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="type-of-plan-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <label class="govuk-fieldset__heading">
+       What type of plan are you creating?
+      </label>
+    </legend>
+    <!-- <span id="type-of-plan-hint" class="govuk-hint">
+      You’ll need an account to prove your identity and complete your Self Assessment.
+    </span> -->
+    <div class="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-of-plan" name="type-of-plan" type="radio" value="Single~create-guard" aria-describedby="type-of-plan-item-hint" {{checked('type-of-plan', 'Single') }}>
+        <label class="govuk-label govuk-radios__label " for="type-of-plan">
+         Single
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-of-plan-2" name="type-of-plan" type="radio" value="Joint" aria-describedby="type-of-plan-2-item-hint" {{checked('type-of-plan', 'Joint') }}>
+        <label class="govuk-label govuk-radios__label" for="type-of-plan-2">
+          Joint
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+     <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="clientDetails" type="radio" value="complete" checked>
+        <label class="govuk-label govuk-radios__label" for="clientDetails">
+         hidden radio
+        </label>
+      </div>
+      </div>
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

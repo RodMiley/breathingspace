@@ -15,7 +15,18 @@
     Check client details
       </h1>
 
+      {% if checked('type-of-plan','Joint')%}
+     <h2 class="govuk-heading-l">Client 1</h2>
 {% include  "../includes/advisor/_client_details.html" %} 
+<h2 class="govuk-heading-l govuk-!-margin-top-9">Client 2</h2>
+{% include  "../includes/advisor/_client2_details.html" %} 
+      {% else%}
+
+{% include  "../includes/advisor/_client_details.html" %} 
+      {% endif %}
+
+
+
 
 
 <button class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">

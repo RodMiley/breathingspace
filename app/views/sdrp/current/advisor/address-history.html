@@ -8,13 +8,24 @@
 
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 <div class="govuk-grid-row">
   <form class="form" action="collect-email" method="post">
  
     <div class="govuk-grid-column-full">
            <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
            <h1 class="govuk-heading-xl">
+        
+            {% if checked('type-of-plan','Joint')%}
+            <span class="govuk-caption-xl">Joint plan</span>
+            Client {{debtor}} addresses
+            {% else%}
             Client addresses
+            {% endif %}
            </h1>
 
            <dl class="govuk-summary-list">
@@ -58,7 +69,7 @@
               </dd>
             </div>
       
-      {% if checked('addressCorres','yes')%}
+      {% if checked('addressCorres1','yes')%}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Correspondence address
@@ -72,15 +83,29 @@
           </a>
         </dd>
       </div>
+      {% elif checked('addressCorres2','yes') %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Correspondence address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          100 Chesterfield street<br> Marylebone<br> London<br> WS3 5DF
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden">Correspondence address</span>
+          </a>
+        </dd>
+      </div>
       {% endif %}
 
-      {% if checked('addressOther','yes')%}
+      {% if checked('addressOther1','yes')%}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Other address
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['other-address-choice'] }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev']}}
+          {{ data['otheraddresschoice1'] }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev1']}}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="#">
@@ -88,15 +113,31 @@
           </a>
         </dd>
       </div>
+      {% elif checked('addressOther2','yes') %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['otheraddresschoice2'] }}<br> Marylebone <br>London <br>{{ data['addressPostcodePrev2']}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden">Other address</span>
+          </a>
+        </dd>
+      </div>
+  
       {% endif %}
      
      
           </dl>
-          {% if checked('addressCorres','yes')%}
-          {% else %}
+          {% if checked('addressCorres1','yes')%}
+          {% elif checked('addressCorres1','yes') and checked('debtor1','complete') %}
           <h2 class="govuk-heading-l">Correspondence address</h2>
           <p>Add your client’s correspondence address if they have one.</p>
           <p><a href="address-correspondence" class="">Add correspondence address</a></p>
+          {% elif checked('addressCorres2','yes') %}
           {% endif %} 
           <h2 class="govuk-heading-l">Add client's other addresses in the last 3 years</h2>
           <p>Add all the addresses that are connected to debts your client has. This will help creditors to find information on the client’s debts.</p>

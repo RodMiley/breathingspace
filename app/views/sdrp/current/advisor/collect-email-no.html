@@ -14,7 +14,14 @@
 
       <div class="govuk-grid-column-two-thirds">
         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
-     <h1 class="govuk-heading-xl">Confirm your client does not have an email address or access to email</h1>
+     <h1 class="govuk-heading-xl">
+      {% if checked('type-of-plan','Joint')%}
+      <span class="govuk-caption-xl">Joint plan</span>
+      Confirm client 1 does not have an email address or access to email
+      {% else%}
+      Confirm your client does not have an email address or access to email
+      {% endif %}
+    </h1>
 
     <p>SDRP is a digital service, so your client should be encouraged to get an email address to receive updates quickly.
 

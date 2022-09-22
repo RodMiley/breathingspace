@@ -59,6 +59,17 @@
       {{ changeform("0", "add-debt-details-council-change#debtreference1", "reference") }}
     </dd>
   </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Who owes the debt
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['debt-owner'] | default('Sarah Philips') }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      {{ changeform("0", "add-debt-details-council-change#debt-owner", "Debt owner") }}
+    </dd>
+  </div>
 </dl>
   <form class="govuk-!-margin-top-0" action="remove-debt" method="post">
     <div class="govuk-visually-hidden">

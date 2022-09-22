@@ -6,24 +6,42 @@ Client’s names
 {% endblock %}
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
+
 
   <div class="govuk-grid-row">
+    {% if checked('debtor1','complete')%}
+    <form class="form" action="joint-address-guard" method="post">
+    {% else %}
     <form class="form" action="address" method="post">
-
+    {% endif %}
     <div class="govuk-grid-column-full">
      <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>   
       <h1 class="govuk-heading-xl">
+        {% if checked('type-of-plan','Joint')%}
+        <span class="govuk-caption-xl">Joint plan</span>
+        Client {{debtor}} names
+        {% else%}
         Client’s names
+        {% endif %}
       </h1>
 
        <dl class="govuk-summary-list">
  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Name
+              Names
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ firstname | default('Joe') }} {{ middlename}} {{ lastname | default('Black') }}
+              {% if checked('debtor1','complete')%}
+              {{ firstname2 | default('Joe') }} {{ middlename2 }} {{ lastname2 | default('Black') }}
+              {% else%}
+              {{ firstname1 | default('Joe') }} {{ middlename1 }} {{ lastname1 | default('Black') }}
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-!-font-size-19" href="details#firstname">
@@ -32,8 +50,10 @@ Client’s names
             </dd>
           </div>
     
-{%if checked('previousname','yes') %}
+{% if checked('previousname1','yes') %}
   {% include  "../includes/advisor/_names-previous.html" %} 
+  {% elif checked('previousname2','yes') %}
+  {% include  "../includes/advisor/_names-previous2.html" %} 
 {% endif %}
         </dl>
 

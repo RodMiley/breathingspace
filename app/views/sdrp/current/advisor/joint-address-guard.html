@@ -8,33 +8,23 @@ Do you want to add your client’s Breathing Space information to the plan?
 
 
 {% block content %}
-  <form class="form" action="details" method="post">
+  <form class="form" action="address" method="post">
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
- 
+
   
    <div class="govuk-grid-column-two-thirds">
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 <span class="govuk-caption-xl">Joint plan</span>
-{% set yesHtml %}
-{{ govukInput({
-  id: "bs-ref",
-  name: "bs-ref",
-  classes: "govuk-!-width-one-third",
-  label: {
-    text: "Enter your Breathing Space reference"
-  }
-}) }}
-{% endset -%}
-{% if checked('type-of-plan','Joint')%}
+
 {{ govukRadios({
   idPrefix: "create-gaurd",
   name: "create-gaurd",
   fieldset: {
     legend: {
-      text: "Do you want to add client 1 Breathing Space information to the plan?
+      text: "Does client 2 live in the same address as client 1?
 ",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--xl"
@@ -45,7 +35,7 @@ Do you want to add your client’s Breathing Space information to the plan?
   },
   items: [
     {
-      value: "yes~bs-confirm",
+      value: "yes~address-history",
       text: "Yes",
       conditional: {
         html: yesHtml
@@ -57,40 +47,6 @@ Do you want to add your client’s Breathing Space information to the plan?
     }
   ]
 }) }}
-{% else %}
-{{ govukRadios({
-  idPrefix: "create-gaurd",
-  name: "create-gaurd",
-  fieldset: {
-    legend: {
-      text: "Do you want to add your client’s Breathing Space information to the plan?
-",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: "Select one option."
-  },
-  items: [
-    {
-      value: "yes~bs-confirm",
-      text: "Yes",
-      conditional: {
-        html: yesHtml
-      }
-    },
-    {
-      value: "no",
-      text: "No"
-    }
-  ]
-}) }}
-{% endif %}
-
-
-
-
 <button class="govuk-button">Continue</button>
 
 </div></div>

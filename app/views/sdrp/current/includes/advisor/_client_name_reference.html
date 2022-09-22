@@ -1,7 +1,10 @@
  <div class="govuk-grid-row">
  <div class="govuk-grid-column-two-thirds">
  <h1 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-3">
-     {{ case.name | default('Sarah Philips')}}
+    {% if checked('type-of-plan','Joint')%} 
+    Sarah philips and Joe Black
+    {% else %}{{ case.name | default('Sarah Philips')}}
+    {% endif%}
   <span class="govuk-caption-m">Reference: {{ case.reference | default('SDRP0001')}}</span>
  </h1>
  </div>

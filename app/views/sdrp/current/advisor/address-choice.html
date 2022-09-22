@@ -8,13 +8,23 @@
 
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 <div class="govuk-grid-row">
   <form class="form" action="address-history" method="post">
  
     <div class="govuk-grid-column-two-thirds">
            <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
       <h1 class="govuk-heading-xl">
+       {% if checked('type-of-plan','Joint')%}
+       <span class="govuk-caption-xl">Joint plan</span>
+       Choose your client {{ debtor }} current address
+       {% else%}
        Choose your client's current address
+       {% endif %}
       </h1>
 
 

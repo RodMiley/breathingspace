@@ -6,7 +6,11 @@ Client’s personal details
 {% endblock %}
 
 {% block content %}
-
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 
   <div class="govuk-grid-row">
   <form class="form" action="names" method="post">
@@ -14,27 +18,32 @@ Client’s personal details
     <div class="govuk-grid-column-two-thirds">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
+        {% if checked('type-of-plan','Joint')%}
+        <span class="govuk-caption-xl">Joint plan</span>
+        Client {{debtor}} personal details
+        {% else%}
         Client’s personal details
+        {% endif %}
       </h1>
      <div class="govuk-form-group">
   <label class="govuk-label" for="firstname">
     Client’s first name
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname" type="text" value="{{ firstname | default('Joe') }}">
+  <input class="govuk-input govuk-!-width-three-quarters" id="firstname" name="firstname{{debtor}}" type="text" value="{{ firstname }}">
 </div>
 
      <div class="govuk-form-group">
   <label class="govuk-label" for="middlename">
     Client’s middle name (optional)
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename" type="text" value="{{ middlename }}">
+  <input class="govuk-input govuk-!-width-three-quarters" id="middlename" name="middlename{{debtor}}" type="text" value="{{ middlename }}">
 </div>
 
     <div class="govuk-form-group">
   <label class="govuk-label" for="lastname">
     Client’s last name
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
+  <input class="govuk-input govuk-!-width-three-quarters" id="lastname" name="lastname{{debtor}}" type="text" autocomplete="lastname" spellcheck="false" value="{{ lastname }}">
 </div>
 
 <div class="govuk-form-group">
@@ -53,7 +62,7 @@ Client’s personal details
           <label class="govuk-label govuk-date-input__label" for="dobday">
             Day
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobday" name="dobday" type="number" autocomplete="bdayday" pattern="[0-9]*" value="{{ dobday }}">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobday" name="dobday{{debtor}}" type="number" autocomplete="bdayday" pattern="[0-9]*" value="{{ dobday }}">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -61,7 +70,7 @@ Client’s personal details
           <label class="govuk-label govuk-date-input__label" for="dobmonth">
             Month
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobmonth" name="dobmonth" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="{{ dobmonth }}">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dobmonth" name="dobmonth{{debtor}}" type="number" autocomplete="bdaymonth" pattern="[0-9]*"  value="{{ dobmonth }}">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -69,7 +78,7 @@ Client’s personal details
           <label class="govuk-label govuk-date-input__label" for="dobyear">
             Year
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobyear" name="dobyear" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="{{ dobyear }}">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dobyear" name="dobyear{{debtor}}" type="number" autocomplete="bdayyear" pattern="[0-9]*"  value="{{ dobyear }}">
         </div>
       </div>
     </div>

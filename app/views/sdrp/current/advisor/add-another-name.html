@@ -6,14 +6,25 @@ Add previous name
 {% endblock %}
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 
   <div class="govuk-grid-row">
   <form class="form" action="names" method="post">
     <div class="govuk-grid-column-full">
       <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">
+        {% if checked('type-of-plan','Joint')%}
+        <span class="govuk-caption-xl">Joint plan</span>
+        Client {{debtor}} previous name
+        {% else%}
         Add client’s previous name
+        {% endif %}
       </h1>
+
 </div>
 </div>
 <div class="govuk-grid-row">
@@ -22,7 +33,7 @@ Add previous name
   <label class="govuk-label" for="previous-full-name">
   Previous full name
   </label>
-  <input class="govuk-input govuk-!-width-three-quarters" id="previous-full-name" name="previous-full-name" type="text" autocomplete="previous-full-name" spellcheck="false" value="">
+  <input class="govuk-input govuk-!-width-three-quarters" id="previous-full-name" name="previous-full-name{{debtor}}" type="text" autocomplete="previous-full-name" spellcheck="false" value="">
 </div>
 
 
@@ -31,7 +42,7 @@ Add previous name
 
          <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="previousname" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="previousname{{ debtor }}" type="radio" value="yes" checked>
         <label class="govuk-label govuk-radios__label" for="updateDebtType">
          hidden radio
         </label>

@@ -1,0 +1,27 @@
+{% if checked('type-of-plan','Joint')%}
+{{ govukRadios({
+  name: "debt-owner",
+  fieldset: {
+    legend: {
+      text: "Who's debt is this?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Sarah Philips",
+      text: "Sarah Philips"
+    },
+    {
+      value: "Joe Black",
+      text: "Joe Black"
+    },
+    {
+      value: "Joint debt",
+      text: "Joint debt"
+    }
+  ]
+}) }}
+{% else %}
+{% endif %}

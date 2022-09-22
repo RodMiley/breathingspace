@@ -8,13 +8,31 @@
 
 
 {% block content %}
+{% if checked('debtor1','complete') %}
+{% set debtor = 2 %}
+{% else %}
+{% set debtor = 1 %}
+{% endif %}
 
 <div class="govuk-grid-row">
-    <form class="form" action="confirm-details" method="post">
+  {% if checked('debtor1','complete') %}
+  <form class="form" action="confirm-details" method="post">
+  {% elif checked('type-of-plan','Joint')%}
+  <form class="form" action="details" method="post">
+  {% else%}
+  <form class="form" action="confirm-details" method="post">
+  {% endif %}
 
       <div class="govuk-grid-column-two-thirds">
         <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
-     <h1 class="govuk-heading-xl">Provide an email address for your client</h1>
+     <h1 class="govuk-heading-xl">
+      {% if checked('type-of-plan','Joint')%}
+      <span class="govuk-caption-xl">Joint plan</span>
+      Provide an email address for client {{ debtor }}
+      {% else%}
+      Provide an email address for your client
+      {% endif %}
+</h1>
      <p>SDRP regulations state that your client must be notified of some updates
 
     </p>
@@ -25,26 +43,35 @@
       <div id="email-hint" class="govuk-hint">
         We will use this email address to send important updates and any login details.
       </div>
-      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmail" name="contactByEmail" type="email" spellcheck="false" value="{{ contactByEmail }}">
+      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmail" name="contactByEmail{{ debtor }}" type="email" spellcheck="false" value="">
     </div>
 
       <div class="govuk-form-group">
       <label class="govuk-label" for="contactByEmailConfirm">
         Confirm email address
       </label>
-      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmailConfirm" name="contactByEmailConfirm" type="email" spellcheck="false" value="{{ contactByEmailConfirm }}">
+      <input class="govuk-input govuk-!-width-two-thirds" id="contactByEmailConfirm" name="contactByEmailConfirm{{ debtor }}" type="email" spellcheck="false" value="">
     </div>
     <p><a href="collect-email-no.html">Tell us if your client does not have an email address or access to email. </a></p>
   
   
     <div class="govuk-radios" style="display:none">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="" name="email" type="radio" value="yes" checked>
+        <input class="govuk-radios__input" id="" name="email{{ debt }}" type="radio" value="yes" checked>
         <label class="govuk-label govuk-radios__label" for="task">
          hidden radio
         </label>
       </div>
       </div>
+
+      <div class="govuk-radios" style="display:none">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="" name="debtor1" type="radio" value="complete" checked>
+          <label class="govuk-label govuk-radios__label" for="task">
+           hidden radio
+          </label>
+        </div>
+        </div>
 
 
   <button class="govuk-button" data-module="govuk-button">
