@@ -1,4 +1,4 @@
-module.exports =[{"name":"Ginnie Atrill","reference":"SDRP619910","task":"Review new debts added by creditor","status":"intention"},
+module.exports =[{"name":"Ginnie Atrill","reference":"SDRP619910","task":"","status":"intention-bs","type":"Joint"},
 {"name":"Armstrong Hadenton","reference":"SDRP904312","task":"Confirm sold debt","status":"intention"},
 {"name":"Kerwin Bramley","reference":"SDRP823471","task":"Review updated debt details","status":"intention"},
 {"name":"Nicolina Musterd","reference":"SDRP250150","task":"Draft plans nearing deadline","status":"provisional"},
@@ -6,6 +6,7 @@ module.exports =[{"name":"Ginnie Atrill","reference":"SDRP619910","task":"Review
 {"name":"Bette Rowbrey","reference":"SDRP023446","task":"Creditor objects to plan","status":"Creditor objection"},
 {"name":"Pacorro Turpey","reference":"SDRP332966","task":"Review updated debt details","status":"final"},
 {"name":"Dorette Tassel","reference":"SDRP726245","task":"Draft plans nearing deadline","status":"provisional"},
-{"name":"Lara Hiddersley","reference":"SDRP414771", "task":"New message","status":"intention"},
+{"name":"Lara Hiddersley","reference":"SDRP414772", "task":"New message","status":"intention"},
+{"name":"Joe Joice","reference":"SDRP414771", "task":"New debts added by creditor","status":"intention"},
 {"name":"Sarah Philips","reference":"SDRP033228", "task":"New message","status":"intention-bs"},
 {"name":"Darby Ruse","reference":"SDRP033227", "task":"New message","status":"intention",}]

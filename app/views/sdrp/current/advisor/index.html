@@ -11,31 +11,45 @@
 {% block content %}
 {% include  "../includes/advisor/_global-nav.html" %} 
 
-{% set totTasks = 0 %}
-{% set totDiscprenceies = 0 %}
-{% set totProposed = 0 %}
-{% set totCantFind = 0 %}
-
-	{% for case in cases %}
-
- {% if case.task === "Creditor has raised discrepancies" or case.task === "Draft plans nearing deadline" or case.task === "Creditor can't find the debt" %}
-    {% set totTasks = totTasks + 1 %}
-   {% endif %}
-
-    {% if case.task === "Creditor has raised discrepancies" %}
-    {% set totDiscprenceies = totDiscprenceies + 1 %}
-   {% endif %}
-
-  {% if case.task === "Draft plans nearing deadline" %}
-    {% set totProposed = totProposed + 1 %}
-   {% endif %}
-
-   {% if case.task === "Creditor can't find the debt" %}
-    {% set totCantFind = totCantFind + 1 %}
-   {% endif %}
-
-
-   {% endfor %}
+   <!-- BASE VALUES -->
+   {% set totTasks = 0 %}
+   {% set totDiscprenceies = 0 %}
+   {% set newMessage = 0 %}
+   {% set totSoldDebt = 0 %}
+   {% set totNewdDebt = 0 %}
+   {% set totDraftPlan = 0 %}
+   
+     {% for case in cases %}
+   
+    {% if case.task === "Review updated debt details" or case.task === "Draft plans nearing deadline" or case.task === "Confirm sold debt"  or  case.task === "New message" or case.task === "New debts added by creditor"%}
+       {% set totTasks = totTasks + 1 %}
+      {% endif %}
+   
+       {% if case.task === "Review updated debt details" %}
+       {% set totDiscprenceies = totDiscprenceies + 1 %}
+      {% endif %}
+   
+   
+     {% if case.task === "Draft plans nearing deadline" %}
+       {% set totDraftPlan = totDraftPlan + 1 %}
+      {% endif %}
+   
+      {% if case.task === "Confirm sold debt" %}
+       {% set totSoldDebt = totSoldDebt + 1 %}
+      {% endif %}
+   
+   
+      {% if case.task === "New message" %}
+       {% set newMessage = newMessage + 1 %}
+      {% endif %}
+   
+      {% if case.task === "New debts added by creditor" %}
+      {% set totNewdDebt = totNewdDebt + 1 %}
+     {% endif %}
+   
+   
+   
+      {% endfor %}
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
   
@@ -53,13 +67,13 @@
                   <h2 class="govuk-heading-s"><a href="tasks-to-do">Tasks to do <strong>({{totTasks}})</strong></a></h2>
                   <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                   <ul class="govuk-list">
-                  <li><a href="tasks-to-do">New messages ({{totCantFind}}) </a></li>
-                  <li><a href="tasks-to-do">Updated debt details ({{totProposed}}) </a></li>
-                  <li><a href="tasks-to-do">Sold depts ({{totProposed}}) </a></li>
-                  <li><a href="tasks-to-do">New debts ({{totProposed}}) </a></li>
-                  <li><a href="tasks-to-do">Draft plans nearing deadline ({{totProposed}}) </a></li>
-                  <li><a href="tasks-to-do">Review agreed plans ({{totProposed}}) </a></li>
-                  <li><a href="tasks-to-do">Missed payments ({{totProposed}}) </a></li>
+                  <li><a href="tasks-to-do">Review updated debt details ({{totDiscprenceies}}) </a></li>
+                  <li><a href="tasks-to-do">New debts added by creditor ({{totNewdDebt}}) </a></li>
+                  <li><a href="tasks-to-do">Confirm sold debts ({{totSoldDebt}}) </a></li>
+                  <li><a href="tasks-to-do">New messages ({{newMessage}}) </a></li>
+                  <li><a href="tasks-to-do">Draft plans nearing deadline ({{totDraftPlan}}) </a></li>
+                  <!--<li><a href="tasks-to-do">Review agreed plans ({{totProposed}}) </a></li> -->
+                  <!-- <li><a href="tasks-to-do">Missed payments ({{totProposed}}) </a></li> -->
                   </ul>
               </div>
               <div class="card">

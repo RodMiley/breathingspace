@@ -21,7 +21,7 @@
       
 
 
-        {% if checked('object-to-plan-reason',' A debt is in the plan that should not be included')%}
+        {% if checked('object-to-plan-reason',' A debt is in the plan that should not be included') or creditorcase.status === "Draft plan"%}
         <li>
           A debt is in the plan that should not be included
         </li>
@@ -57,7 +57,7 @@
         </li>
         {% endif %}
       </ul>
-      <p class="govuk-body">{{ data['more-detail']}}</p>
+      <p class="govuk-body">{{ data['more-detail'] | default('We provided you with another debt owed to us and it has not been included in the plan')}}</p>
 
 
         {% include  "../includes/_show-confirmation.html" %}

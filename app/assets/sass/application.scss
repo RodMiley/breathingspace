@@ -522,3 +522,13 @@ ul.subfilters  {
     text-align: left;
 }
 
+.border-bottom li
+{
+    border-bottom:1px solid  $govuk-border-colour;
+    padding:9px 0px 12px 0;
+
+    .govuk-tag{
+        float:right;
+    }
+}
+

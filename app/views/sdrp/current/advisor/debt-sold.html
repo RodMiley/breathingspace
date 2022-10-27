@@ -22,40 +22,74 @@
       </p>
       </div>
       <div class="govuk-grid-column-full">
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-    <dt class="govuk-summary-list__key">
-     Creditor
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Next retail plc<span class="govuk-!-display-block govuk-!-margin-top-2">Lowell<strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">proposed</strong></span>
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-    <dt class="govuk-summary-list__key">
-    Debt type
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Store card
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-    <dt class="govuk-summary-list__key">
-     Amount owed
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £1291
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-    <dt class="govuk-summary-list__key">
-     Reference
-    </dt>
-    <dd class="govuk-summary-list__value">
-     £NX23452345
-    </dd>
-  </div>
-</dl>
+
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Sold debt details",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Details"
+    },
+    {
+      text: "Original details"
+    },
+    {
+      text:"Creditor changes"
+    }
+  ],
+  rows: [
+     [
+      {
+        text: "Creditor"
+      },
+      {
+        text: "Next retail plc"
+      }
+      ,
+      {
+        text: "Lowel Group"
+      }
+    ],
+    [
+      {
+        text: "Debt type"
+      },
+      {
+        text: "Store card"
+      }
+      ,
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Amount"
+      },
+      {
+        text: "£1291"
+      },
+      {
+        text: ""
+      }
+    ],
+    [
+      {
+        text: "Reference"
+      },
+      {
+        text: "NX23452345"
+      },
+      {
+        text: ""
+      }
+    ]
+  ]
+}) }}
 
 
  

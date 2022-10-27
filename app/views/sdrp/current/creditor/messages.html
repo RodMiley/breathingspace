@@ -13,6 +13,18 @@ Debt page
       {% include  "../includes/creditor/_client_name_reference.html" %} 
       <a href="plan?reference={{creditorcase.reference}}#messages" class="govuk-back-link">Back</a> 
       <h1 class="govuk-heading-xl">Messages</h1>
+      {% if checked('task','newMessage') or creditorcase.status === "New message" %} 
+      <h2 class="govuk-heading-l">Subject: {{ data['subject-message'] | default('Incorrect client details')  }}</h2>
+      
+      {% else %}
+      <div class="govuk-form-group">
+         <label class="govuk-label govuk-label--l" for="subject-message">
+           Add subject line
+         </label>
+       
+       <input class="govuk-input" id="subject-message" name="subject-message" type="text">
+       </div> 
+       {% endif %}  
     </div>
   </div>
 
@@ -83,22 +95,19 @@ Debt page
     <p>{{ data['message-to-ma'] }}</p>
       <p class="govuk-body-s govuk-!-margin-bottom-0"> Paul Smith, {% include "../includes/creditor/_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
 </div>
+{% else %}
+<div class="card govuk-!-margin-bottom-5">
+  <h2 class="govuk-heading-s">Sent message</h2>
+  <hr class="govuk-section-break govuk-section-break--visible">
+    <p class="govuk-!-margin-top-5">{{ data['message-to-ma-2'] }}</p>
+    <div class="moj-message-item__meta">
+      <p class="govuk-body-s govuk-!-margin-bottom-0">Paul Smith, {% include "../includes/creditor/_creditor.html" %}, {{ 'DD MMMM YYYY' | baseDateAdd(0) }} at 11.32am</p>
+    </div>
+  </div>
   {% endif %}
   </div>
-  <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="review-message" method="post">
-   {% if checked('task','newMessage')%} 
-   <h2 class="govuk-heading-l">Subject: {{ data['subject-message']  }}</h2>
-   
-   {% else %}
-   <div class="govuk-form-group">
-      <label class="govuk-label govuk-label--l" for="subject-message">
-        Add subject line
-      </label>
-    
-    <input class="govuk-input" id="subject-message" name="subject-message" type="text">
-    </div> 
-    {% endif %}        
+  <div class="govuk-grid-column-one-third">
+    <form class="form" action="review-message" method="post">      
       {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {{ govukTextarea({

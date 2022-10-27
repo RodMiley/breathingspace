@@ -1,0 +1,69 @@
+
+{% if checked('debtadded','5')%}
+{% set debt = 5 %}
+{% elif checked('debtadded','3')%}
+{% set debt = 4 %}
+{% elif checked('debtadded','2')%}
+{% set debt = 3 %}
+{% elif checked('debtadded','1')%}
+{% set debt = 2 %}
+{% else %}
+{% set debt = 1 %}
+{% endif %}
+
+
+<p>Add as much information about the debt as you can.</p>
+<p>Be accurate and only give estimates if exact figures are not available.</p>
+<p>Creditors can update incorrect amounts when they receive the proposed plan.</p>
+<form class="govuk-!-display-inline" action="add-debt-choose-creditor" method="post">
+<button  class="govuk-link govuk-body">Add a debt</button> 
+{% include  "../advisor/_hide-confirmation.html" %} 
+<!--{% if case.task %}
+ <div class="govuk-radios" style="display:none">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="" name="url" type="radio" value="go~not-testing?reference={{case.reference}}" checked>
+        <label class="govuk-label govuk-radios__label" for="updateDebtType">
+         hidden radio
+        </label>
+      </div> 
+ {% endif %} -->    
+</form>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+{% from "../advisor/_changeform.njk" import changeform %}
+
+
+
+<h3 class="govuk-heading-l">Priority debts</h3>
+
+
+
+{% include  "../advisor/_debt1.html" %}
+
+
+
+
+<h3 class="govuk-heading-l">Non-priority debts</h3>
+
+
+
+{% if checked('set-debt-priority5','Non-priority') or checked('set-debt-priority5','Do not know') or case.status ==='intention-bs' or case.status ==='intention' %}
+{% include  "../advisor/_debt5.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority4','Non-priority') or checked('set-debt-priority4','Do not know') or case.status ==='intention-bs' or case.status ==='intention' %}
+{% include  "../advisor/_debt4.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority3','Non-priority') or checked('set-debt-priority3','Do not know') or case.status ==='intention-bs' or case.status ==='intention' %}
+{% include  "../advisor/_debt3.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority2','Non-priority') or checked('set-debt-priority2','Do not know') or case.status ==='intention-bs' or case.status ==='intention' %}
+{% include  "../advisor/_debt2.html" %}
+{% endif %}
+
+{% if checked('set-debt-priority1','Non-priority') or checked('set-debt-priority1','Do not know') or case.status ==='intention-bs' or case.status ==='intention' %}
+{% include  "../advisor/_debt1.html" %}
+{% endif %}
+
+

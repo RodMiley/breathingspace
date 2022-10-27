@@ -210,7 +210,15 @@ Debt E monthly payment{{ ( debtErepayment|float ).toFixed(2)}}<br>
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="clientDetails">
   <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Client details</h2>
+  {% if case.type =="Joint" %}
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  <h2 class="govuk-heading-l">Client 1</h2>
+  {% endif %}
 {% include  "../includes/advisor/_client_details.html" %} 
+
+{% if case.type =="Joint" %}
+{% include  "../includes/advisor/_client2_details.html" %} 
+{% endif %}
 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="plan"> 

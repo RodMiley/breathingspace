@@ -12,23 +12,30 @@ Message
     <div class="govuk-grid-column-full">
       {% include  "../includes/advisor/_client_name_reference.html" %} 
       <a href="plan?reference={{case.reference}}#messages" class="govuk-back-link">Back to plan</a> 
-      <h1 class="govuk-heading-xl">Message: {{ data['send-message-creditor'] }}</h1>
-  
-        <h2 class="govuk-heading-l">Subject: {{ data['subject-message']  }}</h2>
-        <p><a href="">Send a message</a></p>
+      <h1 class="govuk-heading-xl">Message</h1>
+    </div>
+  </div>
+<p class="govuk-body-l"><strong>To:</strong> {{ data['send-message-creditor'] }}</p>
+
+
+    <div class="govuk-grid-row"> 
+      <div class="govuk-grid-column-two-thirds">
+    
+
 
           
 
-                <div class="card govuk-!-margin-bottom-5">
-                  <h2 class="govuk-heading-s">Sent message</h2>
-                  <hr class="govuk-section-break govuk-section-break--visible">
+          <!--     {% if data['message-to-creditor']%}  
+                <div class="message govuk-!-margin-bottom-5">
+                  <strong class="govuk-tag govuk-tag--green">Sent message</strong>
                     <p class="govuk-!-margin-top-5">{{ data['message-to-creditor'] }}</p>
                     <div class="moj-message-item__meta">
                       <p class="govuk-body-s govuk-!-margin-bottom-0">Advice uk, 20 April 2022 at 11.35am</p>
                     </div>
                   </div>
+                {% endif %}
 
-               <!-- <div class="message govuk-!-margin-bottom-5" id="message2">
+                <div class="message govuk-!-margin-bottom-5" id="message2">
                   <h3 class="govuk-heading-s"> 
                     {% if checked('message-read','yes')%}
                     <strong class="govuk-tag">Read message</strong>
@@ -66,6 +73,49 @@ Message
                         </div>
                        </form>
                   </div> -->
+
+        <form class="form" action="" method="post">     
+          
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Add subject line",
+    classes: "govuk-label--m",
+    isPageHeading: false
+  },
+  id: "subject-message",
+  name: "subject-message"
+}) }}       
+
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "message-to-creditor",
+  id: "message-to-creditor",
+  label: {
+    text: "Add message",
+    classes: "govuk-label--m",
+    isPageHeading: false
+  }
+}) }}
+
+<div class="govuk-radios" style="display:none">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="" name="task" type="radio" value="sentMessage~message-confirm?reference={{case.reference}}" checked>
+    <label class="govuk-label govuk-radios__label" for="councilDebtType">
+     hidden radio for hacky prototype
+    </label>
+  </div>
+  </div>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Send message"
+}) }}
+</form>
       </div> 
     </div>
     

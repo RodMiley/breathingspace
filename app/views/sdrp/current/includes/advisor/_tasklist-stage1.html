@@ -92,7 +92,7 @@
             </li>
             <li class="app-task-list__item">
               {% if checked('debtcategory','yes') %}
-          <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">To do</strong>
           <a href="consent">Send debts to creditors to confirm</a>
           {% else %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Cannot start yet</strong>
@@ -128,7 +128,7 @@
                 </li>
                 {% endif %}
 
-                {% if case.task === "Review new debts added by creditor"  %}
+                {% if case.task === "New debts added by creditor"  %}
               <li class="app-task-list__item">
                 {% if checked('task','complete') or checked('task','addeddebts')%} 
                 <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">Completed</strong> 

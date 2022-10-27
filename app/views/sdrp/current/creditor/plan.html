@@ -41,13 +41,13 @@ Debt repayment plan for Sarah Philips
 
 <p>This debt repayment plan is being created by AdviceUK.</p>
 
-<div class="govuk-warning-text">
+<!-- <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
     You have objected to this plan
   </strong>
-</div>
+</div> -->
 
 
 {% from "govuk/components/tabs/macro.njk" import govukTabs %}
@@ -64,7 +64,7 @@ Debt repayment plan for Sarah Philips
         {% endif %}
       </a>
     </li> 
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+    <!-- <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#plan">
         Plan
       </a>
@@ -73,7 +73,7 @@ Debt repayment plan for Sarah Philips
       <a class="govuk-tabs__tab" href="#objections">
         Objections
       </a>
-    </li> 
+    </li> -->
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#messages">
        Messages
@@ -103,7 +103,7 @@ Debt repayment plan for Sarah Philips
   <h2 class="govuk-heading-l">Tasks</h2>
    {% include  "../includes/creditor/_tasklist.html" %} 
   </div>
-
+<!--
   <div class="govuk-tabs__panel" id="plan">
     <h2 class="govuk-heading-l">Plan</h2>
      
@@ -134,7 +134,7 @@ Debt repayment plan for Sarah Philips
         </tbody>
       </table>
        
-      </div>
+      </div> -->
   <div class="govuk-tabs__panel" id="messages">
     <h2 class="govuk-heading-l">Messages</h2>
     {% include  "../includes/creditor/_messages.html" %} 

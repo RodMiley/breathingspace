@@ -23,100 +23,190 @@
 {% set latestHtml %}
 
 
-<h2 class="govuk-heading-xl">Latest</h2>
+<h2 class="govuk-heading-xl">Debt advisor views</h2>
 
-<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-  <div class="govuk-accordion__section ">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-          Money advisor
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-      <!-- start accordion content-->
-      <h2 class="govuk-heading-l">Homepage and tasks pages</h2>
-<ul class="govuk-list">
-<li><a href="/sdrp/current/advisor/index">Money adviser homepage</a></li>
-<li><!-- <a href="/advisor-latest/tasks-to-do">Tasks to do</a>--> Tasks to do</li>
+<h2 class="govuk-heading-l">Homepage and tasks pages</h2>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/index">Money adviser homepage</a>
+  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong>
+</li>
+<li><a href="/sdrp/current/advisor/tasks-to-do">Tasks to do</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
 </ul>
 <h2 class="govuk-heading-l">Search</h2>
-<ul class="govuk-list">
-<li><!-- <a href="/advisor-latest/search">Search</a>--> Search</li>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/search">Search</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
 </ul>
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-<h2 class="govuk-heading-l">Use Breathing Space Information</h2>
-<ul class="govuk-list">
-  <li><a href="/sdrp/current/advisor/create-guard">Breathing space guard question</a></li>
-  <li><a href="/sdrp/current/advisor/bs-confirm">Confirm you want to use BS information</a></li>
+
+<h2 class="govuk-heading-l">Create new plan</h2>
+<ul class="govuk-list border-bottom">
+  <li><a href="/sdrp/current/advisor/type-of-plan-guard">What type of plan are you creating</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
   </ul>
-  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<h2 class="govuk-heading-l">Use Breathing Space Information</h2>
+<ul class="govuk-list border-bottom">
+  <li><a href="/sdrp/current/advisor/create-guard">Breathing space guard question</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/create-guard?reference=SDRP619910">Breathing space guard question - Joint plan</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/bs-confirm">Confirm you want to use BS information</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/bs-confirm?reference=SDRP619910">Confirm you want to use BS information - Joint plan</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/bs-confirm-nonowning">Confirm you want to use BS information - Non owning debt advice organisation</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/plan-inc1?reference=SDRP033228">Client plan page using BS information</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  <li><a href="/sdrp/current/advisor/plan-inc1?reference=SDRP619910">Client plan page using BS information - Joint plan</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+  </ul>
 <h2 class="govuk-heading-l">Create client details</h2>
 <h3 class="govuk-heading-s">Names and date of birth</h3>
-<ul class="govuk-list">
-  <li><a href="/sdrp/current/advisor/details">Client details</a></li>
-  <li><a href="/sdrp/current/advisor/names">Names</a></li>
-  <li><a href="/sdrp/current/advisor/add-another-name">Add previous name</a></li>
+<ul class="govuk-list border-bottom">
+  <li><a href="/sdrp/current/advisor/details">Client details</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+  <li><a href="/sdrp/current/advisor/names">Names</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+  <li><a href="/sdrp/current/advisor/add-another-name">Add previous name</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
   </ul>
 
   <h3 class="govuk-heading-s">Address's</h3>
-<ul class="govuk-list">
-<li><a href="sdrp/current/advisor/address">Add clients current address</a></li>
-<li><a href="sdrp/current/advisor/address-choice.html">Choose clients current address</a></li>
-<li><a href="sdrp/current/advisor/address-history">Address history</a></li>
-<li><a href="sdrp/current/advisor/hide-address">Hide address</a></li>
-<li><a href="sdrp/current/advisor/address-correspondence.html">Add clients corrispondence address</a></li>
-<li><a href="sdrp/current/advisor/address-choice-correspondence.html">Choose clients corrispondence address</a></li>
-<li><a href="sdrp/current/advisor/address-choice-prev.html">Add clients previous address</a></li>
-<li><a href="sdrp/current/advisor/address-choice-prev.html">Choose clients previous address</a></li>
+<ul class="govuk-list border-bottom">
+<li><a href="sdrp/current/advisor/address">Add clients current address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-choice.html">Choose clients current address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-history">Address history</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/hide-address">Hide address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-correspondence.html">Add clients corrispondence address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-choice-correspondence.html">Choose clients corrispondence address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Add clients previous address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="sdrp/current/advisor/address-choice-prev.html">Choose clients previous address</a>  <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
 </ul>
-<h3 class="govuk-heading-s">Notification preference</h3>
-<ul class="govuk-list">
-<li><a href="sdrp/current/advisor/notifcation-preference">Client notification preference</a></li>
-</ul>
-<h3 class="govuk-heading-s">Business</h3>
-<ul class="govuk-list">
-<li><a href="sdrp/current/advisor/business-guard">Business guard question</a></li>
-<li><a href="/sdrp/current/advisor/add-business">Add business</a></li>
-<li><a href="/sdrp/current/advisor/add-business-address">Add business address</a></li>
-<li><a href="/sdrp/current/advisor/add-business-address-choice">Choose business address</a></li>
-<li><a href="/sdrp/current/advisor/add-business-address-manual">Add business address manually</a></li>
-<li><a href="/sdrp/current/advisor/add-business-history">Businesses</a></li>
+<h3 class="govuk-heading-s">Collect email</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="sdrp/current/advisor/collect-email.html">Collect client email <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></a></li>
+<li><a href="sdrp/current/advisor/collect-email-no.html">Client does not have an email address or access to one</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
 </ul>
 <h3 class="govuk-heading-s">Check client details</h3>
-<ul class="govuk-list">
-<li><a href="/sdrp/current/advisor/confirm-details">Check client details</a></li>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/confirm-details">Check client details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/confirm-details-populated">Check client details - fully populated </a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
 </ul>
+
+<h3 class="govuk-heading-s">Notification preference</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="sdrp/current/advisor/notifcation-preference">Client notification preference</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+</ul>
+<h3 class="govuk-heading-s">Business</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="sdrp/current/advisor/business-guard">Business guard question</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+<li><a href="/sdrp/current/advisor/add-business">Add business</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+<li><a href="/sdrp/current/advisor/add-business-address">Add business address</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+<li><a href="/sdrp/current/advisor/add-business-address-choice">Choose business address</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+<li><a href="/sdrp/current/advisor/add-business-address-manual">Add business address manually</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+<li><a href="/sdrp/current/advisor/add-business-history">Businesses</a><strong class="govuk-tag govuk-tag--red govuk-!-margin-left-5">Not required</strong></li>
+</ul>
+<h2 class="govuk-heading-m">Tasks</h2>
+<h3 class="govuk-heading-s">Add a debt</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/add-debt-choose-creditor">Choose creditor</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-details-council">Debt details - creditor has multiple debt types</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-details-creditcard">Debt details - creditor has single debt type</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-details">Debt details - creditor has open debt type</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-adhock-creditor">Adhock choose creditor</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-adhock-add-postcode">Adhock add creditor postcode</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-adhock-choose-address">Adhock choose creditor address</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-adhock-creditor-manual-address">Adhock add creditor address manually</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/add-debt-details-adhock">Adhock creditor debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
+<h3 class="govuk-heading-s">Confirm sold debts</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP904312">Plan - Task - Confirm sold debts</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/debt-sold?reference=SDRP904312">Creditor has sold the debt</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/debt-sold-confirm?reference=SDRP904312">Confirm creditor has sold the debt</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-<h2 class="govuk-heading-m">Client plan</h2>
-<ul class="govuk-list">
-<li><a href="/sdrp/current/advisor/plan">New plan</a></li>
-<li><a href="/sdrp/current/advisor/plan">Draft plan</a></li>
-<li><a href="/sdrp/current/advisor/plan">Final plan</a></li>
+<h3 class="govuk-heading-s">Review updated debt details</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP823471">Plan - Task - Review updated debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/debt-discrepancies?reference=SDRP823471">Review updated debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/confirm-debt-discrepancies?reference=SDRP823471">Confirm updated debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
 </ul>
-      <!-- end accordion content-->
-    </div>
-  </div>
-  <div class="govuk-accordion__section ">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-          Creditor
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-       <!-- start accordion content-->
-       Creditor links
-      <!-- end accordion content-->
-    </div>
-  </div>
-</div>
+
+
+<h3 class="govuk-heading-s">Review new debts added by creditor</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP414771">Plan - Task - Review new debts added by creditor</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/review-new-debts?reference=SDRP414771">Review new debts added by creditor</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/review-new-debts-confirm?reference=SDRP414771">Confirm you want to add these debts to your client’s plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
+<h3 class="govuk-heading-s">Message from the creditor</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP414772#messages">Plan - Task - New message</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/message?reference=SDRP414772">Messages</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
+<h3 class="govuk-heading-s">Draft plans nearing deadline</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP250150">Plan - Task - Add houshold information</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/household?reference=SDRP250150">Add houshold information</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/monthly-income?reference=SDRP250150">Add monthly income</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/monthly-outgoings?reference=SDRP250150">Add monthly outgoings</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/check-draft-plan?reference=SDRP058835">Send draft plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
+<h2 class="govuk-heading-m">Client plan</h2>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP619910">New plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP250150">Draft plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/advisor/plan?reference=SDRP058835">Final plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
 
 
 
 {% endset -%}
+
+{% set creditorHtml %}
+<h2 class="govuk-heading-l">Homepage and tasks pages</h2>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/creditor/index">Creditor homepage</a>
+  <strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong>
+</li>
+<li><a href="/sdrp/current/creditor/tasks-to-do">Tasks to do</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+</ul>
+
+<h2 class="govuk-heading-l">Tasks</h2>
+<h3 class="govuk-heading-s">Confirm debt details</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/creditor/plan">Plan - Task - Confirm debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/review-debt">Task - Confirm debt details - Confirm debt</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/update-debt-detail">Task - Confirm debt details - Update debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/update-debt-detail">Task - Confirm debt details - Confirm updated debt details</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/sold-debt-choose-creditor">Task - Confirm debt details - Choose creditor you have sold the debt to</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/sold-debt-confirm">Task - Confirm debt details - Confirm you have sold the debt</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+
+<h3 class="govuk-heading-s">Messages</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/creditor/plan?reference=SDRP994652#messages">Plan - Task - New message</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/messages?reference=SDRP994652#message2">Plan - Task - View message</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+<h3 class="govuk-heading-s">Review draft plan</h3>
+<ul class="govuk-list border-bottom">
+<li><a href="/sdrp/current/creditor/plan?reference=SDRP798639">Plan - Task - Review draft plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/review-draft-plan?reference=SDRP798639">Task - Review draft plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/object-to-plan?reference=SDRP798639">Task - Why are you objecting to the plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+<li><a href="/sdrp/current/creditor/confirm-objection?reference=SDRP798639">Task - Confirm objection to the plan</a><strong class="govuk-tag govuk-tag--green govuk-!-margin-left-5">UR validated ready for dev</strong></li>
+</ul>
+
+{% endset %}
+
+{% set citizenHtml %}
+<h2 class="govuk-heading-l">View plan</h2>
+<ul class="govuk-list border-bottom">
+  <li><a href="/sdrp/current/debtor/plan">Citizen plan page</a><strong class="govuk-tag govuk-tag--grey govuk-!-margin-left-5">UR not tested</strong></li>
+</ul>
+{% endset %}
 
 {% set inc1Html %}
 <h2 class="govuk-heading-xl">Increment 1</h2>
@@ -213,10 +303,24 @@
 {{ govukTabs({
   items: [
     {
-      label: "Latest links",
+      label: "Debt advisor views",
       id: "latest",
       panel: {
         html: latestHtml
+      }
+    },
+    {
+      label: "Creditor views",
+      id: "creditor",
+      panel: {
+        html: creditorHtml
+      }
+    }, 
+    {
+      label: "Citizen views",
+      id: "citizen",
+      panel: {
+        html: citizenHtml
       }
     },
     {

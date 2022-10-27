@@ -1,4 +1,7 @@
-{% if checked('debt1','completed') or case.status ==='intention-bs' %}
+{% if checked('debt1','completed') or 
+case.status ==='intention-bs' or 
+case.status ==='intention' or 
+case.status ==='Confirmed plan' %}
 <dl class="govuk-summary-list govuk-!-margin-bottom-2">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -59,6 +62,7 @@
       {{ changeform("0", "add-debt-details-council-change#debtreference1", "reference") }}
     </dd>
   </div>
+  {% if checked('type-of-plan','Joint') or case.type =='Joint'%} 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
     Who owes the debt
@@ -70,6 +74,8 @@
       {{ changeform("0", "add-debt-details-council-change#debt-owner", "Debt owner") }}
     </dd>
   </div>
+{% endif %}
+
 </dl>
   <form class="govuk-!-margin-top-0" action="remove-debt" method="post">
     <div class="govuk-visually-hidden">

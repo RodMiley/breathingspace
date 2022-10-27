@@ -11,13 +11,12 @@ Do you want to add your client’s Breathing Space information to the plan?
   <form class="form" action="details" method="post">
 
   <div class="govuk-grid-row govuk-!-margin-top-5">
- 
-  
+
    <div class="govuk-grid-column-two-thirds">
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-<span class="govuk-caption-xl">Joint plan</span>
+<!--<span class="govuk-caption-xl">Joint plan</span>-->
 {% set yesHtml %}
 {{ govukInput({
   id: "bs-ref",
@@ -28,7 +27,7 @@ Do you want to add your client’s Breathing Space information to the plan?
   }
 }) }}
 {% endset -%}
-{% if checked('type-of-plan','Joint')%}
+{% if checked('type-of-plan','Joint') or case.type =='Joint' %}
 {{ govukRadios({
   idPrefix: "create-gaurd",
   name: "create-gaurd",

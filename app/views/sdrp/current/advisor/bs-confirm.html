@@ -15,12 +15,12 @@ Confirm you use this information this Breathing Space to pre populate the debt r
    <div class="govuk-grid-column-three-quarters">
     <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>  
 <h1 class="govuk-heading-xl">
-  {% if checked('type-of-plan','Joint')%}<span class="govuk-caption-xl">Joint plan</span>{% endif %}
+  {% if checked('type-of-plan','Joint') or case.type =='Joint' %}<span class="govuk-caption-xl">Joint plan</span>{% endif %}
   Confirm information from Breathing Space for this debt repayment plan</h1>
 
 <p>This information can be updated at any time after confirmation.</p>
 
-<h3 class="govuk-heading-m">Client {% if checked('type-of-plan','Joint')%}1{% endif %} details</h3>
+<h3 class="govuk-heading-m">Client {% if checked('type-of-plan','Joint') or case.type =='Joint' %}1{% endif %} details</h3>
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 

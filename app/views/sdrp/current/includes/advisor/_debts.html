@@ -36,7 +36,9 @@
       checked('set-debt-priority2','Priority') or
       checked('set-debt-priority3','Priority') or
       checked('set-debt-priority4','Priority') or
-      checked('set-debt-priority5','Priority') 
+      checked('set-debt-priority5','Priority') or 
+      case.status ==='intention' or 
+      case.status ==='Confirmed plan'
 %} 
 <h3 class="govuk-heading-l">Priority debts</h3>
 
@@ -60,7 +62,7 @@
 {% endif %}
 
 
-{% if checked('set-debt-priority1','Priority')  %}
+{% if checked('set-debt-priority1','Priority') or case.status ==='intention'  %}
 {% include  "../advisor/_debt1.html" %}
 {% endif %}
 
@@ -70,29 +72,36 @@
       checked('set-debt-priority3','Non-priority') or checked('set-debt-priority3','Do not know') or
       checked('set-debt-priority2','Non-priority') or checked('set-debt-priority2','Do not know') or
       checked('set-debt-priority1','Non-priority') or checked('set-debt-priority1','Do not know') or
-      case.status ==='intention-bs' 
+      case.status ==='intention-bs' or 
+      case.status ==='intention' or 
+      case.status ==='Confirmed plan'
 %}
 <h3 class="govuk-heading-l">Non-priority debts</h3>
 {% endif%}
 
 
-{% if checked('set-debt-priority5','Non-priority') or checked('set-debt-priority5','Do not know') or case.status ==='intention-bs' %}
+{% if checked('set-debt-priority5','Non-priority') or checked('set-debt-priority5','Do not know') or case.status ==='intention-bs' or case.status ==='intention' or 
+case.status ==='Confirmed plan' %}
 {% include  "../advisor/_debt5.html" %}
 {% endif %}
 
-{% if checked('set-debt-priority4','Non-priority') or checked('set-debt-priority4','Do not know') or case.status ==='intention-bs' %}
+{% if checked('set-debt-priority4','Non-priority') or checked('set-debt-priority4','Do not know') or case.status ==='intention-bs' or case.status ==='intention' or 
+case.status ==='Confirmed plan' %}
 {% include  "../advisor/_debt4.html" %}
 {% endif %}
 
-{% if checked('set-debt-priority3','Non-priority') or checked('set-debt-priority3','Do not know') or case.status ==='intention-bs' %}
+{% if checked('set-debt-priority3','Non-priority') or checked('set-debt-priority3','Do not know') or case.status ==='intention-bs' or case.status ==='intention' or 
+case.status ==='Confirmed plan' %}
 {% include  "../advisor/_debt3.html" %}
 {% endif %}
 
-{% if checked('set-debt-priority2','Non-priority') or checked('set-debt-priority2','Do not know') or case.status ==='intention-bs' %}
+{% if checked('set-debt-priority2','Non-priority') or checked('set-debt-priority2','Do not know') or case.status ==='intention-bs' or case.status ==='intention' or 
+case.status ==='Confirmed plan' %}
 {% include  "../advisor/_debt2.html" %}
 {% endif %}
 
-{% if checked('set-debt-priority1','Non-priority') or checked('set-debt-priority1','Do not know') or case.status ==='intention-bs'  %}
+{% if checked('set-debt-priority1','Non-priority') or checked('set-debt-priority1','Do not know') or case.status ==='intention-bs' or 
+case.status ==='Confirmed plan' %}
 {% include  "../advisor/_debt1.html" %}
 {% endif %}
 
